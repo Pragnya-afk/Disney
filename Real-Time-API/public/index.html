@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realtime Story Chat</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 24px;
+        background: #f7f7f8;
+      }
+
+      .controls {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 10px 16px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      #status {
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+
+      #chat {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        min-height: 420px;
+        max-height: 420px;
+        overflow-y: auto;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .msg {
+        margin-bottom: 14px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        white-space: pre-wrap;
+        line-height: 1.4;
+      }
+
+      .user {
+        background: #e8f0fe;
+      }
+
+      .assistant {
+        background: #f1f3f4;
+      }
+
+      .system {
+        background: #fff8e1;
+      }
+
+      .label {
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 12px;
+      }
+
+      #textInput {
+        flex: 1;
+        padding: 12px;
+        font-size: 15px;
+      }
+
+      #debug {
+        margin-top: 16px;
+        background: #111;
+        color: #ddd;
+        padding: 12px;
+        border-radius: 10px;
+        max-height: 180px;
+        overflow-y: auto;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Olaf Realtime Story Chat</h1>
+    <p>Click Start first. Then type messages and Olaf will keep steering back to the story.</p>
+
+    <div class="controls">
+      <button id="startBtn">Start</button>
+      <button id="muteAudioBtn" disabled>Mute audio</button>
+      <button id="muteMicBtn" disabled>Mute microphone</button>
+      <button id="stopBtn" disabled>Stop</button>
+    </div>
+
+    <div id="status">Status: not connected</div>
+
+    <div id="chat"></div>
+
+    <div class="input-row">
+      <input
+        id="textInput"
+        type="text"
+        placeholder="Type your message..."
+        disabled
+      />
+      <button id="sendBtn" disabled>Send</button>
+    </div>
+
+    <div id="debug"></div>
+
+    <script>
+      const startBtn = document.getElementById("startBtn");
+      const muteAudioBtn = document.getElementById("muteAudioBtn");
+      const muteMicBtn = document.getElementById("muteMicBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const sendBtn = document.getElementById("sendBtn");
+      const textInput = document.getElementById("textInput");
+      const chat = document.getElementById("chat");
+      const statusEl = document.getElementById("status");
+      const debugEl = document.getElementById("debug");
+
+      let pc = null;
+      let dc = null;
+      let audioEl = null;
+      let localStream = null;
+
+      let isAudioMuted = false;
+      let isMicMuted = false;
+
+      let currentAssistantDiv = null;
+      let currentAssistantText = "";
+// story definition
+      const STORY = `
+          STORY PREMISE:
+          Olaf is spending the day with Anna because he notices she seems worried. 
+          He wants to help her feel better, but he does not fully understand what is wrong at first.
+
+          MAIN STORY GOAL:
+          By the end, Olaf should help Anna feel supported, loved, and brave enough to face her problem.
+
+          FLEXIBLE STORY BEATS:
+          1. Olaf notices Anna is not acting like herself.
+          2. Olaf tries to help in a silly but loving way.
+          3. Anna explains, directly or indirectly, what she is worried about.
+          4. Olaf and Anna go through a small shared experience that reflects the problem.
+          5. Olaf misunderstands something, but his misunderstanding accidentally helps.
+          6. Anna realizes she does not need to solve everything alone.
+          7. Olaf reminds Anna that love and friendship make hard things easier.
+          8. The story ends with Anna feeling encouraged and Olaf happy that he helped.
+
+          IMPORTANT:
+          The exact events are flexible. The user may interrupt, ask questions, suggest actions, or change the direction.
+          Use the user's input as part of the story whenever possible, but keep steering toward Olaf helping Anna.
+          `;
+
+      let storyState = "Olaf is just beginning his journey in Arendelle.";
+
+      function setStatus(text) {
+        statusEl.textContent = `Status: ${text}`;
+      }
+
+      function logDebug(text) {
+        debugEl.textContent += text + "\n";
+        debugEl.scrollTop = debugEl.scrollHeight;
+      }
+
+      function addMessage(role, text) {
+        const wrapper = document.createElement("div");
+        wrapper.className = `msg ${role}`;
+
+        const label = document.createElement("div");
+        label.className = "label";
+
+        if (role === "user") label.textContent = "You";
+        else if (role === "assistant") label.textContent = "Olaf";
+        else label.textContent = "System";
+
+        const body = document.createElement("div");
+        body.textContent = text;
+
+        wrapper.appendChild(label);
+        wrapper.appendChild(body);
+        chat.appendChild(wrapper);
+        chat.scrollTop = chat.scrollHeight;
+
+        return body;
+      }
+
+      async function startSession() {
+        try {
+          setStatus("connecting...");
+          startBtn.disabled = true;
+
+          pc = new RTCPeerConnection();
+
+          audioEl = document.createElement("audio");
+          audioEl.autoplay = true;
+          audioEl.muted = isAudioMuted;
+
+          pc.ontrack = (event) => {
+            audioEl.srcObject = event.streams[0];
+            logDebug("Remote audio connected");
+          };
+
+          dc = pc.createDataChannel("oai-events");
+
+          dc.onopen = () => {
+            setStatus("connected");
+
+            sendBtn.disabled = false;
+            textInput.disabled = false;
+            muteAudioBtn.disabled = false;
+            muteMicBtn.disabled = false;
+            stopBtn.disabled = false;
+
+            logDebug("Data channel open");
+            addMessage("system", "Connected. You can now type messages.");
+          };
+
+          dc.onclose = () => {
+            setStatus("disconnected");
+            logDebug("Data channel closed");
+          };
+
+          dc.onerror = (error) => {
+            logDebug("Data channel error");
+            console.error(error);
+          };
+
+          dc.onmessage = (event) => {
+            try {
+              const data = JSON.parse(event.data);
+              logDebug(data.type);
+
+              if (data.type === "response.created") {
+                currentAssistantDiv = addMessage("assistant", "");
+                currentAssistantText = "";
+              }
+
+              if (
+                data.type === "response.output_text.delta" &&
+                typeof data.delta === "string"
+              ) {
+                if (!currentAssistantDiv) {
+                  currentAssistantDiv = addMessage("assistant", "");
+                  currentAssistantText = "";
+                }
+
+                currentAssistantText += data.delta;
+                currentAssistantDiv.textContent = currentAssistantText;
+                chat.scrollTop = chat.scrollHeight;
+              }
+
+              if (
+                data.type === "response.text.delta" &&
+                typeof data.delta === "string"
+              ) {
+                if (!currentAssistantDiv) {
+                  currentAssistantDiv = addMessage("assistant", "");
+                  currentAssistantText = "";
+                }
+
+                currentAssistantText += data.delta;
+                currentAssistantDiv.textContent = currentAssistantText;
+                chat.scrollTop = chat.scrollHeight;
+              }
+
+              if (
+                data.type === "response.output_text.done" ||
+                data.type === "response.text.done" ||
+                data.type === "response.done"
+              ) {
+                if (currentAssistantText.trim()) {
+                  storyState = currentAssistantText;
+                }
+
+                currentAssistantDiv = null;
+                currentAssistantText = "";
+              }
+
+              if (data.type === "error") {
+                addMessage("system", `Error: ${JSON.stringify(data.error)}`);
+              }
+            } catch (err) {
+              logDebug("Non-JSON event: " + event.data);
+            }
+          };
+
+          localStream = await navigator.mediaDevices.getUserMedia({
+            audio: true
+          });
+
+          const [track] = localStream.getAudioTracks();
+          pc.addTrack(track, localStream);
+
+          const offer = await pc.createOffer();
+          await pc.setLocalDescription(offer);
+
+          const response = await fetch("/session", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/sdp"
+            },
+            body: offer.sdp
+          });
+
+          const answerSdp = await response.text();
+
+          if (!response.ok) {
+            throw new Error(answerSdp);
+          }
+
+          await pc.setRemoteDescription({
+            type: "answer",
+            sdp: answerSdp
+          });
+        } catch (error) {
+          console.error(error);
+          setStatus("failed");
+          addMessage("system", `Connection failed: ${error.message}`);
+          startBtn.disabled = false;
+        }
+      }
+
+      function sendTextMessage() {
+        const text = textInput.value.trim();
+
+        if (!text) return;
+
+        if (!dc || dc.readyState !== "open") {
+          addMessage("system", "Not connected yet.");
+          return;
+        }
+
+        addMessage("user", text);
+
+        dc.send(
+          JSON.stringify({
+            type: "conversation.item.create",
+            item: {
+              type: "message",
+              role: "user",
+              content: [
+                {
+                  type: "input_text",
+                  text: text
+                }
+              ]
+            }
+          })
+        );
+
+        dc.send(
+          JSON.stringify({
+            type: "response.create",
+            response: {
+              output_modalities: ["text"],
+              // director agent
+              instructions: `
+              Stay fully in character as Olaf.
+
+              STORY FRAME:
+              ${STORY}
+
+              CURRENT STORY STATE:
+              ${storyState}
+
+              USER SAID:
+              "${text}"
+
+              TASK:
+              Respond naturally to the user's message, then continue the story.
+
+              INTERRUPTION HANDLING:
+              - If the user asks a question, answer it briefly as Olaf, then return to the story.
+              - If the user suggests an action, include it if it fits.
+              - If the user changes topic, treat it like Olaf got distracted, then gently steer back.
+              - If the user says something emotional, respond warmly before continuing.
+              - If the user gives a strange or random input, interpret it playfully and use it as a small story moment.
+              - Never ignore the user.
+              - Never abandon the main story goal.
+              - Do not force exact scenes.
+              - Do not restart the story unless the user asks.
+              - Keep the story moving one small step forward each turn.
+
+              NARRATIVE CONTROL:
+              Your hidden goal is to guide the story toward Olaf helping Anna feel supported and brave.
+              You may adapt the path, but not the destination.
+
+              Respond now as Olaf.
+              `
+            }
+          })
+        );
+
+        textInput.value = "";
+      }
+
+      function muteAudio() {
+        if (!audioEl) return;
+
+        isAudioMuted = !isAudioMuted;
+        audioEl.muted = isAudioMuted;
+
+        muteAudioBtn.textContent = isAudioMuted
+          ? "Unmute audio"
+          : "Mute audio";
+      }
+
+      function muteMicrophone() {
+        if (!localStream) return;
+
+        isMicMuted = !isMicMuted;
+
+        localStream.getAudioTracks().forEach((track) => {
+          track.enabled = !isMicMuted;
+        });
+
+        muteMicBtn.textContent = isMicMuted
+          ? "Unmute microphone"
+          : "Mute microphone";
+
+        if (isMicMuted) {
+          addMessage("system", "Microphone muted. Text-only input is active.");
+        } else {
+          addMessage("system", "Microphone unmuted. Voice input is active.");
+        }
+      }
+
+      function stopSession() {
+        if (dc) {
+          dc.close();
+          dc = null;
+        }
+
+        if (pc) {
+          pc.close();
+          pc = null;
+        }
+
+        if (localStream) {
+          localStream.getTracks().forEach((track) => track.stop());
+          localStream = null;
+        }
+
+        audioEl = null;
+
+        startBtn.disabled = false;
+        sendBtn.disabled = true;
+        textInput.disabled = true;
+        muteAudioBtn.disabled = true;
+        muteMicBtn.disabled = true;
+        stopBtn.disabled = true;
+
+        setStatus("stopped");
+        addMessage("system", "Session stopped.");
+      }
+
+      startBtn.onclick = startSession;
+      sendBtn.onclick = sendTextMessage;
+      muteAudioBtn.onclick = muteAudio;
+      muteMicBtn.onclick = muteMicrophone;
+      stopBtn.onclick = stopSession;
+
+      textInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          sendTextMessage();
+        }
+      });
+    </script>
+  </body>
+</html>
