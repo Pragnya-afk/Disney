@@ -85,6 +85,7 @@ You can configure `./scripts/generate.sh` with the following options:
 grep -v "file:///" requirements.txt > requirements_clean.txt
 pip install -r requirements_clean.txt
 
+(in CoDi-main/CoDi-main)
 Activate/deactivate a python environment 
 source venv/bin/activate
 deactivate 

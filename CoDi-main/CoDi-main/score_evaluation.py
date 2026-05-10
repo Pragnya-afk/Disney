@@ -237,7 +237,9 @@ def extract_final_score(llm_response):
         return float(match.group(1)), float(match.group(2))
     else:
         return None, None
-    
+
+# reties up to 3 times if the response format is unexpected or the score cannot be extracted
+# with lower temperature  0.4 -> 0.3 -> 0.2 never 0 because its too rigid and often fails to follow the output format, which results in failure in score extraction.
 def validate_plan_adherence_response(llm_response):
     try:
         if not isinstance(llm_response, dict):
