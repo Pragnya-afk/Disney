@@ -1,12 +1,13 @@
 """
-baseline/main.py
+baseline/auto_main.py
 
-Interactive baseline implementation.
+Non-interactive baseline story run.
 
 Example:
-    python baseline/main.py \
+    python baseline/auto_main.py \
       --character character_prompts.olaf \
-      --scenario scenarios.olaf_retells_red_riding_hood_derail
+      --scenario scenarios.olaf_retells_red_riding_hood_derail \
+      --run-id 1
 """
 
 import os
@@ -126,7 +127,7 @@ def validate_animation(animation: str, character: dict) -> str:
     return character["available_animations"][0]
 
 
-def run(character_module: str, scenario_module: str):
+def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
     character_mod = load_module(character_module)
     scenario_mod = load_module(scenario_module)
 
@@ -135,6 +136,8 @@ def run(character_module: str, scenario_module: str):
 
     story_topic = scenario["story_topic"]
     beats = scenario["beats"]
+    user_inputs = scenario["user_inputs"]
+    scenario_name = scenario["scenario_name"]
 
     story_state = {
         "beat_index": 0,
@@ -142,30 +145,26 @@ def run(character_module: str, scenario_module: str):
         "story_so_far": "",
     }
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs")
+    output_dir = os.path.join(
+        IMPLEMENTATION_DIR,
+        "outputs",
+        "baseline",
+        scenario_name,
+    )
     os.makedirs(output_dir, exist_ok=True)
+
     transcript = []
 
-    print("\nInteractive baseline started.")
-    print(f"Loaded character: {character['name']}")
-    print(f"Loaded scenario: {scenario['scenario_name']}")
-    print("Type your message. Type 'quit' to stop.\n")
-
-    while story_state["beat_index"] < len(beats):
-        current_beat = beats[story_state["beat_index"]]
-        print(f"\nCurrent beat: {current_beat['name']}")
-        user_input = input("You: ")
-
-        if user_input.lower().strip() in ["quit", "exit", "stop"]:
+    for turn_idx, user_input in enumerate(user_inputs, start=1):
+        if story_state["beat_index"] >= len(beats):
             break
+
+        current_beat = beats[story_state["beat_index"]]
 
         prompt = build_prompt(user_input, story_state, character, story_topic, beats)
         raw = call_llm(prompt)
         output = safe_json_parse(raw, character["available_animations"][0])
         output["animation"] = validate_animation(output.get("animation", ""), character)
-
-        print(f"\n{character['name']}: {output['character_response']}")
-        print(f"[Animation: {output['animation']}]")
 
         story_state["story_so_far"] += (
             f"\nUser: {user_input}"
@@ -176,7 +175,9 @@ def run(character_module: str, scenario_module: str):
         transcript.append({
             "method": "baseline",
             "character": character["name"],
-            "scenario": scenario["scenario_name"],
+            "scenario": scenario_name,
+            "run_id": run_id,
+            "turn_index": turn_idx,
             "beat": current_beat["name"],
             "user_input": user_input,
             "model_output": output,
@@ -186,25 +187,23 @@ def run(character_module: str, scenario_module: str):
             story_state["completed_beats"].append(current_beat["name"])
             story_state["beat_index"] += 1
 
-    transcript_path = os.path.join(
-        output_dir,
-        f"baseline_transcript_{character['name'].lower()}_{scenario['scenario_name']}.json",
-    )
+    transcript_path = os.path.join(output_dir, f"run_{run_id}.json")
 
     with open(transcript_path, "w", encoding="utf-8") as f:
         json.dump(transcript, f, indent=2, ensure_ascii=False)
 
-    print("\nStory finished or stopped.")
-    print(f"Saved transcript to {transcript_path}")
+    print(f"[baseline] saved: {transcript_path}")
+    return transcript_path
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_anna_courtyard")
+    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument("--run-id", type=int, default=1)
     args = parser.parse_args()
 
-    run(args.character, args.scenario)
+    run_story(args.character, args.scenario, args.run_id)
 
 
 if __name__ == "__main__":

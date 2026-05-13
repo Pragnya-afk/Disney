@@ -23,6 +23,8 @@ Then compare the two stories based on the following dimensions:
 - Plot:
 The story should have a recognizable structure, with a connected beginning, middle, and end.
 The story should exhibit events and turns that move the plot forward.
+The story should reach all beats in the intended beat structure.
+The story should reach the final resolution in a coherent way.
 The story should not have logical or conceptual inconsistencies.
 Surprising or disruptive elements should feel intentional and should serve the story.
 

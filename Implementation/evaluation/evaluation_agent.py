@@ -89,8 +89,6 @@ def load_character_profile(character_module: str) -> str:
 
     The imported module is expected to define:
         - CHARACTER
-        - STORY_TOPIC
-        - BEATS
 
     Parameters
     ----------
@@ -107,18 +105,41 @@ def load_character_profile(character_module: str) -> str:
     module = importlib.import_module(character_module)
 
     character = module.CHARACTER
-    story_topic = module.STORY_TOPIC
-    beats = module.BEATS
 
     profile = {
         "name": character["name"],
         "character_prompt": character["character_prompt"],
         "available_animations": character["available_animations"],
-        "story_topic": story_topic,
-        "beats": beats,
     }
 
     return json.dumps(profile, indent=2, ensure_ascii=False)
+
+
+def load_scenario_context(scenario_module: str) -> dict:
+    """
+    Load story context from a scenario module.
+
+    The imported module is expected to define:
+        - SCENARIO (with story_topic and beats)
+
+    Parameters
+    ----------
+    scenario_module : str
+        Import path of the scenario module, e.g.
+        `scenarios.olaf_retells_red_riding_hood_medium`.
+
+    Returns
+    -------
+    dict
+        Dictionary containing story_topic and beats.
+    """
+    module = importlib.import_module(scenario_module)
+    scenario = module.SCENARIO
+
+    return {
+        "story_topic": scenario["story_topic"],
+        "beats": scenario["beats"],
+    }
 
 
 # ------------------------------------------------------------
@@ -540,6 +561,12 @@ def main():
     )
 
     parser.add_argument(
+        "--scenario-module",
+        required=True,
+        help="Scenario module, e.g. scenarios.olaf_retells_red_riding_hood_medium",
+    )
+
+    parser.add_argument(
         "--out-dir",
         default="evaluation/results",
         help="Directory to save evaluation results.",
@@ -565,10 +592,16 @@ def main():
     transcript_a = load_json(args.story_a)
     transcript_b = load_json(args.story_b)
 
+    character_profile_data = json.loads(load_character_profile(args.character_module))
+    scenario_context = load_scenario_context(args.scenario_module)
+
+    # Combine character profile with scenario context
+    character_profile_data.update(scenario_context)
+    character_profile = json.dumps(character_profile_data, indent=2, ensure_ascii=False)
+
     story_a = transcript_to_story(transcript_a)
     story_b = transcript_to_story(transcript_b)
 
-    character_profile = load_character_profile(args.character_module)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # Independent scoring of each story

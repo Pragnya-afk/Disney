@@ -1,12 +1,13 @@
 """
-director_agent/main.py
+director_agent/auto_main.py
 
-Interactive director-agent implementation.
+Non-interactive director-agent story run.
 
 Example:
-    python director_agent/main.py \
+    python director_agent/auto_main.py \
       --character character_prompts.olaf \
-      --scenario scenarios.olaf_retells_red_riding_hood_derail
+      --scenario scenarios.olaf_retells_red_riding_hood_derail \
+      --run-id 1
 """
 
 import os
@@ -25,7 +26,11 @@ from director_core import get_director_decision
 
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+def make_client() -> OpenAI:
+    return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
 MODEL = "gpt-4o-mini"
 
 
@@ -197,47 +202,8 @@ def safe_json_parse(raw: str, fallback: dict) -> dict:
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
+        fallback["raw_model_response"] = raw
         return fallback
-
-
-def call_actor_agent(
-    user_input: str,
-    story_state: dict,
-    director_decision: dict,
-    character: dict,
-    story_topic: str,
-    beats: list,
-) -> dict:
-    prompt = build_actor_prompt(
-        user_input=user_input,
-        story_state=story_state,
-        director_decision=director_decision,
-        character=character,
-        story_topic=story_topic,
-        beats=beats,
-    )
-
-    response = client.chat.completions.create(
-        model=MODEL,
-        temperature=0.45,
-        messages=[
-            {"role": "system", "content": ACTOR_SYSTEM_PROMPT},
-            {"role": "user", "content": prompt},
-        ],
-    )
-
-    raw = response.choices[0].message.content.strip()
-
-    fallback = {
-        "character_response": "The story moves forward into a new moment.",
-        "story_event": "The story advances with a new moment.",
-        "animation": character["available_animations"][0],
-        "beat_completed": False,
-        "reason": "Actor response was not valid JSON.",
-        "raw_model_response": raw,
-    }
-
-    return safe_json_parse(raw, fallback)
 
 
 def validate_animation(animation: str, character: dict) -> str:
@@ -319,7 +285,9 @@ def should_close_story(director_decision: dict) -> bool:
     return director_decision.get("decision_type") == "close_story"
 
 
-def run(character_module: str, scenario_module: str):
+def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
+    client = make_client()
+
     character_mod = load_module(character_module)
     scenario_mod = load_module(scenario_module)
 
@@ -328,6 +296,8 @@ def run(character_module: str, scenario_module: str):
 
     story_topic = scenario["story_topic"]
     beats = scenario["beats"]
+    user_inputs = scenario["user_inputs"]
+    scenario_name = scenario["scenario_name"]
 
     story_state = {
         "beat_index": 0,
@@ -336,27 +306,21 @@ def run(character_module: str, scenario_module: str):
         "turns_in_current_beat": 0,
     }
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs")
+    output_dir = os.path.join(
+        IMPLEMENTATION_DIR,
+        "outputs",
+        "director_agent",
+        scenario_name,
+    )
     os.makedirs(output_dir, exist_ok=True)
+
     transcript = []
 
-    print("\nDirector-agent storytelling started.")
-    print(f"Loaded character: {character['name']}")
-    print(f"Loaded scenario: {scenario['scenario_name']}")
-    print("Type your message. Type 'quit' to stop.\n")
-
-# Each turn, get user input, call director agent for decision, call actor agent for response, update story state, and repeat until story ends or user quits.
-    while story_state["beat_index"] < len(beats):
-        current_beat = beats[story_state["beat_index"]]
-
-        print(f"\nCurrent beat: {current_beat['name']}")
-        
-        # Currently user input first before character introduces themself
-        user_input = input("You: ")
-
-        if user_input.lower().strip() in ["quit", "exit", "stop"]:
+    for turn_idx, user_input in enumerate(user_inputs, start=1):
+        if story_state["beat_index"] >= len(beats):
             break
 
+        current_beat = beats[story_state["beat_index"]]
         story_state["turns_in_current_beat"] += 1
 
         director_decision = get_director_decision(
@@ -368,8 +332,8 @@ def run(character_module: str, scenario_module: str):
             story_topic=story_topic,
             beats=beats,
         )
-# Actor agent call and response handling ie recieves director decision and produces character response, story event, animation, and beat completion status. Also updates story state and transcript.
-        actor_output = call_actor_agent(
+
+        prompt = build_actor_prompt(
             user_input=user_input,
             story_state=story_state,
             director_decision=director_decision,
@@ -378,13 +342,31 @@ def run(character_module: str, scenario_module: str):
             beats=beats,
         )
 
+        response = client.chat.completions.create(
+            model=MODEL,
+            temperature=0.45,
+            messages=[
+                {"role": "system", "content": ACTOR_SYSTEM_PROMPT},
+                {"role": "user", "content": prompt},
+            ],
+        )
+
+        raw = response.choices[0].message.content.strip()
+
+        actor_output = safe_json_parse(
+            raw,
+            fallback={
+                "character_response": "The story moves forward into a new moment.",
+                "story_event": "The story advances with a new moment.",
+                "animation": character["available_animations"][0],
+                "beat_completed": False,
+                "reason": "Actor response was not valid JSON.",
+            },
+        )
+
         actor_output["animation"] = validate_animation(
             actor_output.get("animation", ""), character
         )
-
-        print(f"\nDirector decision: {director_decision.get('decision_type')}")
-        print(f"{character['name']}: {actor_output['character_response']}")
-        print(f"[Animation: {actor_output['animation']}]")
 
         story_state["story_so_far"] += (
             f"\nUser: {user_input}"
@@ -397,7 +379,9 @@ def run(character_module: str, scenario_module: str):
         transcript.append({
             "method": "director_agent",
             "character": character["name"],
-            "scenario": scenario["scenario_name"],
+            "scenario": scenario_name,
+            "run_id": run_id,
+            "turn_index": turn_idx,
             "beat": current_beat["name"],
             "user_input": user_input,
             "director_decision": director_decision,
@@ -412,25 +396,23 @@ def run(character_module: str, scenario_module: str):
         if should_close_story(director_decision):
             break
 
-    transcript_path = os.path.join(
-        output_dir,
-        f"director_agent_transcript_{character['name'].lower()}_{scenario['scenario_name']}.json",
-    )
+    transcript_path = os.path.join(output_dir, f"run_{run_id}.json")
 
     with open(transcript_path, "w", encoding="utf-8") as f:
         json.dump(transcript, f, indent=2, ensure_ascii=False)
 
-    print("\nStory finished or stopped.")
-    print(f"Saved transcript to {transcript_path}")
+    print(f"[director_agent] saved: {transcript_path}")
+    return transcript_path
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument("--run-id", type=int, default=1)
     args = parser.parse_args()
 
-    run(args.character, args.scenario)
+    run_story(args.character, args.scenario, args.run_id)
 
 
 if __name__ == "__main__":
