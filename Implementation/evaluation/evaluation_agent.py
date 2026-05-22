@@ -568,7 +568,7 @@ def main():
 
     parser.add_argument(
         "--out-dir",
-        default="evaluation/results",
+        default=os.path.join(IMPLEMENTATION_DIR, "evaluation_results"),
         help="Directory to save evaluation results.",
     )
 
