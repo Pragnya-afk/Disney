@@ -1,5 +1,5 @@
 """
-evaluation/summarize_results.py
+evaluation_agent/summarize_results.py
 
 Aggregate multi-run evaluation results and compute summary statistics.
 
@@ -9,9 +9,9 @@ This script:
 3. Computes average single-story scores for baseline and director-agent
 
 Example:
-    python evaluation/summarize_results.py \
-      --scenario olaf_anna_courtyard \
-      --runs 5
+        python evaluation_agent/summarize_results.py \
+            --scenario olaf_anna_courtyard \
+            --runs 5
 """
 
 import os

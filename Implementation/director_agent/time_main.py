@@ -397,7 +397,15 @@ def run(character_module: str, scenario_module: str, time_limit: float):
         "turns_in_current_beat": 0,
     }
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs")
+    scenario_folder = scenario_module.split('.')[-1]
+    output_dir = os.path.join(
+        IMPLEMENTATION_DIR,
+        "outputs",
+        "target_duration_director_agent",
+        scenario_folder,
+        f"{time_limit}min",
+        "interactive",
+    )
     os.makedirs(output_dir, exist_ok=True)
     transcript = []
 
@@ -490,10 +498,7 @@ def run(character_module: str, scenario_module: str, time_limit: float):
         if monitor.should_stop_for_time():
             break
 
-    transcript_path = os.path.join(
-        output_dir,
-        f"target_duration_director_agent_transcript_{character['name'].lower()}_{scenario['scenario_name']}_{time_limit}min.json",
-    )
+    transcript_path = os.path.join(output_dir, "interactive.json")
 
     with open(transcript_path, "w", encoding="utf-8") as f:
         json.dump(transcript, f, indent=2, ensure_ascii=False)

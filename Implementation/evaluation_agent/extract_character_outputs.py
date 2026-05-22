@@ -1,5 +1,5 @@
 """
-evaluation/extract_character_outputs.py
+evaluation_agent/extract_character_outputs.py
 
 Extract readable character-only outputs from transcript JSON files.
 
@@ -9,18 +9,18 @@ Supports:
 2. Two files:
    --baseline ... --director ...
 
-Examples
+Example
 --------
 Single file:
-    python evaluation/extract_character_outputs.py \
-      --input outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
-      --out evaluation/results/olaf_retells_red_riding_hood_medium/run_1_baseline_character_outputs.txt
+        python evaluation_agent/extract_character_outputs.py \
+            --input outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
+            --out evaluation_results/olaf_retells_red_riding_hood_medium/run_1_baseline_character_outputs.txt
 
 Two files:
-    python evaluation/extract_character_outputs.py \
-      --baseline outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
-      --director outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
-      --out evaluation/results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
+        python evaluation_agent/extract_character_outputs.py \
+            --baseline outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
+            --director outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
+            --out evaluation_results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
 """
 
 import os

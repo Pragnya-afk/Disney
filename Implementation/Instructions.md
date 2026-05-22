@@ -80,7 +80,7 @@ If you rerun the same command with the same run id, that file is overwritten.
 ## Evaluate One Pair of Output Files
 
 ```bash
-python evaluation/evaluation_agent.py \
+python evaluation_agent/evaluation_core.py \
   --story-a outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
   --story-b outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
   --character-module character_prompts.olaf \
@@ -98,7 +98,7 @@ python evaluation/evaluation_agent.py \
 ## Extract Only Character Outputs
 
 ```bash
-python evaluation/extract_character_outputs.py \
+python evaluation_agent/extract_character_outputs.py \
   --baseline outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
   --director outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
   --out evaluation_results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
@@ -109,7 +109,7 @@ python evaluation/extract_character_outputs.py \
 ## Summarize Results Across Multiple Evaluations
 
 ```bash
-python evaluation/summarize_results.py
+python evaluation_agent/summarize_results.py
 ```
 
 This is used after evaluating multiple run pairs.
@@ -126,7 +126,7 @@ Typical uses:
 If you want a plain text file that contains only the character responses from one baseline run and one director-agent run, use:
 
 ```bash
-python evaluation/extract_character_outputs.py \
+python evaluation_agent/extract_character_outputs.py \
   --baseline outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
   --director outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
   --out evaluation_results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
@@ -163,7 +163,7 @@ python director_agent/auto_main.py \
 ### 3. Evaluate
 
 ```bash
-python evaluation/evaluation_agent.py \
+python evaluation_agent/evaluation_core.py \
   --story-a outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
   --story-b outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
   --character-module character_prompts.olaf \
@@ -206,7 +206,7 @@ For example:
 ### 4. Summarize all results
 
 ```bash
-python evaluation/summarize_results.py
+python evaluation_agent/summarize_results.py
 ```
 
 ---

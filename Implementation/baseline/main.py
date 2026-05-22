@@ -142,7 +142,14 @@ def run(character_module: str, scenario_module: str):
         "story_so_far": "",
     }
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs")
+    scenario_folder = scenario_module.split('.')[-1]
+    output_dir = os.path.join(
+        IMPLEMENTATION_DIR,
+        "outputs",
+        "baseline",
+        scenario_folder,
+        "interactive",
+    )
     os.makedirs(output_dir, exist_ok=True)
     transcript = []
 
@@ -186,10 +193,7 @@ def run(character_module: str, scenario_module: str):
             story_state["completed_beats"].append(current_beat["name"])
             story_state["beat_index"] += 1
 
-    transcript_path = os.path.join(
-        output_dir,
-        f"baseline_transcript_{character['name'].lower()}_{scenario['scenario_name']}.json",
-    )
+    transcript_path = os.path.join(output_dir, "interactive.json")
 
     with open(transcript_path, "w", encoding="utf-8") as f:
         json.dump(transcript, f, indent=2, ensure_ascii=False)

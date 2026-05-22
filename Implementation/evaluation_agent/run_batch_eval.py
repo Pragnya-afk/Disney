@@ -1,14 +1,14 @@
 """
-evaluation/run_batch_eval.py
+evaluation_agent/run_batch_eval.py
 
 Run pairwise evaluation across multiple run pairs.
 
 Example:
-    python evaluation/run_batch_eval.py \
-      --character character_prompts.olaf \
-      --scenario olaf_anna_courtyard \
-      --runs 5 \
-      --model gpt-4o
+        python evaluation_agent/run_batch_eval.py \
+            --character character_prompts.olaf \
+            --scenario olaf_anna_courtyard \
+            --runs 5 \
+            --model gpt-4o
 """
 
 import os
@@ -22,7 +22,7 @@ CURRENT_DIR = os.path.dirname(__file__)
 IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
 sys.path.append(IMPLEMENTATION_DIR)
 
-from evaluation_agent import (
+from evaluation_agent.evaluation_core import (
     make_client,
     load_json,
     transcript_to_story,

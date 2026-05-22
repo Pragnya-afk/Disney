@@ -378,6 +378,7 @@ def run_story(
         "target_duration_director_agent",
         scenario_folder,
         f"{time_limit}min",
+        "batch",
     )
     os.makedirs(output_dir, exist_ok=True)
 

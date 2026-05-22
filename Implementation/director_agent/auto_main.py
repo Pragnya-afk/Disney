@@ -315,6 +315,7 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
         "outputs",
         "director_agent",
         scenario_folder,
+        "batch",
     )
     os.makedirs(output_dir, exist_ok=True)
 

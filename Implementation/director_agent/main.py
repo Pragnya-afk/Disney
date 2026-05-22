@@ -337,7 +337,14 @@ def run(character_module: str, scenario_module: str):
         "turns_in_current_beat": 0,
     }
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs")
+    scenario_folder = scenario_module.split('.')[-1]
+    output_dir = os.path.join(
+        IMPLEMENTATION_DIR,
+        "outputs",
+        "director_agent",
+        scenario_folder,
+        "interactive",
+    )
     os.makedirs(output_dir, exist_ok=True)
     transcript = []
 
@@ -413,10 +420,7 @@ def run(character_module: str, scenario_module: str):
         if should_close_story(director_decision):
             break
 
-    transcript_path = os.path.join(
-        output_dir,
-        f"director_agent_transcript_{character['name'].lower()}_{scenario['scenario_name']}.json",
-    )
+    transcript_path = os.path.join(output_dir, "interactive.json")
 
     with open(transcript_path, "w", encoding="utf-8") as f:
         json.dump(transcript, f, indent=2, ensure_ascii=False)
