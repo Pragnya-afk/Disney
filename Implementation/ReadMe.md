@@ -680,10 +680,10 @@ final    = end the story immediately
 
 ```text
 time_control.py
-director_agent/time_director_core.py
-director_agent/time_main.py
-director_agent/time_auto_main.py
-director_agent/time_runner.py
+director_agent/time_constrained/time_director_core.py
+director_agent/time_constrained/time_main.py
+director_agent/time_constrained/time_auto_main.py
+director_agent/time_constrained/time_runner.py
 ```
 
 ## Run Interactive Version
@@ -691,7 +691,7 @@ director_agent/time_runner.py
 Use this to test manually by typing user inputs.
 
 ```bash
-python director_agent/time_main.py \
+python director_agent/time_constrained/time_main.py \
   --character character_prompts.olaf \
   --scenario scenarios.olaf_retells_red_riding_hood_derail \
   --time-limit 5
@@ -708,7 +708,7 @@ quit
 Uses the `user_inputs` from the scenario file.
 
 ```bash
-python director_agent/time_auto_main.py \
+python director_agent/time_constrained/time_auto_main.py \
   --character character_prompts.olaf \
   --scenario scenarios.olaf_retells_red_riding_hood_derail \
   --time-limit 5 \
@@ -718,7 +718,7 @@ python director_agent/time_auto_main.py \
 ## Run Multiple Automated Evaluation Runs
 
 ```bash
-python director_agent/time_runner.py \
+python director_agent/time_constrained/time_runner.py \
   --character character_prompts.olaf \
   --scenario scenarios.olaf_retells_red_riding_hood_derail \
   --time-limit 5 \
@@ -728,7 +728,7 @@ python director_agent/time_runner.py \
 ## Run Different Time Budgets
 
 ```bash
-python director_agent/time_runner.py \
+python director_agent/time_constrained/time_runner.py \
   --character character_prompts.olaf \
   --scenario scenarios.olaf_retells_red_riding_hood_derail \
   --time-limit 5 \
@@ -736,7 +736,7 @@ python director_agent/time_runner.py \
 ```
 
 ```bash
-python director_agent/time_runner.py \
+python director_agent/time_constrained/time_runner.py \
   --character character_prompts.olaf \
   --scenario scenarios.olaf_retells_red_riding_hood_derail \
   --time-limit 10 \
