@@ -574,7 +574,7 @@ def main():
 
     parser.add_argument(
         "--model",
-        default="gpt-4o",
+        default="gpt-5.5",
         help="Evaluator model.",
     )
 

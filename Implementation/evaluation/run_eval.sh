@@ -15,5 +15,5 @@ python evaluation/evaluation_agent.py \
   --story-b director_agent/outputs/director_agent_transcript_olaf.json \
   --character-module character_prompts.olaf \
   --out-dir evaluation/results \
-  --model gpt-4o \
+  --model gpt-5.5 \
   --ab-ba

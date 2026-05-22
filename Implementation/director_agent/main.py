@@ -309,8 +309,9 @@ def should_complete_beat(
     if text_indicates_next_beat(actor_output, current_beat_name):
         return True
 
-    if story_state.get("turns_in_current_beat", 0) >= 3:
-        return True
+    # if story_state.get("turns_in_current_beat", 0) >= 3:
+    #     return True
+    # The beat should not be forced to complete purely because it has lasted three turns.
 
     return False
 

@@ -661,3 +661,137 @@ The code validates animations. If the model invents an animation, the system fal
 | Director Agent | `director_agent/` | `director_agent/main.py` | Director handles interruptions and story steering |
 
 ---
+
+````markdown
+---
+
+# Time-Constrained Director-Agent
+
+The time-constrained director-agent adds a time limit to the normal director-agent. It tracks remaining time and changes pacing:
+
+```text
+normal   = continue normally
+hurry    = move faster
+critical = compress beats
+final    = end the story immediately
+````
+
+## Files
+
+```text
+time_control.py
+director_agent/time_director_core.py
+director_agent/time_main.py
+director_agent/time_auto_main.py
+director_agent/time_runner.py
+```
+
+## Run Interactive Version
+
+Use this to test manually by typing user inputs.
+
+```bash
+python director_agent/time_main.py \
+  --character character_prompts.olaf \
+  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --time-limit 5
+```
+
+Stop with:
+
+```text
+quit
+```
+
+## Run One Automated Scripted Version
+
+Uses the `user_inputs` from the scenario file.
+
+```bash
+python director_agent/time_auto_main.py \
+  --character character_prompts.olaf \
+  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --time-limit 5 \
+  --run-id 1
+```
+
+## Run Multiple Automated Evaluation Runs
+
+```bash
+python director_agent/time_runner.py \
+  --character character_prompts.olaf \
+  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --time-limit 5 \
+  --runs 5
+```
+
+## Run Different Time Budgets
+
+```bash
+python director_agent/time_runner.py \
+  --character character_prompts.olaf \
+  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --time-limit 5 \
+  --runs 5
+```
+
+```bash
+python director_agent/time_runner.py \
+  --character character_prompts.olaf \
+  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --time-limit 10 \
+  --runs 5
+```
+
+## Output Location
+
+Interactive output is saved in:
+
+```text
+director_agent/outputs/
+```
+
+Automated evaluation outputs are saved in:
+
+```text
+outputs/time_constrained_director_agent/<scenario_name>/<time_limit>min/
+```
+
+Example:
+
+```text
+outputs/time_constrained_director_agent/olaf_retells_red_riding_hood_derail/5.0min/run_1.json
+outputs/time_constrained_director_agent/olaf_retells_red_riding_hood_derail/5.0min/run_2.json
+outputs/time_constrained_director_agent/olaf_retells_red_riding_hood_derail/5.0min/run_3.json
+outputs/time_constrained_director_agent/olaf_retells_red_riding_hood_derail/5.0min/run_4.json
+outputs/time_constrained_director_agent/olaf_retells_red_riding_hood_derail/5.0min/run_5.json
+```
+
+## Output Contains
+
+Each JSON transcript stores:
+
+```text
+method
+character
+scenario
+run_id
+turn_index
+time_limit_minutes
+beat
+user_input
+temporal_state
+director_decision
+actor_output
+```
+
+The important new field is:
+
+```text
+temporal_state
+```
+
+It shows elapsed time, remaining time, story progress, and pacing mode for each turn.
+
+```
+```

@@ -139,6 +139,9 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
     user_inputs = scenario["user_inputs"]
     scenario_name = scenario["scenario_name"]
 
+    # Use scenario module name for output folder
+    scenario_folder = scenario_module.split('.')[-1]
+
     story_state = {
         "beat_index": 0,
         "completed_beats": [],
@@ -149,7 +152,7 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
         IMPLEMENTATION_DIR,
         "outputs",
         "baseline",
-        scenario_name,
+        scenario_folder,
     )
     os.makedirs(output_dir, exist_ok=True)
 
