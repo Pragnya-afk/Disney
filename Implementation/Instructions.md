@@ -85,11 +85,11 @@ python evaluation/evaluation_agent.py \
   --story-b outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
   --character-module character_prompts.olaf \
   --scenario-module scenarios.olaf_retells_red_riding_hood_medium \
-  --out-dir evaluation/results/olaf_retells_red_riding_hood_medium \
+  --out-dir evaluation_results/olaf_retells_red_riding_hood_medium \
   --ab-ba
 ```
 
--> Output: evaluation/results/<scenario_name>/
+-> Output: evaluation_results/<scenario_name>/
 
 **Note:** `--scenario-module` is required because story topic and beats are defined in the scenario module, not the character module.
 
@@ -101,9 +101,9 @@ python evaluation/evaluation_agent.py \
 python evaluation/extract_character_outputs.py \
   --baseline outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
   --director outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
-  --out evaluation/results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
+  --out evaluation_results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
 ```
--> output : evaluation/results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
+-> output : evaluation_results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
 
 
 ## Summarize Results Across Multiple Evaluations
@@ -129,7 +129,7 @@ If you want a plain text file that contains only the character responses from on
 python evaluation/extract_character_outputs.py \
   --baseline outputs/baseline/olaf_retells_red_riding_hood_medium/run_1.json \
   --director outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
-  --out evaluation/results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
+  --out evaluation_results/olaf_retells_red_riding_hood_medium/run_1_character_outputs.txt
 
 
 
@@ -168,7 +168,7 @@ python evaluation/evaluation_agent.py \
   --story-b outputs/director_agent/olaf_retells_red_riding_hood_medium/run_1.json \
   --character-module character_prompts.olaf \
   --scenario-module scenarios.olaf_retells_red_riding_hood_medium \
-  --out-dir evaluation/results/olaf_retells_red_riding_hood_medium \
+  --out-dir evaluation_results/olaf_retells_red_riding_hood_medium \
   --ab-ba
 ```
 

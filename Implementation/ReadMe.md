@@ -382,7 +382,7 @@ Files:
 evaluation/evaluation_agent.py
 evaluation/evaluation_prompts.py
 evaluation/run_eval.sh
-evaluation/results/
+evaluation_results/
 ```
 
 ## Description
@@ -475,7 +475,7 @@ python evaluation/evaluation_agent.py \
   --story-a baseline/outputs/baseline_transcript_olaf.json \
   --story-b director_agent/outputs/director_agent_transcript_olaf.json \
   --character-module character_prompts.olaf \
-  --out-dir evaluation/results \
+  --out-dir evaluation_results \
   --model gpt-4o \
   --ab-ba
 ```
@@ -487,7 +487,7 @@ python3 evaluation/evaluation_agent.py \
   --story-a baseline/outputs/baseline_transcript_olaf.json \
   --story-b director_agent/outputs/director_agent_transcript_olaf.json \
   --character-module character_prompts.olaf \
-  --out-dir evaluation/results \
+  --out-dir evaluation_results \
   --model gpt-4o \
   --ab-ba
 ```
@@ -497,13 +497,13 @@ python3 evaluation/evaluation_agent.py \
 Evaluation results are saved to:
 
 ```text
-Implementation/evaluation/results/
+Implementation/evaluation_results/
 ```
 
 Example output file:
 
 ```text
-Implementation/evaluation/results/evaluation_result_20260101_143022.json
+Implementation/evaluation_results/evaluation_result_20260101_143022.json
 ```
 
 The saved JSON includes:
@@ -610,7 +610,7 @@ python evaluation/evaluation_agent.py \
   --story-a baseline/outputs/baseline_transcript_rocket.json \
   --story-b director_agent/outputs/director_agent_transcript_rocket.json \
   --character-module character_prompts.rocket \
-  --out-dir evaluation/results \
+  --out-dir evaluation_results \
   --model gpt-4o \
   --ab-ba
 ```
