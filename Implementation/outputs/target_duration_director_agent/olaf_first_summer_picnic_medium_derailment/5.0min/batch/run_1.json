@@ -1,0 +1,594 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "memory_opening",
+    "user_input": "Hi Olaf, can you tell me a memory from your past?",
+    "temporal_state": {
+      "elapsed_seconds": 4.01,
+      "remaining_seconds": 295.99,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.01,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "memory_opening",
+          "goal": "Olaf introduces the memory of his first summer picnic."
+        },
+        {
+          "name": "picnic_setup",
+          "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."
+        },
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to share a memory from his past.",
+      "director_instruction": "Olaf should excitedly introduce the memory of his first summer picnic with Anna, Elsa, Kristoff, and Sven, setting a warm and joyful tone.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response aligns with the current beat of introducing the memory and maintains the story's emotional warmth."
+    },
+    "actor_output": {
+      "character_response": "You won't believe how magical my first summer picnic was! It was a sunny day, and I was so excited to spend time with Anna, Elsa, Kristoff, and Sven. We all gathered at this beautiful meadow filled with colorful flowers, and I could hardly contain my joy thinking about all the yummy food we were going to share!",
+      "story_event": "Olaf joyfully introduces the memory of his first summer picnic, creating an atmosphere of excitement and warmth.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as Olaf has just begun to introduce the memory and has not yet described the picnic setup."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "memory_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 15.87,
+      "remaining_seconds": 284.13,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.05,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "memory_opening",
+          "goal": "Olaf introduces the memory of his first summer picnic."
+        },
+        {
+          "name": "picnic_setup",
+          "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."
+        },
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about the weekend briefly, then move on to describe how Anna, Elsa, Kristoff, and Sven set up the picnic, focusing on their excitement and the delicious food they prepared.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it's important to keep the focus on the picnic setup, which is the next part of the story."
+    },
+    "actor_output": {
+      "character_response": "I had a fun weekend, but let me tell you about how Anna, Elsa, Kristoff, and Sven set up that picnic! They were all so excited! Anna laid out a bright, checkered blanket while Elsa brought a basket filled with the most delicious sandwiches and fresh fruit. Kristoff and Sven were in charge of drinks, and they even made some icy lemonade to keep things cool! It was such a joyful sight to see everyone working together, and I couldn't wait to dig in!",
+      "story_event": "Olaf describes the excitement and teamwork of his friends as they prepare for the picnic.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of setting up the picnic and sharing the details of his friends' preparations."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "memory_opening",
+    "user_input": "Who was there with you?",
+    "temporal_state": {
+      "elapsed_seconds": 26.81,
+      "remaining_seconds": 273.19,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.09,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "memory_opening",
+          "goal": "Olaf introduces the memory of his first summer picnic."
+        },
+        {
+          "name": "picnic_setup",
+          "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."
+        },
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for details about who joined Olaf at the picnic.",
+      "director_instruction": "Olaf should enthusiastically list Anna, Elsa, Kristoff, and Sven as his friends who were there, emphasizing their excitement and the fun they had together while preparing for the picnic.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response builds on the current beat by elaborating on the friends present at the picnic, enhancing the warmth and joy of the memory."
+    },
+    "actor_output": {
+      "character_response": "You won’t believe how much fun we had! Anna was giggling as she laid out the blanket, Elsa was smiling while arranging the food, and Kristoff and Sven were joking around about who could carry the most drinks. It felt like the happiest day ever, with all of us together, sharing laughter and delicious treats!",
+      "story_event": "Olaf enthusiastically lists his friends Anna, Elsa, Kristoff, and Sven, emphasizing their excitement and the fun they had while preparing for the picnic.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still elaborating on the picnic setup and the joy of his friends being there."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "picnic_setup",
+    "user_input": "What is your favorite color?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 41.49,
+      "remaining_seconds": 258.51,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 6,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.14,
+      "actual_progress": 0.17,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "picnic_setup",
+          "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."
+        },
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
+      "director_instruction": "Acknowledge Olaf's love for colors briefly, then continue describing how the picnic setup was filled with vibrant colors and the joyful atmosphere created by his friends.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it can be connected to the colorful picnic setup, allowing the story to progress while maintaining engagement."
+    },
+    "actor_output": {
+      "character_response": "I just adore all the colors in the world! Speaking of colors, the picnic was bursting with them! The blanket was a bright red and white checkered pattern, and the flowers around us were like a rainbow! It made everything feel even more joyful, especially with Anna's laughter and Elsa's gentle smile lighting up the day.",
+      "story_event": "Olaf describes the vibrant colors of the picnic setup and the joyful atmosphere created by his friends.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still describing the setup and has not yet moved on to discovering summer."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "picnic_setup",
+    "user_input": "What did you like most about summer?",
+    "temporal_state": {
+      "elapsed_seconds": 52.33,
+      "remaining_seconds": 247.67,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 6,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.17,
+      "actual_progress": 0.17,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "picnic_setup",
+          "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."
+        },
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite aspects of summer.",
+      "director_instruction": "Acknowledge Olaf's love for summer briefly, then continue to describe how he experienced the sunshine and flowers during the picnic, focusing on his wonder and excitement.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is relevant but slightly off-topic; redirecting allows for continued narrative flow while introducing Olaf's joyful experiences of summer."
+    },
+    "actor_output": {
+      "character_response": "I just love summer! The sunshine felt like a warm hug, and the flowers were dancing in the breeze! As we set up the picnic, I couldn't help but marvel at how everything sparkled in the sunlight, making the day feel even more special. I was so excited to taste all the yummy food and enjoy the beauty around us!",
+      "story_event": "Olaf describes the wonder and excitement he felt experiencing the sunshine and flowers during the picnic.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet, as Olaf is still sharing details about the picnic setup and his joyful experiences."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "picnic_setup",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 66.75,
+      "remaining_seconds": 233.25,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 6,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.22,
+      "actual_progress": 0.17,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "picnic_setup",
+          "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."
+        },
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
+      "director_instruction": "Acknowledge Olaf's love for both seasons briefly, then continue to describe a small problem that arises during the picnic, like Olaf melting a little in the sun.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat still needs to introduce a small problem, and redirecting allows for continued storytelling while acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "I love both summer and winter! But during that picnic, I started to feel a little funny in the sun. As we were all laughing and enjoying the food, I noticed I was melting a bit! Oh no! I was so excited, but I didn't want to disappear in the sunshine!",
+      "story_event": "Olaf realizes he's starting to melt in the sun while enjoying the picnic with his friends.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it introduces a small problem that needs to be resolved in the next part of the story."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_discovers_summer",
+    "user_input": "Aw, your friends helped you.",
+    "temporal_state": {
+      "elapsed_seconds": 78.53,
+      "remaining_seconds": 221.47,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 6,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.26,
+      "actual_progress": 0.33,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express empathy for Olaf's situation and acknowledge his friends' support.",
+      "director_instruction": "Olaf should reflect on how his friends noticed he was melting and quickly came up with a funny plan to help him stay cool, turning the situation into a lighthearted moment.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by introducing a small problem and showing how Olaf's friends respond, keeping the story engaging and playful."
+    },
+    "actor_output": {
+      "character_response": "You're right! My friends are the best! As soon as they saw me starting to melt, Anna and Elsa quickly came up with a funny plan. They grabbed some big leaves and started fanning me while Kristoff and Sven filled a bowl with icy lemonade to keep me cool. We all laughed so hard as I tried to stay together, and it turned into the best part of the picnic!",
+      "story_event": "Olaf's friends notice he's melting and quickly devise a funny plan to help him stay cool.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while the small problem is introduced and resolved, there is still more to explore regarding the group's response and the fun that follows."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_discovers_summer",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 90.32,
+      "remaining_seconds": 209.68,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 6,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.3,
+      "actual_progress": 0.33,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question unrelated to the story.",
+      "director_instruction": "Acknowledge the user's question about Japan briefly, then continue to describe how Olaf's friends turned the melting situation into a funny moment, emphasizing their creativity and teamwork.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is unrelated, but Olaf's story can still progress by focusing on the humorous teamwork of his friends during the picnic."
+    },
+    "actor_output": {
+      "character_response": "Oh, Japan sounds interesting! But let me tell you how my friends turned my melting into a funny moment! Anna and Elsa were so creative; they started fanning me with big leaves while Kristoff and Sven filled a bowl with icy lemonade. We all burst into laughter as I tried to stay together, and it made the picnic even more memorable!",
+      "story_event": "Olaf's friends creatively fan him with leaves and bring icy lemonade to help him stay cool, turning the melting situation into a lighthearted moment.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as Olaf still needs to reflect on the memory's significance."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_discovers_summer",
+    "user_input": "What did you learn from it?",
+    "temporal_state": {
+      "elapsed_seconds": 103.28,
+      "remaining_seconds": 196.72,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 6,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.34,
+      "actual_progress": 0.33,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Ask Olaf what he learned from the experience of melting during the picnic.",
+      "director_instruction": "Olaf should reflect on the importance of friendship and teamwork, explaining how his friends' quick thinking and support made the picnic even more special.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response allows Olaf to share a meaningful lesson about friendship while continuing to describe the joyful atmosphere of the picnic."
+    },
+    "actor_output": {
+      "character_response": "You know, I learned that friendship is super important! When I started melting, my friends jumped right in to help me. Their quick thinking and teamwork made everything feel even more special, and it reminded me that we can always rely on each other, no matter what! It was such a joyful moment, filled with laughter and love.",
+      "story_event": "Olaf reflects on the importance of friendship and teamwork, explaining how his friends' support made the picnic even more special.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still sharing his experience and has not yet moved to the next planned event."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 5.0,
+    "beat": "small_problem",
+    "user_input": "How does a toaster work?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 113.08,
+      "remaining_seconds": 186.92,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 6,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.38,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about how a toaster works, which is unrelated to the story.",
+      "director_instruction": "Acknowledge the user's curiosity about toasters briefly, then continue to describe how Olaf's friends turned the melting situation into a funny moment, emphasizing their creativity and teamwork.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but the story can still progress by focusing on the teamwork of Olaf's friends during the picnic."
+    },
+    "actor_output": {
+      "character_response": "Toasters are interesting, but let me tell you how my friends turned my melting into a funny moment! Anna and Elsa waved those big leaves like they were in a dance, and Kristoff and Sven were giggling while filling a bowl with icy lemonade. We all laughed so hard as I tried to stay together, and it made the picnic even more special!",
+      "story_event": "Olaf's friends creatively fan him with leaves and bring icy lemonade to help him stay cool, turning the melting situation into a lighthearted moment.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it still needs to progress to the next part of the story where Olaf reflects on the importance of friendship."
+    }
+  }
+]

@@ -1,0 +1,252 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "fairy_tale_opening",
+    "user_input": "Tell me a little fairy tale, Olaf.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to tell a fairy tale.",
+      "director_instruction": "Olaf begins to tell the story of a tiny snowflake that dances joyfully in the sky, describing its fluffy cloud home and the beauty of the winter world around it.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response introduces the main character of the fairy tale and sets the scene, fulfilling the goal of the current beat."
+    },
+    "actor_output": {
+      "character_response": "Once upon a time, high up in the sky, there was a tiny snowflake named Flurry. Flurry danced joyfully among its fluffy cloud friends, twirling and sparkling in the sunlight, while the world below was blanketed in the softest, whitest snow. Everything was so beautiful, with trees glistening like diamonds and children laughing as they built snowmen. But one day, a gust of wind swept through, and Flurry found itself drifting away from its cozy cloud home, feeling a little lost and unsure of where to go next.",
+      "story_event": "Flurry gets separated from its cloud home due to a gust of wind.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it introduces the character and setting but does not fully explore the separation yet."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "fairy_tale_opening",
+    "user_input": "A tiny snowflake sounds cute.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express appreciation for the cuteness of the tiny snowflake.",
+      "director_instruction": "Olaf continues the story by describing how Flurry, feeling the wind beneath it, begins to drift away from its cloud, filled with a mix of excitement and uncertainty about the adventure ahead.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to move forward as Flurry's separation is a key part of the narrative, and the user's comment allows for a smooth transition into the next event."
+    },
+    "actor_output": {
+      "character_response": "Flurry twirled in the air, feeling the wind tickle its icy edges. It was both exciting and a little scary to drift away from the cloud, but Flurry couldn't help but wonder what adventures awaited below! With a flutter of hope, Flurry began to glide downward, ready to explore the beautiful winter world it had only seen from above.",
+      "story_event": "Flurry, filled with a mix of excitement and uncertainty, begins to glide downward, eager to explore the winter world below.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf has introduced Flurry's feelings and actions but has not yet fully explored the consequences of its separation."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "fairy_tale_opening",
+    "user_input": "Oh no, it got separated.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about Flurry getting separated.",
+      "director_instruction": "Olaf acknowledges the user's concern and continues the story by describing Flurry's feelings of uncertainty as it drifts alone, wondering where it belongs in the vast winter world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to delve into Flurry's emotions and experiences after separation, which aligns with the current beat's goal."
+    },
+    "actor_output": {
+      "character_response": "I know, it’s a little sad! Flurry felt a flutter of uncertainty in its icy heart as it drifted alone, surrounded by the vast, sparkling winter world. It wondered where it truly belonged and if it would ever find its way back to the cozy cloud. But deep down, Flurry also felt a spark of curiosity, ready to discover new friends and adventures along the way!",
+      "story_event": "Flurry experiences feelings of uncertainty and curiosity as it drifts alone, pondering where it belongs in the winter world.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it still needs to delve deeper into Flurry's emotions and experiences after separation."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "fairy_tale_opening",
+    "user_input": "Where does it drift?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is curious about the snowflake's journey and where it drifts.",
+      "director_instruction": "Olaf describes how Flurry drifts gently through the air, passing over glistening trees, sparkling rooftops, and the laughter of children playing in the snow, all while feeling a mix of wonder and uncertainty.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response continues to develop Flurry's journey in the winter world, aligning with the current beat of introducing the snowflake's experiences."
+    },
+    "actor_output": {
+      "character_response": "Flurry drifted gently through the crisp air, gliding over glistening trees that sparkled like jewels in the sunlight. It passed by rooftops covered in soft, fluffy snow, and could hear the joyful laughter of children building snowmen below. Each sight filled Flurry with wonder, but also a little uncertainty about where it truly belonged in this beautiful winter world.",
+      "story_event": "Flurry drifts over glistening trees and rooftops, experiencing the beauty of the winter world while feeling a mix of wonder and uncertainty.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Flurry is still exploring its surroundings and emotions."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "fairy_tale_opening",
+    "user_input": "That sounds lonely.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about Flurry's loneliness.",
+      "director_instruction": "Olaf acknowledges the user's sentiment and continues the story by revealing how Flurry, despite its loneliness, begins to notice the beauty around it and feels a glimmer of hope as it drifts through the winter landscape.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to progress by showing Flurry's emotional journey as it experiences both loneliness and the beauty of its surroundings."
+    },
+    "actor_output": {
+      "character_response": "You're right, it is a bit lonely for Flurry! But as it floated through the winter landscape, Flurry began to notice the shimmering beauty all around—each snowflake sparkling like a tiny star, and the laughter of children echoing like music in the air. With each gentle breeze, a glimmer of hope filled Flurry's heart, reminding it that maybe, just maybe, it would find its place in this wonderful world!",
+      "story_event": "Flurry starts to notice the beauty of its surroundings, feeling a glimmer of hope despite its loneliness.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Flurry's journey of emotional discovery is still unfolding."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "fairy_tale_opening",
+    "user_input": "I hope it finds a place.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express hope that Flurry finds a place in the world.",
+      "director_instruction": "Olaf continues the story by describing how Flurry, feeling a renewed sense of hope, begins to explore the winter world more eagerly, ready to discover where it truly belongs.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's hopeful sentiment aligns with Flurry's journey, allowing for natural progression in the story as Flurry explores further."
+    },
+    "actor_output": {
+      "character_response": "I hope so too! Feeling that spark of hope, Flurry decided to explore even more eagerly, twirling and gliding through the air, ready to discover new places and maybe even find where it truly belonged. The world was so full of wonders, and Flurry couldn't wait to see what lay ahead!",
+      "story_event": "Flurry, filled with renewed hope, begins to explore the winter world more eagerly, ready to discover where it truly belongs.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Flurry's exploration is still ongoing, and the story needs to progress further."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "fairy_tale_opening",
+    "user_input": "Keep going.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is encouraging Olaf to continue the story.",
+      "director_instruction": "Olaf describes how Flurry encounters a gentle breeze that carries it toward a beautiful frozen lake, where it meets other snowflakes and begins to feel a sense of belonging.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story is ready to advance as Flurry's exploration leads to a new setting and potential connections with other snowflakes, aligning with the current beat's goal of introducing the winter world."
+    },
+    "actor_output": {
+      "character_response": "As Flurry twirled with excitement, a gentle breeze swept in and carried it toward a beautiful frozen lake, glistening under the sun like a giant mirror! There, Flurry spotted other snowflakes dancing together, and it felt a warm flutter in its icy heart, sensing that maybe, just maybe, it had found a place to belong.",
+      "story_event": "Flurry encounters a gentle breeze that takes it to a frozen lake, where it meets other snowflakes and begins to feel a sense of belonging.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Flurry has just arrived at the lake and the story can continue to develop its connections with the other snowflakes."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "fairy_tale_opening",
+    "user_input": "That is a sweet ending.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express appreciation for the story's sweetness.",
+      "director_instruction": "Olaf acknowledges the user's sentiment and continues the story by describing how Flurry joins the other snowflakes in their joyful dance, feeling a sense of happiness and belonging for the first time.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue with Flurry's experience of joy and belonging as it interacts with the other snowflakes, aligning with the current beat's goal."
+    },
+    "actor_output": {
+      "character_response": "I'm so glad you think it's sweet! Flurry joined the other snowflakes in their joyful dance, twirling and spinning under the bright sun, feeling happiness bubble up inside for the very first time. It was as if all the worries melted away, replaced by laughter and friendship, and Flurry knew it had finally found its place in this beautiful winter world!",
+      "story_event": "Flurry joins the other snowflakes in their joyful dance, experiencing happiness and a sense of belonging.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still developing Flurry's experience of joy and belonging."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "fairy_tale_opening",
+    "user_input": "What does the snowflake learn?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Ask about the lesson the snowflake learns.",
+      "director_instruction": "Olaf describes how Flurry learns that even when it feels lost, there is always a place where it can belong, and that every journey, no matter how uncertain, can lead to wonderful friendships and joy.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question allows for a natural progression in the story, revealing the lesson Flurry learns about belonging and friendship."
+    },
+    "actor_output": {
+      "character_response": "Flurry learned that even when it feels lost, there's always a place where it can belong! Every twist and turn of its journey, no matter how uncertain, can lead to wonderful friendships and joy. It realized that the world is full of surprises and that love and connection are what truly matter.",
+      "story_event": "Flurry learns an important lesson about belonging and the joy of friendship through its journey.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the story continues to unfold the lessons learned by Flurry."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_no_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "fairy_tale_opening",
+    "user_input": "End it softly.",
+    "director_decision": {
+      "decision_type": "close_story",
+      "interruption_detected": false,
+      "user_intent": "Requesting a gentle conclusion to the story.",
+      "director_instruction": "Olaf gently wraps up the story by reflecting on Flurry's journey and the warmth of friendship, leaving the listener with a sense of hope and joy.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user requested a soft ending, which aligns with concluding the story while reinforcing the themes of belonging and friendship."
+    },
+    "actor_output": {
+      "character_response": "And so, Flurry danced happily with its new friends, knowing that every adventure can lead to love and laughter. Just like Flurry, we all have our own journeys, and there's always a place for us in this beautiful world, filled with warmth and friendship. Remember, even when things feel uncertain, joy is just around the corner!",
+      "story_event": "Olaf reflects on Flurry's journey, emphasizing the warmth of friendship and the hope that comes from belonging.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The story has been gently concluded, reinforcing the themes of belonging and friendship."
+    }
+  }
+]

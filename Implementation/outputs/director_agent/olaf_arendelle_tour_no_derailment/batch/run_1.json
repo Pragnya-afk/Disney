@@ -1,0 +1,502 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "tour_opening",
+    "user_input": "Hi Olaf, can you show me around Arendelle?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to show them around Arendelle.",
+      "director_instruction": "Olaf excitedly agrees to show the user around and begins by describing the beautiful sights of Arendelle, pointing out the snowy peaks and the charming buildings as they start their tour.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response directly addresses the user's request and introduces the beginning of the tour, aligning with the goal of the current beat."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! Welcome to Arendelle! Look at those majestic snowy peaks over there, they look like giant fluffy cupcakes! And just beyond, you can see the charming buildings with their colorful roofs. Let’s explore together!",
+      "story_event": "Olaf begins the tour by enthusiastically pointing out the snowy peaks and charming buildings of Arendelle.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has started the tour but has not yet moved to the next location, the castle courtyard."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "tour_opening",
+    "user_input": "The courtyard sounds beautiful.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing interest in the courtyard.",
+      "director_instruction": "Olaf joyfully agrees that the courtyard is beautiful and excitedly leads the user there, describing the vibrant flowers and the laughter of children playing.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's interest in the courtyard allows Olaf to transition smoothly into describing it while continuing the tour."
+    },
+    "actor_output": {
+      "character_response": "You're absolutely right! The courtyard is so beautiful! Follow me! The vibrant flowers are like a rainbow spilled on the ground, and you can hear the laughter of children playing tag. It’s a perfect place for a snowman like me to enjoy the sunshine and friendship!",
+      "story_event": "Olaf joyfully leads the user to the courtyard, describing the vibrant flowers and the laughter of children playing.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still guiding the user through the courtyard."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "tour_opening",
+    "user_input": "Who do we see there?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Ask about who is present in the courtyard.",
+      "director_instruction": "Olaf excitedly points out some familiar faces in the courtyard, like Anna and Kristoff, and describes their joyful activities as they interact with the townsfolk.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response introduces new characters and activities in the courtyard, enriching the scene while keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "Look over there! It’s Anna and Kristoff! Anna is showing off her amazing snowball-throwing skills, while Kristoff is laughing and trying to catch them. They’re having so much fun with the townsfolk, spreading joy all around!",
+      "story_event": "Olaf excitedly points out Anna and Kristoff in the courtyard, describing their joyful activities with the townsfolk.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still describing the scene and characters in the courtyard."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "tour_opening",
+    "user_input": "Okay, let's go to the market.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to move on to the market.",
+      "director_instruction": "Olaf enthusiastically agrees and leads the user to the market, describing the lively atmosphere, the colorful stalls, and the delicious smells of fresh baked goods.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is ready to move to the next location, and Olaf's excitement about the market aligns perfectly with the current beat of the tour opening."
+    },
+    "actor_output": {
+      "character_response": "Great idea! The market is so lively! Just imagine all the colorful stalls filled with fresh fruits and the delicious smells of baked goods wafting through the air. Follow me, and let’s see what delightful treats we can find!",
+      "story_event": "Olaf enthusiastically leads the user to the market, describing the vibrant atmosphere and tempting aromas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of guiding the user through the market."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "tour_opening",
+    "user_input": "That sounds lively.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing enthusiasm about the lively atmosphere of the market.",
+      "director_instruction": "Olaf excitedly describes the market's vibrant stalls, pointing out specific vendors and their unique offerings, as they approach the bustling scene.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's enthusiasm aligns with Olaf's excitement, allowing for a natural continuation of the tour as they approach the market."
+    },
+    "actor_output": {
+      "character_response": "I know, right? Just look at those stalls! Over there, you can see a vendor selling the sweetest strawberries, and next to them, there’s someone with the fluffiest pastries you’ve ever seen! The air is filled with laughter and the delightful sounds of haggling. Let’s go check it out!",
+      "story_event": "Olaf excitedly describes the vibrant stalls in the market, pointing out specific vendors and their unique offerings as they approach the bustling scene.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still guiding the user through the market and describing its lively atmosphere."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "tour_opening",
+    "user_input": "Show me your favorite place.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to know about Olaf's favorite place in Arendelle.",
+      "director_instruction": "Olaf excitedly shares that his favorite place is the fjord, describing its breathtaking beauty and how it makes him feel connected to everyone in Arendelle as they head there.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response introduces a new location that is significant to Olaf, allowing the story to continue advancing while addressing the user's interest."
+    },
+    "actor_output": {
+      "character_response": "You know what? My absolute favorite place in Arendelle is the fjord! It’s like a sparkling blue blanket surrounded by towering mountains. Whenever I’m there, I feel so connected to everyone in Arendelle, like we’re all sharing a big warm hug! Let’s head there now and soak in the beauty!",
+      "story_event": "Olaf excitedly shares that his favorite place is the fjord and leads the user there, describing its breathtaking beauty.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still in the process of leading the user to his favorite place."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "tour_opening",
+    "user_input": "The fjord sounds peaceful.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing appreciation for the peacefulness of the fjord.",
+      "director_instruction": "Olaf agrees that the fjord is peaceful and begins to describe the serene sounds of nature and the beauty of the water as they arrive at the viewpoint.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by bringing the user to the fjord viewpoint and deepening the experience with Olaf's description of the serene atmosphere."
+    },
+    "actor_output": {
+      "character_response": "It really is peaceful! Just listen to the gentle lapping of the water against the rocks and the soft rustle of the trees. The fjord sparkles like a thousand diamonds, and it feels like the whole world is taking a deep breath with us. Isn’t it magical?",
+      "story_event": "Olaf arrives at the fjord viewpoint, describing the serene sounds of nature and the beauty of the water.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still describing the fjord and its peaceful atmosphere."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "tour_opening",
+    "user_input": "Aw, you really love Arendelle.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges Olaf's love for Arendelle.",
+      "director_instruction": "Olaf joyfully reflects on his love for Arendelle and shares a heartfelt memory about a special moment he experienced there, deepening the connection to the place.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response allows Olaf to express his affection for Arendelle while also introducing a personal memory that enriches the narrative and keeps the story moving."
+    },
+    "actor_output": {
+      "character_response": "I really do! Arendelle is filled with so much love and joy. I remember one time, Anna and I built the biggest snowman ever right here by the fjord! We laughed so hard as we tried to balance the snowballs on top of each other. It felt like the whole world was smiling with us!",
+      "story_event": "Olaf reflects on a heartfelt memory of building a snowman with Anna by the fjord, deepening his connection to Arendelle.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf continues to share his affection for Arendelle and a personal memory, keeping the story moving."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "tour_opening",
+    "user_input": "Uh oh, what happened?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing concern about a potential problem or event.",
+      "director_instruction": "Olaf notices a sudden change in the atmosphere and excitedly points out a small commotion nearby, revealing that a child has lost their favorite toy and is looking for help.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s concern aligns with Olaf's cheerful nature, allowing for a new event to unfold as he observes a small problem that needs attention."
+    },
+    "actor_output": {
+      "character_response": "Oh no! It looks like there's a little commotion over there! A child has lost their favorite toy and is looking around for help. We should go see if we can help them find it!",
+      "story_event": "Olaf notices a child in distress over a lost toy and decides to help.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is addressing the new situation that requires attention."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "tour_opening",
+    "user_input": "I want to help.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to assist Olaf in helping the child find their lost toy.",
+      "director_instruction": "Olaf cheerfully acknowledges the user's willingness to help and suggests they ask the child what the toy looks like, while they start searching the area together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's desire to help aligns perfectly with the current beat of solving the small problem, allowing the story to advance as they engage with the child."
+    },
+    "actor_output": {
+      "character_response": "Yay! I’m so glad you want to help! Let’s go ask the child what their toy looks like so we can find it together. I bet it’s hiding somewhere nearby!",
+      "story_event": "Olaf cheerfully suggests they ask the child about the lost toy's appearance while they start searching the area together.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the process of helping the child find their lost toy."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "tour_opening",
+    "user_input": "Let's look near the market.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to search for the lost toy near the market.",
+      "director_instruction": "Olaf enthusiastically agrees to search near the market and starts describing the bustling atmosphere as they look around for the toy, keeping an eye out for any clues.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns with the current goal of helping the child find their lost toy, and Olaf's excitement will keep the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "Great idea! The market is bustling with energy! Look at all the people and the colorful stalls! We can ask around if anyone has seen the toy. Maybe it rolled under one of those tables or got caught in a basket of apples!",
+      "story_event": "Olaf enthusiastically agrees to search near the market, describing the lively atmosphere while looking for clues about the lost toy.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still actively searching for the lost toy with the user."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "tour_opening",
+    "user_input": "Good idea, Olaf.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user agrees with Olaf's idea to search near the market.",
+      "director_instruction": "Olaf excitedly starts asking nearby vendors if they've seen the lost toy, describing the vibrant market scene and the friendly faces they encounter.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s agreement allows for a natural continuation of the search for the lost toy, keeping the story moving forward in the current beat."
+    },
+    "actor_output": {
+      "character_response": "Awesome! Let’s ask those friendly vendors over there! Excuse me! Have you seen a toy rolling around? It might be a little lost among all these delicious treats! Everyone here is so helpful, I just know we’ll find it together!",
+      "story_event": "Olaf excitedly starts asking nearby vendors in the market if they've seen the lost toy, describing the vibrant scene and the friendly faces they encounter.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still actively searching for the lost toy with the user."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "tour_opening",
+    "user_input": "Did we find what was missing?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking if they have found the lost toy.",
+      "director_instruction": "Olaf eagerly responds that they haven't found the toy yet but notices a vendor pointing to a colorful spot nearby, suggesting they check there for the lost item.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue moving forward as Olaf engages with the vendors and follows a new lead to find the lost toy."
+    },
+    "actor_output": {
+      "character_response": "Not yet, but look over there! That vendor is pointing to a colorful spot nearby! Maybe the toy is hiding there! Let’s go check it out together!",
+      "story_event": "Olaf notices a vendor pointing to a colorful spot nearby, suggesting they check there for the lost toy.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still actively searching for the lost toy."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "tour_opening",
+    "user_input": "That was helpful.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging Olaf's help and expressing appreciation.",
+      "director_instruction": "Olaf cheerfully acknowledges the user's appreciation and leads them to the colorful spot the vendor pointed out, describing the vibrant details as they approach.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story continues to advance as Olaf leads the user to the new location in search of the lost toy, maintaining engagement and excitement."
+    },
+    "actor_output": {
+      "character_response": "Thank you! I’m so glad you think so! Look at all the vibrant colors over here! I can see bright red and yellow! Maybe the toy is hiding among those beautiful flowers! Let’s take a closer look!",
+      "story_event": "Olaf cheerfully leads the user to the colorful spot the vendor pointed out, describing the vibrant details as they approach.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still searching for the lost toy and engaging the user in the process."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "tour_opening",
+    "user_input": "Where do we go next?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for direction on what to do next in the search for the lost toy.",
+      "director_instruction": "Olaf excitedly suggests they search among the vibrant flowers for the lost toy, describing the colors and scents as they look closely.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf is actively guiding the search for the lost toy, which aligns with the current beat of helping solve the small problem."
+    },
+    "actor_output": {
+      "character_response": "Let’s search among those vibrant flowers! They smell so sweet, like a candy shop! Maybe the toy is hiding in all that color! Look at the bright reds and yellows; it’s like a party for our eyes! Let’s take a closer look!",
+      "story_event": "Olaf excitedly suggests they search among the vibrant flowers for the lost toy, describing the colors and scents as they look closely.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "Olaf is actively guiding the search for the lost toy, which aligns with the current beat of helping solve the small problem."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "tour_opening",
+    "user_input": "This tour feels cozy.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express appreciation for the cozy feeling of the tour.",
+      "director_instruction": "Olaf joyfully agrees that the tour feels cozy and shares how the warmth of friendship makes every moment special as they continue searching among the flowers.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's response reinforces the cozy atmosphere while advancing the search for the lost toy among the flowers."
+    },
+    "actor_output": {
+      "character_response": "I completely agree! This tour feels so cozy, especially with the warmth of friendship all around us. As we search among these flowers, I can feel the love in the air! Let’s keep looking; I just know we’ll find that toy soon!",
+      "story_event": "Olaf joyfully agrees that the tour feels cozy and shares how the warmth of friendship makes every moment special as they continue searching among the flowers.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still engaged in the search for the lost toy among the flowers."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "tour_opening",
+    "user_input": "Can we end somewhere pretty?",
+    "director_decision": {
+      "decision_type": "advance_beat",
+      "interruption_detected": false,
+      "user_intent": "The user wants to end the tour at a beautiful location.",
+      "director_instruction": "Olaf happily agrees to end the tour at a beautiful spot and leads the user to a scenic viewpoint overlooking the fjord, reflecting on the beauty of Arendelle and the joy of their adventure together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The current beat has reached its goal of exploring Arendelle, and transitioning to a scenic viewpoint aligns with the user's desire to end on a pretty note."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! Let’s end our tour at a beautiful viewpoint overlooking the fjord! Just look at the way the water sparkles in the sunlight, and the mountains stand tall like guardians of Arendelle. It’s the perfect place to reflect on our adventure together!",
+      "story_event": "Olaf happily leads the user to a scenic viewpoint overlooking the fjord, reflecting on the beauty of Arendelle and the joy of their adventure together.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The beat is complete as Olaf has successfully led the user to a beautiful location to conclude the tour."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "castle_courtyard",
+    "user_input": "That sounds perfect.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing agreement with Olaf about ending the tour at a beautiful spot.",
+      "director_instruction": "Olaf joyfully leads the user to the scenic viewpoint, describing the breathtaking view of the fjord and sharing his feelings about the beauty of Arendelle.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by moving to the scenic viewpoint and deepening the emotional connection to Arendelle."
+    },
+    "actor_output": {
+      "character_response": "Yay! Here we are at the viewpoint! Just look at that breathtaking view of the fjord! The water sparkles like a thousand stars, and the mountains are so majestic. It makes my heart feel so full to share this beauty with you!",
+      "story_event": "Olaf joyfully leads the user to the scenic viewpoint, describing the breathtaking view of the fjord and sharing his feelings about the beauty of Arendelle.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still sharing his thoughts and feelings about the viewpoint and the beauty of Arendelle."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "castle_courtyard",
+    "user_input": "What do you like most about home?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf about his favorite aspects of home.",
+      "director_instruction": "Olaf joyfully reflects on the warmth of friendship and the love shared in Arendelle, expressing how those connections make home truly special as they enjoy the scenic viewpoint.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response allows Olaf to share his feelings about home while continuing to describe the beauty of the fjord, keeping the story aligned with the current beat."
+    },
+    "actor_output": {
+      "character_response": "What I love most about home is the warmth of friendship! It’s the hugs, laughter, and love we share that make Arendelle truly special. Just like this beautiful fjord, our connections sparkle and shine, filling my heart with joy!",
+      "story_event": "Olaf joyfully reflects on the warmth of friendship and love shared in Arendelle while enjoying the scenic viewpoint.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still sharing his feelings about home and the beauty of the fjord."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_no_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "castle_courtyard",
+    "user_input": "Thanks for the tour, Olaf.",
+    "director_decision": {
+      "decision_type": "advance_beat",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing gratitude for the tour.",
+      "director_instruction": "Olaf happily expresses his joy at sharing the tour and reflects on the importance of friendship and connection as he concludes the experience.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The current beat has reached its conclusion with the user thanking Olaf, allowing for a natural transition to wrap up the tour."
+    },
+    "actor_output": {
+      "character_response": "Thank you for joining me on this wonderful tour! It brings me so much joy to share the beauty of Arendelle with you. Remember, it’s the friendships we make that truly make a place feel like home!",
+      "story_event": "Olaf happily concludes the tour, reflecting on the importance of friendship and connection.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The current beat is complete as Olaf wraps up the tour with a heartfelt message about friendship."
+    }
+  }
+]

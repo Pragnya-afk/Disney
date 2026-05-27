@@ -1,0 +1,66 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "fairy_tale_opening",
+    "user_input": "Tell me a little fairy tale, Olaf.",
+    "temporal_state": {
+      "elapsed_seconds": 4.01,
+      "remaining_seconds": 25.99,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.13,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "fairy_tale_opening",
+          "goal": "Olaf introduces the tiny snowflake and its world in a gentle fairy-tale style."
+        },
+        {
+          "name": "separation",
+          "goal": "The snowflake gets separated from its cloud and begins drifting alone."
+        },
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to tell a fairy tale.",
+      "director_instruction": "Olaf begins to tell the story of a tiny snowflake, describing its beautiful home high in the sky and the gentle clouds that cradle it, setting the scene for the adventure to come.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response introduces the main character and the setting of the fairy tale, aligning with the goal of the current beat."
+    },
+    "actor_output": {
+      "character_response": "Once upon a time, high up in the sky, there lived a tiny snowflake named Flurry. Flurry was surrounded by fluffy, gentle clouds that cradled her like a cozy blanket, and she loved watching the world below, sparkling with winter magic. She dreamed of the adventures she would have when it was her time to dance down to the earth, where everything looked so bright and full of wonder!",
+      "story_event": "Olaf introduces Flurry, the tiny snowflake, and describes her beautiful home in the sky.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the next event of separation has not yet occurred."
+    }
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "notice_anna_sad",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 3.01,
+      "remaining_seconds": 26.99,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 5,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.1,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "notice_anna_sad",
+          "goal": "Olaf notices that Anna seems quiet or sad and decides to help."
+        },
+        {
+          "name": "invite_user_help",
+          "goal": "Olaf invites the user to help make something cheerful for Anna."
+        },
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "Asking about Olaf's weekend plans.",
+      "director_instruction": "Acknowledge the user's question about the weekend, then have Olaf notice Anna looking a bit sad and decide to cheer her up by making something fun together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it allows for a smooth transition into Olaf's concern for Anna, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "Oh, my weekend? I spent it dreaming of warm hugs and snowflakes! But right now, I can't help but notice that Anna looks a bit sad. I think we should make something fun together to cheer her up!",
+      "story_event": "Olaf decides to help Anna feel better by inviting the user to create something cheerful.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has noticed Anna's sadness and decided to take action, but he hasn't yet invited the user to help."
+    }
+  }
+]

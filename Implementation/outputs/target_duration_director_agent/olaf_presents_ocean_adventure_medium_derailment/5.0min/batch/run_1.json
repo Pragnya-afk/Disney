@@ -1,0 +1,1562 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "stage_opening",
+    "user_input": "Olaf, can you present one of your dramatic retellings?",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 294.99,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.02,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "stage_opening",
+          "goal": "Olaf announces that he is presenting a grand theatrical retelling and sets up the performance."
+        },
+        {
+          "name": "heroine_introduction",
+          "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to present a dramatic retelling.",
+      "director_instruction": "Olaf excitedly announces that he is about to present a grand theatrical retelling of an ocean adventure, setting the stage with enthusiasm and flair.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response aligns with the current beat of announcing the performance and introduces the theatrical element that Olaf will use throughout the story."
+    },
+    "actor_output": {
+      "character_response": "Hello, friends! Gather 'round and let me tell you a tale of bravery and adventure beneath the waves! Today, I’ll be presenting a grand theatrical retelling of an ocean adventure, filled with daring deeds and heartfelt moments! Get ready to meet our brave heroine who feels a calling from the sea!",
+      "story_event": "Olaf announces the beginning of his theatrical retelling, setting the stage for the adventure to come.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf has set the stage but has not yet introduced the heroine."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "stage_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 21.03,
+      "remaining_seconds": 278.97,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.07,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "stage_opening",
+          "goal": "Olaf announces that he is presenting a grand theatrical retelling and sets up the performance."
+        },
+        {
+          "name": "heroine_introduction",
+          "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities.",
+      "director_instruction": "Acknowledge the user's question about the weekend with a cheerful remark, then transition to introducing the brave heroine and her home, setting the stage for her adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to move forward by introducing the heroine, while still acknowledging the user's input to maintain engagement."
+    },
+    "actor_output": {
+      "character_response": "Oh, my weekend was filled with imagining all sorts of fun adventures! But now, let me introduce you to our brave heroine! She lives in a cozy little village by the sea, where the waves whisper secrets and the sun dances on the water. Deep down, she feels a calling, like the ocean is singing just for her, urging her to discover something extraordinary beyond her everyday life.",
+      "story_event": "Olaf introduces the brave heroine and her home, highlighting her feeling of being called toward the sea.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the next part of the story, the call to adventure, still needs to be realized."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "stage_opening",
+    "user_input": "I like the stage opening.",
+    "temporal_state": {
+      "elapsed_seconds": 32.99,
+      "remaining_seconds": 267.01,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.11,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "stage_opening",
+          "goal": "Olaf announces that he is presenting a grand theatrical retelling and sets up the performance."
+        },
+        {
+          "name": "heroine_introduction",
+          "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user expresses appreciation for the stage opening.",
+      "director_instruction": "Olaf, filled with excitement, continues by revealing that the brave heroine feels a strong pull toward the ocean, hinting at the adventure that awaits her.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to move forward by deepening the heroine's connection to the sea, which aligns with the current beat's goal."
+    },
+    "actor_output": {
+      "character_response": "Yay! I'm so glad you liked the stage opening! Now, let me tell you more about our brave heroine. She stands on the shore, feeling the cool breeze and hearing the waves call her name. It's as if the ocean is saying, 'Come, discover your destiny!' This feeling fills her heart with both excitement and a little bit of fear, like a fluttering butterfly in her tummy!",
+      "story_event": "Olaf reveals that the brave heroine feels a strong pull toward the ocean, hinting at the adventure that awaits her.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it still needs to establish the heroine's call to adventure more fully."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "heroine_introduction",
+    "user_input": "What is your favorite color?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 49.48,
+      "remaining_seconds": 250.52,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 14,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.16,
+      "actual_progress": 0.07,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "heroine_introduction",
+          "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
+      "director_instruction": "Acknowledge Olaf's cheerful nature and his love for bright colors, then transition back to the story by revealing that the brave heroine is about to discover something important that will call her to adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue moving forward, and the current beat has not yet been fully delivered."
+    },
+    "actor_output": {
+      "character_response": "I just love all the bright colors, especially the ones that remind me of sunshine and happiness! Now, back to our brave heroine! Just as she stands on the shore, feeling the ocean's pull, she notices something shimmering in the water—a mysterious object that seems to be calling out to her! This could be the adventure she’s been waiting for!",
+      "story_event": "Olaf reveals that the brave heroine discovers a mysterious object in the water, hinting at her call to adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf still needs to fully introduce the call to adventure for the heroine."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "heroine_introduction",
+    "user_input": "She sounds brave.",
+    "temporal_state": {
+      "elapsed_seconds": 60.35,
+      "remaining_seconds": 239.65,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 14,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.2,
+      "actual_progress": 0.07,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "heroine_introduction",
+          "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging the bravery of the heroine.",
+      "director_instruction": "Olaf enthusiastically agrees about the heroine's bravery and then reveals that she feels a sense of urgency to investigate the mysterious object in the water, which could lead to her adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's acknowledgment allows for a natural transition to the next part of the story, where the heroine's bravery leads her to act on her feelings and investigate the shimmering object."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! Our brave heroine is filled with courage, and that sense of bravery pushes her forward! She feels a strong sense of urgency to investigate the mysterious object shimmering in the water, as if it holds the key to her destiny! With her heart racing, she takes a deep breath and steps closer to the edge of the shore, ready to uncover its secrets.",
+      "story_event": "The heroine feels a sense of urgency to investigate the mysterious object in the water, which could lead to her adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as there's more to explore regarding her call to adventure and the implications of her discovery."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "heroine_introduction",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 79.68,
+      "remaining_seconds": 220.32,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 14,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.27,
+      "actual_progress": 0.07,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "heroine_introduction",
+          "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking Olaf about his preference between summer and winter.",
+      "director_instruction": "Acknowledge Olaf's cheerful nature and his love for all seasons, then transition back to the story by revealing that the brave heroine is about to reach the mysterious object in the water, which could change everything for her.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue advancing as the heroine approaches the mysterious object, and the derailment can be acknowledged briefly without stalling the narrative."
+    },
+    "actor_output": {
+      "character_response": "I love all the seasons! Each one has its own magic! Now, back to our brave heroine! As she steps closer to the shimmering object in the water, she can feel her heart pounding with excitement. It's almost as if the ocean is whispering secrets just for her, and she knows this moment could change everything!",
+      "story_event": "The brave heroine approaches the mysterious object in the water, feeling a mix of excitement and anticipation.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while the heroine is approaching the object, the next significant event of her call to adventure has not yet been realized."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "call_to_adventure",
+    "user_input": "That sounds like a hard choice.",
+    "temporal_state": {
+      "elapsed_seconds": 93.45,
+      "remaining_seconds": 206.55,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 14,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.31,
+      "actual_progress": 0.14,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges the difficulty of the heroine's choice.",
+      "director_instruction": "Olaf agrees that it's a hard choice and reveals that the heroine feels torn between her love for her home and the mysterious call of adventure, highlighting her internal struggle.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by deepening the heroine's emotional conflict as she grapples with her feelings about leaving home."
+    },
+    "actor_output": {
+      "character_response": "You're right! It's such a hard choice for her! As she stands there, the waves crashing gently at her feet, she feels torn between her love for her cozy home and the mysterious call of adventure that promises excitement and discovery. Her heart is like a seesaw, balancing between the comfort of her family and the thrill of the unknown!",
+      "story_event": "The heroine grapples with her internal struggle, feeling torn between her love for home and the call of adventure.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the heroine's internal conflict is still being developed."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "call_to_adventure",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 106.97,
+      "remaining_seconds": 193.03,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 14,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.36,
+      "actual_progress": 0.14,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about geography.",
+      "director_instruction": "Acknowledge the user's question about Japan with a cheerful remark, then transition back to the story by revealing that the brave heroine is now feeling the weight of her decision as she contemplates leaving her home.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat still needs to explore the heroine's internal struggle, and redirecting allows for continued story advancement."
+    },
+    "actor_output": {
+      "character_response": "Oh, Japan has such a beautiful culture! But let's get back to our brave heroine! As she stands there, the weight of her decision begins to settle in her heart. She knows that leaving her home means stepping into the unknown, and she worries about how her family and friends will feel. It's a heavy choice, like carrying a big snowball, but she knows deep down that she might have to take this leap for something bigger!",
+      "story_event": "The brave heroine feels the weight of her decision, contemplating the impact of leaving her home on her family and friends.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the internal struggle of the heroine needs further exploration before moving on."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 5.0,
+    "beat": "family_or_home_conflict",
+    "user_input": "Let the journey begin.",
+    "temporal_state": {
+      "elapsed_seconds": 120.91,
+      "remaining_seconds": 179.09,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 14,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.4,
+      "actual_progress": 0.21,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing eagerness for the heroine to start her adventure.",
+      "director_instruction": "Olaf enthusiastically agrees that it's time for the journey to begin and reveals that the brave heroine, filled with determination, makes the decision to leave her home and step into the unknown.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns perfectly with the story's progression, allowing Olaf to transition into the heroine's decision to embark on her adventure."
+    },
+    "actor_output": {
+      "character_response": "Yes! It's time for the journey to begin! With a heart full of courage, our brave heroine takes a deep breath and decides to leave her cozy home behind, stepping boldly into the unknown, ready to discover what adventures await her beyond the waves!",
+      "story_event": "The brave heroine, filled with determination, makes the decision to leave her home and step into the unknown.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the internal conflict about leaving home is still present, and the next beat will focus on her journey beginning."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 5.0,
+    "beat": "family_or_home_conflict",
+    "user_input": "How does a toaster work?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 134.68,
+      "remaining_seconds": 165.32,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 14,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.45,
+      "actual_progress": 0.21,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about how a toaster works.",
+      "director_instruction": "Acknowledge the user's curiosity about toasters with a cheerful remark, then transition back to the story by revealing that the brave heroine is now preparing for her journey, gathering her belongings and saying goodbye to her family.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue advancing as the heroine prepares for her journey, and the user's question can be acknowledged briefly without derailing the narrative."
+    },
+    "actor_output": {
+      "character_response": "Toasters are so interesting, aren't they? But let's get back to our brave heroine! As she prepares for her journey, she gathers her belongings, packing her favorite treasures, and says heartfelt goodbyes to her family. Tears mix with smiles as they remind her of the love that will always be with her, no matter where she goes!",
+      "story_event": "The brave heroine prepares for her journey, gathering her belongings and saying goodbye to her family.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is still on her emotional farewell and the difficulty of leaving home."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "time_limit_minutes": 5.0,
+    "beat": "journey_begins",
+    "user_input": "What danger does she face first?",
+    "temporal_state": {
+      "elapsed_seconds": 152.56,
+      "remaining_seconds": 147.44,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 14,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.51,
+      "actual_progress": 0.29,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about the first danger the heroine will face on her journey.",
+      "director_instruction": "Olaf excitedly reveals that as the brave heroine sets sail, she encounters a fierce storm that tests her courage and determination right from the start.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question aligns perfectly with the current beat, allowing for a natural progression into the first major obstacle the heroine faces."
+    },
+    "actor_output": {
+      "character_response": "Oh, you're in for a treat! As our brave heroine sets sail on her adventure, the sky suddenly darkens, and a fierce storm brews on the horizon! Waves crash around her like giant snowballs, and the wind howls like a pack of wild wolves! This storm will truly test her courage and determination right from the start!",
+      "story_event": "The brave heroine encounters a fierce storm as she sets sail, testing her courage and determination.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is still on the journey beginning, and the storm introduces the first major obstacle she faces."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "time_limit_minutes": 5.0,
+    "beat": "journey_begins",
+    "user_input": "What is 15 times 12?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 168.14,
+      "remaining_seconds": 131.86,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 14,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.56,
+      "actual_progress": 0.29,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question unrelated to the story.",
+      "director_instruction": "Acknowledge the user's curiosity about math with a cheerful remark, then transition back to the story by revealing that the brave heroine is now struggling to navigate the fierce storm as it threatens to capsize her boat.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue advancing as the heroine faces the storm, while briefly acknowledging the user's off-topic question."
+    },
+    "actor_output": {
+      "character_response": "Math is so fascinating! But let's dive back into our story! As the fierce storm rages around her, our brave heroine struggles to navigate her boat, gripping the sides tightly as the waves threaten to capsize her! She must find her strength and courage to steer through this wild tempest!",
+      "story_event": "The brave heroine struggles to navigate her boat as the fierce storm threatens to capsize her.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the heroine is still facing the storm and has not yet resolved her struggle."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "time_limit_minutes": 5.0,
+    "beat": "comic_olaf_performance",
+    "user_input": "Does anyone help her?",
+    "temporal_state": {
+      "elapsed_seconds": 182.31,
+      "remaining_seconds": 117.69,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 14,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.61,
+      "actual_progress": 0.36,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is inquiring about whether anyone helps the brave heroine during her struggle.",
+      "director_instruction": "Olaf excitedly reveals that just as the storm reaches its peak, a wise old sea turtle appears, offering guidance and encouragement to the brave heroine as she navigates the tumultuous waters.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by introducing a new character who provides support to the heroine during her struggle with the storm, aligning with the current beat of comic performance."
+    },
+    "actor_output": {
+      "character_response": "Just when the storm seems the fiercest, a wise old sea turtle emerges from the waves, his shell glistening like a beacon! He calls out to our brave heroine, offering her guidance and encouragement, reminding her to trust her instincts and find her inner strength as she navigates the tumultuous waters!",
+      "story_event": "A wise old sea turtle appears, offering guidance and encouragement to the brave heroine during the storm.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still humorously performing multiple characters and dramatic effects while advancing the story."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "time_limit_minutes": 5.0,
+    "beat": "comic_olaf_performance",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 197.35,
+      "remaining_seconds": 102.65,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 14,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.66,
+      "actual_progress": 0.36,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about penguins flying.",
+      "director_instruction": "Acknowledge the user's curiosity about penguins with a cheerful remark, then transition back to the story by revealing that the wise old sea turtle is guiding the brave heroine through the storm, helping her to stay focused and calm.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue with the guidance of the sea turtle, while briefly acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "Penguins are so fascinating! They can't fly like birds, but they sure can swim like champions! Now, back to our brave heroine! The wise old sea turtle swims alongside her, guiding her through the stormy waters, reminding her to take deep breaths and stay focused on the path ahead. With his calm presence, she begins to feel a little more at ease, ready to face the storm!",
+      "story_event": "The wise old sea turtle guides the brave heroine through the storm, helping her stay focused and calm.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the story continues with the turtle's guidance, and further developments are needed."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "time_limit_minutes": 5.0,
+    "beat": "first_major_obstacle",
+    "user_input": "Oh no, she is doubting herself.",
+    "temporal_state": {
+      "elapsed_seconds": 211.46,
+      "remaining_seconds": 88.54,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 14,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.7,
+      "actual_progress": 0.43,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about the heroine doubting herself.",
+      "director_instruction": "Olaf acknowledges the user's concern and reveals that the brave heroine, despite the wise old sea turtle's guidance, begins to doubt her strength and whether she can navigate the storm, feeling overwhelmed by the chaos around her.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to explore the heroine's moment of doubt, which aligns with the current beat of facing a major obstacle."
+    },
+    "actor_output": {
+      "character_response": "I know, it's a tough moment for her! Despite the wise old sea turtle's encouragement, our brave heroine starts to doubt her strength. The storm rages on, and she feels overwhelmed by the chaos around her, wondering if she truly has what it takes to navigate through this wild tempest!",
+      "story_event": "The brave heroine begins to doubt her strength and whether she can navigate the storm, feeling overwhelmed by the chaos around her.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still exploring the heroine's moment of doubt, which is essential for her character development."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "time_limit_minutes": 5.0,
+    "beat": "first_major_obstacle",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 227.12,
+      "remaining_seconds": 72.88,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 14,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.76,
+      "actual_progress": 0.43,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite dessert.",
+      "director_instruction": "Acknowledge Olaf's love for sweet treats with a cheerful remark, then transition back to the story by revealing that the brave heroine, despite her doubts, remembers the wise old sea turtle's words and begins to find her inner strength.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue focusing on the heroine's journey and her internal struggle, while briefly acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "I just love sweet treats, especially warm cookies! But let's get back to our brave heroine! Despite her doubts, she remembers the wise old sea turtle's encouraging words and starts to feel a spark of her inner strength igniting, reminding her that she can face this storm after all!",
+      "story_event": "The brave heroine begins to find her inner strength, inspired by the wise old sea turtle's words.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the heroine is still facing her internal struggle and has not fully overcome her doubts yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "time_limit_minutes": 5.0,
+    "beat": "mentor_or_companion",
+    "user_input": "What happens at the climax?",
+    "temporal_state": {
+      "elapsed_seconds": 242.88,
+      "remaining_seconds": 57.12,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 7,
+      "total_beats": 14,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.81,
+      "actual_progress": 0.5,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about the climax of the story.",
+      "director_instruction": "Acknowledge the user's curiosity about the climax, then transition back to the story by revealing that the brave heroine, inspired by the wise old sea turtle, is ready to confront her doubts and face the storm head-on.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is asking about a future event, but the current beat still needs to focus on the heroine's moment of doubt before moving to the climax."
+    },
+    "actor_output": {
+      "character_response": "I can see you're curious about the climax! But first, let's dive back into our story! Inspired by the wise old sea turtle, our brave heroine takes a deep breath, feeling the spark of her inner strength grow brighter. She decides to confront her doubts and face the storm head-on, ready to navigate through the chaos with newfound determination!",
+      "story_event": "The brave heroine, inspired by the wise old sea turtle, prepares to confront her doubts and face the storm directly.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet, as the focus is still on the heroine's moment of doubt before moving to the climax."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "time_limit_minutes": 5.0,
+    "beat": "moment_of_doubt",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 259.49,
+      "remaining_seconds": 40.51,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 8,
+      "total_beats": 14,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.86,
+      "actual_progress": 0.57,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about time conversion.",
+      "director_instruction": "Acknowledge the user's question about time with a cheerful remark, then transition back to the story by revealing that the brave heroine, feeling inspired, is now ready to take decisive action against the storm.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue moving forward as the heroine prepares to confront her doubts and face the storm directly."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question! But let's focus back on our brave heroine! Feeling inspired by the wise old sea turtle, she stands tall and takes a deep breath, ready to take decisive action against the storm. With newfound courage, she grips the helm of her boat, determined to steer through the wild waves and show the storm just how strong she really is!",
+      "story_event": "The brave heroine, feeling inspired, prepares to take decisive action against the storm.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet, as the heroine is still in the moment of doubt and must confront her challenges before moving on."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "time_limit_minutes": 5.0,
+    "beat": "moment_of_doubt",
+    "user_input": "Bring her home safely.",
+    "temporal_state": {
+      "elapsed_seconds": 273.21,
+      "remaining_seconds": 26.79,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 8,
+      "total_beats": 14,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.91,
+      "actual_progress": 0.57,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing a desire for the heroine to return home safely.",
+      "director_instruction": "Olaf enthusiastically reveals that the brave heroine, with her renewed courage, successfully navigates through the storm and begins her journey back home, feeling a sense of accomplishment and relief.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by showing the heroine overcoming her doubts and starting her journey back home, aligning with the user's desire for her safe return."
+    },
+    "actor_output": {
+      "character_response": "Yes! With her renewed courage, our brave heroine successfully navigates through the storm, feeling a rush of accomplishment and relief! She knows she can face anything now, and with the wise old sea turtle by her side, she begins her journey back home, ready to share her incredible adventure with everyone she loves!",
+      "story_event": "The brave heroine successfully navigates through the storm and begins her journey back home, feeling accomplished and relieved.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The heroine has overcome her doubts and started her journey back home, but the current beat is not yet complete as she still needs to reflect on her experience."
+    }
+  }
+]

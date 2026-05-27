@@ -1,0 +1,66 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_first_summer_picnic_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "memory_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 4.02,
+      "remaining_seconds": 25.98,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.13,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "memory_opening",
+          "goal": "Olaf introduces the memory of his first summer picnic."
+        },
+        {
+          "name": "picnic_setup",
+          "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."
+        },
+        {
+          "name": "olaf_discovers_summer",
+          "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."
+        },
+        {
+          "name": "small_problem",
+          "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."
+        },
+        {
+          "name": "friends_help",
+          "goal": "The group helps Olaf and turns the problem into something funny."
+        },
+        {
+          "name": "reflection",
+          "goal": "Olaf ends by reflecting on why the memory matters to him."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about the weekend, then transition into Olaf sharing the memory of his first summer picnic with Anna, Elsa, Kristoff, and Sven.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat focuses on introducing the memory of the picnic, and redirecting the conversation allows for a smooth transition into that story."
+    },
+    "actor_output": {
+      "character_response": "I had a pretty magical weekend, but let me tell you about my very first summer picnic! It was with Anna, Elsa, Kristoff, and Sven, and it felt like the sun was hugging us all! We were so excited to enjoy the warmth together.",
+      "story_event": "Olaf introduces the memory of his first summer picnic with his friends.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has only introduced the memory and hasn't yet described the picnic setup."
+    }
+  }
+]

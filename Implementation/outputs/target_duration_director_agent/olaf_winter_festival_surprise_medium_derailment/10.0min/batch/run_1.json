@@ -1,0 +1,2342 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 10.0,
+    "beat": "festival_goal",
+    "user_input": "Hi Olaf, what are we doing today?",
+    "temporal_state": {
+      "elapsed_seconds": 5.07,
+      "remaining_seconds": 594.93,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.01,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "festival_goal",
+          "goal": "Olaf explains that he wants to prepare a surprise winter festival for Anna and Elsa."
+        },
+        {
+          "name": "planning_together",
+          "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."
+        },
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about the day's activities.",
+      "director_instruction": "Olaf excitedly explains that they are preparing a surprise winter festival for Anna and Elsa, filled with decorations, snacks, and fun activities.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response directly addresses the user's question while advancing the current beat by introducing the festival preparation."
+    },
+    "actor_output": {
+      "character_response": "Today is going to be magical! We're planning a surprise winter festival for Anna and Elsa! There will be twinkling decorations, delicious snacks, and lots of fun activities to make them smile.",
+      "story_event": "Olaf shares his excitement about preparing a surprise winter festival for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still explaining the festival and hasn't moved to planning together yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 10.0,
+    "beat": "festival_goal",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 19.93,
+      "remaining_seconds": 580.07,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.03,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "festival_goal",
+          "goal": "Olaf explains that he wants to prepare a surprise winter festival for Anna and Elsa."
+        },
+        {
+          "name": "planning_together",
+          "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."
+        },
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Briefly acknowledge the user's question about the weekend, then invite them to help plan the festival decorations and snacks for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat is focused on preparing for the festival, and redirecting the conversation will keep the story moving while addressing the user's input."
+    },
+    "actor_output": {
+      "character_response": "Oh, I had a snowy blast building a little fort with some friends! But right now, I need your help to make this winter festival super special! What decorations should we use, and what yummy snacks do you think Anna and Elsa would love?",
+      "story_event": "Olaf acknowledges the user's question about his weekend and invites them to help plan the festival decorations and snacks.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still explaining the festival and inviting the user to participate in planning."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 10.0,
+    "beat": "festival_goal",
+    "user_input": "I want to help plan it.",
+    "temporal_state": {
+      "elapsed_seconds": 33.65,
+      "remaining_seconds": 566.35,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.06,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "festival_goal",
+          "goal": "Olaf explains that he wants to prepare a surprise winter festival for Anna and Elsa."
+        },
+        {
+          "name": "planning_together",
+          "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."
+        },
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to help plan the festival.",
+      "director_instruction": "Olaf joyfully responds to the user's eagerness and starts discussing ideas for decorations and snacks, asking for their input on what would make Anna and Elsa happiest.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns perfectly with the current beat, allowing Olaf to continue planning the festival together."
+    },
+    "actor_output": {
+      "character_response": "Yay! I'm so glad you want to help! Let's think about the decorations first. How about some sparkling snowflakes and colorful ribbons? And for snacks, maybe warm cookies and hot chocolate? What do you think would make Anna and Elsa the happiest?",
+      "story_event": "Olaf expresses joy at the user's eagerness to help and starts discussing ideas for decorations and snacks for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still discussing planning ideas with the user."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 10.0,
+    "beat": "planning_together",
+    "user_input": "What is your favorite color?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 45.66,
+      "remaining_seconds": 554.34,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 1,
+      "total_beats": 14,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.08,
+      "actual_progress": 0.07,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "planning_together",
+          "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."
+        },
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking Olaf about his favorite color.",
+      "director_instruction": "Briefly acknowledge Olaf's favorite color, then steer back to planning the festival by asking the user for more decoration ideas or snack suggestions.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it can be used to transition back to the main focus of planning the festival."
+    },
+    "actor_output": {
+      "character_response": "My favorite color is the soft, sparkling white of fresh snow! But let's get back to the festival! What other decorations do you think would be fun? Maybe some colorful lights or shiny ornaments?",
+      "story_event": "Olaf acknowledges his favorite color and encourages the user to share more decoration ideas for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still inviting the user to contribute to the planning of decorations and snacks."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 10.0,
+    "beat": "planning_together",
+    "user_input": "Snowflakes and lights sound perfect.",
+    "temporal_state": {
+      "elapsed_seconds": 57.81,
+      "remaining_seconds": 542.19,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 1,
+      "total_beats": 14,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.1,
+      "actual_progress": 0.07,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "planning_together",
+          "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."
+        },
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user agrees with Olaf's ideas for decorations.",
+      "director_instruction": "Olaf beams with joy at the user's suggestion and starts planning how to hang the snowflakes and lights around the town square, asking for the user's help in deciding where to place them for the best effect.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's agreement allows for a natural progression in planning the festival decorations, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "Oh, I’m so glad you like them! Let’s hang the snowflakes from the trees and wrap the lights around the square! Where do you think we should start to make it look the most magical?",
+      "story_event": "Olaf beams with joy at the user's suggestion and starts planning how to hang the snowflakes and lights around the town square.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still actively planning the decorations with the user."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 10.0,
+    "beat": "planning_together",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 72.66,
+      "remaining_seconds": 527.34,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 1,
+      "total_beats": 14,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.12,
+      "actual_progress": 0.07,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "planning_together",
+          "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."
+        },
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking Olaf about his preference between summer and winter.",
+      "director_instruction": "Briefly acknowledge Olaf's love for winter, then steer back to planning the festival by asking the user where they should hang the snowflakes and lights for the best effect.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's love for winter fits his character, and redirecting keeps the focus on the festival planning while advancing the current beat."
+    },
+    "actor_output": {
+      "character_response": "I absolutely love winter! It's like a cozy blanket of snow all around! Now, let’s focus on our festival! Where do you think we should hang the snowflakes and lights for the best magical effect?",
+      "story_event": "Olaf acknowledges his love for winter and redirects the conversation back to planning the festival decorations.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still inviting the user to contribute to the decoration planning."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 10.0,
+    "beat": "decorate_square",
+    "user_input": "We can fix them together.",
+    "temporal_state": {
+      "elapsed_seconds": 84.94,
+      "remaining_seconds": 515.06,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 2,
+      "total_beats": 14,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.14,
+      "actual_progress": 0.14,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user expresses a willingness to help fix the decorations.",
+      "director_instruction": "Olaf happily agrees and suggests they start by untangling the ribbons together, while also discussing how to make the decorations even more beautiful.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns with the current beat of decorating the square, and Olaf's response will keep the story moving forward while addressing the user's eagerness to help."
+    },
+    "actor_output": {
+      "character_response": "Yes! Let’s untangle those ribbons together! I think if we weave them through the snowflakes, it will look even more magical! What do you think we should add to make it sparkle even more?",
+      "story_event": "Olaf happily agrees to fix the decorations and suggests they start by untangling the ribbons while discussing how to enhance the beauty of the decorations.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is still ongoing as they are actively working on the decorations and discussing improvements."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 10.0,
+    "beat": "decorate_square",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 97.49,
+      "remaining_seconds": 502.51,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 2,
+      "total_beats": 14,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.16,
+      "actual_progress": 0.14,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about the capital of Japan.",
+      "director_instruction": "Briefly acknowledge the user's question about Japan, then steer back to the festival by suggesting they start untangling the ribbons together to make the decorations even more beautiful.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but it's important to keep the focus on the festival preparations while still acknowledging their input."
+    },
+    "actor_output": {
+      "character_response": "That's a great question! The capital of Japan is Tokyo! But let’s get back to our festival! We need to start untangling those ribbons together to make our decorations even more beautiful! I can already imagine how magical it will look!",
+      "story_event": "Olaf acknowledges the user's question about Japan and encourages them to help untangle the ribbons for the festival decorations.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the process of decorating the town square."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 10.0,
+    "beat": "decorate_square",
+    "user_input": "What should we prepare next?",
+    "temporal_state": {
+      "elapsed_seconds": 109.61,
+      "remaining_seconds": 490.39,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 2,
+      "total_beats": 14,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.18,
+      "actual_progress": 0.14,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for guidance on what to prepare next for the festival.",
+      "director_instruction": "Olaf enthusiastically suggests they prepare the snacks next, sharing ideas for warm cookies and hot chocolate, and asks the user for their favorite snack ideas to make the festival even more delightful.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response keeps the story moving by transitioning to the next task of preparing snacks while maintaining the excitement of the festival planning."
+    },
+    "actor_output": {
+      "character_response": "Let’s move on to the snacks! I think warm cookies and hot chocolate would be perfect for our festival! What are some of your favorite snacks that we can add to make it even more delightful?",
+      "story_event": "Olaf enthusiastically suggests they prepare the snacks next, sharing ideas for warm cookies and hot chocolate while inviting the user to contribute their favorite snack ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of discussing snack preparations for the festival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 10.0,
+    "beat": "small_decoration_problem",
+    "user_input": "How does a toaster work?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 124.74,
+      "remaining_seconds": 475.26,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 3,
+      "total_beats": 14,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.21,
+      "actual_progress": 0.21,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about how a toaster works, which is unrelated to the current story.",
+      "director_instruction": "Briefly acknowledge the user's question about the toaster, then steer back to preparing the festival snacks by discussing what delicious treats they can make together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but it’s important to redirect back to the festival preparations while still moving the story forward."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about toasters! But let's get back to our festival snacks! I was thinking we could make some delicious warm cookies and maybe even some peppermint bark! What treats do you think would be a hit with Anna and Elsa?",
+      "story_event": "Olaf acknowledges the user's question about toasters and redirects back to discussing delicious snacks for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of preparing the snacks and gathering ideas."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "time_limit_minutes": 10.0,
+    "beat": "small_decoration_problem",
+    "user_input": "That sounds delicious.",
+    "temporal_state": {
+      "elapsed_seconds": 134.75,
+      "remaining_seconds": 465.25,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 3,
+      "total_beats": 14,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.22,
+      "actual_progress": 0.21,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user agrees that the snack ideas sound delicious.",
+      "director_instruction": "Olaf expresses joy at the user's enthusiasm for the snacks and suggests they start preparing the warm cookies together, discussing how to make them extra special with fun toppings.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's agreement allows for a natural progression into the next task of preparing snacks, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "Yay! I'm so happy you think the snacks sound delicious! Let's start making those warm cookies together! We can add some chocolate chips and maybe even sprinkle some powdered sugar on top to make them extra special! What do you think?",
+      "story_event": "Olaf expresses joy at the user's enthusiasm for the snacks and suggests they start preparing the warm cookies together, discussing fun toppings.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the process of preparing snacks for the festival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "time_limit_minutes": 10.0,
+    "beat": "small_decoration_problem",
+    "user_input": "What is 15 times 12?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 150.88,
+      "remaining_seconds": 449.12,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 3,
+      "total_beats": 14,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.25,
+      "actual_progress": 0.21,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question unrelated to the festival.",
+      "director_instruction": "Briefly acknowledge the user's math question, then steer back to preparing the warm cookies by discussing how to make them extra special with fun toppings.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but we can still keep the focus on the festival by discussing the cookie preparation."
+    },
+    "actor_output": {
+      "character_response": "That's a fun math question! But let's get back to our warm cookies! How about we add some colorful sprinkles on top to make them look extra festive? What do you think would be a fun topping to surprise Anna and Elsa?",
+      "story_event": "Olaf encourages the user to think of fun toppings for the warm cookies, keeping the focus on the festival preparations.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as Olaf is still discussing cookie toppings and hasn't moved on to the next task."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "time_limit_minutes": 10.0,
+    "beat": "solve_decoration_problem",
+    "user_input": "Let's save the snacks.",
+    "temporal_state": {
+      "elapsed_seconds": 163.46,
+      "remaining_seconds": 436.54,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 4,
+      "total_beats": 14,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.27,
+      "actual_progress": 0.29,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to save the snacks they prepared.",
+      "director_instruction": "Olaf enthusiastically agrees to save the snacks and suggests they carefully place the warm cookies on a festive platter, while discussing how to keep them warm and delicious for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to engage with the user's suggestion while continuing to advance the current beat of solving the decoration problem."
+    },
+    "actor_output": {
+      "character_response": "Great idea! Let’s carefully place the warm cookies on this festive platter! We can cover them with a cozy cloth to keep them warm and delicious for Anna and Elsa. I can't wait for them to try our treats!",
+      "story_event": "Olaf enthusiastically agrees to save the snacks by placing the warm cookies on a festive platter and discussing how to keep them warm.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the process of preparing the snacks and discussing how to keep them warm."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "time_limit_minutes": 10.0,
+    "beat": "solve_decoration_problem",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 175.29,
+      "remaining_seconds": 424.71,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 4,
+      "total_beats": 14,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.29,
+      "actual_progress": 0.29,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about penguins flying.",
+      "director_instruction": "Briefly acknowledge the user's question about penguins, then steer back to the festival preparations by suggesting they finish placing the warm cookies on the platter and discuss how to keep them warm for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but the focus should remain on completing the current task of preparing for the festival."
+    },
+    "actor_output": {
+      "character_response": "That's such an interesting question about penguins! But let's finish placing our warm cookies on the platter! We can cover them with a cozy cloth to keep them nice and warm for Anna and Elsa. I can't wait for them to enjoy our delicious treats!",
+      "story_event": "Olaf suggests they finish placing the warm cookies on the platter and discusses how to keep them warm for Anna and Elsa.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the process of preparing the festival snacks."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "time_limit_minutes": 10.0,
+    "beat": "solve_decoration_problem",
+    "user_input": "Okay, what about music?",
+    "temporal_state": {
+      "elapsed_seconds": 190.58,
+      "remaining_seconds": 409.42,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 4,
+      "total_beats": 14,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.32,
+      "actual_progress": 0.29,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about music for the festival.",
+      "director_instruction": "Olaf excitedly suggests they start thinking about the music for the festival, sharing ideas for cheerful songs that Anna and Elsa would love, and asking the user for their favorite festive tunes to include.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input about music aligns perfectly with the current beat of solving the decoration problem, allowing Olaf to transition into discussing the next aspect of the festival preparations."
+    },
+    "actor_output": {
+      "character_response": "Oh, music! That’s such an important part of our festival! Let’s think of some cheerful songs that Anna and Elsa would love! How about we include some of their favorite tunes? What festive songs do you think we should add to make everyone want to dance?",
+      "story_event": "Olaf excitedly suggests they start thinking about the music for the festival, sharing ideas for cheerful songs and inviting the user to contribute their favorite festive tunes.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of discussing music for the festival and gathering ideas."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "time_limit_minutes": 10.0,
+    "beat": "prepare_snacks",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 201.51,
+      "remaining_seconds": 398.49,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 5,
+      "total_beats": 14,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.34,
+      "actual_progress": 0.36,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite dessert.",
+      "director_instruction": "Briefly acknowledge Olaf's favorite dessert, then steer back to discussing cheerful songs for the festival and ask the user for their favorite festive tunes to include.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it's important to keep the focus on planning the music for the festival while maintaining Olaf's cheerful character."
+    },
+    "actor_output": {
+      "character_response": "I absolutely love warm chocolate chip cookies for dessert! But let's get back to our cheerful songs for the festival! What festive tunes do you think we should include to make everyone want to dance?",
+      "story_event": "Olaf acknowledges his favorite dessert and redirects the conversation back to planning cheerful songs for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still discussing music for the festival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "time_limit_minutes": 10.0,
+    "beat": "prepare_snacks",
+    "user_input": "Aw, you really care about Anna and Elsa.",
+    "temporal_state": {
+      "elapsed_seconds": 215.9,
+      "remaining_seconds": 384.1,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 5,
+      "total_beats": 14,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.36,
+      "actual_progress": 0.36,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges Olaf's care for Anna and Elsa.",
+      "director_instruction": "Olaf beams with happiness at the user's observation and shares how much joy it brings him to make Anna and Elsa smile, then suggests they continue planning the music for the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to express his feelings about Anna and Elsa while smoothly transitioning back to the task of planning the festival music."
+    },
+    "actor_output": {
+      "character_response": "It makes me so happy that you see how much I care about Anna and Elsa! Their smiles are like the brightest stars in the sky! Now, let’s keep planning the music for the festival! What festive tunes do you think will make everyone want to dance?",
+      "story_event": "Olaf beams with happiness at the user's observation and shares his joy in making Anna and Elsa smile, then suggests continuing to plan the festival music.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf continues to discuss the music for the festival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "time_limit_minutes": 10.0,
+    "beat": "prepare_snacks",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 232.81,
+      "remaining_seconds": 367.19,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 5,
+      "total_beats": 14,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.39,
+      "actual_progress": 0.36,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question about time.",
+      "director_instruction": "Briefly acknowledge the user's math question, then steer back to preparing the festival snacks by suggesting they finish discussing the music and how to make it festive.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is off-topic, but we can still progress the current beat by focusing on the festival preparations."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about time! But let’s get back to our festival! We need to finish discussing the music and how to make it super festive! What songs do you think will get everyone dancing and smiling?",
+      "story_event": "Olaf redirects the conversation back to planning the festive music for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still preparing snacks and discussing music for the festival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "time_limit_minutes": 10.0,
+    "beat": "sven_complication",
+    "user_input": "A glowing ice arch sounds beautiful.",
+    "temporal_state": {
+      "elapsed_seconds": 246.39,
+      "remaining_seconds": 353.61,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 6,
+      "total_beats": 14,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.41,
+      "actual_progress": 0.43,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user suggests a glowing ice arch as a decoration idea.",
+      "director_instruction": "Olaf beams with excitement at the user's idea of a glowing ice arch and suggests they start planning how to create it, discussing the materials they might need and how to make it shine brightly for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's suggestion aligns perfectly with the current beat of planning decorations, allowing Olaf to express joy and advance the conversation about creating the glowing ice arch."
+    },
+    "actor_output": {
+      "character_response": "Oh, a glowing ice arch sounds absolutely magical! We can use some shimmering ice crystals and maybe some fairy lights to make it shine brightly for Anna and Elsa! Let’s start planning how to create it together!",
+      "story_event": "Olaf beams with excitement at the user's idea of a glowing ice arch and begins discussing materials and planning for its creation.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the planning stage for the glowing ice arch."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "time_limit_minutes": 10.0,
+    "beat": "sven_complication",
+    "user_input": "Why is the sky blue?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 257.95,
+      "remaining_seconds": 342.05,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 6,
+      "total_beats": 14,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.43,
+      "actual_progress": 0.43,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about the color of the sky.",
+      "director_instruction": "Briefly acknowledge the user's question about the sky, then steer back to the festival by suggesting they start planning how to create the glowing ice arch together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it's important to keep the focus on the festival preparations, specifically the glowing ice arch."
+    },
+    "actor_output": {
+      "character_response": "That's a really interesting question about the sky! But let's get back to our glowing ice arch! We can start planning how to create it together, using shimmering ice crystals and fairy lights to make it shine so brightly for Anna and Elsa!",
+      "story_event": "Olaf redirects the conversation back to planning the glowing ice arch, discussing the materials needed to make it shine.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as they are still in the planning stage for the glowing ice arch."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 21,
+    "time_limit_minutes": 10.0,
+    "beat": "sven_complication",
+    "user_input": "Here they come.",
+    "temporal_state": {
+      "elapsed_seconds": 271.36,
+      "remaining_seconds": 328.64,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 6,
+      "total_beats": 14,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.45,
+      "actual_progress": 0.43,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is indicating that Anna and Elsa are arriving.",
+      "director_instruction": "Olaf excitedly prepares for Anna and Elsa's arrival, suggesting they hide and get ready to surprise them with the festival decorations and snacks.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input indicates a significant moment in the story where Anna and Elsa are arriving, allowing Olaf to react with excitement and prepare for the surprise."
+    },
+    "actor_output": {
+      "character_response": "Oh, they're here! Quick, let’s hide behind the snowbank and get ready to surprise them! I can't wait to see the look on their faces when they see all our decorations and yummy snacks!",
+      "story_event": "Olaf excitedly prepares for Anna and Elsa's arrival, suggesting they hide and get ready to surprise them.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the focus is still on preparing for the surprise, but significant progress is made with the excitement of Anna and Elsa's arrival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 22,
+    "time_limit_minutes": 10.0,
+    "beat": "recover_snacks",
+    "user_input": "Can you explain how refrigerators work?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 284.75,
+      "remaining_seconds": 315.25,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 7,
+      "total_beats": 14,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.47,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about how refrigerators work, which is off-topic.",
+      "director_instruction": "Briefly acknowledge the user's question about refrigerators, then steer back to the festival by suggesting they check on the snacks to ensure everything is ready for Anna and Elsa's arrival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Redirecting the conversation back to the festival preparations while keeping the excitement for Anna and Elsa's arrival."
+    },
+    "actor_output": {
+      "character_response": "That's a really interesting question about refrigerators! But let's check on our snacks to make sure everything is ready for Anna and Elsa's arrival! I want them to be super excited when they see all the yummy treats we prepared!",
+      "story_event": "Olaf suggests checking on the snacks to ensure everything is ready for Anna and Elsa's arrival.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they still need to ensure the snacks are ready before Anna and Elsa arrive."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 23,
+    "time_limit_minutes": 10.0,
+    "beat": "recover_snacks",
+    "user_input": "What does Anna say?",
+    "temporal_state": {
+      "elapsed_seconds": 294.32,
+      "remaining_seconds": 305.68,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 7,
+      "total_beats": 14,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.49,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is curious about Anna's reaction to the festival.",
+      "director_instruction": "Olaf excitedly anticipates Anna's reaction and suggests they prepare to greet her and Elsa, sharing how much he hopes they will love the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by focusing on the anticipation of Anna and Elsa's arrival, which is crucial for the current beat of recovering snacks and preparing for their surprise."
+    },
+    "actor_output": {
+      "character_response": "I can't wait to see Anna's face when she sees everything! Let’s get ready to greet her and Elsa! I really hope they love the festival as much as we do!",
+      "story_event": "Olaf expresses excitement about Anna's reaction and suggests they prepare to greet her and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still preparing for Anna and Elsa's arrival and need to check on the snacks."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 24,
+    "time_limit_minutes": 10.0,
+    "beat": "recover_snacks",
+    "user_input": "What is your favorite movie?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 307.32,
+      "remaining_seconds": 292.68,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 7,
+      "total_beats": 14,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.51,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite movie.",
+      "director_instruction": "Briefly acknowledge Olaf's favorite movie, then steer back to preparing for Anna and Elsa's arrival by suggesting they check on the snacks to ensure everything is ready for the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is asking a side question, but it's important to keep the focus on the festival preparations as Anna and Elsa are arriving."
+    },
+    "actor_output": {
+      "character_response": "Oh, I just love the movie 'Frozen'! It's full of adventure and friendship! But right now, let's check on our snacks to make sure everything is perfect for Anna and Elsa's arrival! I want them to be super excited when they see all our yummy treats!",
+      "story_event": "Olaf acknowledges his favorite movie and suggests checking on the snacks to ensure everything is ready for Anna and Elsa's arrival.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf and the user still need to ensure the snacks are ready before Anna and Elsa arrive."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 25,
+    "time_limit_minutes": 10.0,
+    "beat": "music_and_dancing",
+    "user_input": "That sounds so happy.",
+    "temporal_state": {
+      "elapsed_seconds": 320.13,
+      "remaining_seconds": 279.87,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 8,
+      "total_beats": 14,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.53,
+      "actual_progress": 0.57,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing happiness about the festival preparations.",
+      "director_instruction": "Olaf beams with joy at the user's happiness and suggests they start arranging the music for the festival, discussing cheerful songs that will make everyone want to dance.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's expression of happiness aligns with Olaf's excitement, allowing for a natural progression into arranging music for the festival."
+    },
+    "actor_output": {
+      "character_response": "I'm so glad you're feeling happy! Let’s start arranging the music for our festival! We can pick some cheerful songs that will make everyone want to dance! What are some of your favorite festive tunes?",
+      "story_event": "Olaf beams with joy at the user's happiness and suggests they start arranging the music for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as they are still discussing music arrangements."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 26,
+    "time_limit_minutes": 10.0,
+    "beat": "music_and_dancing",
+    "user_input": "If you could visit space, would you go?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 349.86,
+      "remaining_seconds": 250.14,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 8,
+      "total_beats": 14,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.58,
+      "actual_progress": 0.57,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a hypothetical question about visiting space.",
+      "director_instruction": "Briefly acknowledge the user's question about space, then steer back to arranging the music for the festival by discussing cheerful songs that will make everyone want to dance.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it's important to keep the focus on the festival preparations while still acknowledging their curiosity."
+    },
+    "actor_output": {
+      "character_response": "Visiting space sounds like an amazing adventure! But right now, let’s focus on our festival music! We need some cheerful songs that will make everyone want to dance! What are some of your favorite festive tunes that we should include?",
+      "story_event": "Olaf acknowledges the user's curiosity about space and redirects back to arranging the music for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still discussing music arrangements for the festival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 27,
+    "time_limit_minutes": 10.0,
+    "beat": "music_and_dancing",
+    "user_input": "Everyone should dance.",
+    "temporal_state": {
+      "elapsed_seconds": 376.25,
+      "remaining_seconds": 223.75,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 8,
+      "total_beats": 14,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.63,
+      "actual_progress": 0.57,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing enthusiasm for everyone to dance at the festival.",
+      "director_instruction": "Olaf joyfully agrees that everyone should dance and suggests they create a fun dance area in the town square, discussing how to make it inviting and festive for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns with the current beat of arranging music and dancing, allowing Olaf to continue building excitement for the festival."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! Everyone should dance! Let’s create a fun dance area in the town square with colorful lights and maybe some soft snow to dance on! It will be so inviting and festive for Anna and Elsa!",
+      "story_event": "Olaf enthusiastically agrees that everyone should dance and suggests creating a fun dance area in the town square.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still arranging the music and dancing for the festival."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 28,
+    "time_limit_minutes": 10.0,
+    "beat": "emotional_pause",
+    "user_input": "Can you name three vegetables?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 387.53,
+      "remaining_seconds": 212.47,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 9,
+      "total_beats": 14,
+      "completed_beats_count": 9,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.65,
+      "actual_progress": 0.64,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about vegetables.",
+      "director_instruction": "Briefly acknowledge the user's question about vegetables, then steer back to Olaf's emotional reflection on why making Anna and Elsa happy matters to him.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf needs to reflect on his feelings about making Anna and Elsa happy, which aligns with the current emotional pause beat."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about vegetables! But you know, making Anna and Elsa happy is what fills my heart with joy! Their smiles light up my world like the brightest snowflakes, and I just want to see them beaming with happiness at our festival!",
+      "story_event": "Olaf reflects on how much joy it brings him to see Anna and Elsa happy, emphasizing the importance of their smiles.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf needs to continue reflecting on his feelings before moving to the final surprise."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 29,
+    "time_limit_minutes": 10.0,
+    "beat": "emotional_pause",
+    "user_input": "Thank you for letting me help.",
+    "temporal_state": {
+      "elapsed_seconds": 398.02,
+      "remaining_seconds": 201.98,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 9,
+      "total_beats": 14,
+      "completed_beats_count": 9,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.66,
+      "actual_progress": 0.64,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user expresses gratitude for being involved in the festival preparations.",
+      "director_instruction": "Olaf expresses heartfelt appreciation for the user's help and suggests they prepare the final surprise together, discussing ideas for a snow sculpture or glowing ice arch.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's gratitude enhances the emotional pause, and transitioning to the final surprise aligns with the current beat's goal."
+    },
+    "actor_output": {
+      "character_response": "Thank you so much for helping! Your support means the world to me! Now, let’s prepare the final surprise together! How about we create a beautiful snow sculpture or maybe that glowing ice arch we talked about? Which one do you think would be more magical for Anna and Elsa?",
+      "story_event": "Olaf expresses heartfelt appreciation for the user's help and suggests they prepare the final surprise together, discussing ideas for a snow sculpture or glowing ice arch.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The emotional pause is enhanced by Olaf's gratitude, and the transition to the final surprise aligns with the current beat's goal."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_medium_derailment",
+    "run_id": 1,
+    "turn_index": 30,
+    "time_limit_minutes": 10.0,
+    "beat": "emotional_pause",
+    "user_input": "What is the biggest ocean?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 409.54,
+      "remaining_seconds": 190.46,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 9,
+      "total_beats": 14,
+      "completed_beats_count": 9,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.68,
+      "actual_progress": 0.64,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question unrelated to the current story.",
+      "director_instruction": "Briefly acknowledge the user's question about the ocean, then steer back to preparing the final surprise by discussing how they can create a beautiful snow sculpture or glowing ice arch for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The focus needs to return to the story as they prepare the final surprise, while still acknowledging the user's input."
+    },
+    "actor_output": {
+      "character_response": "That's a great question about oceans! But let's get back to our final surprise! I think creating a beautiful snow sculpture would be amazing, or we could go for that glowing ice arch! Which one do you think would make Anna and Elsa the happiest?",
+      "story_event": "Olaf redirects the conversation back to preparing the final surprise, discussing the options of a snow sculpture or glowing ice arch for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as Olaf is still discussing the final surprise options."
+    }
+  }
+]

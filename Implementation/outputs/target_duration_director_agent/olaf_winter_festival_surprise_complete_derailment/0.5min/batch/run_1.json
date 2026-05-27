@@ -1,0 +1,98 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "festival_goal",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 24.99,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.17,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "festival_goal",
+          "goal": "Olaf explains that he wants to prepare a surprise winter festival for Anna and Elsa."
+        },
+        {
+          "name": "planning_together",
+          "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."
+        },
+        {
+          "name": "decorate_square",
+          "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."
+        },
+        {
+          "name": "small_decoration_problem",
+          "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."
+        },
+        {
+          "name": "solve_decoration_problem",
+          "goal": "Olaf and the user solve the decoration problem together."
+        },
+        {
+          "name": "prepare_snacks",
+          "goal": "Olaf helps prepare festival snacks in a silly but loving way."
+        },
+        {
+          "name": "sven_complication",
+          "goal": "Sven or another character causes a funny complication with the snacks."
+        },
+        {
+          "name": "recover_snacks",
+          "goal": "Olaf and the user recover or replace the snacks."
+        },
+        {
+          "name": "music_and_dancing",
+          "goal": "Olaf helps arrange music and dancing for the festival."
+        },
+        {
+          "name": "emotional_pause",
+          "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."
+        },
+        {
+          "name": "final_surprise",
+          "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."
+        },
+        {
+          "name": "anna_elsa_arrive",
+          "goal": "Anna and Elsa arrive and react to the festival."
+        },
+        {
+          "name": "festival_success",
+          "goal": "The festival succeeds and everyone enjoys the celebration."
+        },
+        {
+          "name": "closing_warmth",
+          "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities.",
+      "director_instruction": "Acknowledge the user's question about the weekend, then have Olaf excitedly share his idea for the surprise winter festival for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it can be used to transition back to the main focus of preparing the festival."
+    },
+    "actor_output": {
+      "character_response": "Oh, my weekend was filled with snowflakes and sunshine! But you know what I'm really excited about? I want to prepare a surprise winter festival for Anna and Elsa! It’s going to be so magical, and we can make it extra special together!",
+      "story_event": "Olaf shares his excitement about planning a surprise winter festival for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still explaining his idea for the festival and hasn't moved to planning together yet."
+    }
+  }
+]

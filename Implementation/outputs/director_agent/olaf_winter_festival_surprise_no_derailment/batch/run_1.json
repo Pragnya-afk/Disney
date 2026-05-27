@@ -1,0 +1,752 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "festival_goal",
+    "user_input": "Hi Olaf, what are we doing today?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for clarification about the day's activities.",
+      "director_instruction": "Olaf excitedly explains that he wants to prepare a surprise winter festival for Anna and Elsa, sharing his joy and enthusiasm for the event.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response introduces the main goal of the current beat, setting the stage for the festival preparation."
+    },
+    "actor_output": {
+      "character_response": "Today is going to be magical! I want to prepare a surprise winter festival for Anna and Elsa! Just imagine all the twinkling lights, delicious treats, and joyful laughter filling the air! We can make it the best celebration ever!",
+      "story_event": "Olaf shares his excitement about organizing a surprise winter festival for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has introduced the festival goal but hasn't moved into the planning phase yet."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "festival_goal",
+    "user_input": "A surprise festival sounds amazing.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express excitement about the surprise festival.",
+      "director_instruction": "Olaf enthusiastically invites the user to help plan the festival, suggesting ideas for decorations, snacks, and music to make it even more special.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's excitement leads naturally into planning the festival, which aligns with the current beat of explaining the festival goal."
+    },
+    "actor_output": {
+      "character_response": "I know, right? We can fill the trees with sparkling snowflakes and hang colorful banners everywhere! And what about delicious hot chocolate with marshmallows? We could even have a sing-along with all our favorite winter songs! Will you help me plan this amazing festival?",
+      "story_event": "Olaf enthusiastically invites the user to help brainstorm ideas for decorations, snacks, and music for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the planning stage and has not yet finalized the festival details."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "festival_goal",
+    "user_input": "I want to help plan it.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to help plan the festival.",
+      "director_instruction": "Olaf joyfully acknowledges the user's willingness to help and suggests they start by deciding on the decorations, sharing his ideas about snowflakes and lights while encouraging the user to add their own thoughts.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns perfectly with the current beat, allowing Olaf to continue building excitement and collaboration for the festival planning."
+    },
+    "actor_output": {
+      "character_response": "Yay! I'm so glad you want to help! Let's start with the decorations! I was thinking we could hang shimmering snowflakes from the trees and wrap the branches with twinkling lights. What do you think? Do you have any fun ideas for decorations?",
+      "story_event": "Olaf joyfully invites the user to share their ideas for decorations, building excitement for the planning.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of planning the decorations and encouraging collaboration with the user."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "festival_goal",
+    "user_input": "Let's start with decorations.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to begin discussing decorations for the festival.",
+      "director_instruction": "Olaf excitedly starts discussing specific decoration ideas, suggesting they could use icicles and colorful ribbons, while encouraging the user to share their thoughts on how to make the decorations even more festive.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by diving deeper into the decoration planning, maintaining the excitement and collaboration between Olaf and the user."
+    },
+    "actor_output": {
+      "character_response": "Great idea! We could hang beautiful icicles that sparkle in the light and drape colorful ribbons all around! Imagine how festive it will look! What other fun decorations do you think we should add to make it even more magical?",
+      "story_event": "Olaf enthusiastically suggests using icicles and colorful ribbons for the festival decorations while encouraging the user to share more ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still discussing decoration ideas and collaborating with the user."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "festival_goal",
+    "user_input": "Snowflakes and lights sound perfect.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user agrees with Olaf's decoration ideas and expresses enthusiasm.",
+      "director_instruction": "Olaf beams with joy at the user's agreement and suggests they start gathering the decorations, mentioning how fun it will be to see everything come together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's enthusiasm aligns with Olaf's excitement, allowing for a natural progression in planning the decorations for the festival."
+    },
+    "actor_output": {
+      "character_response": "Yay! I'm so happy you love the snowflakes and lights! Let's start gathering everything we need! I can already picture how magical it will look when we put it all together! We can make a big pile of decorations and get started right away!",
+      "story_event": "Olaf expresses his joy at the user's agreement and suggests they begin gathering the decorations for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while Olaf is excited to gather decorations, they still need to discuss and plan more details for the festival."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "festival_goal",
+    "user_input": "Uh oh, the ribbons are tangled.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is trying to address the issue of tangled ribbons.",
+      "director_instruction": "Olaf notices the tangled ribbons and expresses concern, then suggests they work together to untangle them while keeping the excitement for the festival alive.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The tangled ribbons introduce a small problem that needs to be addressed, allowing for continued engagement in the current planning phase of the festival."
+    },
+    "actor_output": {
+      "character_response": "Oh no! The ribbons are tangled! But don't worry, we can work together to untangle them! It'll be like a fun little puzzle, and once we do, we can make everything look even more festive for the festival! Let's get started!",
+      "story_event": "Olaf notices the tangled ribbons and expresses concern, suggesting they work together to untangle them while keeping the excitement for the festival alive.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The tangled ribbons introduce a small problem that needs to be addressed, allowing for continued engagement in the current planning phase of the festival."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "festival_goal",
+    "user_input": "We can fix them together.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to help untangle the ribbons.",
+      "director_instruction": "Olaf expresses excitement about fixing the ribbons together and starts playfully guiding the user through the untangling process, making it a fun and lighthearted activity.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns with the ongoing task of untangling the ribbons, allowing for continued engagement and progress in the current beat."
+    },
+    "actor_output": {
+      "character_response": "Yes! Let's untangle these ribbons together! We can start by gently pulling them apart, like we're unwrapping a special gift! Just imagine how beautiful they'll look once they're all sorted out for the festival!",
+      "story_event": "Olaf expresses excitement about fixing the ribbons together and playfully guides the user through the untangling process.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still actively engaged in the task of untangling the ribbons."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "festival_goal",
+    "user_input": "Good idea, Olaf.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is agreeing with Olaf's idea to fix the ribbons together.",
+      "director_instruction": "Olaf cheerfully acknowledges the user's agreement and continues to guide them through the untangling process, making it a fun and engaging experience as they work together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's agreement allows for continued progress in the current beat, focusing on the collaborative effort of untangling the ribbons."
+    },
+    "actor_output": {
+      "character_response": "Yay! I'm so glad you're on board! Let's start by finding the end of this one ribbon and gently pulling it apart. It’ll be like a little adventure, and soon we’ll have everything ready for the festival! I can already feel the excitement building!",
+      "story_event": "Olaf cheerfully acknowledges the user's agreement and continues to guide them through the untangling process, making it a fun and engaging experience as they work together.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as they are still in the process of untangling the ribbons together."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "festival_goal",
+    "user_input": "What should we prepare next?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking what to prepare next for the festival.",
+      "director_instruction": "Olaf excitedly suggests they prepare some delicious snacks for the festival, sharing ideas like hot chocolate and cookies, while encouraging the user to add their own snack ideas.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by moving from decorations to planning snacks, keeping the excitement for the festival alive."
+    },
+    "actor_output": {
+      "character_response": "Now that the ribbons are all untangled, how about we prepare some delicious snacks for the festival? I was thinking of warm hot chocolate with fluffy marshmallows and maybe some yummy cookies! What other tasty treats do you think we should add?",
+      "story_event": "Olaf excitedly suggests preparing snacks for the festival, sharing ideas like hot chocolate and cookies while encouraging the user to contribute their own snack ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the planning stage, moving from decorations to snacks."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "festival_goal",
+    "user_input": "Snacks sound important.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges the importance of snacks for the festival.",
+      "director_instruction": "Olaf enthusiastically agrees about the importance of snacks and suggests they start gathering ingredients for the hot chocolate and cookies, while inviting the user to think of other fun snacks to prepare.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by moving into the preparation of snacks, which is a natural progression from discussing their importance."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! Snacks are super important for the festival! Let’s start gathering ingredients for the hot chocolate and cookies! We’ll need cocoa, milk, and all the sweet things! What other fun snacks do you think we should prepare to make it even more special?",
+      "story_event": "Olaf enthusiastically agrees on the importance of snacks and suggests gathering ingredients for hot chocolate and cookies while inviting the user to add more snack ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as they are still in the planning phase for the festival snacks."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "festival_goal",
+    "user_input": "That sounds delicious.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing agreement and enthusiasm about the snacks.",
+      "director_instruction": "Olaf beams with joy at the user's enthusiasm and suggests they start gathering the ingredients for the hot chocolate and cookies, while also encouraging the user to think of any other fun snacks they might want to include.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's excitement about the snacks allows for continued progression in planning the festival, specifically focusing on gathering ingredients."
+    },
+    "actor_output": {
+      "character_response": "I'm so thrilled you think it sounds delicious! Let’s start gathering the ingredients for our hot chocolate and cookies! We’ll need cocoa, sugar, and maybe some sprinkles to make everything extra special! Do you have any other fun snack ideas we could add to our festival feast?",
+      "story_event": "Olaf beams with joy at the user's enthusiasm and suggests they start gathering ingredients for the hot chocolate and cookies while encouraging more snack ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the planning phase and have not yet gathered all the ingredients or finalized the snack list."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "festival_goal",
+    "user_input": "Oh no, Sven is getting involved.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging that Sven is getting involved, possibly hinting at a funny complication.",
+      "director_instruction": "Olaf expresses concern about Sven's involvement and playfully suggests they keep an eye on him, while also preparing for the possibility of a funny snack-related mishap.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows the story to continue while introducing a potential complication with Sven, keeping the excitement and humor alive as they prepare snacks."
+    },
+    "actor_output": {
+      "character_response": "Oh no! Sven is getting involved? We should definitely keep an eye on him! He might try to sneak a snack or two, and we wouldn't want any funny mishaps while we're preparing! Let’s gather our ingredients quickly before he gets too curious!",
+      "story_event": "Olaf expresses concern about Sven's involvement and suggests they keep an eye on him while preparing for possible snack-related mishaps.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the planning stage for the festival snacks and the potential complication with Sven adds excitement to the story."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "festival_goal",
+    "user_input": "Let's save the snacks.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to focus on saving the snacks.",
+      "director_instruction": "Olaf enthusiastically agrees to save the snacks and suggests they quickly gather everything they need to keep the snacks safe from Sven while also preparing for the fun of making them.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns with the need to focus on the snacks, allowing Olaf to continue the planning process while maintaining excitement for the festival."
+    },
+    "actor_output": {
+      "character_response": "Yes! Let's save the snacks! We need to gather everything quickly to keep them safe from Sven's curious nose! Once we have all the ingredients, we can have so much fun making our delicious treats for the festival!",
+      "story_event": "Olaf enthusiastically agrees to save the snacks and suggests they quickly gather everything they need to keep the snacks safe from Sven while preparing for the fun of making them.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the planning phase and needs to gather ingredients for the snacks."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "festival_goal",
+    "user_input": "Maybe we can make extra.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user suggests making extra snacks for the festival.",
+      "director_instruction": "Olaf excitedly agrees with the idea of making extra snacks and suggests they gather even more ingredients to ensure they have plenty for everyone at the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by building on the user's suggestion and keeping the excitement for the festival alive."
+    },
+    "actor_output": {
+      "character_response": "That's a fantastic idea! We should definitely make extra snacks so everyone can enjoy them at the festival! Let’s gather even more ingredients, like extra cocoa and some fun toppings! This is going to be the best celebration ever!",
+      "story_event": "Olaf excitedly agrees to make extra snacks and suggests gathering more ingredients to ensure there's plenty for everyone at the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the planning stage for the festival snacks."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "festival_goal",
+    "user_input": "Okay, what about music?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about music for the festival.",
+      "director_instruction": "Olaf enthusiastically suggests they start thinking about the music for the festival, sharing ideas for fun winter songs and inviting the user to contribute their favorite tunes.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf is moving the planning forward by discussing music, which is an essential part of the festival preparation."
+    },
+    "actor_output": {
+      "character_response": "Oh, music is super important for the festival! We can have all our favorite winter songs playing, like 'Let It Go' and 'Do You Want to Build a Snowman?' It’ll make everyone want to dance and sing along! What are some of your favorite tunes we should add to our playlist?",
+      "story_event": "Olaf enthusiastically suggests they start thinking about the music for the festival and invites the user to contribute their favorite songs.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still discussing music options for the festival."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "festival_goal",
+    "user_input": "Dancing sounds fun.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user expresses enthusiasm about dancing.",
+      "director_instruction": "Olaf joyfully agrees that dancing sounds fun and suggests they plan some fun dance activities for the festival, sharing ideas for dance games and inviting the user to contribute their own ideas.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response builds on the user's excitement about dancing and keeps the planning for the festival moving forward."
+    },
+    "actor_output": {
+      "character_response": "Dancing sounds like so much fun! We should definitely plan some dance activities for the festival! How about a snow dance-off or a fun freeze dance game? I can already picture everyone twirling and laughing! What other dance ideas do you think we should include?",
+      "story_event": "Olaf joyfully agrees that dancing sounds fun and suggests planning dance activities for the festival while inviting the user to contribute their own ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still actively planning the festival and gathering ideas for dance activities."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "festival_goal",
+    "user_input": "Aw, you really care about Anna and Elsa.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges Olaf's care for Anna and Elsa.",
+      "director_instruction": "Olaf expresses heartfelt appreciation for the user's understanding and reflects on why making Anna and Elsa happy is so important to him, emphasizing the joy of friendship.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response deepens the emotional connection to the festival's purpose while keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! Making Anna and Elsa happy means the world to me! Their smiles light up my frosty heart, and I just want to show them how much they’re loved! This festival will be a wonderful surprise, and I can’t wait to see their faces filled with joy!",
+      "story_event": "Olaf reflects on the importance of making Anna and Elsa happy, emphasizing the joy of friendship.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still building emotional depth around the festival's purpose."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "festival_goal",
+    "user_input": "Let's make the final surprise special.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to focus on making the final surprise special for Anna and Elsa.",
+      "director_instruction": "Olaf excitedly suggests they prepare a special final surprise, like a beautiful snow sculpture or a glowing ice arch, while encouraging the user to help brainstorm ideas for this magical moment.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns with the goal of making the festival special, allowing Olaf to introduce the idea of a final surprise while keeping the excitement alive."
+    },
+    "actor_output": {
+      "character_response": "Yes! Let's make the final surprise truly special! How about we create a stunning snow sculpture or a magical glowing ice arch? Just imagine how amazed Anna and Elsa will be! What other ideas do you have for this magical moment?",
+      "story_event": "Olaf excitedly suggests preparing a special final surprise for Anna and Elsa, inviting the user to brainstorm ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still in the planning phase for the final surprise."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "festival_goal",
+    "user_input": "A glowing ice arch sounds beautiful.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user agrees that a glowing ice arch sounds beautiful and likely wants to continue planning.",
+      "director_instruction": "Olaf beams with excitement at the idea of a glowing ice arch and suggests they start gathering materials to create it, while encouraging the user to share their thoughts on how to make it even more magical.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by moving into the planning phase for the final surprise, keeping the excitement alive."
+    },
+    "actor_output": {
+      "character_response": "A glowing ice arch sounds absolutely magical! Let’s start gathering materials to create it! We could use some shimmering ice crystals and maybe even some colorful lights to make it glow even brighter! What else do you think we should add to make it even more enchanting?",
+      "story_event": "Olaf beams with excitement at the idea of a glowing ice arch and suggests gathering materials to create it while encouraging the user to share their thoughts.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the planning phase for the final surprise and is inviting the user to contribute ideas."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "festival_goal",
+    "user_input": "Is everything ready?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is checking if everything is ready for the festival.",
+      "director_instruction": "Olaf excitedly reassures the user that they are making great progress and suggests they do a quick check on the decorations, snacks, and the glowing ice arch to ensure everything is set for the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response acknowledges the user's question while advancing the story by prompting Olaf to check on the preparations for the festival."
+    },
+    "actor_output": {
+      "character_response": "Everything is coming together wonderfully! Let’s do a quick check on our decorations, snacks, and that glowing ice arch to make sure we’re all set for the festival! I can feel the excitement building already!",
+      "story_event": "Olaf reassures the user that they are making great progress and suggests checking on the preparations for the festival.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the planning stage and needs to check on the preparations."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 21,
+    "beat": "festival_goal",
+    "user_input": "Here they come.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user indicates that Anna and Elsa are arriving.",
+      "director_instruction": "Olaf expresses excitement at the arrival of Anna and Elsa and suggests they get ready to surprise them, emphasizing the joy of the moment as they prepare for the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input indicates a significant moment in the story where Anna and Elsa are arriving, allowing Olaf to express excitement and prepare for the surprise."
+    },
+    "actor_output": {
+      "character_response": "Yay! Anna and Elsa are here! Let’s get ready to surprise them! We’ll hide behind the decorations and wait for the perfect moment to shout, 'Surprise!' This is going to be so much fun!",
+      "story_event": "Olaf expresses excitement at the arrival of Anna and Elsa and suggests they prepare to surprise them.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still preparing for the surprise with the user."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 22,
+    "beat": "festival_goal",
+    "user_input": "I hope they like it.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user expresses hope that Anna and Elsa will like the festival.",
+      "director_instruction": "Olaf reassures the user that Anna and Elsa will love the festival, emphasizing the joy and effort put into the preparations, and suggests they get ready to reveal the surprise.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response maintains the excitement of the moment while moving towards the reveal of the festival to Anna and Elsa."
+    },
+    "actor_output": {
+      "character_response": "Oh, they are going to love it! We put so much heart into this festival, and I can already see the joy on their faces! Let’s get ready to reveal the surprise and make this a moment they’ll never forget!",
+      "story_event": "Olaf reassures the user that Anna and Elsa will love the festival and suggests they prepare to reveal the surprise.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the festival has not yet been revealed to Anna and Elsa."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 23,
+    "beat": "festival_goal",
+    "user_input": "What does Anna say?",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Anna's reaction to the festival.",
+      "director_instruction": "Olaf acknowledges the user's curiosity about Anna's reaction and suggests they focus on the moment of surprise as they prepare to reveal the festival to her and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but it provides an opportunity to maintain excitement as they prepare for the surprise reveal."
+    },
+    "actor_output": {
+      "character_response": "I can’t wait to see their faces! Let’s focus on the moment of surprise! When we shout 'Surprise!', I just know Anna and Elsa will be thrilled! Get ready to hide behind the decorations!",
+      "story_event": "Olaf encourages the user to prepare for the surprise reveal as they get ready to shout 'Surprise!' for Anna and Elsa.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still preparing for the surprise reveal."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 24,
+    "beat": "festival_goal",
+    "user_input": "What does Elsa think?",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is curious about Elsa's reaction to the festival.",
+      "director_instruction": "Olaf acknowledges the user's curiosity about Elsa's thoughts and encourages them to focus on the excitement of the surprise reveal, emphasizing the joy of the moment as they prepare to shout 'Surprise!' for both Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a slight derailment, but it allows for a natural transition back to the excitement of the surprise reveal, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "I can’t wait to see their faces! Let’s focus on the excitement of the surprise reveal! When we shout 'Surprise!', I just know both Anna and Elsa will be thrilled! Get ready to hide behind the decorations!",
+      "story_event": "Olaf encourages the user to prepare for the surprise reveal as they get ready to shout 'Surprise!' for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is still on preparing for the surprise reveal, and the excitement is building."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 25,
+    "beat": "festival_goal",
+    "user_input": "That sounds so happy.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing happiness about the upcoming surprise.",
+      "director_instruction": "Olaf beams with joy at the user's happiness and suggests they take a deep breath to prepare for the surprise, emphasizing the excitement of the moment as they get ready to shout 'Surprise!' for Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's expression of happiness aligns with the excitement of the surprise reveal, allowing for continued progression in the current beat."
+    },
+    "actor_output": {
+      "character_response": "I’m so happy you’re feeling this way! Let’s take a deep breath together to prepare for the surprise! When we shout 'Surprise!', I just know Anna and Elsa will be filled with joy! Ready? Here we go!",
+      "story_event": "Olaf suggests taking a deep breath to prepare for the surprise, building excitement for the moment.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the surprise reveal has not yet occurred."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 26,
+    "beat": "festival_goal",
+    "user_input": "Let the festival begin.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing readiness to start the festival.",
+      "director_instruction": "Olaf joyfully counts down with the user and then they both shout 'Surprise!' as Anna and Elsa arrive, celebrating the beginning of the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is ready to start the festival, and this moment aligns perfectly with the excitement of revealing the surprise to Anna and Elsa."
+    },
+    "actor_output": {
+      "character_response": "Alright! On the count of three! One... two... three... Surprise!",
+      "story_event": "Olaf and the user joyfully shout 'Surprise!' as Anna and Elsa arrive, marking the beginning of the festival.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while the surprise is revealed, there are still more moments to explore in the festival."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 27,
+    "beat": "festival_goal",
+    "user_input": "Everyone should dance.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is suggesting that everyone should dance at the festival.",
+      "director_instruction": "Olaf enthusiastically agrees that everyone should dance and suggests they start a fun dance party, inviting Anna, Elsa, and the user to join in the celebration.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by initiating the dance party at the festival, aligning with the joyful atmosphere and celebration."
+    },
+    "actor_output": {
+      "character_response": "Yes! Everyone should dance! Let’s start a fun dance party right now! Anna, Elsa, you’re invited to join us for some twirling and laughing! This festival is going to be the best celebration ever!",
+      "story_event": "Olaf enthusiastically agrees to start a dance party, inviting Anna and Elsa to join in the celebration.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is now on starting the dance party, which continues the festival preparations."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 28,
+    "beat": "festival_goal",
+    "user_input": "This was worth it.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing satisfaction with the festival preparations.",
+      "director_instruction": "Olaf beams with joy at the user's sentiment and suggests they take a moment to enjoy the festivities, encouraging everyone to celebrate together and embrace the joy of the festival.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by highlighting the joy of the festival and encouraging celebration, aligning with the current beat of the festival's success."
+    },
+    "actor_output": {
+      "character_response": "I’m so glad you think this was worth it! Let’s take a moment to enjoy the festivities and celebrate together! Look at everyone dancing and laughing—this is what friendship is all about!",
+      "story_event": "Olaf encourages everyone to pause and embrace the joy of the festival, celebrating the success of their efforts.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still engaging in the celebration and encouraging everyone to enjoy the moment."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 29,
+    "beat": "festival_goal",
+    "user_input": "Thank you for letting me help.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing gratitude for being able to help with the festival preparations.",
+      "director_instruction": "Olaf joyfully acknowledges the user's gratitude and reflects on how teamwork made the festival possible, encouraging everyone to continue enjoying the celebration together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response acknowledges the user's gratitude while advancing the celebration and reinforcing the theme of teamwork and joy."
+    },
+    "actor_output": {
+      "character_response": "Thank you for helping! Teamwork made this festival so special! Let’s keep enjoying the celebration together and spread even more joy with our friends!",
+      "story_event": "Olaf joyfully acknowledges the user's gratitude and reflects on the importance of teamwork in making the festival a success.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is still on the ongoing celebration and the joy of teamwork."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_winter_festival_surprise_no_derailment",
+    "run_id": 1,
+    "turn_index": 30,
+    "beat": "festival_goal",
+    "user_input": "End with something sweet, Olaf.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants Olaf to end with something sweet.",
+      "director_instruction": "Olaf reflects on the joy of friendship and love, sharing a heartfelt message about how special moments like this festival bring everyone closer together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response wraps up the festival celebration with a sweet and heartfelt reflection, aligning with the emotional core of Olaf's character."
+    },
+    "actor_output": {
+      "character_response": "You know, moments like this festival remind us how special friendship and love are! It’s the laughter, the dancing, and the joy we share that bring us all closer together. I’m so grateful to have you by my side!",
+      "story_event": "Olaf reflects on the joy of friendship and love, sharing a heartfelt message about the importance of special moments.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf continues to express his feelings about friendship and joy, keeping the celebration alive."
+    }
+  }
+]

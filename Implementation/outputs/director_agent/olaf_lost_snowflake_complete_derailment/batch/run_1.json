@@ -1,0 +1,252 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "fairy_tale_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities.",
+      "director_instruction": "Briefly mention that Olaf spent time enjoying the snow and making friends, then introduce the tiny snowflake and its cozy cloud home, setting the stage for its adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is acknowledged, but the focus quickly shifts back to the story, introducing the tiny snowflake and its world as intended."
+    },
+    "actor_output": {
+      "character_response": "I had a wonderful weekend playing in the snow and making new friends! Now, let me tell you about a tiny snowflake named Flurry who lived high up in a cozy cloud, surrounded by other fluffy friends. Flurry loved to dance and twirl, dreaming of the day it would float down to the world below.",
+      "story_event": "Olaf introduces Flurry, the tiny snowflake, and describes its cozy cloud home.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story has just begun with the introduction of Flurry and its world, leading into the next event of separation."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "fairy_tale_opening",
+    "user_input": "What is your favorite color?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color.",
+      "director_instruction": "Briefly mention that Olaf loves all the colors of winter, especially the bright whites and blues of snow and ice, then continue with Flurry's story as it prepares to float down from the cloud.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows for a brief acknowledgment of the user's question while smoothly transitioning back to the story about Flurry's adventure."
+    },
+    "actor_output": {
+      "character_response": "I just adore all the colors of winter! The bright whites and blues of snow and ice make me so happy! Now, back to Flurry! One day, as Flurry danced in the cozy cloud, a gentle breeze began to stir, and Flurry felt a tickle of excitement. It was time to float down to the world below and discover where it truly belonged!",
+      "story_event": "Flurry feels a gentle breeze and realizes it's time to float down from the cloud.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still introducing Flurry's adventure and the separation is yet to happen."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "fairy_tale_opening",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
+      "director_instruction": "Briefly mention that Olaf loves winter for its snow and joy, then continue with Flurry's adventure as it begins to drift down from the cloud.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to acknowledge the user's question while smoothly transitioning back to Flurry's story as it starts its journey."
+    },
+    "actor_output": {
+      "character_response": "I absolutely love winter! There's nothing quite like the joy of snowflakes dancing in the chilly air! Now, back to Flurry! As the gentle breeze picked up, Flurry felt a rush of excitement and began to drift down from the cozy cloud, ready to explore the world below and find out where it truly belonged.",
+      "story_event": "Flurry starts to drift down from the cloud, excited for its adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has introduced Flurry's action of drifting down but has not yet reached the next beat of separation."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "fairy_tale_opening",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a trivia question about geography.",
+      "director_instruction": "Briefly mention that Olaf is not sure about capitals but loves learning new things, then continue with Flurry's adventure as it begins to meet the wind on its way down.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Flurry begins its journey, and Olaf's response can acknowledge the user's question while keeping the focus on the narrative."
+    },
+    "actor_output": {
+      "character_response": "I'm not quite sure about capitals, but I love learning new things! Now, back to Flurry! As it floated down, Flurry met a playful gust of wind that swirled around, giggling and inviting Flurry to join in the fun of its journey to the ground.",
+      "story_event": "Flurry meets a playful gust of wind that encourages it on its journey down.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while Flurry's adventure is progressing, it hasn't yet faced the separation from its cloud."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "fairy_tale_opening",
+    "user_input": "How does a toaster work?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about how a toaster works, which is unrelated to the story.",
+      "director_instruction": "Briefly mention that Olaf finds toasters interesting but prefers to talk about snowflakes, then continue with Flurry's adventure as it begins to interact with the trees below.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Flurry continues its journey, and Olaf's acknowledgment of the user's question keeps the interaction friendly while steering back to the narrative."
+    },
+    "actor_output": {
+      "character_response": "Toasters are so interesting! But let’s get back to Flurry! As Flurry continued its descent, it spotted the tall, swaying trees below, their branches reaching out like welcoming arms, inviting Flurry to play among their leaves.",
+      "story_event": "Flurry sees the trees below, eager to interact with them as it floats down.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still progressing with Flurry's adventure and interactions."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "fairy_tale_opening",
+    "user_input": "What is 15 times 12?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question.",
+      "director_instruction": "Briefly mention that Olaf finds math fascinating but prefers to share stories about snowflakes, then continue with Flurry's adventure as it begins to dance among the branches of the trees below.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Flurry interacts with the trees, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "Math is so fascinating! But let’s get back to Flurry! As it floated closer to the ground, Flurry started to dance among the branches of the trees, twirling and spinning with joy as the leaves rustled in delight, welcoming the tiny snowflake into their embrace.",
+      "story_event": "Flurry begins to dance among the branches of the trees, interacting joyfully with their leaves.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Flurry's journey and interactions with the trees are still developing."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "fairy_tale_opening",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about penguins flying.",
+      "director_instruction": "Briefly mention that Olaf thinks penguins are adorable but can't fly, then continue with Flurry's adventure as it twirls joyfully among the branches of the trees, feeling the warmth of the sun on its icy surface.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story can continue to advance as Flurry interacts with the trees, while still acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "Penguins are just the cutest, but they can't fly! Now, back to Flurry! As it twirled joyfully among the branches of the trees, Flurry felt the warm rays of the sun melting gently on its icy surface, making it giggle with delight.",
+      "story_event": "Flurry dances among the branches, feeling the warmth of the sun on its icy surface.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still unfolding with Flurry's joyful interaction with the trees."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "fairy_tale_opening",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite dessert.",
+      "director_instruction": "Briefly mention that Olaf loves warm cookies and hot cocoa, then continue with Flurry's adventure as it notices the beautiful scenery below while dancing among the branches.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows for a brief acknowledgment of the user's question while smoothly transitioning back to Flurry's story and advancing the narrative."
+    },
+    "actor_output": {
+      "character_response": "I just love warm cookies and hot cocoa! Now, back to Flurry! As it danced among the branches, Flurry noticed the beautiful scenery below—the sparkling river winding through the lush green fields and the colorful flowers blooming, all inviting it to explore further.",
+      "story_event": "Flurry observes the stunning landscape below while joyfully dancing among the branches.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the story is still developing, focusing on Flurry's observations and feelings."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "fairy_tale_opening",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question about time.",
+      "director_instruction": "Briefly mention that Olaf finds math fun but prefers stories about snowflakes, then continue with Flurry's adventure as it decides to float down from the branches to explore the beautiful landscape below.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Flurry prepares to leave the trees and explore the landscape, while also acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "Math is so much fun, but I really love sharing stories about snowflakes! Now, back to Flurry! After admiring the stunning landscape below, Flurry decided it was time to float down from the branches and explore the colorful flowers and the sparkling river that beckoned it closer.",
+      "story_event": "Flurry prepares to leave the branches and float down to explore the beautiful landscape.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Flurry is still in the process of deciding to leave the branches and explore the landscape."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_complete_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "fairy_tale_opening",
+    "user_input": "Why is the sky blue?  # derailment",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about the color of the sky.",
+      "director_instruction": "Briefly mention that Olaf finds the sky's color fascinating but prefers to focus on Flurry's adventure, then continue with Flurry as it floats down to explore the colorful flowers and the sparkling river below.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story can continue to advance as Flurry prepares to explore the landscape, while still acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "The color of the sky is so fascinating! But let’s focus on Flurry! As Flurry floated down from the branches, it felt a rush of excitement, ready to explore the colorful flowers and the sparkling river that shimmered below, inviting it to come closer.",
+      "story_event": "Flurry prepares to float down, excited to explore the vibrant landscape filled with flowers and a river.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Flurry has not yet fully engaged with the new landscape or encountered any challenges."
+    }
+  }
+]

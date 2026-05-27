@@ -1,0 +1,202 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "notice_anna_sad",
+    "user_input": "Hi Olaf, what are we doing today?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about the day's activities with Olaf.",
+      "director_instruction": "Olaf notices that Anna seems a little sad and decides to cheer her up by suggesting they make something fun together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's observation of Anna's sadness is a key part of the current beat, and suggesting a fun activity aligns with his character's joyful nature."
+    },
+    "actor_output": {
+      "character_response": "Hi there! You know, I just noticed Anna seems a little sad today. I think we should cheer her up! How about we make a silly snow-duck together? It’ll be so much fun!",
+      "story_event": "Olaf decides to cheer up Anna by suggesting they create a silly snow-duck.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has noticed Anna's sadness and suggested a fun activity, but they haven't started making the snow-duck yet."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "notice_anna_sad",
+    "user_input": "Aw, Anna sounds sad.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern for Anna's sadness.",
+      "director_instruction": "Olaf acknowledges the user's concern for Anna and excitedly invites them to help make the snow-duck, emphasizing how it will bring joy to Anna.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns with Olaf's goal of cheering up Anna, allowing for a natural progression to inviting the user to help create the snow-duck."
+    },
+    "actor_output": {
+      "character_response": "You're right! Anna does seem a bit down, and I just know a silly snow-duck will make her smile! Come on, let's gather some snow and get creative together! I can already picture it waddling around with a big, goofy grin!",
+      "story_event": "Olaf expresses excitement about making the snow-duck and invites the user to help gather snow.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still inviting the user to help create the snow-duck to cheer up Anna."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "notice_anna_sad",
+    "user_input": "I want to help cheer her up.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to help cheer Anna up.",
+      "director_instruction": "Olaf joyfully acknowledges the user's willingness to help and enthusiastically suggests they start gathering snow to build the snow-duck together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's intent aligns with Olaf's goal to cheer up Anna, allowing for a natural progression in the current beat."
+    },
+    "actor_output": {
+      "character_response": "Yay! I'm so glad you want to help! Let’s start gathering some fluffy snow and make the best snow-duck ever! I can already hear it quacking with joy!",
+      "story_event": "Olaf and the user excitedly begin gathering snow to create the silly snow-duck.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of gathering snow with the user to cheer up Anna."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "notice_anna_sad",
+    "user_input": "A snow-duck sounds perfect.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing enthusiasm about making the snow-duck.",
+      "director_instruction": "Olaf happily agrees with the user and suggests they start shaping the snow into the body of the duck, emphasizing how fun it will be to add silly details.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's excitement aligns perfectly with Olaf's goal to cheer up Anna, allowing for a natural progression in gathering and shaping the snow for the duck."
+    },
+    "actor_output": {
+      "character_response": "Yes! A snow-duck is going to be so much fun! Let’s start shaping the snow into its body. We can make it super silly with a big round belly and a goofy beak! I can’t wait to see Anna’s face when she sees it!",
+      "story_event": "Olaf and the user begin shaping the snow into the body of the snow-duck, adding silly details to make it extra cheerful.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of gathering and shaping the snow for the duck."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "notice_anna_sad",
+    "user_input": "Let's add a silly hat.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to add a silly hat to the snow-duck.",
+      "director_instruction": "Olaf excitedly agrees with the idea of adding a silly hat and suggests they find something fun to use as a hat, like a colorful scarf or a flower pot.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input aligns perfectly with the current beat, allowing for further creativity in building the snow-duck while keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "A silly hat? That’s a fantastic idea! Let’s see if we can find a colorful scarf or maybe even a flower pot to make our snow-duck look extra funny!",
+      "story_event": "Olaf enthusiastically agrees to add a silly hat to the snow-duck and suggests looking for fun items to use.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of building the snow-duck and has not yet fully engaged with the user in finding the hat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "notice_anna_sad",
+    "user_input": "Okay, show it to Anna.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to show the snow-duck to Anna.",
+      "director_instruction": "Olaf excitedly suggests they go find Anna to show her the snow-duck, expressing hope that it will make her smile.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf is ready to take the next step in cheering up Anna by showing her the snow-duck, which aligns with the current beat of noticing Anna's sadness."
+    },
+    "actor_output": {
+      "character_response": "Let’s go find Anna right now! I can’t wait to see her face when she sees our silly snow-duck! I just know it’ll make her smile!",
+      "story_event": "Olaf excitedly suggests they go find Anna to show her the snow-duck, filled with hope that it will lift her spirits.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of cheering up Anna by showing her the snow-duck."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "notice_anna_sad",
+    "user_input": "I hope she smiles.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express hope that Anna will smile when she sees the snow-duck.",
+      "director_instruction": "Olaf shares the user's hope and leads the way to find Anna, filled with excitement about showing her the snow-duck.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story is advancing as Olaf expresses excitement and leads the way to find Anna, aligning with the goal of the current beat."
+    },
+    "actor_output": {
+      "character_response": "I really hope she smiles too! Come on, let’s hurry and show her our silly snow-duck! I can just picture her laughing and feeling better already!",
+      "story_event": "Olaf leads the way to find Anna, bubbling with excitement about showing her the snow-duck.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still in the process of finding Anna to show her the snow-duck."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "notice_anna_sad",
+    "user_input": "That was sweet, Olaf.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing appreciation for Olaf's actions.",
+      "director_instruction": "Olaf acknowledges the user's kind words and continues leading the way to find Anna, filled with anticipation about how she will react to the snow-duck.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's excitement about showing Anna the snow-duck aligns with the current beat of noticing Anna's sadness and trying to help her feel better."
+    },
+    "actor_output": {
+      "character_response": "Thank you! I just want to see Anna smile! Let’s hurry over to her and show her our silly snow-duck! I can’t wait to see her reaction!",
+      "story_event": "Olaf continues to lead the way to find Anna, bubbling with excitement about how she will react to the snow-duck.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of finding Anna to show her the snow-duck."
+    }
+  }
+]

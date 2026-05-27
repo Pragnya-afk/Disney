@@ -1,0 +1,530 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 2.0,
+    "beat": "story_opening",
+    "user_input": "Hi Olaf, how are you doing today?",
+    "temporal_state": {
+      "elapsed_seconds": 5.0,
+      "remaining_seconds": 115.0,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 0,
+      "total_beats": 8,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.04,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "story_opening",
+          "goal": "Olaf introduces Little Red Riding Hood, her family, and the visit to grandmother."
+        },
+        {
+          "name": "warning_before_departure",
+          "goal": "Olaf establishes the mother's warning to stay on the path and avoid strangers."
+        },
+        {
+          "name": "forest_entry",
+          "goal": "Olaf shows Red entering the forest and being distracted by its beauty."
+        },
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is greeting Olaf and asking about his well-being.",
+      "director_instruction": "Olaf cheerfully responds to the user's greeting, expressing his joy, and then introduces Little Red Riding Hood, describing her cheerful personality and her loving family as she prepares to visit her grandmother.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's greeting is acknowledged, and the story is advanced by introducing Little Red Riding Hood and her family, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "Hi there! I'm feeling as cheerful as a snowflake dancing in the breeze! Let me tell you about Little Red Riding Hood. She's a bright and cheerful girl, always wearing her lovely red cloak. One sunny day, she decides to visit her dear grandmother who lives in a cozy cottage deep in the woods.",
+      "story_event": "Olaf introduces Little Red Riding Hood and her loving family as she prepares for her visit to her grandmother.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while Little Red Riding Hood and her family were introduced, the warning before her departure has not yet been established."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 2.0,
+    "beat": "story_opening",
+    "user_input": "Aw, tell me about Red and her family.",
+    "temporal_state": {
+      "elapsed_seconds": 18.79,
+      "remaining_seconds": 101.21,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 0,
+      "total_beats": 8,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.16,
+      "actual_progress": 0.0,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "story_opening",
+          "goal": "Olaf introduces Little Red Riding Hood, her family, and the visit to grandmother."
+        },
+        {
+          "name": "warning_before_departure",
+          "goal": "Olaf establishes the mother's warning to stay on the path and avoid strangers."
+        },
+        {
+          "name": "forest_entry",
+          "goal": "Olaf shows Red entering the forest and being distracted by its beauty."
+        },
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for more details about Little Red Riding Hood and her family.",
+      "director_instruction": "Olaf joyfully describes Little Red Riding Hood's loving family, highlighting her mother who lovingly prepares her for the journey and her father who encourages her to be brave. Then, he transitions to the moment before Red sets off on her adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response expands on Red's family, fulfilling the user's request while advancing the current beat by setting the stage for her departure."
+    },
+    "actor_output": {
+      "character_response": "Little Red Riding Hood has such a wonderful family! Her mother lovingly packs a basket full of goodies for her to take to grandmother, while her father encourages her to be brave on her journey. With a big smile and a heart full of love, she gets ready to set off into the woods, excited for her adventure!",
+      "story_event": "Olaf describes Little Red Riding Hood's loving family, highlighting her mother's care and her father's encouragement before she sets off on her journey.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as it has introduced Red's family but has not yet transitioned to the warning before her departure."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 2.0,
+    "beat": "warning_before_departure",
+    "user_input": "Mhm, keep going.",
+    "temporal_state": {
+      "elapsed_seconds": 29.96,
+      "remaining_seconds": 90.04,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 1,
+      "total_beats": 8,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.25,
+      "actual_progress": 0.12,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "warning_before_departure",
+          "goal": "Olaf establishes the mother's warning to stay on the path and avoid strangers."
+        },
+        {
+          "name": "forest_entry",
+          "goal": "Olaf shows Red entering the forest and being distracted by its beauty."
+        },
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is encouraging Olaf to continue the story.",
+      "director_instruction": "Olaf shares the moment when Little Red Riding Hood's mother gives her an important warning to stay on the path and avoid talking to strangers, emphasizing the love and care behind the advice.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by establishing the mother's warning, which is essential for the story's progression."
+    },
+    "actor_output": {
+      "character_response": "As Little Red Riding Hood prepares to leave, her mother kneels down and looks her in the eyes, saying, \"Remember, my dear, stay on the path and don’t talk to strangers. I love you, and I want you to be safe!\" Little Red nods, her heart filled with warmth from her mother's care, promising to follow her advice.",
+      "story_event": "Olaf shares the important warning from Little Red Riding Hood's mother about staying on the path and avoiding strangers.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story has not yet transitioned to Little Red Riding Hood entering the forest."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 2.0,
+    "beat": "warning_before_departure",
+    "user_input": "Oh, that warning sounds important.",
+    "temporal_state": {
+      "elapsed_seconds": 42.96,
+      "remaining_seconds": 77.04,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 1,
+      "total_beats": 8,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.36,
+      "actual_progress": 0.12,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "warning_before_departure",
+          "goal": "Olaf establishes the mother's warning to stay on the path and avoid strangers."
+        },
+        {
+          "name": "forest_entry",
+          "goal": "Olaf shows Red entering the forest and being distracted by its beauty."
+        },
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges the importance of the warning.",
+      "director_instruction": "Olaf agrees about the importance of the warning and then describes Little Red Riding Hood setting off on her journey, excitedly entering the forest and marveling at its beauty.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's acknowledgment allows for a smooth transition into Red's adventure, which is the next step in the story."
+    },
+    "actor_output": {
+      "character_response": "You're absolutely right! That warning is super important! With her mother’s words in her heart, Little Red Riding Hood sets off on her adventure, stepping into the enchanting forest. She looks around in awe, marveling at the tall trees and the colorful flowers, feeling like she’s in a magical world!",
+      "story_event": "Little Red Riding Hood begins her journey into the forest, captivated by its beauty.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is still on Little Red Riding Hood's entry into the forest, which leads to the next story development."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 2.0,
+    "beat": "forest_entry",
+    "user_input": "Okay, now she is leaving.",
+    "temporal_state": {
+      "elapsed_seconds": 54.69,
+      "remaining_seconds": 65.31,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 2,
+      "total_beats": 8,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.46,
+      "actual_progress": 0.25,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "forest_entry",
+          "goal": "Olaf shows Red entering the forest and being distracted by its beauty."
+        },
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges that Little Red Riding Hood is leaving.",
+      "director_instruction": "Olaf expresses excitement about Little Red Riding Hood's journey and describes her joyfully skipping along the path, taking in the sights and sounds of the forest, while also hinting at the adventure that awaits her.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by showing Red's joyful entry into the forest and her enchantment with the surroundings, while maintaining the story's momentum."
+    },
+    "actor_output": {
+      "character_response": "Little Red Riding Hood is so excited! She joyfully skips along the path, her red cloak fluttering behind her like a happy little flag. The forest is alive with the sounds of chirping birds and rustling leaves, and she can't help but marvel at the beauty around her, feeling like every step is a new adventure waiting to unfold!",
+      "story_event": "Little Red Riding Hood joyfully skips along the path in the forest, captivated by the sights and sounds around her.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as it focuses on Red's joyful entry into the forest and her enchantment with her surroundings, leading towards the next event."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 2.0,
+    "beat": "forest_entry",
+    "user_input": "The forest already sounds a little suspicious.",
+    "temporal_state": {
+      "elapsed_seconds": 70.28,
+      "remaining_seconds": 49.72,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 2,
+      "total_beats": 8,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.59,
+      "actual_progress": 0.25,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "forest_entry",
+          "goal": "Olaf shows Red entering the forest and being distracted by its beauty."
+        },
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is noting the suspicious atmosphere of the forest.",
+      "director_instruction": "Olaf acknowledges the user's observation and then describes how Little Red Riding Hood continues to explore the forest, noticing the shadows growing longer and the sounds becoming quieter, hinting at the adventure ahead.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to progress by showing Red's continued exploration of the forest while subtly introducing a sense of unease, aligning with the current beat."
+    },
+    "actor_output": {
+      "character_response": "You're right! The forest does have a bit of a mysterious feel to it. As Little Red Riding Hood continues to explore, she notices the shadows growing longer and the sounds around her becoming quieter, making her heart flutter with a mix of excitement and a tiny hint of unease. But she takes a deep breath, reminding herself of her mother's love and the adventure ahead!",
+      "story_event": "Little Red Riding Hood notices the shadows growing longer and the sounds becoming quieter, hinting at the adventure ahead.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it still needs to show Red's distraction by the beauty of the forest while introducing a subtle sense of unease."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 2.0,
+    "beat": "wolf_appears",
+    "user_input": "Tell me what happens next.",
+    "temporal_state": {
+      "elapsed_seconds": 80.06,
+      "remaining_seconds": 39.94,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 3,
+      "total_beats": 8,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.67,
+      "actual_progress": 0.38,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Requesting to know what happens next in the story.",
+      "director_instruction": "Olaf excitedly introduces the wolf as he appears in the forest, describing his sly demeanor and how he approaches Little Red Riding Hood with a friendly yet cunning conversation.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is eager to continue the story, and introducing the wolf is essential to advancing the current beat."
+    },
+    "actor_output": {
+      "character_response": "Just as Little Red Riding Hood is admiring a beautiful flower, a sly wolf appears from behind a tree! With a friendly grin and a twinkle in his eye, he approaches her and says, 'Well, hello there, little girl! Where are you off to on this lovely day?'",
+      "story_event": "Olaf introduces the wolf, describing his sly demeanor as he approaches Little Red Riding Hood with a friendly yet cunning conversation.",
+      "animation": "wave_happily",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the conversation between Red and the wolf needs to develop further."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 2.0,
+    "beat": "wolf_appears",
+    "user_input": "Uh oh, this is where trouble starts.",
+    "temporal_state": {
+      "elapsed_seconds": 96.29,
+      "remaining_seconds": 23.71,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 3,
+      "total_beats": 8,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.8,
+      "actual_progress": 0.38,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging the tension building in the story.",
+      "director_instruction": "Olaf nods in agreement about the trouble ahead and describes how Little Red Riding Hood, feeling a mix of curiosity and caution, responds to the wolf's friendly question, revealing her destination and the goodies she carries for her grandmother.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by introducing the conversation between Little Red Riding Hood and the wolf, which is crucial for the unfolding conflict."
+    },
+    "actor_output": {
+      "character_response": "You're so right! Trouble is definitely brewing! Little Red Riding Hood, feeling a mix of curiosity and caution, smiles at the wolf and replies, 'I'm on my way to visit my grandmother. I have a basket full of goodies for her!'",
+      "story_event": "Little Red Riding Hood responds to the wolf's question, revealing her destination and the goodies she carries for her grandmother.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the conversation between Little Red Riding Hood and the wolf is still unfolding, leading to the next important developments."
+    }
+  }
+]

@@ -1,0 +1,1838 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "holiday_problem",
+    "user_input": "Hi Olaf, what holiday adventure are we going on?",
+    "temporal_state": {
+      "elapsed_seconds": 5.0,
+      "remaining_seconds": 295.0,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 15,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 15,
+      "expected_progress": 0.02,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "holiday_problem",
+          "goal": "Olaf notices that Anna and Elsa do not seem to have a clear family holiday tradition."
+        },
+        {
+          "name": "olaf_decides_to_help",
+          "goal": "Olaf decides to help by finding the best family tradition in Arendelle."
+        },
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about the holiday adventure Olaf is planning.",
+      "director_instruction": "Excitedly share that Olaf has noticed Anna and Elsa don't have a clear family holiday tradition, and he wants to help them find one. Begin to express his determination to gather the best traditions in Arendelle.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response addresses the user's question while advancing the current beat by revealing Olaf's motivation to help Anna and Elsa."
+    },
+    "actor_output": {
+      "character_response": "Hi there! I just noticed that Anna and Elsa don't seem to have a clear family holiday tradition, and that makes me a little concerned. So, I’ve decided to help them find the best traditions in all of Arendelle! I can't wait to gather some joyful ideas and make them feel connected during the holidays!",
+      "story_event": "Olaf realizes that Anna and Elsa lack a clear family holiday tradition and resolves to help them find one.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has just begun his determination to help and hasn't yet moved on to the next steps in his quest."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "holiday_problem",
+    "user_input": "Aw, Anna and Elsa need a tradition.",
+    "temporal_state": {
+      "elapsed_seconds": 18.75,
+      "remaining_seconds": 281.25,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 15,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 15,
+      "expected_progress": 0.06,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "holiday_problem",
+          "goal": "Olaf notices that Anna and Elsa do not seem to have a clear family holiday tradition."
+        },
+        {
+          "name": "olaf_decides_to_help",
+          "goal": "Olaf decides to help by finding the best family tradition in Arendelle."
+        },
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern for Anna and Elsa's need for a holiday tradition.",
+      "director_instruction": "Excitedly share Olaf's determination to help Anna and Elsa by finding the best family traditions in Arendelle, emphasizing how much he wants to see them happy and connected during the holidays.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response continues to build on Olaf's motivation to help Anna and Elsa, aligning with the current beat's goal of recognizing their lack of tradition."
+    },
+    "actor_output": {
+      "character_response": "You're right! It's so important for them to have a tradition that brings them joy. That’s why I’m determined to find the best family traditions in all of Arendelle! I want to see Anna and Elsa feel happy and connected during the holidays, just like a warm hug on a snowy day!",
+      "story_event": "Olaf expresses his excitement and determination to gather joyful family traditions for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of deciding how to help Anna and Elsa."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "holiday_problem",
+    "user_input": "You should help them.",
+    "temporal_state": {
+      "elapsed_seconds": 28.46,
+      "remaining_seconds": 271.54,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 15,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 15,
+      "expected_progress": 0.09,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "holiday_problem",
+          "goal": "Olaf notices that Anna and Elsa do not seem to have a clear family holiday tradition."
+        },
+        {
+          "name": "olaf_decides_to_help",
+          "goal": "Olaf decides to help by finding the best family tradition in Arendelle."
+        },
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Encourage Olaf to help Anna and Elsa.",
+      "director_instruction": "Share Olaf's excitement about helping Anna and Elsa and express his determination to start the quest for family traditions right away, imagining all the wonderful things he might discover.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's determination to help is growing, and it's time to move forward with the quest for traditions."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! I'm so excited to help Anna and Elsa! I can already imagine all the wonderful traditions I might discover, like baking cookies or singing songs together! I can't wait to start this quest right away!",
+      "story_event": "Olaf's excitement grows as he prepares to embark on his quest for family traditions for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "Olaf is expressing his determination to help, but the beat isn't complete as he hasn't yet taken action on the quest."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_decides_to_help",
+    "user_input": "Sven should definitely come too.",
+    "temporal_state": {
+      "elapsed_seconds": 41.73,
+      "remaining_seconds": 258.27,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 15,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.14,
+      "actual_progress": 0.07,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "olaf_decides_to_help",
+          "goal": "Olaf decides to help by finding the best family tradition in Arendelle."
+        },
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user suggests that Sven should join Olaf on the quest.",
+      "director_instruction": "Express Olaf's joy at the idea of Sven joining him on the quest, and describe how he eagerly calls for Sven to come along, excited about the adventure they will have together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's excitement about Sven joining him enhances the current beat and moves the story forward as they prepare for their adventure."
+    },
+    "actor_output": {
+      "character_response": "Oh, I love that idea! Sven is the best companion for an adventure! Let me call him! Sven! Come on, buddy! We're going to find the best family traditions for Anna and Elsa together! It’s going to be so much fun!",
+      "story_event": "Olaf joyfully calls for Sven to join him on the quest, excited about the adventures they will have together.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet because Olaf is still in the process of deciding to help and preparing for the adventure with Sven."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_decides_to_help",
+    "user_input": "Okay, where do we look first?",
+    "temporal_state": {
+      "elapsed_seconds": 57.93,
+      "remaining_seconds": 242.07,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 15,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.19,
+      "actual_progress": 0.07,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "olaf_decides_to_help",
+          "goal": "Olaf decides to help by finding the best family tradition in Arendelle."
+        },
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for direction on where Olaf and Sven should begin their quest for family traditions.",
+      "director_instruction": "Excitedly suggest that Olaf and Sven should start their quest by visiting the nearby village, where they can ask families about their holiday traditions and gather some wonderful ideas.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response keeps the story moving by providing a clear next step for Olaf and Sven in their quest for family traditions."
+    },
+    "actor_output": {
+      "character_response": "Let's start our quest by visiting the nearby village! I bet there are so many families there who have wonderful holiday traditions to share with us! I can already imagine the delicious smells of cookies and the sound of laughter filling the air!",
+      "story_event": "Olaf excitedly suggests that he and Sven should begin their quest by visiting the nearby village to ask families about their holiday traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of deciding on the next step for their quest."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_decides_to_help",
+    "user_input": "That first tradition sounds nice.",
+    "temporal_state": {
+      "elapsed_seconds": 71.77,
+      "remaining_seconds": 228.23,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 15,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.24,
+      "actual_progress": 0.07,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "olaf_decides_to_help",
+          "goal": "Olaf decides to help by finding the best family tradition in Arendelle."
+        },
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing approval of the idea of a holiday tradition.",
+      "director_instruction": "Olaf should express his excitement about discovering the first tradition and describe how he and Sven are heading to the village to learn about it, imagining the joy it will bring to Anna and Elsa.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response builds on the user's approval and continues to advance the story by preparing for the first family visit."
+    },
+    "actor_output": {
+      "character_response": "I'm so excited too! The first tradition we’re going to discover in the village is going to be amazing! I can already picture Anna and Elsa's faces lighting up with joy when we share it with them. Come on, Sven! Let’s hurry and find out what wonderful traditions the families have to offer!",
+      "story_event": "Olaf expresses his excitement about discovering the first tradition and eagerly heads to the village with Sven to learn more.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet visited the first household to learn about a specific tradition."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "sven_joins",
+    "user_input": "Let's visit another family.",
+    "temporal_state": {
+      "elapsed_seconds": 86.27,
+      "remaining_seconds": 213.73,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 15,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.29,
+      "actual_progress": 0.13,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to move on to visit another family.",
+      "director_instruction": "Olaf should express his enthusiasm for visiting another family and describe how he and Sven are heading to the next household to learn about a different holiday tradition.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is eager to continue the quest, and Olaf's excitement about visiting another family aligns with the current beat of Sven joining him on the quest."
+    },
+    "actor_output": {
+      "character_response": "Yes! Let’s visit another family! I can’t wait to discover more wonderful holiday traditions to share with Anna and Elsa. Come on, Sven! Let’s hurry to the next household and see what delightful surprises await us!",
+      "story_event": "Olaf expresses his enthusiasm and heads to the next household with Sven to learn about a different holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of visiting families to gather traditions."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "sven_joins",
+    "user_input": "That one sounds different.",
+    "temporal_state": {
+      "elapsed_seconds": 97.48,
+      "remaining_seconds": 202.52,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 15,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.32,
+      "actual_progress": 0.13,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "sven_joins",
+          "goal": "Sven joins Olaf as his companion on the quest."
+        },
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging the uniqueness of the holiday tradition Olaf is about to discover.",
+      "director_instruction": "Olaf should express his curiosity about the different holiday tradition they are about to learn and describe how he and Sven are excitedly approaching the next household to discover what makes this tradition special.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by focusing on Olaf's excitement and curiosity as they approach the next household, aligning with the current beat of Sven joining Olaf on the quest."
+    },
+    "actor_output": {
+      "character_response": "You're right! I can feel the excitement bubbling up! I wonder what makes this holiday tradition so special! Come on, Sven, let’s hurry to the next household and find out what delightful surprises await us!",
+      "story_event": "Olaf expresses his curiosity and excitement as he and Sven approach the next household to discover a unique holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still in the process of exploring and learning about the next family’s holiday tradition."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 5.0,
+    "beat": "first_family_visit",
+    "user_input": "You are collecting a lot now.",
+    "temporal_state": {
+      "elapsed_seconds": 111.5,
+      "remaining_seconds": 188.5,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 15,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.37,
+      "actual_progress": 0.2,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges that Olaf is gathering many traditions.",
+      "director_instruction": "Olaf should express his excitement about collecting so many traditions and describe how he and Sven are now heading to the next household to learn about yet another unique holiday tradition.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response maintains the momentum of the current beat by emphasizing Olaf's excitement and eagerness to continue discovering new traditions."
+    },
+    "actor_output": {
+      "character_response": "Yes, I’m collecting so many wonderful traditions! It’s like a treasure hunt of joy! Come on, Sven! Let’s hurry to the next household and see what unique holiday tradition we can discover next!",
+      "story_event": "Olaf expresses his excitement about gathering many traditions and heads to another household with Sven to learn more.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet visited the next household to learn about a new tradition."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 5.0,
+    "beat": "first_family_visit",
+    "user_input": "This is getting very Olaf.",
+    "temporal_state": {
+      "elapsed_seconds": 121.16,
+      "remaining_seconds": 178.84,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 15,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.4,
+      "actual_progress": 0.2,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "first_family_visit",
+          "goal": "Olaf visits the first household and learns about one tradition."
+        },
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging Olaf's character and the story's tone.",
+      "director_instruction": "Olaf should express his joy that the adventure feels true to him and describe how he and Sven are excitedly approaching the next household to discover yet another unique holiday tradition.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story is still in the current beat, and Olaf's excitement about the adventure aligns perfectly with the user's comment."
+    },
+    "actor_output": {
+      "character_response": "I'm so glad you think so! This adventure feels just right for me! I can hardly contain my excitement as we approach the next household! I wonder what unique holiday tradition we’ll discover this time, Sven! Let’s go find out!",
+      "story_event": "Olaf expresses his joy about the adventure and eagerly approaches the next household with Sven to learn about another unique holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is still in progress as Olaf continues to gather traditions and has not yet completed the visit to the next household."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "time_limit_minutes": 5.0,
+    "beat": "second_family_visit",
+    "user_input": "Keep going.",
+    "temporal_state": {
+      "elapsed_seconds": 131.44,
+      "remaining_seconds": 168.56,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 15,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.44,
+      "actual_progress": 0.27,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Encourage the story to continue.",
+      "director_instruction": "Olaf should express his eagerness to discover the next holiday tradition and describe how he and Sven are now stepping inside the next household, ready to learn about what makes this family's tradition special.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story is still in the current beat of visiting another household to discover a different tradition, and Olaf's excitement can lead to a meaningful moment of discovery."
+    },
+    "actor_output": {
+      "character_response": "I can hardly wait to step inside this next household! I’m so eager to discover what makes this family's holiday tradition special! Come on, Sven, let’s go learn something wonderful!",
+      "story_event": "Olaf and Sven excitedly step inside the next household, ready to learn about the family's unique holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is still in progress as Olaf visits another household to discover a different tradition."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "time_limit_minutes": 5.0,
+    "beat": "second_family_visit",
+    "user_input": "Uh oh, this sounds like too many traditions.",
+    "temporal_state": {
+      "elapsed_seconds": 147.19,
+      "remaining_seconds": 152.81,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 15,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.49,
+      "actual_progress": 0.27,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "second_family_visit",
+          "goal": "Olaf visits another household and discovers a different tradition."
+        },
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern that there may be too many traditions.",
+      "director_instruction": "Olaf should acknowledge the concern about having too many traditions and express his excitement about discovering what makes this family's tradition special, as he and Sven prepare to learn more inside the household.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's excitement about the next tradition can still be conveyed while addressing the user's concern, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "I understand your concern! But I’m so excited to discover what makes this family's tradition special! Each one is like a little spark of joy, and I can’t wait to learn more! Come on, Sven, let’s step inside and find out!",
+      "story_event": "Olaf acknowledges the concern about too many traditions while expressing excitement to learn about the next family's unique holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still preparing to learn about the next holiday tradition."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "time_limit_minutes": 5.0,
+    "beat": "tradition_collection_grows",
+    "user_input": "I hope you can carry all that.",
+    "temporal_state": {
+      "elapsed_seconds": 160.42,
+      "remaining_seconds": 139.58,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 15,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.53,
+      "actual_progress": 0.33,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about Olaf being able to carry all the traditions.",
+      "director_instruction": "Olaf should acknowledge the concern about carrying all the traditions and express his determination to find a way to manage them, while excitedly preparing to learn about the next family's unique holiday tradition.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to address the user's concern while continuing to gather traditions, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "I understand your concern about carrying all these traditions! But I believe I can find a way to manage them! Each one is so special, and I can't wait to learn about the next family's unique tradition! Come on, Sven, let’s step inside and see what delightful surprises await us!",
+      "story_event": "Olaf acknowledges the concern about carrying all the traditions while expressing determination to manage them and eagerly prepares to learn about the next family's unique holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of gathering traditions and has not yet faced the comic overload that will come next."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "time_limit_minutes": 5.0,
+    "beat": "tradition_collection_grows",
+    "user_input": "Oh no, what happened on the way back?",
+    "temporal_state": {
+      "elapsed_seconds": 177.55,
+      "remaining_seconds": 122.45,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 15,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.59,
+      "actual_progress": 0.33,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "tradition_collection_grows",
+          "goal": "Olaf gathers several traditions and becomes excited about bringing them back."
+        },
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about a potential mishap on the way back.",
+      "director_instruction": "Acknowledge the user's concern about what might happen on the way back, then describe how Olaf and Sven are currently inside the household, learning about a new holiday tradition that adds to their collection.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is curious about future events, but the story needs to focus on Olaf and Sven learning about the current tradition before any mishap occurs."
+    },
+    "actor_output": {
+      "character_response": "I understand your concern about what might happen on the way back! But right now, Sven and I are inside this cozy household, learning about a delightful tradition where families gather to share stories and make hot cocoa together! It sounds so warm and wonderful, just like a hug on a chilly day!",
+      "story_event": "Olaf and Sven learn about a new holiday tradition involving storytelling and hot cocoa, adding to their collection.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of gathering traditions and has not yet faced any mishap."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "time_limit_minutes": 5.0,
+    "beat": "comic_overload",
+    "user_input": "That sounds like a big setback.",
+    "temporal_state": {
+      "elapsed_seconds": 191.75,
+      "remaining_seconds": 108.25,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 15,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.64,
+      "actual_progress": 0.4,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Acknowledge the concern about setbacks in the story.",
+      "director_instruction": "Olaf should acknowledge the idea of a setback but express his determination to keep going, then describe how he and Sven are excitedly leaving the household with their new tradition, ready to gather even more ideas.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to recognize the potential for setbacks while maintaining his optimism and excitement as they continue their quest for traditions."
+    },
+    "actor_output": {
+      "character_response": "I understand that setbacks can happen, but I'm determined to keep going! Sven and I are leaving this wonderful household with our new tradition of storytelling and hot cocoa, and I can't wait to gather even more ideas to share with Anna and Elsa! Let’s keep our spirits high, Sven!",
+      "story_event": "Olaf and Sven leave the household excitedly with their new tradition, ready to gather more ideas.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet because Olaf is still gathering traditions, and the comic chaos is building."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "time_limit_minutes": 5.0,
+    "beat": "comic_overload",
+    "user_input": "Poor Olaf.",
+    "temporal_state": {
+      "elapsed_seconds": 203.67,
+      "remaining_seconds": 96.33,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 15,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.68,
+      "actual_progress": 0.4,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "comic_overload",
+          "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."
+        },
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express sympathy for Olaf's situation.",
+      "director_instruction": "Olaf should acknowledge the user's sympathy and express his determination to keep going, then describe how he and Sven are excitedly preparing to gather even more holiday traditions, despite any challenges they may face.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to maintain his optimistic spirit while moving forward in the current beat of comic overload, as he prepares to gather more traditions."
+    },
+    "actor_output": {
+      "character_response": "Thank you for your sympathy! But I’m determined to keep going! Sven and I are excitedly preparing to gather even more holiday traditions, no matter what challenges we face! Let’s spread some joy, Sven!",
+      "story_event": "Olaf acknowledges the user's sympathy and expresses his determination to continue gathering holiday traditions with Sven.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of gathering traditions, and the comic chaos has not fully developed yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "time_limit_minutes": 5.0,
+    "beat": "travel_mishap",
+    "user_input": "You were only trying to help.",
+    "temporal_state": {
+      "elapsed_seconds": 215.06,
+      "remaining_seconds": 84.94,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 7,
+      "total_beats": 15,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.72,
+      "actual_progress": 0.47,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express sympathy for Olaf's situation.",
+      "director_instruction": "Olaf should acknowledge that he was only trying to help and express his determination to keep going despite any challenges, then describe how he and Sven are about to face a travel mishap on their way back with the traditions they've gathered.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to reflect on his intentions while setting the stage for the upcoming travel mishap, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "You're right! I was just trying to help Anna and Elsa feel connected and happy. But no matter what challenges come our way, I’m determined to keep going! Uh-oh, it looks like we might be facing a travel mishap on our way back with all the traditions we've gathered, Sven! Let’s be careful!",
+      "story_event": "Olaf acknowledges his good intentions and prepares for a travel mishap as he and Sven head back with their collected traditions.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still facing the travel mishap, and the story is progressing toward that challenge."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "time_limit_minutes": 5.0,
+    "beat": "travel_mishap",
+    "user_input": "I hope someone finds you.",
+    "temporal_state": {
+      "elapsed_seconds": 229.38,
+      "remaining_seconds": 70.62,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 7,
+      "total_beats": 15,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.76,
+      "actual_progress": 0.47,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "travel_mishap",
+          "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."
+        },
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern for Olaf's situation.",
+      "director_instruction": "Olaf should acknowledge the user's hope for someone to find him and Sven, then describe how they are currently facing a travel mishap, creating a moment of uncertainty as they try to navigate their way back with the traditions they've gathered.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by introducing the travel mishap while maintaining the emotional tone of concern and determination."
+    },
+    "actor_output": {
+      "character_response": "I really hope someone finds us too! Right now, Sven and I are facing a bit of a travel mishap. We took a wrong turn and ended up in a snowy thicket! It’s a little uncertain, but we’ll figure it out together, right, Sven?",
+      "story_event": "Olaf and Sven find themselves lost in a snowy thicket after taking a wrong turn while trying to navigate back with the traditions they've gathered.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf and Sven are currently facing a travel mishap, creating uncertainty in their journey."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "time_limit_minutes": 5.0,
+    "beat": "loss_or_setback",
+    "user_input": "What does Olaf realize?",
+    "temporal_state": {
+      "elapsed_seconds": 242.36,
+      "remaining_seconds": 57.64,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 8,
+      "total_beats": 15,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.81,
+      "actual_progress": 0.53,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's realization.",
+      "director_instruction": "Acknowledge the user's curiosity about Olaf's realization, then describe how Olaf and Sven are currently feeling lost in the snowy thicket, emphasizing Olaf's determination to find a way back and how he reflects on the importance of love and connection during this challenging moment.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question about Olaf's realization is relevant, but the current focus should remain on the travel mishap and Olaf's emotional state as he navigates this setback."
+    },
+    "actor_output": {
+      "character_response": "I can feel the uncertainty all around us in this snowy thicket! But as I look at Sven, I realize that even though we’re lost, the most important thing is the love and connection we share. I just wanted to help Anna and Elsa feel happy, and that’s what truly matters, right?",
+      "story_event": "Olaf and Sven feel lost in the snowy thicket, prompting Olaf to reflect on the importance of love and connection during this challenging moment.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still navigating the emotional low point of feeling lost and reflecting on his intentions."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "time_limit_minutes": 5.0,
+    "beat": "loss_or_setback",
+    "user_input": "That is a sweet lesson.",
+    "temporal_state": {
+      "elapsed_seconds": 255.39,
+      "remaining_seconds": 44.61,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 8,
+      "total_beats": 15,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.85,
+      "actual_progress": 0.53,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "loss_or_setback",
+          "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."
+        },
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Acknowledge the lesson Olaf is learning about love and connection.",
+      "director_instruction": "Olaf should express gratitude for the sweet lesson he's learning about love and connection, then describe how he and Sven are feeling a bit lost but determined to find their way back, emphasizing the importance of their friendship.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to reflect on the lesson while maintaining the current emotional state of feeling lost, thus advancing the narrative."
+    },
+    "actor_output": {
+      "character_response": "Thank you! I'm really grateful for this sweet lesson about love and connection. Even though Sven and I feel a bit lost in this snowy thicket, I know that our friendship is what will help us find our way back. Together, we can face anything!",
+      "story_event": "Olaf expresses gratitude for the lesson about love and connection while feeling lost but determined to find their way back with Sven's support.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of reflecting on his feelings of loss and the importance of friendship."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 21,
+    "time_limit_minutes": 5.0,
+    "beat": "emotional_low_point",
+    "user_input": "Take the lesson back to Anna and Elsa.",
+    "temporal_state": {
+      "elapsed_seconds": 269.22,
+      "remaining_seconds": 30.78,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 9,
+      "total_beats": 15,
+      "completed_beats_count": 9,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.9,
+      "actual_progress": 0.6,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants Olaf to take the lesson about love and connection back to Anna and Elsa.",
+      "director_instruction": "Olaf should express his determination to share the important lesson about love and connection with Anna and Elsa, then describe how he and Sven are finding their way out of the snowy thicket, eager to return to their friends.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by moving Olaf and Sven toward their goal of returning to Anna and Elsa while emphasizing the lesson learned."
+    },
+    "actor_output": {
+      "character_response": "I’m determined to share this important lesson about love and connection with Anna and Elsa! Come on, Sven, let’s find our way out of this snowy thicket and get back to our friends! I can’t wait to tell them how special our friendship is!",
+      "story_event": "Olaf expresses his determination to share the lesson about love and connection with Anna and Elsa as he and Sven navigate their way out of the snowy thicket.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the emotional low point but is moving toward sharing his lesson with Anna and Elsa."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+    "run_id": 1,
+    "turn_index": 22,
+    "time_limit_minutes": 5.0,
+    "beat": "emotional_low_point",
+    "user_input": "I hope they understand.",
+    "temporal_state": {
+      "elapsed_seconds": 281.88,
+      "remaining_seconds": 18.12,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 9,
+      "total_beats": 15,
+      "completed_beats_count": 9,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.94,
+      "actual_progress": 0.6,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "emotional_low_point",
+          "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."
+        },
+        {
+          "name": "friends_search_or_support",
+          "goal": "Friends or townspeople help search for Olaf or support him."
+        },
+        {
+          "name": "realization",
+          "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."
+        },
+        {
+          "name": "return_to_anna_elsa",
+          "goal": "Olaf returns to Anna and Elsa and explains what he learned."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."
+        },
+        {
+          "name": "holiday_closing",
+          "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express hope that Anna and Elsa will understand Olaf's feelings.",
+      "director_instruction": "Olaf should express his hope that Anna and Elsa will understand the importance of love and connection, then describe how he and Sven finally find their way out of the snowy thicket, eager to return to their friends and share what they've learned.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by moving Olaf and Sven out of the thicket and toward their friends, while also reinforcing Olaf's emotional journey and hopefulness."
+    },
+    "actor_output": {
+      "character_response": "I really hope Anna and Elsa understand the importance of love and connection! Look, Sven! We finally found our way out of the snowy thicket! Now we can hurry back to our friends and share all the wonderful things we've learned!",
+      "story_event": "Olaf and Sven successfully navigate out of the snowy thicket, eager to return to Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The emotional low point is not complete as Olaf still feels a mix of sadness and hope, but they are moving toward their friends."
+    }
+  }
+]

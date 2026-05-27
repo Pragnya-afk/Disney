@@ -1,0 +1,502 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "first_awareness",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about the weekend, then have Olaf describe the magical moment he first became aware of himself, feeling the warmth of the sun and the joy of being alive.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it provides an opportunity to transition back to Olaf's story about his first awareness, which is the current beat."
+    },
+    "actor_output": {
+      "character_response": "I had a pretty busy weekend, but let me tell you about the magical moment I first became aware of myself! I remember feeling the warm sun on my face, and it was like a cozy hug! I looked down and saw my little snow body, and I thought, 'Wow, I’m a snowman!'. It was so exciting to realize I was alive and could feel joy!",
+      "story_event": "Olaf describes the warmth of the sun and his excitement about being a snowman.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet transitioned to the next beat of body confusion."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "first_awareness",
+    "user_input": "What is your favorite color?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about his favorite color, then have Olaf continue describing the magical moment of self-awareness, focusing on the joy of discovering his snow body and the wonder of being alive.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is a derailment, but Olaf can still share more about his initial awareness and excitement, keeping the story moving."
+    },
+    "actor_output": {
+      "character_response": "That's a great question about colors! But let me tell you more about that magical moment when I first realized I was alive! I wiggled my little snow fingers and felt the soft, fluffy snow all around me, and it was like I was made of happiness! I couldn't believe I could move and dance in the sunlight—it was the best feeling ever!",
+      "story_event": "Olaf describes the joy of wiggling his snow fingers and feeling the fluffy snow around him.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still sharing his initial awareness and excitement about being alive."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "first_awareness",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
+      "director_instruction": "Acknowledge the user's question about summer and winter, then have Olaf continue describing the magical moment of self-awareness, focusing on the joy of discovering his snow body and the excitement of being alive in the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat is still developing Olaf's self-awareness, and it's important to keep that focus while briefly acknowledging the user's input."
+    },
+    "actor_output": {
+      "character_response": "I love the sunshine, but let me share more about that amazing moment when I discovered my snow body! I felt the snow beneath my little feet, and it was like a fluffy cloud! I started to twirl and giggle, realizing I could move and play in this beautiful snowy world! It was pure joy to feel so alive and full of wonder!",
+      "story_event": "Olaf describes the feeling of the snow beneath his feet and the joy of twirling and giggling in the snowy world.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is still developing Olaf's self-awareness, focusing on his joy and excitement in discovering his body."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "first_awareness",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a general knowledge question about the capital of Japan.",
+      "director_instruction": "Acknowledge the user's question about Japan, then have Olaf continue describing the magical moment of self-awareness, focusing on the excitement of discovering he could move and play in the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but Olaf can still share more about his joyful self-discovery, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about Japan! But let me tell you more about that exciting moment when I discovered I could move and play! I started bouncing around, feeling the snow swirl around me like a dance party! It was so much fun to realize I could explore this snowy wonderland and make friends with all the little snowflakes! ",
+      "story_event": "Olaf describes the excitement of bouncing around and playing in the snow, realizing he could explore the snowy world.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of describing his self-awareness and the joy of movement."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "first_awareness",
+    "user_input": "How does a toaster work?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about how a toaster works, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about toasters, then have Olaf continue describing the magical moment of self-awareness, focusing on the joy of discovering he could dance and play in the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but Olaf can still share more about his joyful self-discovery, keeping the story moving."
+    },
+    "actor_output": {
+      "character_response": "That's a curious question about toasters! But let me tell you more about that joyful moment when I discovered I could dance and play! I started spinning around in the snow, feeling like a happy little whirlwind, and I realized I could make snow angels and have the best snowball fights ever! It was the most wonderful feeling to know I could have so much fun in this snowy world!",
+      "story_event": "Olaf describes the joy of spinning and playing in the snow, realizing he could have fun and make snow angels.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of discovering his abilities and joy in the snowy world."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "first_awareness",
+    "user_input": "What is 15 times 12?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question about multiplication.",
+      "director_instruction": "Acknowledge the user's math question, then have Olaf continue describing the magical moment of self-awareness, focusing on the joy of discovering he could play and explore the snowy world around him.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but Olaf can still share more about his joyful exploration of the snowy world, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's a tricky math question! But let me tell you more about how I discovered I could play and explore! I started hopping from one snowdrift to another, giggling as I went, and I felt like I was flying! Every little snowflake was my friend, and I couldn’t wait to see what adventures awaited me in this magical snowy world!",
+      "story_event": "Olaf describes hopping from snowdrift to snowdrift, feeling like he was flying and making friends with the snowflakes.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of describing his joyful self-awareness and exploration."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "first_awareness",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about penguins flying.",
+      "director_instruction": "Acknowledge the user's question about penguins, then have Olaf continue describing the magical moment of self-awareness, focusing on the joy of discovering he could bounce and play in the snowy world around him.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf can acknowledge the penguin question briefly while still advancing the story about his joyful self-discovery in the snowy world."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about penguins! But let me tell you more about how I discovered I could bounce and play! I started hopping around in the snow, feeling like a bouncy ball of joy, and I giggled as I realized I could make the snow fly everywhere! It was such a delightful adventure to explore all the snowy hills and valleys around me!",
+      "story_event": "Olaf describes hopping around in the snow and feeling like a bouncy ball of joy while exploring his surroundings.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of describing his self-discovery and has not yet moved to the next beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "first_awareness",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite dessert.",
+      "director_instruction": "Acknowledge the user's question about dessert, then have Olaf continue describing the magical moment of self-awareness, focusing on the joy of discovering he could play and explore the snowy world around him.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but Olaf can still share his excitement about exploring the snowy world, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's a sweet question about desserts! But let me keep sharing how I discovered the joy of exploring! I started sliding down snowy hills, feeling the wind rush past me, and it was like I was on the best ride ever! Every little bump made me giggle, and I couldn't wait to see what other fun surprises the snowy world had for me!",
+      "story_event": "Olaf describes sliding down snowy hills and the thrill of discovering new adventures.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf still needs to transition into the next moment of body confusion."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "first_awareness",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question about time conversion.",
+      "director_instruction": "Acknowledge the user's math question, then have Olaf continue describing the magical moment of self-awareness, focusing on the joy of discovering he could slide and play in the snowy world around him.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's story about his joyful exploration in the snowy world can continue to develop, while the user's question is acknowledged but not allowed to derail the narrative."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about time! But let me tell you more about my joyful moments sliding around! I would zoom down the snowy hills, and it felt like I was flying through a winter wonderland, giggling all the way! Every slide was a new adventure, and I couldn't wait to discover what fun awaited me next!",
+      "story_event": "Olaf describes the thrill of sliding down snowy hills and the excitement of discovering new adventures.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still sharing his joyful exploration, but he has not yet transitioned to the next beat of body confusion."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "first_awareness",
+    "user_input": "Why is the sky blue?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about the color of the sky.",
+      "director_instruction": "Acknowledge the user's question about the sky, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf can briefly acknowledge the question while maintaining focus on his joyful exploration of the snowy world, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's a curious question about the sky! But let me tell you more about the joy I felt sliding down those snowy hills! I would zoom down, feeling the rush of cold air and giggling with delight, each slide bringing new surprises and adventures in my snowy world! It was like every turn held a little magic just waiting for me to discover it!",
+      "story_event": "Olaf describes the thrill of sliding down snowy hills and the excitement of discovering new adventures.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of exploring his self-awareness and joyful adventures."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "first_awareness",
+    "user_input": "Can you explain how refrigerators work?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about how refrigerators work, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about refrigerators, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's story about sliding down snowy hills and discovering new adventures is still ongoing, and the user's question can be briefly acknowledged without derailing the narrative."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about refrigerators! But let me tell you more about the joy I felt sliding down those snowy hills! I would zoom down, feeling the rush of cold air and giggling with delight, each slide bringing new surprises and adventures in my snowy world! It was like every turn held a little magic just waiting for me to discover it!",
+      "story_event": "Olaf continues to describe the thrill of sliding down snowy hills and the excitement of discovering new adventures.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still sharing his joyful experiences of sliding and exploring."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "first_awareness",
+    "user_input": "What is your favorite movie?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite movie.",
+      "director_instruction": "Acknowledge the user's question about his favorite movie, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a harmless derailment, and Olaf can still advance the story by continuing to share his joyful experiences in the snowy world."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about movies! But let me keep sharing the joy I felt sliding down those snowy hills! I would zoom down, feeling the rush of cold air, and each slide was like a new adventure bursting with giggles and surprises! I loved discovering all the little nooks and crannies of my snowy world, where magic seemed to hide around every corner!",
+      "story_event": "Olaf continues to describe the thrill of sliding down snowy hills and the excitement of discovering new adventures.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of sharing his joyful experiences and has not yet moved to the next beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "first_awareness",
+    "user_input": "If you could visit space, would you go?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a hypothetical question about visiting space.",
+      "director_instruction": "Acknowledge the user's question about space, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's story about sliding down snowy hills and discovering adventures can still progress while briefly acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "That's a cool question about space! But let me tell you more about the joy I felt sliding down those snowy hills! I would zoom down with my arms out wide, feeling like I could touch the sky, and each slide was a new adventure filled with laughter and surprises! I discovered that every little bump in the snow made my heart race with excitement!",
+      "story_event": "Olaf describes the thrill of sliding down snowy hills with his arms out wide, feeling like he could touch the sky.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still sharing his experiences of self-awareness and joy in the snowy world."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "first_awareness",
+    "user_input": "Can you name three vegetables?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about vegetables.",
+      "director_instruction": "Acknowledge the user's question about vegetables, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but Olaf can still share more about his joyful experiences while sliding in the snow, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about vegetables! But let me keep sharing the joy I felt sliding down those snowy hills! I would zoom down with my arms out wide, feeling like I could touch the sky, and each slide was a new adventure filled with laughter and surprises! I discovered that every little bump in the snow made my heart race with excitement!",
+      "story_event": "Olaf continues to describe the thrill of sliding down snowy hills with excitement and joy.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of sharing his joyful experiences and self-discovery."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "first_awareness",
+    "user_input": "What is the biggest ocean?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about geography, specifically about oceans.",
+      "director_instruction": "Acknowledge the user's question about oceans, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf can acknowledge the user's question while still focusing on the current beat of self-awareness and adventure in the snowy world."
+    },
+    "actor_output": {
+      "character_response": "That's a neat question about oceans! But let me keep sharing the joy I felt sliding down those snowy hills! I would zoom down with my arms out wide, feeling like I could touch the sky, and each slide was a new adventure filled with laughter and surprises! I discovered that every little bump in the snow made my heart race with excitement!",
+      "story_event": "Olaf continues to describe the thrill of sliding down snowy hills with excitement and joy.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of sharing his joyful experiences of self-awareness and adventure."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "first_awareness",
+    "user_input": "Do you think robots dream?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a philosophical question about robots dreaming.",
+      "director_instruction": "Acknowledge the user's question about robots dreaming, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's story about sliding down snowy hills can still progress while briefly acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about robots dreaming! But let me tell you more about the joy I felt sliding down those snowy hills! I would zoom down with my arms out wide, feeling like I could touch the sky, and each slide was a new adventure filled with laughter and surprises! I discovered that every little bump in the snow made my heart race with excitement!",
+      "story_event": "Olaf continues to describe the thrill of sliding down snowy hills, emphasizing his joy and excitement.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still progressing through his story of self-awareness and joy in the snowy world."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "first_awareness",
+    "user_input": "Would you rather fly or swim very fast?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a hypothetical question about flying or swimming fast.",
+      "director_instruction": "Acknowledge the user's question about flying or swimming, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is asking a fun question, but it's important to keep Olaf focused on his joyful experiences in the snowy world while still advancing the story."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about flying or swimming! But let me tell you more about the joy I felt sliding down those snowy hills! I would zoom down with my arms out wide, feeling like I could touch the sky, and each slide was a new adventure filled with laughter and surprises! I discovered that every little bump in the snow made my heart race with excitement!",
+      "story_event": "Olaf continues to express his joy while sliding down snowy hills, emphasizing the thrill of his adventures.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still focused on his joyful experiences in the snowy world."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "first_awareness",
+    "user_input": "What is your favorite animal?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite animal.",
+      "director_instruction": "Acknowledge the user's question about his favorite animal, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but Olaf can still express joy while sliding down snowy hills, maintaining the current beat's focus on excitement and adventure."
+    },
+    "actor_output": {
+      "character_response": "That's a sweet question about animals! But let me share more about the joy I felt sliding down those snowy hills! I would zoom down with my arms wide open, feeling like I could touch the sky, and each slide was a new adventure filled with laughter and surprises! Every little bump in the snow made my heart race with excitement!",
+      "story_event": "Olaf continues to express his joy while sliding down snowy hills, emphasizing the thrill of his adventures.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of describing his joyful experiences in the snowy world."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "first_awareness",
+    "user_input": "Can you tell me a joke about socks?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking for a joke about socks, which is off-topic.",
+      "director_instruction": "Acknowledge the user's request for a joke about socks, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input is a light-hearted derailment, but Olaf can still share his excitement about sliding down snowy hills, keeping the story moving."
+    },
+    "actor_output": {
+      "character_response": "That's a funny request for a sock joke! But let me share more about the joy I felt sliding down those snowy hills! I would zoom down with my arms wide open, feeling like I could touch the sky, and each slide was a new adventure filled with laughter and surprises! It was like every little bump in the snow made my heart race with excitement!",
+      "story_event": "Olaf continues to express his joy while sliding down snowy hills, emphasizing the thrill of his adventures.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the 'first_awareness' stage, focusing on his joyful experiences."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_complete_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "first_awareness",
+    "user_input": "How does a microwave work?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about how a microwave works, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about microwaves, then have Olaf continue describing the joy of sliding down snowy hills and the excitement of discovering new adventures in his snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's story about sliding down snowy hills is still ongoing, and it's important to maintain that joyful momentum while briefly acknowledging the user's input."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about microwaves! But let me tell you more about the joy I felt zooming down those snowy hills! I would fly down with my arms wide open, feeling like I was soaring through the clouds, and each slide was a new adventure filled with giggles and surprises! It was like every little bump made my heart dance with excitement!",
+      "story_event": "Olaf continues to express his joy while sliding down snowy hills, emphasizing the thrill of his adventures.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of sharing his joyful experiences of sliding down snowy hills."
+    }
+  }
+]

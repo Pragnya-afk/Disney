@@ -1,0 +1,450 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 2.0,
+    "beat": "tour_opening",
+    "user_input": "Hi Olaf, can you show me around Arendelle?",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 114.99,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 0,
+      "total_beats": 7,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.04,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "tour_opening",
+          "goal": "Olaf greets the user and begins the tour of Arendelle."
+        },
+        {
+          "name": "castle_courtyard",
+          "goal": "Olaf shows the user the castle courtyard and describes daily life there."
+        },
+        {
+          "name": "market_square",
+          "goal": "Olaf takes the user to the market and points out lively details."
+        },
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to show them around Arendelle.",
+      "director_instruction": "Olaf excitedly welcomes the user and begins the tour by describing the beautiful sights of Arendelle, starting with the castle and its surroundings.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response directly addresses the user's request and introduces the beginning of the tour, aligning with the current beat's goal."
+    },
+    "actor_output": {
+      "character_response": "Hi there! I'm so excited to show you around Arendelle! Look at that magnificent castle over there, with its tall towers and beautiful flags waving in the breeze. It’s like a dream come true! Let’s start our adventure right here in the castle courtyard, where all the magic happens!",
+      "story_event": "Olaf enthusiastically welcomes the user and points out the castle, setting the stage for the tour.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still in the process of welcoming the user and describing the sights of Arendelle."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 2.0,
+    "beat": "tour_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 16.32,
+      "remaining_seconds": 103.68,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 0,
+      "total_beats": 7,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.14,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "tour_opening",
+          "goal": "Olaf greets the user and begins the tour of Arendelle."
+        },
+        {
+          "name": "castle_courtyard",
+          "goal": "Olaf shows the user the castle courtyard and describes daily life there."
+        },
+        {
+          "name": "market_square",
+          "goal": "Olaf takes the user to the market and points out lively details."
+        },
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question with a cheerful response, then guide them back to the tour by describing the lively activities happening in the castle courtyard.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but it can be briefly acknowledged before returning to the current beat of showing the castle courtyard."
+    },
+    "actor_output": {
+      "character_response": "Oh, you know, I just love to spend time with my friends! But right now, let’s focus on the castle courtyard! Look at all the bustling activity! There are children playing, and the townsfolk are chatting and laughing. It’s such a lively place, and the flowers are blooming beautifully all around us!",
+      "story_event": "Olaf describes the lively activities happening in the castle courtyard, inviting the user to enjoy the scene.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet fully explored the details of the castle courtyard."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 2.0,
+    "beat": "tour_opening",
+    "user_input": "Who do we see there?",
+    "temporal_state": {
+      "elapsed_seconds": 27.33,
+      "remaining_seconds": 92.67,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 0,
+      "total_beats": 7,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.23,
+      "actual_progress": 0.0,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "tour_opening",
+          "goal": "Olaf greets the user and begins the tour of Arendelle."
+        },
+        {
+          "name": "castle_courtyard",
+          "goal": "Olaf shows the user the castle courtyard and describes daily life there."
+        },
+        {
+          "name": "market_square",
+          "goal": "Olaf takes the user to the market and points out lively details."
+        },
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for more details about the people in the castle courtyard.",
+      "director_instruction": "Olaf joyfully points out the various people in the courtyard, describing a few familiar faces and their activities, like Anna chatting with some children and Kristoff helping a vendor.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response builds on the current scene by adding more detail about the characters present, enhancing the lively atmosphere of the castle courtyard."
+    },
+    "actor_output": {
+      "character_response": "Look over there! That’s Anna chatting with some children, sharing stories and making them giggle! And see Kristoff? He’s helping a vendor with some fresh berries! It’s such a joyful scene, filled with laughter and warmth!",
+      "story_event": "Olaf describes the lively activities in the castle courtyard, pointing out Anna and Kristoff.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still describing the lively atmosphere and characters in the courtyard."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 2.0,
+    "beat": "castle_courtyard",
+    "user_input": "What is your favorite color?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 40.47,
+      "remaining_seconds": 79.53,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 1,
+      "total_beats": 7,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.34,
+      "actual_progress": 0.14,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "castle_courtyard",
+          "goal": "Olaf shows the user the castle courtyard and describes daily life there."
+        },
+        {
+          "name": "market_square",
+          "goal": "Olaf takes the user to the market and points out lively details."
+        },
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
+      "director_instruction": "Acknowledge Olaf's cheerful nature and briefly mention his love for bright colors, then guide back to the courtyard by describing a colorful flower display nearby.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision maintains Olaf's cheerful character while redirecting back to the current beat of describing the castle courtyard."
+    },
+    "actor_output": {
+      "character_response": "Oh, I just adore all the bright colors! They make me feel so happy! Speaking of colors, look at those beautiful flowers over there in the courtyard! They’re blooming in shades of pink, yellow, and blue, creating a lovely display that makes everything feel even more cheerful!",
+      "story_event": "Olaf points out a vibrant flower display in the castle courtyard, adding to the lively atmosphere.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still describing the lively details of the castle courtyard."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 2.0,
+    "beat": "castle_courtyard",
+    "user_input": "That sounds lively.",
+    "temporal_state": {
+      "elapsed_seconds": 50.52,
+      "remaining_seconds": 69.48,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 1,
+      "total_beats": 7,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.42,
+      "actual_progress": 0.14,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "castle_courtyard",
+          "goal": "Olaf shows the user the castle courtyard and describes daily life there."
+        },
+        {
+          "name": "market_square",
+          "goal": "Olaf takes the user to the market and points out lively details."
+        },
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging the lively atmosphere Olaf described.",
+      "director_instruction": "Olaf enthusiastically agrees and then invites the user to explore more of the courtyard, pointing out a group of musicians playing cheerful tunes nearby.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s acknowledgment allows for a natural progression in the current beat, and introducing the musicians adds more detail to the lively atmosphere in the courtyard."
+    },
+    "actor_output": {
+      "character_response": "Absolutely! It’s so lively here! Look over there! A group of musicians is playing cheerful tunes, filling the air with music that makes you want to dance! Let’s go listen to them and enjoy the fun together!",
+      "story_event": "Olaf enthusiastically points out a group of musicians playing cheerful tunes in the courtyard, inviting the user to join him.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still exploring the castle courtyard and describing its lively atmosphere."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 2.0,
+    "beat": "market_square",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 85.53,
+      "remaining_seconds": 34.47,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 2,
+      "total_beats": 7,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.71,
+      "actual_progress": 0.29,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "market_square",
+          "goal": "Olaf takes the user to the market and points out lively details."
+        },
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's preference for summer or winter.",
+      "director_instruction": "Acknowledge Olaf's love for both seasons, then guide back to the market by describing the vibrant stalls and the delicious smells wafting through the air.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is a derailment, but it can be briefly acknowledged while still advancing the story to the market."
+    },
+    "actor_output": {
+      "character_response": "I love both summer and winter! Each has its own special magic! Speaking of magic, let’s head to the market! The stalls are bursting with colors, and oh, the delicious smells of fresh pastries and fruits are wafting through the air! It’s like a feast for the senses!",
+      "story_event": "Olaf enthusiastically leads the user to the market, describing the vibrant stalls and the delightful aromas surrounding them.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet, as Olaf is still exploring the market with the user."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 2.0,
+    "beat": "fjord_view",
+    "user_input": "The fjord sounds peaceful.",
+    "temporal_state": {
+      "elapsed_seconds": 98.29,
+      "remaining_seconds": 21.71,
+      "time_limit_seconds": 120.0,
+      "current_beat_index": 3,
+      "total_beats": 7,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.82,
+      "actual_progress": 0.43,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging the peacefulness of the fjord.",
+      "director_instruction": "Olaf agrees about the fjord's peacefulness and describes the stunning view, including the shimmering water and the mountains surrounding it, while reflecting on what home means to him.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response advances the current beat by deepening the user's experience of the fjord and Olaf's emotional connection to the place."
+    },
+    "actor_output": {
+      "character_response": "You're absolutely right! The fjord is so peaceful! Just look at how the water sparkles like a treasure under the sun, and those majestic mountains standing guard around us. It reminds me that home is not just a place, but the love and memories we share with friends and family.",
+      "story_event": "Olaf shares his thoughts on the beauty of the fjord and what home means to him.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still reflecting on the fjord's beauty and his feelings about home."
+    }
+  }
+]

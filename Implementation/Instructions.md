@@ -226,7 +226,7 @@ If you do not want predefined user inputs, use `main.py`, not `auto_main.py`.
 
 * `scenarios.olaf_anna_courtyard` for simple sanity checks
 * `scenarios.olaf_retells_red_riding_hood_medium` for medium-complexity testing
-* `scenarios.olaf_retells_red_riding_hood_derail` for disruptive interruption stress tests
+* `scenarios.complete_derail_red_riding_hood` for disruptive interruption stress tests
 
 ```
 ```
@@ -262,7 +262,7 @@ Use this to test manually by typing user inputs.
 ```bash
 python director_agent/time_constrained/time_main.py \
   --character character_prompts.olaf \
-  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --scenario scenarios.complete_derail_red_riding_hood \
   --time-limit 5
 ```
 
@@ -279,7 +279,7 @@ Uses the `user_inputs` from the scenario file.
 ```bash
 python director_agent/time_constrained/time_auto_main.py \
   --character character_prompts.olaf \
-  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --scenario scenarios.complete_derail_red_riding_hood \
   --time-limit 5 \
   --run-id 1
 ```
@@ -289,7 +289,7 @@ python director_agent/time_constrained/time_auto_main.py \
 ```bash
 python director_agent/time_constrained/time_runner.py \
   --character character_prompts.olaf \
-  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --scenario scenarios.complete_derail_red_riding_hood \
   --time-limit 5 \
   --runs 5
 ```
@@ -299,7 +299,7 @@ python director_agent/time_constrained/time_runner.py \
 ```bash
 python director_agent/time_constrained/time_runner.py \
   --character character_prompts.olaf \
-  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --scenario scenarios.complete_derail_red_riding_hood \
   --time-limit 5 \
   --runs 5
 ```
@@ -307,7 +307,7 @@ python director_agent/time_constrained/time_runner.py \
 ```bash
 python director_agent/time_constrained/time_runner.py \
   --character character_prompts.olaf \
-  --scenario scenarios.olaf_retells_red_riding_hood_derail \
+  --scenario scenarios.complete_derail_red_riding_hood \
   --time-limit 10 \
   --runs 5
 ```
@@ -353,4 +353,13 @@ temporal_state
 It shows elapsed time, remaining time, story progress, and pacing mode for each turn.
 
 ```
+
+create a summary table 
+
+python evaluation_agent/summarize_evaluations.py
+# or with explicit paths:
+python evaluation_agent/summarize_evaluations.py \
+    --input_dir evaluation_results \
+    --output_dir evaluation_summary
+
 ```

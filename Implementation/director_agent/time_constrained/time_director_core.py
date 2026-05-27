@@ -9,6 +9,11 @@ or close the story.
 """
 
 import json
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))  # director_agent/
+
 from openai import OpenAI
 
 from director_prompt import DIRECTOR_SYSTEM_PROMPT, DIRECTOR_INSTRUCTIONS

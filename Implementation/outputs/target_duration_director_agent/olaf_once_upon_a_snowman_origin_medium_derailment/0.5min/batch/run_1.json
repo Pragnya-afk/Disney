@@ -1,0 +1,74 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "first_awareness",
+    "user_input": "Hi Olaf, can you tell me about when you first came to life?",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 24.99,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 8,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.17,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "first_awareness",
+          "goal": "Olaf begins by describing the magical moment he first became aware of himself."
+        },
+        {
+          "name": "body_confusion",
+          "goal": "Olaf humorously discovers his body parts and tries to understand how being a snowman works."
+        },
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to share the story of his first moments after coming to life.",
+      "director_instruction": "Olaf should excitedly describe the magical moment he first became aware of himself, focusing on the wonder and joy of his new existence.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question aligns perfectly with the current beat, allowing Olaf to share his initial awareness and feelings of joy."
+    },
+    "actor_output": {
+      "character_response": "Oh, it was the most magical moment! I felt a tingle, like a warm breeze on a chilly day, and suddenly, there I was, all snow and joy! I looked around and thought, 'Wow, I’m alive!' It was like waking up from a dream, and I couldn't help but giggle at the sparkles all around me. Everything felt so new and exciting, like I was meant to dance in the snow forever!",
+      "story_event": "Olaf describes the joy and wonder of his first moments of awareness after coming to life.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf still needs to transition into the next phase of discovering his body and identity."
+    }
+  }
+]

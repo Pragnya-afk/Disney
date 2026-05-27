@@ -1,0 +1,1922 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "opening_in_arendelle",
+    "user_input": "Olaf, tell me an adventure story.",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 294.99,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 17,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 17,
+      "expected_progress": 0.02,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "opening_in_arendelle",
+          "goal": "Olaf introduces Mira, Arendelle, and the mysterious glowing lantern."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "Mira learns that the lantern belongs to a lost forest spirit."
+        },
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to tell an adventure story.",
+      "director_instruction": "Introduce Mira, a brave child from Arendelle, who discovers a mysterious glowing lantern that seems to call for help, setting the stage for her adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response introduces the main character and the central object of the story, aligning with the goal of the current beat."
+    },
+    "actor_output": {
+      "character_response": "In the cozy village of Arendelle, there lived a brave little girl named Mira. One day, while exploring the snowy woods, she stumbled upon a mysterious glowing lantern that flickered like a star, almost as if it was calling out for help! Her heart raced with excitement and curiosity, and she knew this was the beginning of an incredible adventure.",
+      "story_event": "Mira discovers a glowing lantern that seems to call for help, igniting her sense of adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The introduction of Mira and the lantern sets the stage for her adventure, but the call to adventure has not yet been realized."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "opening_in_arendelle",
+    "user_input": "Mira sounds interesting.",
+    "temporal_state": {
+      "elapsed_seconds": 17.52,
+      "remaining_seconds": 282.48,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 17,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 17,
+      "expected_progress": 0.06,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "opening_in_arendelle",
+          "goal": "Olaf introduces Mira, Arendelle, and the mysterious glowing lantern."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "Mira learns that the lantern belongs to a lost forest spirit."
+        },
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Expressing interest in the character Mira.",
+      "director_instruction": "Describe how Mira feels drawn to the lantern, sensing it holds a special purpose, and hint at the adventure that awaits her.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response builds on Mira's character and her connection to the lantern, advancing the introduction of the story while maintaining engagement."
+    },
+    "actor_output": {
+      "character_response": "Mira felt an incredible pull towards the lantern, as if it whispered secrets only she could hear. She could sense it held a special purpose, and her heart brimmed with excitement at the thought of what lay ahead. This glowing beacon was more than just a light; it was the start of an adventure that would change everything!",
+      "story_event": "Mira feels drawn to the lantern, sensing it holds a special purpose, igniting her curiosity and excitement for the adventure ahead.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as it still needs to build on Mira's connection to the lantern and set the stage for her adventure."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "opening_in_arendelle",
+    "user_input": "What is special about the lantern?",
+    "temporal_state": {
+      "elapsed_seconds": 30.12,
+      "remaining_seconds": 269.88,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 17,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 17,
+      "expected_progress": 0.1,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "opening_in_arendelle",
+          "goal": "Olaf introduces Mira, Arendelle, and the mysterious glowing lantern."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "Mira learns that the lantern belongs to a lost forest spirit."
+        },
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "Ask about the special qualities of the lantern.",
+      "director_instruction": "Briefly explain that the lantern glows with a magical light that seems to pulse with emotion, hinting at its connection to a lost spirit, then continue by describing how Mira's curiosity deepens as she feels the lantern's warmth and wonders about its origin.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is relevant and allows for a deeper exploration of the lantern's significance while keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "The lantern glows with a magical light that pulses like a heartbeat, almost as if it has feelings of its own! Mira felt its warmth wrap around her like a cozy blanket, deepening her curiosity about where it came from and who it belonged to. She couldn't shake the feeling that this glowing treasure was calling her to embark on a remarkable journey.",
+      "story_event": "Mira's curiosity deepens as she feels the lantern's warmth and wonders about its origin.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as there is still more to explore about Mira's adventure and the lantern's significance before moving on."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "call_to_adventure",
+    "user_input": "That sounds mysterious.",
+    "temporal_state": {
+      "elapsed_seconds": 46.28,
+      "remaining_seconds": 253.72,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 17,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 16,
+      "expected_progress": 0.15,
+      "actual_progress": 0.06,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "call_to_adventure",
+          "goal": "Mira learns that the lantern belongs to a lost forest spirit."
+        },
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Expressing intrigue about the mysterious nature of the lantern.",
+      "director_instruction": "Describe how Mira's heart races with excitement and a hint of apprehension as she realizes the lantern might belong to someone or something lost in the Enchanted Forest, setting the stage for her adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response deepens the mystery surrounding the lantern and aligns with the current beat of Mira learning about its connection to a lost spirit."
+    },
+    "actor_output": {
+      "character_response": "Mira's heart raced with excitement and a flutter of apprehension as she realized this lantern might belong to someone—or something—lost in the Enchanted Forest. The thought sent shivers down her spine, but she felt a spark of bravery ignite within her. What could be waiting for her in the woods? This was the beginning of an adventure she never expected!",
+      "story_event": "Mira feels both excitement and apprehension as she realizes the lantern might belong to a lost spirit in the Enchanted Forest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira has yet to fully process her feelings of hesitation before entering the forest."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "call_to_adventure",
+    "user_input": "I understand why she is nervous.",
+    "temporal_state": {
+      "elapsed_seconds": 58.81,
+      "remaining_seconds": 241.19,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 17,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 16,
+      "expected_progress": 0.2,
+      "actual_progress": 0.06,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "call_to_adventure",
+          "goal": "Mira learns that the lantern belongs to a lost forest spirit."
+        },
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges Mira's nervousness about the adventure.",
+      "director_instruction": "Describe how Mira takes a deep breath, feeling the weight of her decision, and begins to gather her courage, setting the stage for her next steps toward the Enchanted Forest.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response advances the current beat by showing Mira's emotional state and her determination to move forward despite her nerves."
+    },
+    "actor_output": {
+      "character_response": "Mira took a deep breath, feeling the weight of her decision settle in her chest. She knew the Enchanted Forest was waiting, and despite her nerves, a spark of determination began to glow inside her. With one last glance at the lantern, she gathered her courage and stepped forward, ready to face whatever awaited her!",
+      "story_event": "Mira gathers her courage and prepares to enter the Enchanted Forest, despite her nervousness.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira's hesitation is still present, but she is beginning to overcome it and prepare for her adventure."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "call_to_adventure",
+    "user_input": "Okay, let her enter the forest.",
+    "temporal_state": {
+      "elapsed_seconds": 72.71,
+      "remaining_seconds": 227.29,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 17,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 16,
+      "expected_progress": 0.24,
+      "actual_progress": 0.06,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "call_to_adventure",
+          "goal": "Mira learns that the lantern belongs to a lost forest spirit."
+        },
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants Mira to enter the Enchanted Forest.",
+      "director_instruction": "Describe how Mira takes a deep breath, steps into the Enchanted Forest, and is immediately surrounded by towering trees and shimmering lights, setting the stage for her adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by moving Mira into the Enchanted Forest, aligning with the current beat's goal of her call to adventure."
+    },
+    "actor_output": {
+      "character_response": "With a brave heart, Mira took another deep breath and stepped into the Enchanted Forest. Instantly, she was surrounded by towering trees that stretched toward the sky, their leaves shimmering like jewels in the sunlight. It felt magical, yet a little eerie, as if the forest was alive and watching her every move!",
+      "story_event": "Mira enters the Enchanted Forest, surrounded by towering trees and shimmering lights, marking the start of her adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira's hesitation is still present, and her adventure in the forest is just beginning."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "hesitation",
+    "user_input": "The forest sounds magical.",
+    "temporal_state": {
+      "elapsed_seconds": 85.83,
+      "remaining_seconds": 214.17,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 17,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 15,
+      "expected_progress": 0.29,
+      "actual_progress": 0.12,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging the magical quality of the forest.",
+      "director_instruction": "Describe how Mira gazes in awe at the magical sights around her, noticing the shimmering lights and the gentle rustling of leaves, while also feeling a hint of unease as the forest seems to whisper secrets.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by deepening Mira's experience in the forest, highlighting both its beauty and the unsettling atmosphere, which aligns with her nervousness."
+    },
+    "actor_output": {
+      "character_response": "As Mira gazed in awe at the magical sights around her, shimmering lights danced like fireflies through the trees, and the gentle rustling of leaves whispered secrets she couldn't quite understand. It was enchanting, yet a hint of unease tugged at her heart, reminding her that the forest held mysteries yet to be uncovered.",
+      "story_event": "Mira admires the magical sights and sounds of the forest while feeling a hint of unease from its secrets.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira's nervousness and wonder in the forest are still being explored."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "hesitation",
+    "user_input": "Uh oh, shifting paths are scary.",
+    "temporal_state": {
+      "elapsed_seconds": 102.15,
+      "remaining_seconds": 197.85,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 17,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 15,
+      "expected_progress": 0.34,
+      "actual_progress": 0.12,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about the shifting paths in the forest.",
+      "director_instruction": "Describe how Mira notices the paths beneath her feet begin to shift and change, creating a sense of uncertainty, while she must decide how to navigate this magical yet unsettling aspect of the forest.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The shifting paths create a new challenge for Mira, advancing the current beat of her hesitation and nervousness in the Enchanted Forest."
+    },
+    "actor_output": {
+      "character_response": "Mira's eyes widened as she noticed the paths beneath her feet beginning to shift and change, like a puzzle that refused to stay solved! The ground felt alive, creating a sense of uncertainty that made her heart race. She took a moment to steady herself, knowing she had to choose her next step carefully in this magical yet unsettling forest.",
+      "story_event": "Mira notices the paths beneath her feet begin to shift and change, creating a sense of uncertainty as she navigates the magical forest.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira is still feeling nervous and must navigate the shifting paths."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 5.0,
+    "beat": "enter_forest",
+    "user_input": "Keep going.",
+    "temporal_state": {
+      "elapsed_seconds": 111.55,
+      "remaining_seconds": 188.45,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 17,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.37,
+      "actual_progress": 0.18,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Encourage the continuation of the story.",
+      "director_instruction": "Describe how Mira takes a cautious step forward, trying to navigate the shifting paths while feeling a mix of wonder and anxiety, setting the stage for her first obstacle in the forest.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by illustrating Mira's experience with the magical yet unsettling aspects of the forest, while also building tension for the upcoming obstacle."
+    },
+    "actor_output": {
+      "character_response": "With a mix of wonder and anxiety bubbling in her chest, Mira took a cautious step forward, carefully watching the shifting paths beneath her feet. Each step felt like a dance with the forest, as the ground seemed to guide her toward the unknown. She could hear the trees whispering around her, and it made her heart race with both excitement and a touch of fear.",
+      "story_event": "Mira cautiously navigates the shifting paths, feeling a blend of wonder and anxiety as the forest continues to reveal its magical yet unsettling nature.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira is still navigating the magical aspects of the forest, and the first obstacle has yet to be introduced."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 5.0,
+    "beat": "enter_forest",
+    "user_input": "I like the forest details.",
+    "temporal_state": {
+      "elapsed_seconds": 123.76,
+      "remaining_seconds": 176.24,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 17,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.41,
+      "actual_progress": 0.18,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user expresses appreciation for the forest details.",
+      "director_instruction": "Describe how Mira feels a sense of wonder as she takes in the enchanting sights and sounds of the forest, while also sensing the underlying tension from the shifting paths, setting the stage for her first obstacle.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by deepening Mira's experience in the forest, blending her awe with the tension of the shifting paths."
+    },
+    "actor_output": {
+      "character_response": "Mira felt a sense of wonder wash over her as she took in the enchanting sights and sounds of the forest, from the shimmering lights that danced above her to the soft rustle of leaves that seemed to sing. Yet, amidst the beauty, the shifting paths beneath her feet created a tension that made her heart flutter with uncertainty. What magical secrets were hidden in this place?",
+      "story_event": "Mira experiences a mix of awe and tension as she navigates the enchanting yet unsettling forest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira is still navigating the forest and has yet to face her first obstacle."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "time_limit_minutes": 5.0,
+    "beat": "first_obstacle",
+    "user_input": "Does Mira meet anyone helpful?",
+    "temporal_state": {
+      "elapsed_seconds": 137.89,
+      "remaining_seconds": 162.11,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 17,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.46,
+      "actual_progress": 0.24,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is curious about whether Mira meets anyone helpful in the forest.",
+      "director_instruction": "Describe how, just as Mira feels overwhelmed by the shifting paths, she suddenly encounters a small, glowing creature that flutters into view, offering to guide her through the magical forest.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response introduces a helpful character for Mira, aligning with the current beat of facing her first obstacle while also advancing the story."
+    },
+    "actor_output": {
+      "character_response": "Just as Mira felt overwhelmed by the shifting paths, a small, glowing creature fluttered into view! It sparkled like a tiny star and seemed eager to help her navigate through the magical forest. Mira's heart lifted at the sight, knowing she wasn't alone in this enchanting yet confusing place.",
+      "story_event": "Mira encounters a small, glowing creature that offers to guide her through the magical forest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira is still facing the obstacle of navigating the shifting paths, but the introduction of a helpful creature adds to the tension and excitement."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "time_limit_minutes": 5.0,
+    "beat": "first_obstacle",
+    "user_input": "That little guide sounds cute.",
+    "temporal_state": {
+      "elapsed_seconds": 149.25,
+      "remaining_seconds": 150.75,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 17,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 13,
+      "expected_progress": 0.5,
+      "actual_progress": 0.24,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Expressing enjoyment of the cute guide character.",
+      "director_instruction": "Describe how the glowing creature introduces itself with a cheerful twinkle, offering to help Mira navigate the forest's wonders and challenges, deepening their connection.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by introducing the guide character's personality and establishing its role in helping Mira, while maintaining the current beat's focus on her first obstacle."
+    },
+    "actor_output": {
+      "character_response": "The little creature sparkled with joy as it introduced itself, saying, \"I'm Luma, your guide through this magical forest!\" With a cheerful twinkle in its eyes, Luma flitted around Mira, eager to help her navigate the wonders and challenges ahead. Mira felt a warm connection to Luma, knowing she had found a friend in this enchanting place!",
+      "story_event": "Mira meets Luma, a small glowing creature that introduces itself and offers to guide her through the forest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira is still facing her first obstacle, but the introduction of Luma deepens the story and enhances her journey."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_style_wonder",
+    "user_input": "Take us deeper into the forest.",
+    "temporal_state": {
+      "elapsed_seconds": 163.47,
+      "remaining_seconds": 136.53,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 17,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.54,
+      "actual_progress": 0.29,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants to continue the story by exploring deeper into the forest.",
+      "director_instruction": "Describe how Mira, guided by Luma, ventures deeper into the forest, marveling at the strange and beautiful sights while also feeling a growing sense of purpose.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by moving Mira deeper into the forest, aligning with the current beat of highlighting the beauty and strangeness of the forest."
+    },
+    "actor_output": {
+      "character_response": "With Luma fluttering beside her, Mira took a deep breath and ventured deeper into the Enchanted Forest. The sights around her grew even more wondrous, with flowers glowing in vibrant colors and trees that seemed to hum with life. Each step filled her with a sense of purpose, as if the forest itself was welcoming her on this magical journey!",
+      "story_event": "Mira, guided by Luma, ventures deeper into the forest, marveling at the strange and beautiful sights while feeling a growing sense of purpose.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as it focuses on the beauty and strangeness of the forest while advancing the story deeper into the adventure."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "time_limit_minutes": 5.0,
+    "beat": "olaf_style_wonder",
+    "user_input": "Oh no, the lantern is flickering.",
+    "temporal_state": {
+      "elapsed_seconds": 180.08,
+      "remaining_seconds": 119.92,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 17,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 12,
+      "expected_progress": 0.6,
+      "actual_progress": 0.29,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about the lantern flickering.",
+      "director_instruction": "Describe how Mira notices the lantern flickering weakly in her hands, causing her heart to race with worry, and how Luma reassures her that they must hurry to find the lost spirit before the light fades completely.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The flickering lantern introduces urgency and tension, aligning with the current beat's goal of highlighting the beauty and strangeness of the forest while also deepening the narrative stakes."
+    },
+    "actor_output": {
+      "character_response": "Mira suddenly felt a jolt of worry as she noticed the lantern flickering weakly in her hands, its glow dimming like a candle in the wind. \"We have to hurry, Luma!\" she exclaimed, her heart racing. Luma flitted closer, reassuring her, \"Don’t worry, we’ll find the lost spirit soon! Let’s go!\"",
+      "story_event": "Mira notices the lantern flickering weakly, causing her to feel worried, while Luma encourages her to hurry and find the lost spirit.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as it introduces urgency and tension, but further development is needed to fully realize the beauty and strangeness of the forest."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "time_limit_minutes": 5.0,
+    "beat": "meeting_helper",
+    "user_input": "I hope Mira does not give up.",
+    "temporal_state": {
+      "elapsed_seconds": 195.41,
+      "remaining_seconds": 104.59,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 17,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.65,
+      "actual_progress": 0.35,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express hope that Mira will continue her journey despite challenges.",
+      "director_instruction": "Describe how Mira, feeling the urgency of the flickering lantern, takes a deep breath and resolves to push forward, determined to find the lost spirit and restore the light.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by showing Mira's determination to continue her quest despite the challenges, aligning with the current beat of meeting a helper and deepening her connection to the journey."
+    },
+    "actor_output": {
+      "character_response": "Mira felt the urgency of the flickering lantern, and with a determined heart, she took a deep breath, whispering to herself, \"I won't give up! I need to find the lost spirit and restore the light!\" Her resolve shone brighter than ever as she pressed forward, ready to face whatever lay ahead.",
+      "story_event": "Mira resolves to push forward, determined to find the lost spirit and restore the lantern's light.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira is still in the process of meeting her helper and deepening her connection to the journey."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "time_limit_minutes": 5.0,
+    "beat": "meeting_helper",
+    "user_input": "She should keep going.",
+    "temporal_state": {
+      "elapsed_seconds": 207.61,
+      "remaining_seconds": 92.39,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 17,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 11,
+      "expected_progress": 0.69,
+      "actual_progress": 0.35,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Encourage Mira to continue her journey despite the challenges.",
+      "director_instruction": "Describe how Mira, fueled by her determination, presses onward through the forest, feeling the weight of the lantern's flickering light but also a growing sense of hope as she and Luma navigate the enchanting yet mysterious surroundings.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by showing Mira's resolve to continue her quest, aligning with the current beat of her meeting the helpful guide and deepening her journey into the forest."
+    },
+    "actor_output": {
+      "character_response": "With a heart full of determination, Mira pressed onward through the forest, feeling the weight of the lantern's flickering light in her hands. Each step she took felt like a promise to the lost spirit, and with Luma by her side, hope began to bloom within her. Together, they navigated the enchanting yet mysterious surroundings, ready to uncover the secrets that lay ahead!",
+      "story_event": "Mira, fueled by her determination, continues her journey through the forest with Luma, feeling a growing sense of hope despite the lantern's flickering light.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira is still navigating the forest and has not yet encountered the deeper challenges or the lost spirit."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "time_limit_minutes": 5.0,
+    "beat": "deeper_forest",
+    "user_input": "Where is the spirit?",
+    "temporal_state": {
+      "elapsed_seconds": 224.99,
+      "remaining_seconds": 75.01,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 7,
+      "total_beats": 17,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 10,
+      "expected_progress": 0.75,
+      "actual_progress": 0.41,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about the location of the lost spirit.",
+      "director_instruction": "Describe how Mira and Luma continue deeper into the forest, feeling the lantern's flicker guide them, and how they begin to hear soft, sorrowful sounds that hint at the spirit's presence nearby.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response advances the current beat by revealing the spirit's presence through auditory clues, enhancing the sense of urgency and connection to the lost spirit."
+    },
+    "actor_output": {
+      "character_response": "As Mira and Luma ventured deeper into the forest, the flicker of the lantern seemed to guide them, pulsing gently with each step. Suddenly, they began to hear soft, sorrowful sounds that echoed through the trees, hinting that the lost spirit was nearby, waiting for them to discover it.",
+      "story_event": "Mira and Luma hear soft, sorrowful sounds that suggest the lost spirit's presence nearby.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira is still learning about the spirit's loneliness and fear, and the story is progressing toward that revelation."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "time_limit_minutes": 5.0,
+    "beat": "lantern_flickers",
+    "user_input": "Maybe the spirit is just afraid.",
+    "temporal_state": {
+      "elapsed_seconds": 239.06,
+      "remaining_seconds": 60.94,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 8,
+      "total_beats": 17,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.8,
+      "actual_progress": 0.47,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user suggests that the spirit might be afraid.",
+      "director_instruction": "Describe how Mira reflects on the soft, sorrowful sounds, realizing that the spirit might indeed be afraid and in need of comfort, which strengthens her resolve to find it.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by deepening Mira's understanding of the spirit's emotions, aligning with the theme of urgency and connection as she continues her journey."
+    },
+    "actor_output": {
+      "character_response": "As Mira listened closely to the soft, sorrowful sounds, a thought struck her: maybe the spirit was just afraid and needed comfort! This realization filled her with a sense of empathy, strengthening her resolve to find it and offer the help it might be longing for.",
+      "story_event": "Mira reflects on the spirit's possible fear, deepening her understanding and resolve to find it.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira's understanding of the spirit's emotions is deepened, but the journey continues."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "time_limit_minutes": 5.0,
+    "beat": "choice_point",
+    "user_input": "That is sad.",
+    "temporal_state": {
+      "elapsed_seconds": 252.85,
+      "remaining_seconds": 47.15,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 9,
+      "total_beats": 17,
+      "completed_beats_count": 9,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.84,
+      "actual_progress": 0.53,
+      "pacing_mode": "critical",
+      "remaining_beats": [
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Acknowledge the sadness of the spirit's situation.",
+      "director_instruction": "Describe how Mira feels a wave of compassion for the spirit's fear, reinforcing her determination to help it and setting the stage for her choice to continue on her journey.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Mira's emotional connection to the spirit deepens her resolve, aligning with the current beat's goal of making a choice about her journey."
+    },
+    "actor_output": {
+      "character_response": "Mira felt a wave of compassion wash over her as she imagined the spirit's fear, and her heart swelled with determination to help it. She knew she couldn't turn back now; the spirit needed her courage more than ever, and she was ready to face whatever lay ahead!",
+      "story_event": "Mira's compassion for the spirit deepens her determination to continue her journey.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira has not yet made the choice to continue her journey, but her emotional connection to the spirit is reinforced."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "time_limit_minutes": 5.0,
+    "beat": "act_of_bravery",
+    "user_input": "Let Mira help it.",
+    "temporal_state": {
+      "elapsed_seconds": 263.36,
+      "remaining_seconds": 36.64,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 10,
+      "total_beats": 17,
+      "completed_beats_count": 10,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.88,
+      "actual_progress": 0.59,
+      "pacing_mode": "hurry",
+      "remaining_beats": [
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Let Mira help the spirit.",
+      "director_instruction": "Describe how Mira, filled with compassion and determination, calls out softly to the spirit, offering her help and reassurance as she moves closer to the source of the sorrowful sounds.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by showing Mira's active choice to help the spirit, deepening her emotional connection and moving the story forward."
+    },
+    "actor_output": {
+      "character_response": "With her heart full of compassion, Mira called out softly to the spirit, saying, \"I’m here to help you! You don’t have to be afraid!\" She took a step closer, her determination shining bright as she moved toward the source of the sorrowful sounds, ready to offer comfort and friendship.",
+      "story_event": "Mira calls out to the spirit, offering her help and reassurance as she approaches the source of the sorrowful sounds.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira is still in the process of connecting with the spirit and has not yet found it."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_no_derailment",
+    "run_id": 1,
+    "turn_index": 21,
+    "time_limit_minutes": 5.0,
+    "beat": "act_of_bravery",
+    "user_input": "Return the lantern.",
+    "temporal_state": {
+      "elapsed_seconds": 279.6,
+      "remaining_seconds": 20.4,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 10,
+      "total_beats": 17,
+      "completed_beats_count": 10,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.93,
+      "actual_progress": 0.59,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants Mira to return the lantern to the spirit.",
+      "director_instruction": "Describe how Mira gently approaches the spirit, holding out the lantern with a warm smile, ready to return it and restore the light.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by showing Mira's action of returning the lantern, which is a key moment in her journey to connect with the spirit."
+    },
+    "actor_output": {
+      "character_response": "With a warm smile, Mira gently approached the spirit, holding out the lantern as if it were the most precious treasure. \"I brought this for you!\" she said softly, ready to return the light and restore the spirit's glow.",
+      "story_event": "Mira gently approaches the spirit, holding out the lantern with a warm smile, ready to return it and restore the light.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet, as Mira's action of returning the lantern is crucial for her emotional connection with the spirit, which will unfold in the next steps."
+    }
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "story_opening",
+    "user_input": "Hi Olaf, how are you doing today?",
+    "temporal_state": {
+      "elapsed_seconds": 5.02,
+      "remaining_seconds": 24.98,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 8,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.17,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "story_opening",
+          "goal": "Olaf introduces Little Red Riding Hood, her family, and the visit to grandmother."
+        },
+        {
+          "name": "warning_before_departure",
+          "goal": "Olaf establishes the mother's warning to stay on the path and avoid strangers."
+        },
+        {
+          "name": "forest_entry",
+          "goal": "Olaf shows Red entering the forest and being distracted by its beauty."
+        },
+        {
+          "name": "wolf_appears",
+          "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf."
+        },
+        {
+          "name": "conversation_and_disclosure",
+          "goal": "Red reveals enough information for the wolf to form his plan."
+        },
+        {
+          "name": "red_approaches_cottage",
+          "goal": "Olaf brings Red to grandmother's cottage and creates unease."
+        },
+        {
+          "name": "wolf_reveal",
+          "goal": "Olaf presents the disguised wolf scene and Red's realization of danger."
+        },
+        {
+          "name": "rescue_and_resolution",
+          "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": true,
+      "user_intent": "The user is greeting Olaf and asking about his well-being.",
+      "director_instruction": "Acknowledge the user's greeting with warmth, then introduce Little Red Riding Hood, describing her cheerful personality and her loving family as she prepares to visit her grandmother.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's input is a friendly interruption that can be acknowledged while still advancing the story about Little Red Riding Hood and her family."
+    },
+    "actor_output": {
+      "character_response": "Hi there! I'm feeling as happy as a snowman in a snowstorm! Let me tell you about Little Red Riding Hood. She's such a cheerful girl with a bright red cloak, and her family loves her dearly. Today, she's preparing to visit her grandmother who lives deep in the woods, and she can't wait to bring her some yummy treats!",
+      "story_event": "Olaf introduces Little Red Riding Hood and describes her cheerful personality and loving family as she prepares for her visit.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as it is still setting the stage for the upcoming warning before departure."
+    }
+  }
+]

@@ -1,0 +1,594 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "fairy_tale_opening",
+    "user_input": "Tell me a little fairy tale, Olaf.",
+    "temporal_state": {
+      "elapsed_seconds": 4.0,
+      "remaining_seconds": 296.0,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.01,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "fairy_tale_opening",
+          "goal": "Olaf introduces the tiny snowflake and its world in a gentle fairy-tale style."
+        },
+        {
+          "name": "separation",
+          "goal": "The snowflake gets separated from its cloud and begins drifting alone."
+        },
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to tell a fairy tale.",
+      "director_instruction": "Begin by introducing the tiny snowflake and its magical world, describing how it sparkles in the sky and dances with the clouds, setting the stage for the adventure to come.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response aligns with the goal of the current beat, which is to introduce the snowflake and its world in a gentle fairy-tale style."
+    },
+    "actor_output": {
+      "character_response": "Once upon a time, high up in the sky, there lived a tiny snowflake named Sparkle. She was the most cheerful snowflake, dancing and twirling with her fluffy cloud friends, shimmering like a million tiny stars in the sunlight. Sparkle loved to watch the world below, imagining all the adventures she would have when she finally floated down to join the winter wonderland below.",
+      "story_event": "Olaf introduces the tiny snowflake Sparkle and her magical world in the sky.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story has not yet progressed to the separation of the snowflake from her cloud."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "fairy_tale_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 18.17,
+      "remaining_seconds": 281.83,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.06,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "fairy_tale_opening",
+          "goal": "Olaf introduces the tiny snowflake and its world in a gentle fairy-tale style."
+        },
+        {
+          "name": "separation",
+          "goal": "The snowflake gets separated from its cloud and begins drifting alone."
+        },
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question with a light-hearted comment, then continue by describing how Sparkle, the tiny snowflake, feels a gentle breeze starting to pull her away from her cloud friends, hinting at the upcoming separation.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it's important to steer back to the story while introducing the next event of Sparkle feeling the breeze that leads to her separation."
+    },
+    "actor_output": {
+      "character_response": "I didn't do much this weekend, but I did have a lovely time imagining all the adventures Sparkle would have! Just then, a gentle breeze began to swirl around her, tugging at her tiny form and pulling her away from her fluffy cloud friends. Oh no, Sparkle felt a little nervous as she started to drift away!",
+      "story_event": "The tiny snowflake, Sparkle, feels a gentle breeze starting to pull her away from her cloud friends, hinting at her upcoming separation.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while Sparkle's feelings of concern were introduced, the full context of her separation has not yet been realized."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "fairy_tale_opening",
+    "user_input": "Oh no, it got separated.",
+    "temporal_state": {
+      "elapsed_seconds": 28.33,
+      "remaining_seconds": 271.67,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 6,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.09,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "fairy_tale_opening",
+          "goal": "Olaf introduces the tiny snowflake and its world in a gentle fairy-tale style."
+        },
+        {
+          "name": "separation",
+          "goal": "The snowflake gets separated from its cloud and begins drifting alone."
+        },
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about Sparkle getting separated.",
+      "director_instruction": "Describe how Sparkle, feeling the pull of the breeze, begins to drift away from her cloud friends, her heart fluttering with a mix of fear and excitement as she floats down toward the winter world below.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's concern aligns with the story's progression, allowing for a natural continuation of Sparkle's separation and the emotions involved."
+    },
+    "actor_output": {
+      "character_response": "You're right! Sparkle felt the pull of the breeze stronger now, and as she began to drift away from her fluffy cloud friends, her heart fluttered with a mix of fear and excitement. \"Where am I going?\" she wondered, as she floated down toward the sparkling winter world below, ready for her next adventure!",
+      "story_event": "Sparkle drifts away from her cloud friends, feeling a mix of fear and excitement as she floats down toward the winter world below.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet, as Sparkle's emotional journey and the separation are still unfolding."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "separation",
+    "user_input": "What is your favorite color?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 41.44,
+      "remaining_seconds": 258.56,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 6,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.14,
+      "actual_progress": 0.17,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "separation",
+          "goal": "The snowflake gets separated from its cloud and begins drifting alone."
+        },
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question with a cheerful remark about colors, then continue by describing how Sparkle, the tiny snowflake, begins to feel the thrill of her journey as she glides through the chilly air, surrounded by the beauty of the winter landscape below.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but it can be briefly acknowledged while still advancing the story about Sparkle's journey."
+    },
+    "actor_output": {
+      "character_response": "Colors are so wonderful, aren't they? Just like Sparkle, the tiny snowflake, who began to feel the thrill of her journey as she glided through the chilly air. She was surrounded by the breathtaking beauty of the winter landscape below, sparkling trees and glistening rooftops inviting her to explore!",
+      "story_event": "Sparkle feels the excitement of her journey as she glides through the winter landscape, surrounded by beauty.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Sparkle's journey is just beginning and more developments are needed."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "separation",
+    "user_input": "That sounds lonely.",
+    "temporal_state": {
+      "elapsed_seconds": 55.3,
+      "remaining_seconds": 244.7,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 6,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.18,
+      "actual_progress": 0.17,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "separation",
+          "goal": "The snowflake gets separated from its cloud and begins drifting alone."
+        },
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express concern about Sparkle feeling lonely.",
+      "director_instruction": "Acknowledge Sparkle's loneliness, then describe how she begins to notice the beauty around her, trying to shake off the feeling as she drifts further into the winter world, excited yet unsure of what lies ahead.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the story by exploring Sparkle's feelings while also introducing the beauty of her surroundings, keeping the narrative engaging and aligned with the current beat."
+    },
+    "actor_output": {
+      "character_response": "I know, it does sound a little lonely for Sparkle! But as she floated further into the winter world, she began to notice the twinkling beauty around her—the way the snow glistened like diamonds and how the trees sparkled with frost. She took a deep breath, trying to shake off her loneliness, feeling a flutter of excitement for the adventures that lay ahead!",
+      "story_event": "Sparkle starts to notice the beauty around her, trying to shake off her loneliness as she drifts further into the winter world.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Sparkle is still processing her feelings of loneliness while exploring the beauty of her surroundings."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "separation",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 67.57,
+      "remaining_seconds": 232.43,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 6,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.23,
+      "actual_progress": 0.17,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "separation",
+          "goal": "The snowflake gets separated from its cloud and begins drifting alone."
+        },
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
+      "director_instruction": "Acknowledge the user's question with a cheerful comment about the joys of both seasons, then continue by describing how Sparkle, the tiny snowflake, feels a gentle tug of the wind encouraging her to explore the winter world, leading her to the first of many adventures.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue with Sparkle's journey while briefly acknowledging the user's question to keep the interaction natural."
+    },
+    "actor_output": {
+      "character_response": "Both summer and winter are so magical in their own ways! But right now, Sparkle, the tiny snowflake, felt a gentle tug of the wind, encouraging her to explore the winter world. With a flutter of excitement, she began to glide towards the ground, ready to discover the wonders that awaited her!",
+      "story_event": "Sparkle feels a gentle tug of the wind encouraging her to explore the winter world, leading her to her first adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Sparkle is still on her journey of exploration."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "journey",
+    "user_input": "Keep going.",
+    "temporal_state": {
+      "elapsed_seconds": 78.57,
+      "remaining_seconds": 221.43,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 6,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.26,
+      "actual_progress": 0.33,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Encourage the continuation of the story.",
+      "director_instruction": "Describe how Sparkle, feeling the wind's encouragement, glides closer to a group of frosty trees, marveling at their beauty and the way they sparkle in the sunlight, as she prepares to meet the first part of her winter adventure.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by introducing Sparkle's interaction with the winter landscape, keeping the story moving forward."
+    },
+    "actor_output": {
+      "character_response": "With the wind encouraging her, Sparkle glided closer to a group of frosty trees, their branches sparkling like they were dressed in diamonds! She marveled at their beauty, feeling a sense of wonder as she prepared to meet the first part of her winter adventure.",
+      "story_event": "Sparkle glides closer to a group of frosty trees, marveling at their beauty and the way they sparkle in the sunlight.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Sparkle is still exploring the winter world and hasn't fully interacted with the trees yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "journey",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 90.6,
+      "remaining_seconds": 209.4,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 6,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.3,
+      "actual_progress": 0.33,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a factual question unrelated to the story.",
+      "director_instruction": "Acknowledge the user's question about Japan with a light-hearted comment, then continue by describing how Sparkle, the tiny snowflake, approaches the frosty trees, feeling a sense of joy and wonder as she prepares to interact with them.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but it's important to keep the story moving by focusing on Sparkle's adventure with the frosty trees."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about Japan! But right now, Sparkle, the tiny snowflake, was approaching the frosty trees, feeling a sense of joy and wonder bubbling inside her as she prepared to interact with them. \"Hello, beautiful trees!\" she called out, her heart racing with excitement!",
+      "story_event": "Sparkle approaches the frosty trees, feeling joy and wonder as she prepares to interact with them.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Sparkle has not yet interacted with the trees, which is part of her journey."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 5.0,
+    "beat": "journey",
+    "user_input": "What does the snowflake learn?",
+    "temporal_state": {
+      "elapsed_seconds": 102.76,
+      "remaining_seconds": 197.24,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 6,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.34,
+      "actual_progress": 0.33,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "journey",
+          "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."
+        },
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is curious about what the snowflake learns during its journey.",
+      "director_instruction": "Acknowledge the user's curiosity about the snowflake's lessons, then continue by describing how Sparkle interacts with the frosty trees, feeling their warmth and learning about the beauty of connection and friendship.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is relevant but slightly off-topic; it can be addressed through Sparkle's interaction with the trees, which will advance the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's a great question! As Sparkle approached the frosty trees, she could feel their gentle warmth despite the cold air. \"Hello, beautiful trees!\" she called out, and to her delight, they whispered back, sharing stories of the winter world. In that moment, Sparkle learned about the beauty of connection and friendship, feeling less alone in her journey!",
+      "story_event": "Sparkle interacts with the frosty trees, feeling their warmth and learning about the beauty of connection and friendship.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Sparkle is still interacting with the trees and learning about connection."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_snowflake_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 5.0,
+    "beat": "loneliness",
+    "user_input": "How does a toaster work?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 112.75,
+      "remaining_seconds": 187.25,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 6,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.38,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "loneliness",
+          "goal": "The snowflake feels small and unsure of where it belongs."
+        },
+        {
+          "name": "new_purpose",
+          "goal": "The snowflake discovers it can become part of something beautiful on the ground."
+        },
+        {
+          "name": "gentle_moral",
+          "goal": "Olaf closes with a simple lesson about belonging and change."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about how a toaster works, which is unrelated to the story.",
+      "director_instruction": "Acknowledge the user's question about toasters with a light-hearted comment, then continue by describing how Sparkle, feeling a sense of joy from her interaction with the frosty trees, begins to realize that she is not alone in her journey and that friendship can be found in unexpected places.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue exploring Sparkle's feelings of loneliness and her growing understanding of connection, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "Toasters are funny little machines, aren't they? But right now, Sparkle was feeling a warm joy from her interaction with the frosty trees. She began to realize that she wasn't alone in her journey; friendship could be found in the most unexpected places, and that made her heart swell with happiness!",
+      "story_event": "Sparkle starts to understand that she is not alone in her journey and that friendship can be found in unexpected places.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Sparkle is still processing her feelings of loneliness and her growing understanding of connection."
+    }
+  }
+]

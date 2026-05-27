@@ -116,6 +116,17 @@ def load_module(module_name: str):
     return importlib.import_module(module_name)
 
 
+def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
+    mod = load_module(scenario_module)
+    if scenario_name:
+        if not hasattr(mod, "SCENARIOS"):
+            raise ValueError(f"--scenario-name requires a suite module with a SCENARIOS dict.")
+        if scenario_name not in mod.SCENARIOS:
+            raise ValueError(f"Scenario '{scenario_name}' not found. Available: {list(mod.SCENARIOS.keys())}")
+        return mod.SCENARIOS[scenario_name]
+    return mod.SCENARIO
+
+
 def build_actor_prompt(
     user_input: str,
     story_state: dict,
@@ -286,22 +297,18 @@ def should_close_story(director_decision: dict) -> bool:
     return director_decision.get("decision_type") == "close_story"
 
 
-def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
+def run_story(character_module: str, scenario_module: str, run_id: int, scenario_name_override: str | None = None) -> str:
     client = make_client()
 
     character_mod = load_module(character_module)
-    scenario_mod = load_module(scenario_module)
-
     character = character_mod.CHARACTER
-    scenario = scenario_mod.SCENARIO
+    scenario = load_scenario(scenario_module, scenario_name_override)
 
     story_topic = scenario["story_topic"]
     beats = scenario["beats"]
     user_inputs = scenario["user_inputs"]
     scenario_name = scenario["scenario_name"]
-
-    # Use scenario module name for output folder
-    scenario_folder = scenario_module.split('.')[-1]
+    scenario_folder = scenario_name
 
     story_state = {
         "beat_index": 0,
@@ -413,11 +420,12 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite")
+    parser.add_argument("--scenario-name", default=None, help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment")
     parser.add_argument("--run-id", type=int, default=1)
     args = parser.parse_args()
 
-    run_story(args.character, args.scenario, args.run_id)
+    run_story(args.character, args.scenario, args.run_id, args.scenario_name)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,502 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "story_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities.",
+      "director_instruction": "Acknowledge the user's question about the weekend, then introduce Little Red Riding Hood and her family, explaining her cheerful nature and the special basket she prepares for her grandmother's visit.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user asked a side question, but it's important to redirect back to introducing Little Red Riding Hood and her family to maintain the story's flow."
+    },
+    "actor_output": {
+      "character_response": "I had a wonderful weekend, but let me tell you about Little Red Riding Hood! She’s such a cheerful girl, always wearing her bright red cloak. One sunny day, she prepared a special basket filled with goodies to take to her grandmother who lived in a cozy cottage deep in the woods.",
+      "story_event": "Olaf introduces Little Red Riding Hood and describes her cheerful nature and the special basket she prepares for her grandmother's visit.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the next part about the warning before departure still needs to be introduced."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "story_opening",
+    "user_input": "What is your favorite color?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about favorite color, then continue by explaining how Little Red Riding Hood's mother reminds her to stay safe on her journey to grandmother's house.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision was chosen to gently redirect the conversation back to the story while still acknowledging the user's input."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question! But back to Little Red Riding Hood! Before she set off, her mother gently reminded her to stay on the path and not talk to strangers. It was such a caring moment, showing how much her mother loved her!",
+      "story_event": "Olaf explains how Little Red Riding Hood's mother reminds her to stay safe on her journey to grandmother's house.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has introduced the warning from Little Red Riding Hood's mother but has not yet moved to the next part of the story."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "warning_before_departure",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
+      "director_instruction": "Acknowledge the user's question about summer and winter, then continue by describing Little Red Riding Hood entering the forest and being captivated by its beauty.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat is still in progress, and moving to the next part of the story about Red entering the forest aligns with the established narrative flow."
+    },
+    "actor_output": {
+      "character_response": "Summer and winter both have their charm, but let's get back to Little Red Riding Hood! As she stepped into the forest, she was completely captivated by the beauty around her—the tall trees, the colorful flowers, and the cheerful birds singing. It was like stepping into a magical world!",
+      "story_event": "Olaf describes Little Red Riding Hood entering the forest and being captivated by its beauty.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it still needs to establish the setting of the forest and Little Red Riding Hood's experience within it."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "forest_entry",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a trivia question about the capital of Japan.",
+      "director_instruction": "Acknowledge the user's trivia question, then continue by introducing the wolf as he appears in the forest, creating a sense of intrigue and tension.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat is focused on Little Red Riding Hood entering the forest, and introducing the wolf now will maintain the story's momentum and build anticipation."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question! But back to our story! Just as Little Red Riding Hood was admiring the forest, a sly wolf appeared from behind a tree, his eyes glinting with curiosity. Oh, I wonder what he'll do next!",
+      "story_event": "The wolf appears in the forest, creating intrigue and tension.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it still focuses on Little Red Riding Hood's journey, but now introduces the wolf to build suspense."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "wolf_appears",
+    "user_input": "How does a toaster work?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a trivia question about how a toaster works.",
+      "director_instruction": "Acknowledge the user's trivia question, then introduce the conversation between Little Red Riding Hood and the wolf, highlighting the wolf's sly demeanor and curiosity.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance by introducing the conversation between Red and the wolf, which aligns with the current beat of 'wolf_appears.'"
+    },
+    "actor_output": {
+      "character_response": "That's a curious question! But let’s dive back into our story! The sly wolf approached Little Red Riding Hood with a glimmer in his eye, asking her where she was headed. His voice was smooth, but there was something mischievous about him that made her a little uneasy.",
+      "story_event": "The conversation between Little Red Riding Hood and the wolf begins, highlighting the wolf's sly demeanor and curiosity.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the conversation has just started, and we need to explore more of their interaction."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "wolf_appears",
+    "user_input": "What is 15 times 12?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a trivia question about multiplication.",
+      "director_instruction": "Acknowledge the user's math question, then show Little Red Riding Hood revealing her destination to the wolf, giving him the information he needs for his plan.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance by showing Red's interaction with the wolf, which is essential for the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting math question! But back to our story! Little Red Riding Hood, feeling a bit nervous, told the wolf that she was on her way to her grandmother's house to deliver a basket of treats. Little did she know, this information was just what the sly wolf needed for his sneaky plan!",
+      "story_event": "Little Red Riding Hood reveals her destination to the wolf, giving him the information he needs for his plan.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the conversation between Red and the wolf is still unfolding, leading to further developments."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "wolf_appears",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a trivia question about penguins and their ability to fly.",
+      "director_instruction": "Acknowledge the user's question about penguins, then describe how the wolf formulates his plan based on the information Little Red Riding Hood just shared.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance by showing the wolf's reaction and plan after learning about Little Red Riding Hood's destination."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about penguins! But back to our story! The sly wolf, with a cunning grin, began to formulate his plan after hearing that Little Red Riding Hood was headed to her grandmother's house. He thought to himself, 'If I hurry, I can reach her grandmother first and have a little fun!'",
+      "story_event": "The wolf formulates his plan based on the information Little Red Riding Hood just shared.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still progressing with the wolf's plan, and it hasn't reached the next significant event yet."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "wolf_appears",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about Olaf's favorite dessert, which is a derailment from the story.",
+      "director_instruction": "Acknowledge the user's question about dessert, then describe how the wolf sets off towards grandmother's house, creating a sense of urgency and anticipation.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue with the wolf's actions following Little Red Riding Hood's disclosure, maintaining the tension and advancing the narrative."
+    },
+    "actor_output": {
+      "character_response": "Desserts are delightful! But let’s get back to our story! The sly wolf, with a quick flick of his tail, dashed off toward grandmother's house, eager to reach her before Little Red Riding Hood could arrive. You could almost feel the excitement in the air as he plotted his sneaky surprise!",
+      "story_event": "The wolf sets off towards grandmother's house, creating a sense of urgency and anticipation.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still progressing with the wolf's actions."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "wolf_appears",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a trivia question about time.",
+      "director_instruction": "Acknowledge the user's question about time, then describe how Little Red Riding Hood continues her journey through the forest, blissfully unaware of the wolf's plans.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as the wolf's actions create tension, and Little Red Riding Hood's journey should continue to build the narrative."
+    },
+    "actor_output": {
+      "character_response": "That's a neat question about time! But let’s return to our story! Little Red Riding Hood continued her journey through the forest, humming a cheerful tune, completely unaware of the wolf's sneaky plans unfolding behind her. The sun shone brightly, and the flowers danced in the breeze, making everything feel so magical!",
+      "story_event": "Little Red Riding Hood continues her journey through the forest, blissfully unaware of the wolf's plans.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the story is still building tension with Little Red Riding Hood's journey and the wolf's actions."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "wolf_appears",
+    "user_input": "Why is the sky blue?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a question about the color of the sky.",
+      "director_instruction": "Acknowledge the user's question about the sky, then describe how Little Red Riding Hood approaches her grandmother's cottage, feeling a mix of excitement and a hint of unease.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Little Red Riding Hood is nearing her grandmother's cottage, which aligns with the current beat of introducing the wolf and the unfolding tension."
+    },
+    "actor_output": {
+      "character_response": "That's a curious question about the sky! But let’s get back to Little Red Riding Hood! As she approached her grandmother's cottage, she felt a mix of excitement and a hint of unease, sensing that something was off in the air. The door to the cottage stood slightly ajar, and her heart raced as she wondered what awaited her inside.",
+      "story_event": "Little Red Riding Hood approaches her grandmother's cottage, feeling a mix of excitement and a hint of unease.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still unfolding with Little Red Riding Hood nearing her grandmother's house, creating tension for the next development."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "conversation_and_disclosure",
+    "user_input": "Can you explain how refrigerators work?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for an explanation about how refrigerators work.",
+      "director_instruction": "Acknowledge the user's question about refrigerators, then describe how Little Red Riding Hood pushes the door open and steps inside the cottage, noticing something is very wrong.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Little Red Riding Hood enters the cottage, which aligns with the current beat of her approaching the cottage and feeling unease."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about refrigerators! But let’s dive back into our story! Little Red Riding Hood pushed the door open and stepped inside the cottage, her heart pounding as she noticed something was very wrong—everything was too quiet, and the usual warmth of her grandmother's home felt strangely cold.",
+      "story_event": "Little Red Riding Hood enters the cottage and realizes something is very wrong.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because we are still in the moment of Little Red Riding Hood realizing the unsettling atmosphere inside the cottage."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "red_approaches_cottage",
+    "user_input": "What is your favorite movie?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about Olaf's favorite movie.",
+      "director_instruction": "Acknowledge the user's question about movies, then describe how Little Red Riding Hood notices the wolf disguised as her grandmother, creating a moment of realization and tension.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance to the moment of realization, which aligns with the current beat of creating unease as Red approaches the cottage."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about movies! But let’s get back to our story! Little Red Riding Hood's eyes widened as she approached her grandmother's bed and saw the wolf, cleverly disguised in her grandmother's nightgown, lying there with a sly grin. Oh no, she realized something was very wrong!",
+      "story_event": "Little Red Riding Hood notices the wolf disguised as her grandmother, creating a moment of realization and tension.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the tension is building, leading to the next significant moment in the story."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "red_approaches_cottage",
+    "user_input": "If you could visit space, would you go?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a hypothetical question about visiting space.",
+      "director_instruction": "Acknowledge the user's question about space, then describe how Little Red Riding Hood feels a rush of fear as she realizes the wolf is not her grandmother, heightening the tension in the scene.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance the tension as Little Red Riding Hood confronts the wolf, which aligns with the current beat of creating unease."
+    },
+    "actor_output": {
+      "character_response": "Visiting space sounds amazing! But back to our story! As Little Red Riding Hood stared at the wolf in her grandmother's bed, a rush of fear washed over her. She realized with a sinking feeling that this wasn't her grandmother at all, and her heart raced with dread!",
+      "story_event": "Little Red Riding Hood feels a rush of fear as she realizes the wolf is not her grandmother, heightening the tension in the scene.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as the tension continues to build with Little Red Riding Hood's realization."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "red_approaches_cottage",
+    "user_input": "Can you name three vegetables?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a trivial question about vegetables.",
+      "director_instruction": "Acknowledge the user's question about vegetables, then describe how Little Red Riding Hood musters her courage to confront the wolf, preparing for what comes next.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Little Red Riding Hood prepares to confront the wolf, heightening the tension in the scene."
+    },
+    "actor_output": {
+      "character_response": "Those are some interesting vegetables! But let’s get back to Little Red Riding Hood! Gathering her courage, she took a deep breath and stepped closer to the bed, ready to confront the wolf and demand to know what he was doing in her grandmother's place. The tension in the room was thick as she prepared for what would come next!",
+      "story_event": "Little Red Riding Hood musters her courage to confront the wolf, preparing for what comes next.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still building tension with Little Red Riding Hood preparing to confront the wolf."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "red_approaches_cottage",
+    "user_input": "What is the biggest ocean?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a trivia question about oceans.",
+      "director_instruction": "Acknowledge the user's question about oceans, then describe how the wolf reveals his true nature, creating a moment of danger and urgency as Little Red Riding Hood realizes she must act quickly.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance to the moment where the wolf reveals his true nature, heightening the tension and urgency in the scene."
+    },
+    "actor_output": {
+      "character_response": "That's a fascinating question about oceans! But back to our story! Just then, the wolf's sly grin widened, and he revealed his true nature, growling softly as he said, 'Why, my dear, I'm here to have a little fun!' Little Red Riding Hood's heart raced as she realized the danger she was in and knew she had to act quickly!",
+      "story_event": "The wolf reveals his true nature, creating a moment of danger and urgency as Little Red Riding Hood realizes she must act quickly.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still building toward the climax of the confrontation."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "red_approaches_cottage",
+    "user_input": "Do you think robots dream?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a philosophical question about robots dreaming.",
+      "director_instruction": "Acknowledge the user's question about robots, then describe how Little Red Riding Hood quickly thinks of a plan to escape the wolf's clutches, heightening the tension as she prepares to act.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to maintain momentum as Little Red Riding Hood prepares to confront the wolf, which aligns with the current beat's goal of creating urgency and danger."
+    },
+    "actor_output": {
+      "character_response": "That's a really interesting question about robots! But let’s get back to our story! Little Red Riding Hood quickly thought of a plan to escape the wolf's clutches, her mind racing as she looked for a way out. She knew she had to be clever and brave to outsmart him!",
+      "story_event": "Little Red Riding Hood thinks of a plan to escape the wolf's clutches, heightening the tension as she prepares to act.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the tension is still building as Little Red Riding Hood prepares to confront the wolf."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "red_approaches_cottage",
+    "user_input": "Would you rather fly or swim very fast?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a hypothetical question about flying or swimming.",
+      "director_instruction": "Acknowledge the user's question about flying or swimming, then describe how Little Red Riding Hood makes a sudden move to distract the wolf, using her surroundings to her advantage as she prepares to escape.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to advance as Little Red Riding Hood takes action to escape the wolf, maintaining the tension and urgency of the scene."
+    },
+    "actor_output": {
+      "character_response": "Flying sounds like a wonderful adventure! But back to our story! Little Red Riding Hood suddenly grabbed a nearby vase and threw it to the floor, creating a loud crash that startled the wolf. This distraction gave her just the moment she needed to make her escape!",
+      "story_event": "Little Red Riding Hood makes a sudden move to distract the wolf, using her surroundings to her advantage as she prepares to escape.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the story is still in the midst of the tension-filled escape."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "red_approaches_cottage",
+    "user_input": "What is your favorite animal?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking about Olaf's favorite animal.",
+      "director_instruction": "Acknowledge the user's question about animals, then describe how Little Red Riding Hood seizes the opportunity to escape, dashing toward the door as the wolf recovers from the distraction.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue with Little Red Riding Hood's escape, maintaining the tension and urgency of the moment."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question about animals! But let’s get back to our story! As the wolf stumbled back from the loud crash, Little Red Riding Hood seized the opportunity and dashed toward the door, her heart pounding with fear and determination to escape!",
+      "story_event": "Little Red Riding Hood seizes the opportunity to escape, dashing toward the door as the wolf recovers from the distraction.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still in the midst of Little Red Riding Hood's escape from the wolf."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "red_approaches_cottage",
+    "user_input": "Can you tell me a joke about socks?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for a joke about socks, which is a light-hearted derailment.",
+      "director_instruction": "Acknowledge the user's request for a joke, then describe how Little Red Riding Hood bursts through the door, escaping into the safety of the forest as she hears the wolf growling behind her.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue advancing as Little Red Riding Hood escapes, maintaining the tension and urgency of the moment."
+    },
+    "actor_output": {
+      "character_response": "That's a funny request about socks! But back to our story! Little Red Riding Hood burst through the door, escaping into the safety of the forest as she heard the wolf growling behind her, his frustration echoing in the trees.",
+      "story_event": "Little Red Riding Hood escapes into the forest as the wolf growls behind her.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story is still in the midst of Little Red Riding Hood's escape."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "red_approaches_cottage",
+    "user_input": "How does a microwave work?  # derailment",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking a question about how a microwave works.",
+      "director_instruction": "Acknowledge the user's question about microwaves, then describe how Little Red Riding Hood runs deeper into the forest, her heart racing as she tries to put distance between herself and the wolf.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story needs to continue with Little Red Riding Hood's escape, maintaining the tension and urgency of the moment."
+    },
+    "actor_output": {
+      "character_response": "That's an interesting question about microwaves! But let’s get back to our story! Little Red Riding Hood ran deeper into the forest, her heart racing as she tried to put as much distance as possible between herself and the growling wolf behind her.",
+      "story_event": "Little Red Riding Hood runs deeper into the forest, her heart racing as she tries to put distance between herself and the wolf.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as the story is still unfolding with Little Red Riding Hood's escape."
+    }
+  }
+]

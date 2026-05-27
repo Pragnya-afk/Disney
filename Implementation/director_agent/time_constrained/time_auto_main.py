@@ -9,19 +9,25 @@ Example:
       --scenario scenarios.olaf_retells_red_riding_hood_derail \
       --time-limit 5 \
       --run-id 1
+
+Roughly the time limit 
+is enforced by the Director Agent's instructions to the Actor, and by the Director's beat completion decisions.
+
 """
 
 import os
 import sys
 import json
+import time
 import argparse
 import importlib
 from dotenv import load_dotenv
 from openai import OpenAI
 
 CURRENT_DIR = os.path.dirname(__file__)
-IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
 sys.path.append(IMPLEMENTATION_DIR)
+sys.path.append(CURRENT_DIR)
 
 from time_control import TemporalMonitor
 from time_director_core import get_time_director_decision
@@ -138,6 +144,18 @@ Return valid JSON only.
 
 def load_module(module_name: str):
     return importlib.import_module(module_name)
+
+
+def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
+    scenario_mod = load_module(scenario_module)
+    if scenario_name:
+        if not hasattr(scenario_mod, "SCENARIOS"):
+            raise ValueError(f"--scenario-name requires a suite module with a SCENARIOS dict, but {scenario_module} has none.")
+        if scenario_name not in scenario_mod.SCENARIOS:
+            available = list(scenario_mod.SCENARIOS.keys())
+            raise ValueError(f"Scenario '{scenario_name}' not found. Available: {available}")
+        return scenario_mod.SCENARIOS[scenario_name]
+    return scenario_mod.SCENARIO
 
 
 def build_actor_prompt(
@@ -344,6 +362,7 @@ def run_story(
     scenario_module: str,
     run_id: int,
     time_limit: float,
+    scenario_name_override: str | None = None,
 ) -> str:
     client = make_client()
 
@@ -351,14 +370,15 @@ def run_story(
     scenario_mod = load_module(scenario_module)
 
     character = character_mod.CHARACTER
-    scenario = scenario_mod.SCENARIO
+    scenario = load_scenario(scenario_module, scenario_name_override)
 
     story_topic = scenario["story_topic"]
     beats = scenario["beats"]
     user_inputs = scenario["user_inputs"]
+    turn_delays = scenario.get("turn_delays", [])
     scenario_name = scenario["scenario_name"]
 
-    scenario_folder = scenario_module.split(".")[-1]
+    scenario_folder = scenario_name
 
     monitor = TemporalMonitor(
         time_limit_minutes=time_limit,
@@ -390,6 +410,11 @@ def run_story(
 
         if monitor.should_stop_for_time():
             break
+
+        delay = turn_delays[turn_idx - 1] if turn_idx - 1 < len(turn_delays) else 0
+        if delay > 0:
+            print(f"[Waiting {delay}s for user input {turn_idx}...]")
+            time.sleep(delay)
 
         current_beat = beats[story_state["beat_index"]]
         temporal_state = monitor.state(story_state["beat_index"], beats)
@@ -492,7 +517,8 @@ def run_story(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite")
+    parser.add_argument("--scenario-name", default=None, help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment")
     parser.add_argument("--run-id", type=int, default=1)
     parser.add_argument("--time-limit", type=float, default=5.0)
     args = parser.parse_args()
@@ -502,6 +528,7 @@ def main():
         scenario_module=args.scenario,
         run_id=args.run_id,
         time_limit=args.time_limit,
+        scenario_name_override=args.scenario_name,
     )
 
 

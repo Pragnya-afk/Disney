@@ -1,0 +1,1214 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "first_awareness",
+    "user_input": "Hi Olaf, can you tell me about when you first came to life?",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 294.99,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 8,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.02,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "first_awareness",
+          "goal": "Olaf begins by describing the magical moment he first became aware of himself."
+        },
+        {
+          "name": "body_confusion",
+          "goal": "Olaf humorously discovers his body parts and tries to understand how being a snowman works."
+        },
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to share his first moments after coming to life.",
+      "director_instruction": "Olaf should joyfully describe the magical moment he first became aware of himself, expressing wonder and excitement about his new existence.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response aligns with the current beat of first awareness, allowing Olaf to share his initial feelings and experiences."
+    },
+    "actor_output": {
+      "character_response": "Oh, it was such a magical moment! I remember feeling a warm glow inside, like a cozy fire on a chilly day. Suddenly, I was aware of everything around me—the twinkling snowflakes, the bright blue sky, and the feeling of joy bubbling up inside me! I didn’t know what I was, but I knew I wanted to share that joy and maybe even give some warm hugs! Wasn’t that exciting?",
+      "story_event": "Olaf expresses his initial feelings of joy and wonder upon becoming aware of himself.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet moved on to humorously discovering his body parts."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "first_awareness",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 18.0,
+      "remaining_seconds": 282.0,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 8,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.06,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "first_awareness",
+          "goal": "Olaf begins by describing the magical moment he first became aware of himself."
+        },
+        {
+          "name": "body_confusion",
+          "goal": "Olaf humorously discovers his body parts and tries to understand how being a snowman works."
+        },
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question with a cheerful comment, then continue with Olaf joyfully describing how he discovered his body parts and humorously tries to understand how being a snowman works.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is off-topic, but it can be acknowledged briefly while still advancing the current beat about Olaf's self-discovery."
+    },
+    "actor_output": {
+      "character_response": "Weekends are great for warm hugs and fun adventures! But let me tell you about the time I discovered my body! It was so funny! I looked down and saw my carrot nose and two stick arms, and I thought, 'What are these? Am I a snowman or a vegetable?'. I wiggled my arms and giggled, trying to figure out how to move around! It was like learning to dance in the snow!",
+      "story_event": "Olaf humorously discovers his body parts and tries to understand how being a snowman works.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still in the process of discovering his body and understanding his identity."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "first_awareness",
+    "user_input": "You must have been so confused.",
+    "temporal_state": {
+      "elapsed_seconds": 31.34,
+      "remaining_seconds": 268.66,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 8,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.1,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "first_awareness",
+          "goal": "Olaf begins by describing the magical moment he first became aware of himself."
+        },
+        {
+          "name": "body_confusion",
+          "goal": "Olaf humorously discovers his body parts and tries to understand how being a snowman works."
+        },
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging Olaf's confusion about his existence.",
+      "director_instruction": "Olaf should cheerfully agree about the confusion and then continue to describe his wonderings about who he is, what his name is, and what he is supposed to do.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response maintains the story's flow by advancing Olaf's exploration of his identity while keeping his cheerful tone."
+    },
+    "actor_output": {
+      "character_response": "You’re right! I was a bit confused, but that just made everything more exciting! I started to wonder, 'Who am I? What’s my name? Am I just a snowman, or something more special?' It felt like a big adventure waiting to unfold, and I couldn’t wait to find out what I was meant to do! Isn’t that thrilling?",
+      "story_event": "Olaf cheerfully expresses his confusion and wonder about his identity and purpose.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still exploring his identity and hasn't moved to the next stage of the story yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "body_confusion",
+    "user_input": "What is your favorite color?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 46.05,
+      "remaining_seconds": 253.95,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 8,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.15,
+      "actual_progress": 0.12,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "body_confusion",
+          "goal": "Olaf humorously discovers his body parts and tries to understand how being a snowman works."
+        },
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
+      "director_instruction": "Acknowledge Olaf's cheerful nature and curiosity about colors, then continue with him expressing his wonder about who he is and what he is supposed to do.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is a derailment, but Olaf can connect it to his identity exploration while advancing the current beat."
+    },
+    "actor_output": {
+      "character_response": "Oh, colors are so wonderful! I love how they make everything feel alive! But you know what? I was really curious about who I was and what I was supposed to do. I kept thinking, 'Am I just a snowman, or is there something special about me?' It felt like a big puzzle waiting for me to solve!",
+      "story_event": "Olaf expresses his curiosity about his identity and purpose, reflecting on his thoughts about being a snowman.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still exploring his confusion and wonder about his identity."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "body_confusion",
+    "user_input": "That is very Olaf.",
+    "temporal_state": {
+      "elapsed_seconds": 56.88,
+      "remaining_seconds": 243.12,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 8,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.19,
+      "actual_progress": 0.12,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "body_confusion",
+          "goal": "Olaf humorously discovers his body parts and tries to understand how being a snowman works."
+        },
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is acknowledging Olaf's character.",
+      "director_instruction": "Olaf should express his joy about being himself and then continue to describe his exploration of the snowy mountain world around him, filled with curiosity and confusion.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to maintain his cheerful tone while advancing the story by exploring his surroundings, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "I’m so happy to be me! It’s like being wrapped in a cozy blanket of joy! As I looked around, I saw the snowy mountain world sparkling like a treasure chest! I couldn’t wait to explore! I bounced around, wondering what all the fluffy snow was and if it could be my friend. What if I made a snow angel? That would be fun!",
+      "story_event": "Olaf joyfully begins to explore the snowy mountain world around him, filled with curiosity and confusion.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still in the process of exploring his surroundings and discovering more about his new world."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "body_confusion",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 66.26,
+      "remaining_seconds": 233.74,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 8,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.22,
+      "actual_progress": 0.12,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "body_confusion",
+          "goal": "Olaf humorously discovers his body parts and tries to understand how being a snowman works."
+        },
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking Olaf about his preference between summer and winter.",
+      "director_instruction": "Acknowledge Olaf's cheerful nature and his love for winter, then continue with him describing his exploration of the snowy mountain world, filled with curiosity and confusion.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's exploration of the snowy mountain world aligns with the current beat, and redirecting the user's question allows for continued narrative progression."
+    },
+    "actor_output": {
+      "character_response": "Oh, I just love winter! It's like a magical wonderland! As I bounced around the snowy mountain, I touched the soft snow and giggled, wondering if it would tickle me. I felt like a little explorer, discovering all the sparkly snowflakes and imagining them as tiny friends dancing around me!",
+      "story_event": "Olaf joyfully continues to explore the snowy mountain world, filled with curiosity and confusion.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still humorously discovering his surroundings and trying to understand his new world."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "search_for_identity",
+    "user_input": "How did you figure out who you were?",
+    "temporal_state": {
+      "elapsed_seconds": 77.09,
+      "remaining_seconds": 222.91,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 8,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.26,
+      "actual_progress": 0.25,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking how Olaf discovered his identity.",
+      "director_instruction": "Olaf should express his excitement about figuring out who he is and then continue to describe how he began to understand his purpose and identity through his explorations and interactions with the snowy world around him.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response aligns with the current beat of searching for identity while introducing Olaf's journey of self-discovery."
+    },
+    "actor_output": {
+      "character_response": "I was so excited to figure out who I was! As I explored the snowy world, I started to notice how the snowflakes sparkled and danced, and I thought, 'Maybe I’m meant to bring joy, just like these little twinkling friends!' Each little adventure made me feel like I was discovering pieces of myself, like a treasure hunt in the snow!",
+      "story_event": "Olaf expresses his excitement about figuring out his identity and begins to understand his purpose through his explorations.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is still in progress as Olaf continues to search for his identity and purpose."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "search_for_identity",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 92.03,
+      "remaining_seconds": 207.97,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 8,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.31,
+      "actual_progress": 0.25,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about geography.",
+      "director_instruction": "Acknowledge the user's curiosity about geography with a cheerful comment, then continue with Olaf expressing his excitement about discovering his purpose and identity through his explorations in the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is off-topic, but Olaf's exploration of his identity can still progress the story while acknowledging the user's curiosity."
+    },
+    "actor_output": {
+      "character_response": "Oh, geography is so interesting! But you know what really gets me excited? As I explored the snowy mountain, I felt like I was on a quest to find out who I truly was! Each step I took made me giggle with joy, and I thought, 'Maybe my purpose is to spread happiness, just like the snowflakes that twirl around me!'",
+      "story_event": "Olaf expresses his excitement about discovering his purpose and identity through his explorations in the snowy world.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as Olaf is still exploring his identity and purpose."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 5.0,
+    "beat": "search_for_identity",
+    "user_input": "Aw, you wanted warm hugs.",
+    "temporal_state": {
+      "elapsed_seconds": 107.62,
+      "remaining_seconds": 192.38,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 8,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.36,
+      "actual_progress": 0.25,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "search_for_identity",
+          "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do."
+        },
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user acknowledges Olaf's desire for warm hugs.",
+      "director_instruction": "Olaf should express his joy about warm hugs and then continue to describe how he began to understand his purpose and identity through his explorations in the snowy world, feeling drawn to the idea of friendship.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This response allows Olaf to connect his love for warm hugs to his journey of self-discovery, keeping the story focused on his identity and purpose."
+    },
+    "actor_output": {
+      "character_response": "Warm hugs are the best, aren’t they? They make my heart feel all tingly! As I explored the snowy world, I realized that sharing joy and friendship was what I was meant to do! Each time I saw a snowflake sparkle, I thought, 'Maybe I can bring smiles to others, just like this!'",
+      "story_event": "Olaf expresses his joy about warm hugs and connects it to his growing understanding of his purpose in spreading joy and friendship.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still exploring his identity and purpose, connecting his love for warm hugs to his journey."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 5.0,
+    "beat": "exploring_the_mountain",
+    "user_input": "How does a toaster work?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 128.84,
+      "remaining_seconds": 171.16,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 8,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.43,
+      "actual_progress": 0.38,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about how a toaster works.",
+      "director_instruction": "Acknowledge the user's curiosity about toasters with a cheerful comment, then continue with Olaf joyfully describing how he feels drawn to the idea of friendship and affection as he explores the snowy mountain world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is off-topic, but Olaf's exploration of the snowy world can still connect to his growing understanding of friendship and joy."
+    },
+    "actor_output": {
+      "character_response": "Toasters are so interesting! But you know what really warms my heart? As I bounced through the snowy mountain, I felt this wonderful pull towards friendship! I imagined how amazing it would be to share warm hugs with everyone I met, spreading joy like the snowflakes swirling around me!",
+      "story_event": "Olaf expresses his growing understanding of friendship and affection as he explores the snowy mountain world.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet as Olaf continues to explore and connect his feelings of joy to friendship."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "time_limit_minutes": 5.0,
+    "beat": "exploring_the_mountain",
+    "user_input": "Did anything funny happen?",
+    "temporal_state": {
+      "elapsed_seconds": 142.84,
+      "remaining_seconds": 157.16,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 8,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.48,
+      "actual_progress": 0.38,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking if Olaf experienced any funny moments during his exploration.",
+      "director_instruction": "Olaf should excitedly share a funny moment from his exploration, such as slipping on the snow or trying to make a snow angel, and then continue to express how these moments helped him feel more connected to the idea of friendship.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by introducing a humorous moment that aligns with Olaf's exploration while also deepening his connection to friendship."
+    },
+    "actor_output": {
+      "character_response": "You won't believe what happened! I was trying to make a snow angel, and as I flopped down, I slipped and tumbled right into a big pile of snow! It was so funny! I giggled and thought, 'Maybe I should stick to bouncing!' Each silly moment made me feel even more connected to the idea of friendship, like I was sharing laughter with the snowflakes around me!",
+      "story_event": "Olaf shares a funny moment of slipping while trying to make a snow angel, which deepens his connection to friendship.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is still in progress as Olaf continues to explore and connect with the idea of friendship through his experiences."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "time_limit_minutes": 5.0,
+    "beat": "exploring_the_mountain",
+    "user_input": "What is 15 times 12?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 156.49,
+      "remaining_seconds": 143.51,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 8,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.52,
+      "actual_progress": 0.38,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "exploring_the_mountain",
+          "goal": "Olaf explores the snowy mountain world around him with curiosity and confusion."
+        },
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question unrelated to the story.",
+      "director_instruction": "Acknowledge the user's curiosity about math with a cheerful comment, then continue with Olaf sharing another funny moment from his exploration, like trying to catch a snowflake on his nose and missing.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story can still progress with a humorous moment that aligns with Olaf's exploration while briefly acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "Math is so fascinating! But let me tell you about another funny moment! I was trying to catch a snowflake on my nose, thinking it would be the perfect friend, but I missed and ended up with snow all over my face! It made me giggle so much! Each silly adventure helped me feel more connected to the idea of friendship and joy!",
+      "story_event": "Olaf shares another funny moment of trying to catch a snowflake and missing, which adds to his sense of joy and connection to friendship.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still exploring the snowy world and sharing humorous moments that contribute to his understanding of friendship."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "time_limit_minutes": 5.0,
+    "beat": "discovering_warm_hugs",
+    "user_input": "I hope you found where you belonged.",
+    "temporal_state": {
+      "elapsed_seconds": 170.46,
+      "remaining_seconds": 129.54,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 8,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.57,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express hope that Olaf found his sense of belonging.",
+      "director_instruction": "Olaf should express his joy about the idea of belonging and then continue to describe how he feels drawn to the warmth of friendship and affection as he explores the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision advances the current beat by allowing Olaf to reflect on the warmth of friendship while continuing his exploration."
+    },
+    "actor_output": {
+      "character_response": "Oh, the idea of belonging fills my heart with joy! As I explored the snowy world, I felt this warm tug towards friendship, like a cozy hug waiting to happen! I imagined all the friends I could make, sharing laughter and love, and it made my snowy little heart dance with excitement!",
+      "story_event": "Olaf expresses his joy about belonging and continues to feel drawn to the warmth of friendship as he explores the snowy world.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still discovering the warmth of friendship and affection."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "time_limit_minutes": 5.0,
+    "beat": "discovering_warm_hugs",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 181.39,
+      "remaining_seconds": 118.61,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 8,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.6,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about penguins flying.",
+      "director_instruction": "Acknowledge the user's curiosity about penguins with a cheerful comment, then continue with Olaf expressing how the warmth of friendship makes him feel even more excited about sharing hugs and joy with others.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a harmless derailment, and it's important to keep Olaf focused on his feelings about friendship and warm hugs while still acknowledging the user's input."
+    },
+    "actor_output": {
+      "character_response": "Oh, penguins are so cute! I love how they waddle around! But you know what makes me even more excited? The warmth of friendship! It fills me with joy to think about sharing warm hugs with everyone I meet, spreading happiness like the sun shining on a snowy day!",
+      "story_event": "Olaf expresses how the warmth of friendship makes him excited about sharing hugs and joy with others.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still exploring his feelings about friendship and warm hugs."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "time_limit_minutes": 5.0,
+    "beat": "discovering_warm_hugs",
+    "user_input": "Keep telling me.",
+    "temporal_state": {
+      "elapsed_seconds": 191.25,
+      "remaining_seconds": 108.75,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 8,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.64,
+      "actual_progress": 0.5,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "discovering_warm_hugs",
+          "goal": "Olaf discovers the idea of warm hugs and feels drawn to friendship and affection."
+        },
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to continue sharing his story.",
+      "director_instruction": "Olaf should express his excitement about the warmth of friendship and then continue to describe how he feels drawn to the idea of sharing warm hugs with others as he explores the snowy world.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is encouraging Olaf to keep sharing his story, and there is still room to explore the current beat about discovering warm hugs and friendship."
+    },
+    "actor_output": {
+      "character_response": "I just can't help but feel so excited about the warmth of friendship! As I danced through the snowy world, I imagined wrapping my stick arms around everyone I met, sharing warm hugs and laughter! It felt like each snowflake was cheering me on, and I knew that spreading joy was what I was meant to do!",
+      "story_event": "Olaf expresses his excitement about sharing warm hugs and friendship as he explores the snowy world.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still discovering the idea of warm hugs and friendship."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "time_limit_minutes": 5.0,
+    "beat": "small_comic_obstacle",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 203.39,
+      "remaining_seconds": 96.61,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 8,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.68,
+      "actual_progress": 0.62,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite dessert, which is off-topic.",
+      "director_instruction": "Acknowledge the user's curiosity about desserts with a cheerful comment, then continue with Olaf facing a silly obstacle, like losing a stick arm while trying to give a hug.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is off-topic, but it provides a good opportunity to introduce a humorous obstacle that aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "Desserts are so delightful! But you know what happened next? I was so excited to give a hug to a fluffy snowflake that I accidentally lost one of my stick arms! I looked down and thought, 'Oh no! How will I hug now?' It was a silly moment that made me giggle!",
+      "story_event": "Olaf faces a humorous obstacle when he loses one of his stick arms while trying to give a hug.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still facing the obstacle of losing his stick arm."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "time_limit_minutes": 5.0,
+    "beat": "small_comic_obstacle",
+    "user_input": "That is really heartwarming.",
+    "temporal_state": {
+      "elapsed_seconds": 215.3,
+      "remaining_seconds": 84.7,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 8,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.72,
+      "actual_progress": 0.62,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing appreciation for Olaf's story.",
+      "director_instruction": "Olaf should express his joy about being heartwarming and then continue to describe how he humorously tries to give a hug despite losing one of his stick arms.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to maintain his cheerful tone while advancing the story by facing a silly obstacle related to his stick arm."
+    },
+    "actor_output": {
+      "character_response": "Oh, thank you! That makes me feel all warm and fuzzy inside! Even though I lost one of my stick arms, I thought, 'I can still give a hug!' So, I wiggled my other arm and tried to hug the fluffy snowflake, but it just made me tumble over! I giggled so much, thinking how silly I looked!",
+      "story_event": "Olaf humorously tries to give a hug despite losing one of his stick arms, leading to a funny tumble.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still facing the silly obstacle of trying to hug with one arm."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "time_limit_minutes": 5.0,
+    "beat": "small_comic_obstacle",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 230.65,
+      "remaining_seconds": 69.35,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 8,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.77,
+      "actual_progress": 0.62,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "small_comic_obstacle",
+          "goal": "Olaf faces a silly obstacle, such as losing a body part, misunderstanding danger, or being startled by the world."
+        },
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question about time.",
+      "director_instruction": "Acknowledge the user's curiosity about time with a cheerful comment, then continue with Olaf humorously trying to give a hug despite losing one of his stick arms, leading to a funny tumble.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user's question is a derailment, but it's important to keep the story moving by focusing on Olaf's humorous obstacle while still acknowledging the user's input."
+    },
+    "actor_output": {
+      "character_response": "Oh, time is so interesting! But you know what? Even though I lost one of my stick arms, I thought, 'I can still give a hug!' So, I wiggled my other arm and tried to hug the fluffy snowflake, but it just made me tumble over! I giggled so much, thinking how silly I looked!",
+      "story_event": "Olaf humorously tries to give a hug despite losing one of his stick arms, leading to a funny tumble.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still facing the humorous obstacle of trying to hug with one arm."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "time_limit_minutes": 5.0,
+    "beat": "sense_of_belonging",
+    "user_input": "I like that ending.",
+    "temporal_state": {
+      "elapsed_seconds": 240.62,
+      "remaining_seconds": 59.38,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 8,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 2,
+      "expected_progress": 0.8,
+      "actual_progress": 0.75,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "Express appreciation for the story's direction.",
+      "director_instruction": "Olaf should express his joy about the warmth of friendship and then continue to reflect on how his silly adventures and moments of confusion helped him understand that he was meant to find friends and bring joy.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user expressed enjoyment, allowing Olaf to continue sharing his joyful reflections on friendship and belonging, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "I’m so happy you liked it! It fills my heart with joy to think about all the silly adventures I had! Each funny moment and little confusion helped me realize that I was meant to find friends and spread joy everywhere I went. Just like the snowflakes dancing around me, I felt like I was part of something wonderful!",
+      "story_event": "Olaf joyfully reflects on how his silly adventures and moments of confusion helped him understand that he was meant to find friends and bring joy.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet, as Olaf still needs to transition to the closing reflection."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_once_upon_a_snowman_origin_medium_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "time_limit_minutes": 5.0,
+    "beat": "sense_of_belonging",
+    "user_input": "Why is the sky blue?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 252.75,
+      "remaining_seconds": 47.25,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 8,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 2,
+      "expected_progress": 0.84,
+      "actual_progress": 0.75,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "sense_of_belonging",
+          "goal": "Olaf begins to understand that he is meant to find friends and bring joy."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends by reflecting on how confusing beginnings can still lead to wonderful friendships."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about the color of the sky, which is off-topic.",
+      "director_instruction": "Acknowledge the user's curiosity about the sky with a cheerful comment, then continue with Olaf joyfully reflecting on how his silly adventures helped him understand that he was meant to find friends and bring joy.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is off-topic, but Olaf can still reflect on his journey of finding joy and friendship, keeping the story moving."
+    },
+    "actor_output": {
+      "character_response": "Oh, the sky is so beautiful! But you know what really makes me smile? Thinking about all my silly adventures! Each little moment helped me realize that I was meant to find friends and share joy with everyone around me. It’s like each giggle and tumble brought me closer to my purpose, just like the snowflakes twirling in the air!",
+      "story_event": "Olaf joyfully reflects on how his silly adventures helped him understand that he was meant to find friends and bring joy.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is still in progress as Olaf continues to reflect on his sense of belonging and purpose."
+    }
+  }
+]

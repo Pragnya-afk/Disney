@@ -1,0 +1,6 @@
+| method                    |   red_riding_hood |
+|:--------------------------|------------------:|
+| baseline                  |              5.33 |
+| codi                      |              4    |
+| director                  |              7.7  |
+| time_constrained (5.0min) |              7    |

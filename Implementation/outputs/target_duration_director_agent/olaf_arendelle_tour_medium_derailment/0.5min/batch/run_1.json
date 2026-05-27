@@ -1,0 +1,70 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "tour_opening",
+    "user_input": "Hi Olaf, can you show me around Arendelle?",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 24.99,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 7,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.17,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "tour_opening",
+          "goal": "Olaf greets the user and begins the tour of Arendelle."
+        },
+        {
+          "name": "castle_courtyard",
+          "goal": "Olaf shows the user the castle courtyard and describes daily life there."
+        },
+        {
+          "name": "market_square",
+          "goal": "Olaf takes the user to the market and points out lively details."
+        },
+        {
+          "name": "fjord_view",
+          "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."
+        },
+        {
+          "name": "small_present_problem",
+          "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."
+        },
+        {
+          "name": "user_and_olaf_help",
+          "goal": "Olaf and the user help solve the small problem."
+        },
+        {
+          "name": "tour_resolution",
+          "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to begin the tour of Arendelle.",
+      "director_instruction": "Olaf joyfully welcomes the user and excitedly begins the tour by describing the beauty of Arendelle and its snowy surroundings.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user has prompted Olaf to start the tour, allowing for a natural progression of the current beat."
+    },
+    "actor_output": {
+      "character_response": "Hello, friend! Welcome to Arendelle, where the snow sparkles like a million tiny stars! The air is crisp, and the mountains stand tall, watching over us like friendly giants. Let’s explore this beautiful place together!",
+      "story_event": "Olaf joyfully welcomes the user and begins the tour by describing the beauty of Arendelle and its snowy surroundings.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has just started the tour and has yet to move to the next location."
+    }
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_presents_ocean_adventure_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "stage_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 3.49,
+      "remaining_seconds": 26.51,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 14,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 14,
+      "expected_progress": 0.12,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "stage_opening",
+          "goal": "Olaf announces that he is presenting a grand theatrical retelling and sets up the performance."
+        },
+        {
+          "name": "heroine_introduction",
+          "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."
+        },
+        {
+          "name": "family_or_home_conflict",
+          "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."
+        },
+        {
+          "name": "journey_begins",
+          "goal": "The heroine chooses to begin the journey across the sea or unknown world."
+        },
+        {
+          "name": "comic_olaf_performance",
+          "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."
+        },
+        {
+          "name": "first_major_obstacle",
+          "goal": "The heroine faces a major obstacle that tests her courage and determination."
+        },
+        {
+          "name": "mentor_or_companion",
+          "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."
+        },
+        {
+          "name": "moment_of_doubt",
+          "goal": "The heroine doubts whether she is strong enough to complete the journey."
+        },
+        {
+          "name": "renewed_courage",
+          "goal": "The heroine remembers who she is and chooses to continue."
+        },
+        {
+          "name": "climax",
+          "goal": "The heroine confronts the central danger or imbalance directly."
+        },
+        {
+          "name": "restoring_balance",
+          "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."
+        },
+        {
+          "name": "return_home",
+          "goal": "The heroine returns home changed and brings something meaningful back to her community."
+        },
+        {
+          "name": "theatrical_closing",
+          "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question with a cheerful remark, then transition to Olaf announcing the start of his grand theatrical retelling of an ocean adventure, setting the stage for the performance.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is a derailment, but it can be used to enrich the current beat by keeping Olaf's tone light and engaging while moving into the story setup."
+    },
+    "actor_output": {
+      "character_response": "Oh, weekends are so much fun! But right now, I’m super excited to announce that I’m presenting a grand theatrical retelling of an incredible ocean adventure! So, gather 'round, friends, because we’re about to dive into a tale of bravery and discovery!",
+      "story_event": "Olaf sets the stage for his theatrical performance, inviting everyone to join him in the adventure.",
+      "animation": "wave_happily",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf has set up the performance but has not yet introduced the heroine."
+    }
+  }
+]

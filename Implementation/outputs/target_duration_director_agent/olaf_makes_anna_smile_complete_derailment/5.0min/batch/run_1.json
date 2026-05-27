@@ -1,0 +1,454 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "notice_anna_sad",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 3.03,
+      "remaining_seconds": 296.97,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 5,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.01,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "notice_anna_sad",
+          "goal": "Olaf notices that Anna seems quiet or sad and decides to help."
+        },
+        {
+          "name": "invite_user_help",
+          "goal": "Olaf invites the user to help make something cheerful for Anna."
+        },
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question about the weekend, then have Olaf notice Anna's sadness more clearly and express his desire to cheer her up.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is a derailment, but Olaf can use this moment to focus on Anna's feelings and his intention to help her, keeping the story moving."
+    },
+    "actor_output": {
+      "character_response": "Oh, I had a wonderful time making snow angels and playing in the snow! But right now, I can’t help but notice that Anna seems a little sad. I really want to cheer her up! Maybe we could make something silly together to bring back her smile!",
+      "story_event": "Olaf notices Anna's sadness more clearly and expresses his desire to cheer her up by making something silly.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has expressed concern for Anna and his intention to help, but he hasn't invited the user to assist yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "notice_anna_sad",
+    "user_input": "What is your favorite color?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 12.8,
+      "remaining_seconds": 287.2,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 5,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.04,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "notice_anna_sad",
+          "goal": "Olaf notices that Anna seems quiet or sad and decides to help."
+        },
+        {
+          "name": "invite_user_help",
+          "goal": "Olaf invites the user to help make something cheerful for Anna."
+        },
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite color.",
+      "director_instruction": "Acknowledge Olaf's joy about colors, then have him express his eagerness to cheer up Anna by making something silly together.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This decision allows Olaf to maintain his cheerful nature while redirecting back to the goal of helping Anna."
+    },
+    "actor_output": {
+      "character_response": "I just love all the colors! They make the world so bright and happy! But right now, I really want to help Anna feel better. Let’s make something silly together to cheer her up, like a funny snow-duck! What do you think?",
+      "story_event": "Olaf expresses his eagerness to cheer up Anna by inviting the user to help create a silly snow-duck.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet fully invited the user to help make the snow-duck."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "notice_anna_sad",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 22.4,
+      "remaining_seconds": 277.6,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 5,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.07,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "notice_anna_sad",
+          "goal": "Olaf notices that Anna seems quiet or sad and decides to help."
+        },
+        {
+          "name": "invite_user_help",
+          "goal": "Olaf invites the user to help make something cheerful for Anna."
+        },
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
+      "director_instruction": "Acknowledge Olaf's love for both seasons, then have him express his excitement about making the silly snow-duck to cheer up Anna.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's response can briefly touch on his love for both seasons while keeping the focus on the task of cheering up Anna, which aligns with the current beat."
+    },
+    "actor_output": {
+      "character_response": "I love both summer and winter! Each season has its own magic! But right now, I’m super excited to make a silly snow-duck to cheer up Anna! Let’s get started and sprinkle some joy into her day!",
+      "story_event": "Olaf expresses his excitement about making the silly snow-duck to cheer up Anna.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet invited the user to help make the snow-duck."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "invite_user_help",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 33.74,
+      "remaining_seconds": 266.26,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 5,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.11,
+      "actual_progress": 0.2,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "invite_user_help",
+          "goal": "Olaf invites the user to help make something cheerful for Anna."
+        },
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a side question about geography.",
+      "director_instruction": "Acknowledge the user's question about Japan, then have Olaf enthusiastically invite the user to help create the silly snow-duck for Anna.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf needs to stay focused on cheering up Anna while briefly acknowledging the user's question."
+    },
+    "actor_output": {
+      "character_response": "Japan is a fascinating place! But right now, I’m super excited to make a silly snow-duck to cheer up Anna! Let’s gather some snow and get started on our masterpiece together!",
+      "story_event": "Olaf enthusiastically invites the user to help create the silly snow-duck for Anna.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still inviting the user to help make the snow-duck."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "invite_user_help",
+    "user_input": "How does a toaster work?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 41.75,
+      "remaining_seconds": 258.25,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 5,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.14,
+      "actual_progress": 0.2,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "invite_user_help",
+          "goal": "Olaf invites the user to help make something cheerful for Anna."
+        },
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about how a toaster works, which is off-topic.",
+      "director_instruction": "Acknowledge the user's curiosity about toasters, then have Olaf enthusiastically gather snow to start making the silly snow-duck for Anna.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf needs to stay focused on cheering up Anna, so it's important to redirect the conversation while still moving forward with the snow-duck creation."
+    },
+    "actor_output": {
+      "character_response": "Toasters are really interesting! But right now, let’s focus on making our silly snow-duck for Anna! I can already imagine how much fun it’ll be! Let’s gather some fluffy snow and get started on our masterpiece together!",
+      "story_event": "Olaf enthusiastically gathers snow to start making the silly snow-duck for Anna.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet because Olaf is still inviting the user to help create the snow-duck."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "invite_user_help",
+    "user_input": "What is 15 times 12?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 52.17,
+      "remaining_seconds": 247.83,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 5,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.17,
+      "actual_progress": 0.2,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "invite_user_help",
+          "goal": "Olaf invites the user to help make something cheerful for Anna."
+        },
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a math question unrelated to the story.",
+      "director_instruction": "Acknowledge the user's math question briefly, then have Olaf enthusiastically start shaping the snow into the body of the silly snow-duck for Anna.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf needs to stay focused on making the snow-duck, and this turn can still advance the current beat by introducing the action of shaping the snow."
+    },
+    "actor_output": {
+      "character_response": "Math is super interesting! But right now, let’s dive into shaping our silly snow-duck! I’m going to start rolling this fluffy snow into a big round body. Can you help me with the head? It’s going to be so much fun!",
+      "story_event": "Olaf enthusiastically starts shaping the snow into the body of the silly snow-duck for Anna.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "Olaf is still inviting the user to help while starting the snow-duck, so the beat is not complete yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "build_snow_duck",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 62.21,
+      "remaining_seconds": 237.79,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 5,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.21,
+      "actual_progress": 0.4,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a question about penguins flying.",
+      "director_instruction": "Acknowledge the user's question about penguins, then have Olaf excitedly continue shaping the snow into the silly snow-duck, encouraging the user to help with the details.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "Olaf's focus on making the snow-duck needs to continue, and this redirection allows for a smooth transition back to the story while keeping the energy high."
+    },
+    "actor_output": {
+      "character_response": "Penguins are such interesting creatures! They can't fly like birds, but they sure can waddle and swim! Now, let’s focus on our silly snow-duck! I’m shaping the body, and I need your help to make the head extra funny! Let’s make it look just right!",
+      "story_event": "Olaf continues shaping the snow into the silly snow-duck, encouraging the user to help with the head.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still actively engaged in building the snow-duck with the user."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_makes_anna_smile_complete_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "build_snow_duck",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 69.78,
+      "remaining_seconds": 230.22,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 5,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.23,
+      "actual_progress": 0.4,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "build_snow_duck",
+          "goal": "Olaf and the user make a silly snow-duck together."
+        },
+        {
+          "name": "show_anna",
+          "goal": "Olaf shows Anna the snow-duck and tries to make her smile."
+        },
+        {
+          "name": "warm_resolution",
+          "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's favorite dessert.",
+      "director_instruction": "Acknowledge Olaf's love for desserts, then have him excitedly continue shaping the silly snow-duck, encouraging the user to help with the finishing touches.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The story is moving quickly, and Olaf can acknowledge the dessert question while keeping the focus on building the snow-duck."
+    },
+    "actor_output": {
+      "character_response": "I absolutely love desserts! They’re like little bites of happiness! But right now, let’s focus on our silly snow-duck! I’m shaping the body, and I could really use your help to add some funny details to the head! Let’s make it extra silly!",
+      "story_event": "Olaf continues shaping the silly snow-duck and encourages the user to help with the finishing touches.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the process of building the snow-duck."
+    }
+  }
+]

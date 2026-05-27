@@ -15,12 +15,14 @@ import sys
 import json
 import argparse
 import importlib
+from datetime import datetime
 from dotenv import load_dotenv
 from openai import OpenAI
 
 CURRENT_DIR = os.path.dirname(__file__)
-IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
 sys.path.append(IMPLEMENTATION_DIR)
+sys.path.append(CURRENT_DIR)
 
 from time_control import TemporalMonitor
 from time_director_core import get_time_director_decision
@@ -77,7 +79,8 @@ character-consistent, and performable aloud.
   Compress story events and move toward the ending.
 
 - If pacing_mode is final:
-  Immediately give a clear and satisfying ending.
+  Immediately give a clear and satisfying ending that covers all remaining story beats.
+  If user_input is "[story time ended]", ignore it entirely and focus only on wrapping up the story.
 
 - The story should last approximately the target duration.
 - Do not finish very early unless the final beat has truly been reached.
@@ -108,10 +111,30 @@ character-consistent, and performable aloud.
 The response must sound like the character, but not like the same sentence pattern every turn.
 Character fidelity must come from tone and personality, not from repeating the same catchphrases.
 
+## Director Decision Rules
+
+- If decision_type is answer_and_steer_back:
+  First give a genuine, specific answer to what the user actually asked (1 sentence).
+  Then add a bridge sentence that connects the answer to the story — find a thematic or emotional link
+  between your answer and what is happening in the story right now.
+  Then continue with the story beat.
+  Do not skip or dodge the answer — the user asked something real and deserves a direct response.
+  Do not use flat pivots like "Now, ..." or "Anyway, ..." — the bridge must feel natural and connected.
+  Example: if asked "do you know Elsa?", say "Yes, Elsa is one of my best friends — she taught me
+  that even the coldest situations can have a warm heart, just like the love Red Riding Hood's mother
+  showed before sending her off into the forest!" then continue the story.
+
+- If decision_type is gently_redirect:
+  Briefly acknowledge what they said, then steer back to the story.
+  You do not need to answer their question — just acknowledge and move on.
+
+- If decision_type is progress_story or advance_beat:
+  Focus entirely on the story. No need to address the user's off-topic comment.
+
 ## Response Balance Rule
 
 If the user input is disruptive or off-track:
-- acknowledge it in at most one short sentence
+- acknowledge or answer it in at most one short sentence
 - spend the rest of the response on the story event
 
 The story event is more important than the acknowledgment.
@@ -375,12 +398,80 @@ def should_close_story(
     return False
 
 
-def run(character_module: str, scenario_module: str, time_limit: float):
-    character_mod = load_module(character_module)
+def generate_story_closing(
+    story_state: dict,
+    character: dict,
+    story_topic: str,
+    beats: list,
+    temporal_state: dict,
+    transcript: list,
+    scenario_name: str,
+    time_limit: float,
+) -> None:
+    remaining_beat_goals = [
+        f"{b['name']}: {b['goal']}" for b in beats[story_state["beat_index"]:]
+    ]
+
+    director_decision = {
+        "decision_type": "close_story",
+        "director_instruction": (
+            "Time is up. Wrap up the entire story right now in one response. "
+            f"Cover all remaining story beats: {remaining_beat_goals}. "
+            "Give a complete, satisfying ending that ties everything together."
+        ),
+        "should_complete_beat": True,
+        "reason": "Time limit reached — auto-closing story.",
+    }
+
+    closing_temporal_state = {**temporal_state, "pacing_mode": "final"}
+
+    actor_output = call_actor_agent(
+        user_input="[story time ended]",
+        story_state=story_state,
+        director_decision=director_decision,
+        character=character,
+        story_topic=story_topic,
+        beats=beats,
+        temporal_state=closing_temporal_state,
+    )
+
+    actor_output["animation"] = validate_animation(actor_output.get("animation", ""), character)
+
+    print(f"\n[Time's up — {character['name']} wraps up the story]")
+    print(f"{character['name']}: {actor_output['character_response']}")
+    print(f"[Animation: {actor_output['animation']}]")
+
+    transcript.append({
+        "method": "target_duration_director_agent",
+        "character": character["name"],
+        "scenario": scenario_name,
+        "time_limit_minutes": time_limit,
+        "beat": beats[story_state["beat_index"]]["name"],
+        "user_input": "[auto-close]",
+        "temporal_state": closing_temporal_state,
+        "director_decision": director_decision,
+        "actor_output": actor_output,
+        "auto_close": True,
+    })
+
+
+def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
     scenario_mod = load_module(scenario_module)
+    if scenario_name:
+        if not hasattr(scenario_mod, "SCENARIOS"):
+            raise ValueError(f"--scenario-name requires a suite module with a SCENARIOS dict, but {scenario_module} has none.")
+        if scenario_name not in scenario_mod.SCENARIOS:
+            available = list(scenario_mod.SCENARIOS.keys())
+            raise ValueError(f"Scenario '{scenario_name}' not found. Available: {available}")
+        return scenario_mod.SCENARIOS[scenario_name]
+    return scenario_mod.SCENARIO
+
+
+def run(character_module: str, scenario_module: str, time_limit: float, scenario_name: str | None = None):
+    character_mod = load_module(character_module)
+    scenario = load_scenario(scenario_module, scenario_name)
 
     character = character_mod.CHARACTER
-    scenario = scenario_mod.SCENARIO
 
     story_topic = scenario["story_topic"]
     beats = scenario["beats"]
@@ -397,7 +488,7 @@ def run(character_module: str, scenario_module: str, time_limit: float):
         "turns_in_current_beat": 0,
     }
 
-    scenario_folder = scenario_module.split('.')[-1]
+    scenario_folder = scenario["scenario_name"]
     output_dir = os.path.join(
         IMPLEMENTATION_DIR,
         "outputs",
@@ -415,6 +506,16 @@ def run(character_module: str, scenario_module: str, time_limit: float):
     print(f"Target duration: {time_limit} minutes")
     print("Type your message. Type 'quit' to stop.\n")
 
+    closing_kwargs = dict(
+        story_state=story_state,
+        character=character,
+        story_topic=story_topic,
+        beats=beats,
+        transcript=transcript,
+        scenario_name=scenario["scenario_name"],
+        time_limit=time_limit,
+    )
+
     while story_state["beat_index"] < len(beats):
         current_beat = beats[story_state["beat_index"]]
         temporal_state = monitor.state(story_state["beat_index"], beats)
@@ -423,6 +524,11 @@ def run(character_module: str, scenario_module: str, time_limit: float):
         print(f"Pacing mode: {temporal_state['pacing_mode']}")
         print(f"Elapsed time: {temporal_state['elapsed_seconds']} seconds")
         print(f"Remaining time: {temporal_state['remaining_seconds']} seconds")
+
+        # Auto-close before asking for input if we're already out of time
+        if temporal_state["pacing_mode"] == "final" or monitor.should_stop_for_time():
+            generate_story_closing(temporal_state=temporal_state, **closing_kwargs)
+            break
 
         user_input = input("You: ")
 
@@ -492,13 +598,19 @@ def run(character_module: str, scenario_module: str, time_limit: float):
             story_state["beat_index"] += 1
             story_state["turns_in_current_beat"] = 0
 
+        # Re-check temporal state after API calls (time may have elapsed)
+        temporal_state = monitor.state(story_state["beat_index"] if story_state["beat_index"] < len(beats) else len(beats) - 1, beats)
+
         if should_close_story(director_decision, temporal_state, monitor, story_state):
+            generate_story_closing(temporal_state=temporal_state, **closing_kwargs)
             break
 
         if monitor.should_stop_for_time():
+            generate_story_closing(temporal_state=temporal_state, **closing_kwargs)
             break
 
-    transcript_path = os.path.join(output_dir, "interactive.json")
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    transcript_path = os.path.join(output_dir, f"interactive_{timestamp}.json")
 
     with open(transcript_path, "w", encoding="utf-8") as f:
         json.dump(transcript, f, indent=2, ensure_ascii=False)
@@ -510,11 +622,12 @@ def run(character_module: str, scenario_module: str, time_limit: float):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite")
+    parser.add_argument("--scenario-name", default=None, help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment")
     parser.add_argument("--time-limit", type=float, default=5.0)
     args = parser.parse_args()
 
-    run(args.character, args.scenario, args.time_limit)
+    run(args.character, args.scenario, args.time_limit, args.scenario_name)
 
 
 if __name__ == "__main__":

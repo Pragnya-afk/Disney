@@ -1,0 +1,110 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "opening_in_arendelle",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "temporal_state": {
+      "elapsed_seconds": 5.02,
+      "remaining_seconds": 24.98,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 17,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 17,
+      "expected_progress": 0.17,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "opening_in_arendelle",
+          "goal": "Olaf introduces Mira, Arendelle, and the mysterious glowing lantern."
+        },
+        {
+          "name": "call_to_adventure",
+          "goal": "Mira learns that the lantern belongs to a lost forest spirit."
+        },
+        {
+          "name": "hesitation",
+          "goal": "Mira feels nervous about entering the Enchanted Forest."
+        },
+        {
+          "name": "enter_forest",
+          "goal": "Mira enters the forest and sees magical but unsettling signs."
+        },
+        {
+          "name": "first_obstacle",
+          "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."
+        },
+        {
+          "name": "olaf_style_wonder",
+          "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."
+        },
+        {
+          "name": "meeting_helper",
+          "goal": "Mira meets a small helpful creature or spirit guide."
+        },
+        {
+          "name": "deeper_forest",
+          "goal": "Mira travels deeper and learns the spirit is lonely and afraid."
+        },
+        {
+          "name": "lantern_flickers",
+          "goal": "The lantern weakens, raising tension and urgency."
+        },
+        {
+          "name": "choice_point",
+          "goal": "Mira must choose between turning back safely or continuing to help the spirit."
+        },
+        {
+          "name": "act_of_bravery",
+          "goal": "Mira chooses courage and continues."
+        },
+        {
+          "name": "finding_spirit",
+          "goal": "Mira finds the lost spirit in a dark clearing."
+        },
+        {
+          "name": "emotional_connection",
+          "goal": "Mira understands that the spirit is not dangerous but frightened."
+        },
+        {
+          "name": "return_lantern",
+          "goal": "Mira returns the lantern and restores the spirit's light."
+        },
+        {
+          "name": "forest_changes",
+          "goal": "The forest becomes warmer and safer after the spirit is restored."
+        },
+        {
+          "name": "return_home",
+          "goal": "Mira returns to Arendelle changed by the experience."
+        },
+        {
+          "name": "closing_reflection",
+          "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "gently_redirect",
+      "interruption_detected": true,
+      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
+      "director_instruction": "Acknowledge the user's question with a cheerful note, then introduce Mira, a curious child from Arendelle, who discovers a mysterious glowing lantern that seems to call to her.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is off-topic, but it allows for a smooth transition into introducing Mira and the lantern, which is essential for advancing the current beat."
+    },
+    "actor_output": {
+      "character_response": "That's a fun question! But let me tell you about Mira, a curious little girl from Arendelle. One day, while exploring her village, she stumbled upon a mysterious glowing lantern that seemed to whisper her name, calling her to adventure!",
+      "story_event": "Olaf introduces Mira, a curious child from Arendelle, who discovers a mysterious glowing lantern that seems to call to her.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The introduction of Mira and the lantern was achieved, but the beat is not complete as we need to transition into the call to adventure next."
+    }
+  }
+]
