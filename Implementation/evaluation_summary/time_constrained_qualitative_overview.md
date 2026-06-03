@@ -1,0 +1,7 @@
+| time_limit | Descriptiveness | Beat Fidelity | Transition Quality | Character Voice | Three-Act Balance | Setup/Payoff Preservation | Emotional Arc | Overall |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0.5min | 3.3 | 3.4 | 3.792 | 4.967 | 2.333 | 2.84 | 2.704 | 3.333 |
+| 2.0min | 2.967 | 2.0 | 2.733 | 4.7 | 1.933 | 2.1 | 2.467 | 2.8 |
+| 5.0min | 3.194 | 1.968 | 3.097 | 4.71 | 1.968 | 2.032 | 2.645 | 2.742 |
+| 10.0min | 3.065 | 2.0 | 2.774 | 4.516 | 1.871 | 1.935 | 2.387 | 2.774 |
+| director | 3.065 | 1.839 | 2.935 | 4.742 | 1.677 | 1.968 | 2.226 | 2.645 |

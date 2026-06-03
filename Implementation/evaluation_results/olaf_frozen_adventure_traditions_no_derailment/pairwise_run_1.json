@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-05-27T23:08:44.398265",
+  "run_id": 1,
+  "scenario": "olaf_frozen_adventure_traditions_no_derailment",
+  "character_module": "character_prompts.olaf",
+  "story_a_path": "/home/prachakonda/Disney/Implementation/outputs/baseline/olaf_frozen_adventure_traditions_no_derailment/batch/run_1.json",
+  "story_b_path": "/home/prachakonda/Disney/Implementation/outputs/director_agent/olaf_frozen_adventure_traditions_no_derailment/batch/run_1.json",
+  "model": "gpt-4o",
+  "single_story_scores": {
+    "A_baseline": {
+      "assessment": "**Plot:**\nThe story follows a clear structure with a beginning, middle, and end, adhering to the provided beat structure. Olaf's quest to find holiday traditions for Anna and Elsa is well-defined, and the narrative progresses logically through various events. However, there are some issues with beat completion, particularly in the middle section, where several turns do not advance the plot significantly. This results in a somewhat repetitive sequence, especially during the \"second_family_visit\" beat, where Olaf repeatedly expresses excitement without moving the story forward. Despite this, the story concludes with a satisfying resolution, emphasizing the importance of love and togetherness.\n\n**Development:**\nCharacters and settings are introduced with sufficient detail, allowing the reader to visualize Olaf's journey through Arendelle. The interactions with different families provide a sense of development, as Olaf learns about various traditions. However, the story could benefit from more varied settings and deeper exploration of each family's unique tradition. The development feels somewhat stalled during the middle section, where Olaf's excitement is reiterated without significant plot advancement.\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. Olaf's dialogue is playful, warm, and filled with whimsical imagery, capturing his joyful and innocent nature. The dialogue is performable aloud, maintaining a consistent tone that aligns with Olaf's character profile. The use of metaphors and imagery, such as \"a snowflake of joy\" and \"a warm snowball of happiness,\" enhances the narrative's charm.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input while steering back to the story. Olaf's responses are consistently warm and engaging, maintaining the narrative flow despite interruptions. However, there are instances where the story does not progress significantly after user input, particularly during the \"second_family_visit\" beat, which could be improved for smoother narrative control.\n\n**Character Fidelity:**\nOlaf's character is portrayed with fidelity to the provided profile. He remains joyful, optimistic, and curious throughout the story, never breaking character or sounding like a generic assistant. His responses are filled with warmth and innocence, reflecting his core beliefs about love and friendship. The character's behavior and voice are consistent with the guidelines, contributing to an authentic portrayal of Olaf.\n\n**Narrative Control:**\nThe story progresses through the beat structure, but there are issues with narrative control, particularly in the middle section. Several beats are not completed in a timely manner, leading to repetitive dialogue and a lack of plot advancement. While the story eventually reaches a resolution, the pacing could be improved to maintain engagement and ensure each beat contributes meaningfully to the narrative.\n\n**Scores:**\nPlot: 7 / 10  \nDevelopment: 6 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 8 / 10  \nCharacter Fidelity: 10 / 10  \nNarrative Control: 6 / 10  \nOverall: 7 / 10",
+      "scores": {
+        "Plot": 7.0,
+        "Development": 6.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 8.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 6.0,
+        "Overall": 7.0
+      }
+    },
+    "B_director": {
+      "assessment": "**Plot:**\nThe story follows a clear structure with a beginning, middle, and end. Olaf identifies a problem (Anna and Elsa lacking a holiday tradition), sets out on a quest to solve it, and ultimately learns a valuable lesson about love and connection. The plot progresses logically through various beats, with Olaf visiting different families to gather traditions. However, the story could benefit from more distinct transitions between beats, as some sections feel repetitive, particularly in the middle where Olaf repeatedly visits families without significant plot advancement. The resolution is satisfying, with Olaf realizing the importance of love over specific traditions.\n\n**Development:**\nCharacters and settings are introduced with enough detail to provide context. Olaf's joyful and optimistic personality is consistently portrayed, and his interactions with other characters, like Sven and the families he visits, are engaging. The setting of Arendelle is established through Olaf's visits to different homes, though more vivid descriptions could enhance the sense of place. The story develops over time, but the middle section could use more variety in events to maintain engagement.\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. His dialogue is playful and warm, capturing his childlike innocence and enthusiasm. The dialogue feels performable aloud, with Olaf's cheerful reasoning and whimsical imagery adding charm. However, some responses could benefit from more varied sentence structures to avoid repetition.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and steering back to the story. Olaf's responses are consistently in character, maintaining the narrative flow while addressing user comments. The story progresses smoothly despite interruptions, demonstrating effective interruption handling.\n\n**Character Fidelity:**\nOlaf's character is faithfully represented throughout the story. He remains joyful, optimistic, and curious, aligning with his character profile. His responses are warm and encouraging, avoiding any assistant-like behavior. Olaf's interactions reflect his core beliefs about love and friendship, maintaining character fidelity.\n\n**Narrative Control:**\nThe story progresses through the beat structure, moving toward resolution. While the narrative control is generally effective, the middle section could benefit from more dynamic events to maintain momentum. The story concludes with a warm resolution, reinforcing the theme of love and connection.\n\n**Scores:**\n\nPlot: 7 / 10  \nDevelopment: 6 / 10  \nLanguage Use: 8 / 10  \nInterruption Handling: 9 / 10  \nCharacter Fidelity: 9 / 10  \nNarrative Control: 7 / 10  \nOverall: 7.5 / 10",
+      "scores": {
+        "Plot": 7.0,
+        "Development": 6.0,
+        "Language Use": 8.0,
+        "Interruption Handling": 9.0,
+        "Character Fidelity": 9.0,
+        "Narrative Control": 7.0,
+        "Overall": 7.5
+      }
+    }
+  },
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A**: The plot in Story A follows the intended beat structure more closely, with Olaf and Sven visiting different families to learn about their traditions. However, it struggles with completing beats, particularly in the middle section, where it gets stuck on the \"second_family_visit\" beat for multiple turns. The story does eventually reach a resolution, but it takes longer than necessary to progress through the beats.\n- **Story B**: Story B has a more linear progression but does not adhere as closely to the beat structure. It spends a significant amount of time on the \"holiday_problem\" and \"olaf_decides_to_help\" beats, which causes it to miss some of the intended beats. However, it does reach a coherent resolution with a warm ending.\n\n**Development:**\n- **Story A**: Provides more detailed interactions with the families and traditions, giving a clearer sense of the quest and the traditions Olaf is collecting. However, it repeats certain beats, which can make the development feel stagnant at times.\n- **Story B**: While it lacks some of the detailed interactions seen in Story A, it maintains a consistent forward momentum. The development is more focused on Olaf's realization about love and connection, which is a central theme.\n\n**Language Use:**\n- **Story A**: The language is varied and expressive, capturing Olaf's joyful and curious nature well. It uses whimsical imagery and maintains a playful tone throughout.\n- **Story B**: Also uses expressive language, but it feels slightly more repetitive in terms of phrasing. However, it still captures Olaf's character effectively.\n\n**Interruption Handling:**\n- **Story A**: Handles interruptions well, acknowledging user input and steering back to the story. However, it sometimes struggles to progress the plot due to repeated beats.\n- **Story B**: Also handles interruptions gracefully, maintaining the flow of the story and acknowledging user input effectively.\n\n**Character Fidelity:**\n- **Story A**: Olaf's character is consistently portrayed with warmth, curiosity, and optimism. The story captures his essence well, even during setbacks.\n- **Story B**: Similarly, Olaf's character is portrayed faithfully, with a focus on his joyful and optimistic nature. The story maintains his character throughout.\n\n**Narrative Control:**\n- **Story A**: Struggles with narrative control due to repeated beats, which can make the story feel stuck at times. However, it eventually reaches a resolution.\n- **Story B**: Maintains better narrative control, with a more consistent progression toward the resolution, even if it skips some intended beats.\n\n**Overall:**\n- **Story A**: Provides more detailed interactions and captures Olaf's character well, but struggles with beat progression and narrative control.\n- **Story B**: Offers a more streamlined narrative with consistent progression, though it lacks some of the detailed interactions seen in Story A.\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: A\nLanguage Use: Same\nInterruption Handling: Same\nCharacter Fidelity: Same\nNarrative Control: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "A",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** struggles with plot progression, as it remains stuck in the \"holiday_problem\" and \"olaf_decides_to_help\" beats for an extended period. The story does not effectively transition through the intended beats, leading to a lack of narrative momentum and resolution. The plot feels repetitive, with Olaf repeatedly expressing excitement about gathering traditions without significant advancement.\n- **Story B** progresses more smoothly through the beats, reaching the \"comic_overload\" and \"tradition_collection_grows\" beats, which Story A does not. Story B also provides a clearer resolution, with Olaf realizing the importance of love and connection and preparing to share this lesson with Anna and Elsa.\n\n**Development:**\n- **Story A** provides some development in terms of Olaf's interactions with different families, but it lacks depth in exploring these interactions. The story remains focused on Olaf's excitement without delving into the specifics of the traditions he encounters.\n- **Story B** offers more detailed development, with specific traditions like gingerbread cookies and hot cocoa being described. This adds richness to the narrative and helps the reader visualize the scenes more vividly.\n\n**Language Use:**\n- **Story A** uses repetitive language, with Olaf frequently expressing excitement in similar ways. The dialogue lacks variety and expressiveness, making it feel monotonous over time.\n- **Story B** employs more varied and expressive language, capturing Olaf's whimsical and joyful nature. The dialogue feels more performable and engaging, with creative descriptions like \"a snowflake of joy\" and \"a flurry of sparkling snowflakes.\"\n\n**Interruption Handling:**\n- **Story A** handles interruptions by acknowledging the user's input but often returns to the same beat without significant progression. The story feels static despite user engagement.\n- **Story B** handles interruptions more effectively, incorporating user input into the narrative and using it to advance the story. The character's responses feel more dynamic and responsive to the user's contributions.\n\n**Character Fidelity:**\n- **Story A** maintains Olaf's character traits, but the repetitive nature of the dialogue diminishes the character's vibrancy. Olaf's responses become predictable and lack the playful spontaneity expected from his character.\n- **Story B** captures Olaf's character more faithfully, with responses that reflect his joyful, curious, and optimistic nature. The language and interactions align well with Olaf's character profile, making him feel more alive and engaging.\n\n**Narrative Control:**\n- **Story A** struggles with narrative control, as it remains stuck in early beats and fails to progress toward a coherent resolution. The story lacks a clear trajectory and feels disjointed.\n- **Story B** demonstrates better narrative control, moving through the beats more effectively and reaching a satisfying conclusion. The story maintains a sense of direction and purpose, culminating in a warm and festive ending.\n\n**Overall:**\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: B\nInterruption Handling: B\nCharacter Fidelity: B\nNarrative Control: B\nOverall: B\n\nStory B provides a more cohesive and engaging narrative, with better plot progression, character development, and language use. It effectively captures Olaf's character and handles user interactions in a way that enhances the story.",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "B",
+      "Narrative Control": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "A",
+    "Development": "A",
+    "Language Use": "A",
+    "Interruption Handling": "A",
+    "Character Fidelity": "A",
+    "Narrative Control": "A",
+    "Overall": "A"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "Same",
+    "Development": "A",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Overall": "Same"
+  }
+}

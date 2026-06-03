@@ -1,0 +1,47 @@
+{
+  "scenario": "olaf_arendelle_tour_no_derailment",
+  "labels": [
+    "0.5min",
+    "2.0min",
+    "5.0min",
+    "10.0min",
+    "director"
+  ],
+  "similarity_matrix": {
+    "0.5min": {
+      "0.5min": 1.0,
+      "2.0min": 0.7442,
+      "5.0min": 0.6971,
+      "10.0min": 0.6782,
+      "director": 0.72
+    },
+    "2.0min": {
+      "0.5min": 0.7442,
+      "2.0min": 1.0,
+      "5.0min": 0.857,
+      "10.0min": 0.8662,
+      "director": 0.8649
+    },
+    "5.0min": {
+      "0.5min": 0.6971,
+      "2.0min": 0.857,
+      "5.0min": 1.0,
+      "10.0min": 0.937,
+      "director": 0.9478
+    },
+    "10.0min": {
+      "0.5min": 0.6782,
+      "2.0min": 0.8662,
+      "5.0min": 0.937,
+      "10.0min": 1.0,
+      "director": 0.907
+    },
+    "director": {
+      "0.5min": 0.72,
+      "2.0min": 0.8649,
+      "5.0min": 0.9478,
+      "10.0min": 0.907,
+      "director": 1.0
+    }
+  }
+}

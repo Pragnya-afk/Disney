@@ -1,0 +1,47 @@
+{
+  "scenario": "olaf_presents_ocean_adventure_medium_derailment",
+  "labels": [
+    "0.5min",
+    "2.0min",
+    "5.0min",
+    "10.0min",
+    "director"
+  ],
+  "similarity_matrix": {
+    "0.5min": {
+      "0.5min": 1.0,
+      "2.0min": 0.8029,
+      "5.0min": 0.6939,
+      "10.0min": 0.652,
+      "director": 0.688
+    },
+    "2.0min": {
+      "0.5min": 0.8029,
+      "2.0min": 1.0,
+      "5.0min": 0.8684,
+      "10.0min": 0.8214,
+      "director": 0.8406
+    },
+    "5.0min": {
+      "0.5min": 0.6939,
+      "2.0min": 0.8684,
+      "5.0min": 1.0,
+      "10.0min": 0.884,
+      "director": 0.8678
+    },
+    "10.0min": {
+      "0.5min": 0.652,
+      "2.0min": 0.8214,
+      "5.0min": 0.884,
+      "10.0min": 1.0,
+      "director": 0.9031
+    },
+    "director": {
+      "0.5min": 0.688,
+      "2.0min": 0.8406,
+      "5.0min": 0.8678,
+      "10.0min": 0.9031,
+      "director": 1.0
+    }
+  }
+}

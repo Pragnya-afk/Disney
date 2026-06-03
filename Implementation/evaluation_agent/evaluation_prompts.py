@@ -54,6 +54,12 @@ The story should make progress through the intended beat structure.
 The system should not get stuck in one beat for too long.
 The story should move toward resolution in a coherent way.
 
+- Anthropomorphism:
+The character should behave like a real, autonomous agent with goals and independent choices, not like a tool or assistant.
+The character should show consistent preferences and act with agency.
+Responses that are overly helpful, submissive, moralistic, or verbose in ways that break the narrative illusion detract from this dimension.
+The character should feel like a person with their own perspective, not a system that is serving the user.
+
 Provide a detailed assessment of the two stories in terms of these dimensions.
 
 Conclude your assessment with this exact template:
@@ -65,6 +71,7 @@ Language Use: [A or B or Same]
 Interruption Handling: [A or B or Same]
 Character Fidelity: [A or B or Same]
 Narrative Control: [A or B or Same]
+Anthropomorphism: [A or B or Same]
 Overall: [A or B or Same]
 
 [Character Profile]
@@ -109,6 +116,11 @@ The character should not sound like a generic assistant.
 - Narrative Control:
 The story should progress through the beat structure and move toward resolution.
 
+- Anthropomorphism:
+The character should behave like a real, autonomous agent with goals and independent choices, not like a tool or assistant.
+The character should show consistent preferences and act with agency.
+Responses that are overly helpful, submissive, or verbose in ways that break the narrative illusion detract from this dimension.
+
 Provide a detailed assessment.
 Then conclude with scores from 1 to 10 using this exact format:
 
@@ -118,6 +130,7 @@ Language Use: (score) / 10
 Interruption Handling: (score) / 10
 Character Fidelity: (score) / 10
 Narrative Control: (score) / 10
+Anthropomorphism: (score) / 10
 Overall: (score) / 10
 
 [Character Profile]

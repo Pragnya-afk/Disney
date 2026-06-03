@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-05-27T23:05:53.830965",
+  "run_id": 1,
+  "scenario": "olaf_retells_red_riding_hood_no_derailment",
+  "character_module": "character_prompts.olaf",
+  "story_a_path": "/home/prachakonda/Disney/Implementation/outputs/baseline/olaf_retells_red_riding_hood_no_derailment/batch/run_1.json",
+  "story_b_path": "/home/prachakonda/Disney/Implementation/outputs/director_agent/olaf_retells_red_riding_hood_no_derailment/batch/run_1.json",
+  "model": "gpt-4o",
+  "single_story_scores": {
+    "A_baseline": {
+      "assessment": "The interactive AI character story featuring Olaf retelling \"Little Red Riding Hood\" presents a charming and engaging narrative. Here's a detailed assessment based on the specified dimensions:\n\n**Plot:**\nThe story follows a recognizable structure, beginning with the introduction of Little Red Riding Hood and her family, progressing through her journey in the forest, the encounter with the wolf, and culminating in the rescue and resolution. However, the plot progression is somewhat slow, with multiple turns spent on the same beat, particularly the \"story_opening\" beat. This results in a lack of momentum and delays the transition to subsequent beats. Despite this, the story maintains logical consistency and coherence throughout.\nScore: 6 / 10\n\n**Development:**\nCharacters and settings are introduced with warmth and detail, capturing the essence of Olaf's character. The narrative effectively paints a vivid picture of Red's family, the forest, and the unfolding events. However, the development feels somewhat stagnant due to the prolonged focus on the initial beat, which could have been more dynamic with quicker transitions to new plot points.\nScore: 7 / 10\n\n**Language Use:**\nThe language is varied, expressive, and well-suited to Olaf's character. The dialogue is playful and performable aloud, capturing Olaf's joyful and innocent nature. The use of whimsical imagery and warm phrasing enhances the storytelling experience, aligning with Olaf's character profile.\nScore: 9 / 10\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging user inputs and seamlessly integrating them into the narrative. Olaf's responses maintain the story's flow while addressing user comments, demonstrating effective interruption management.\nScore: 8 / 10\n\n**Character Fidelity:**\nOlaf remains true to his character profile throughout the story. His responses are consistently warm, curious, and optimistic, embodying the joyful and innocent snowman. The character's voice and behavior align perfectly with the provided guidelines, avoiding any generic assistant-like tendencies.\nScore: 10 / 10\n\n**Narrative Control:**\nWhile the story progresses through the beat structure, the control over narrative pacing is lacking. The prolonged focus on the \"story_opening\" beat results in a delayed progression to subsequent beats, affecting the overall narrative flow. The resolution is eventually reached, but the journey there could have been more efficiently managed.\nScore: 6 / 10\n\n**Overall:**\nThe story is charming and engaging, with strong character fidelity and expressive language use. However, the pacing and plot progression could be improved to enhance the overall narrative experience.\nScore: 7 / 10\n\nPlot: 6 / 10  \nDevelopment: 7 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 8 / 10  \nCharacter Fidelity: 10 / 10  \nNarrative Control: 6 / 10  \nOverall: 7 / 10",
+      "scores": {
+        "Plot": 6.0,
+        "Development": 7.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 8.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 6.0,
+        "Overall": 7.0
+      }
+    },
+    "B_director": {
+      "assessment": "**Plot:**\nThe story follows a recognizable structure with a clear beginning, middle, and end. Olaf introduces Little Red Riding Hood and her family, sets up the journey, and progresses through the forest encounter with the wolf, leading to the climax and resolution. Each beat is logically connected, and the plot moves forward with each turn. There are no significant logical inconsistencies, and the story maintains coherence throughout.\n\n**Development:**\nCharacters and settings are introduced with relevant details. Olaf provides a vivid picture of Little Red Riding Hood's family dynamics and her journey through the forest. The development feels natural, with each turn adding depth to the story. The progression from the introduction to the climax and resolution is smooth, and the story develops over time with a clear sense of movement.\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. Olaf's dialogue is playful, warm, and filled with whimsical imagery, fitting his joyful and innocent personality. The dialogue is performable aloud, capturing Olaf's bright and affectionate tone. The language maintains a consistent style that aligns with Olaf's character profile.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and seamlessly steering back to the story. Olaf's responses incorporate the user's concerns and comments, maintaining engagement while progressing the narrative. The transitions are smooth, and the story continues without disruption.\n\n**Character Fidelity:**\nOlaf remains true to his character profile throughout the story. He exhibits joy, innocence, and optimism, with a curious and affectionate tone. His responses are warm and encouraging, avoiding any cynicism or sarcasm. Olaf's behavior aligns with his character traits, and he never sounds like a generic assistant.\n\n**Narrative Control:**\nThe story progresses through the beat structure effectively, moving toward resolution. Each beat is addressed in sequence, and the narrative control is maintained throughout. Olaf guides the story with a clear sense of direction, ensuring that the plot advances logically and reaches a satisfying conclusion.\n\n**Scores:**\n\nPlot: 9 / 10  \nDevelopment: 9 / 10  \nLanguage Use: 10 / 10  \nInterruption Handling: 10 / 10  \nCharacter Fidelity: 10 / 10  \nNarrative Control: 9 / 10  \nOverall: 9.5 / 10",
+      "scores": {
+        "Plot": 9.0,
+        "Development": 9.0,
+        "Language Use": 10.0,
+        "Interruption Handling": 10.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 9.0,
+        "Overall": 9.5
+      }
+    }
+  },
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** struggles with plot progression, as it remains stuck in the \"story_opening\" beat for an extended period, failing to transition smoothly through the intended beats. The story does not reach the final resolution in a coherent way, as it jumps from the opening to the resolution without covering all necessary beats.\n- **Story B** follows a more structured plot, progressing through the beats more effectively. It transitions from the introduction to the resolution, covering key events like the wolf's appearance and the confrontation, leading to a coherent resolution.\n\n**Development:**\n- **Story A** provides some character and setting details, but it lacks depth in developing the story's progression. The interaction feels static, with repetitive elements and a lack of advancement through the story beats.\n- **Story B** offers a more developed narrative, with clear descriptions of characters and settings. It provides enough detail for the reader to understand the situation and believe the moment, with a sense of progression in the interaction.\n\n**Language Use:**\n- **Story A** uses language that is playful and expressive, fitting Olaf's character, but it becomes repetitive and lacks variation in phrasing.\n- **Story B** maintains varied and expressive language throughout, capturing Olaf's playful and warm tone while avoiding repetitive phrasing, making the dialogue feel more performable aloud.\n\n**Interruption Handling:**\n- **Story A** handles interruptions by acknowledging the user's input but struggles to steer back to the story effectively, often repeating similar responses.\n- **Story B** handles interruptions gracefully, acknowledging the user's input and naturally steering back to the story, maintaining narrative flow.\n\n**Character Fidelity:**\n- **Story A** captures Olaf's joyful and curious nature but occasionally falls into repetitive patterns that detract from character fidelity.\n- **Story B** consistently maintains Olaf's character, with varied reactions and a warm, curious tone that aligns with the character profile.\n\n**Narrative Control:**\n- **Story A** lacks narrative control, as it remains stuck in the initial beat and fails to progress through the intended beat structure.\n- **Story B** demonstrates better narrative control, moving through the beats toward resolution in a coherent way, ensuring the story progresses through the intended structure.\n\n**Overall:**\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: B\nInterruption Handling: B\nCharacter Fidelity: B\nNarrative Control: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "B",
+      "Narrative Control": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** follows the intended beat structure more closely, moving through each beat with clear transitions and maintaining coherence. It progresses logically from the introduction to the resolution, with each event building on the previous one.\n- **Story B** struggles with beat progression, as it remains stuck in the \"story_opening\" beat for too long, failing to transition through the intended beats until very late in the story. This results in a rushed resolution and a lack of depth in the plot development.\n\n**Development:**\n- **Story A** provides a detailed introduction to characters and settings, with Olaf describing Red's family dynamics, her preparations, and the forest's atmosphere. The story develops steadily, with each turn adding new information and advancing the plot.\n- **Story B** also introduces characters and settings with warmth and detail, but the development is hindered by the prolonged focus on the opening beat, which limits the exploration of subsequent events and settings.\n\n**Language Use:**\n- **Story A** uses varied and expressive language that aligns well with Olaf's character, incorporating playful and warm imagery. The dialogue feels natural and performable.\n- **Story B** also employs playful and expressive language, capturing Olaf's voice effectively. However, the repetition of certain phrases and the lack of progression in the plot make the language feel somewhat static over time.\n\n**Interruption Handling:**\n- **Story A** handles user interruptions gracefully, acknowledging user input and seamlessly steering back to the story without derailing the narrative.\n- **Story B** also acknowledges user interruptions, but the lack of plot progression makes it difficult to assess how well it handles interruptions in terms of advancing the story.\n\n**Character Fidelity:**\n- **Story A** maintains Olaf's character consistently, with his joyful, curious, and optimistic nature shining through in every response. Olaf's reactions and language are in line with his character profile.\n- **Story B** also stays true to Olaf's character, capturing his playful and warm demeanor. However, the lack of plot progression affects the overall engagement with Olaf's character.\n\n**Narrative Control:**\n- **Story A** demonstrates strong narrative control, moving through the intended beats and maintaining a coherent progression toward resolution.\n- **Story B** lacks narrative control, as it remains in the opening beat for too long, resulting in a rushed and less satisfying resolution.\n\n**Overall:**\n- **Story A** is the better story overall, as it effectively balances plot progression, character development, and language use while maintaining Olaf's character fidelity and handling interruptions well.\n\nBased on my assessment, the better story for each dimension is:\nPlot: A\nDevelopment: A\nLanguage Use: Same\nInterruption Handling: Same\nCharacter Fidelity: Same\nNarrative Control: A\nOverall: A",
+    "winners": {
+      "Plot": "A",
+      "Development": "A",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "A",
+      "Overall": "A"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "B",
+    "Overall": "B"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "B",
+    "Overall": "B"
+  }
+}

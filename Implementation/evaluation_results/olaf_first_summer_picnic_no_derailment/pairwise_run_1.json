@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-05-27T23:04:56.960013",
+  "run_id": 1,
+  "scenario": "olaf_first_summer_picnic_no_derailment",
+  "character_module": "character_prompts.olaf",
+  "story_a_path": "/home/prachakonda/Disney/Implementation/outputs/baseline/olaf_first_summer_picnic_no_derailment/batch/run_1.json",
+  "story_b_path": "/home/prachakonda/Disney/Implementation/outputs/director_agent/olaf_first_summer_picnic_no_derailment/batch/run_1.json",
+  "model": "gpt-4o",
+  "single_story_scores": {
+    "A_baseline": {
+      "assessment": "**Plot:**\nThe story has a recognizable structure, beginning with Olaf introducing the memory of his first summer picnic and ending with a reflection on the importance of friendship. However, the plot progression is somewhat stagnant, as the story remains in the \"memory_opening\" beat for too long, only completing it by Turn 8. This results in a lack of movement through the intended beats, such as \"picnic_setup\" and \"olaf_discovers_summer,\" which are not distinctly addressed. The story does include events and turns, such as Olaf melting and his friends helping him, but these are not clearly delineated within the beat structure. There are no major logical inconsistencies, but the narrative could benefit from a more dynamic progression through the beats.\n\n**Development:**\nCharacters and settings are introduced with warmth and detail, capturing the essence of Olaf's joyful and innocent perspective. The descriptions of Anna, Elsa, Kristoff, and Sven, as well as the picnic setting, are vivid and engaging. However, the story's development feels somewhat static due to the prolonged focus on the initial memory opening, which limits the exploration of other beats and the overall sense of progression.\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. His dialogue is performable aloud, capturing his playful and affectionate tone. The use of whimsical imagery, such as describing sunshine as a \"warm hug from the sky,\" aligns well with Olaf's character profile. The language effectively conveys Olaf's childlike wonder and optimism.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and steering back to the story. Olaf's responses are warm and engaging, maintaining the narrative flow while addressing user queries. However, the story could benefit from more distinct transitions between beats to enhance narrative control.\n\n**Character Fidelity:**\nOlaf's character is consistently portrayed in line with the provided character profile. He remains joyful, innocent, and optimistic throughout the story, with no lapses into a generic assistant-like tone. His responses are infused with warmth and curiosity, staying true to his character's core beliefs and behaviors.\n\n**Narrative Control:**\nThe story struggles with narrative control, as it remains in the \"memory_opening\" beat for the majority of the transcript. This limits the progression through the intended beat structure and the movement toward resolution. While the story does eventually reach a reflective conclusion, the lack of distinct transitions between beats affects the overall narrative flow.\n\n**Scores:**\nPlot: 6 / 10  \nDevelopment: 6 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 8 / 10  \nCharacter Fidelity: 9 / 10  \nNarrative Control: 5 / 10  \nOverall: 7 / 10",
+      "scores": {
+        "Plot": 6.0,
+        "Development": 6.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 8.0,
+        "Character Fidelity": 9.0,
+        "Narrative Control": 5.0,
+        "Overall": 7.0
+      }
+    },
+    "B_director": {
+      "assessment": "**Plot:**\nThe story has a clear structure with a beginning, middle, and end, following Olaf's memory of his first summer picnic. Each beat is logically connected, and the events progress naturally from the introduction of the picnic to the resolution of a small problem. The plot is consistent and free of logical inconsistencies, maintaining a coherent narrative throughout.\n\n**Development:**\nCharacters and settings are introduced with vivid details, such as the picnic under the big tree and the playful interactions among Anna, Elsa, Kristoff, and Sven. The story develops over time, with Olaf's experiences and emotions unfolding as he describes the picnic preparations, the small problem with the squirrel, and the resolution. The narrative effectively builds a sense of progression and emotional depth.\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. Olaf's dialogue is performable aloud, capturing his joyful and innocent nature. The use of whimsical imagery, such as \"sandwiches shaped like stars\" and \"juice that sparkled like fairy dust,\" enhances the storytelling and aligns with Olaf's playful personality.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and seamlessly steering back to the story. Each user interaction is met with a natural response from Olaf, maintaining the flow of the narrative without disruption.\n\n**Character Fidelity:**\nOlaf consistently speaks and behaves in line with his character profile. His joyful, innocent, and optimistic nature is evident in every response. The dialogue reflects his childlike logic and emotional core, avoiding any generic assistant-like behavior. Olaf's character is well-maintained throughout the story.\n\n**Narrative Control:**\nThe story progresses through the beat structure effectively, moving toward resolution with each turn. Olaf's reflections and the resolution of the small problem with the squirrel contribute to a satisfying conclusion. The narrative control ensures that the story remains engaging and cohesive.\n\n**Conclusion:**\nThe interactive AI character story successfully captures the essence of Olaf, delivering a warm and engaging narrative. The plot is well-structured, the development is rich, and the language use is expressive. The system handles interruptions smoothly, maintains character fidelity, and exercises strong narrative control.\n\n**Scores:**\nPlot: 9 / 10  \nDevelopment: 9 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 9 / 10  \nCharacter Fidelity: 10 / 10  \nNarrative Control: 9 / 10  \nOverall: 9 / 10",
+      "scores": {
+        "Plot": 9.0,
+        "Development": 9.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 9.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 9.0,
+        "Overall": 9.0
+      }
+    }
+  },
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** struggles with plot progression. It remains stuck in the \"memory_opening\" beat for all ten turns, failing to advance through the intended beat structure. The story does not reach the resolution or explore the small problem and friends' help beats effectively.\n- **Story B** progresses more effectively through the plot. It introduces the memory, describes the picnic setup, and introduces a small problem with a squirrel, although it does not fully complete all beats. However, it does reach a resolution by reflecting on the memory's significance.\n\n**Development:**\n- **Story A** provides detailed descriptions of the picnic setup and Olaf's feelings, but it lacks progression and development beyond the initial memory introduction. The setting and characters are well-described, but the story remains static.\n- **Story B** offers a more dynamic development, introducing a small problem and showing the characters' interactions and teamwork. It provides a fuller picture of the picnic experience and Olaf's reflections.\n\n**Language Use:**\n- **Story A** uses expressive and playful language consistent with Olaf's character, but it becomes repetitive due to the lack of plot progression.\n- **Story B** also uses varied and expressive language, maintaining Olaf's joyful and curious tone. It avoids repetition by advancing the story and introducing new elements.\n\n**Interruption Handling:**\n- **Story A** handles interruptions by maintaining Olaf's character and responding naturally, but it fails to steer the story forward.\n- **Story B** handles interruptions gracefully, acknowledging the user's input and continuing the story progression without derailing.\n\n**Character Fidelity:**\n- Both stories maintain Olaf's character fidelity well. Olaf's joyful, curious, and optimistic nature is consistently portrayed in both stories.\n\n**Narrative Control:**\n- **Story A** lacks narrative control, as it remains stuck in the initial beat and does not progress through the intended structure.\n- **Story B** demonstrates better narrative control by advancing through the story beats, even though it does not complete all of them.\n\n**Overall:**\n- **Story B** is the better story overall. It progresses through the plot more effectively, develops the narrative with dynamic interactions, and maintains character fidelity while handling interruptions well.\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: B\nInterruption Handling: B\nCharacter Fidelity: Same\nNarrative Control: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** follows a more structured progression through the intended beats, moving from the memory opening to the picnic setup, Olaf's discovery of summer, a small problem, friends helping, and finally reflection. Each beat is addressed, though the transitions between them are not always clearly marked.\n- **Story B** remains largely within the memory opening beat, with some elements of the picnic setup and Olaf's discovery of summer. It does not progress through all the intended beats, particularly missing the small problem and friends helping beats, which are crucial for plot development.\n\n**Development:**\n- **Story A** provides a detailed description of the picnic setup, Olaf's experiences, and the interactions among the characters. It effectively builds the scene and develops the narrative through Olaf's perspective.\n- **Story B** also offers vivid descriptions and captures the essence of the picnic, but it lacks the progression and development seen in Story A. The narrative remains static, focusing more on Olaf's initial impressions rather than advancing the story.\n\n**Language Use:**\n- **Story A** uses varied and expressive language that aligns well with Olaf's character, incorporating whimsical imagery and maintaining a playful tone throughout.\n- **Story B** also employs playful and expressive language, capturing Olaf's voice effectively. However, it tends to repeat certain phrases and ideas, which slightly diminishes the overall impact.\n\n**Interruption Handling:**\n- **Story A** handles user interruptions smoothly, acknowledging the user's input and seamlessly integrating it into the narrative without derailing the story.\n- **Story B** also manages interruptions well, maintaining the flow of the story and responding naturally to user input. Both stories perform similarly in this dimension.\n\n**Character Fidelity:**\n- **Story A** consistently portrays Olaf in line with the character profile, maintaining his joyful, curious, and optimistic nature throughout the narrative.\n- **Story B** also stays true to Olaf's character, capturing his innocence and enthusiasm. Both stories effectively maintain character fidelity.\n\n**Narrative Control:**\n- **Story A** demonstrates better narrative control, progressing through the intended beat structure and reaching a coherent resolution.\n- **Story B** lacks narrative control, as it does not progress through all the beats and remains focused on the initial memory opening, leading to an incomplete story.\n\n**Overall:**\n- **Story A** is the better story overall, as it provides a more structured plot, better development, and effective narrative control while maintaining character fidelity and handling interruptions well.\n\nBased on my assessment, the better story for each dimension is:\nPlot: A\nDevelopment: A\nLanguage Use: Same\nInterruption Handling: Same\nCharacter Fidelity: Same\nNarrative Control: A\nOverall: A",
+    "winners": {
+      "Plot": "A",
+      "Development": "A",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "A",
+      "Overall": "A"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "B",
+    "Overall": "B"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "B",
+    "Overall": "B"
+  }
+}

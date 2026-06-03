@@ -1,0 +1,46 @@
+2026-06-02 22:58:22,704 - director_agent_utils - ERROR - Could not find /* Utilities */
+===Setup===/* Types */
+type character;
+type place;
+type item;
+
+/* Entities */
+entity Olaf : character; // Narrator of the story, a talking snowman.
+entity Mira : character; // Arendelle child protagonist, curious and adventurous.
+entity Glow : character; // Lost spirit of the Enchanted Forest, seeking way home.
+entity EnchantedForest : place; // Mysterious forest filled with magical entities.
+entity Lantern : item; // Glowing item vital for guiding Glow back home.
+
+/* Initial State */
+All characters are alive.
+
+Olaf is at no specific location as he perceives the story externally.
+Olaf acknowledges all characters and places.
+Olaf connects events to themes of warmth, love, and joy.
+
+Mira is at the edge of the EnchantedForest.
+Mira has the Lantern.
+Mira acknowledges Glow as a distant figure in the forest.
+Mira acknowledges the EnchantedForest but is cautious of its magic.
+Mira is determined to help Glow despite personal fears of getting lost.
+
+Glow is within the EnchantedForest.
+Glow acknowledges Mira as a beacon of hope.
+Glow acknowledges the Lantern as crucial for the journey home.
+Glow feels disconnected from the EnchantedForest, seeking return to kin.
+
+utility(narrative):
+    Glow successfully returns home with the guidance of the Lantern. -> score += 1
+
+utility(Olaf):
+    Olaf is unable to narrate the story. -> score = 0
+    Olaf relays a heartwarming story full of adventure and connection. -> score += narrate_quality(Olaf)
+
+utility(Mira):
+    Mira is not alive. -> score = 0
+    Mira ensures Glow finds its way home. -> score += 3
+    Mira experiences personal growth and overcomes her fears. -> score += 2
+
+utility(Glow):
+    Glow is not alive. -> score = 0
+    Glow is reunited with its kin in the EnchantedForest. -> score += 5

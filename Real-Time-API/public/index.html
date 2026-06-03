@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Realtime Story Chat</title>
+    <title>Olaf Story — Director Agent</title>
 
     <style>
       body {
@@ -13,25 +13,21 @@
         padding: 24px;
         background: #f7f7f8;
       }
-
       .controls {
         display: flex;
         gap: 12px;
         margin-bottom: 16px;
         flex-wrap: wrap;
       }
-
       button {
         padding: 10px 16px;
         font-size: 15px;
         cursor: pointer;
       }
-
       #status {
         margin-bottom: 16px;
         font-size: 14px;
       }
-
       #chat {
         background: white;
         border: 1px solid #ddd;
@@ -42,7 +38,6 @@
         padding: 16px;
         margin-bottom: 16px;
       }
-
       .msg {
         margin-bottom: 14px;
         padding: 10px 12px;
@@ -50,35 +45,23 @@
         white-space: pre-wrap;
         line-height: 1.4;
       }
-
-      .user {
-        background: #e8f0fe;
-      }
-
-      .assistant {
-        background: #f1f3f4;
-      }
-
-      .system {
-        background: #fff8e1;
-      }
-
+      .user     { background: #e8f0fe; }
+      .assistant{ background: #f1f3f4; }
+      .system   { background: #fff8e1; }
+      .director { background: #e8f5e9; font-size: 12px; color: #2e7d32; }
       .label {
         font-weight: bold;
         margin-bottom: 4px;
       }
-
       .input-row {
         display: flex;
         gap: 12px;
       }
-
       #textInput {
         flex: 1;
         padding: 12px;
         font-size: 15px;
       }
-
       #debug {
         margin-top: 16px;
         background: #111;
@@ -94,10 +77,15 @@
   </head>
 
   <body>
-    <h1>Olaf Realtime Story Chat</h1>
-    <p>Click Start first. Then type messages and Olaf will keep steering back to the story.</p>
+    <h1>Realtime Story — Director Agent</h1>
+    <p>
+      The Director Agent guides the story behind the scenes. Speak or type —
+      Olaf will call the director before every response.
+    </p>
 
     <div class="controls">
+      <label for="scenarioSelect" style="font-size:14px;align-self:center;">Scenario:</label>
+      <select id="scenarioSelect" style="padding:8px;font-size:14px;"></select>
       <button id="startBtn">Start</button>
       <button id="muteAudioBtn" disabled>Mute audio</button>
       <button id="muteMicBtn" disabled>Mute microphone</button>
@@ -105,71 +93,49 @@
     </div>
 
     <div id="status">Status: not connected</div>
-
     <div id="chat"></div>
 
     <div class="input-row">
-      <input
-        id="textInput"
-        type="text"
-        placeholder="Type your message..."
-        disabled
-      />
+      <input id="textInput" type="text" placeholder="Type your message..." disabled />
       <button id="sendBtn" disabled>Send</button>
     </div>
 
     <div id="debug"></div>
 
     <script>
-      const startBtn = document.getElementById("startBtn");
-      const muteAudioBtn = document.getElementById("muteAudioBtn");
-      const muteMicBtn = document.getElementById("muteMicBtn");
-      const stopBtn = document.getElementById("stopBtn");
-      const sendBtn = document.getElementById("sendBtn");
-      const textInput = document.getElementById("textInput");
-      const chat = document.getElementById("chat");
-      const statusEl = document.getElementById("status");
-      const debugEl = document.getElementById("debug");
+      const startBtn        = document.getElementById("startBtn");
+      const muteAudioBtn    = document.getElementById("muteAudioBtn");
+      const muteMicBtn      = document.getElementById("muteMicBtn");
+      const stopBtn         = document.getElementById("stopBtn");
+      const sendBtn         = document.getElementById("sendBtn");
+      const textInput       = document.getElementById("textInput");
+      const chat            = document.getElementById("chat");
+      const statusEl        = document.getElementById("status");
+      const debugEl         = document.getElementById("debug");
+      const scenarioSelect  = document.getElementById("scenarioSelect");
 
-      let pc = null;
-      let dc = null;
-      let audioEl = null;
-      let localStream = null;
+      // Populate scenario dropdown
+      fetch("/scenarios").then(r => r.json()).then(list => {
+        list.forEach(({ key, label }) => {
+          const opt = document.createElement("option");
+          opt.value = key;
+          opt.textContent = label;
+          scenarioSelect.appendChild(opt);
+        });
+      });
 
-      let isAudioMuted = false;
-      let isMicMuted = false;
+      let pc = null, dc = null, audioEl = null, localStream = null;
+      let isAudioMuted = false, isMicMuted = false;
 
-      let currentAssistantDiv = null;
+      // Per-turn state
+      let currentAssistantDiv  = null;
       let currentAssistantText = "";
-// story definition
-      const STORY = `
-          STORY PREMISE:
-          Olaf is spending the day with Anna because he notices she seems worried. 
-          He wants to help her feel better, but he does not fully understand what is wrong at first.
+      let lastUserInput        = "";   // captured from voice transcript or text
+      let pendingUserText      = "";   // text typed (for text messages)
 
-          MAIN STORY GOAL:
-          By the end, Olaf should help Anna feel supported, loved, and brave enough to face her problem.
+      // ── UI helpers ────────────────────────────────────────────────────────
 
-          FLEXIBLE STORY BEATS:
-          1. Olaf notices Anna is not acting like herself.
-          2. Olaf tries to help in a silly but loving way.
-          3. Anna explains, directly or indirectly, what she is worried about.
-          4. Olaf and Anna go through a small shared experience that reflects the problem.
-          5. Olaf misunderstands something, but his misunderstanding accidentally helps.
-          6. Anna realizes she does not need to solve everything alone.
-          7. Olaf reminds Anna that love and friendship make hard things easier.
-          8. The story ends with Anna feeling encouraged and Olaf happy that he helped.
-
-          IMPORTANT:
-          The exact events are flexible. The user may interrupt, ask questions, suggest actions, or change the direction.
-          Use the user's input as part of the story whenever possible, but keep steering toward Olaf helping Anna.
-          `;
-
-      let storyState = "Olaf is just beginning his journey in Arendelle.";
-
-      function setStatus(text) {
-        statusEl.textContent = `Status: ${text}`;
-      }
+      function setStatus(text) { statusEl.textContent = `Status: ${text}`; }
 
       function logDebug(text) {
         debugEl.textContent += text + "\n";
@@ -179,24 +145,174 @@
       function addMessage(role, text) {
         const wrapper = document.createElement("div");
         wrapper.className = `msg ${role}`;
-
         const label = document.createElement("div");
         label.className = "label";
-
-        if (role === "user") label.textContent = "You";
+        if (role === "user")      label.textContent = "You";
         else if (role === "assistant") label.textContent = "Olaf";
-        else label.textContent = "System";
-
+        else if (role === "director")  label.textContent = "🎬 Director";
+        else                           label.textContent = "System";
         const body = document.createElement("div");
         body.textContent = text;
-
         wrapper.appendChild(label);
         wrapper.appendChild(body);
         chat.appendChild(wrapper);
         chat.scrollTop = chat.scrollHeight;
-
         return body;
       }
+
+      // ── Director tool call handler ─────────────────────────────────────────
+
+      async function handleDirectorToolCall(event) {
+        const args = JSON.parse(event.arguments || "{}");
+        const userInput = args.user_input || lastUserInput || "(no input)";
+
+        logDebug(`[tool call] get_director_decision("${userInput.slice(0, 40)}")`);
+
+        let toolResult = { director_instruction: "Continue the story naturally." };
+
+        try {
+          const resp = await fetch("/director", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_input: userInput }),
+          });
+          const data = await resp.json();
+          toolResult = data.tool_result;
+          addMessage("director", `${data.tool_result.decision_type}: ${data.tool_result.director_instruction}`);
+          logDebug(`[director] ${data.tool_result.decision_type}`);
+        } catch (err) {
+          logDebug(`[director error] ${err.message}`);
+        }
+
+        // Return tool result to the model over data channel
+        dc.send(JSON.stringify({
+          type: "conversation.item.create",
+          item: {
+            type: "function_call_output",
+            call_id: event.call_id,
+            output: JSON.stringify(toolResult),
+          },
+        }));
+
+        // Trigger the actor's audio response
+        dc.send(JSON.stringify({ type: "response.create" }));
+      }
+
+      // ── Data channel message handler ───────────────────────────────────────
+
+      // Track whether we're inside a function-call response (tool turn) vs Olaf's reply turn
+      let inToolTurn = false;
+
+      async function onDataChannelMessage(event) {
+        let data;
+        try { data = JSON.parse(event.data); } catch { return; }
+
+        // Verbose logging: show event type + key fields
+        const preview = data.delta ?? data.transcript ?? data.text ?? data.arguments ?? "";
+        logDebug(`[${data.type}]${preview ? " " + String(preview).slice(0, 60) : ""}`);
+
+        // Voice transcript — capture what user said
+        if (data.type === "conversation.item.input_audio_transcription.completed") {
+          lastUserInput = data.transcript?.trim() || "";
+          if (lastUserInput) addMessage("user", lastUserInput);
+        }
+
+        // Mark start of a function-call response so we ignore deltas during that turn
+        if (data.type === "response.output_item.added" && data.item?.type === "function_call") {
+          inToolTurn = true;
+        }
+
+        // Director tool call from the model
+        if (data.type === "response.function_call_arguments.done") {
+          if (data.name === "get_director_decision") {
+            await handleDirectorToolCall(data);
+          }
+        }
+
+        // After the function-call response.done, we're back to a real Olaf turn
+        if (data.type === "response.done" && inToolTurn) {
+          inToolTurn = false;
+          return; // don't do story_update for the tool-call response
+        }
+
+        // Skip content deltas that belong to the function-call turn
+        if (inToolTurn) return;
+
+        // ── Olaf's actual response ────────────────────────────────────────────
+
+        // Streaming audio transcript (what Olaf is saying — from audio modality)
+        if (data.type === "response.audio_transcript.delta" && typeof data.delta === "string") {
+          if (!currentAssistantDiv) {
+            currentAssistantDiv  = addMessage("assistant", "");
+            currentAssistantText = "";
+          }
+          currentAssistantText += data.delta;
+          currentAssistantDiv.textContent = currentAssistantText;
+          chat.scrollTop = chat.scrollHeight;
+        }
+
+        // Text modality delta (what Olaf is saying — from text modality)
+        if (
+          (data.type === "response.text.delta" ||
+           data.type === "response.output_text.delta" ||
+           data.type === "response.content_part.delta") &&
+          typeof data.delta === "string"
+        ) {
+          if (!currentAssistantDiv) {
+            currentAssistantDiv  = addMessage("assistant", "");
+            currentAssistantText = "";
+          }
+          currentAssistantText += data.delta;
+          currentAssistantDiv.textContent = currentAssistantText;
+          chat.scrollTop = chat.scrollHeight;
+        }
+
+        // Fallback: if response.done has output text we missed via deltas
+        if (data.type === "response.done") {
+          // Try to extract text from the response output if we got nothing via deltas
+          if (!currentAssistantText) {
+            try {
+              const outputs = data.response?.output ?? [];
+              for (const item of outputs) {
+                for (const part of item.content ?? []) {
+                  const txt = part.transcript ?? part.text ?? "";
+                  if (txt) {
+                    if (!currentAssistantDiv) currentAssistantDiv = addMessage("assistant", "");
+                    currentAssistantText += txt;
+                    currentAssistantDiv.textContent = currentAssistantText;
+                  }
+                }
+              }
+            } catch {}
+          }
+
+          const olafText = currentAssistantText.trim();
+          currentAssistantDiv  = null;
+          currentAssistantText = "";
+
+          if (olafText || lastUserInput || pendingUserText) {
+            try {
+              await fetch("/story_update", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  user_text: lastUserInput || pendingUserText,
+                  olaf_text: olafText,
+                }),
+              });
+            } catch {}
+            lastUserInput   = "";
+            pendingUserText = "";
+          }
+        }
+
+        if (data.type === "error") {
+          addMessage("system", `Error: ${JSON.stringify(data.error)}`);
+          logDebug(`[ERROR DETAIL] ${JSON.stringify(data)}`);
+        }
+      }
+
+      // ── Session setup ──────────────────────────────────────────────────────
 
       async function startSession() {
         try {
@@ -215,270 +331,113 @@
           };
 
           dc = pc.createDataChannel("oai-events");
-
           dc.onopen = () => {
             setStatus("connected");
-
-            sendBtn.disabled = false;
+            sendBtn.disabled   = false;
             textInput.disabled = false;
             muteAudioBtn.disabled = false;
-            muteMicBtn.disabled = false;
-            stopBtn.disabled = false;
-
+            muteMicBtn.disabled   = false;
+            stopBtn.disabled      = false;
             logDebug("Data channel open");
-            addMessage("system", "Connected. You can now type messages.");
+            addMessage("system", "Connected. Speak or type — Olaf will respond.");
           };
+          dc.onclose  = () => { setStatus("disconnected"); logDebug("Data channel closed"); };
+          dc.onerror  = (e) => { logDebug("Data channel error"); console.error(e); };
+          dc.onmessage = onDataChannelMessage;
 
-          dc.onclose = () => {
-            setStatus("disconnected");
-            logDebug("Data channel closed");
-          };
-
-          dc.onerror = (error) => {
-            logDebug("Data channel error");
-            console.error(error);
-          };
-
-          dc.onmessage = (event) => {
-            try {
-              const data = JSON.parse(event.data);
-              logDebug(data.type);
-
-              if (data.type === "response.created") {
-                currentAssistantDiv = addMessage("assistant", "");
-                currentAssistantText = "";
-              }
-
-              if (
-                data.type === "response.output_text.delta" &&
-                typeof data.delta === "string"
-              ) {
-                if (!currentAssistantDiv) {
-                  currentAssistantDiv = addMessage("assistant", "");
-                  currentAssistantText = "";
-                }
-
-                currentAssistantText += data.delta;
-                currentAssistantDiv.textContent = currentAssistantText;
-                chat.scrollTop = chat.scrollHeight;
-              }
-
-              if (
-                data.type === "response.text.delta" &&
-                typeof data.delta === "string"
-              ) {
-                if (!currentAssistantDiv) {
-                  currentAssistantDiv = addMessage("assistant", "");
-                  currentAssistantText = "";
-                }
-
-                currentAssistantText += data.delta;
-                currentAssistantDiv.textContent = currentAssistantText;
-                chat.scrollTop = chat.scrollHeight;
-              }
-
-              if (
-                data.type === "response.output_text.done" ||
-                data.type === "response.text.done" ||
-                data.type === "response.done"
-              ) {
-                if (currentAssistantText.trim()) {
-                  storyState = currentAssistantText;
-                }
-
-                currentAssistantDiv = null;
-                currentAssistantText = "";
-              }
-
-              if (data.type === "error") {
-                addMessage("system", `Error: ${JSON.stringify(data.error)}`);
-              }
-            } catch (err) {
-              logDebug("Non-JSON event: " + event.data);
-            }
-          };
-
-          localStream = await navigator.mediaDevices.getUserMedia({
-            audio: true
-          });
-
+          localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
           const [track] = localStream.getAudioTracks();
           pc.addTrack(track, localStream);
 
           const offer = await pc.createOffer();
           await pc.setLocalDescription(offer);
 
-          const response = await fetch("/session", {
+          const scenario = scenarioSelect.value || "olaf_anna_courtyard";
+          scenarioSelect.disabled = true;
+          const response = await fetch(`/session?scenario=${scenario}`, {
             method: "POST",
-            headers: {
-              "Content-Type": "application/sdp"
-            },
-            body: offer.sdp
+            headers: { "Content-Type": "application/sdp" },
+            body: offer.sdp,
           });
 
           const answerSdp = await response.text();
+          if (!response.ok) throw new Error(answerSdp);
 
-          if (!response.ok) {
-            throw new Error(answerSdp);
-          }
+          await pc.setRemoteDescription({ type: "answer", sdp: answerSdp });
 
-          await pc.setRemoteDescription({
-            type: "answer",
-            sdp: answerSdp
-          });
         } catch (error) {
           console.error(error);
           setStatus("failed");
           addMessage("system", `Connection failed: ${error.message}`);
           startBtn.disabled = false;
+          scenarioSelect.disabled = false;
         }
       }
+
+      // ── Text message send ──────────────────────────────────────────────────
 
       function sendTextMessage() {
         const text = textInput.value.trim();
+        if (!text || !dc || dc.readyState !== "open") return;
 
-        if (!text) return;
-
-        if (!dc || dc.readyState !== "open") {
-          addMessage("system", "Not connected yet.");
-          return;
-        }
-
+        pendingUserText = text;
         addMessage("user", text);
-
-        dc.send(
-          JSON.stringify({
-            type: "conversation.item.create",
-            item: {
-              type: "message",
-              role: "user",
-              content: [
-                {
-                  type: "input_text",
-                  text: text
-                }
-              ]
-            }
-          })
-        );
-
-        dc.send(
-          JSON.stringify({
-            type: "response.create",
-            response: {
-              output_modalities: ["text"],
-              // director agent
-              instructions: `
-              Stay fully in character as Olaf.
-
-              STORY FRAME:
-              ${STORY}
-
-              CURRENT STORY STATE:
-              ${storyState}
-
-              USER SAID:
-              "${text}"
-
-              TASK:
-              Respond naturally to the user's message, then continue the story.
-
-              INTERRUPTION HANDLING:
-              - If the user asks a question, answer it briefly as Olaf, then return to the story.
-              - If the user suggests an action, include it if it fits.
-              - If the user changes topic, treat it like Olaf got distracted, then gently steer back.
-              - If the user says something emotional, respond warmly before continuing.
-              - If the user gives a strange or random input, interpret it playfully and use it as a small story moment.
-              - Never ignore the user.
-              - Never abandon the main story goal.
-              - Do not force exact scenes.
-              - Do not restart the story unless the user asks.
-              - Keep the story moving one small step forward each turn.
-
-              NARRATIVE CONTROL:
-              Your hidden goal is to guide the story toward Olaf helping Anna feel supported and brave.
-              You may adapt the path, but not the destination.
-
-              Respond now as Olaf.
-              `
-            }
-          })
-        );
-
         textInput.value = "";
+
+        // Inject as a text conversation item — model will call director tool first
+        dc.send(JSON.stringify({
+          type: "conversation.item.create",
+          item: {
+            type: "message",
+            role: "user",
+            content: [{ type: "input_text", text }],
+          },
+        }));
+
+        // Let the model respond (it will call director tool before speaking)
+        dc.send(JSON.stringify({ type: "response.create" }));
       }
+
+      // ── Controls ───────────────────────────────────────────────────────────
 
       function muteAudio() {
         if (!audioEl) return;
-
         isAudioMuted = !isAudioMuted;
         audioEl.muted = isAudioMuted;
-
-        muteAudioBtn.textContent = isAudioMuted
-          ? "Unmute audio"
-          : "Mute audio";
+        muteAudioBtn.textContent = isAudioMuted ? "Unmute audio" : "Mute audio";
       }
 
       function muteMicrophone() {
         if (!localStream) return;
-
         isMicMuted = !isMicMuted;
-
-        localStream.getAudioTracks().forEach((track) => {
-          track.enabled = !isMicMuted;
-        });
-
-        muteMicBtn.textContent = isMicMuted
-          ? "Unmute microphone"
-          : "Mute microphone";
-
-        if (isMicMuted) {
-          addMessage("system", "Microphone muted. Text-only input is active.");
-        } else {
-          addMessage("system", "Microphone unmuted. Voice input is active.");
-        }
+        localStream.getAudioTracks().forEach(t => { t.enabled = !isMicMuted; });
+        muteMicBtn.textContent = isMicMuted ? "Unmute microphone" : "Mute microphone";
+        addMessage("system", isMicMuted ? "Microphone muted." : "Microphone unmuted.");
       }
 
       function stopSession() {
-        if (dc) {
-          dc.close();
-          dc = null;
-        }
-
-        if (pc) {
-          pc.close();
-          pc = null;
-        }
-
-        if (localStream) {
-          localStream.getTracks().forEach((track) => track.stop());
-          localStream = null;
-        }
-
+        dc?.close();   dc = null;
+        pc?.close();   pc = null;
+        localStream?.getTracks().forEach(t => t.stop());
+        localStream = null;
         audioEl = null;
-
-        startBtn.disabled = false;
-        sendBtn.disabled = true;
-        textInput.disabled = true;
+        startBtn.disabled     = false;
+        sendBtn.disabled      = true;
+        textInput.disabled    = true;
         muteAudioBtn.disabled = true;
-        muteMicBtn.disabled = true;
-        stopBtn.disabled = true;
-
+        muteMicBtn.disabled   = true;
+        stopBtn.disabled      = true;
+        scenarioSelect.disabled = false;
         setStatus("stopped");
         addMessage("system", "Session stopped.");
       }
 
-      startBtn.onclick = startSession;
-      sendBtn.onclick = sendTextMessage;
+      startBtn.onclick   = startSession;
+      sendBtn.onclick    = sendTextMessage;
       muteAudioBtn.onclick = muteAudio;
-      muteMicBtn.onclick = muteMicrophone;
-      stopBtn.onclick = stopSession;
-
-      textInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          sendTextMessage();
-        }
-      });
+      muteMicBtn.onclick   = muteMicrophone;
+      stopBtn.onclick      = stopSession;
+      textInput.addEventListener("keydown", e => { if (e.key === "Enter") sendTextMessage(); });
     </script>
   </body>
 </html>

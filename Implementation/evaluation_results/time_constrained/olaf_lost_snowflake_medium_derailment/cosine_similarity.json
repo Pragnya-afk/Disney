@@ -1,0 +1,47 @@
+{
+  "scenario": "olaf_lost_snowflake_medium_derailment",
+  "labels": [
+    "0.5min",
+    "2.0min",
+    "5.0min",
+    "10.0min",
+    "director"
+  ],
+  "similarity_matrix": {
+    "0.5min": {
+      "0.5min": 1.0,
+      "2.0min": 0.8337,
+      "5.0min": 0.7076,
+      "10.0min": 0.8088,
+      "director": 0.8047
+    },
+    "2.0min": {
+      "0.5min": 0.8337,
+      "2.0min": 1.0,
+      "5.0min": 0.8675,
+      "10.0min": 0.9362,
+      "director": 0.9402
+    },
+    "5.0min": {
+      "0.5min": 0.7076,
+      "2.0min": 0.8675,
+      "5.0min": 1.0,
+      "10.0min": 0.8716,
+      "director": 0.8386
+    },
+    "10.0min": {
+      "0.5min": 0.8088,
+      "2.0min": 0.9362,
+      "5.0min": 0.8716,
+      "10.0min": 1.0,
+      "director": 0.949
+    },
+    "director": {
+      "0.5min": 0.8047,
+      "2.0min": 0.9402,
+      "5.0min": 0.8386,
+      "10.0min": 0.949,
+      "director": 1.0
+    }
+  }
+}

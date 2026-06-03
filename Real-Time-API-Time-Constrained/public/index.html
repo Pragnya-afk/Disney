@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Olaf Story — Time-Constrained Director</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 24px;
+        background: #f7f7f8;
+      }
+      .controls {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      button {
+        padding: 10px 16px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      #status {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      /* ── Timer panel ──────────────────────────────────────────────────────── */
+      #timerPanel {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        display: none;
+      }
+      #timerPanel.active { display: block; }
+      .timer-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+      }
+      #timerDisplay {
+        font-size: 22px;
+        font-weight: bold;
+        font-variant-numeric: tabular-nums;
+        min-width: 90px;
+      }
+      #timerLabel { font-size: 13px; color: #555; }
+      #pacingBadge {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: #c8e6c9;
+        color: #1b5e20;
+      }
+      #pacingBadge.too_fast  { background: #bbdefb; color: #0d47a1; }
+      #pacingBadge.normal    { background: #c8e6c9; color: #1b5e20; }
+      #pacingBadge.hurry     { background: #ffe0b2; color: #e65100; }
+      #pacingBadge.critical  { background: #ffcdd2; color: #b71c1c; }
+      #pacingBadge.final     { background: #d32f2f; color: white; }
+      .timer-bar-track {
+        background: #e0e0e0;
+        border-radius: 6px;
+        height: 8px;
+        overflow: hidden;
+      }
+      #timerBar {
+        height: 100%;
+        border-radius: 6px;
+        background: #66bb6a;
+        transition: width 1s linear, background 0.5s;
+        width: 0%;
+      }
+      #timerBar.hurry    { background: #ffa726; }
+      #timerBar.critical { background: #ef5350; }
+      #timerBar.final    { background: #b71c1c; }
+      #beatInfo {
+        font-size: 12px;
+        color: #555;
+        margin-top: 4px;
+      }
+
+      /* ── Chat ─────────────────────────────────────────────────────────────── */
+      #chat {
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        min-height: 380px;
+        max-height: 380px;
+        overflow-y: auto;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+      .msg {
+        margin-bottom: 14px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        white-space: pre-wrap;
+        line-height: 1.4;
+      }
+      .user      { background: #e8f0fe; }
+      .assistant { background: #f1f3f4; }
+      .system    { background: #fff8e1; }
+      .director  { background: #e8f5e9; font-size: 12px; color: #2e7d32; }
+      .director.too_fast  { background: #e3f2fd; color: #0d47a1; }
+      .director.hurry     { background: #fff3e0; color: #e65100; }
+      .director.critical  { background: #ffebee; color: #c62828; }
+      .director.final     { background: #d32f2f; color: white; }
+      .label {
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .pacing-tag {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 1px 6px;
+        border-radius: 10px;
+        margin-left: 6px;
+        background: rgba(0,0,0,0.08);
+        vertical-align: middle;
+      }
+      .input-row {
+        display: flex;
+        gap: 12px;
+      }
+      #textInput {
+        flex: 1;
+        padding: 12px;
+        font-size: 15px;
+      }
+      #debug {
+        margin-top: 16px;
+        background: #111;
+        color: #ddd;
+        padding: 12px;
+        border-radius: 10px;
+        max-height: 160px;
+        overflow-y: auto;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Realtime Story — Time-Constrained Director</h1>
+    <p>
+      The Director Agent guides the story and enforces a target duration.
+      Speak or type — Olaf calls the director before every response and adjusts pacing accordingly.
+    </p>
+
+    <div class="controls">
+      <label for="scenarioSelect" style="font-size:14px;">Scenario:</label>
+      <select id="scenarioSelect" style="padding:8px;font-size:14px;"></select>
+
+      <label for="timeLimitSelect" style="font-size:14px;margin-left:8px;">Time limit:</label>
+      <select id="timeLimitSelect" style="padding:8px;font-size:14px;">
+        <option value="1">1 min</option>
+        <option value="2">2 min</option>
+        <option value="3">3 min</option>
+        <option value="5" selected>5 min</option>
+        <option value="10">10 min</option>
+        <option value="15">15 min</option>
+      </select>
+
+      <button id="startBtn">Start</button>
+      <button id="muteAudioBtn" disabled>Mute audio</button>
+      <button id="muteMicBtn" disabled>Mute microphone</button>
+      <button id="stopBtn" disabled>Stop</button>
+    </div>
+
+    <div id="status">Status: not connected</div>
+
+    <!-- Timer panel -->
+    <div id="timerPanel">
+      <div class="timer-row">
+        <div>
+          <div id="timerDisplay">0:00</div>
+          <div id="timerLabel">elapsed</div>
+        </div>
+        <div style="flex:1;">
+          <div class="timer-bar-track"><div id="timerBar"></div></div>
+          <div id="beatInfo">Beat — / —</div>
+        </div>
+        <div id="pacingBadge" class="normal">normal</div>
+      </div>
+    </div>
+
+    <div id="chat"></div>
+
+    <div class="input-row">
+      <input id="textInput" type="text" placeholder="Type your message..." disabled />
+      <button id="sendBtn" disabled>Send</button>
+    </div>
+
+    <div id="debug"></div>
+
+    <script>
+      const startBtn       = document.getElementById("startBtn");
+      const muteAudioBtn   = document.getElementById("muteAudioBtn");
+      const muteMicBtn     = document.getElementById("muteMicBtn");
+      const stopBtn        = document.getElementById("stopBtn");
+      const sendBtn        = document.getElementById("sendBtn");
+      const textInput      = document.getElementById("textInput");
+      const chat           = document.getElementById("chat");
+      const statusEl       = document.getElementById("status");
+      const debugEl        = document.getElementById("debug");
+      const scenarioSelect = document.getElementById("scenarioSelect");
+      const timeLimitSelect = document.getElementById("timeLimitSelect");
+      const timerPanel     = document.getElementById("timerPanel");
+      const timerDisplay   = document.getElementById("timerDisplay");
+      const timerLabel     = document.getElementById("timerLabel");
+      const timerBar       = document.getElementById("timerBar");
+      const beatInfo       = document.getElementById("beatInfo");
+      const pacingBadge    = document.getElementById("pacingBadge");
+
+      // Populate scenario dropdown
+      fetch("/scenarios").then(r => r.json()).then(list => {
+        list.forEach(({ key, label }) => {
+          const opt = document.createElement("option");
+          opt.value = key;
+          opt.textContent = label;
+          scenarioSelect.appendChild(opt);
+        });
+      });
+
+      let pc = null, dc = null, audioEl = null, localStream = null;
+      let isAudioMuted = false, isMicMuted = false;
+      let timerPollId = null;
+      let timeUpInjected = false;
+
+      // Per-turn state
+      let currentAssistantDiv  = null;
+      let currentAssistantText = "";
+      let lastUserInput        = "";
+      let pendingUserText      = "";
+
+      // ── Helpers ────────────────────────────────────────────────────────────
+
+      function setStatus(text) { statusEl.textContent = `Status: ${text}`; }
+
+      function logDebug(text) {
+        debugEl.textContent += text + "\n";
+        debugEl.scrollTop = debugEl.scrollHeight;
+      }
+
+      function fmt(seconds) {
+        const s = Math.max(0, Math.round(seconds));
+        return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+      }
+
+      function addMessage(role, text, pacingMode) {
+        const wrapper = document.createElement("div");
+        wrapper.className = `msg ${role}`;
+        if (role === "director" && pacingMode) wrapper.classList.add(pacingMode);
+
+        const label = document.createElement("div");
+        label.className = "label";
+        if (role === "user")           label.textContent = "You";
+        else if (role === "assistant") label.textContent = "Olaf";
+        else if (role === "director") {
+          label.innerHTML = `🎬 Director`;
+          if (pacingMode) {
+            const tag = document.createElement("span");
+            tag.className = "pacing-tag";
+            tag.textContent = pacingMode.replace("_", " ");
+            label.appendChild(tag);
+          }
+        }
+        else label.textContent = "System";
+
+        const body = document.createElement("div");
+        body.textContent = text;
+        wrapper.appendChild(label);
+        wrapper.appendChild(body);
+        chat.appendChild(wrapper);
+        chat.scrollTop = chat.scrollHeight;
+        return body;
+      }
+
+      // ── Timer poll ─────────────────────────────────────────────────────────
+
+      function updateTimer(data) {
+        if (!data.active) return;
+
+        const limitSecs = data.time_limit_minutes * 60;
+        const elapsed   = data.elapsed_seconds;
+        const remaining = data.remaining_seconds;
+        const pct       = Math.min(100, (elapsed / limitSecs) * 100);
+        const mode      = data.pacing_mode || "normal";
+
+        timerDisplay.textContent = fmt(elapsed);
+        timerLabel.textContent   = `elapsed · ${fmt(remaining)} remaining`;
+        timerBar.style.width     = `${pct}%`;
+        timerBar.className       = mode;
+        pacingBadge.textContent  = mode.replace("_", " ");
+        pacingBadge.className    = mode;
+
+        if (data.beat_index !== undefined && data.total_beats !== undefined) {
+          beatInfo.textContent = `Beat ${data.beat_index + 1} / ${data.total_beats}`;
+        }
+
+        // Inject close-story message when time runs out
+        if (data.should_stop && !timeUpInjected && dc && dc.readyState === "open") {
+          timeUpInjected = true;
+          logDebug("[Time's up — injecting story close]");
+          addMessage("system", "⏱ Time's up — Olaf is wrapping up the story...");
+          dc.send(JSON.stringify({
+            type: "conversation.item.create",
+            item: {
+              type: "message",
+              role: "user",
+              content: [{
+                type: "input_text",
+                text: "[Story time ended — wrap up all remaining story beats immediately with a complete, satisfying ending]",
+              }],
+            },
+          }));
+          dc.send(JSON.stringify({ type: "response.create" }));
+        }
+      }
+
+      function startTimerPoll() {
+        timerPanel.classList.add("active");
+        timeUpInjected = false;
+        timerPollId = setInterval(async () => {
+          try {
+            const r = await fetch("/time_status");
+            const data = await r.json();
+            updateTimer(data);
+          } catch {}
+        }, 2000);
+      }
+
+      function stopTimerPoll() {
+        clearInterval(timerPollId);
+        timerPollId = null;
+        timerPanel.classList.remove("active");
+      }
+
+      // ── Director tool call handler ─────────────────────────────────────────
+
+      async function handleDirectorToolCall(event) {
+        const args = JSON.parse(event.arguments || "{}");
+        const userInput = args.user_input || lastUserInput || "(no input)";
+
+        logDebug(`[tool call] get_director_decision("${userInput.slice(0, 40)}")`);
+
+        let toolResult = { director_instruction: "Continue the story naturally.", pacing_mode: "normal" };
+        let pacingMode = "normal";
+
+        try {
+          const resp = await fetch("/director", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_input: userInput }),
+          });
+          const data = await resp.json();
+          toolResult  = data.tool_result;
+          pacingMode  = data.pacing_mode || data.tool_result.pacing_mode || "normal";
+
+          addMessage(
+            "director",
+            `${data.tool_result.decision_type}: ${data.tool_result.director_instruction}`,
+            pacingMode,
+          );
+          logDebug(`[director] ${data.tool_result.decision_type} | pacing: ${pacingMode}`);
+
+          // Eager timer update from director response (no need to wait for next poll)
+          if (data.elapsed_seconds !== undefined) {
+            const timeLimitMin = parseFloat(timeLimitSelect.value) || 5;
+            updateTimer({
+              active: true,
+              time_limit_minutes: timeLimitMin,
+              elapsed_seconds: data.elapsed_seconds,
+              remaining_seconds: data.remaining_seconds,
+              pacing_mode: pacingMode,
+              should_stop: data.remaining_seconds <= 0,
+            });
+          }
+        } catch (err) {
+          logDebug(`[director error] ${err.message}`);
+        }
+
+        dc.send(JSON.stringify({
+          type: "conversation.item.create",
+          item: {
+            type: "function_call_output",
+            call_id: event.call_id,
+            output: JSON.stringify(toolResult),
+          },
+        }));
+
+        dc.send(JSON.stringify({ type: "response.create" }));
+      }
+
+      // ── Data channel message handler ───────────────────────────────────────
+
+      let inToolTurn = false;
+
+      async function onDataChannelMessage(event) {
+        let data;
+        try { data = JSON.parse(event.data); } catch { return; }
+
+        const preview = data.delta ?? data.transcript ?? data.text ?? data.arguments ?? "";
+        logDebug(`[${data.type}]${preview ? " " + String(preview).slice(0, 60) : ""}`);
+
+        if (data.type === "conversation.item.input_audio_transcription.completed") {
+          lastUserInput = data.transcript?.trim() || "";
+          if (lastUserInput) addMessage("user", lastUserInput);
+        }
+
+        if (data.type === "response.output_item.added" && data.item?.type === "function_call") {
+          inToolTurn = true;
+        }
+
+        if (data.type === "response.function_call_arguments.done") {
+          if (data.name === "get_director_decision") {
+            await handleDirectorToolCall(data);
+          }
+        }
+
+        if (data.type === "response.done" && inToolTurn) {
+          inToolTurn = false;
+          return;
+        }
+
+        if (inToolTurn) return;
+
+        // ── Olaf's actual response ─────────────────────────────────────────
+
+        if (data.type === "response.audio_transcript.delta" && typeof data.delta === "string") {
+          if (!currentAssistantDiv) {
+            currentAssistantDiv  = addMessage("assistant", "");
+            currentAssistantText = "";
+          }
+          currentAssistantText += data.delta;
+          currentAssistantDiv.textContent = currentAssistantText;
+          chat.scrollTop = chat.scrollHeight;
+        }
+
+        if (
+          (data.type === "response.text.delta" ||
+           data.type === "response.output_text.delta" ||
+           data.type === "response.content_part.delta") &&
+          typeof data.delta === "string"
+        ) {
+          if (!currentAssistantDiv) {
+            currentAssistantDiv  = addMessage("assistant", "");
+            currentAssistantText = "";
+          }
+          currentAssistantText += data.delta;
+          currentAssistantDiv.textContent = currentAssistantText;
+          chat.scrollTop = chat.scrollHeight;
+        }
+
+        if (data.type === "response.done") {
+          if (!currentAssistantText) {
+            try {
+              const outputs = data.response?.output ?? [];
+              for (const item of outputs) {
+                for (const part of item.content ?? []) {
+                  const txt = part.transcript ?? part.text ?? "";
+                  if (txt) {
+                    if (!currentAssistantDiv) currentAssistantDiv = addMessage("assistant", "");
+                    currentAssistantText += txt;
+                    currentAssistantDiv.textContent = currentAssistantText;
+                  }
+                }
+              }
+            } catch {}
+          }
+
+          const olafText = currentAssistantText.trim();
+          currentAssistantDiv  = null;
+          currentAssistantText = "";
+
+          if (olafText || lastUserInput || pendingUserText) {
+            try {
+              await fetch("/story_update", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  user_text: lastUserInput || pendingUserText,
+                  olaf_text: olafText,
+                }),
+              });
+            } catch {}
+            lastUserInput   = "";
+            pendingUserText = "";
+          }
+        }
+
+        if (data.type === "error") {
+          addMessage("system", `Error: ${JSON.stringify(data.error)}`);
+          logDebug(`[ERROR DETAIL] ${JSON.stringify(data)}`);
+        }
+      }
+
+      // ── Session setup ──────────────────────────────────────────────────────
+
+      async function startSession() {
+        try {
+          setStatus("connecting...");
+          startBtn.disabled = true;
+
+          pc = new RTCPeerConnection();
+
+          audioEl = document.createElement("audio");
+          audioEl.autoplay = true;
+          audioEl.muted = isAudioMuted;
+
+          pc.ontrack = (event) => {
+            audioEl.srcObject = event.streams[0];
+            logDebug("Remote audio connected");
+          };
+
+          dc = pc.createDataChannel("oai-events");
+          dc.onopen = () => {
+            setStatus("connected");
+            sendBtn.disabled      = false;
+            textInput.disabled    = false;
+            muteAudioBtn.disabled = false;
+            muteMicBtn.disabled   = false;
+            stopBtn.disabled      = false;
+            logDebug("Data channel open");
+            addMessage("system", "Connected. Speak or type — Olaf will respond.");
+            startTimerPoll();
+          };
+          dc.onclose = () => { setStatus("disconnected"); logDebug("Data channel closed"); stopTimerPoll(); };
+          dc.onerror = (e) => { logDebug("Data channel error"); console.error(e); };
+          dc.onmessage = onDataChannelMessage;
+
+          localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          const [track] = localStream.getAudioTracks();
+          pc.addTrack(track, localStream);
+
+          const offer = await pc.createOffer();
+          await pc.setLocalDescription(offer);
+
+          const scenario  = scenarioSelect.value || "olaf_anna_courtyard";
+          const timeLimit = timeLimitSelect.value || "5";
+          scenarioSelect.disabled  = true;
+          timeLimitSelect.disabled = true;
+
+          const response = await fetch(`/session?scenario=${scenario}&time_limit=${timeLimit}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/sdp" },
+            body: offer.sdp,
+          });
+
+          const answerSdp = await response.text();
+          if (!response.ok) throw new Error(answerSdp);
+
+          await pc.setRemoteDescription({ type: "answer", sdp: answerSdp });
+
+        } catch (error) {
+          console.error(error);
+          setStatus("failed");
+          addMessage("system", `Connection failed: ${error.message}`);
+          startBtn.disabled        = false;
+          scenarioSelect.disabled  = false;
+          timeLimitSelect.disabled = false;
+        }
+      }
+
+      // ── Text message send ──────────────────────────────────────────────────
+
+      function sendTextMessage() {
+        const text = textInput.value.trim();
+        if (!text || !dc || dc.readyState !== "open") return;
+
+        pendingUserText = text;
+        addMessage("user", text);
+        textInput.value = "";
+
+        dc.send(JSON.stringify({
+          type: "conversation.item.create",
+          item: {
+            type: "message",
+            role: "user",
+            content: [{ type: "input_text", text }],
+          },
+        }));
+        dc.send(JSON.stringify({ type: "response.create" }));
+      }
+
+      // ── Controls ───────────────────────────────────────────────────────────
+
+      function muteAudio() {
+        if (!audioEl) return;
+        isAudioMuted = !isAudioMuted;
+        audioEl.muted = isAudioMuted;
+        muteAudioBtn.textContent = isAudioMuted ? "Unmute audio" : "Mute audio";
+      }
+
+      function muteMicrophone() {
+        if (!localStream) return;
+        isMicMuted = !isMicMuted;
+        localStream.getAudioTracks().forEach(t => { t.enabled = !isMicMuted; });
+        muteMicBtn.textContent = isMicMuted ? "Unmute microphone" : "Mute microphone";
+        addMessage("system", isMicMuted ? "Microphone muted." : "Microphone unmuted.");
+      }
+
+      function stopSession() {
+        stopTimerPoll();
+        dc?.close();   dc = null;
+        pc?.close();   pc = null;
+        localStream?.getTracks().forEach(t => t.stop());
+        localStream = null;
+        audioEl = null;
+        startBtn.disabled        = false;
+        sendBtn.disabled         = true;
+        textInput.disabled       = true;
+        muteAudioBtn.disabled    = true;
+        muteMicBtn.disabled      = true;
+        stopBtn.disabled         = true;
+        scenarioSelect.disabled  = false;
+        timeLimitSelect.disabled = false;
+        setStatus("stopped");
+        addMessage("system", "Session stopped.");
+      }
+
+      startBtn.onclick     = startSession;
+      sendBtn.onclick      = sendTextMessage;
+      muteAudioBtn.onclick = muteAudio;
+      muteMicBtn.onclick   = muteMicrophone;
+      stopBtn.onclick      = stopSession;
+      textInput.addEventListener("keydown", e => { if (e.key === "Enter") sendTextMessage(); });
+    </script>
+  </body>
+</html>

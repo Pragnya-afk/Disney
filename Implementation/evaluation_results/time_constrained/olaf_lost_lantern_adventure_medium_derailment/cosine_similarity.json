@@ -1,0 +1,47 @@
+{
+  "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+  "labels": [
+    "0.5min",
+    "2.0min",
+    "5.0min",
+    "10.0min",
+    "director"
+  ],
+  "similarity_matrix": {
+    "0.5min": {
+      "0.5min": 1.0,
+      "2.0min": 0.7503,
+      "5.0min": 0.5968,
+      "10.0min": 0.6024,
+      "director": 0.578
+    },
+    "2.0min": {
+      "0.5min": 0.7503,
+      "2.0min": 1.0,
+      "5.0min": 0.8545,
+      "10.0min": 0.8531,
+      "director": 0.7889
+    },
+    "5.0min": {
+      "0.5min": 0.5968,
+      "2.0min": 0.8545,
+      "5.0min": 1.0,
+      "10.0min": 0.9189,
+      "director": 0.8502
+    },
+    "10.0min": {
+      "0.5min": 0.6024,
+      "2.0min": 0.8531,
+      "5.0min": 0.9189,
+      "10.0min": 1.0,
+      "director": 0.8575
+    },
+    "director": {
+      "0.5min": 0.578,
+      "2.0min": 0.7889,
+      "5.0min": 0.8502,
+      "10.0min": 0.8575,
+      "director": 1.0
+    }
+  }
+}

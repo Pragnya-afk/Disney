@@ -1,0 +1,47 @@
+{
+  "scenario": "olaf_once_upon_a_snowman_origin_no_derailment",
+  "labels": [
+    "0.5min",
+    "2.0min",
+    "5.0min",
+    "10.0min",
+    "director"
+  ],
+  "similarity_matrix": {
+    "0.5min": {
+      "0.5min": 1.0,
+      "2.0min": 0.7088,
+      "5.0min": 0.6135,
+      "10.0min": 0.5975,
+      "director": 0.5545
+    },
+    "2.0min": {
+      "0.5min": 0.7088,
+      "2.0min": 1.0,
+      "5.0min": 0.9162,
+      "10.0min": 0.9058,
+      "director": 0.8612
+    },
+    "5.0min": {
+      "0.5min": 0.6135,
+      "2.0min": 0.9162,
+      "5.0min": 1.0,
+      "10.0min": 0.949,
+      "director": 0.9283
+    },
+    "10.0min": {
+      "0.5min": 0.5975,
+      "2.0min": 0.9058,
+      "5.0min": 0.949,
+      "10.0min": 1.0,
+      "director": 0.9113
+    },
+    "director": {
+      "0.5min": 0.5545,
+      "2.0min": 0.8612,
+      "5.0min": 0.9283,
+      "10.0min": 0.9113,
+      "director": 1.0
+    }
+  }
+}

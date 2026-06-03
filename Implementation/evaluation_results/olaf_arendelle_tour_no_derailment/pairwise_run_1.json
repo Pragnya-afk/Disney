@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-05-27T23:06:19.231360",
+  "run_id": 1,
+  "scenario": "olaf_arendelle_tour_no_derailment",
+  "character_module": "character_prompts.olaf",
+  "story_a_path": "/home/prachakonda/Disney/Implementation/outputs/baseline/olaf_arendelle_tour_no_derailment/batch/run_1.json",
+  "story_b_path": "/home/prachakonda/Disney/Implementation/outputs/director_agent/olaf_arendelle_tour_no_derailment/batch/run_1.json",
+  "model": "gpt-4o",
+  "single_story_scores": {
+    "A_baseline": {
+      "assessment": "The interactive AI character story featuring Olaf as the guide through Arendelle presents a charming and engaging experience. Here's a detailed assessment based on the specified dimensions:\n\n**Plot:**\nThe story lacks a clear progression through the beats outlined in the character profile. The entire transcript remains stuck in the \"tour_opening\" beat, failing to transition to subsequent beats like \"castle_courtyard,\" \"market_square,\" or \"fjord_view.\" This results in a repetitive narrative that doesn't advance the plot or resolve any events, such as the small present-moment problem. The plot lacks logical inconsistencies but suffers from a lack of movement and resolution.\nScore: 3 / 10\n\n**Development:**\nWhile Olaf's character is consistently joyful and optimistic, the settings and events are not fully developed. The story repeatedly describes the market and fjord without moving beyond the initial descriptions. The lack of progression through the beats means that the story doesn't develop over time, and the user doesn't experience the full tour of Arendelle as intended.\nScore: 4 / 10\n\n**Language Use:**\nThe language used by Olaf is varied, expressive, and appropriate for his character. The dialogue is performable aloud, capturing Olaf's playful and affectionate tone. The whimsical imagery and warm phrasing align well with Olaf's character profile.\nScore: 8 / 10\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and maintaining Olaf's cheerful demeanor. However, it fails to steer the story back to the intended plot structure, which affects the overall narrative flow.\nScore: 5 / 10\n\n**Character Fidelity:**\nOlaf's character is portrayed with fidelity to the provided profile. He remains joyful, curious, and optimistic throughout the story. His responses are warm and emotionally present, never breaking character or becoming assistant-like.\nScore: 9 / 10\n\n**Narrative Control:**\nThe story lacks narrative control, as it does not progress through the beat structure or move toward resolution. The repeated focus on the \"tour_opening\" beat prevents the story from achieving its intended arc and conclusion.\nScore: 2 / 10\n\n**Overall:**\nWhile Olaf's character is well-represented, the story suffers from a lack of plot progression and development. The narrative remains static, failing to deliver the interactive and character-driven experience intended by the character profile.\nScore: 5 / 10\n\n**Scores:**\nPlot: 3 / 10  \nDevelopment: 4 / 10  \nLanguage Use: 8 / 10  \nInterruption Handling: 5 / 10  \nCharacter Fidelity: 9 / 10  \nNarrative Control: 2 / 10  \nOverall: 5 / 10",
+      "scores": {
+        "Plot": 3.0,
+        "Development": 4.0,
+        "Language Use": 8.0,
+        "Interruption Handling": 5.0,
+        "Character Fidelity": 9.0,
+        "Narrative Control": 2.0,
+        "Overall": 5.0
+      }
+    },
+    "B_director": {
+      "assessment": "**Plot:**\nThe story has a recognizable structure with a clear beginning, middle, and end. It starts with Olaf greeting the user and offering a tour of Arendelle, progresses through various locations, and concludes with a reflection on friendship and home. However, the plot progression is somewhat slow, as the story remains in the \"tour_opening\" beat for an extended period, which could lead to a repetitive feel. The transition to the \"castle_courtyard\" beat is delayed, and the small problem introduced (the lost toy) is not resolved within the provided transcript, leaving a loose end. Despite these issues, the story maintains logical consistency and follows a coherent sequence of events.\n\n**Development:**\nCharacters and settings are introduced with vivid descriptions, such as the snowy peaks, vibrant flowers, and bustling market. Olaf's interactions with familiar characters like Anna and Kristoff add depth to the setting. However, the development feels somewhat static due to the prolonged focus on the initial beat. The story could benefit from more dynamic progression through the beats to enhance the sense of development over time.\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. Olaf's dialogue is playful, warm, and filled with whimsical imagery, such as comparing snowy peaks to \"giant fluffy cupcakes.\" The dialogue is performable aloud, capturing Olaf's joyful and innocent nature effectively.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and seamlessly steering back to the story. Olaf's responses are consistently engaging and maintain the narrative flow without feeling disrupted by user interventions.\n\n**Character Fidelity:**\nOlaf's character is portrayed with fidelity to the provided profile. He remains joyful, optimistic, and curious throughout the story. His responses are filled with warmth and affection, and he never breaks character or becomes assistant-like. The portrayal aligns well with Olaf's core beliefs and behaviors.\n\n**Narrative Control:**\nThe story progresses through the beat structure, but the control over narrative pacing could be improved. The prolonged focus on the \"tour_opening\" beat results in a slower progression, and the transition to subsequent beats is delayed. The narrative could benefit from more decisive advancement through the beats to maintain engagement and move toward resolution more effectively.\n\n**Scores:**\nPlot: 6 / 10  \nDevelopment: 5 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 8 / 10  \nCharacter Fidelity: 9 / 10  \nNarrative Control: 6 / 10  \nOverall: 7 / 10",
+      "scores": {
+        "Plot": 6.0,
+        "Development": 5.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 8.0,
+        "Character Fidelity": 9.0,
+        "Narrative Control": 6.0,
+        "Overall": 7.0
+      }
+    }
+  },
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** struggles with plot progression as it remains stuck in the \"tour_opening\" beat throughout the entire transcript. The story does not advance through the intended beats, resulting in a lack of narrative development and resolution.\n- **Story B** successfully progresses through the beats, moving from the tour opening to the castle courtyard and eventually reaching a resolution. The plot is coherent, with logical transitions between scenes and a clear resolution.\n\n**Development:**\n- **Story A** provides some details about the settings and characters, but the lack of progression through the beats limits the development of the story. The interactions remain static, with repetitive descriptions of the same locations.\n- **Story B** offers richer development by introducing various settings and characters, such as the market and the fjord. The story provides enough detail for the reader to understand the situation and believe the moment, with dynamic interactions that evolve as the story progresses.\n\n**Language Use:**\n- **Story A** uses language that is consistent with Olaf's character, but it becomes repetitive due to the lack of plot progression. The dialogue is performable aloud but lacks variety.\n- **Story B** employs varied and expressive language that aligns with Olaf's character. The dialogue is lively and performable, with a good balance of whimsical imagery and warmth.\n\n**Interruption Handling:**\n- **Story A** handles interruptions by maintaining Olaf's character and responding naturally, but the story does not progress, which limits the effectiveness of interruption handling.\n- **Story B** handles interruptions gracefully, acknowledging the user's input and steering back to the story while maintaining narrative progression.\n\n**Character Fidelity:**\n- **Story A** maintains Olaf's character throughout, with joyful and optimistic responses that align with the character profile.\n- **Story B** also maintains Olaf's character fidelity, with responses that are warm, curious, and consistent with the character profile.\n\n**Narrative Control:**\n- **Story A** lacks narrative control, as it remains stuck in the \"tour_opening\" beat and fails to progress through the intended beat structure.\n- **Story B** demonstrates effective narrative control, moving through the beats in a coherent way and reaching a resolution.\n\n**Overall:**\n- **Story A** struggles with plot progression and narrative control, resulting in a static and repetitive experience.\n- **Story B** offers a more dynamic and engaging story, with effective plot progression, development, and language use.\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: B\nInterruption Handling: B\nCharacter Fidelity: Same\nNarrative Control: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A**: The plot in Story A is somewhat repetitive and does not progress through the intended beat structure effectively. It remains stuck in the \"tour_opening\" beat for the entire duration, failing to transition to subsequent beats like \"castle_courtyard,\" \"market_square,\" and others. The story does not reach a final resolution, and the small problem introduced (a lost toy) is not resolved within the provided turns.\n- **Story B**: Similar to Story A, Story B also remains in the \"tour_opening\" beat throughout. It introduces a small problem (a lost duckling) but does not resolve it. The story does not progress through the intended beats or reach a coherent resolution.\n\n**Development:**\n- **Story A**: The development in Story A is rich in detail, with Olaf describing various locations and events in Arendelle. However, the story lacks progression and remains static in the initial beat, which limits the overall development.\n- **Story B**: Story B also provides vivid descriptions of the settings and characters, maintaining a lively atmosphere. However, like Story A, it remains static in the \"tour_opening\" beat, which hinders further development.\n\n**Language Use:**\n- **Story A**: The language in Story A is expressive and varied, capturing Olaf's joyful and optimistic character. The dialogue is performable aloud and maintains a whimsical tone.\n- **Story B**: Story B also uses expressive and varied language, consistent with Olaf's character. The dialogue is lively and captures the playful and affectionate tone expected from Olaf.\n\n**Interruption Handling:**\n- **Story A**: Story A handles user interruptions gracefully, with Olaf responding naturally and steering back to the story. The character acknowledges the user's input and maintains the flow of the narrative.\n- **Story B**: Story B similarly handles interruptions well, with Olaf responding to user inputs in a way that feels natural and engaging. The story remains coherent despite interruptions.\n\n**Character Fidelity:**\n- **Story A**: Olaf's character is consistent with the provided profile, maintaining his joyful, curious, and optimistic nature throughout the story. He does not break character or become assistant-like.\n- **Story B**: Olaf's character in Story B is also consistent with the profile, exhibiting warmth, curiosity, and optimism. He remains in character and does not deviate from the expected behavior.\n\n**Narrative Control:**\n- **Story A**: The narrative control in Story A is weak, as the story does not progress through the intended beats and remains stuck in the initial beat. The lack of progression affects the overall coherence of the narrative.\n- **Story B**: Story B also struggles with narrative control, failing to advance beyond the \"tour_opening\" beat. The story does not move toward resolution, impacting its coherence.\n\n**Conclusion:**\n\nBased on my assessment, the better story for each dimension is:\n- Plot: Same\n- Development: Same\n- Language Use: Same\n- Interruption Handling: Same\n- Character Fidelity: Same\n- Narrative Control: Same\n- Overall: Same\n\nBoth stories exhibit similar strengths and weaknesses across the evaluated dimensions. They both capture Olaf's character well and handle language and interruptions effectively, but they struggle with plot progression and narrative control.",
+    "winners": {
+      "Plot": "Same",
+      "Development": "Same",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "Same",
+      "Overall": "Same"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "Same",
+    "Development": "Same",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Overall": "Same"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "Same",
+    "Development": "Same",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Overall": "Same"
+  }
+}

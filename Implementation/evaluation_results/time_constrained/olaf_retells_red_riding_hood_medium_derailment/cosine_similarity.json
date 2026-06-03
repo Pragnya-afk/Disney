@@ -1,0 +1,47 @@
+{
+  "scenario": "olaf_retells_red_riding_hood_medium_derailment",
+  "labels": [
+    "0.5min",
+    "2.0min",
+    "5.0min",
+    "10.0min",
+    "director"
+  ],
+  "similarity_matrix": {
+    "0.5min": {
+      "0.5min": 1.0,
+      "2.0min": 0.855,
+      "5.0min": 0.6884,
+      "10.0min": 0.6996,
+      "director": 0.6855
+    },
+    "2.0min": {
+      "0.5min": 0.855,
+      "2.0min": 1.0,
+      "5.0min": 0.8121,
+      "10.0min": 0.848,
+      "director": 0.8004
+    },
+    "5.0min": {
+      "0.5min": 0.6884,
+      "2.0min": 0.8121,
+      "5.0min": 1.0,
+      "10.0min": 0.9206,
+      "director": 0.8937
+    },
+    "10.0min": {
+      "0.5min": 0.6996,
+      "2.0min": 0.848,
+      "5.0min": 0.9206,
+      "10.0min": 1.0,
+      "director": 0.9013
+    },
+    "director": {
+      "0.5min": 0.6855,
+      "2.0min": 0.8004,
+      "5.0min": 0.8937,
+      "10.0min": 0.9013,
+      "director": 1.0
+    }
+  }
+}

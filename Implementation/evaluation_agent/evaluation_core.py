@@ -22,10 +22,16 @@ from datetime import datetime
 from dotenv import load_dotenv
 from openai import OpenAI
 
-from evaluation_prompts import (
-    EVALUATE_STORY_AB_PROMPT,
-    EVALUATE_STORY_QUALITY_PROMPT,
-)
+try:
+    from .evaluation_prompts import (
+        EVALUATE_STORY_AB_PROMPT,
+        EVALUATE_STORY_QUALITY_PROMPT,
+    )
+except ImportError:
+    from evaluation_prompts import (
+        EVALUATE_STORY_AB_PROMPT,
+        EVALUATE_STORY_QUALITY_PROMPT,
+    )
 
 
 # ------------------------------------------------------------
@@ -303,6 +309,7 @@ def parse_ab_winners(assessment: str) -> dict:
         "Interruption Handling",
         "Character Fidelity",
         "Narrative Control",
+        "Anthropomorphism",
         "Overall",
     ]
 
@@ -347,6 +354,7 @@ def parse_single_scores(assessment: str) -> dict:
         "Interruption Handling",
         "Character Fidelity",
         "Narrative Control",
+        "Anthropomorphism",
         "Overall",
     ]
 

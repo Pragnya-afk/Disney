@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-05-27T23:07:11.790667",
+  "run_id": 1,
+  "scenario": "olaf_winter_festival_surprise_no_derailment",
+  "character_module": "character_prompts.olaf",
+  "story_a_path": "/home/prachakonda/Disney/Implementation/outputs/baseline/olaf_winter_festival_surprise_no_derailment/batch/run_1.json",
+  "story_b_path": "/home/prachakonda/Disney/Implementation/outputs/director_agent/olaf_winter_festival_surprise_no_derailment/batch/run_1.json",
+  "model": "gpt-4o",
+  "single_story_scores": {
+    "A_baseline": {
+      "assessment": "The interactive AI character story featuring Olaf is a delightful narrative that captures the essence of the character and provides an engaging experience for the user. Here's a detailed assessment based on the specified dimensions:\n\n**Plot:**\nThe story has a clear structure with a beginning, middle, and end, centered around preparing a surprise winter festival for Anna and Elsa. However, the plot progression is somewhat slow, as the story remains on the \"festival_goal\" beat for an extended period before moving to the next beat. This could lead to a feeling of stagnation. The events are logically connected, and there are no major inconsistencies, but the pacing could be improved to ensure a more dynamic progression through the beats.\nScore: 6 / 10\n\n**Development:**\nCharacters and settings are well-introduced, with Olaf's joyful and optimistic personality shining through. The setting of a winter festival in Arendelle is vividly depicted through Olaf's descriptions of decorations and activities. The story develops over time, but the extended focus on the initial beat limits the depth of development across the entire narrative.\nScore: 7 / 10\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. Dialogue is lively and performable aloud, capturing Olaf's playful and affectionate tone. The use of whimsical imagery and warm phrasing enhances the storytelling experience.\nScore: 9 / 10\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and incorporating it into the story. Olaf's responses are adaptive and maintain the narrative flow, even when addressing unexpected user inputs.\nScore: 8 / 10\n\n**Character Fidelity:**\nOlaf's character is consistently portrayed with warmth, curiosity, and optimism. The dialogue and actions align well with the character profile, avoiding any generic assistant-like behavior. Olaf's personality is vividly brought to life, maintaining fidelity to the character throughout the story.\nScore: 10 / 10\n\n**Narrative Control:**\nWhile the story progresses through the beat structure, the control over narrative pacing could be improved. The prolonged focus on the initial beat delays the transition to subsequent beats, affecting the overall momentum. The story eventually moves toward resolution, but a more balanced distribution of beats would enhance narrative control.\nScore: 6 / 10\n\n**Overall:**\nThe story is a charming and engaging portrayal of Olaf, capturing his essence and providing an enjoyable interactive experience. While the character fidelity and language use are excellent, improvements in plot pacing and narrative control would elevate the overall experience.\nScore: 7 / 10\n\nPlot: 6 / 10\nDevelopment: 7 / 10\nLanguage Use: 9 / 10\nInterruption Handling: 8 / 10\nCharacter Fidelity: 10 / 10\nNarrative Control: 6 / 10\nOverall: 7 / 10",
+      "scores": {
+        "Plot": 6.0,
+        "Development": 7.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 8.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 6.0,
+        "Overall": 7.0
+      }
+    },
+    "B_director": {
+      "assessment": "The interactive AI character story featuring Olaf preparing a surprise winter festival for Anna and Elsa is a delightful narrative that captures the essence of Olaf's character while engaging the user in a collaborative storytelling experience. Here's a detailed assessment based on the specified dimensions:\n\n### Plot:\nThe story has a clear structure with a beginning, middle, and end, following the beats outlined in the character profile. The plot progresses logically, with Olaf and the user working together to prepare the festival, encountering and solving problems, and ultimately celebrating the success of their efforts. However, the story seems to linger on the \"festival_goal\" beat for too long, which could have been resolved earlier to allow more time for other beats. Despite this, there are no major logical inconsistencies, and the narrative flows smoothly.\n\n### Development:\nCharacters and settings are well-introduced, with Olaf's joyful and optimistic personality shining through. The setting of Arendelle and the festival preparations are vividly described, creating an immersive experience. The story develops over time, with Olaf and the user tackling various tasks and challenges, although the pacing could be improved by advancing through the beats more efficiently.\n\n### Language Use:\nThe language is varied, expressive, and appropriate for Olaf's character. Olaf's dialogue is performable aloud, capturing his playful and affectionate tone. The use of whimsical imagery and simple, warm phrasing aligns well with Olaf's character profile, making the interactions feel genuine and engaging.\n\n### Interruption Handling:\nThe system handles user interruptions gracefully, acknowledging the user's input and gently redirecting the conversation back to the story. This is evident in turns where the user asks about Anna and Elsa's reactions, and Olaf redirects the focus to the surprise reveal.\n\n### Character Fidelity:\nOlaf's character is consistently portrayed with fidelity to the provided character profile. He remains joyful, optimistic, and curious throughout the story, never breaking character or sounding like a generic assistant. His responses are warm, encouraging, and emotionally present, maintaining the feeling of Olaf through varied reactions and sentence structures.\n\n### Narrative Control:\nThe story progresses through the beat structure, although it could benefit from more efficient transitions between beats. The narrative control is generally strong, with Olaf guiding the user through tasks and maintaining focus on the festival's preparation and success. However, the prolonged focus on the \"festival_goal\" beat suggests a need for better pacing to ensure all beats are adequately covered.\n\n### Conclusion:\nOverall, the story is a charming and engaging interactive experience that captures the essence of Olaf's character while involving the user in a collaborative narrative. The pacing could be improved to ensure a more balanced progression through the beats, but the language use, character fidelity, and interruption handling are commendable.\n\nPlot: 7 / 10  \nDevelopment: 8 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 9 / 10  \nCharacter Fidelity: 10 / 10  \nNarrative Control: 7 / 10  \nOverall: 8 / 10",
+      "scores": {
+        "Plot": 7.0,
+        "Development": 8.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 9.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 7.0,
+        "Overall": 8.0
+      }
+    }
+  },
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** struggles with plot progression, as it remains stuck in the \"festival_goal\" beat for the entire duration. Despite numerous turns, it fails to advance through the intended beat structure, resulting in a lack of narrative development and resolution.\n- **Story B** also remains in the \"festival_goal\" beat throughout, but it manages to create a sense of progression by varying the activities and interactions within the beat. However, it still does not reach the intended resolution or explore other beats.\n\n**Development:**\n- **Story A** provides a detailed exploration of the festival planning, with Olaf and the user discussing decorations, snacks, and music. However, it lacks progression beyond the initial planning phase, leading to a static experience.\n- **Story B** offers a similar level of detail in planning the festival, with Olaf and the user discussing various elements. It maintains a dynamic interaction by introducing new ideas and challenges, such as Sven's involvement, which adds depth to the narrative.\n\n**Language Use:**\n- **Story A** uses expressive and varied language that aligns well with Olaf's character. The dialogue is lively and performable, capturing Olaf's joyful and optimistic nature.\n- **Story B** also employs expressive language that suits Olaf's character. The dialogue is engaging and maintains a playful tone, effectively conveying Olaf's enthusiasm and warmth.\n\n**Interruption Handling:**\n- **Story A** handles interruptions naturally, with Olaf responding to user inputs in a way that feels consistent with the character's personality. However, the story does not progress beyond the initial beat.\n- **Story B** handles interruptions gracefully, with Olaf acknowledging off-topic inputs and gently redirecting the conversation back to the festival planning. This helps maintain narrative coherence.\n\n**Character Fidelity:**\n- **Story A** maintains strong character fidelity, with Olaf consistently exhibiting his joyful, optimistic, and curious nature. The character's responses are warm and in line with the provided profile.\n- **Story B** also maintains character fidelity, with Olaf's behavior and dialogue reflecting his core traits. The character remains consistent throughout the story.\n\n**Narrative Control:**\n- **Story A** lacks narrative control, as it fails to move beyond the \"festival_goal\" beat. The story remains static, with no progression through the intended beat structure.\n- **Story B** demonstrates better narrative control within the \"festival_goal\" beat, introducing new elements and challenges to keep the interaction dynamic. However, it still does not advance to other beats or reach a resolution.\n\n**Overall:**\n- **Story B** is slightly better overall due to its ability to maintain a dynamic interaction within the \"festival_goal\" beat, despite not progressing through the entire beat structure. It handles interruptions well and maintains character fidelity, providing a more engaging experience.\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: Same\nInterruption Handling: B\nCharacter Fidelity: Same\nNarrative Control: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "Same",
+      "Interruption Handling": "B",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** struggles with plot progression, as it remains stuck in the \"festival_goal\" beat for the entire duration. This results in a lack of movement through the intended beat structure, and the story does not reach a coherent resolution. The narrative feels repetitive, with Olaf and the user repeatedly discussing decorations and snacks without advancing to other planned beats.\n- **Story B** also faces challenges with plot progression, as it remains in the \"festival_goal\" beat for most of the story, only briefly moving to \"planning_together\" at the end. However, it does manage to reach a form of resolution with the festival beginning and the characters celebrating, albeit without fully exploring all the intended beats.\n\n**Development:**\n- **Story A** provides a detailed exploration of the festival planning, with Olaf and the user discussing various aspects like decorations, snacks, and music. However, the lack of progression through beats limits the development of the story.\n- **Story B** offers a similar level of detail in planning the festival, with Olaf and the user brainstorming ideas for decorations, snacks, and music. The story feels slightly more dynamic due to the inclusion of Anna and Elsa's reactions, which adds depth to the narrative.\n\n**Language Use:**\n- **Story A** uses language that is consistent with Olaf's character, maintaining a playful and enthusiastic tone throughout. However, the repetitive nature of the dialogue can make it feel less varied.\n- **Story B** also maintains Olaf's playful and enthusiastic tone, with slightly more varied language and expressions. The dialogue feels more performable aloud, with Olaf's excitement and warmth coming through clearly.\n\n**Interruption Handling:**\n- **Story A** handles interruptions by gently redirecting the user back to the story, but it does not effectively progress the narrative beyond the initial beat.\n- **Story B** handles interruptions similarly, acknowledging the user's input and maintaining the flow of the story. It manages to incorporate the user's curiosity about Anna and Elsa's reactions, which adds to the narrative.\n\n**Character Fidelity:**\n- **Story A** maintains Olaf's character fidelity well, with his joyful and optimistic personality shining through. However, the repetitive dialogue can sometimes make Olaf feel less dynamic.\n- **Story B** also maintains Olaf's character fidelity, with his warmth and enthusiasm consistently present. The inclusion of Anna and Elsa's reactions helps to reinforce Olaf's emotional core and his love for his friends.\n\n**Narrative Control:**\n- **Story A** struggles with narrative control, as it remains stuck in the \"festival_goal\" beat and does not progress through the intended beat structure.\n- **Story B** exhibits slightly better narrative control, as it manages to reach a form of resolution with the festival beginning and the characters celebrating, despite not fully exploring all the beats.\n\n**Overall:**\n- **Story B** is the better story overall, as it offers slightly more varied language use, better development through the inclusion of Anna and Elsa's reactions, and a more coherent resolution, despite its own challenges with plot progression and narrative control.\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: B\nInterruption Handling: Same\nCharacter Fidelity: Same\nNarrative Control: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "A",
+    "Development": "A",
+    "Language Use": "A",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "A",
+    "Overall": "A"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "Same",
+    "Development": "Same",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Overall": "Same"
+  }
+}

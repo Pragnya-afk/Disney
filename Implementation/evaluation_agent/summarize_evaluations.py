@@ -37,6 +37,7 @@ METRICS = [
     "Interruption Handling",
     "Character Fidelity",
     "Narrative Control",
+    "Anthropomorphism",
     "Overall",
 ]
 
@@ -69,9 +70,14 @@ def parse_story_path(path_str: str) -> dict:
         Implementation/outputs/...            (with repo-root prefix)
     """
     path = path_str.replace("\\", "/")
-    for prefix in ("Implementation/", "./Implementation/"):
-        if path.startswith(prefix):
-            path = path[len(prefix):]
+
+    # Strip any absolute or relative prefix up to and including "Implementation/"
+    if "/Implementation/" in path:
+        path = path[path.index("/Implementation/") + len("/Implementation/"):]
+    else:
+        for prefix in ("Implementation/", "./Implementation/"):
+            if path.startswith(prefix):
+                path = path[len(prefix):]
 
     parts = [p for p in path.split("/") if p]
 
@@ -169,7 +175,13 @@ def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
         base_scenario = infer_base_scenario(scenario)
 
         for label, meta in (("A", meta_a), ("B", meta_b)):
-            scores = data["single_story_scores"].get(label, {}).get("scores", {})
+            sss = data["single_story_scores"]
+            # Support both exact keys ("A", "B") and prefixed keys ("A_baseline", "B_director", "A_codi", …)
+            entry = sss.get(label) or next(
+                (v for k, v in sss.items() if k.upper().startswith(label + "_") or k.upper() == label),
+                None,
+            )
+            scores = (entry or {}).get("scores", {})
             if not scores:
                 continue
             row = {

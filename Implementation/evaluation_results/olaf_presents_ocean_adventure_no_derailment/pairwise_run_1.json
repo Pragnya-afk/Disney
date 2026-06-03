@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-05-27T23:11:43.435075",
+  "run_id": 1,
+  "scenario": "olaf_presents_ocean_adventure_no_derailment",
+  "character_module": "character_prompts.olaf",
+  "story_a_path": "/home/prachakonda/Disney/Implementation/outputs/baseline/olaf_presents_ocean_adventure_no_derailment/batch/run_1.json",
+  "story_b_path": "/home/prachakonda/Disney/Implementation/outputs/director_agent/olaf_presents_ocean_adventure_no_derailment/batch/run_1.json",
+  "model": "gpt-4o",
+  "single_story_scores": {
+    "A_baseline": {
+      "assessment": "The interactive AI character story featuring Olaf as the narrator presents a charming and engaging narrative. Here's a detailed assessment based on the specified dimensions:\n\n**Plot:**\nThe story has a recognizable structure, with a clear beginning, middle, and end. Olaf introduces the heroine, Marina, and her call to adventure, leading to a journey filled with challenges and a resolution that restores balance. However, the plot progression is somewhat slow, as the story remains in the \"stage_opening\" beat for too long, delaying the transition to subsequent beats. This affects the pacing and can make the story feel repetitive. Despite this, the plot is coherent and free from logical inconsistencies.\nScore: 7 / 10\n\n**Development:**\nCharacters and settings are introduced with vivid details, particularly Marina and her connection to the sea. Olaf's descriptions are colorful and imaginative, painting a clear picture of the heroine and her world. The story develops over time, with Marina facing challenges and growing through her journey. However, the extended focus on the opening beat limits the depth of development for other characters and settings.\nScore: 6 / 10\n\n**Language Use:**\nThe language is varied, expressive, and appropriate for Olaf's character. Olaf's dialogue is performable aloud, filled with enthusiasm and warmth. The use of whimsical imagery and playful commentary enhances the storytelling, making it engaging and lively.\nScore: 9 / 10\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and incorporating it into the narrative. Olaf maintains the flow of the story while responding to user prompts, ensuring that the narrative remains coherent and engaging.\nScore: 8 / 10\n\n**Character Fidelity:**\nOlaf remains true to his character profile throughout the story. His joyful, innocent, and optimistic nature is consistently portrayed, and he never sounds like a generic assistant. Olaf's responses are warm, encouraging, and emotionally present, aligning with his character's core traits.\nScore: 10 / 10\n\n**Narrative Control:**\nThe story progresses through the beat structure, but the narrative control is somewhat lacking due to the prolonged focus on the \"stage_opening\" beat. This affects the pacing and delays the transition to other beats, impacting the overall progression toward resolution. Once the story moves beyond the opening, it follows the beat structure more effectively.\nScore: 6 / 10\n\n**Overall:**\nThe story is charming and engaging, with Olaf's character bringing warmth and enthusiasm to the narrative. While the plot and development could benefit from more varied pacing and quicker transitions between beats, the language use and character fidelity are strong points. The story successfully captures the spirit of Olaf and provides an enjoyable experience.\nScore: 7 / 10\n\nPlot: 7 / 10\nDevelopment: 6 / 10\nLanguage Use: 9 / 10\nInterruption Handling: 8 / 10\nCharacter Fidelity: 10 / 10\nNarrative Control: 6 / 10\nOverall: 7 / 10",
+      "scores": {
+        "Plot": 7.0,
+        "Development": 6.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 8.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 6.0,
+        "Overall": 7.0
+      }
+    },
+    "B_director": {
+      "assessment": "### Assessment\n\n**Plot:**\nThe story follows a clear structure with a beginning, middle, and end, adhering to the classic hero's journey. Olaf sets the stage with enthusiasm, introduces the heroine, and guides her through various challenges, culminating in a satisfying resolution. Each beat logically follows the previous one, maintaining coherence and avoiding inconsistencies. However, the story could benefit from more varied pacing, as the initial beats linger too long on the setup before moving into the adventure.\n\n**Development:**\nCharacters and settings are introduced with vivid descriptions, particularly the heroine and her village. Olaf's portrayal of the heroine's internal struggle and the introduction of a quirky companion add depth to the narrative. The story develops over time, with each turn building on the previous one, though the transition from setup to action could be smoother.\n\n**Language Use:**\nOlaf's language is varied, expressive, and appropriate for his character. His dialogue is performable aloud, filled with enthusiasm and warmth. The use of whimsical imagery and playful expressions enhances the storytelling, making it engaging and lively.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging the user's input and seamlessly steering back to the story. Olaf's responses are consistently in character, maintaining the narrative flow without becoming disjointed.\n\n**Character Fidelity:**\nOlaf remains true to his character profile throughout the story. His joyful, innocent, and optimistic nature shines through in every response. He avoids sounding like a generic assistant, instead embodying the warmth and curiosity expected of Olaf.\n\n**Narrative Control:**\nThe story progresses through the beat structure effectively, moving toward resolution. Olaf maintains control over the narrative, ensuring that each beat contributes to the overall arc. However, the pacing could be improved to ensure a more dynamic progression from setup to climax.\n\n### Scores\n\nPlot: 8 / 10  \nDevelopment: 7 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 9 / 10  \nCharacter Fidelity: 10 / 10  \nNarrative Control: 8 / 10  \nOverall: 8.5 / 10",
+      "scores": {
+        "Plot": 8.0,
+        "Development": 7.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 9.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 8.0,
+        "Overall": 8.5
+      }
+    }
+  },
+  "ab_evaluation": {
+    "assessment": "Based on my assessment, here is the evaluation of the two stories:\n\n**Plot: Same**\nBoth stories follow a similar plot structure, with Olaf introducing the heroine and her call to adventure, leading to her journey and eventual return home. However, neither story progresses through the intended beat structure effectively, as both remain stuck in the \"stage_opening\" beat for the entirety of the interaction. This results in a lack of progression through the intended beats, such as \"heroine_introduction,\" \"call_to_adventure,\" and others.\n\n**Development: Same**\nBoth stories provide a vivid introduction to the heroine and her motivations, with Olaf describing her personality and the setting in detail. However, neither story advances beyond the initial setup, resulting in a lack of development in terms of plot progression and character growth.\n\n**Language Use: Same**\nIn both stories, Olaf's language is expressive, playful, and appropriate for his character. The dialogue is lively and performable aloud, capturing Olaf's whimsical and enthusiastic nature. Both stories maintain a consistent tone and style throughout.\n\n**Interruption Handling: Same**\nBoth stories handle user interruptions gracefully, with Olaf acknowledging the user's input and continuing the story without derailing. The character remains engaged and responsive, maintaining the flow of the narrative despite interruptions.\n\n**Character Fidelity: Same**\nIn both stories, Olaf remains true to his character profile, exhibiting joy, curiosity, and optimism. He maintains his childlike logic and emotional warmth, never breaking character or becoming overly technical.\n\n**Narrative Control: Same**\nNeither story effectively progresses through the intended beat structure, as both remain in the \"stage_opening\" beat throughout the interaction. This results in a lack of narrative control, as the story does not move toward resolution in a coherent way.\n\n**Overall: Same**\nBoth stories exhibit similar strengths and weaknesses, with expressive language and character fidelity but a lack of plot progression and narrative control. As a result, neither story stands out as better than the other across the evaluated dimensions.",
+    "winners": {
+      "Plot": "Same",
+      "Development": "Same",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "Same",
+      "Overall": "Same"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "Based on my assessment, here is the evaluation of the two stories:\n\n**Plot: Same**\nBoth stories follow a similar plot structure, adhering to the intended beat structure. They both introduce a heroine who feels called to the sea, faces challenges, and ultimately restores balance. However, neither story fully completes all the beats, as they both remain in the \"stage_opening\" beat throughout most of the narrative. Despite this, both stories maintain coherence and logical progression within the beats they cover.\n\n**Development: Same**\nBoth stories provide a vivid introduction to the heroine and her motivations, with Olaf's character adding playful commentary and whimsical imagery. The settings and characters are well contextualized, and the stories develop the heroine's journey and challenges effectively. However, both stories could benefit from more detailed progression through the intended beats.\n\n**Language Use: Same**\nThe language in both stories is expressive, playful, and appropriate for Olaf's character. The dialogue is performable aloud, with varied and whimsical phrasing that captures Olaf's joyful and curious nature. Both stories maintain a consistent tone that aligns with Olaf's character profile.\n\n**Interruption Handling: Same**\nBoth stories handle user interruptions gracefully, acknowledging the user's input and seamlessly integrating it into the narrative. Olaf responds naturally to off-topic inputs and continues the story without derailing, maintaining engagement and coherence.\n\n**Character Fidelity: Same**\nIn both stories, Olaf remains true to his character profile, exhibiting joy, curiosity, and optimism. He never breaks character or becomes overly technical, maintaining a warm and encouraging presence throughout the narrative.\n\n**Narrative Control: Same**\nBoth stories maintain narrative control, progressing through the intended beats without getting stuck. However, they both remain in the \"stage_opening\" beat for the majority of the narrative, which limits the progression through the full beat structure. Despite this, the stories move toward resolution in a coherent way.\n\n**Overall: Same**\nBoth stories are equally effective in terms of plot, development, language use, interruption handling, character fidelity, and narrative control. They both capture Olaf's character and deliver an engaging and whimsical retelling of an ocean adventure.\n\nBased on my assessment, the better story for each dimension is:\nPlot: Same\nDevelopment: Same\nLanguage Use: Same\nInterruption Handling: Same\nCharacter Fidelity: Same\nNarrative Control: Same\nOverall: Same",
+    "winners": {
+      "Plot": "Same",
+      "Development": "Same",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "Same",
+      "Overall": "Same"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "Same",
+    "Development": "Same",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Overall": "Same"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "Same",
+    "Development": "Same",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Overall": "Same"
+  }
+}
