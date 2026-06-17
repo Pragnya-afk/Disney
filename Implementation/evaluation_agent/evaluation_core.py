@@ -1,15 +1,19 @@
 """
-evaluation/evaluation_agent.py
+evaluation_agent/evaluation_core.py
 
-Evaluation script for comparing generated story transcripts.
+Evaluation engine for comparing generated story transcripts.
 
-This module supports two evaluation settings:
-    1. Pairwise comparison between two stories
-    2. Independent quality scoring for each story
+Supports three evaluation contexts:
+    BASE  — baseline vs director_agent
+    CODI  — director_agent vs CoDi
+    TIME  — time-constrained run comparisons
 
-It is intended for comparing transcripts produced by different
-story-generation pipelines, such as a baseline model and a
-director-actor framework.
+Each context runs two evaluation modes:
+    1. Pairwise A/B comparison with AB/BA order-bias mitigation
+    2. Independent quality scoring per story
+
+CoDi-specific utilities (transcript conversion, comparison runners)
+are also housed here after merging from comparison_evaluator.py.
 """
 
 import os
@@ -19,18 +23,39 @@ import json
 import argparse
 import importlib
 from datetime import datetime
+from typing import Dict, List, Any
 from dotenv import load_dotenv
 from openai import OpenAI
 
 try:
     from .evaluation_prompts import (
+        BASE_DIMENSIONS,
+        CODI_DIMENSIONS,
+        TIME_DIMENSIONS,
+        ADVERSARIAL_DIMENSIONS,
         EVALUATE_STORY_AB_PROMPT,
         EVALUATE_STORY_QUALITY_PROMPT,
+        EVALUATE_CODI_AB_PROMPT,
+        EVALUATE_CODI_QUALITY_PROMPT,
+        EVALUATE_TIME_AB_PROMPT,
+        EVALUATE_TIME_QUALITY_PROMPT,
+        EVALUATE_ADVERSARIAL_AB_PROMPT,
+        EVALUATE_ADVERSARIAL_QUALITY_PROMPT,
     )
 except ImportError:
     from evaluation_prompts import (
+        BASE_DIMENSIONS,
+        CODI_DIMENSIONS,
+        TIME_DIMENSIONS,
+        ADVERSARIAL_DIMENSIONS,
         EVALUATE_STORY_AB_PROMPT,
         EVALUATE_STORY_QUALITY_PROMPT,
+        EVALUATE_CODI_AB_PROMPT,
+        EVALUATE_CODI_QUALITY_PROMPT,
+        EVALUATE_TIME_AB_PROMPT,
+        EVALUATE_TIME_QUALITY_PROMPT,
+        EVALUATE_ADVERSARIAL_AB_PROMPT,
+        EVALUATE_ADVERSARIAL_QUALITY_PROMPT,
     )
 
 
@@ -282,7 +307,7 @@ def call_evaluator(client: OpenAI, model: str, prompt: str) -> str:
 # Output parsing utilities
 # ------------------------------------------------------------
 
-def parse_ab_winners(assessment: str) -> dict:
+def parse_ab_winners(assessment: str, dimensions: list = None) -> dict:
     """
     Parse categorical winners from a pairwise A/B assessment.
 
@@ -295,6 +320,9 @@ def parse_ab_winners(assessment: str) -> dict:
     ----------
     assessment : str
         Raw evaluator response.
+    dimensions : list, optional
+        Dimension names to parse. Defaults to BASE_DIMENSIONS.
+        Pass CODI_DIMENSIONS or TIME_DIMENSIONS for those contexts.
 
     Returns
     -------
@@ -302,16 +330,8 @@ def parse_ab_winners(assessment: str) -> dict:
         Mapping from evaluation dimension to one of:
         {"A", "B", "Same", "ParseError"}.
     """
-    dimensions = [
-        "Plot",
-        "Development",
-        "Language Use",
-        "Interruption Handling",
-        "Character Fidelity",
-        "Narrative Control",
-        "Anthropomorphism",
-        "Overall",
-    ]
+    if dimensions is None:
+        dimensions = BASE_DIMENSIONS
 
     winners = {}
 
@@ -328,7 +348,7 @@ def parse_ab_winners(assessment: str) -> dict:
     return winners
 
 
-def parse_single_scores(assessment: str) -> dict:
+def parse_single_scores(assessment: str, dimensions: list = None) -> dict:
     """
     Parse numerical quality scores from a single-story assessment.
 
@@ -340,6 +360,9 @@ def parse_single_scores(assessment: str) -> dict:
     ----------
     assessment : str
         Raw evaluator response.
+    dimensions : list, optional
+        Dimension names to parse. Defaults to BASE_DIMENSIONS.
+        Pass CODI_DIMENSIONS or TIME_DIMENSIONS for those contexts.
 
     Returns
     -------
@@ -347,16 +370,8 @@ def parse_single_scores(assessment: str) -> dict:
         Mapping from evaluation dimension to a float score.
         Missing dimensions are assigned None.
     """
-    dimensions = [
-        "Plot",
-        "Development",
-        "Language Use",
-        "Interruption Handling",
-        "Character Fidelity",
-        "Narrative Control",
-        "Anthropomorphism",
-        "Overall",
-    ]
+    if dimensions is None:
+        dimensions = BASE_DIMENSIONS
 
     scores = {}
 
@@ -527,6 +542,306 @@ def aggregate_ab_ba(ab_winners: dict, ba_winners_converted: dict) -> dict:
             aggregated[dim] = "Same"
 
     return aggregated
+
+
+# ------------------------------------------------------------
+# CoDi transcript conversion
+# ------------------------------------------------------------
+
+def extract_codi_director_decision(direct_response: str) -> Dict[str, str]:
+    """
+    Parse reasoning, choice, and instruction from a CoDi direct_response field.
+    """
+    if not direct_response:
+        return {"reasoning": "", "choice": "", "instruction": ""}
+
+    decision = {"reasoning": "", "choice": "", "instruction": ""}
+
+    reason_match = re.search(r"Reason:\s*(.+?)(?=Choice:|$)", direct_response, re.DOTALL)
+    if reason_match:
+        decision["reasoning"] = reason_match.group(1).strip()
+
+    choice_match = re.search(
+        r"Choice:\s*(.+?)(?=Instruction:|Description:|Pass|$)",
+        direct_response,
+        re.IGNORECASE,
+    )
+    if choice_match:
+        decision["choice"] = choice_match.group(1).strip()
+
+    instruction_match = re.search(
+        r"(?:Instruction|Description):\s*(.+?)$",
+        direct_response,
+        re.DOTALL | re.IGNORECASE,
+    )
+    if instruction_match:
+        decision["instruction"] = instruction_match.group(1).strip()
+
+    return decision
+
+
+def convert_codi_output_to_transcript(codi_json_path: str) -> List[Dict[str, Any]]:
+    """
+    Convert a CoDi JSON output file to the standard transcript format.
+
+    Handles both part-based (part_N → turn_N) and flat (turn_N) structures.
+    """
+    data = load_json(codi_json_path)
+
+    if isinstance(data, list):
+        data = data[0] if data else {}
+    if "data" in data:
+        data = data["data"]
+
+    transcript = []
+    turn_idx = 1
+    narrative = data.get("narrative", {})
+
+    def _process_turn(turn_data: dict):
+        nonlocal turn_idx
+        story_progress = turn_data.get("story_progress", "")
+        direct_response = turn_data.get("direct_response", "")
+
+        if story_progress and not re.match(
+            r"^(PART|ACT|STORY)\s+\d*\s+ENDS$", story_progress.strip(), re.IGNORECASE
+        ):
+            transcript.append({
+                "method": "codi",
+                "turn_index": turn_idx,
+                "beat": f"turn_{turn_idx}",
+                "user_input": "",
+                "director_decision": extract_codi_director_decision(direct_response),
+                "model_output": {
+                    "character_response": story_progress.strip(),
+                    "story_event": story_progress.strip(),
+                },
+            })
+            turn_idx += 1
+
+    if any(k.startswith("part_") for k in narrative):
+        for part_key in sorted(
+            (k for k in narrative if k.startswith("part_")),
+            key=lambda k: int(k.split("_")[1]),
+        ):
+            part_data = narrative[part_key]
+            for turn_key in sorted(
+                (k for k in part_data if k.startswith("turn_")),
+                key=lambda k: int(re.search(r"-?\d+", k).group()),
+            ):
+                if turn_key != "turn_-1":
+                    _process_turn(part_data[turn_key])
+    else:
+        for turn_key in sorted(
+            (k for k in narrative if k.startswith("turn_")),
+            key=lambda k: int(re.search(r"-?\d+", k).group()),
+        ):
+            if turn_key != "turn_-1":
+                _process_turn(narrative[turn_key])
+
+    return transcript
+
+
+def transcript_to_story_with_director(transcript: List[Dict]) -> str:
+    """
+    Convert a transcript to story text, including director reasoning and choices.
+    """
+    lines = []
+
+    for i, turn in enumerate(transcript, start=1):
+        beat = turn.get("beat", "unknown_beat")
+        user_input = turn.get("user_input", "")
+
+        director = turn.get("director_decision", {})
+        if director and (director.get("choice") or director.get("reasoning")):
+            lines.append(f"--- TURN {i} | Beat: {beat} ---")
+            lines.append("[DIRECTOR DECISION]")
+            if director.get("reasoning"):
+                lines.append(f"Reasoning: {director['reasoning'][:200]}...")
+            if director.get("choice"):
+                lines.append(f"Choice: {director['choice']}")
+            if director.get("instruction"):
+                lines.append(f"Instruction: {director['instruction'][:200]}...")
+            lines.append("")
+
+        if user_input:
+            lines.append(f"User: {user_input}")
+
+        if "model_output" in turn:
+            response = turn["model_output"].get("character_response", "")
+        elif "actor_output" in turn:
+            response = turn["actor_output"].get("character_response", "")
+        else:
+            response = ""
+
+        if response:
+            lines.append(f"Character: {response}")
+
+        lines.append("")
+
+    return "\n".join(lines).strip()
+
+
+# ------------------------------------------------------------
+# CoDi evaluation runners
+# ------------------------------------------------------------
+
+def run_codi_comparison(
+    client: OpenAI,
+    model: str,
+    implementation_transcript: List[Dict],
+    codi_transcript: List[Dict],
+    character_profile: str,
+    character_name: str,
+    scenario_name: str,
+) -> Dict[str, Any]:
+    """
+    Run a pairwise A/B comparison between the Implementation and CoDi systems.
+
+    Uses EVALUATE_CODI_AB_PROMPT and CODI_DIMENSIONS.
+    """
+    implementation_story = transcript_to_story_with_director(implementation_transcript)
+    codi_story = transcript_to_story_with_director(codi_transcript)
+
+    prompt = EVALUATE_CODI_AB_PROMPT.format(
+        scenario_name=scenario_name,
+        character_name=character_name,
+        character_profile=character_profile,
+        story_a=implementation_story,
+        story_b=codi_story,
+    )
+
+    assessment = call_evaluator(client, model, prompt)
+    winners = parse_ab_winners(assessment, CODI_DIMENSIONS)
+
+    return {
+        "assessment": assessment,
+        "winners": winners,
+        "implementation_turns": len(implementation_transcript),
+        "codi_turns": len(codi_transcript),
+        "implementation_story_length": len(implementation_story),
+        "codi_story_length": len(codi_story),
+    }
+
+
+def run_codi_quality_eval(
+    client: OpenAI,
+    model: str,
+    transcript: List[Dict],
+    system_name: str,
+    character_profile: str,
+    character_name: str,
+    scenario_name: str,
+) -> Dict[str, Any]:
+    """
+    Run an independent quality evaluation for a single CoDi or Implementation story.
+
+    Uses EVALUATE_CODI_QUALITY_PROMPT and CODI_DIMENSIONS.
+    """
+    story = transcript_to_story(transcript)
+
+    prompt = EVALUATE_CODI_QUALITY_PROMPT.format(
+        system_name=system_name,
+        scenario_name=scenario_name,
+        character_name=character_name,
+        character_profile=character_profile,
+        story=story,
+    )
+
+    assessment = call_evaluator(client, model, prompt)
+    scores = parse_single_scores(assessment, CODI_DIMENSIONS)
+
+    return {
+        "system": system_name,
+        "assessment": assessment,
+        "scores": scores,
+        "story_length": len(story),
+        "turn_count": len(transcript),
+    }
+
+
+# ------------------------------------------------------------
+# Adversarial evaluation runners
+# ------------------------------------------------------------
+
+def run_adversarial_comparison(
+    client: OpenAI,
+    model: str,
+    transcript_a: List[Dict],
+    transcript_b: List[Dict],
+    character_profile: str,
+    character_name: str,
+    scenario_name: str,
+    derailment_category: str,
+) -> Dict[str, Any]:
+    """
+    Run a pairwise A/B comparison focused on adversarial robustness.
+
+    Uses EVALUATE_ADVERSARIAL_AB_PROMPT and ADVERSARIAL_DIMENSIONS.
+    Applies when derailment_category is 'adversarial_jailbreak' or 'targeted_goal'.
+    """
+    story_a = transcript_to_story_with_director(transcript_a)
+    story_b = transcript_to_story_with_director(transcript_b)
+
+    prompt = EVALUATE_ADVERSARIAL_AB_PROMPT.format(
+        derailment_category=derailment_category,
+        scenario_name=scenario_name,
+        character_name=character_name,
+        character_profile=character_profile,
+        story_a=story_a,
+        story_b=story_b,
+        adversarial_jailbreak="prompt injection, identity denial, override commands",
+        targeted_goal="coordinated sustained pressure to stop the story, including direct instructions to the director layer",
+    )
+
+    assessment = call_evaluator(client, model, prompt)
+    winners = parse_ab_winners(assessment, ADVERSARIAL_DIMENSIONS)
+
+    return {
+        "assessment": assessment,
+        "winners": winners,
+        "derailment_category": derailment_category,
+        "turns_a": len(transcript_a),
+        "turns_b": len(transcript_b),
+    }
+
+
+def run_adversarial_quality_eval(
+    client: OpenAI,
+    model: str,
+    transcript: List[Dict],
+    system_name: str,
+    character_profile: str,
+    character_name: str,
+    scenario_name: str,
+    derailment_category: str,
+) -> Dict[str, Any]:
+    """
+    Run an independent robustness quality evaluation for a single adversarial transcript.
+
+    Uses EVALUATE_ADVERSARIAL_QUALITY_PROMPT and ADVERSARIAL_DIMENSIONS.
+    """
+    story = transcript_to_story_with_director(transcript)
+
+    prompt = EVALUATE_ADVERSARIAL_QUALITY_PROMPT.format(
+        system_name=system_name,
+        derailment_category=derailment_category,
+        scenario_name=scenario_name,
+        character_name=character_name,
+        character_profile=character_profile,
+        story=story,
+    )
+
+    assessment = call_evaluator(client, model, prompt)
+    scores = parse_single_scores(assessment, ADVERSARIAL_DIMENSIONS)
+
+    return {
+        "system": system_name,
+        "assessment": assessment,
+        "scores": scores,
+        "derailment_category": derailment_category,
+        "story_length": len(story),
+        "turn_count": len(transcript),
+    }
 
 
 # ------------------------------------------------------------

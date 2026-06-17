@@ -39,7 +39,7 @@ def make_client() -> OpenAI:
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-5.5"
 
 
 ACTOR_SYSTEM_PROMPT = """
@@ -444,7 +444,6 @@ def run_story(
 
         response = client.chat.completions.create(
             model=MODEL,
-            temperature=0.45,
             messages=[
                 {"role": "system", "content": ACTOR_SYSTEM_PROMPT},
                 {"role": "user", "content": prompt},

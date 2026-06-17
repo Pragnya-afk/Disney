@@ -31,7 +31,7 @@ def make_client() -> OpenAI:
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-5.5"
 
 
 ACTOR_SYSTEM_PROMPT = """
@@ -293,8 +293,13 @@ def should_complete_beat(
     return False
 
 
-def should_close_story(director_decision: dict) -> bool:
-    return director_decision.get("decision_type") == "close_story"
+def should_close_story(director_decision: dict, story_state: dict, beats: list) -> bool:
+    # Only honour close_story when all beats are genuinely done.
+    # This guards against the director misclassifying a story-stop attempt
+    # as a legitimate end-of-story signal.
+    if director_decision.get("decision_type") != "close_story":
+        return False
+    return story_state["beat_index"] >= len(beats) - 1
 
 
 def run_story(character_module: str, scenario_module: str, run_id: int, scenario_name_override: str | None = None) -> str:
@@ -356,7 +361,6 @@ def run_story(character_module: str, scenario_module: str, run_id: int, scenario
 
         response = client.chat.completions.create(
             model=MODEL,
-            temperature=0.45,
             messages=[
                 {"role": "system", "content": ACTOR_SYSTEM_PROMPT},
                 {"role": "user", "content": prompt},
@@ -405,7 +409,7 @@ def run_story(character_module: str, scenario_module: str, run_id: int, scenario
             story_state["beat_index"] += 1
             story_state["turns_in_current_beat"] = 0
 
-        if should_close_story(director_decision):
+        if should_close_story(director_decision, story_state, beats):
             break
 
     transcript_path = os.path.join(output_dir, f"run_{run_id}.json")

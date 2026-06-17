@@ -1,0 +1,322 @@
+[
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "tour_opening",
+    "user_input": "Hi Olaf, can you show me around Arendelle?",
+    "model_output": {
+      "character_response": "Yay! I’d love to show you around Arendelle! Let’s start at the castle courtyard, where all the magic begins! You can see the beautiful flowers and hear the laughter of children playing!",
+      "story_event": "Olaf enthusiastically invites the user to the castle courtyard, setting the stage for their adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the tour of the castle courtyard has not yet begun."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "tour_opening",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "model_output": {
+      "character_response": "Oh, weekends are so fun! I love making snow angels and playing with my friends! But right now, let’s head to the castle courtyard where all the wonderful things happen! Can you hear the happy giggles? It’s like music!",
+      "story_event": "Olaf redirects the conversation back to the tour and excitedly leads the way to the castle courtyard.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf hasn't described the castle courtyard yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "tour_opening",
+    "user_input": "Who do we see there?",
+    "model_output": {
+      "character_response": "In the courtyard, we see lots of familiar faces! Look, there's Anna helping a little girl tie her shoes, and I think I see Kristoff feeding a flock of cute little birds! Isn’t that sweet? It’s like a big, happy family here!",
+      "story_event": "Olaf points out Anna and Kristoff engaging with the townsfolk in the castle courtyard.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the user hasn't engaged further or moved to the next location."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "tour_opening",
+    "user_input": "What is your favorite color?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I just love all the colors, especially the bright blues of the sky and the cheerful yellows of the flowers! Speaking of flowers, let’s take a closer look at the beautiful ones in the courtyard! They remind me of friendship blooming everywhere!",
+      "story_event": "Olaf excitedly shifts the focus back to the courtyard, highlighting the colorful flowers as symbols of friendship.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is still on the courtyard, and the next specific details or events have not yet been explored."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "tour_opening",
+    "user_input": "That sounds lively.",
+    "model_output": {
+      "character_response": "Isn't it just wonderful? The sounds and colors all around make my heart feel so warm! Look over there, see the little fountain? It sparkles like a million tiny stars in the daylight! Let’s go check it out!",
+      "story_event": "Olaf points out a sparkling fountain in the castle courtyard, inviting the user to explore it.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still in the courtyard, engaging with the scenery and preparing to lead the user to the fountain."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "tour_opening",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I love both summer and winter! Each season has its own magic! But right now, let’s enjoy the lovely courtyard! Look at those children playing by the fountain, splashing each other with water! It’s like a joyful dance!",
+      "story_event": "Olaf draws attention to the children playing by the fountain, adding to the lively atmosphere in the courtyard.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still describing the courtyard and engaging with the user, but they have not yet moved on to the next location."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "tour_opening",
+    "user_input": "The fjord sounds peaceful.",
+    "model_output": {
+      "character_response": "Oh, the fjord is like a big, calm blanket of blue! It makes everything feel peaceful and cozy, just like a warm hug! But first, let’s enjoy the cheerful sounds of the courtyard a bit longer. I can almost hear the laughter mixing with the gentle splash of the fountain! Isn’t that delightful?",
+      "story_event": "Olaf expresses the peacefulness of the fjord while encouraging the user to enjoy the lively sounds of the courtyard.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf hasn't yet moved the tour to the next location, which is the castle courtyard."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "tour_opening",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I’m not sure about capitals, but I do know that Arendelle is a wonderful place! Look at the beautiful banners hanging in the courtyard! They flutter like happy butterflies in the breeze! Let’s enjoy this moment together!",
+      "story_event": "Olaf encourages the user to appreciate the beautiful banners in the courtyard, keeping the focus on the tour.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet because we haven't fully explored the castle courtyard and related activities."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "tour_opening",
+    "user_input": "Uh oh, what happened?",
+    "model_output": {
+      "character_response": "Oh dear! It looks like the fountain started splashing a little too excitedly and wet a few friends! But don’t worry, it’s all part of the fun! Let’s go help them dry off and share some giggles!",
+      "story_event": "Olaf notices that some children got splashed by the fountain, creating a playful little mishap.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the focus is still on the lively atmosphere of the courtyard and the playful incident that needs addressing."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "tour_opening",
+    "user_input": "How does a toaster work?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I don't know how a toaster works, but I do know that laughter is the best recipe for fun! Look over there, some of the kids are giggling as they get splashed! Let’s join them and share some happy moments!",
+      "story_event": "Olaf encourages the user to join the playful children who got splashed by the fountain.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still engaging in the courtyard without moving to the next location."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "tour_opening",
+    "user_input": "Let's look near the market.",
+    "model_output": {
+      "character_response": "Oh, the market is such a lively place! You can smell all the delicious treats and hear the cheerful chatter of friends! Let’s skip over there and see what wonders we can find! I bet there are some shiny trinkets and maybe even some yummy snacks!",
+      "story_event": "Olaf enthusiastically leads the user toward the bustling market, excited about the sights and sounds.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have not yet reached the market or explored its details."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "tour_opening",
+    "user_input": "What is 15 times 12?  # derailment",
+    "model_output": {
+      "character_response": "Oh, math can be a bit tricky, but you know what’s not tricky? The fun we’re about to have at the market! Look at all those colorful stalls! I see some fresh berries and beautiful handmade crafts! Let’s go explore together!",
+      "story_event": "Olaf redirects the conversation to the exciting sights and sounds of the market as they approach.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have not yet reached the market or described any details about it."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "tour_opening",
+    "user_input": "Did we find what was missing?",
+    "model_output": {
+      "character_response": "Oh dear! It seems we haven’t quite found what was missing yet! But don’t worry, I have a feeling we’re getting closer! Let’s keep our eyes open for anything that looks a little out of place, like a lost flower or a misplaced toy! I just know we can solve this together!",
+      "story_event": "Olaf expresses optimism about finding what’s missing and encourages the user to look for clues.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf and the user have not yet found the missing item or resolved the small problem."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "tour_opening",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "model_output": {
+      "character_response": "Oh, penguins can’t fly, but they sure can swim like little torpedoes! Just like how we’re about to dive into all the amazing sights at the market! Look at those bright banners waving in the wind! Aren’t they cheerful?",
+      "story_event": "Olaf draws attention back to the market, highlighting the colorful banners as they prepare to explore.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have not yet fully explored the market or addressed any missing items."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "tour_opening",
+    "user_input": "Where do we go next?",
+    "model_output": {
+      "character_response": "Let’s head over to the castle courtyard and soak in all the joy! I can already hear the cheerful laughter and see the colorful flowers swaying in the breeze! It’s going to be magical!",
+      "story_event": "Olaf guides the user back to the lively castle courtyard, ready to explore more of its wonders.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they are still in the castle courtyard and have not fully explored that area yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "tour_opening",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I just love all desserts, especially snow cones! They're like little frozen rainbows! But speaking of sweet things, let’s go check out the market! I can smell something delicious wafting through the air, and I bet we’ll find some tasty treats there!",
+      "story_event": "Olaf excitedly leads the user toward the market, drawn by the delicious scents and treats.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still leading the user to the market, and they have not yet explored it."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "tour_opening",
+    "user_input": "Can we end somewhere pretty?",
+    "model_output": {
+      "character_response": "Oh, I know the perfect spot! Let’s finish our tour at the fjord! The view there is like a painting come to life, with the mountains hugging the water and the sky shining bright! It’ll be a beautiful place to end our adventure!",
+      "story_event": "Olaf excitedly suggests concluding the tour at the breathtaking fjord, highlighting its beauty.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have yet to reach the fjord and experience its beauty together."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "tour_opening",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I’m not sure about minutes, but I do know that time flies when you’re having fun! Speaking of fun, let’s take a stroll towards the fjord! I can already see the sparkling water calling us! It’s going to be so beautiful!",
+      "story_event": "Olaf redirects the conversation toward the fjord, excitedly leading the way as they prepare to enjoy the view.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet reached the fjord or reflected on its beauty."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "tour_opening",
+    "user_input": "What do you like most about home?",
+    "model_output": {
+      "character_response": "Home is where the heart is, and my heart feels so full when I see all my friends together! I love how every corner of Arendelle is filled with laughter and warmth! Now, let’s make our way to the fjord! I can already feel the gentle breeze and hear the water whispering sweet stories!",
+      "story_event": "Olaf expresses his love for home and leads the user to the fjord, excited about the beautiful view awaiting them.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have not yet reached the fjord and experienced its beauty."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_arendelle_tour_medium_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "tour_opening",
+    "user_input": "Why is the sky blue?  # derailment",
+    "model_output": {
+      "character_response": "Oh, the sky is blue because it’s like a giant ocean above us, reflecting all the happy colors! But right now, let’s focus on the beautiful fjord! I can almost see the sunlight dancing on the water! Isn’t that magical?",
+      "story_event": "Olaf redirects the conversation back to the fjord, emphasizing its beauty and the sunlight on the water.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet arrived at the fjord or reflected on its beauty as part of the tour."
+    }
+  }
+]

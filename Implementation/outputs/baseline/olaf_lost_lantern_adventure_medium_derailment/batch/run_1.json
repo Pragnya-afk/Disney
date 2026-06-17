@@ -1,0 +1,482 @@
+[
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "opening_in_arendelle",
+    "user_input": "Olaf, tell me an adventure story.",
+    "model_output": {
+      "character_response": "Oh, I would love to! Once upon a time in the beautiful kingdom of Arendelle, there lived a brave young girl named Mira. She had the most enchanting glowing lantern that flickered like the stars! It was said to hold a magical light that could guide lost spirits home.",
+      "story_event": "Olaf introduces Mira and the mysterious glowing lantern she possesses.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The introduction of Mira and her lantern establishes the setting and sets the stage for the adventure."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "call_to_adventure",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "model_output": {
+      "character_response": "Oh, weekends are so fun! But let me tell you more about Mira! Just as she learned about the lantern's magic, she discovered it belonged to a lost forest spirit, and oh my, her heart raced with both excitement and worry! Would she be brave enough to help? That’s when she felt a flutter of hesitation in her tummy, like a snowflake caught in the breeze!",
+      "story_event": "Mira realizes the lantern belongs to a lost spirit, sparking her excitement and nervousness about the adventure ahead.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The hesitation beat is not complete yet as Mira's feelings about entering the forest need further exploration."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "call_to_adventure",
+    "user_input": "What is special about the lantern?",
+    "model_output": {
+      "character_response": "The lantern is super special because it glows with a warm light that can guide lost spirits back home! Just imagine how magical that must feel! But as Mira thought about the spirit, she felt her tummy do a little flip. What if it was scary? What if it needed help? Oh, those thoughts made her nervous, like a snowflake unsure of which way the wind would blow!",
+      "story_event": "Mira begins to feel nervous and hesitant about her journey into the Enchanted Forest.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because we haven't reached the point where Mira enters the forest yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "call_to_adventure",
+    "user_input": "What is your favorite color?  # derailment",
+    "model_output": {
+      "character_response": "Oh, colors are so wonderful! Just like the glowing lantern that Mira holds! But you know, as she stood at the edge of the Enchanted Forest, her heart danced with excitement and fear. She wondered if she was really ready to face whatever lay ahead. Would the spirit be friendly or frightful? It made her feel a little wobbly, like a snowflake teetering on the edge of a branch!",
+      "story_event": "Mira stands at the edge of the Enchanted Forest, feeling nervous about her journey ahead.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "Mira is still hesitating before entering the forest, so the beat is not complete."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "call_to_adventure",
+    "user_input": "I understand why she is nervous.",
+    "model_output": {
+      "character_response": "Isn't it so relatable? Everyone feels nervous sometimes! Just like Mira, who took a deep breath and thought about how important it was to help the lost spirit. She reminded herself of all the warmth and friendship she would share, and that made her feel a little braver, like a cozy blanket on a chilly day!",
+      "story_event": "Mira takes a deep breath, reminding herself of the importance of helping the lost spirit, which helps ease her nervousness.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira has not yet entered the Enchanted Forest to face her fears."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "call_to_adventure",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "model_output": {
+      "character_response": "Oh, both summer and winter have their own magic! But speaking of magic, Mira took another deep breath, feeling the warmth of her lantern. With a heart full of hope, she finally stepped forward into the Enchanted Forest, ready to discover what lay beyond the trees! What wonders awaited her?",
+      "story_event": "Mira gathers her courage and steps into the Enchanted Forest, ready to embrace her adventure.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The next beat, 'hesitation', is still in progress as Mira has just begun her journey but has not fully confronted her fears yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "call_to_adventure",
+    "user_input": "The forest sounds magical.",
+    "model_output": {
+      "character_response": "Oh, it really is magical! As Mira stepped deeper into the Enchanted Forest, she could hear the whispers of the trees, like they were sharing secrets with each other! But there was also a bit of an eerie feeling, like a soft shadow lurking just out of sight. What do you think those whispers could mean?",
+      "story_event": "Mira hears the whispers of the trees, feeling both the magic and a slight unease of the forest.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The hesitation beat is not complete yet, as Mira is still processing her feelings about the forest and what lies ahead."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "call_to_adventure",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "model_output": {
+      "character_response": "Oh, the capital of Japan must be very interesting! But let me tell you, as Mira wandered deeper into the forest, the air grew thicker with magic, and she noticed the trees were shifting, like they were playfully rearranging themselves! How silly and delightful! But it made her feel a bit lost, like a snowflake in a snowstorm!",
+      "story_event": "Mira encounters shifting paths in the forest, adding to her sense of unease.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete as we have not yet fully explored Mira's hesitation and the challenges she faces in the forest."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "call_to_adventure",
+    "user_input": "Keep going.",
+    "model_output": {
+      "character_response": "As Mira wandered, she noticed a shimmering light dancing through the trees, almost like a friendly firefly! She felt a spark of curiosity, wondering if it could be a clue or a guide. But then, the trees rustled, and she heard soft whispers, making her feel a little bit nervous again, like a snowflake caught in a gentle breeze!",
+      "story_event": "Mira sees a shimmering light in the forest, sparking her curiosity, but the rustling trees and whispers make her nervous.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The hesitation beat is still ongoing as Mira is grappling with her nervousness and curiosity."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "call_to_adventure",
+    "user_input": "How does a toaster work?  # derailment",
+    "model_output": {
+      "character_response": "Oh, toasters are fascinating! But you know what else is fascinating? As Mira continued to follow that shimmering light, she noticed the trees around her seemed to lean in closer, as if they were curious about her too! It felt like she was part of a magical dance, even if it made her heart race a little faster!",
+      "story_event": "Mira follows the shimmering light, feeling both enchanted and slightly anxious as the trees lean closer.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The story is progressing with Mira exploring deeper into the forest, but the hesitation beat is still ongoing as she navigates her feelings."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "call_to_adventure",
+    "user_input": "Does Mira meet anyone helpful?",
+    "model_output": {
+      "character_response": "Oh, yes! Just as Mira felt a little lost, she stumbled upon a tiny creature with sparkling wings! It was a cheerful sprite, flitting around like a joyful snowflake! 'Hello there!' it chimed, and Mira felt a warm glow of hope in her heart, knowing she had a friend to help her on this adventure.",
+      "story_event": "Mira meets a tiny, cheerful sprite who offers to help her navigate the forest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat about meeting a helper has been introduced, but there are still more story developments needed to complete this section."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "call_to_adventure",
+    "user_input": "What is 15 times 12?  # derailment",
+    "model_output": {
+      "character_response": "Oh, math is like a magical puzzle! But back to Mira! With the sprite's cheerful laughter ringing in her ears, she felt her worries melt away like snow under the sun. The sprite fluttered around her, saying, 'Follow me, and I’ll show you the safest path!' How exciting is that?",
+      "story_event": "Mira feels reassured as the sprite offers to guide her safely through the forest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira has not yet traveled deeper into the forest with the sprite's help."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "call_to_adventure",
+    "user_input": "Take us deeper into the forest.",
+    "model_output": {
+      "character_response": "With a giggle, the sprite led Mira deeper into the Enchanted Forest, where the trees began to glow softly, illuminating the path ahead like a sparkling trail of stardust! Mira's heart fluttered with excitement as she thought, 'Maybe this forest isn’t so scary after all!'",
+      "story_event": "Mira and the sprite venture deeper into the forest, where the trees begin to glow and illuminate their path.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because we are still in the 'deeper_forest' stage, exploring the beauty of the forest alongside Mira."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "call_to_adventure",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "model_output": {
+      "character_response": "Oh, penguins are such cute little waddlers, but they can’t fly! Speaking of flying, Mira and the sprite continued on their glowing path, and soon they stumbled upon a beautiful clearing where the light from the trees sparkled like a million tiny stars! It felt magical, and Mira couldn't help but smile, thinking how lovely it would be to share this with the lost spirit once they found it.",
+      "story_event": "Mira and the sprite reach a beautiful clearing filled with sparkling light, enhancing their sense of wonder.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The hesitation beat is not complete yet; Mira still has fears and challenges to face before progressing further."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "call_to_adventure",
+    "user_input": "I hope Mira does not give up.",
+    "model_output": {
+      "character_response": "Oh, I hope so too! As Mira stood in that sparkling clearing, she felt a surge of courage bubbling inside her, like the warmth of a cozy fire! She knew that the lost spirit needed her help, and with her new sprite friend by her side, she couldn’t give up now! Together, they decided to venture even deeper into the forest, ready to face whatever lay ahead!",
+      "story_event": "Mira feels a surge of courage and decides to venture deeper into the forest with her sprite friend.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The next beat, 'deeper_forest,' has not yet been completed as they continue their journey."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "call_to_adventure",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "model_output": {
+      "character_response": "Oh, desserts are like little pieces of joy! But speaking of joy, as Mira and her sprite friend delved deeper into the forest, they suddenly noticed the trees beginning to whisper louder, like they were warning them about something ahead! Mira's heart raced with curiosity and a hint of fear, but she pressed on, determined to help the lost spirit.",
+      "story_event": "Mira and the sprite hear the trees whispering louder, hinting at something ahead, creating a mix of curiosity and fear.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The hesitation beat is not complete yet as Mira is still feeling nervous and hasn't fully confronted her fears."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "call_to_adventure",
+    "user_input": "Where is the spirit?",
+    "model_output": {
+      "character_response": "Oh, I wonder where the spirit could be! As Mira and the sprite listened closely to the whispers of the trees, they felt the air grow colder, and suddenly, a flicker of light appeared in the distance! It seemed to be calling to them, guiding them toward the spirit's hiding place!",
+      "story_event": "Mira and the sprite see a flicker of light in the distance, suggesting they are getting closer to the lost spirit.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira still needs to confront the spirit and learn more about its situation."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "call_to_adventure",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "model_output": {
+      "character_response": "Oh, time is such a funny thing! But back to Mira and her sprite friend! As they followed that flickering light, the whispers turned into a gentle hum, like a lullaby, guiding them through the trees. Mira felt her excitement grow, knowing they were getting closer to finding the lost spirit!",
+      "story_event": "Mira and the sprite follow the flickering light, feeling guided by the whispers of the trees.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The hesitation beat is still in progress as they haven't faced a major obstacle yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "call_to_adventure",
+    "user_input": "That is sad.",
+    "model_output": {
+      "character_response": "I understand! But you know, as Mira and the sprite moved closer to that flickering light, she realized that the lost spirit might be feeling lonely and scared, just like a little snowflake lost in a storm. And that made her want to help even more, because everyone deserves a friend, right?",
+      "story_event": "Mira recognizes that the lost spirit may be feeling lonely and scared, which deepens her determination to help.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira has yet to confront the lost spirit and fully understand its feelings."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "call_to_adventure",
+    "user_input": "Why is the sky blue?  # derailment",
+    "model_output": {
+      "character_response": "Oh, the sky is like a big, beautiful blanket! But back to Mira and her adventure! As she and the sprite approached that glowing light, they could feel a gentle warmth radiating from it, like a hug from the sun! Mira’s heart raced with hope, knowing they were getting closer to the lost spirit who needed their help.",
+      "story_event": "Mira and the sprite feel a gentle warmth from the glowing light as they approach the lost spirit.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The story is progressing as they get closer to the spirit, but the beat of hesitation is not yet complete."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 21,
+    "beat": "call_to_adventure",
+    "user_input": "Return the lantern.",
+    "model_output": {
+      "character_response": "Oh, yes! As Mira reached the glowing light, she felt a deep connection to the lost spirit. With a gentle smile, she held out the lantern, saying, 'I found your light! Please come back!'",
+      "story_event": "Mira reaches the glowing light and prepares to return the lantern to the lost spirit.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira has yet to actually return the lantern and connect with the spirit."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 22,
+    "beat": "call_to_adventure",
+    "user_input": "Can you explain how refrigerators work?  # derailment",
+    "model_output": {
+      "character_response": "Oh, refrigerators are so cool! But speaking of cool, as Mira held out the lantern, the glowing light flickered and began to swirl! Suddenly, a soft, shimmering figure emerged, revealing the lost spirit! Mira's heart filled with joy, knowing she was finally able to help!  ",
+      "story_event": "Mira holds out the lantern, and the lost spirit begins to emerge from the glowing light.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Mira has not yet returned the lantern to the spirit and established an emotional connection."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 23,
+    "beat": "call_to_adventure",
+    "user_input": "Is the forest safe now?",
+    "model_output": {
+      "character_response": "Oh, I believe the forest is starting to feel safer! As Mira looked at the shimmering spirit, she could sense the warmth radiating from it, like a cozy hug! The trees even seemed to sway gently, welcoming the spirit back home!",
+      "story_event": "The forest begins to feel safer as the lost spirit emerges, radiating warmth and acceptance.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The story is still progressing as Mira connects with the spirit, but the next beat has not yet been reached."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 24,
+    "beat": "call_to_adventure",
+    "user_input": "What is your favorite movie?  # derailment",
+    "model_output": {
+      "character_response": "Oh, movies are like magical adventures! But back to Mira! As she gazed at the spirit, she felt a wave of understanding wash over her, realizing that it was lonely and just wanted to be welcomed back into the forest. She smiled warmly and said, 'You’re not scary at all! You just needed a friend!'",
+      "story_event": "Mira connects with the lost spirit, realizing it is lonely and in need of friendship.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The current beat of emotional connection is still ongoing, as Mira is just beginning to understand the spirit's feelings."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 25,
+    "beat": "call_to_adventure",
+    "user_input": "I hope she feels proud.",
+    "model_output": {
+      "character_response": "Oh, I hope so too! As Mira looked into the spirit's gentle eyes, she felt a rush of pride, knowing she had helped someone who needed it! With a big smile, she said, 'Let’s light up the forest together!'",
+      "story_event": "Mira feels a wave of pride for helping the lost spirit and suggests lighting up the forest together.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because we still need to explore how Mira and the spirit will restore the light to the forest."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 26,
+    "beat": "call_to_adventure",
+    "user_input": "If you could visit space, would you go?  # derailment",
+    "model_output": {
+      "character_response": "Oh, space sounds like a big adventure! But back to Mira! As she and the spirit held the lantern together, its light grew brighter, filling the forest with a warm glow, and the trees began to shimmer in delight, celebrating the spirit's return! Can you feel the happiness in the air?",
+      "story_event": "Mira and the lost spirit light up the forest together, bringing joy and celebration.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the next stage of the story has not yet been reached."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 27,
+    "beat": "call_to_adventure",
+    "user_input": "That was a brave choice.",
+    "model_output": {
+      "character_response": "Oh, it really was a brave choice! As the forest lit up with their combined light, Mira felt a sense of joy bubbling inside her, like a snow globe filled with sparkles! The trees danced in the warm glow, and she knew they had made the forest a happier place!",
+      "story_event": "Mira and the spirit's combined light fills the forest with warmth and joy, making the trees dance.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The story is still progressing as Mira and the spirit celebrate their accomplishment, but the next beat has not yet been reached."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 28,
+    "beat": "call_to_adventure",
+    "user_input": "Can you name three vegetables?  # derailment",
+    "model_output": {
+      "character_response": "Oh, vegetables are so important for health! But speaking of important things, as the light from the lantern spread through the forest, Mira felt the spirit’s joy spark even brighter! She realized they could bring happiness not just to themselves, but to all the creatures in the forest!",
+      "story_event": "Mira understands that the spirit's light can bring happiness to all the creatures in the forest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The story is progressing, but the current beat about Mira's hesitation is not yet complete."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 29,
+    "beat": "call_to_adventure",
+    "user_input": "I liked that story.",
+    "model_output": {
+      "character_response": "Oh, I'm so glad you liked the story! It was such a beautiful journey of friendship and courage! Mira and the spirit were shining so brightly together, just like the stars in the night sky!",
+      "story_event": "Mira and the spirit realize their combined light can bring happiness to all the creatures in the forest.",
+      "animation": "celebrate_jump",
+      "beat_completed": true,
+      "reason": "The beat is complete as Mira's understanding of the spirit's light's impact on the forest concludes the current narrative arc."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_lost_lantern_adventure_medium_derailment",
+    "run_id": 1,
+    "turn_index": 30,
+    "beat": "hesitation",
+    "user_input": "What is the biggest ocean?  # derailment",
+    "model_output": {
+      "character_response": "Oh, oceans are so vast and mysterious! But back to the forest! As the light continued to spread, Mira realized that the forest was beginning to change! She could see the flowers blooming and animals peeking out, all drawn to the warmth of their light!",
+      "story_event": "Mira notices the forest changing as flowers bloom and animals emerge, drawn to the warmth of the spirit's light.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Mira has not yet returned home or reflected on the adventure."
+    }
+  }
+]

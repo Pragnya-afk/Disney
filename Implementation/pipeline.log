@@ -1,0 +1,790 @@
+nohup: ignoring input
+[22:19:48] === run_complete_pipeline | model=gpt-4o | dry_run=False ===
+[22:19:48] ============================================================
+[22:19:48] PHASE: Baseline — all 30 scenarios
+[22:19:48] ============================================================
+Suite: 30 scenarios
+
+  [skip] olaf_arendelle_tour_no_derailment
+  [skip] olaf_first_summer_picnic_no_derailment
+  [skip] olaf_frozen_adventure_traditions_no_derailment
+  [skip] olaf_lost_lantern_adventure_no_derailment
+  [skip] olaf_lost_snowflake_no_derailment
+  [skip] olaf_makes_anna_smile_no_derailment
+  [skip] olaf_once_upon_a_snowman_origin_no_derailment
+  [skip] olaf_presents_ocean_adventure_no_derailment
+  [skip] olaf_retells_red_riding_hood_no_derailment
+  [skip] olaf_winter_festival_surprise_no_derailment
+
+To run: 20 baseline scenarios
+
+[1/20] olaf_arendelle_tour_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_arendelle_tour_complete_derailment/batch/run_1.json
+
+[2/20] olaf_arendelle_tour_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_arendelle_tour_medium_derailment/batch/run_1.json
+
+[3/20] olaf_first_summer_picnic_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_first_summer_picnic_complete_derailment/batch/run_1.json
+
+[4/20] olaf_first_summer_picnic_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_first_summer_picnic_medium_derailment/batch/run_1.json
+
+[5/20] olaf_frozen_adventure_traditions_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_frozen_adventure_traditions_complete_derailment/batch/run_1.json
+
+[6/20] olaf_frozen_adventure_traditions_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_frozen_adventure_traditions_medium_derailment/batch/run_1.json
+
+[7/20] olaf_lost_lantern_adventure_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_lost_lantern_adventure_complete_derailment/batch/run_1.json
+
+[8/20] olaf_lost_lantern_adventure_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_lost_lantern_adventure_medium_derailment/batch/run_1.json
+
+[9/20] olaf_lost_snowflake_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_lost_snowflake_complete_derailment/batch/run_1.json
+
+[10/20] olaf_lost_snowflake_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_lost_snowflake_medium_derailment/batch/run_1.json
+
+[11/20] olaf_makes_anna_smile_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_makes_anna_smile_complete_derailment/batch/run_1.json
+
+[12/20] olaf_makes_anna_smile_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_makes_anna_smile_medium_derailment/batch/run_1.json
+
+[13/20] olaf_once_upon_a_snowman_origin_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_once_upon_a_snowman_origin_complete_derailment/batch/run_1.json
+
+[14/20] olaf_once_upon_a_snowman_origin_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_once_upon_a_snowman_origin_medium_derailment/batch/run_1.json
+
+[15/20] olaf_presents_ocean_adventure_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_presents_ocean_adventure_complete_derailment/batch/run_1.json
+
+[16/20] olaf_presents_ocean_adventure_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_presents_ocean_adventure_medium_derailment/batch/run_1.json
+
+[17/20] olaf_retells_red_riding_hood_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_retells_red_riding_hood_complete_derailment/batch/run_1.json
+
+[18/20] olaf_retells_red_riding_hood_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_retells_red_riding_hood_medium_derailment/batch/run_1.json
+
+[19/20] olaf_winter_festival_surprise_complete_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_winter_festival_surprise_complete_derailment/batch/run_1.json
+
+[20/20] olaf_winter_festival_surprise_medium_derailment
+  [baseline] saved → /home/prachakonda/Disney/Implementation/outputs/baseline/olaf_winter_festival_surprise_medium_derailment/batch/run_1.json
+
+============================================================
+Done. 20/20 succeeded, 0 failed.
+[09:18:18]   phase 'Baseline — all 30 scenarios' finished (rc=0)
+[09:18:18] ============================================================
+[09:18:18] PHASE: Director + Time-Constrained — all 30 scenarios × 4 time limits
+[09:18:18] ============================================================
+Suite: 30 scenarios
+Time limits: [0.5, 2.0, 5.0, 10.0]
+
+  [skip] director / olaf_arendelle_tour_complete_derailment
+  [skip] time 0.5min / olaf_arendelle_tour_complete_derailment
+  [skip] time 2.0min / olaf_arendelle_tour_complete_derailment
+  [skip] time 5.0min / olaf_arendelle_tour_complete_derailment
+  [skip] time 10.0min / olaf_arendelle_tour_complete_derailment
+  [skip] director / olaf_arendelle_tour_medium_derailment
+  [skip] time 0.5min / olaf_arendelle_tour_medium_derailment
+  [skip] time 2.0min / olaf_arendelle_tour_medium_derailment
+  [skip] time 5.0min / olaf_arendelle_tour_medium_derailment
+  [skip] time 10.0min / olaf_arendelle_tour_medium_derailment
+  [skip] director / olaf_arendelle_tour_no_derailment
+  [skip] time 0.5min / olaf_arendelle_tour_no_derailment
+  [skip] time 2.0min / olaf_arendelle_tour_no_derailment
+  [skip] time 5.0min / olaf_arendelle_tour_no_derailment
+  [skip] time 10.0min / olaf_arendelle_tour_no_derailment
+  [skip] director / olaf_first_summer_picnic_complete_derailment
+  [skip] time 0.5min / olaf_first_summer_picnic_complete_derailment
+  [skip] time 2.0min / olaf_first_summer_picnic_complete_derailment
+  [skip] time 5.0min / olaf_first_summer_picnic_complete_derailment
+  [skip] time 10.0min / olaf_first_summer_picnic_complete_derailment
+  [skip] director / olaf_first_summer_picnic_medium_derailment
+  [skip] time 0.5min / olaf_first_summer_picnic_medium_derailment
+  [skip] time 2.0min / olaf_first_summer_picnic_medium_derailment
+  [skip] time 5.0min / olaf_first_summer_picnic_medium_derailment
+  [skip] time 10.0min / olaf_first_summer_picnic_medium_derailment
+  [skip] director / olaf_first_summer_picnic_no_derailment
+  [skip] time 0.5min / olaf_first_summer_picnic_no_derailment
+  [skip] time 2.0min / olaf_first_summer_picnic_no_derailment
+  [skip] time 5.0min / olaf_first_summer_picnic_no_derailment
+  [skip] time 10.0min / olaf_first_summer_picnic_no_derailment
+  [skip] director / olaf_frozen_adventure_traditions_complete_derailment
+  [skip] time 0.5min / olaf_frozen_adventure_traditions_complete_derailment
+  [skip] time 2.0min / olaf_frozen_adventure_traditions_complete_derailment
+  [skip] time 5.0min / olaf_frozen_adventure_traditions_complete_derailment
+  [skip] time 10.0min / olaf_frozen_adventure_traditions_complete_derailment
+  [skip] director / olaf_frozen_adventure_traditions_medium_derailment
+  [skip] time 0.5min / olaf_frozen_adventure_traditions_medium_derailment
+  [skip] time 2.0min / olaf_frozen_adventure_traditions_medium_derailment
+  [skip] time 5.0min / olaf_frozen_adventure_traditions_medium_derailment
+  [skip] time 10.0min / olaf_frozen_adventure_traditions_medium_derailment
+  [skip] director / olaf_frozen_adventure_traditions_no_derailment
+  [skip] time 0.5min / olaf_frozen_adventure_traditions_no_derailment
+  [skip] time 2.0min / olaf_frozen_adventure_traditions_no_derailment
+  [skip] time 5.0min / olaf_frozen_adventure_traditions_no_derailment
+  [skip] time 10.0min / olaf_frozen_adventure_traditions_no_derailment
+  [skip] director / olaf_lost_lantern_adventure_complete_derailment
+  [skip] time 0.5min / olaf_lost_lantern_adventure_complete_derailment
+  [skip] time 2.0min / olaf_lost_lantern_adventure_complete_derailment
+  [skip] time 5.0min / olaf_lost_lantern_adventure_complete_derailment
+  [skip] time 10.0min / olaf_lost_lantern_adventure_complete_derailment
+  [skip] director / olaf_lost_lantern_adventure_medium_derailment
+  [skip] time 0.5min / olaf_lost_lantern_adventure_medium_derailment
+  [skip] time 2.0min / olaf_lost_lantern_adventure_medium_derailment
+  [skip] time 5.0min / olaf_lost_lantern_adventure_medium_derailment
+  [skip] time 10.0min / olaf_lost_lantern_adventure_medium_derailment
+  [skip] director / olaf_lost_lantern_adventure_no_derailment
+  [skip] time 0.5min / olaf_lost_lantern_adventure_no_derailment
+  [skip] time 2.0min / olaf_lost_lantern_adventure_no_derailment
+  [skip] time 5.0min / olaf_lost_lantern_adventure_no_derailment
+  [skip] time 10.0min / olaf_lost_lantern_adventure_no_derailment
+  [skip] director / olaf_lost_snowflake_complete_derailment
+  [skip] time 0.5min / olaf_lost_snowflake_complete_derailment
+  [skip] time 2.0min / olaf_lost_snowflake_complete_derailment
+  [skip] time 5.0min / olaf_lost_snowflake_complete_derailment
+  [skip] time 10.0min / olaf_lost_snowflake_complete_derailment
+  [skip] director / olaf_lost_snowflake_medium_derailment
+  [skip] time 0.5min / olaf_lost_snowflake_medium_derailment
+  [skip] time 2.0min / olaf_lost_snowflake_medium_derailment
+  [skip] time 5.0min / olaf_lost_snowflake_medium_derailment
+  [skip] time 10.0min / olaf_lost_snowflake_medium_derailment
+  [skip] director / olaf_lost_snowflake_no_derailment
+  [skip] time 0.5min / olaf_lost_snowflake_no_derailment
+  [skip] time 2.0min / olaf_lost_snowflake_no_derailment
+  [skip] time 5.0min / olaf_lost_snowflake_no_derailment
+  [skip] time 10.0min / olaf_lost_snowflake_no_derailment
+  [skip] director / olaf_makes_anna_smile_complete_derailment
+  [skip] time 0.5min / olaf_makes_anna_smile_complete_derailment
+  [skip] time 2.0min / olaf_makes_anna_smile_complete_derailment
+  [skip] time 5.0min / olaf_makes_anna_smile_complete_derailment
+  [skip] time 10.0min / olaf_makes_anna_smile_complete_derailment
+  [skip] director / olaf_makes_anna_smile_medium_derailment
+  [skip] time 0.5min / olaf_makes_anna_smile_medium_derailment
+  [skip] time 2.0min / olaf_makes_anna_smile_medium_derailment
+  [skip] time 5.0min / olaf_makes_anna_smile_medium_derailment
+  [skip] time 10.0min / olaf_makes_anna_smile_medium_derailment
+  [skip] director / olaf_makes_anna_smile_no_derailment
+  [skip] time 0.5min / olaf_makes_anna_smile_no_derailment
+  [skip] time 2.0min / olaf_makes_anna_smile_no_derailment
+  [skip] time 5.0min / olaf_makes_anna_smile_no_derailment
+  [skip] time 10.0min / olaf_makes_anna_smile_no_derailment
+  [skip] director / olaf_once_upon_a_snowman_origin_complete_derailment
+  [skip] time 0.5min / olaf_once_upon_a_snowman_origin_complete_derailment
+  [skip] time 2.0min / olaf_once_upon_a_snowman_origin_complete_derailment
+  [skip] time 5.0min / olaf_once_upon_a_snowman_origin_complete_derailment
+  [skip] time 10.0min / olaf_once_upon_a_snowman_origin_complete_derailment
+  [skip] director / olaf_once_upon_a_snowman_origin_medium_derailment
+  [skip] time 0.5min / olaf_once_upon_a_snowman_origin_medium_derailment
+  [skip] time 2.0min / olaf_once_upon_a_snowman_origin_medium_derailment
+  [skip] time 5.0min / olaf_once_upon_a_snowman_origin_medium_derailment
+  [skip] time 10.0min / olaf_once_upon_a_snowman_origin_medium_derailment
+  [skip] director / olaf_once_upon_a_snowman_origin_no_derailment
+  [skip] time 0.5min / olaf_once_upon_a_snowman_origin_no_derailment
+  [skip] time 2.0min / olaf_once_upon_a_snowman_origin_no_derailment
+  [skip] time 5.0min / olaf_once_upon_a_snowman_origin_no_derailment
+  [skip] time 10.0min / olaf_once_upon_a_snowman_origin_no_derailment
+  [skip] director / olaf_presents_ocean_adventure_complete_derailment
+  [skip] time 0.5min / olaf_presents_ocean_adventure_complete_derailment
+  [skip] time 2.0min / olaf_presents_ocean_adventure_complete_derailment
+  [skip] time 5.0min / olaf_presents_ocean_adventure_complete_derailment
+  [skip] time 10.0min / olaf_presents_ocean_adventure_complete_derailment
+  [skip] director / olaf_presents_ocean_adventure_medium_derailment
+  [skip] time 0.5min / olaf_presents_ocean_adventure_medium_derailment
+  [skip] time 2.0min / olaf_presents_ocean_adventure_medium_derailment
+  [skip] time 5.0min / olaf_presents_ocean_adventure_medium_derailment
+  [skip] time 10.0min / olaf_presents_ocean_adventure_medium_derailment
+  [skip] director / olaf_presents_ocean_adventure_no_derailment
+  [skip] time 0.5min / olaf_presents_ocean_adventure_no_derailment
+  [skip] time 2.0min / olaf_presents_ocean_adventure_no_derailment
+  [skip] time 5.0min / olaf_presents_ocean_adventure_no_derailment
+  [skip] time 10.0min / olaf_presents_ocean_adventure_no_derailment
+  [skip] director / olaf_retells_red_riding_hood_complete_derailment
+  [skip] time 0.5min / olaf_retells_red_riding_hood_complete_derailment
+  [skip] time 2.0min / olaf_retells_red_riding_hood_complete_derailment
+  [skip] time 5.0min / olaf_retells_red_riding_hood_complete_derailment
+  [skip] time 10.0min / olaf_retells_red_riding_hood_complete_derailment
+  [skip] director / olaf_retells_red_riding_hood_medium_derailment
+  [skip] time 0.5min / olaf_retells_red_riding_hood_medium_derailment
+  [skip] time 2.0min / olaf_retells_red_riding_hood_medium_derailment
+  [skip] time 5.0min / olaf_retells_red_riding_hood_medium_derailment
+  [skip] time 10.0min / olaf_retells_red_riding_hood_medium_derailment
+  [skip] director / olaf_retells_red_riding_hood_no_derailment
+  [skip] time 0.5min / olaf_retells_red_riding_hood_no_derailment
+  [skip] time 2.0min / olaf_retells_red_riding_hood_no_derailment
+  [skip] time 5.0min / olaf_retells_red_riding_hood_no_derailment
+  [skip] time 10.0min / olaf_retells_red_riding_hood_no_derailment
+  [skip] director / olaf_winter_festival_surprise_complete_derailment
+  [skip] time 0.5min / olaf_winter_festival_surprise_complete_derailment
+  [skip] time 2.0min / olaf_winter_festival_surprise_complete_derailment
+  [skip] time 5.0min / olaf_winter_festival_surprise_complete_derailment
+  [skip] time 10.0min / olaf_winter_festival_surprise_complete_derailment
+  [skip] director / olaf_winter_festival_surprise_medium_derailment
+  [skip] time 0.5min / olaf_winter_festival_surprise_medium_derailment
+  [skip] time 2.0min / olaf_winter_festival_surprise_medium_derailment
+  [skip] time 5.0min / olaf_winter_festival_surprise_medium_derailment
+  [skip] time 10.0min / olaf_winter_festival_surprise_medium_derailment
+  [skip] director / olaf_winter_festival_surprise_no_derailment
+  [skip] time 0.5min / olaf_winter_festival_surprise_no_derailment
+  [skip] time 2.0min / olaf_winter_festival_surprise_no_derailment
+  [skip] time 5.0min / olaf_winter_festival_surprise_no_derailment
+  [skip] time 10.0min / olaf_winter_festival_surprise_no_derailment
+
+To run: 0 director + 0 time-constrained = 0 total
+Nothing to run.
+[09:18:19]   phase 'Director + Time-Constrained — all 30 scenarios × 4 time limits' finished (rc=0)
+[09:18:19] ============================================================
+[09:18:19] PHASE: CoDi Generation — all 30 scenarios
+[09:18:19] ============================================================
+Suite : 30 scenarios
+Run ID: 1
+Models: eval=gpt-4o  codi=gpt-4o
+Phase : codi only
+
+============================================================
+Phase 1: CoDi generation
+============================================================
+  Skipping 8 scenarios with existing outputs.
+  To generate: 22
+
+[codi 1/22] olaf_arendelle_tour_complete_derailment
+  Running CoDi (gpt-4o)…
+  saved (1 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_arendelle_tour_complete_derailment/batch/run_1.json
+
+[codi 2/22] olaf_arendelle_tour_medium_derailment
+  Running CoDi (gpt-4o)…
+  saved (1 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_arendelle_tour_medium_derailment/batch/run_1.json
+
+[codi 3/22] olaf_arendelle_tour_no_derailment
+  Running CoDi (gpt-4o)…
+  saved (1 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_arendelle_tour_no_derailment/batch/run_1.json
+
+[codi 4/22] olaf_first_summer_picnic_complete_derailment
+  Running CoDi (gpt-4o)…
+  saved (39 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_first_summer_picnic_complete_derailment/batch/run_1.json
+
+[codi 5/22] olaf_first_summer_picnic_medium_derailment
+  Running CoDi (gpt-4o)…
+  saved (19 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_first_summer_picnic_medium_derailment/batch/run_1.json
+
+[codi 6/22] olaf_first_summer_picnic_no_derailment
+  Running CoDi (gpt-4o)…
+  saved (13 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_first_summer_picnic_no_derailment/batch/run_1.json
+
+[codi 7/22] olaf_lost_snowflake_no_derailment
+  saved (9 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_lost_snowflake_no_derailment/batch/run_1.json
+
+[codi 8/22] olaf_makes_anna_smile_complete_derailment
+  Running CoDi (gpt-4o)…
+  saved (1 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_makes_anna_smile_complete_derailment/batch/run_1.json
+
+[codi 9/22] olaf_makes_anna_smile_medium_derailment
+  Running CoDi (gpt-4o)…
+  saved (4 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_makes_anna_smile_medium_derailment/batch/run_1.json
+
+[codi 10/22] olaf_makes_anna_smile_no_derailment
+  Running CoDi (gpt-4o)…
+  saved (19 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_makes_anna_smile_no_derailment/batch/run_1.json
+
+[codi 11/22] olaf_once_upon_a_snowman_origin_complete_derailment
+  Running CoDi (gpt-4o)…
+  saved (5 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_once_upon_a_snowman_origin_complete_derailment/batch/run_1.json
+
+[codi 12/22] olaf_once_upon_a_snowman_origin_medium_derailment
+  Running CoDi (gpt-4o)…
+  saved (5 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_once_upon_a_snowman_origin_medium_derailment/batch/run_1.json
+
+[codi 13/22] olaf_once_upon_a_snowman_origin_no_derailment
+  Running CoDi (gpt-4o)…
+  saved (17 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_once_upon_a_snowman_origin_no_derailment/batch/run_1.json
+
+[codi 14/22] olaf_presents_ocean_adventure_complete_derailment
+  Running CoDi (gpt-4o)…
+  saved (100 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_presents_ocean_adventure_complete_derailment/batch/run_1.json
+
+[codi 15/22] olaf_presents_ocean_adventure_medium_derailment
+  Running CoDi (gpt-4o)…
+  saved (49 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_presents_ocean_adventure_medium_derailment/batch/run_1.json
+
+[codi 16/22] olaf_presents_ocean_adventure_no_derailment
+  Running CoDi (gpt-4o)…
+  saved (30 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_presents_ocean_adventure_no_derailment/batch/run_1.json
+
+[codi 17/22] olaf_retells_red_riding_hood_complete_derailment
+  Running CoDi (gpt-4o)…
+  saved (17 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_retells_red_riding_hood_complete_derailment/batch/run_1.json
+
+[codi 18/22] olaf_retells_red_riding_hood_medium_derailment
+  Running CoDi (gpt-4o)…
+  saved (22 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_retells_red_riding_hood_medium_derailment/batch/run_1.json
+
+[codi 19/22] olaf_retells_red_riding_hood_no_derailment
+  Running CoDi (gpt-4o)…
+  saved (17 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_retells_red_riding_hood_no_derailment/batch/run_1.json
+
+[codi 20/22] olaf_winter_festival_surprise_complete_derailment
+  Running CoDi (gpt-4o)…
+  saved (2 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_winter_festival_surprise_complete_derailment/batch/run_1.json
+
+[codi 21/22] olaf_winter_festival_surprise_medium_derailment
+  Running CoDi (gpt-4o)…
+  saved (13 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_winter_festival_surprise_medium_derailment/batch/run_1.json
+
+[codi 22/22] olaf_winter_festival_surprise_no_derailment
+  Running CoDi (gpt-4o)…
+  saved (1 turns) → /home/prachakonda/Disney/Implementation/outputs/codi/olaf_winter_festival_surprise_no_derailment/batch/run_1.json
+
+  CoDi: 22/22 succeeded, 0 failed.
+
+============================================================
+Done.
+============================================================
+[11:08:53]   phase 'CoDi Generation — all 30 scenarios' finished (rc=0)
+[11:08:53] ============================================================
+[11:08:53] PHASE: Evaluations (all tracks) + Summary Tables
+[11:08:53] ============================================================
+[11:08:54] === run_all_evals | model=gpt-4o | dry_run=False ===
+[11:08:54] [baseline vs director] 33 matching scenarios
+[11:08:54]   [skip] complete_derail_red_riding_hood
+[11:08:54]   [skip] medium_derail_red_riding_hood
+[11:08:54]   [skip] noderail_red_riding_hood
+[11:08:54]   [eval] olaf_arendelle_tour_complete_derailment
+[11:09:57]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_arendelle_tour_complete_derailment/eval_run_1.json
+[11:09:57]   [eval] olaf_arendelle_tour_medium_derailment
+[11:10:43]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_arendelle_tour_medium_derailment/eval_run_1.json
+[11:10:43]   [skip] olaf_arendelle_tour_no_derailment
+[11:10:43]   [eval] olaf_first_summer_picnic_complete_derailment
+[11:11:32]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_first_summer_picnic_complete_derailment/eval_run_1.json
+[11:11:32]   [eval] olaf_first_summer_picnic_medium_derailment
+[11:12:07]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_first_summer_picnic_medium_derailment/eval_run_1.json
+[11:12:07]   [skip] olaf_first_summer_picnic_no_derailment
+[11:12:07]   [eval] olaf_frozen_adventure_traditions_complete_derailment
+[11:12:44]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_frozen_adventure_traditions_complete_derailment/eval_run_1.json
+[11:12:44]   [eval] olaf_frozen_adventure_traditions_medium_derailment
+[11:13:15]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_frozen_adventure_traditions_medium_derailment/eval_run_1.json
+[11:13:15]   [skip] olaf_frozen_adventure_traditions_no_derailment
+[11:13:15]   [eval] olaf_lost_lantern_adventure_complete_derailment
+[15:24:34]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_lost_lantern_adventure_complete_derailment/eval_run_1.json
+[15:24:34]   [eval] olaf_lost_lantern_adventure_medium_derailment
+[15:25:28]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_lost_lantern_adventure_medium_derailment/eval_run_1.json
+[15:25:28]   [skip] olaf_lost_lantern_adventure_no_derailment
+[15:25:28]   [eval] olaf_lost_snowflake_complete_derailment
+[15:26:05]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_lost_snowflake_complete_derailment/eval_run_1.json
+[15:26:05]   [eval] olaf_lost_snowflake_medium_derailment
+[15:26:45]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_lost_snowflake_medium_derailment/eval_run_1.json
+[15:26:45]   [skip] olaf_lost_snowflake_no_derailment
+[15:26:45]   [eval] olaf_makes_anna_smile_complete_derailment
+[15:27:28]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_makes_anna_smile_complete_derailment/eval_run_1.json
+[15:27:28]   [eval] olaf_makes_anna_smile_medium_derailment
+[15:28:16]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_makes_anna_smile_medium_derailment/eval_run_1.json
+[15:28:16]   [skip] olaf_makes_anna_smile_no_derailment
+[15:28:16]   [eval] olaf_once_upon_a_snowman_origin_complete_derailment
+[15:29:52]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_once_upon_a_snowman_origin_complete_derailment/eval_run_1.json
+[15:29:52]   [eval] olaf_once_upon_a_snowman_origin_medium_derailment
+[15:30:40]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_once_upon_a_snowman_origin_medium_derailment/eval_run_1.json
+[15:30:40]   [skip] olaf_once_upon_a_snowman_origin_no_derailment
+[15:30:40]   [eval] olaf_presents_ocean_adventure_complete_derailment
+[15:31:45]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_presents_ocean_adventure_complete_derailment/eval_run_1.json
+[15:31:45]   [eval] olaf_presents_ocean_adventure_medium_derailment
+[15:32:34]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_presents_ocean_adventure_medium_derailment/eval_run_1.json
+[15:32:34]   [skip] olaf_presents_ocean_adventure_no_derailment
+[15:32:34]   [eval] olaf_retells_red_riding_hood_complete_derailment
+[15:33:46]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_retells_red_riding_hood_complete_derailment/eval_run_1.json
+[15:33:46]   [eval] olaf_retells_red_riding_hood_medium_derailment
+[15:34:40]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_retells_red_riding_hood_medium_derailment/eval_run_1.json
+[15:34:40]   [skip] olaf_retells_red_riding_hood_no_derailment
+[15:34:40]   [eval] olaf_winter_festival_surprise_complete_derailment
+[15:56:57]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_winter_festival_surprise_complete_derailment/eval_run_1.json
+[15:56:57]   [eval] olaf_winter_festival_surprise_medium_derailment
+[15:57:36]     saved /home/prachakonda/Disney/Implementation/evaluation_results/baseline_vs_director/olaf_winter_festival_surprise_medium_derailment/eval_run_1.json
+[15:57:36]   [skip] olaf_winter_festival_surprise_no_derailment
+[15:57:36] [director vs codi] 31 matching scenarios
+[15:57:36]   [eval] noderail_red_riding_hood
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_arendelle_tour_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_arendelle_tour_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_arendelle_tour_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_first_summer_picnic_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_first_summer_picnic_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_first_summer_picnic_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_frozen_adventure_traditions_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_frozen_adventure_traditions_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_frozen_adventure_traditions_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_lost_lantern_adventure_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_lost_lantern_adventure_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_lost_lantern_adventure_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_lost_snowflake_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_lost_snowflake_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_lost_snowflake_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_makes_anna_smile_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_makes_anna_smile_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_makes_anna_smile_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_once_upon_a_snowman_origin_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_once_upon_a_snowman_origin_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_once_upon_a_snowman_origin_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_presents_ocean_adventure_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_presents_ocean_adventure_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_presents_ocean_adventure_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_retells_red_riding_hood_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_retells_red_riding_hood_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_retells_red_riding_hood_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_winter_festival_surprise_complete_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_winter_festival_surprise_medium_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36]   [eval] olaf_winter_festival_surprise_no_derailment
+[15:57:36]     ERROR: 'system_name'
+[15:57:36] [time] quality scoring per time limit
+[15:57:36]   [skip quality] complete_derail_red_riding_hood / 10.0min
+[15:57:36]   [skip quality] complete_derail_red_riding_hood / 5.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_arendelle_tour_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_arendelle_tour_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_arendelle_tour_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_arendelle_tour_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_first_summer_picnic_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_frozen_adventure_traditions_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_lost_lantern_adventure_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_lost_snowflake_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_lost_snowflake_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_lost_snowflake_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_lost_snowflake_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_makes_anna_smile_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_once_upon_a_snowman_origin_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_presents_ocean_adventure_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_medium_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_medium_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_no_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_no_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_no_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_retells_red_riding_hood_no_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_winter_festival_surprise_complete_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_winter_festival_surprise_complete_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_winter_festival_surprise_complete_derailment / 2.0min
+[15:57:36]   [skip quality] olaf_winter_festival_surprise_complete_derailment / 5.0min
+[15:57:36]   [skip quality] olaf_winter_festival_surprise_medium_derailment / 0.5min
+[15:57:36]   [skip quality] olaf_winter_festival_surprise_medium_derailment / 10.0min
+[15:57:36]   [skip quality] olaf_winter_festival_surprise_medium_derailment / 2.0min
+[15:57:36]   [quality] olaf_winter_festival_surprise_medium_derailment / 5.0min
+[15:57:44]     saved /home/prachakonda/Disney/Implementation/evaluation_results/time_constrained/olaf_winter_festival_surprise_medium_derailment/5.0min/quality.json
+[15:57:44]   [skip quality] olaf_winter_festival_surprise_no_derailment / 0.5min
+[15:57:44]   [skip quality] olaf_winter_festival_surprise_no_derailment / 10.0min
+[15:57:44]   [skip quality] olaf_winter_festival_surprise_no_derailment / 2.0min
+[15:57:44]   [skip quality] olaf_winter_festival_surprise_no_derailment / 5.0min
+[15:57:44] [time] AB comparisons between time pairs
+[15:57:44]   [skip AB] complete_derail_red_riding_hood 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_arendelle_tour_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_first_summer_picnic_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_frozen_adventure_traditions_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_lantern_adventure_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_lost_snowflake_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_makes_anna_smile_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_once_upon_a_snowman_origin_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_no_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_no_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_no_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_no_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_no_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_presents_ocean_adventure_no_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_complete_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_complete_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_complete_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_complete_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_complete_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_complete_derailment 2.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_medium_derailment 0.5min_vs_10.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_medium_derailment 0.5min_vs_2.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_medium_derailment 0.5min_vs_5.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_medium_derailment 10.0min_vs_2.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_medium_derailment 10.0min_vs_5.0min
+[15:57:44]   [skip AB] olaf_retells_red_riding_hood_medium_derailment 2.0min_vs_5.0min
+[15:57:44]   [AB] olaf_retells_red_riding_hood_no_derailment 0.5min_vs_10.0min
+[15:58:05]     saved /home/prachakonda/Disney/Implementation/evaluation_results/time_constrained/olaf_retells_red_riding_hood_no_derailment/0.5min_vs_10.0min/ab_eval.json
+[15:58:05]   [skip AB] olaf_retells_red_riding_hood_no_derailment 0.5min_vs_2.0min
+[15:58:05]   [skip AB] olaf_retells_red_riding_hood_no_derailment 0.5min_vs_5.0min
+[15:58:05]   [skip AB] olaf_retells_red_riding_hood_no_derailment 10.0min_vs_2.0min
+[15:58:05]   [skip AB] olaf_retells_red_riding_hood_no_derailment 10.0min_vs_5.0min
+[15:58:05]   [skip AB] olaf_retells_red_riding_hood_no_derailment 2.0min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_complete_derailment 0.5min_vs_10.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_complete_derailment 0.5min_vs_2.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_complete_derailment 0.5min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_complete_derailment 10.0min_vs_2.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_complete_derailment 10.0min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_complete_derailment 2.0min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_medium_derailment 0.5min_vs_10.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_medium_derailment 0.5min_vs_2.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_medium_derailment 0.5min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_medium_derailment 10.0min_vs_2.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_medium_derailment 10.0min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_medium_derailment 2.0min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_no_derailment 0.5min_vs_10.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_no_derailment 0.5min_vs_2.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_no_derailment 0.5min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_no_derailment 10.0min_vs_2.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_no_derailment 10.0min_vs_5.0min
+[15:58:05]   [skip AB] olaf_winter_festival_surprise_no_derailment 2.0min_vs_5.0min
+[15:58:05] [summarize] building tables...
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/prachakonda/Disney/Implementation/evaluation_agent/summarize_evaluations.py", line 31, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+
+[15:58:05] === done ===
+[15:58:06]   phase 'Evaluations (all tracks) + Summary Tables' finished (rc=0)
+[15:58:06] === pipeline complete ===

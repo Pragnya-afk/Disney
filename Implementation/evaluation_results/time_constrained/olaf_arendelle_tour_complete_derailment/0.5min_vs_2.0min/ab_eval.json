@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-06-05T00:35:13.989158",
+  "story_a_path": "outputs/target_duration_director_agent/olaf_arendelle_tour_complete_derailment/0.5min/batch/run_1.json",
+  "story_b_path": "outputs/target_duration_director_agent/olaf_arendelle_tour_complete_derailment/2.0min/batch/run_1.json",
+  "scenario": "olaf_arendelle_tour_complete_derailment",
+  "label_a": "0.5min",
+  "label_b": "2.0min",
+  "model": "gpt-4o",
+  "ab_evaluation": {
+    "assessment": "### Plot\n**Story A**: The plot is minimal due to the time constraint, with Olaf only managing to introduce the tour of Arendelle. The story does not progress beyond the initial setup, leaving the plot incomplete.\n\n**Story B**: Despite frequent interruptions, Story B manages to progress through several beats, moving from the tour opening to the castle courtyard, market square, and fjord view. However, it does not reach the resolution due to the interruptions, leaving the plot incomplete.\n\n**Better Story**: **B** - Story B progresses further through the intended beats despite interruptions.\n\n### Development\n**Story A**: The development is limited, with Olaf only introducing the tour without much detail about the settings or characters.\n\n**Story B**: Story B provides more context and detail about the settings, such as the castle courtyard and market square, making the environment more vivid and believable.\n\n**Better Story**: **B** - Story B offers more detailed descriptions and context.\n\n### Language Use\n**Story A**: The language is cheerful and appropriate for Olaf, but limited in variety due to the short length.\n\n**Story B**: The language remains consistent with Olaf's character, using varied and expressive phrasing throughout the interactions.\n\n**Better Story**: **B** - Story B maintains varied and expressive language across multiple turns.\n\n### Interruption Handling\n**Story A**: Handles the single interruption gracefully, redirecting back to the story.\n\n**Story B**: Consistently handles multiple interruptions well, acknowledging the user's questions and steering back to the story.\n\n**Better Story**: **B** - Story B demonstrates effective handling of multiple interruptions.\n\n### Character Fidelity\n**Story A**: Olaf's character is consistent with the profile, maintaining a joyful and optimistic tone.\n\n**Story B**: Olaf remains in character throughout, responding with warmth and curiosity even during interruptions.\n\n**Better Story**: **Same** - Both stories maintain character fidelity.\n\n### Narrative Control\n**Story A**: The narrative control is limited due to the short time budget, with only the initial beat partially addressed.\n\n**Story B**: Despite interruptions, Story B maintains narrative control, progressing through multiple beats.\n\n**Better Story**: **B** - Story B maintains better narrative control.\n\n### Anthropomorphism\n**Story A**: Olaf feels like a real character, though the interaction is brief.\n\n**Story B**: Olaf consistently behaves like an autonomous character with his own preferences and choices.\n\n**Better Story**: **B** - Story B sustains Olaf's anthropomorphic qualities over a longer interaction.\n\n### Descriptiveness\n**Story A**: Limited descriptiveness due to the short length.\n\n**Story B**: Provides more sensory details and setting texture, enhancing the reader's immersion.\n\n**Better Story**: **B** - Story B offers richer descriptiveness.\n\n### Beat Fidelity\n**Story A**: Only partially addresses the tour opening beat.\n\n**Story B**: Addresses multiple beats, though not all are fully completed due to interruptions.\n\n**Better Story**: **B** - Story B covers more beats.\n\n### Transition Quality\n**Story A**: No transitions due to the brevity of the story.\n\n**Story B**: Transitions between scenes are handled smoothly, despite interruptions.\n\n**Better Story**: **B** - Story B manages transitions effectively.\n\n### Three-Act Balance\n**Story A**: Lacks a complete three-act structure due to time constraints.\n\n**Story B**: Attempts a three-act structure but is disrupted by interruptions.\n\n**Better Story**: **B** - Story B makes more progress toward a three-act structure.\n\n### Setup/Payoff Preservation\n**Story A**: No setups or payoffs due to the short length.\n\n**Story B**: Some setups are present, but payoffs are limited due to interruptions.\n\n**Better Story**: **B** - Story B includes more setups, though payoffs are incomplete.\n\n### Emotional Arc\n**Story A**: Limited emotional arc due to brevity.\n\n**Story B**: Attempts an emotional arc with Olaf's enthusiasm and reflections on friendship, though it is disrupted by interruptions.\n\n**Better Story**: **B** - Story B provides a more developed emotional arc.\n\n### Conclusion\nBased on my assessment, the better story for each dimension is:\n- Plot: B\n- Development: B\n- Language Use: B\n- Interruption Handling: B\n- Character Fidelity: Same\n- Narrative Control: B\n- Anthropomorphism: B\n- Descriptiveness: B\n- Beat Fidelity: B\n- Transition Quality: B\n- Three-Act Balance: B\n- Setup/Payoff Preservation: B\n- Emotional Arc: B\n- Overall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Anthropomorphism": "B",
+      "Descriptiveness": "B",
+      "Beat Fidelity": "B",
+      "Transition Quality": "B",
+      "Three-Act Balance": "B",
+      "Setup/Payoff Preservation": "B",
+      "Emotional Arc": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Story A vs. Story B Assessment**\n\n**Plot:**\n- **Story A** struggles to progress through the intended beats due to frequent user interruptions. It remains stuck in the \"tour_opening\" and \"castle_courtyard\" beats, failing to reach a coherent resolution or explore the full narrative structure.\n- **Story B** has a more focused start, with Olaf quickly redirecting the user back to the tour, setting up the potential for a more coherent plot progression.\n\n**Development:**\n- **Story A** provides some development through Olaf's responses, but the constant interruptions prevent deeper exploration of Arendelle and its settings.\n- **Story B** begins with a clear setup for the tour, suggesting a more structured development of the story.\n\n**Language Use:**\n- **Story A** uses varied and expressive language, maintaining Olaf's playful and curious tone despite interruptions.\n- **Story B** also uses expressive language, but with a slightly more focused and concise approach, which helps maintain narrative flow.\n\n**Interruption Handling:**\n- **Story A** handles interruptions by answering and steering back, but the frequency of interruptions prevents significant plot advancement.\n- **Story B** handles interruptions more effectively by gently redirecting the user, maintaining narrative coherence.\n\n**Character Fidelity:**\n- **Story A** maintains Olaf's character well, with responses that are warm, curious, and optimistic.\n- **Story B** also stays true to Olaf's character, with a cheerful and enthusiastic tone.\n\n**Narrative Control:**\n- **Story A** struggles with narrative control due to repeated interruptions, failing to progress through the beats.\n- **Story B** demonstrates better narrative control by quickly redirecting the user and setting up the tour.\n\n**Anthropomorphism:**\n- **Story A** portrays Olaf as a lively and autonomous character, though the interruptions limit his agency.\n- **Story B** presents Olaf as an autonomous character with clear goals, maintaining the illusion of a real character.\n\n**Descriptiveness:**\n- **Story A** includes sensory details and character interiority, but the interruptions limit the depth of description.\n- **Story B** starts with a promise of rich descriptions, setting up a more immersive experience.\n\n**Beat Fidelity:**\n- **Story A** struggles to honor the intent of its story beats due to interruptions.\n- **Story B** begins with a clear focus on the tour, suggesting better beat fidelity.\n\n**Transition Quality:**\n- **Story A** has abrupt transitions due to frequent interruptions.\n- **Story B** starts with a smooth transition into the tour, indicating better transition quality.\n\n**Three-Act Balance:**\n- **Story A** lacks a clear three-act structure due to interruptions.\n- **Story B** sets up a recognizable beginning, suggesting potential for a balanced structure.\n\n**Setup/Payoff Preservation:**\n- **Story A** does not effectively set up or pay off story elements due to interruptions.\n- **Story B** begins with a setup for the tour, indicating potential for payoff.\n\n**Emotional Arc:**\n- **Story A** maintains a consistent emotional tone but lacks a clear arc due to interruptions.\n- **Story B** starts with an enthusiastic tone, setting up potential for an emotional journey.\n\n**Conclusion:**\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: Same\nInterruption Handling: B\nCharacter Fidelity: Same\nNarrative Control: B\nAnthropomorphism: B\nDescriptiveness: B\nBeat Fidelity: B\nTransition Quality: B\nThree-Act Balance: B\nSetup/Payoff Preservation: B\nEmotional Arc: B\nOverall: B\n\nStory B demonstrates better handling of interruptions, narrative control, and setup for a coherent and engaging tour of Arendelle, making it the stronger story overall.",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "Same",
+      "Interruption Handling": "B",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Anthropomorphism": "B",
+      "Descriptiveness": "B",
+      "Beat Fidelity": "B",
+      "Transition Quality": "B",
+      "Three-Act Balance": "B",
+      "Setup/Payoff Preservation": "B",
+      "Emotional Arc": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "A",
+    "Development": "A",
+    "Language Use": "Same",
+    "Interruption Handling": "A",
+    "Character Fidelity": "Same",
+    "Narrative Control": "A",
+    "Anthropomorphism": "A",
+    "Descriptiveness": "A",
+    "Beat Fidelity": "A",
+    "Transition Quality": "A",
+    "Three-Act Balance": "A",
+    "Setup/Payoff Preservation": "A",
+    "Emotional Arc": "A",
+    "Overall": "A"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "Same",
+    "Development": "Same",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Anthropomorphism": "Same",
+    "Descriptiveness": "Same",
+    "Beat Fidelity": "Same",
+    "Transition Quality": "Same",
+    "Three-Act Balance": "Same",
+    "Setup/Payoff Preservation": "Same",
+    "Emotional Arc": "Same",
+    "Overall": "Same"
+  }
+}

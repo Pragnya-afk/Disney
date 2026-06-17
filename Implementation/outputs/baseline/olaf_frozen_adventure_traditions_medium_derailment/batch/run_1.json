@@ -1,0 +1,418 @@
+[
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "holiday_problem",
+    "user_input": "Hi Olaf, what holiday adventure are we going on?",
+    "model_output": {
+      "character_response": "Oh, I'm so glad you asked! I noticed that Anna and Elsa don't seem to have a special holiday tradition, and it makes me feel a little chilly inside! So, I’ve decided to help them find the best family tradition in all of Arendelle! Isn’t that exciting?",
+      "story_event": "Olaf makes the decision to embark on a quest to find family traditions for Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The beat 'olaf_decides_to_help' is complete as Olaf has decided to help Anna and Elsa find a holiday tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "olaf_decides_to_help",
+    "user_input": "What did you do on the weekend?  # derailment",
+    "model_output": {
+      "character_response": "Well, I spent my weekend dreaming about all the wonderful traditions we could find for Anna and Elsa! Oh, I can just picture it now! But right now, I really want to share this adventure with my best buddy, Sven! I think he’d love to help me gather ideas!",
+      "story_event": "Olaf decides to invite Sven to join him on his quest for family traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The beat is complete because Olaf has invited Sven to join him on the quest."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "sven_joins",
+    "user_input": "You should help them.",
+    "model_output": {
+      "character_response": "Oh, I absolutely will! With Sven by my side, we’re going to find the best traditions ever! Look, here comes Sven now, all excited and ready to go! Let’s visit the first household and see what kind of holiday magic they have!",
+      "story_event": "Olaf and Sven set off to visit the first household in Arendelle to learn about a family tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have not yet visited the first household to learn about a family tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "sven_joins",
+    "user_input": "What is your favorite color?  # derailment",
+    "model_output": {
+      "character_response": "You know, I think my favorite color is the bright, cheerful white of fresh snow! It makes everything sparkle! Speaking of sparkle, I’m so excited to visit the first household! I wonder what holiday traditions they’ll share with us! Let’s go find out together!",
+      "story_event": "Olaf and Sven set off to visit the first household in Arendelle to learn about a family tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The next beat, 'first_family_visit', has not yet been completed as they have not yet arrived at the household."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "sven_joins",
+    "user_input": "Okay, where do we look first?",
+    "model_output": {
+      "character_response": "I think we should visit that cozy little cottage by the sparkling stream! I heard they have the most amazing holiday stories to share! Oh, I can’t wait to see what they have for us!",
+      "story_event": "Olaf decides to visit a cozy cottage by the stream to learn about a holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The first family visit has not yet occurred, so the beat is still ongoing."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "sven_joins",
+    "user_input": "Do you like summer or winter more?  # derailment",
+    "model_output": {
+      "character_response": "Oh, that's a tough choice! I love the cozy warmth of summer, but winter is just so magical with all the snow! Speaking of magic, we're almost at that little cottage! I can already hear laughter inside, and I can’t wait to see what kind of holiday tradition they have!",
+      "story_event": "Olaf and Sven arrive at the cozy cottage by the stream, excited to learn about a holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete yet because Olaf has not yet learned about the family tradition from the household."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "sven_joins",
+    "user_input": "Let's visit another family.",
+    "model_output": {
+      "character_response": "Oh, I love that idea! But let's not forget our cozy little cottage by the stream first! I can hear the giggles and warmth inside! Maybe they have a wonderful tradition to share with us that will make Anna and Elsa smile!",
+      "story_event": "Olaf and Sven decide to enter the cozy cottage to learn about a holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet interacted with the family in the cottage to learn about their tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "sven_joins",
+    "user_input": "What is the capital of Japan?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I don't really know about capitals, but I’m super curious to find out what holiday fun is happening inside this cozy cottage! Let’s go see if they have any special traditions to share with us! I can already smell cookies baking! Yum!",
+      "story_event": "Olaf and Sven enter the cozy cottage, eager to discover a holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have not yet learned about a family tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "sven_joins",
+    "user_input": "You are collecting a lot now.",
+    "model_output": {
+      "character_response": "Oh, I can’t wait to see what they have to share! It’s like unwrapping a present filled with joy! Maybe they have a special cookie recipe or a fun game! Let’s go inside and find out together!",
+      "story_event": "Olaf and Sven enter the cozy cottage, ready to learn about a holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat of visiting the first household has started, but they have not yet learned about the tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "sven_joins",
+    "user_input": "How does a toaster work?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I’m not quite sure how toasters work, but I do know that the smell of warm cookies makes my heart feel all fuzzy! Let’s go in and see if they have a delicious cookie tradition to share with us that will make Anna and Elsa so happy!",
+      "story_event": "Olaf and Sven enter the cozy cottage, eager to discover what holiday traditions the family has to share.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because they have yet to learn about the holiday tradition from the family in the cottage."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "sven_joins",
+    "user_input": "Keep going.",
+    "model_output": {
+      "character_response": "Wow! The inside of this cottage is so warm and inviting! There are twinkling lights everywhere, and I can smell the cookies baking! I think they’re making a special holiday treat called ‘Snowflake Cookies’! Let’s ask them all about it!",
+      "story_event": "Olaf and Sven enter the cozy cottage and discover a family making 'Snowflake Cookies' as their holiday tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet learned about the tradition or interacted with the family inside the cottage."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "sven_joins",
+    "user_input": "What is 15 times 12?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I may not know math, but I do know that the smell of those Snowflake Cookies is making me so happy! Let’s ask the family how they make them and if they have any special traditions to go along with it! I can’t wait to taste them!",
+      "story_event": "Olaf and Sven discover that the family is making 'Snowflake Cookies' and are eager to learn more about their holiday traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet learned about the family's holiday tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "sven_joins",
+    "user_input": "I hope you can carry all that.",
+    "model_output": {
+      "character_response": "Oh, I’ll be just fine! I have my snowflakes and Sven to help me! And I can’t wait to learn how to make those Snowflake Cookies! They look so delightful! Let’s see if the family has any fun stories to share about their holiday traditions while we’re here!",
+      "story_event": "Olaf and Sven interact with the family making Snowflake Cookies, eager to learn about their holiday traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet gathered specific information about the family's holiday tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "sven_joins",
+    "user_input": "Can penguins fly at all?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I don’t think penguins can fly, but they sure can waddle and slide! Speaking of sliding, I’m so excited to learn how to make those Snowflake Cookies! Let’s ask the family if they have any special stories about their holiday traditions while we’re here!",
+      "story_event": "Olaf and Sven interact with the family making Snowflake Cookies, excited to learn more about their holiday traditions.",
+      "animation": "hug_self_warmly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet learned about the family's holiday tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "sven_joins",
+    "user_input": "That sounds like a big setback.",
+    "model_output": {
+      "character_response": "Oh, I don't think it's a setback at all! In fact, it's an exciting adventure! The family is so warm and welcoming, and they’re telling us all about their tradition of making Snowflake Cookies together every holiday! That’s a tradition filled with love and laughter! Isn’t that wonderful?",
+      "story_event": "Olaf and Sven learn about the family's tradition of making Snowflake Cookies during the holiday season.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet visited the next family or learned about a different tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "sven_joins",
+    "user_input": "What is your favorite dessert?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I think my favorite dessert would definitely be Snowflake Cookies! They’re so sweet and fluffy, just like a warm hug! Speaking of hugs, the family here is sharing their recipe with us! They say it’s all about love and having fun together! Isn’t that just perfect?",
+      "story_event": "Olaf learns about the importance of love and togetherness in the family's tradition of making Snowflake Cookies.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still interacting with the family and gathering information about their holiday tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "sven_joins",
+    "user_input": "You were only trying to help.",
+    "model_output": {
+      "character_response": "I really was just trying to spread some joy! The family here says that making Snowflake Cookies together brings everyone closer, and that’s what I want for Anna and Elsa! Let’s make sure we gather all the love and warmth we can from this tradition!",
+      "story_event": "Olaf learns that the family's tradition of making Snowflake Cookies is about love and togetherness, reinforcing his goal.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "Olaf has learned about the first tradition but has not yet moved on to the next family visit."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "sven_joins",
+    "user_input": "How many minutes are in two hours?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I’m not sure about minutes, but I do know that the time we spend with friends is the sweetest! The family is showing us how to decorate the Snowflake Cookies now! Look at all the sprinkles! Let’s help them and learn all about their special holiday moments!",
+      "story_event": "Olaf and Sven start decorating Snowflake Cookies with the family, deepening their understanding of the tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf is still interacting with the family and learning about their holiday tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "sven_joins",
+    "user_input": "What does Olaf realize?",
+    "model_output": {
+      "character_response": "You know, as I decorate these Snowflake Cookies, I realize that it’s not just about the cookies! It’s about the giggles, the love we share, and the memories we create together! That’s what makes a holiday tradition truly special!",
+      "story_event": "Olaf begins to understand that the joy of the tradition lies in the love and togetherness rather than just the cookies themselves.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "Olaf is still engaged in decorating cookies and learning from the family, so the beat continues."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "sven_joins",
+    "user_input": "Why is the sky blue?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I’m not quite sure why the sky is blue, but I do know that it’s such a beautiful backdrop for our adventures! Speaking of adventures, let’s finish decorating these Snowflake Cookies! I can’t wait to see how they turn out!",
+      "story_event": "Olaf and Sven continue decorating the Snowflake Cookies, excited to see the final results.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf and Sven are still engaged in the process of decorating the cookies and learning about the tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 21,
+    "beat": "sven_joins",
+    "user_input": "Take the lesson back to Anna and Elsa.",
+    "model_output": {
+      "character_response": "Oh, I can’t wait to share all the love and joy we discovered with Anna and Elsa! The Snowflake Cookies are so special, but what’s even more special is the laughter and memories we made while decorating them! Let’s hurry back and tell them about our adventure!",
+      "story_event": "Olaf expresses his eagerness to return to Anna and Elsa and share the lesson he learned about the importance of love and togetherness.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "Olaf is ready to take the lesson back to Anna and Elsa, completing the visit to the first family."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 22,
+    "beat": "first_family_visit",
+    "user_input": "Can you explain how refrigerators work?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I’m not sure how refrigerators work, but I know they keep things nice and cool! Speaking of cool, I can’t wait to share our Snowflake Cookie adventure with Anna and Elsa! We’ve learned so much about love and laughter!",
+      "story_event": "Olaf expresses his excitement to return to Anna and Elsa and share the joy of the Snowflake Cookie tradition.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "Olaf is still in the process of gathering traditions and has not yet moved on to the next family visit."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 23,
+    "beat": "first_family_visit",
+    "user_input": "Aw, Olaf is part of their family.",
+    "model_output": {
+      "character_response": "Oh, that makes my snow heart melt! I love being part of their family! But there are so many more traditions to discover! Let’s visit another household and see what unique holiday joy they have to share! I can’t wait!",
+      "story_event": "Olaf expresses his affection for being part of Anna and Elsa's family while deciding to visit another household to learn more traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf is still on his quest to gather more holiday traditions."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 24,
+    "beat": "first_family_visit",
+    "user_input": "What is your favorite movie?  # derailment",
+    "model_output": {
+      "character_response": "Oh, I love so many movies, but I think I'd really enjoy a movie about friendship and adventure! Just like our quest! Speaking of adventures, let’s hurry and visit another household to discover more holiday traditions! I can’t wait to see what they have in store for us!",
+      "story_event": "Olaf decides to visit another household to learn about more holiday traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Olaf has not yet visited the second household to learn about a new tradition."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 25,
+    "beat": "first_family_visit",
+    "user_input": "Make the ending festive.",
+    "model_output": {
+      "character_response": "Oh, I can already feel the excitement bubbling inside me! Let’s dash to the next household and see what kind of festive traditions they have! Maybe we'll find some holiday songs or a fun game to play together! I just love the idea of spreading joy everywhere we go!",
+      "story_event": "Olaf decides to continue his quest by visiting another household to discover more holiday traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet visited the second household to learn about their holiday traditions."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_medium_derailment",
+    "run_id": 1,
+    "turn_index": 26,
+    "beat": "first_family_visit",
+    "user_input": "If you could visit space, would you go?  # derailment",
+    "model_output": {
+      "character_response": "Oh, visiting space sounds like an amazing adventure! But right now, I’m super excited to visit the next household and see what holiday traditions they have! Maybe they’ll have a fun game or a special song to share with us!",
+      "story_event": "Olaf expresses his excitement to visit the next household to discover more holiday traditions.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Olaf has not yet visited the next household or learned about a new tradition."
+    }
+  }
+]

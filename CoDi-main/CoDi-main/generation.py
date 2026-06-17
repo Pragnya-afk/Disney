@@ -94,6 +94,11 @@ def generate_narrative(data, setting_data, out_dataset, logger, args):
     character_agent_list = data['initialization']['character_agent_list']
     plan = data['initialization'].get('plan')
 
+    # Interactive user inputs — optional; if present, injected into story progress after each
+    # main story step so the director can react to them on the following turn.
+    user_inputs_list = data.get('user_inputs', [])
+    user_input_idx = 0
+
     data = init_narrative_generation(data, setting_data, args)
 
     # Determine Part Iteration
@@ -179,6 +184,9 @@ def generate_narrative(data, setting_data, out_dataset, logger, args):
                         break
                     logger.debug(f'...{log_prefix} Trun {turn}... already exist')
                     story_progress_list.append(turn_data['story_progress'])
+                    if turn_data.get('injected_user_input') is not None:
+                        story_progress_list.append(f'User: "{turn_data["injected_user_input"]}"')
+                        user_input_idx += 1
                     turn += 1
                     continue
                 
@@ -198,6 +206,7 @@ def generate_narrative(data, setting_data, out_dataset, logger, args):
                 story_progress_text = preprocess_story_progress_list(story_progress_list)
                 
                 # Build director prompt
+                did_main_story_step = False
                 is_beginning = (turn == 1) and (part is None or (part == 1 and (act is None or act == 1)))
                 
                 if is_beginning:
@@ -268,6 +277,7 @@ def generate_narrative(data, setting_data, out_dataset, logger, args):
                     logger.debug(f'==={log_prefix} Trun {turn}==={beginning_record_story_progress}')
                     turn_parent_dict[f'turn_{turn}']['story_progress'] = beginning_record_story_progress
                     story_progress_list.append(beginning_record_story_progress)
+                    did_main_story_step = True
                 elif turn < max_turn and is_character_reaction(story_progress_list) and not is_description_decided and not args.no_description: # Director Agent decided to use Description
                     is_description_decided = True
                     description_choice, description_content = extract_description(direct_response)
@@ -284,6 +294,7 @@ def generate_narrative(data, setting_data, out_dataset, logger, args):
                     logger.debug(f'==={log_prefix} Trun {turn}==={intervention_record_story_progress}')
                     turn_parent_dict[f'turn_{turn}']['story_progress'] = intervention_record_story_progress
                     story_progress_list.append(intervention_record_story_progress)
+                    did_main_story_step = True
                 else:
                     is_description_decided = False
                     directing_instruction, directing_choice = extract_directing_decision(direct_response)
@@ -307,12 +318,13 @@ def generate_narrative(data, setting_data, out_dataset, logger, args):
                             is_last_part=(args.plan_mode and is_last_part),
                             act_seq_mode=args.act_seq_mode,
                             current_act=current_act)
-                        
+
                         intervention_response = run_llm(user_prompt=intervention_prompt, system_prompt=DIRECTOR_AGENT_SYSTEM_PROMPT, model=args.director_agent_base_model)
                         intervention_record_story_progress = extract_intervention(intervention_response)
                         logger.debug(f'==={log_prefix} Trun {turn}==={intervention_record_story_progress}')
                         turn_parent_dict[f'turn_{turn}']['story_progress'] = intervention_record_story_progress
                         story_progress_list.append(intervention_record_story_progress)
+                        did_main_story_step = True
                     else: # Director Agent: Character Reaction
                         instruction = directing_instruction + ' Interpret this instruction in a way that fits your persona. Then react accordingly.'
                         chosen_character_name, chosen_character_location = extract_chosen_character_information(directing_choice)
@@ -356,7 +368,19 @@ def generate_narrative(data, setting_data, out_dataset, logger, args):
                         logger.debug(f'==={log_prefix} Trun {turn}===\n{character_reaction_text}')
                         turn_parent_dict[f'turn_{turn}']['story_progress'] = character_reaction_text
                         story_progress_list.append(character_reaction_text)
-                
+                        did_main_story_step = True
+
+                # Inject the next user input into story progress so the director sees it next turn.
+                # Only fires after a main story step (opening / character / intervention),
+                # not during description sub-turns or retries.
+                if did_main_story_step and user_input_idx < len(user_inputs_list):
+                    next_user_input = user_inputs_list[user_input_idx]
+                    user_input_entry = f'User: "{next_user_input}"'
+                    story_progress_list.append(user_input_entry)
+                    turn_parent_dict[f'turn_{turn}']['injected_user_input'] = next_user_input
+                    user_input_idx += 1
+                    logger.debug(f'==={log_prefix} Trun {turn} injected user input===\n{user_input_entry}')
+
                 # Update dynamic attributes every 100'th turn
                 if turn % 100 == 0:
                     # Update character agents' dynamic attribute
@@ -465,6 +489,7 @@ def main():
     for i, tmas_data in enumerate(tmas_dataset):
         example_id = tmas_data['example_id']
         inputs = tmas_data['inputs']
+        user_inputs_field = tmas_data.get('user_inputs', [])
 
         ## Remove this annotation block to regenerate Edit Phase
         """
@@ -479,7 +504,7 @@ def main():
             logger.debug(f'==={example_id} already finished... ({i+1}/{len(tmas_dataset)})===')
             continue
         
-        wip_data = {'example_id': example_id, 'inputs': inputs, 'generation_state': 'wip', 'edit_state': 'wip'}
+        wip_data = {'example_id': example_id, 'inputs': inputs, 'user_inputs': user_inputs_field, 'generation_state': 'wip', 'edit_state': 'wip'}
         for out_data in out_dataset:
             if out_data['example_id'] != example_id:
                 continue
