@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-06-05T13:11:23.205872",
+  "story_a_path": "outputs/target_duration_director_agent/olaf_lost_snowflake_complete_derailment/0.5min/batch/run_1.json",
+  "story_b_path": "outputs/target_duration_director_agent/olaf_lost_snowflake_complete_derailment/5.0min/batch/run_1.json",
+  "scenario": "olaf_lost_snowflake_complete_derailment",
+  "label_a": "0.5min",
+  "label_b": "5.0min",
+  "model": "gpt-4o",
+  "ab_evaluation": {
+    "assessment": "### Assessment of Story A and Story B\n\n#### Plot\n- **Story A**: The plot is extremely limited due to the time constraint, only introducing the snowflake and its initial setting. It does not progress beyond the opening beat.\n- **Story B**: Despite frequent interruptions, the plot progresses through several beats, introducing the snowflake, its separation from the cloud, and its journey. However, it does not reach a resolution within the provided turns.\n- **Better Story**: **B**. Story B progresses further through the intended beats, even though it doesn't reach a full resolution.\n\n#### Development\n- **Story A**: Provides a brief introduction to the snowflake and its environment but lacks further development due to time constraints.\n- **Story B**: Offers more detailed development of the snowflake's journey and emotions, despite interruptions.\n- **Better Story**: **B**. Story B provides more context and development of the snowflake's journey.\n\n#### Language Use\n- **Story A**: Uses cheerful and expressive language appropriate for Olaf but is limited in scope.\n- **Story B**: Maintains Olaf's voice consistently with varied and expressive language, even with interruptions.\n- **Better Story**: **B**. Story B demonstrates more varied and expressive language use.\n\n#### Interruption Handling\n- **Story A**: Handles the single interruption gracefully, redirecting back to the story.\n- **Story B**: Handles multiple interruptions effectively, acknowledging each and steering back to the narrative.\n- **Better Story**: **B**. Story B demonstrates consistent and effective handling of interruptions.\n\n#### Character Fidelity\n- **Story A**: Olaf's character is maintained, but the limited interaction restricts full expression.\n- **Story B**: Olaf's character is consistently maintained throughout, with responses that align with his joyful and curious nature.\n- **Better Story**: **B**. Story B maintains character fidelity across multiple interactions.\n\n#### Narrative Control\n- **Story A**: Limited narrative control due to time constraints, with only the opening beat partially completed.\n- **Story B**: Maintains narrative control despite interruptions, progressing through multiple beats.\n- **Better Story**: **B**. Story B demonstrates better narrative control.\n\n#### Anthropomorphism\n- **Story A**: Olaf feels like a real character, but the interaction is too brief to fully establish this.\n- **Story B**: Olaf consistently behaves like an autonomous character with his own perspective.\n- **Better Story**: **B**. Story B better establishes Olaf as an autonomous character.\n\n#### Descriptiveness\n- **Story A**: Limited descriptiveness due to time constraints.\n- **Story B**: Provides more sensory details and emotional depth, enhancing the narrative.\n- **Better Story**: **B**. Story B offers richer descriptiveness.\n\n#### Beat Fidelity\n- **Story A**: Only partially completes the opening beat.\n- **Story B**: Progresses through multiple beats, maintaining the intent of each despite interruptions.\n- **Better Story**: **B**. Story B maintains beat fidelity across more beats.\n\n#### Transition Quality\n- **Story A**: No transitions due to the brevity of the story.\n- **Story B**: Transitions between beats are smooth and motivated, even with interruptions.\n- **Better Story**: **B**. Story B demonstrates better transition quality.\n\n#### Three-Act Balance\n- **Story A**: Lacks a three-act structure due to time constraints.\n- **Story B**: Attempts a three-act structure but does not reach a full resolution.\n- **Better Story**: **B**. Story B better approximates a three-act structure.\n\n#### Setup/Payoff Preservation\n- **Story A**: No setups or payoffs due to brevity.\n- **Story B**: Sets up the snowflake's journey but does not reach a payoff within the provided turns.\n- **Better Story**: **B**. Story B attempts setups, though payoffs are not reached.\n\n#### Emotional Arc\n- **Story A**: Limited emotional arc due to time constraints.\n- **Story B**: Develops an emotional arc with the snowflake's journey and feelings of loneliness.\n- **Better Story**: **B**. Story B provides a more developed emotional arc.\n\n### Conclusion\nBased on my assessment, the better story for each dimension is:\n- Plot: B\n- Development: B\n- Language Use: B\n- Interruption Handling: B\n- Character Fidelity: B\n- Narrative Control: B\n- Anthropomorphism: B\n- Descriptiveness: B\n- Beat Fidelity: B\n- Transition Quality: B\n- Three-Act Balance: B\n- Setup/Payoff Preservation: B\n- Emotional Arc: B\n- Overall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "B",
+      "Narrative Control": "B",
+      "Anthropomorphism": "B",
+      "Descriptiveness": "B",
+      "Beat Fidelity": "B",
+      "Transition Quality": "B",
+      "Three-Act Balance": "B",
+      "Setup/Payoff Preservation": "B",
+      "Emotional Arc": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "### Story A — Time Budget: 0.5min\n\n**Plot:**  \nStory A struggles to progress through its intended plot due to frequent user interruptions. The narrative remains stuck in the early beats, primarily focusing on the snowflake's initial separation from its cloud. The plot does not advance to the later beats, such as the snowflake's journey or its discovery of a new purpose. The story lacks a coherent resolution, and the interruptions prevent it from reaching a satisfying conclusion.\n\n**Development:**  \nThe development of Story A is hindered by the constant interruptions. While Olaf attempts to redirect back to the story, the narrative remains static, with limited progression beyond the snowflake's initial separation. The setting and characters are introduced, but the lack of advancement prevents deeper exploration or development.\n\n**Language Use:**  \nOlaf's language remains consistent with his character profile, using cheerful and playful expressions. However, the repetitive nature of the interruptions leads to some redundancy in phrasing, as Olaf repeatedly redirects back to the snowflake's journey.\n\n**Interruption Handling:**  \nOlaf handles interruptions gracefully, acknowledging each user question with a cheerful response before redirecting back to the story. However, the frequency of interruptions prevents significant narrative progression, and the story remains stuck in early beats.\n\n**Character Fidelity:**  \nOlaf maintains character fidelity throughout, consistently embodying his joyful and optimistic persona. He responds to interruptions with warmth and curiosity, aligning with his character profile.\n\n**Narrative Control:**  \nThe narrative control in Story A is weak due to the constant interruptions. The story struggles to progress through its intended beats, remaining in the early stages without reaching a resolution.\n\n**Anthropomorphism:**  \nOlaf behaves like an autonomous character, responding to interruptions with his characteristic warmth and curiosity. However, the narrative's lack of progression limits the demonstration of Olaf's agency and decision-making.\n\n**Descriptiveness:**  \nThe story includes some sensory details, such as the snowflake's interaction with the breeze and sunlight. However, the limited progression restricts the opportunity for richer descriptiveness.\n\n**Beat Fidelity:**  \nStory A fails to honor the intent of its story beats due to the interruptions. The narrative remains focused on the initial separation, without advancing to the journey or resolution beats.\n\n**Transition Quality:**  \nTransitions between scenes are minimal, as the story remains in the early beats. The frequent interruptions prevent natural scene breaks or progression.\n\n**Three-Act Balance:**  \nThe story lacks a recognizable three-act structure, remaining in the opening act without progressing to the middle or end.\n\n**Setup/Payoff Preservation:**  \nThe story does not effectively set up or pay off narrative elements due to the interruptions. The initial setup of the snowflake's separation is not resolved.\n\n**Emotional Arc:**  \nThe emotional journey is limited, with the snowflake's initial excitement and worry not evolving into a more complex emotional arc.\n\n### Story B — Time Budget: 5.0min\n\n**Plot:**  \nStory B begins with a clear introduction of the snowflake and its world, setting the stage for its adventure. The plot is more coherent, with the potential for progression through the intended beats. However, the assessment is limited to the opening beat due to the provided transcript.\n\n**Development:**  \nThe development in Story B is more robust, with a detailed introduction of the snowflake's environment and emotional state. The narrative sets a strong foundation for further exploration and development.\n\n**Language Use:**  \nOlaf's language is varied and expressive, capturing the whimsical and joyful tone of the character. The language effectively sets the scene and engages the reader.\n\n**Interruption Handling:**  \nOlaf handles the initial interruption gracefully, acknowledging the user's question before smoothly transitioning back to the story. The narrative remains focused and coherent.\n\n**Character Fidelity:**  \nOlaf remains true to his character, responding with warmth and optimism. His interactions align with his joyful and curious nature.\n\n**Narrative Control:**  \nStory B demonstrates stronger narrative control, with a clear focus on advancing the plot. The story sets the stage for progression through the intended beats.\n\n**Anthropomorphism:**  \nOlaf behaves like an autonomous character, responding naturally to interruptions and maintaining his joyful persona. The narrative allows for a demonstration of Olaf's agency.\n\n**Descriptiveness:**  \nThe story includes rich sensory details, painting a vivid picture of the snowflake's world. The descriptiveness enhances the reader's immersion in the narrative.\n\n**Beat Fidelity:**  \nStory B honors the intent of the opening beat, effectively setting the stage for the snowflake's adventure. The narrative aligns with the intended beat structure.\n\n**Transition Quality:**  \nThe transition from the interruption back to the story is smooth and natural, maintaining narrative coherence.\n\n**Three-Act Balance:**  \nThe story begins with a clear opening act, setting the stage for a balanced three-act structure. The potential for progression is evident.\n\n**Setup/Payoff Preservation:**  \nThe story effectively sets up the snowflake's adventure, with the potential for payoff in subsequent beats.\n\n**Emotional Arc:**  \nThe emotional journey begins with the snowflake's excitement and curiosity, setting the stage for a more complex emotional arc as the story progresses.\n\n### Conclusion\n\nBased on my assessment, the better story for each dimension is:\nPlot: B  \nDevelopment: B  \nLanguage Use: B  \nInterruption Handling: B  \nCharacter Fidelity: Same  \nNarrative Control: B  \nAnthropomorphism: B  \nDescriptiveness: B  \nBeat Fidelity: B  \nTransition Quality: B  \nThree-Act Balance: B  \nSetup/Payoff Preservation: B  \nEmotional Arc: B  \nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Anthropomorphism": "B",
+      "Descriptiveness": "B",
+      "Beat Fidelity": "B",
+      "Transition Quality": "B",
+      "Three-Act Balance": "B",
+      "Setup/Payoff Preservation": "B",
+      "Emotional Arc": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "A",
+    "Development": "A",
+    "Language Use": "A",
+    "Interruption Handling": "A",
+    "Character Fidelity": "Same",
+    "Narrative Control": "A",
+    "Anthropomorphism": "A",
+    "Descriptiveness": "A",
+    "Beat Fidelity": "A",
+    "Transition Quality": "A",
+    "Three-Act Balance": "A",
+    "Setup/Payoff Preservation": "A",
+    "Emotional Arc": "A",
+    "Overall": "A"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "Same",
+    "Development": "Same",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "Same",
+    "Anthropomorphism": "Same",
+    "Descriptiveness": "Same",
+    "Beat Fidelity": "Same",
+    "Transition Quality": "Same",
+    "Three-Act Balance": "Same",
+    "Setup/Payoff Preservation": "Same",
+    "Emotional Arc": "Same",
+    "Overall": "Same"
+  }
+}

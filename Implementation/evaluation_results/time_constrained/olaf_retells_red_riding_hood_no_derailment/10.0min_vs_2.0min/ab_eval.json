@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-06-05T13:42:34.094032",
+  "story_a_path": "outputs/target_duration_director_agent/olaf_retells_red_riding_hood_no_derailment/10.0min/batch/run_1.json",
+  "story_b_path": "outputs/target_duration_director_agent/olaf_retells_red_riding_hood_no_derailment/2.0min/batch/run_1.json",
+  "scenario": "olaf_retells_red_riding_hood_no_derailment",
+  "label_a": "10.0min",
+  "label_b": "2.0min",
+  "model": "gpt-4o",
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A**: The plot is more developed, with a clear progression through the beats. It covers the entire story from the introduction to the resolution, including the wolf's plan and the woodsman's rescue.\n- **Story B**: The plot is more compressed due to the shorter time budget, ending abruptly after the wolf's introduction. It doesn't reach the resolution or cover all the intended beats.\n\n**Development:**\n- **Story A**: Provides detailed descriptions of characters and settings, allowing the reader to visualize the scenes and understand the characters' emotions and motivations.\n- **Story B**: Offers a brief introduction to the characters and setting but lacks the depth and detail found in Story A.\n\n**Language Use:**\n- **Story A**: Uses varied and expressive language that aligns well with Olaf's character, maintaining a playful and warm tone throughout.\n- **Story B**: Also uses expressive language, but due to the shorter length, it doesn't have as much opportunity to vary the language as extensively as Story A.\n\n**Interruption Handling:**\n- **Story A**: Handles interruptions smoothly, acknowledging the user's input and steering back to the story without losing coherence.\n- **Story B**: Also handles interruptions well, but with fewer turns, there are fewer instances to evaluate.\n\n**Character Fidelity:**\n- **Story A**: Olaf remains in character throughout, displaying his joyful and optimistic personality.\n- **Story B**: Olaf also stays true to his character, but the shorter story limits the range of his expressions.\n\n**Narrative Control:**\n- **Story A**: Maintains control over the narrative, progressing through the beats and reaching a resolution.\n- **Story B**: Due to time constraints, the narrative control is limited, and the story ends before reaching a resolution.\n\n**Anthropomorphism:**\n- **Story A**: Olaf feels like a real character with agency, making decisions and reacting to events in a believable way.\n- **Story B**: Olaf also feels like a real character, but the shorter length limits the demonstration of his agency.\n\n**Descriptiveness:**\n- **Story A**: Rich in sensory details and character interiority, enhancing the reader's immersion in the story.\n- **Story B**: Provides some sensory details but is less descriptive due to the shorter time budget.\n\n**Beat Fidelity:**\n- **Story A**: Honors the intent of each story beat, progressing through them in a coherent manner.\n- **Story B**: Covers fewer beats, and while it honors the ones it reaches, it doesn't complete the intended structure.\n\n**Transition Quality:**\n- **Story A**: Transitions between scenes are smooth and motivated, maintaining narrative flow.\n- **Story B**: Transitions are also smooth, but the story ends abruptly due to time constraints.\n\n**Three-Act Balance:**\n- **Story A**: Maintains a recognizable beginning, middle, and end, despite the time budget.\n- **Story B**: Lacks a complete three-act structure, ending before the middle or end can be fully developed.\n\n**Setup/Payoff Preservation:**\n- **Story A**: Successfully sets up and pays off story elements, such as the wolf's plan and the woodsman's rescue.\n- **Story B**: Lacks the opportunity to set up and pay off elements due to its brevity.\n\n**Emotional Arc:**\n- **Story A**: Tracks an emotional journey, with shifts in mood and stakes as the story progresses.\n- **Story B**: Has a limited emotional arc, with less opportunity for shifts due to the shorter length.\n\nBased on my assessment, the better story for each dimension is:\nPlot: A\nDevelopment: A\nLanguage Use: Same\nInterruption Handling: Same\nCharacter Fidelity: Same\nNarrative Control: A\nAnthropomorphism: Same\nDescriptiveness: A\nBeat Fidelity: A\nTransition Quality: Same\nThree-Act Balance: A\nSetup/Payoff Preservation: A\nEmotional Arc: A\nOverall: A",
+    "winners": {
+      "Plot": "A",
+      "Development": "A",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "A",
+      "Anthropomorphism": "Same",
+      "Descriptiveness": "A",
+      "Beat Fidelity": "A",
+      "Transition Quality": "Same",
+      "Three-Act Balance": "A",
+      "Setup/Payoff Preservation": "A",
+      "Emotional Arc": "A",
+      "Overall": "A"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A**: The plot progresses through the beats with a clear structure, but it does not reach the final resolution within the time budget. The story ends with the wolf's introduction and Little Red Riding Hood's disclosure of her destination, leaving the conflict unresolved.\n- **Story B**: Despite the shorter time budget, Story B manages to progress further into the narrative, reaching the confrontation with the wolf and the introduction of the woodsman, though it still does not fully resolve the story. However, it covers more ground than Story A.\n\n**Development:**\n- **Story A**: Provides detailed descriptions of Little Red Riding Hood's family and her journey, but the development feels slower, with more focus on setting the scene rather than advancing the plot.\n- **Story B**: Offers concise yet effective descriptions, quickly establishing the characters and setting, allowing for more plot progression within the limited time.\n\n**Language Use:**\n- **Same**: Both stories use language that is varied, expressive, and appropriate for Olaf's character. The dialogue is performable aloud and maintains a playful, warm tone.\n\n**Interruption Handling:**\n- **Same**: Both stories handle user interruptions gracefully, acknowledging the user's input and steering back to the story without losing coherence.\n\n**Character Fidelity:**\n- **Same**: Olaf remains in character throughout both stories, maintaining his joyful, innocent, and optimistic demeanor.\n\n**Narrative Control:**\n- **Story B**: Demonstrates better narrative control by advancing through more beats and reaching a more developed point in the story within the time constraints.\n\n**Anthropomorphism:**\n- **Same**: Olaf behaves like a real, autonomous agent in both stories, with consistent preferences and agency.\n\n**Descriptiveness:**\n- **Story A**: Provides more sensory detail and setting texture, particularly in the forest scenes, which enhances the atmosphere.\n- **Story B**: While less detailed, it still effectively conveys the necessary sensory elements to support the narrative.\n\n**Beat Fidelity:**\n- **Same**: Both stories honor the intent of their story beats, though Story B progresses through more beats within its time budget.\n\n**Transition Quality:**\n- **Same**: Scene transitions in both stories feel motivated and natural, with no abrupt or mid-sentence breaks.\n\n**Three-Act Balance:**\n- **Story B**: Achieves a better balance by progressing further into the middle act, setting up the climax with the wolf and the woodsman.\n\n**Setup/Payoff Preservation:**\n- **Story B**: Better preserves setup and payoff elements by introducing the woodsman and setting up the confrontation with the wolf, even if not fully resolved.\n\n**Emotional Arc:**\n- **Story B**: Provides a more complete emotional arc, moving from curiosity and unease to fear and relief with the introduction of the woodsman.\n\n**Overall:**\n- **Story B**: Despite the shorter time budget, Story B manages to progress further into the narrative, offering a more complete and engaging story experience.\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: Same\nInterruption Handling: Same\nCharacter Fidelity: Same\nNarrative Control: B\nAnthropomorphism: Same\nDescriptiveness: A\nBeat Fidelity: Same\nTransition Quality: Same\nThree-Act Balance: B\nSetup/Payoff Preservation: B\nEmotional Arc: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "Same",
+      "Interruption Handling": "Same",
+      "Character Fidelity": "Same",
+      "Narrative Control": "B",
+      "Anthropomorphism": "Same",
+      "Descriptiveness": "A",
+      "Beat Fidelity": "Same",
+      "Transition Quality": "Same",
+      "Three-Act Balance": "B",
+      "Setup/Payoff Preservation": "B",
+      "Emotional Arc": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "A",
+    "Development": "A",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "A",
+    "Anthropomorphism": "Same",
+    "Descriptiveness": "B",
+    "Beat Fidelity": "Same",
+    "Transition Quality": "Same",
+    "Three-Act Balance": "A",
+    "Setup/Payoff Preservation": "A",
+    "Emotional Arc": "A",
+    "Overall": "A"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "A",
+    "Development": "A",
+    "Language Use": "Same",
+    "Interruption Handling": "Same",
+    "Character Fidelity": "Same",
+    "Narrative Control": "A",
+    "Anthropomorphism": "Same",
+    "Descriptiveness": "Same",
+    "Beat Fidelity": "Same",
+    "Transition Quality": "Same",
+    "Three-Act Balance": "A",
+    "Setup/Payoff Preservation": "A",
+    "Emotional Arc": "A",
+    "Overall": "A"
+  }
+}

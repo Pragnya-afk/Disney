@@ -34,6 +34,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from openai import OpenAI
+from audio_fx import get_fx_chain, apply_fx, OLAF_AUDIOFX_CONFIG
 
 IMPLEMENTATION_DIR = os.path.dirname(__file__)
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
@@ -121,12 +122,12 @@ def main():
     )
     parser.add_argument(
         "--character-voice", default="fable",
-        choices=["alloy", "echo", "fable", "onyx", "nova", "shimmer"],
-        help="OpenAI TTS voice for the character (default: fable).",
+        choices=["alloy", "ash", "ballad", "coral", "echo", "fable", "onyx", "nova", "shimmer", "verse"],
+        help="OpenAI TTS voice for the character (default: fable; --olaf overrides to verse).",
     )
     parser.add_argument(
         "--user-voice", default="shimmer",
-        choices=["alloy", "echo", "fable", "onyx", "nova", "shimmer"],
+        choices=["alloy", "ash", "ballad", "coral", "echo", "fable", "onyx", "nova", "shimmer", "verse"],
         help="OpenAI TTS voice for the user (default: shimmer).",
     )
     parser.add_argument(
@@ -199,6 +200,8 @@ def main():
     if args.olaf:
         args.model = "gpt-4o-mini-tts"
         args.character_instructions = OLAF_INSTRUCTIONS
+        if args.character_voice == "fable":  # only override if still at default
+            args.character_voice = "verse"
 
     if args.child:
         args.model = "gpt-4o-mini-tts"
@@ -208,6 +211,8 @@ def main():
 
     character_instructions = args.character_instructions
     user_instructions = args.user_instructions
+
+    character_fx = get_fx_chain(OLAF_AUDIOFX_CONFIG) if args.olaf else None
 
     if (character_instructions or user_instructions) and args.model != "gpt-4o-mini-tts":
         print(
@@ -249,6 +254,8 @@ def main():
     print(f"Voices:     user={args.user_voice}  character={args.character_voice}")
     if character_instructions:
         print(f"Char style: {character_instructions[:80]}...")
+    if character_fx is not None:
+        print(f"Char FX:    pitch+2 semitones, warm reverb (Olaf)")
     print(f"Turns:      {len(turns)}")
     print()
 
@@ -279,6 +286,8 @@ def main():
             instructions=instructions_map[speaker],
             speed=speed,
         )
+        if speaker == "character" and character_fx is not None:
+            pcm = apply_fx(pcm, character_fx)
         pcm_segments.append(pcm)
         prev_speaker = speaker
 

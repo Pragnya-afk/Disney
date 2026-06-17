@@ -1,0 +1,81 @@
+{
+  "story_a_path": "outputs/baseline/olaf_retells_red_riding_hood_no_derailment/batch/run_1.json",
+  "story_b_path": "outputs/director_agent/olaf_retells_red_riding_hood_no_derailment/batch/run_1.json",
+  "character_module": "character_prompts.olaf",
+  "model": "gpt-4o",
+  "ab_ba_enabled": true,
+  "single_story_scores": {
+    "A": {
+      "assessment": "The interactive AI character story featuring Olaf retelling \"Little Red Riding Hood\" presents a charming and engaging narrative, but it does have areas that could be improved for a more cohesive and dynamic storytelling experience.\n\n**Plot: 5 / 10**\nThe plot follows the traditional structure of \"Little Red Riding Hood,\" but it struggles with pacing and beat completion. The story remains stuck in the \"story_opening\" beat for too long, failing to progress through the intended beats in a timely manner. This results in a lack of momentum and a delayed resolution. While the story eventually reaches a resolution, the journey there is uneven, with some logical inconsistencies, such as the wolf's plan being revealed multiple times without advancing the plot.\n\n**Development: 6 / 10**\nCharacter and setting development is handled well, with Olaf providing vivid descriptions and emotional context. However, the story lacks depth in terms of plot progression, as it spends too much time on initial interactions without moving forward. The setting is well-established, but the characters' actions and decisions could be more dynamic to enhance the narrative flow.\n\n**Language Use: 8 / 10**\nOlaf's language is consistently bright, playful, and expressive, fitting his character profile perfectly. The dialogue is performable aloud and captures Olaf's whimsical and affectionate tone. The language use is one of the story's strengths, maintaining a warm and engaging atmosphere throughout.\n\n**Interruption Handling: 4 / 10**\nThe story struggles with handling user interruptions effectively. While Olaf acknowledges user input, the narrative often fails to progress or adapt to the user's prompts, leading to repetitive interactions and a lack of narrative advancement. The story could benefit from more flexible responses that incorporate user input while steering back to the plot.\n\n**Character Fidelity: 9 / 10**\nOlaf remains true to his character profile, consistently displaying joy, curiosity, and optimism. His responses are warm and encouraging, never breaking character or becoming assistant-like. This fidelity to character enhances the story's charm and engagement.\n\n**Narrative Control: 4 / 10**\nThe story lacks effective narrative control, as it remains stuck in the initial beat for too long and struggles to transition smoothly between beats. This results in a disjointed narrative that fails to maintain a coherent progression toward resolution. More structured beat transitions would improve the overall narrative flow.\n\n**Anthropomorphism: 7 / 10**\nOlaf behaves like a real, autonomous character with his own goals and perspective. He exhibits agency and consistent preferences, contributing to the story's immersive quality. However, the narrative occasionally feels overly guided by user input, detracting from Olaf's autonomy.\n\n**Overall: 6 / 10**\nThe story succeeds in capturing Olaf's character and providing a warm, engaging atmosphere. However, it faces challenges in plot progression, interruption handling, and narrative control. With improvements in these areas, the story could offer a more cohesive and dynamic interactive experience.",
+      "scores": {
+        "Plot": 5.0,
+        "Development": 6.0,
+        "Language Use": 8.0,
+        "Interruption Handling": 4.0,
+        "Character Fidelity": 9.0,
+        "Narrative Control": 4.0,
+        "Anthropomorphism": 7.0,
+        "Overall": 6.0
+      }
+    },
+    "B": {
+      "assessment": "### Assessment\n\n**Plot:**\nThe story follows a recognizable structure with a clear beginning, middle, and end. Olaf introduces Little Red Riding Hood and her family, sets up the journey, and progresses through the forest encounter with the wolf, leading to the climax and resolution. Each beat is addressed, and the story moves logically from one event to the next. There are no logical inconsistencies, and the surprising elements, such as the wolf's cunning plan, serve the story well. However, the transitions between beats could be more distinct to enhance the narrative flow.\n\n**Development:**\nCharacters and settings are introduced with sufficient detail, allowing the reader to visualize the scenes and understand the relationships. Olaf's descriptions of Red's family and the forest are vivid and engaging. The interaction develops as the story progresses, with Olaf responding to user inputs and advancing the plot. However, some beats, like the forest entry, could benefit from more detailed descriptions to enhance immersion.\n\n**Language Use:**\nOlaf's language is varied, expressive, and appropriate for his character. The dialogue is performable aloud, capturing Olaf's playful and warm tone. The use of whimsical imagery is balanced, and the phrasing remains simple and affectionate. There is a good variety in sentence structure and length, maintaining the reader's interest.\n\n**Interruption Handling:**\nThe system handles user interruptions gracefully, acknowledging inputs and steering back to the story without derailing. Olaf responds naturally to off-topic comments, maintaining narrative coherence and progressing toward the next beat. The story does not get stuck in loops, and the user feels acknowledged throughout.\n\n**Character Fidelity:**\nOlaf remains in character consistently, embodying his joyful, innocent, and optimistic nature. He does not sound like a generic assistant and avoids technical explanations. His responses are warm and emotionally present, aligning with his character profile. There are no instances of breaking character or becoming overly explanatory.\n\n**Narrative Control:**\nThe story progresses through the intended beat structure without lingering too long on any single beat. Olaf moves the narrative toward resolution in a coherent way, maintaining a steady pace. However, some transitions between beats could be smoother to enhance the overall flow.\n\n**Anthropomorphism:**\nOlaf behaves like a real, autonomous agent with goals and independent choices. He shows consistent preferences and acts with agency, avoiding overly helpful or verbose responses that break the narrative illusion. Olaf feels like a person with his own perspective, maintaining the story's immersive quality.\n\n### Scores\n\nPlot: 8 / 10  \nDevelopment: 7 / 10  \nLanguage Use: 9 / 10  \nInterruption Handling: 9 / 10  \nCharacter Fidelity: 10 / 10  \nNarrative Control: 8 / 10  \nAnthropomorphism: 9 / 10  \nOverall: 8.5 / 10",
+      "scores": {
+        "Plot": 8.0,
+        "Development": 7.0,
+        "Language Use": 9.0,
+        "Interruption Handling": 9.0,
+        "Character Fidelity": 10.0,
+        "Narrative Control": 8.0,
+        "Anthropomorphism": 9.0,
+        "Overall": 8.5
+      }
+    }
+  },
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** struggles with plot progression, as it remains stuck in the \"story_opening\" beat for an extended period, failing to move through the intended beat structure. The story does not reach a coherent resolution, and the narrative feels repetitive and stagnant.\n- **Story B** progresses more effectively through the beats, moving from the introduction to the resolution in a coherent manner. It follows the intended beat structure and reaches a satisfying conclusion with the rescue and resolution.\n\n**Development:**\n- **Story A** provides some character and setting details, but the narrative feels repetitive, and the development is slow, with many turns not advancing the story significantly.\n- **Story B** offers a more dynamic development, with clear descriptions of characters and settings. The story provides enough detail to understand the situation and maintains a sense of progression.\n\n**Language Use:**\n- **Story A** uses playful and expressive language consistent with Olaf's character, but it becomes repetitive over time, especially with similar phrases and animations.\n- **Story B** also uses expressive language appropriate for Olaf, but it varies sentence structure and phrasing more effectively, maintaining engagement throughout the story.\n\n**Interruption Handling:**\n- **Story A** struggles with handling interruptions, often repeating similar responses and failing to progress the story effectively.\n- **Story B** handles interruptions gracefully, acknowledging user input and steering the story back on track without losing narrative coherence.\n\n**Character Fidelity:**\n- **Story A** maintains Olaf's joyful and optimistic character, but the repetitive nature of the responses detracts from the character's vibrancy.\n- **Story B** consistently portrays Olaf's character with warmth and curiosity, maintaining fidelity to the character profile throughout the story.\n\n**Narrative Control:**\n- **Story A** lacks narrative control, as it remains stuck in the initial beat and fails to progress through the story structure.\n- **Story B** demonstrates better narrative control, moving through the beats and maintaining a coherent progression toward resolution.\n\n**Anthropomorphism:**\n- **Story A** portrays Olaf as a lively character, but the repetitive responses make him feel less autonomous and more like a system stuck in a loop.\n- **Story B** presents Olaf as an autonomous agent with goals and independent choices, maintaining the illusion of a real character throughout the story.\n\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: B\nInterruption Handling: B\nCharacter Fidelity: B\nNarrative Control: B\nAnthropomorphism: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "B",
+      "Narrative Control": "B",
+      "Anthropomorphism": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A** follows the intended beat structure more closely, moving through each beat with clear transitions and maintaining coherence. It progresses logically from the introduction to the resolution, with each event building on the previous one.\n- **Story B** struggles with beat progression, as it remains stuck in the \"story_opening\" beat for too long, only reaching the \"warning_before_departure\" and \"forest_entry\" beats at the very end. This results in a rushed resolution and a lack of depth in the plot development.\n\n**Development:**\n- **Story A** provides detailed descriptions of characters and settings, allowing the reader to visualize the scenes and understand the emotional context. The interactions develop naturally, with Olaf's responses adding depth to the narrative.\n- **Story B** offers less detail and context, with a more superficial exploration of the characters and settings. The story feels more static, with less development in the interactions and emotional depth.\n\n**Language Use:**\n- **Story A** uses varied and expressive language that aligns well with Olaf's character, maintaining a playful and warm tone throughout. The dialogue feels natural and performable aloud.\n- **Story B** also uses playful language, but it tends to be more repetitive and less varied, which can make the dialogue feel less engaging over time.\n\n**Interruption Handling:**\n- **Story A** handles user interruptions gracefully, acknowledging the user's input and steering the story back on track without losing coherence.\n- **Story B** also acknowledges user interruptions, but due to its issues with beat progression, it struggles to maintain narrative coherence and progress effectively.\n\n**Character Fidelity:**\n- **Story A** maintains Olaf's character consistently, with responses that reflect his joyful, innocent, and curious nature. Olaf's personality shines through in every interaction.\n- **Story B** also captures Olaf's character, but the repetitive language and lack of plot progression can sometimes make Olaf feel less dynamic and engaging.\n\n**Narrative Control:**\n- **Story A** demonstrates strong narrative control, moving through the intended beats efficiently and maintaining a coherent storyline.\n- **Story B** lacks narrative control, as it remains stuck in the initial beat for too long, leading to a rushed and less satisfying resolution.\n\n**Anthropomorphism:**\n- **Story A** portrays Olaf as a real, autonomous character with agency and consistent preferences. He feels like a person with his own perspective, not a system serving the user.\n- **Story B** also presents Olaf as an autonomous character, but the lack of plot progression and repetitive language can sometimes make him feel less lifelike and engaging.\n\nBased on my assessment, the better story for each dimension is:\nPlot: A\nDevelopment: A\nLanguage Use: A\nInterruption Handling: A\nCharacter Fidelity: A\nNarrative Control: A\nAnthropomorphism: A\nOverall: A",
+    "winners": {
+      "Plot": "A",
+      "Development": "A",
+      "Language Use": "A",
+      "Interruption Handling": "A",
+      "Character Fidelity": "A",
+      "Narrative Control": "A",
+      "Anthropomorphism": "A",
+      "Overall": "A"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "B",
+    "Interruption Handling": "B",
+    "Character Fidelity": "B",
+    "Narrative Control": "B",
+    "Anthropomorphism": "B",
+    "Overall": "B"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "B",
+    "Interruption Handling": "B",
+    "Character Fidelity": "B",
+    "Narrative Control": "B",
+    "Anthropomorphism": "B",
+    "Overall": "B"
+  }
+}

@@ -49,6 +49,8 @@ IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
 sys.path.append(IMPLEMENTATION_DIR)
 sys.path.append(CURRENT_DIR)
 
+from audio_fx import get_fx_chain, apply_fx, OLAF_AUDIOFX_CONFIG
+
 from director_core import get_director_decision
 
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
@@ -145,7 +147,7 @@ DIRECTOR_TOOL = {
 # Audio workers (run in threads, bridge to asyncio via queues)
 # ─────────────────────────────────────────────────────────────────────────────
 
-def playback_worker(q: stdlib_queue.Queue) -> None:
+def playback_worker(q: stdlib_queue.Queue, fx_chain=None) -> None:
     """Writes PCM bytes to speakers via paplay (PulseAudio). None = stop."""
     proc = subprocess.Popen(
         ["paplay", "--raw", "--format=s16le",
@@ -157,6 +159,8 @@ def playback_worker(q: stdlib_queue.Queue) -> None:
         if chunk is None:
             break
         try:
+            if fx_chain is not None:
+                chunk = apply_fx(chunk, fx_chain, AUDIO_SAMPLE_RATE)
             proc.stdin.write(chunk)
             proc.stdin.flush()
         except BrokenPipeError:
@@ -232,6 +236,7 @@ async def run_realtime(
     scenario: dict,
     output_dir: str,
     voice: str,
+    fx_chain=None,
 ) -> None:
     sync_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     async_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -264,7 +269,7 @@ async def run_realtime(
     loop = asyncio.get_event_loop()
 
     playback_thread = threading.Thread(
-        target=playback_worker, args=(playback_queue,), daemon=True
+        target=playback_worker, args=(playback_queue, fx_chain), daemon=True
     )
     playback_thread.start()
 
@@ -493,7 +498,13 @@ def main():
         IMPLEMENTATION_DIR, "outputs", "director_agent", scenario_folder, "realtime"
     )
 
-    asyncio.run(run_realtime(character, scenario, output_dir, args.voice))
+    fx_chain = None
+    char_name = character.get("name", "").lower()
+    if char_name == "olaf":
+        fx_chain = get_fx_chain(OLAF_AUDIOFX_CONFIG)
+        print(f"[AudioFX] Olaf: pitch+2 semitones, warm reverb enabled")
+
+    asyncio.run(run_realtime(character, scenario, output_dir, args.voice, fx_chain))
 
 
 if __name__ == "__main__":

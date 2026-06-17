@@ -1,0 +1,4 @@
+| method   |   Plot |   Development |   Language Use |   Interruption Handling |   Character Fidelity |   Narrative Control |   Anthropomorphism |   Detail & Thoroughness |   Narrative Polish |   Director Decision-Making |   Overall |
+|:---------|-------:|--------------:|---------------:|------------------------:|---------------------:|--------------------:|-------------------:|------------------------:|-------------------:|---------------------------:|----------:|
+| director |   5.08 |          5.92 |           7.69 |                    7.46 |                 8.85 |                4.62 |               7.54 |                    5.88 |               7.27 |                       5.35 |      6.26 |
+| codi     |   3.7  |          4.74 |           6.26 |                    3.65 |                 7.85 |                3.19 |               4.96 |                    7.11 |               5.63 |                       4.52 |      4.47 |

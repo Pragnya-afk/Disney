@@ -194,7 +194,6 @@ def get_time_director_decision(
 
     response = client.chat.completions.create(
         model=model,
-        temperature=0.2,
         messages=[
             {
                 "role": "system",
