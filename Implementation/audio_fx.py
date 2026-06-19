@@ -15,31 +15,6 @@ except ImportError:
     )
 
 
-# Olaf: verse voice + slight pitch lift for a lighter/younger sound, small warm reverb
-OLAF_AUDIOFX_CONFIG = {
-    "pitch_shift": {"semitones": 2},
-    "reverb": {"room_size": 0.25, "dry_level": 0.85, "wet_level": 0.15},
-}
-
-
-def pcm_bytes_to_float32(pcm: bytes) -> np.ndarray:
-    return np.frombuffer(pcm, dtype=np.int16).astype(np.float32) / 32768.0
-
-
-def float32_to_pcm_bytes(audio: np.ndarray) -> bytes:
-    clipped = np.clip(audio, -1.0, 1.0)
-    return (clipped * 32767).astype(np.int16).tobytes()
-
-
-def apply_fx(pcm: bytes, fx_chain, sample_rate: int = 24_000) -> bytes:
-    """Apply an EffectChain to raw 16-bit PCM bytes. Returns 16-bit PCM bytes."""
-    if fx_chain is None or len(pcm) == 0:
-        return pcm
-    audio = pcm_bytes_to_float32(pcm)
-    processed = fx_chain(audio, sample_rate)
-    return float32_to_pcm_bytes(processed)
-
-
 def get_fx_chain(audio_config=None):
     if audio_config is None:
         return None
@@ -101,7 +76,7 @@ def get_fx_chain(audio_config=None):
 
 
 class EffectChain:
-    """Simple effect chain compatible with any callable effect following the pedalboard interface."""
+    """Simple effect chain that works with any callable effect following the pedalboard interface."""
 
     def __init__(self):
         self.effects = []
@@ -110,12 +85,14 @@ class EffectChain:
         self.effects.append(effect)
 
     def __call__(self, audio, sample_rate, reset=False):
+        """Process audio through all effects in sequence."""
         result = audio
         for effect in self.effects:
             result = effect(result, sample_rate, reset=reset)
         return result
 
     def reset(self):
+        """Reset all effects."""
         for effect in self.effects:
             if hasattr(effect, "reset"):
                 effect.reset()
@@ -125,19 +102,23 @@ class EffectChain:
 
 
 class SimplePitchShift:
-    """Fast pitch shift via resampling. Tempo changes with pitch (time-domain only)."""
+    """Fast pitch shift via resampling. Changes tempo along with pitch."""
 
     def __init__(self, semitones=0):
         self.semitones = semitones
         self.ratio = 2 ** (semitones / 12.0)
 
     def __call__(self, audio, sample_rate=None, reset=False):
+        """Process audio chunk."""
         if self.semitones == 0:
             return audio
+
         new_length = int(len(audio) / self.ratio)
         if new_length == 0:
             return audio
+
         return resample(audio, new_length).astype(np.float32)
 
     def reset(self):
+        """Reset internal state."""
         pass

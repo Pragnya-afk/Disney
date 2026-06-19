@@ -6,6 +6,7 @@ import threading
 import glob
 import importlib
 from datetime import datetime
+import numpy as np
 from flask import Flask, send_from_directory, request, jsonify
 from flask_socketio import SocketIO, emit
 from dotenv import load_dotenv
@@ -27,7 +28,22 @@ load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 from director_core import get_director_decision
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
-from audio_fx import get_fx_chain, apply_fx, OLAF_AUDIOFX_CONFIG
+from audio_fx import get_fx_chain
+
+OLAF_AUDIOFX_CONFIG = {
+    "pitch_shift": {"semitones": 2},
+    "reverb": {"room_size": 0.25, "dry_level": 0.85, "wet_level": 0.15},
+}
+
+
+def apply_fx(pcm: bytes, fx_chain, sample_rate: int = 24_000) -> bytes:
+    if fx_chain is None or len(pcm) == 0:
+        return pcm
+    audio = np.frombuffer(pcm, dtype=np.int16).astype(np.float32) / 32768.0
+    processed = fx_chain(audio, sample_rate)
+    clipped = np.clip(processed, -1.0, 1.0)
+    return (clipped * 32767).astype(np.int16).tobytes()
+
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 app = Flask(__name__, static_folder="public")
