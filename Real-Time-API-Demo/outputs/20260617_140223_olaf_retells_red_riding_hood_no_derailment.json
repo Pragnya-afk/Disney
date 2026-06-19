@@ -1,0 +1,39 @@
+{
+  "scenario": "olaf_retells_red_riding_hood_no_derailment",
+  "story_topic": "Olaf retells the story of Little Red Riding Hood to the user in his warm, playful voice. The user stays engaged with the story and helps it move forward.",
+  "beats_completed": 0,
+  "completed_beats": [],
+  "saved_at": "2026-06-17T14:02:23.153210",
+  "turns": [
+    {
+      "turn": 1,
+      "beat": "story_opening",
+      "user_input": "Hi olaf",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "User is greeting Olaf.",
+        "director_instruction": "Introduce Little Red Riding Hood, describing her as a cheerful girl who loves to wear her signature red cloak and is on her way to visit her grandmother in the woods.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "This turn establishes the main character and sets the stage for her adventure, fulfilling the goal of the current beat."
+      },
+      "character_response": "Oh, hello there! Once upon a time, there was a cheerful little girl who absolutely loved wearing her bright red cloak. And today, she was about to skip along a path through the woods to visit her dear grandmother."
+    },
+    {
+      "turn": 2,
+      "beat": "story_opening",
+      "user_input": "I love brownies",
+      "director_decision": {
+        "decision_type": "answer_and_steer_back",
+        "interruption_detected": true,
+        "user_intent": "The user expresses their fondness for brownies.",
+        "director_instruction": "Briefly acknowledge the user's love for brownies, then transition back to the story by describing how Little Red Riding Hood's grandmother always baked delicious treats for her, including brownies, and how Red was excited to see her and receive some.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "The character acknowledges the user's comment while seamlessly connecting to the story about the grandmother's baking, keeping the narrative engaging and moving forward."
+      },
+      "character_response": "Mmm, brownies are wonderful, aren’t they? And guess what—Little Red Riding Hood’s grandmother baked the most scrumptious treats, maybe even brownies! Little Red couldn’t wait to get there and see what delicious surprise might be waiting for her."
+    }
+  ]
+}

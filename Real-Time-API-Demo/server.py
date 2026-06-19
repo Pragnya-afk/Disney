@@ -91,7 +91,19 @@ def _build_registry() -> dict:
 
 
 _SCENARIO_REGISTRY = _build_registry()
-AVAILABLE_SCENARIOS = {k: _make_label(k) for k in _SCENARIO_REGISTRY}
+
+_DEMO_KEYS = {
+    "olaf_retells_red_riding_hood_no_derailment",
+    "olaf_retells_cinderella_no_derailment",
+    "olaf_tells_about_his_day_no_derailment",
+    "olaf_once_upon_a_snowman_origin_no_derailment",
+}
+
+AVAILABLE_SCENARIOS = {
+    k: _make_label(k)
+    for k in _SCENARIO_REGISTRY
+    if k in _DEMO_KEYS
+}
 
 # ── Session state ──────────────────────────────────────────────────────────────
 _state = {
@@ -311,7 +323,7 @@ def run_openai_ws():
 
         etype = data.get("type", "")
 
-        if etype == "session.created" or etype == "session.updated":
+        if etype == "session.created":
             if _current_sid:
                 socketio.emit("session_started", {
                     "scenario": _state.get("scenario_name", "")
@@ -481,7 +493,11 @@ def static_files(path):
 
 @app.route("/scenarios", methods=["GET"])
 def list_scenarios():
-    return jsonify([{"key": k, "label": v} for k, v in AVAILABLE_SCENARIOS.items()])
+    result = []
+    for k, v in AVAILABLE_SCENARIOS.items():
+        sc = _SCENARIO_REGISTRY.get(k, {})
+        result.append({"key": k, "label": v, "beat_count": len(sc.get("beats", []))})
+    return jsonify(result)
 
 
 @app.route("/state", methods=["GET"])
@@ -522,6 +538,25 @@ def save_session():
 
     except Exception as e:
         print(f"Save error: {e}")
+        return jsonify({"saved": False, "error": str(e)})
+
+
+@app.route("/save_questionnaire", methods=["POST"])
+def save_questionnaire():
+    try:
+        data = request.get_json()
+        output_dir = os.path.join(REAL_TIME_DIR, "outputs")
+        os.makedirs(output_dir, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        scenario = data.get("scenario", "unknown")
+        filename = f"{timestamp}_{scenario}_questionnaire.json"
+        path = os.path.join(output_dir, filename)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print(f"[Questionnaire saved] {path}")
+        return jsonify({"saved": True, "path": path})
+    except Exception as e:
+        print(f"[Questionnaire save error] {e}")
         return jsonify({"saved": False, "error": str(e)})
 
 
