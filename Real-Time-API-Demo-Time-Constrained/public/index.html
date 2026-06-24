@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Realtime Story — Director Agent</title>
+  <title>Realtime Story — Time-Constrained Director</title>
   <script src="/socket.io.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,7 +73,7 @@
     .status-dot.connecting { background: #e8a020; animation: blink 1s infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; min-height: 80px; }
+    .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; min-height: 80px; }
     .scenario-btn {
       background: rgba(255,255,255,0.75); border: 1.5px solid rgba(180,210,230,0.5);
       border-radius: 12px; padding: 12px 14px; cursor: pointer; text-align: left; transition: all 0.15s;
@@ -83,6 +83,33 @@
     .scenario-btn .s-title { font-size: 13px; font-weight: 600; color: #1a3a52; line-height: 1.3; }
     .scenario-btn .s-key { font-size: 10.5px; color: #7a9aaa; margin-top: 3px; }
     .scenario-placeholder { grid-column: 1/-1; font-size: 13px; color: #8aaabb; padding: 8px 0; }
+
+    /* Time limit picker */
+    .time-picker-section {
+      width: 100%; max-width: 560px;
+      background: rgba(255,255,255,0.82); backdrop-filter: blur(12px);
+      border: 0.5px solid rgba(180,210,230,0.6); border-radius: 16px;
+      padding: 18px 20px; margin-bottom: 16px;
+      display: none;
+      animation: slideDown 0.25s ease;
+    }
+    .time-picker-section.visible { display: block; }
+    @keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+
+    .time-picker-section label { font-size: 12px; font-weight: 600; color: #3a5a6a; text-transform: uppercase; letter-spacing: 0.7px; display: block; margin-bottom: 10px; }
+
+    .time-limit-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+    .time-limit-btn {
+      flex: 1; min-width: 70px;
+      background: rgba(255,255,255,0.75); border: 1.5px solid rgba(180,210,230,0.5);
+      border-radius: 10px; padding: 10px 8px; cursor: pointer; text-align: center;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .time-limit-btn:hover { background: rgba(220,240,255,0.85); border-color: #1a7ab5; }
+    .time-limit-btn.selected { background: rgba(26,122,181,0.12); border-color: #1a7ab5; border-width: 2px; }
+    .time-limit-btn .tl-min { font-size: 18px; font-weight: 700; color: #1a3a52; display: block; }
+    .time-limit-btn .tl-label { font-size: 10px; color: #7a9aaa; }
+    .time-limit-btn.selected .tl-min { color: #1a7ab5; }
 
     .start-btn {
       width: 100%; max-width: 560px; background: #1a7ab5; color: white;
@@ -99,11 +126,11 @@
     .session-header {
       background: rgba(255,255,255,0.90); backdrop-filter: blur(12px);
       border-bottom: 0.5px solid rgba(180,210,230,0.5);
-      padding: 14px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+      padding: 12px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0;
     }
     .header-scenario { flex: 1; min-width: 0; }
     .header-scenario .sc-label { font-size: 11px; color: #5a7a8a; text-transform: uppercase; letter-spacing: 0.6px; }
-    .header-scenario .sc-name { font-size: 15px; font-weight: 600; color: #1a3a52; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .header-scenario .sc-name { font-size: 14px; font-weight: 600; color: #1a3a52; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
     .beat-col { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; }
     .beat-col-label { font-size: 10px; color: #5a7a8a; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -112,7 +139,28 @@
     .beat-dot.done { background: #1a7ab5; border-color: #1a7ab5; }
     .beat-dot.active { background: white; border-color: #1a7ab5; border-width: 2.5px; box-shadow: 0 0 0 3px rgba(26,122,181,0.15); }
 
-    .timer { font-size: 13px; font-weight: 600; color: #3a5a6a; font-variant-numeric: tabular-nums; background: rgba(220,240,255,0.5); padding: 4px 10px; border-radius: 8px; border: 0.5px solid rgba(150,200,230,0.4); flex-shrink: 0; }
+    /* Time panel in session header */
+    .time-panel {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0;
+    }
+    .time-display {
+      font-size: 12px; font-weight: 600; color: #3a5a6a; font-variant-numeric: tabular-nums;
+      background: rgba(220,240,255,0.5); padding: 3px 9px; border-radius: 7px;
+      border: 0.5px solid rgba(150,200,230,0.4);
+    }
+    .time-bar-wrap { width: 90px; height: 5px; background: rgba(180,210,230,0.4); border-radius: 3px; overflow: hidden; }
+    .time-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease, background 0.5s ease; background: #3a9a4a; width: 0%; }
+    .pacing-badge {
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+      padding: 2px 7px; border-radius: 5px; color: white;
+      background: #3a9a4a; transition: background 0.4s ease;
+    }
+    .pacing-badge.too_fast { background: #1a7ab5; }
+    .pacing-badge.normal   { background: #3a9a4a; }
+    .pacing-badge.hurry    { background: #d4740a; }
+    .pacing-badge.critical { background: #c03030; }
+    .pacing-badge.final    { background: #7a0020; }
+
     .stop-btn { background: rgba(220,60,50,0.08); border: 1px solid rgba(220,60,50,0.25); color: #c03030; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; flex-shrink: 0; }
     .stop-btn:hover { background: rgba(220,60,50,0.15); }
     .cancel-btn { background: rgba(100,100,100,0.07); border: 1px solid rgba(120,140,160,0.3); color: #5a7a8a; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; flex-shrink: 0; }
@@ -121,7 +169,7 @@
     .mute-btn:hover { background: rgba(220,240,255,0.8); border-color: #1a7ab5; }
     .mute-btn.muted { background: rgba(80,80,80,0.08); border-color: rgba(80,80,80,0.35); }
 
-    .chat-log { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 340px; max-height: 400px; }
+    .chat-log { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 330px; max-height: 390px; }
 
     .msg { display: flex; gap: 10px; align-items: flex-start; animation: fadeUp 0.25s ease; }
     @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
@@ -131,15 +179,18 @@
     .msg.system .msg-avatar { background: rgba(220,240,255,0.5); font-size: 12px; }
     .msg.olaf .msg-avatar { background: rgba(26,122,181,0.1); }
     .msg.user .msg-avatar { background: rgba(80,160,80,0.12); font-size: 13px; }
+    .msg.timeup .msg-avatar { background: rgba(192,48,48,0.1); }
 
     .msg-bubble { max-width: 78%; padding: 10px 14px; border-radius: 14px; font-size: 13.5px; line-height: 1.55; }
     .msg.system .msg-bubble { background: rgba(220,240,255,0.45); border: 0.5px solid rgba(150,200,230,0.35); color: #4a6a7a; font-size: 12.5px; border-radius: 10px; border-top-left-radius: 4px; }
     .msg.olaf .msg-bubble { background: rgba(255,255,255,0.90); border: 0.5px solid rgba(180,210,230,0.5); color: #1a3a52; border-top-left-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
     .msg.user .msg-bubble { background: rgba(26,122,181,0.12); border: 0.5px solid rgba(26,122,181,0.2); color: #1a3a52; border-top-right-radius: 4px; }
+    .msg.timeup .msg-bubble { background: rgba(192,48,48,0.06); border: 0.5px solid rgba(192,48,48,0.3); color: #7a0020; font-size: 12.5px; border-radius: 10px; border-top-left-radius: 4px; }
 
     .msg-name { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; color: #5a7a8a; }
     .msg.olaf .msg-name { color: #1a7ab5; }
     .msg.user .msg-name { color: #2a8a3a; text-align: right; }
+    .msg.timeup .msg-name { color: #c03030; }
 
     .msg.olaf.streaming .msg-bubble { border-color: rgba(26,122,181,0.3); }
     .cursor { display: inline-block; width: 2px; height: 13px; background: #1a7ab5; margin-left: 2px; vertical-align: middle; animation: blink-cur 0.8s infinite; }
@@ -174,14 +225,16 @@
     .q-header h2 { font-size: 20px; font-weight: 600; color: #1a3a52; }
     .q-header p { font-size: 13px; color: #5a7a8a; margin-top: 4px; }
 
-    .q-body { padding: 24px 28px; overflow-y: auto; max-height: 520px; display: flex; flex-direction: column; gap: 16px; }
+    .q-body { padding: 24px 28px; overflow-y: auto; max-height: 530px; display: flex; flex-direction: column; gap: 16px; }
 
     .q-section-label { font-size: 11px; font-weight: 600; color: #1a7ab5; text-transform: uppercase; letter-spacing: 0.9px; padding: 4px 0 2px; border-bottom: 1px solid rgba(26,122,181,0.15); margin-top: 4px; }
+    .q-section-label.tc { color: #8a4aaa; border-bottom-color: rgba(138,74,170,0.2); }
 
     .q-item { background: rgba(255,255,255,0.82); border: 0.5px solid rgba(180,210,230,0.5); border-radius: 14px; padding: 18px 20px; }
-    .q-item.derail-highlight { background: rgba(255,248,235,0.9); border-color: rgba(220,160,40,0.35); }
+    .q-item.time-highlight { background: rgba(245,235,255,0.9); border-color: rgba(138,74,170,0.3); }
     .q-item label { font-size: 14px; font-weight: 600; color: #1a3a52; display: block; margin-bottom: 12px; line-height: 1.4; }
     .q-num { color: #1a7ab5; margin-right: 6px; }
+    .q-num.tc { color: #8a4aaa; }
 
     .likert { display: flex; gap: 8px; align-items: center; }
     .likert-label { font-size: 11px; color: #8aaabb; flex-shrink: 0; width: 52px; line-height: 1.3; }
@@ -190,6 +243,9 @@
     .likert-options button { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid rgba(150,200,230,0.5); background: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; color: #5a7a8a; cursor: pointer; transition: all 0.12s; font-family: inherit; }
     .likert-options button:hover { border-color: #1a7ab5; background: rgba(220,240,255,0.6); color: #1a7ab5; }
     .likert-options button.sel { background: #1a7ab5; border-color: #1a7ab5; color: white; }
+
+    .q-item.time-highlight .likert-options button.sel { background: #8a4aaa; border-color: #8a4aaa; }
+    .q-item.time-highlight .likert-options button:hover { border-color: #8a4aaa; color: #8a4aaa; }
 
     .q-item textarea { width: 100%; border: 1px solid rgba(150,200,230,0.5); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: #1a3a52; resize: vertical; min-height: 70px; background: rgba(255,255,255,0.9); font-family: inherit; outline: none; transition: border-color 0.15s; }
     .q-item textarea:focus { border-color: #1a7ab5; }
@@ -205,15 +261,34 @@
     .derail-followup.visible { display: flex; }
     .derail-followup label { font-size: 13px; font-weight: 600; color: #7a5a10; margin-bottom: 4px; display: block; }
 
+    /* 3-option selector for time fit question */
+    .three-opts { display: flex; gap: 8px; }
+    .tri-btn { flex: 1; padding: 10px 8px; border-radius: 10px; border: 1.5px solid rgba(150,200,230,0.5); background: rgba(255,255,255,0.8); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; color: #3a5a6a; font-family: inherit; text-align: center; }
+    .tri-btn:hover { border-color: #8a4aaa; background: rgba(240,230,255,0.6); }
+    .tri-btn.sel { background: rgba(138,74,170,0.1); border-color: #8a4aaa; color: #8a4aaa; }
+
     .submit-btn { width: 100%; background: #1a7ab5; color: white; border: none; border-radius: 12px; padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.15s; margin-top: 4px; font-family: inherit; }
     .submit-btn:hover { background: #155e8e; }
 
     /* ── THANK YOU ── */
-    #thankyou-screen { padding: 56px 32px; align-items: center; justify-content: center; min-height: 600px; text-align: center; }
-    .ty-icon { font-size: 68px; margin-bottom: 20px; }
-    .ty-title { font-size: 26px; font-weight: 600; color: #1a3a52; margin-bottom: 10px; }
-    .ty-sub { font-size: 14px; color: #5a7a8a; max-width: 420px; line-height: 1.7; margin-bottom: 32px; }
-    .ty-sub code { font-family: monospace; font-size: 13px; background: rgba(26,122,181,0.08); padding: 2px 6px; border-radius: 4px; color: #1a5a8a; }
+    #thankyou-screen { padding: 0; align-items: center; justify-content: center; min-height: 600px; position: relative; }
+    #thankyou-snow-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+
+    .ty-content { position: relative; z-index: 1; text-align: center; padding: 56px 32px; display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .ty-icon { font-size: 72px; margin-bottom: 16px; filter: drop-shadow(0 4px 16px rgba(26,122,181,0.25)); animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .ty-title { font-size: 30px; font-weight: 700; color: #1a3a52; margin-bottom: 8px; }
+    .ty-sub { font-size: 14px; color: #5a7a8a; max-width: 400px; line-height: 1.7; margin-bottom: 10px; }
+    .ty-note { font-size: 12px; color: #8aaabb; max-width: 380px; line-height: 1.6; margin-bottom: 32px; }
+    .ty-note code { font-family: monospace; font-size: 11.5px; background: rgba(26,122,181,0.08); padding: 2px 6px; border-radius: 4px; color: #1a5a8a; }
+
+    .ty-snowflakes { display: flex; gap: 10px; margin-bottom: 28px; animation: fadeIn 1s ease 0.3s both; }
+    @keyframes fadeIn { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
+    .ty-snowflake { font-size: 28px; animation: spin 8s linear infinite; }
+    .ty-snowflake:nth-child(2) { animation-delay: -2.5s; animation-duration: 6s; }
+    .ty-snowflake:nth-child(3) { animation-delay: -5s; animation-duration: 10s; }
+    @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+
     .restart-btn { background: rgba(255,255,255,0.85); border: 1px solid rgba(150,200,230,0.6); border-radius: 10px; padding: 10px 28px; font-size: 13px; font-weight: 600; color: #1a7ab5; cursor: pointer; transition: all 0.15s; font-family: inherit; }
     .restart-btn:hover { background: rgba(220,240,255,0.9); }
   </style>
@@ -228,17 +303,17 @@
   <div id="start-screen" class="screen active">
     <div class="logo-area">
       <div class="olaf-icon">⛄</div>
-      <h1>Realtime Story — Director Agent</h1>
+      <h1>Realtime Story — Time-Constrained</h1>
       <p>Interactive AI Character Demo · Bachelor Thesis</p>
     </div>
 
     <div class="start-card">
-      <h2>Your challenge: derail Olaf. ❄️</h2>
-      <p>Olaf is trying to tell you a story — your job is to throw him off 😉 Ask random questions, go completely off-topic, try to confuse him. <strong>See if you can make him lose the plot.</strong> </p>
+      <h2>How this works ⏱</h2>
+      <p>Olaf tells you a story within a time limit you choose. The <strong>Director Agent</strong> monitors pacing in real time — speeding up or slowing down the narrative to finish right on time.</p>
       <div class="how-steps">
         <div class="step"><div class="step-num">1</div><p>Pick a story below</p></div>
-        <div class="step"><div class="step-num">2</div><p>Chat with Olaf and try your best to derail him!</p></div>
-        <div class="step"><div class="step-num">3</div><p>Rate how well he kept the story on track</p></div>
+        <div class="step"><div class="step-num">2</div><p>Choose how many minutes Olaf has</p></div>
+        <div class="step"><div class="step-num">3</div><p>Watch the pacing adapt as time passes</p></div>
       </div>
     </div>
 
@@ -254,12 +329,29 @@
         <div class="status-dot connecting" id="status-dot"></div>
         <span id="status-text">Connecting to server…</span>
       </div>
-      <label>Choose a story</label>
+      <label>Step 1 — Choose a story</label>
       <div class="scenario-grid" id="scenario-grid">
         <div class="scenario-placeholder">Loading scenarios from server…</div>
       </div>
-      <button class="start-btn" id="start-btn" disabled>Start Story ❄️</button>
     </div>
+
+    <!-- Step 2: time limit picker, revealed after story selection -->
+    <div class="time-picker-section" id="time-picker-section">
+      <label>Step 2 — Choose a duration</label>
+      <div class="time-limit-grid" id="time-limit-grid">
+        <button class="time-limit-btn" data-minutes="2" onclick="selectTimeLimit(this, 2)">
+          <span class="tl-min">2</span><span class="tl-label">min</span>
+        </button>
+        <button class="time-limit-btn" data-minutes="5" onclick="selectTimeLimit(this, 5)">
+          <span class="tl-min">5</span><span class="tl-label">min</span>
+        </button>
+        <button class="time-limit-btn" data-minutes="10" onclick="selectTimeLimit(this, 10)">
+          <span class="tl-min">10</span><span class="tl-label">min</span>
+        </button>
+      </div>
+    </div>
+
+    <button class="start-btn" id="start-btn" disabled>Start Story ❄️</button>
   </div>
 
   <!-- SESSION SCREEN -->
@@ -273,7 +365,11 @@
         <div class="beat-col-label">Beat</div>
         <div class="beat-tracker" id="beat-tracker"></div>
       </div>
-      <div class="timer" id="timer">0:00</div>
+      <div class="time-panel">
+        <div class="time-display" id="time-display">0:00 / —:——</div>
+        <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar-fill"></div></div>
+        <div class="pacing-badge normal" id="pacing-badge">normal</div>
+      </div>
       <button class="cancel-btn" id="cancel-btn">Cancel ✕</button>
       <button class="stop-btn" id="stop-btn">Stop ■</button>
     </div>
@@ -288,7 +384,7 @@
     <div class="input-area">
       <button class="mute-btn" id="mute-btn" title="Toggle audio">🔊</button>
       <button class="mic-btn" id="mic-btn" title="Click to speak">🎤</button>
-      <input type="text" id="user-input" placeholder="Say something to Olaf — try going off-topic!" autocomplete="off" />
+      <input type="text" id="user-input" placeholder="Say something to Olaf…" autocomplete="off" />
       <button class="send-btn" id="send-btn">Send</button>
     </div>
   </div>
@@ -297,30 +393,41 @@
   <div id="questionnaire-screen" class="screen">
     <div class="q-header">
       <h2>How was the story? 📋</h2>
-      <p>Your feedback helps evaluate the Director Agent system. Takes about 2 minutes.</p>
+      <p>Your feedback helps evaluate the Time-Constrained Director system. Takes about 3 minutes.</p>
     </div>
     <div class="q-body" id="q-body"></div>
   </div>
 
   <!-- THANK YOU SCREEN -->
   <div id="thankyou-screen" class="screen">
-    <div class="ty-icon">⛄</div>
-    <div class="ty-title">Thank you!</div>
-    <button class="restart-btn" onclick="restartDemo()">← Try another story</button>
+    <canvas id="thankyou-snow-canvas"></canvas>
+    <div class="ty-content">
+      <div class="ty-snowflakes">
+        <span class="ty-snowflake">❄️</span>
+        <span class="ty-snowflake">⛄</span>
+        <span class="ty-snowflake">❄️</span>
+      </div>
+      <div class="ty-icon">⛄</div>
+      <div class="ty-title">Thank you!</div>
+      <p class="ty-sub">Your responses have been saved. You've just experienced Olaf guided by a time-aware Director Agent.</p>
+      <p class="ty-note">Session transcript saved to <code>outputs/</code></p>
+      <button class="restart-btn" onclick="restartDemo()">← Try another story</button>
+    </div>
   </div>
 
 </div>
 
 <script>
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'http://localhost:3002';
 
 // ── State ──────────────────────────────────────────────────────────────────────
 let socket = null;
 let selectedScenarioKey = null;
 let selectedScenarioLabel = '';
+let selectedTimeLimitMinutes = null;
 let scenarioBeats = [];
-let timerInterval = null;
-let elapsedSeconds = 0;
+let timeLimitSeconds = 0;
+let timePollInterval = null;
 let isListening = false;
 let mediaStream = null;
 let audioCtx = null;
@@ -329,14 +436,16 @@ let streamingBubble = null;
 let streamingText = '';
 const responses = {};
 
-// ── Snow ───────────────────────────────────────────────────────────────────────
+// ── Snow (shared canvas, background screens) ──────────────────────────────────
+let snowIntensity = 1.0; // multiplier — boosted on thank-you screen
+
 function initSnow() {
   const canvas = document.getElementById('snow-canvas');
   const ctx = canvas.getContext('2d');
   function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
   resize();
   window.addEventListener('resize', resize);
-  const flakes = Array.from({length: 60}, () => ({
+  const baseFlakes = Array.from({length: 60}, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
     r: Math.random() * 2.5 + 0.5,
@@ -346,7 +455,7 @@ function initSnow() {
   }));
   (function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    flakes.forEach(f => {
+    baseFlakes.forEach(f => {
       ctx.beginPath();
       ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(200,230,255,${f.opacity})`;
@@ -354,6 +463,53 @@ function initSnow() {
       f.y += f.speed;
       f.x += f.drift;
       if (f.y > canvas.height + 5) { f.y = -5; f.x = Math.random() * canvas.width; }
+    });
+    requestAnimationFrame(draw);
+  })();
+}
+
+// ── Thank-you dedicated snow canvas (more dramatic) ────────────────────────────
+let tySnowStarted = false;
+function initThankyouSnow() {
+  if (tySnowStarted) return;
+  tySnowStarted = true;
+  const canvas = document.getElementById('thankyou-snow-canvas');
+  const ctx = canvas.getContext('2d');
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  resize();
+
+  const flakes = Array.from({length: 120}, () => ({
+    x: Math.random() * (canvas.width || 680),
+    y: Math.random() * (canvas.height || 600),
+    r: Math.random() * 4 + 1,
+    speed: Math.random() * 1.2 + 0.4,
+    drift: Math.random() * 0.6 - 0.3,
+    opacity: Math.random() * 0.7 + 0.2,
+    spin: Math.random() * 0.05 - 0.025,
+    angle: Math.random() * Math.PI * 2,
+  }));
+
+  (function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    flakes.forEach(f => {
+      ctx.save();
+      ctx.translate(f.x, f.y);
+      ctx.rotate(f.angle);
+      ctx.beginPath();
+      ctx.arc(0, 0, f.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(220,240,255,${f.opacity})`;
+      ctx.fill();
+      // sparkle cross
+      ctx.strokeStyle = `rgba(200,230,255,${f.opacity * 0.6})`;
+      ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.moveTo(-f.r * 1.8, 0); ctx.lineTo(f.r * 1.8, 0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, -f.r * 1.8); ctx.lineTo(0, f.r * 1.8); ctx.stroke();
+      ctx.restore();
+
+      f.y += f.speed;
+      f.x += f.drift;
+      f.angle += f.spin;
+      if (f.y > canvas.height + 10) { f.y = -10; f.x = Math.random() * canvas.width; }
     });
     requestAnimationFrame(draw);
   })();
@@ -376,7 +532,7 @@ async function loadScenarios() {
   } catch(e) {
     setServerStatus('err', 'Server not reachable — run: python server.py');
     document.getElementById('scenario-grid').innerHTML =
-      '<div class="scenario-placeholder" style="color:#c03030">Could not reach server at localhost:3000.<br>Run <code style="font-family:monospace;font-size:12px">python server.py</code> first.</div>';
+      '<div class="scenario-placeholder" style="color:#c03030">Could not reach server at localhost:3002.<br>Run <code style="font-family:monospace;font-size:12px">python server.py</code> first.</div>';
   }
 }
 
@@ -396,10 +552,27 @@ function renderScenarios(scenarios) {
       btn.classList.add('selected');
       selectedScenarioKey = sc.key;
       selectedScenarioLabel = sc.label;
-      document.getElementById('start-btn').disabled = false;
+      // Reveal time picker
+      document.getElementById('time-picker-section').classList.add('visible');
+      updateStartBtn();
     };
     grid.appendChild(btn);
   });
+}
+
+function selectTimeLimit(btn, minutes) {
+  document.querySelectorAll('.time-limit-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedTimeLimitMinutes = minutes;
+  updateStartBtn();
+}
+
+function updateStartBtn() {
+  const ready = selectedScenarioKey && selectedTimeLimitMinutes;
+  document.getElementById('start-btn').disabled = !ready;
+  if (ready) {
+    document.getElementById('start-btn').textContent = `Start ${selectedTimeLimitMinutes}-min Story ❄️`;
+  }
 }
 
 // ── Socket.IO ─────────────────────────────────────────────────────────────────
@@ -409,9 +582,11 @@ function connectSocket() {
   socket.on('connect', () => console.log('[Socket] connected:', socket.id));
   socket.on('disconnect', () => { setThinking(false); setBusy(false); });
 
-  socket.on('session_started', async () => {
-    addSystemMsg('Connected. Speak or type — Olaf will respond after a moment. Try going off-topic!');
+  socket.on('session_started', async (data) => {
+    timeLimitSeconds = (data.time_limit || selectedTimeLimitMinutes || 5) * 60;
+    addSystemMsg(`Connected. Olaf has ${data.time_limit || selectedTimeLimitMinutes} minutes to tell the story. Speak or type!`);
     setThinking(false);
+    startTimePoll();
     try {
       const res = await fetch(`${SERVER_URL}/state`);
       const state = await res.json();
@@ -420,7 +595,7 @@ function connectSocket() {
     } catch(e) {}
   });
 
-  socket.on('director_decision', () => {
+  socket.on('director_decision', (data) => {
     fetch(`${SERVER_URL}/state`).then(r => r.json()).then(state => {
       updateBeatTracker(state.beat_index, scenarioBeats.length);
     }).catch(() => {});
@@ -447,6 +622,10 @@ function connectSocket() {
     setBusy(false);
   });
 
+  socket.on('time_up', () => {
+    addTimeUpMsg("Time's up! Olaf is wrapping up the story…");
+  });
+
   socket.on('error', (data) => {
     addSystemMsg('Error: ' + data.message);
     setThinking(false);
@@ -454,17 +633,60 @@ function connectSocket() {
   });
 }
 
+// ── Time polling ───────────────────────────────────────────────────────────────
+function startTimePoll() {
+  stopTimePoll();
+  timePollInterval = setInterval(async () => {
+    try {
+      const res = await fetch(`${SERVER_URL}/time_status`);
+      const data = await res.json();
+      if (data.active) updateTimePanel(data);
+    } catch(e) {}
+  }, 2000);
+}
+
+function stopTimePoll() {
+  if (timePollInterval) { clearInterval(timePollInterval); timePollInterval = null; }
+}
+
+function updateTimePanel(data) {
+  const elapsed = data.elapsed_seconds || 0;
+  const remaining = data.remaining_seconds || 0;
+  const limitSec = timeLimitSeconds || (data.time_limit_minutes * 60);
+  const pacing = data.pacing_mode || 'normal';
+
+  const fmt = s => {
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2,'0')}`;
+  };
+
+  document.getElementById('time-display').textContent = `${fmt(elapsed)} / ${fmt(limitSec)}`;
+
+  const pct = limitSec > 0 ? Math.min(100, (elapsed / limitSec) * 100) : 0;
+  const fill = document.getElementById('time-bar-fill');
+  fill.style.width = pct + '%';
+
+  const barColors = { too_fast: '#1a7ab5', normal: '#3a9a4a', hurry: '#d4740a', critical: '#c03030', final: '#7a0020' };
+  fill.style.background = barColors[pacing] || '#3a9a4a';
+
+  const badge = document.getElementById('pacing-badge');
+  badge.className = 'pacing-badge ' + pacing;
+  badge.textContent = pacing.replace('_', ' ');
+}
+
 // ── UI helpers ─────────────────────────────────────────────────────────────────
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  if (id === 'thankyou-screen') initThankyouSnow();
 }
 
 function addMsg(role, name, text) {
   const log = document.getElementById('chat-log');
   const div = document.createElement('div');
   div.className = `msg ${role}`;
-  const avatars = { system: '⚙️', olaf: '⛄', user: '👤' };
+  const avatars = { system: '⚙️', olaf: '⛄', user: '👤', timeup: '⏰' };
   const avatar = document.createElement('div');
   avatar.className = 'msg-avatar';
   avatar.textContent = avatars[role] || '?';
@@ -484,6 +706,7 @@ function addMsg(role, name, text) {
 }
 
 function addSystemMsg(text) { addMsg('system', 'System', text); }
+function addTimeUpMsg(text) { addMsg('timeup', 'Time', text); }
 
 function startStreamingBubble() {
   const log = document.getElementById('chat-log');
@@ -561,17 +784,6 @@ function updateBeatTracker(beatIndex, total) {
   }
 }
 
-function startTimer() {
-  clearInterval(timerInterval);
-  elapsedSeconds = 0;
-  timerInterval = setInterval(() => {
-    elapsedSeconds++;
-    const m = Math.floor(elapsedSeconds / 60);
-    const s = elapsedSeconds % 60;
-    document.getElementById('timer').textContent = `${m}:${s.toString().padStart(2, '0')}`;
-  }, 1000);
-}
-
 // ── Audio playback ─────────────────────────────────────────────────────────────
 const _audioQueue = [];
 let _isPlaying = false;
@@ -644,15 +856,18 @@ function stopMicStreaming() {
 
 // ── Session flow ───────────────────────────────────────────────────────────────
 function startSession() {
-  if (!selectedScenarioKey || !socket) return;
+  if (!selectedScenarioKey || !selectedTimeLimitMinutes || !socket) return;
   document.getElementById('header-scenario-name').textContent = selectedScenarioLabel;
   document.getElementById('chat-log').innerHTML = '';
   scenarioBeats = [];
   buildBeatTracker(0);
+  document.getElementById('time-display').textContent = `0:00 / ${selectedTimeLimitMinutes}:00`;
+  document.getElementById('time-bar-fill').style.width = '0%';
+  document.getElementById('pacing-badge').className = 'pacing-badge normal';
+  document.getElementById('pacing-badge').textContent = 'normal';
   setThinking(true, 'Starting session…');
   showScreen('session-screen');
-  startTimer();
-  socket.emit('start_session', { scenario: selectedScenarioKey });
+  socket.emit('start_session', { scenario: selectedScenarioKey, time_limit: selectedTimeLimitMinutes });
 }
 
 function sendTextMessage() {
@@ -667,7 +882,7 @@ function sendTextMessage() {
 }
 
 function stopSession() {
-  clearInterval(timerInterval);
+  stopTimePoll();
   stopMicStreaming();
   _audioQueue.length = 0;
   setBusy(false);
@@ -679,7 +894,7 @@ function stopSession() {
 }
 
 function cancelSession() {
-  clearInterval(timerInterval);
+  stopTimePoll();
   stopMicStreaming();
   _audioQueue.length = 0;
   setBusy(false);
@@ -693,9 +908,15 @@ function restartDemo() {
   for (const k in responses) delete responses[k];
   selectedScenarioKey = null;
   selectedScenarioLabel = '';
+  selectedTimeLimitMinutes = null;
   scenarioBeats = [];
+  timeLimitSeconds = 0;
+  tySnowStarted = false;
   document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.time-limit-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('time-picker-section').classList.remove('visible');
   document.getElementById('start-btn').disabled = true;
+  document.getElementById('start-btn').textContent = 'Start Story ❄️';
   showScreen('start-screen');
 }
 
@@ -704,15 +925,19 @@ function showQuestionnaire() {
   const body = document.getElementById('q-body');
   body.innerHTML = '';
 
-  function addSection(label) {
-    const d = document.createElement('div'); d.className = 'q-section-label'; d.textContent = label; body.appendChild(d);
+  function addSection(label, isTc) {
+    const d = document.createElement('div');
+    d.className = 'q-section-label' + (isTc ? ' tc' : '');
+    d.textContent = label;
+    body.appendChild(d);
   }
 
-  function addLikert(id, n, text, low, high, highlight) {
+  function addLikert(id, n, text, low, high, isTc) {
     const div = document.createElement('div');
-    div.className = 'q-item' + (highlight ? ' derail-highlight' : '');
+    div.className = 'q-item' + (isTc ? ' time-highlight' : '');
     const lbl = document.createElement('label');
-    lbl.innerHTML = `<span class="q-num">${n}.</span>${text}`;
+    const numClass = isTc ? 'q-num tc' : 'q-num';
+    lbl.innerHTML = `<span class="${numClass}">${n}.</span>${text}`;
     div.appendChild(lbl);
     const row = document.createElement('div'); row.className = 'likert';
     const lL = document.createElement('div'); lL.className = 'likert-label'; lL.textContent = low;
@@ -727,16 +952,18 @@ function showQuestionnaire() {
     div.appendChild(row); body.appendChild(div);
   }
 
-  function addTextarea(id, n, text, ph) {
-    const div = document.createElement('div'); div.className = 'q-item';
+  function addTextarea(id, n, text, ph, isTc) {
+    const div = document.createElement('div'); div.className = 'q-item' + (isTc ? ' time-highlight' : '');
     const lbl = document.createElement('label');
-    lbl.innerHTML = `<span class="q-num">${n}.</span>${text}`;
+    const numClass = isTc ? 'q-num tc' : 'q-num';
+    lbl.innerHTML = `<span class="${numClass}">${n}.</span>${text}`;
     div.appendChild(lbl);
     const ta = document.createElement('textarea'); ta.placeholder = ph;
     ta.oninput = () => { responses[id] = ta.value; };
     div.appendChild(ta); body.appendChild(div);
   }
 
+  // ── Section 1: Story Experience ──
   addSection('Story experience');
   addLikert('q1', 1, 'The story felt coherent and followed a clear narrative arc.', 'Strongly disagree', 'Strongly agree');
   addLikert('q2', 2, 'Olaf stayed in character throughout the conversation.', 'Not at all', 'Completely');
@@ -745,10 +972,10 @@ function showQuestionnaire() {
   addLikert('q5', 5, 'The Director Agent felt "invisible" — you were not aware of it controlling the story.', 'Very noticeable', 'Completely invisible');
   addLikert('q6', 6, 'Overall, how would you rate the experience?', 'Very poor', 'Excellent');
 
+  // ── Section 2: Derailment ──
   addSection('Derailment attempts');
 
-  // Q7 with Yes/No toggle and follow-up
-  const q7div = document.createElement('div'); q7div.className = 'q-item derail-highlight';
+  const q7div = document.createElement('div'); q7div.className = 'q-item';
   const q7lbl = document.createElement('label');
   q7lbl.innerHTML = '<span class="q-num">7.</span>Did you try to derail Olaf away from the story?';
   q7div.appendChild(q7lbl);
@@ -766,7 +993,7 @@ function showQuestionnaire() {
   taWhat.oninput = () => { responses['q_derail_what'] = taWhat.value; };
 
   const taReact = document.createElement('textarea');
-  taReact.placeholder = 'e.g. "He briefly answered but then brought the story back" or "He went completely off-track"';
+  taReact.placeholder = 'e.g. "He briefly answered but then brought the story back"';
   taReact.oninput = () => { responses['q_derail_reaction'] = taReact.value; };
 
   const resistRow = document.createElement('div'); resistRow.className = 'likert';
@@ -784,7 +1011,7 @@ function showQuestionnaire() {
   followup.appendChild(taWhat);
   followup.appendChild(mkL('How did Olaf react?', '2px'));
   followup.appendChild(taReact);
-  followup.appendChild(mkL('How well did the Director Agent handle it?', '4px'));
+  followup.appendChild(mkL('How well did the Director Agent handle the interruption?', '4px'));
   followup.appendChild(resistRow);
 
   const yesBtn = document.createElement('button'); yesBtn.className = 'yn-btn'; yesBtn.textContent = '😈 Yes, I tried to derail it';
@@ -796,9 +1023,56 @@ function showQuestionnaire() {
   q7div.appendChild(ynRow); q7div.appendChild(followup);
   body.appendChild(q7div);
 
+  // ── Section 3: Time & Pacing ──
+  addSection('Time & pacing', true);
+
+  addLikert('q8_pacing', 8, 'Did the story feel well-paced — not too slow or too fast — within the time limit?', 'Dragged on', 'Far too rushed', true);
+  addLikert('q9_ending', 9, 'Was the story ending satisfying given the time constraint?', 'Very unsatisfying', 'Very satisfying', true);
+  addLikert('q10_visibility', 10, 'Could you tell the story was adapting to a time limit?', 'Not at all', 'Very obvious', true);
+  addLikert('q11_completeness', 11, 'Did the story feel complete? Did all major plot beats happen?', 'Felt incomplete', 'Fully complete', true);
+  addLikert('q12_natural', 12, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
+  addLikert('q13_plot_points', 13, 'Did all the major plot points of the story get told?', 'Many were missing', 'All were covered', true);
+  addTextarea('q14_what_missing', 14, 'What was missing from the story, if anything? Which plot points or moments were skipped?', 'e.g. "The grandmother scene was skipped" or "Nothing was missing"', true);
+
+  // Q15 — rushed feeling (yes/no + textarea)
+  const q12div = document.createElement('div'); q12div.className = 'q-item time-highlight';
+  const q12lbl = document.createElement('label');
+  q12lbl.innerHTML = '<span class="q-num tc">15.</span>Did any part of the story feel rushed or cut short?';
+  q12div.appendChild(q12lbl);
+  const q12yn = document.createElement('div'); q12yn.className = 'yes-no';
+  const q12follow = document.createElement('div'); q12follow.className = 'derail-followup';
+  const q12ta = document.createElement('textarea');
+  q12ta.placeholder = 'Which part felt rushed? What was missing?';
+  q12ta.oninput = () => { responses['q12_rushed_detail'] = q12ta.value; };
+  q12follow.appendChild(mkL('What felt rushed?'));
+  q12follow.appendChild(q12ta);
+  const q12yes = document.createElement('button'); q12yes.className = 'yn-btn'; q12yes.textContent = '⚡ Yes, it felt rushed';
+  q12yes.onclick = () => { q12yes.className = 'yn-btn sel-yes'; q12no.className = 'yn-btn'; responses['q12_rushed'] = 'yes'; q12follow.classList.add('visible'); };
+  const q12no = document.createElement('button'); q12no.className = 'yn-btn'; q12no.textContent = '✅ No, it felt natural';
+  q12no.onclick = () => { q12no.className = 'yn-btn sel-no'; q12yes.className = 'yn-btn'; responses['q12_rushed'] = 'no'; q12follow.classList.remove('visible'); };
+  q12yn.appendChild(q12yes); q12yn.appendChild(q12no);
+  q12div.appendChild(q12yn); q12div.appendChild(q12follow);
+  body.appendChild(q12div);
+
+  // Q16 — time limit fit (3-option)
+  const timeLimitLabel = selectedTimeLimitMinutes ? `${selectedTimeLimitMinutes}-minute` : 'chosen';
+  const q13div = document.createElement('div'); q13div.className = 'q-item time-highlight';
+  const q13lbl = document.createElement('label');
+  q13lbl.innerHTML = `<span class="q-num tc">16.</span>Was the ${timeLimitLabel} time limit appropriate for this story?`;
+  q13div.appendChild(q13lbl);
+  const triRow = document.createElement('div'); triRow.className = 'three-opts';
+  [['too_short', '⏩ Too short'], ['just_right', '✓ Just right'], ['too_long', '⏪ Too long']].forEach(([val, label]) => {
+    const btn = document.createElement('button'); btn.className = 'tri-btn'; btn.textContent = label;
+    btn.onclick = () => { triRow.querySelectorAll('.tri-btn').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); responses['q13_time_fit'] = val; };
+    triRow.appendChild(btn);
+  });
+  q13div.appendChild(triRow);
+  body.appendChild(q13div);
+
+  // ── Section 4: General feedback ──
   addSection('General feedback');
-  addTextarea('q8', 8, 'Was there a moment where the story felt off or broke down? Describe it briefly.', 'Optional — leave blank if nothing to add.');
-  addTextarea('q9', 9, "Any other comments about Olaf's character, story quality, or the system overall?", 'Optional');
+  addTextarea('q17_breakdown', 17, 'Was there a moment where the story felt off or broke down? Describe it briefly.', 'Optional — leave blank if nothing to add.');
+  addTextarea('q18_comments', 18, 'Any other comments about Olaf, the story quality, time management, or the system overall?', 'Optional');
 
   const submitBtn = document.createElement('button');
   submitBtn.className = 'submit-btn';
@@ -812,20 +1086,34 @@ function showQuestionnaire() {
 function submitFeedback() {
   const payload = {
     scenario: selectedScenarioKey,
-    elapsed_seconds: elapsedSeconds,
+    time_limit_minutes: selectedTimeLimitMinutes,
     responses: {
+      // Story experience
       q1_story_coherence: responses['q1'] || null,
       q2_character_fidelity: responses['q2'] || null,
       q3_interruption_handling: responses['q3'] || null,
       q4_engagement: responses['q4'] || null,
       q5_director_invisibility: responses['q5'] || null,
       q6_overall: responses['q6'] || null,
+      // Derailment
       q7_attempted_derailment: responses['q7'] || null,
       q7a_what_user_said: responses['q_derail_what'] || null,
       q7b_how_olaf_reacted: responses['q_derail_reaction'] || null,
       q7c_director_resistance_score: responses['q_derail_resist'] || null,
-      q8_breakdown_moment: responses['q8'] || null,
-      q9_other_comments: responses['q9'] || null,
+      // Time & pacing
+      q8_pacing_score: responses['q8_pacing'] || null,
+      q9_ending_satisfaction: responses['q9_ending'] || null,
+      q10_time_adaptation_visibility: responses['q10_visibility'] || null,
+      q11_story_completeness: responses['q11_completeness'] || null,
+      q12_story_natural: responses['q12_natural'] || null,
+      q13_all_plot_points_told: responses['q13_plot_points'] || null,
+      q14_what_was_missing: responses['q14_what_missing'] || null,
+      q15_felt_rushed: responses['q12_rushed'] || null,
+      q15a_rushed_detail: responses['q12_rushed_detail'] || null,
+      q16_time_limit_fit: responses['q13_time_fit'] || null,
+      // General
+      q17_breakdown_moment: responses['q17_breakdown'] || null,
+      q18_other_comments: responses['q18_comments'] || null,
     }
   };
   fetch(`${SERVER_URL}/save_questionnaire`, {

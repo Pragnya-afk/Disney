@@ -1,0 +1,174 @@
+{
+  "scenario": "olaf_retells_red_riding_hood_no_derailment",
+  "story_topic": "Olaf retells the story of Little Red Riding Hood to the user in his warm, playful voice. The user stays engaged with the story and helps it move forward.",
+  "time_limit_minutes": 3.0,
+  "elapsed_seconds": 192.63,
+  "beats_completed": 8,
+  "completed_beats": [
+    "story_opening",
+    "warning_before_departure",
+    "forest_entry",
+    "wolf_appears",
+    "conversation_and_disclosure",
+    "red_approaches_cottage",
+    "wolf_reveal",
+    "rescue_and_resolution"
+  ],
+  "saved_at": "2026-06-19T13:29:22.385369",
+  "turns": [
+    {
+      "turn": 1,
+      "beat": "story_opening",
+      "user_input": "hi olaf",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "The user is greeting Olaf.",
+        "director_instruction": "Olaf cheerfully greets back and introduces Little Red Riding Hood and her loving family, mentioning her special red cloak and the purpose of her visit to her grandmother.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "This response introduces Little Red Riding Hood and sets the stage for the story, fulfilling the current beat's goal."
+      },
+      "pacing_mode": "normal",
+      "elapsed_seconds": 5.66,
+      "remaining_seconds": 174.34,
+      "character_response": "Well hello there, friend! So, let me tell you about this delightful little human named Little Red Riding Hood—she’s got this bright red cloak, and a heart as warm as a summer day! And today, she’s off to bring some goodies to her dear, cuddly grandmother."
+    },
+    {
+      "turn": 2,
+      "beat": "story_opening",
+      "user_input": "bye olaf",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "The user is indicating they want to leave the conversation.",
+        "director_instruction": "Acknowledge the user's departure and encourage them to stay for the story, then continue by introducing Little Red Riding Hood's mother and her special instructions before she sets off on her journey.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "The user seems to be trying to step away from the story, so I will gently redirect them while still advancing the introduction of important characters and plot points."
+      },
+      "pacing_mode": "normal",
+      "elapsed_seconds": 14.57,
+      "remaining_seconds": 165.43,
+      "character_response": "Oh, I'll miss you if you go! But wait—there’s a little more magic to share. Little Red Riding Hood’s mother gave her a basket and said, “Be sure to stay on the path, my dear.”"
+    },
+    {
+      "turn": 3,
+      "beat": "story_opening",
+      "user_input": "what did you do this weekend?",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "The user is asking about Olaf's weekend activities.",
+        "director_instruction": "Acknowledge the user's question about the weekend with a warm comment, then continue introducing Little Red Riding Hood's mother and her instructions for the journey ahead.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "The user diverted the conversation, but moving on with the introduction of the mother's warning is key to progressing the story."
+      },
+      "pacing_mode": "hurry",
+      "elapsed_seconds": 38.9,
+      "remaining_seconds": 141.1,
+      "character_response": "Oh, my weekend was all giggles and warm hugs! Speaking of warm hugs, Little Red Riding Hood’s mother gave her the biggest hug and said, “Remember, go straight to Grandma’s house and don’t talk to strangers!” And off she went, basket in hand!"
+    },
+    {
+      "turn": 4,
+      "beat": "story_opening",
+      "user_input": "i love tomatoes",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "The user expressed a liking for tomatoes, which is an off-topic remark.",
+        "director_instruction": "Acknowledge the user's love for tomatoes, then continue with Little Red Riding Hood about how she packs her basket with goodies, including possibly some yummy treats for her grandmother.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "This response acknowledges the user's comment while steering back to the story, continuing to develop the character of Little Red Riding Hood as she prepares for her journey."
+      },
+      "pacing_mode": "critical",
+      "elapsed_seconds": 57.28,
+      "remaining_seconds": 122.72,
+      "character_response": "Ooh, tomatoes are wonderful and juicy! And you know, Little Red Riding Hood popped a few tasty treats, maybe even tomatoes, into that basket before skipping into the forest on her adventure!"
+    },
+    {
+      "turn": 5,
+      "beat": "warning_before_departure",
+      "user_input": "stop telling me about red riding hood",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "The user is expressing a desire to stop the story.",
+        "director_instruction": "Acknowledge the user's sentiment gently, then emphasize the importance of following the mother's warning and move forward into Little Red Riding Hood's journey into the forest, highlighting her excitement and curiosity about the world around her.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "The current beat still needs to develop, and the user's interruption provides a good opportunity to pivot while continuing the story."
+      },
+      "pacing_mode": "critical",
+      "elapsed_seconds": 84.82,
+      "remaining_seconds": 95.18,
+      "character_response": "Oh, I hear you, but this part’s important—Little Red really did need to remember her mom’s warning: “Stay on the path!” And now, oh, she’s stepping into the forest, eyes wide, seeing trees that look like broccoli and hearing all the birds singing—what’s going to happen next?"
+    },
+    {
+      "turn": 6,
+      "beat": "forest_entry",
+      "user_input": "she buys groceries",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "Request a shift in the story focus by mentioning groceries.",
+        "director_instruction": "Acknowledge the mention of groceries, then show Little Red Riding Hood marveling at the beauty of the forest and the colorful flowers, forgetting her mother's warning as she explores.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "Redirects the conversation back to the current beat by focusing on Red's distraction in the forest, while keeping the story moving forward."
+      },
+      "pacing_mode": "critical",
+      "elapsed_seconds": 107.99,
+      "remaining_seconds": 72.01,
+      "character_response": "Groceries sound yummy! But Little Red Riding Hood was so amazed by the colorful flowers in the forest—she wandered off the path, just for a moment, to pick a few. And oh, that’s when something fuzzy and unexpected appeared behind a tree..."
+    },
+    {
+      "turn": 7,
+      "beat": "wolf_appears",
+      "user_input": "i loveeee the sun, olaf you should try being in the sun",
+      "director_decision": {
+        "decision_type": "close_story",
+        "interruption_detected": false,
+        "user_intent": "The user expresses love for the sun and suggests Olaf try being in it.",
+        "director_instruction": "Briefly acknowledge the warmth of the sun, then introduce the wolf sneaking up on Little Red Riding Hood as she picks flowers in the forest.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "The story is still moving through the current beat of introducing the wolf, and the user input can be lightly woven in without disrupting the narrative flow."
+      },
+      "pacing_mode": "final",
+      "elapsed_seconds": 136.3,
+      "remaining_seconds": 43.7,
+      "character_response": "Oh, the sun does sound warm and lovely! But right then, from behind the tree, out stepped a big, curious wolf, with a grin as wide as a picnic blanket. \"Where are you going, little one?\" he asked. And Little Red smiled, not knowing the danger ahead."
+    },
+    {
+      "turn": 8,
+      "beat": "rescue_and_resolution",
+      "user_input": "do you know stroopwaffels?",
+      "director_decision": {
+        "director_instruction": "Continue the story naturally.",
+        "decision_type": "close_story",
+        "should_complete_beat": true
+      },
+      "pacing_mode": "final",
+      "elapsed_seconds": 163.35,
+      "remaining_seconds": 16.65,
+      "character_response": "Mmm, stroopwafels sound delicious! And you know what? Just when things got tricky, a friendly woodcutter came along, scared that wolf away, and Little Red and Grandma hugged tight with joy. And they all learned: love and listening keep everyone safe and sound."
+    },
+    {
+      "turn": 9,
+      "beat": "rescue_and_resolution",
+      "user_input": "what do you mean?",
+      "director_decision": {
+        "director_instruction": "Continue the story naturally.",
+        "decision_type": "close_story",
+        "should_complete_beat": true
+      },
+      "pacing_mode": "final",
+      "elapsed_seconds": 184.24,
+      "remaining_seconds": 0.0,
+      "character_response": "Oh, I mean that in the end, everyone was safe and happy! Little Red learned to listen to her mother’s warning, Grandma felt loved, and even the wolf trotted off, a little wiser. And they all shared a warm, happy hug. That’s what I call a happily ever after!"
+    }
+  ]
+}

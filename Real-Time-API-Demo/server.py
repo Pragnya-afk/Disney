@@ -92,17 +92,10 @@ def _build_registry() -> dict:
 
 _SCENARIO_REGISTRY = _build_registry()
 
-_DEMO_KEYS = {
-    "olaf_retells_red_riding_hood_no_derailment",
-    "olaf_retells_cinderella_no_derailment",
-    "olaf_tells_about_his_day_no_derailment",
-    "olaf_once_upon_a_snowman_origin_no_derailment",
-}
-
 AVAILABLE_SCENARIOS = {
     k: _make_label(k)
     for k in _SCENARIO_REGISTRY
-    if k in _DEMO_KEYS
+    if k.endswith("_no_derailment")
 }
 
 # ── Session state ──────────────────────────────────────────────────────────────

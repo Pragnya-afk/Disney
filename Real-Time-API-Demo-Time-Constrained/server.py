@@ -6,6 +6,7 @@ import threading
 import glob
 import importlib
 from datetime import datetime
+import numpy as np
 from flask import Flask, send_from_directory, request, jsonify
 from flask_socketio import SocketIO, emit
 from dotenv import load_dotenv
@@ -29,7 +30,6 @@ from time_director_core import get_time_director_decision
 from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
-import numpy as np
 from audio_fx import get_fx_chain
 
 OLAF_AUDIOFX_CONFIG = {
@@ -48,9 +48,9 @@ def apply_fx(pcm: bytes, fx_chain, sample_rate: int = 24_000) -> bytes:
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 app = Flask(__name__, static_folder="public")
-app.config["SECRET_KEY"] = "olaf-tc-secret"
+app.config["SECRET_KEY"] = "olaf-tc-demo-secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
-PORT = int(os.getenv("PORT", 3001))
+PORT = int(os.getenv("PORT", 3002))
 
 DIRECTOR_MODEL = "gpt-4o-mini"
 REALTIME_MODEL = "gpt-realtime"
@@ -64,6 +64,7 @@ olaf_fx = get_fx_chain(OLAF_AUDIOFX_CONFIG)
 _SUITE_FILE = "olaf_derailment_scenario_suite"
 _SKIP_FILES = {_SUITE_FILE, "__init__"}
 _SKIP_PATTERNS = ("medium_derail", "complete_derail")
+
 
 
 def _make_label(key: str) -> str:
@@ -92,7 +93,12 @@ def _build_registry() -> dict:
 
 
 _SCENARIO_REGISTRY = _build_registry()
-AVAILABLE_SCENARIOS = {k: _make_label(k) for k in _SCENARIO_REGISTRY}
+
+AVAILABLE_SCENARIOS = {
+    k: _make_label(k)
+    for k in _SCENARIO_REGISTRY
+    if k.endswith("_no_derailment")
+}
 
 # ── Session state ──────────────────────────────────────────────────────────────
 _state: dict = {
@@ -115,7 +121,7 @@ _last_user_input = ""
 _time_up_injected = False
 
 
-def reset_state(scenario_key: str = "olaf_anna_courtyard", time_limit: float = 5.0):
+def reset_state(scenario_key: str, time_limit: float = 5.0):
     global _character, _transcript, _monitor, _last_user_input, _time_up_injected
     scenario = _SCENARIO_REGISTRY[scenario_key]
     with _lock:
@@ -281,6 +287,7 @@ def handle_director_tool(ws, event: dict):
     suggested_expansion = None
 
     if pacing_mode == "too_fast":
+        # Block beat completion and inject the next unused expansion hint
         decision["should_complete_beat"] = False
         expansions = current_beat.get("expansions", [])
         exp_idx = state_snapshot.get("expansion_index", 0)
@@ -399,7 +406,7 @@ def handle_director_tool(ws, event: dict):
     }))
     ws.send(json.dumps({"type": "response.create"}))
 
-    # Inject story-close message when time's up
+    # Inject story-close message when time's up (once only)
     if _monitor and _monitor.should_stop_for_time() and not _time_up_injected:
         _time_up_injected = True
         if _current_sid:
@@ -456,7 +463,7 @@ def run_openai_ws():
 
         etype = data.get("type", "")
 
-        if etype == "session.created" or etype == "session.updated":
+        if etype == "session.created":
             if _current_sid:
                 socketio.emit("session_started", {
                     "scenario": _state.get("scenario_name", ""),
@@ -523,9 +530,7 @@ def run_openai_ws():
 
     ws = websocket.WebSocketApp(
         f"wss://api.openai.com/v1/realtime?model={REALTIME_MODEL}",
-        header={
-            "Authorization": f"Bearer {api_key}",
-        },
+        header={"Authorization": f"Bearer {api_key}"},
         on_open=on_open,
         on_message=on_message,
         on_error=on_error,
@@ -560,9 +565,10 @@ def on_start_session(data):
     global _current_sid, _openai_ws
     _current_sid = request.sid
 
-    scenario_key = data.get("scenario", "olaf_anna_courtyard")
+    scenario_key = data.get("scenario", "")
     if scenario_key not in _SCENARIO_REGISTRY:
-        scenario_key = "olaf_anna_courtyard"
+        emit("error", {"message": f"Unknown scenario: {scenario_key}"})
+        return
 
     try:
         time_limit = float(data.get("time_limit", 5.0))
@@ -632,7 +638,11 @@ def static_files(path):
 
 @app.route("/scenarios", methods=["GET"])
 def list_scenarios():
-    return jsonify([{"key": k, "label": v} for k, v in AVAILABLE_SCENARIOS.items()])
+    result = []
+    for k, label in AVAILABLE_SCENARIOS.items():
+        sc = _SCENARIO_REGISTRY.get(k, {})
+        result.append({"key": k, "label": label, "beat_count": len(sc.get("beats", []))})
+    return jsonify(result)
 
 
 @app.route("/time_status", methods=["GET"])
@@ -671,9 +681,9 @@ def save_session():
             beat_index = _state["beat_index"]
             completed_beats = list(_state["completed_beats"])
             time_limit = _state.get("time_limit", 5.0)
+            beats = _state["beats"]
         transcript_copy = list(_transcript)
-
-        elapsed = _monitor.state(beat_index, _state["beats"]).get("elapsed_seconds", 0) if _monitor else 0
+        elapsed = _monitor.state(beat_index, beats).get("elapsed_seconds", 0) if _monitor else 0
 
         output = {
             "scenario": scenario_name,
@@ -689,7 +699,7 @@ def save_session():
         output_dir = os.path.join(REAL_TIME_DIR, "outputs")
         os.makedirs(output_dir, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"{timestamp}_{scenario_name}.json"
+        filename = f"{timestamp}_{scenario_name}_tc.json"
         path = os.path.join(output_dir, filename)
 
         with open(path, "w", encoding="utf-8") as f:
@@ -703,6 +713,25 @@ def save_session():
         return jsonify({"saved": False, "error": str(e)})
 
 
+@app.route("/save_questionnaire", methods=["POST"])
+def save_questionnaire():
+    try:
+        data = request.get_json()
+        output_dir = os.path.join(REAL_TIME_DIR, "outputs")
+        os.makedirs(output_dir, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        scenario = data.get("scenario", "unknown")
+        filename = f"{timestamp}_{scenario}_tc_questionnaire.json"
+        path = os.path.join(output_dir, filename)
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print(f"[Questionnaire saved] {path}")
+        return jsonify({"saved": True, "path": path})
+    except Exception as e:
+        print(f"[Questionnaire save error] {e}")
+        return jsonify({"saved": False, "error": str(e)})
+
+
 if __name__ == "__main__":
-    print(f"Time-Constrained Realtime Story Server running at http://localhost:{PORT}")
+    print(f"Time-Constrained Demo Server running at http://localhost:{PORT}")
     socketio.run(app, host="0.0.0.0", port=PORT, debug=False, allow_unsafe_werkzeug=True)

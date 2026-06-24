@@ -33,11 +33,10 @@ Pacing modes:
 
 1. too_fast
 - The story is ahead of schedule.
-- Do NOT complete the current beat unless it is absolutely necessary.
-- Expand the current beat with more detail, emotion, suspense, or interaction.
-- Add small character reactions, sensory details, or tension-building moments.
-- Keep the story moving slightly, but do not rush into later beats.
-- Prefer should_complete_beat=false.
+- MUST set should_complete_beat=false — the beat does not end this turn.
+- If an expansion_hint is provided in the context, build the director_instruction around it.
+- Otherwise expand with emotional depth, sensory detail, character reaction, or gentle user interaction.
+- Do not invent new plot events — deepen what is already happening in the current beat.
 
 2. normal
 - The story is on schedule.
@@ -47,20 +46,26 @@ Pacing modes:
 3. hurry
 - The story is slightly behind schedule.
 - Make the actor finish or nearly finish the current beat.
-- Prefer should_complete_beat=true if the beat has mostly happened.
+- Set should_complete_beat=true.
 
 4. critical
 - The story is far behind schedule.
-- Compress the current beat and upcoming beats.
-- The director_instruction should combine multiple story events if needed.
-- Prefer should_complete_beat=true.
+- MUST set should_complete_beat=true — the beat ends this turn regardless.
+- The director_instruction must cover the current beat AND compress the next 1-2 beats into one response.
 - Move clearly toward the ending.
 
 5. final
-- The story is almost out of time.
-- Force a satisfying ending immediately.
-- Use decision_type="close_story".
-- The director_instruction must tell the actor to resolve the main story now.
+- The story is almost out of time — the next response must be the last.
+- MUST set should_complete_beat=true and decision_type="close_story".
+- The director_instruction must resolve ALL remaining beats in one closing response.
+- Keep the instruction short enough that the character can deliver it in under 30 seconds of speech.
+
+Beat importance:
+- Each beat has an importance level: high, medium, or low.
+- HIGH beats are the story's essential moments — they must be narrated meaningfully, never skipped.
+- MEDIUM beats are important but can be compressed to one or two sentences under time pressure.
+- LOW beats are flavour/transition — they can be merged into an adjacent beat or omitted entirely when time is short.
+- When critical or final, prioritise HIGH beats above all else.
 
 Important:
 - If pacing_mode is too_fast, stretch the story naturally.

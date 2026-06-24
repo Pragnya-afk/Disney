@@ -62,7 +62,7 @@ class TemporalMonitor:
         if actual - expected >= self.too_fast_margin:
             return "too_fast"
 
-        if expected - actual >= self.critical_margin:
+        if expected - actual >= self.critical_margin and beat_index >= 1:
             return "critical"
 
         if expected - actual >= self.hurry_margin:
