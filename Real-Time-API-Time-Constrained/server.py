@@ -29,7 +29,22 @@ from time_director_core import get_time_director_decision
 from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
-from audio_fx import get_fx_chain, apply_fx, OLAF_AUDIOFX_CONFIG
+import numpy as np
+from audio_fx import get_fx_chain
+
+OLAF_AUDIOFX_CONFIG = {
+    "pitch_shift": {"semitones": 2},
+    "reverb": {"room_size": 0.25, "dry_level": 0.85, "wet_level": 0.15},
+}
+
+
+def apply_fx(pcm: bytes, fx_chain, sample_rate: int = 24_000) -> bytes:
+    if fx_chain is None or len(pcm) == 0:
+        return pcm
+    audio = np.frombuffer(pcm, dtype=np.int16).astype(np.float32) / 32768.0
+    processed = fx_chain(audio, sample_rate)
+    clipped = np.clip(processed, -1.0, 1.0)
+    return (clipped * 32767).astype(np.int16).tobytes()
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 app = Flask(__name__, static_folder="public")
@@ -112,13 +127,17 @@ def reset_state(scenario_key: str = "olaf_anna_courtyard", time_limit: float = 5
         _state["story_so_far"] = ""
         _state["turns_in_current_beat"] = 0
         _state["time_limit"] = time_limit
+        _state["expansion_index"] = 0
     _character = OLAF_CHARACTER
     _transcript = []
     _last_user_input = ""
     _time_up_injected = False
+    time_limit_seconds = time_limit * 60
+    final_buffer = max(30.0, min(60.0, time_limit_seconds * 0.30))
     _monitor = TemporalMonitor(
         time_limit_minutes=time_limit,
         total_beats=len(_state["beats"]),
+        final_buffer_seconds=final_buffer,
     )
 
 
@@ -160,7 +179,7 @@ Use the returned director_instruction AND pacing_mode to guide exactly what you 
 - Do not start most turns with "Oh". Do not repeat the same phrases.
 
 ## Pacing Rules (from tool result pacing_mode field)
-- too_fast: story is ahead of schedule — expand the current beat with detail, emotion, suspense.
+- too_fast: story is ahead of schedule — do NOT finish this beat. If expansion_hint is in the tool result, develop that specific angle fully. Otherwise add emotional depth, sensory detail, or character reaction.
 - normal: continue naturally, no rush.
 - hurry: make faster progress, avoid lingering.
 - critical: compress story events, move toward the ending quickly.
@@ -247,14 +266,82 @@ def handle_director_tool(ws, event: dict):
     next_beat = beats[safe_idx + 1]["name"] if safe_idx < len(beats) - 1 else "None"
     pacing_mode = temporal_state.get("pacing_mode", "normal")
 
+    # Build importance-aware coverage instruction before advancing state
+    _importance_order = {"high": 0, "medium": 1, "low": 2}
+
+    def _remaining_beat_lines(from_idx):
+        remaining = beats[from_idx:]
+        sorted_beats = sorted(remaining, key=lambda b: _importance_order.get(b.get("importance", "medium"), 1))
+        return [
+            f"- {b['name']} [{b.get('importance','medium').upper()}]: {b['goal']}"
+            for b in sorted_beats
+        ]
+
+    # ── Pacing enforcement ─────────────────────────────────────────────────────
+    suggested_expansion = None
+
+    if pacing_mode == "too_fast":
+        decision["should_complete_beat"] = False
+        expansions = current_beat.get("expansions", [])
+        exp_idx = state_snapshot.get("expansion_index", 0)
+        if exp_idx < len(expansions):
+            suggested_expansion = expansions[exp_idx]
+            with _lock:
+                _state["expansion_index"] = exp_idx + 1
+            decision["director_instruction"] = (
+                "The story is ahead of schedule — do NOT complete this beat yet. "
+                f"Expand it using this angle: {suggested_expansion}"
+            )
+        else:
+            decision["director_instruction"] = (
+                "The story is ahead of schedule — do NOT complete this beat. "
+                "Enrich it further with emotional depth, sensory detail, or a warm aside."
+            )
+
+    elif pacing_mode == "final":
+        decision["should_complete_beat"] = True
+        decision["decision_type"] = "close_story"
+        lines = _remaining_beat_lines(safe_idx)
+        decision["director_instruction"] = (
+            "FINAL RESPONSE — close the story now in a single response. "
+            "Cover ALL remaining beats below. HIGH-importance beats must be meaningfully narrated. "
+            "MEDIUM can be one sentence. LOW can be skipped if needed.\n"
+            + "\n".join(lines)
+        )
+
+    elif pacing_mode == "hurry":
+        turns_in_beat = state_snapshot.get("turns_in_current_beat", 0)
+        if turns_in_beat >= 2:
+            decision["should_complete_beat"] = True
+            decision["director_instruction"] = (
+                decision.get("director_instruction", "") +
+                " Wrap up this beat now and move on — the story needs to progress."
+            )
+
+    elif pacing_mode == "critical":
+        decision["should_complete_beat"] = True
+        next_high = next(
+            (b for b in beats[safe_idx + 1:] if b.get("importance") == "high"), None
+        )
+        if next_high and "director_instruction" in decision:
+            decision["director_instruction"] += (
+                f" Then immediately bridge to the next key beat: "
+                f"{next_high['name']} — {next_high['goal']}"
+            )
+
     if decision.get("should_complete_beat"):
         with _lock:
             idx = _state["beat_index"]
-            if idx < len(beats):
+            if pacing_mode == "final":
+                for beat in beats[idx:]:
+                    _state["completed_beats"].append(beat["name"])
+                _state["beat_index"] = len(beats)
+            elif idx < len(beats):
                 _state["completed_beats"].append(beats[idx]["name"])
                 _state["beat_index"] += 1
-                _state["turns_in_current_beat"] = 0
-                print(f"[Beat complete → beat {_state['beat_index']}]")
+            _state["turns_in_current_beat"] = 0
+            _state["expansion_index"] = 0
+            print(f"[Beat complete → beat {_state['beat_index']} | pacing: {pacing_mode}]")
 
     state_now = get_state_snapshot()
     ws.send(json.dumps({
@@ -273,6 +360,8 @@ def handle_director_tool(ws, event: dict):
         "next_beat": next_beat,
         "story_so_far_tail": state_snapshot["story_so_far"][-300:],
     }
+    if suggested_expansion:
+        tool_result["expansion_hint"] = suggested_expansion
 
     print(
         f"[Director: {decision.get('decision_type')} | Pacing: {pacing_mode} | "

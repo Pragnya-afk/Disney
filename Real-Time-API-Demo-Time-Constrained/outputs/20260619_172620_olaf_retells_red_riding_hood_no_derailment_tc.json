@@ -1,0 +1,164 @@
+{
+  "scenario": "olaf_retells_red_riding_hood_no_derailment",
+  "story_topic": "Olaf retells the story of Little Red Riding Hood to the user in his warm, playful voice. The user stays engaged with the story and helps it move forward.",
+  "time_limit_minutes": 3.0,
+  "elapsed_seconds": 218.5,
+  "beats_completed": 8,
+  "completed_beats": [
+    "story_opening",
+    "warning_before_departure",
+    "forest_entry",
+    "wolf_appears",
+    "conversation_and_disclosure",
+    "red_approaches_cottage",
+    "wolf_reveal",
+    "rescue_and_resolution"
+  ],
+  "saved_at": "2026-06-19T17:26:20.569733",
+  "turns": [
+    {
+      "turn": 1,
+      "beat": "story_opening",
+      "user_input": "hi olaf",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "Greet Olaf and initiate the story.",
+        "director_instruction": "Olaf should joyfully introduce Little Red Riding Hood, describing her cheerful personality, the special bright red cloak she wears, and the delicious goodies she prepares for her visit to grandmother.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "This addresses the user’s greeting while advancing the story by introducing important elements and characters early on."
+      },
+      "pacing_mode": "normal",
+      "elapsed_seconds": 6.2,
+      "remaining_seconds": 173.8,
+      "character_response": "Hello there! Guess what? There's this delightful little girl named Little Red Riding Hood. She’s got the cheeriest personality and the brightest, fluffiest red cloak that dances in the wind. And oh, she’s packing the yummiest basket of goodies to bring to her dear grandmother."
+    },
+    {
+      "turn": 2,
+      "beat": "story_opening",
+      "user_input": "okay",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "The user acknowledges Olaf's introduction and seems ready for the next part.",
+        "director_instruction": "Continue describing Little Red Riding Hood's cheerful preparations, detailing the delightful goodies in her basket, like sweet pastries and fresh fruits, that she'll share with her grandma.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "This instruction keeps the focus on the story opening while enriching the narrative with specific details about Red's goodies, aligning with the beat's goal."
+      },
+      "pacing_mode": "normal",
+      "elapsed_seconds": 17.68,
+      "remaining_seconds": 162.32,
+      "character_response": "Oh, and her basket! It’s brimming with sweet pastries, juicy berries, and a loaf of fresh bread, all snug under a cloth. She’s practically bouncing along the path, humming a little tune, ready to share all that goodness with her grandma."
+    },
+    {
+      "turn": 3,
+      "beat": "story_opening",
+      "user_input": "okay",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "The user seems ready for more of the story.",
+        "director_instruction": "Describe how Red's mother reminds her to stay on the path and mentions rumors of a wolf in the area, adding a playful twist to Red's curiosity about why the path is so important. Wrap up this beat now and move on — the story needs to progress.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "This instruction advances the story by establishing the mother's warning, which ties into the theme of safety and sets up the next events."
+      },
+      "pacing_mode": "hurry",
+      "elapsed_seconds": 28.85,
+      "remaining_seconds": 151.15,
+      "character_response": "Ooh, and just before she sets off, her mother leans down and says, “Remember, stay on the path and watch out for strangers—there’s talk of a wolf in the woods!” Little Red’s eyes got wide and she said, “But how will I know if I step off the path?” Oh, I can’t wait to see what happens next!"
+    },
+    {
+      "turn": 4,
+      "beat": "warning_before_departure",
+      "user_input": "okay",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "The user seems to be indicating that they are ready to move forward with the story.",
+        "director_instruction": "Olaf wonders why staying on the path is so important, offering a playful guess that maybe it’s because the trees might be ticklish. Then, he moves on to Little Red Riding Hood entering the beautiful, vibrant forest, describing the tall trees and soft dappled sunlight streaming through the leaves.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "The user's input suggests readiness to continue the story, and the next step fits smoothly into the current beat by deepening the narrative without jumping ahead."
+      },
+      "pacing_mode": "normal",
+      "elapsed_seconds": 41.73,
+      "remaining_seconds": 138.27,
+      "character_response": "You know, I wonder if staying on the path is important because the trees might be ticklish—wouldn't that be funny? And as Little Red steps into the forest, the tall trees sway gently, and soft, dappled sunlight dances through the leaves."
+    },
+    {
+      "turn": 5,
+      "beat": "warning_before_departure",
+      "user_input": "okay",
+      "director_decision": {
+        "decision_type": "advance_beat",
+        "interruption_detected": false,
+        "user_intent": "The user seems to be expressing agreement or indifference.",
+        "director_instruction": "Reveal more about Little Red Riding Hood's experience as she moves into the forest, describing the mesmerizing sights and sounds around her while leading into the introduction of the wolf. Wrap up this beat now and move on — the story needs to progress.",
+        "should_progress_current_beat": false,
+        "should_complete_beat": true,
+        "reason": "The current beat has already delivered its main elements, and it's time to transition to the next beat involving the wolf's appearance."
+      },
+      "pacing_mode": "hurry",
+      "elapsed_seconds": 68.16,
+      "remaining_seconds": 111.84,
+      "character_response": "And as Little Red wanders deeper, she hears birds chirping, leaves rustling, and even a brook bubbling nearby. But wait—just behind one of those big trees, a pair of curious eyes is watching her."
+    },
+    {
+      "turn": 6,
+      "beat": "forest_entry",
+      "user_input": "okay",
+      "director_decision": {
+        "decision_type": "hurry",
+        "interruption_detected": false,
+        "user_intent": "The user is likely indicating agreement or readiness to continue the story.",
+        "director_instruction": "Describe the beauty of the forest in more detail, as Little Red Riding Hood looks around and spots a patch of vibrant flowers just off the path, creating a moment of distraction before approaching the wolf.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "The story needs to quickly transition into the next beat by shifting focus to introduce the wolf while maintaining the forest scene's beauty and charm."
+      },
+      "pacing_mode": "hurry",
+      "elapsed_seconds": 76.64,
+      "remaining_seconds": 103.36,
+      "character_response": "Oh, and look at this—Little Red’s eyes just lit up, because she’s spotted a patch of the most vibrant, colorful flowers just a few steps off the path. They’re practically waving hello!"
+    },
+    {
+      "turn": 7,
+      "beat": "forest_entry",
+      "user_input": "okay",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "The user is acknowledging the story.",
+        "director_instruction": "Olaf should describe how the forest smells like adventure and pine needles, while emphasizing Little Red's joy in the beauty around her, and then lead into the moment where the wolf first appears, creating a sense of anticipation. Then immediately bridge to the next key beat: wolf_appears — Olaf introduces the wolf and begins the conversation between Red and the wolf.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "The current beat needs to explore the forest's enchantment and transition smoothly into the introduction of the wolf, aligning with the story's flow."
+      },
+      "pacing_mode": "critical",
+      "elapsed_seconds": 107.87,
+      "remaining_seconds": 72.13,
+      "character_response": "Mmm, the whole forest smells like adventure and pine needles, and Little Red is grinning at all that beauty. But guess what? Out from behind a tree steps a big, furry wolf, and with a friendly voice he says, \"Hello, little one—where might you be going on such a fine day?\""
+    },
+    {
+      "turn": 8,
+      "beat": "wolf_appears",
+      "user_input": "ok",
+      "director_decision": {
+        "decision_type": "close_story",
+        "interruption_detected": false,
+        "user_intent": "The user seems to be indicating they are ready for the next part of the story.",
+        "director_instruction": "FINAL RESPONSE — close the story now in a single response. Cover ALL remaining beats below. HIGH-importance beats must be meaningfully narrated. MEDIUM can be one sentence. LOW can be skipped if needed.\n- wolf_appears [HIGH]: Olaf introduces the wolf and begins the conversation between Red and the wolf.\n- wolf_reveal [HIGH]: Olaf presents the disguised wolf scene and Red's realization of danger — the iconic 'what big eyes you have' exchange.\n- rescue_and_resolution [HIGH]: Olaf resolves the conflict, restores safety, and closes with a warm lesson.\n- conversation_and_disclosure [MEDIUM]: Red reveals enough information for the wolf to form his plan.\n- red_approaches_cottage [MEDIUM]: Olaf brings Red to grandmother's cottage and creates unease.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "Continuing the introduction of the wolf aligns perfectly with the current beat, maintaining tension and introducing the character's demeanor."
+      },
+      "pacing_mode": "final",
+      "elapsed_seconds": 205.99,
+      "remaining_seconds": 0.0,
+      "character_response": ""
+    }
+  ]
+}

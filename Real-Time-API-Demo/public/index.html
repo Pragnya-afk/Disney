@@ -115,6 +115,11 @@
     .timer { font-size: 13px; font-weight: 600; color: #3a5a6a; font-variant-numeric: tabular-nums; background: rgba(220,240,255,0.5); padding: 4px 10px; border-radius: 8px; border: 0.5px solid rgba(150,200,230,0.4); flex-shrink: 0; }
     .stop-btn { background: rgba(220,60,50,0.08); border: 1px solid rgba(220,60,50,0.25); color: #c03030; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; flex-shrink: 0; }
     .stop-btn:hover { background: rgba(220,60,50,0.15); }
+    .cancel-btn { background: rgba(100,100,100,0.07); border: 1px solid rgba(120,140,160,0.3); color: #5a7a8a; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; flex-shrink: 0; }
+    .cancel-btn:hover { background: rgba(100,100,100,0.14); color: #3a5a6a; }
+    .mute-btn { width: 38px; height: 38px; border-radius: 50%; border: 1.5px solid rgba(150,200,230,0.6); background: rgba(255,255,255,0.9); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 17px; transition: all 0.15s; flex-shrink: 0; }
+    .mute-btn:hover { background: rgba(220,240,255,0.8); border-color: #1a7ab5; }
+    .mute-btn.muted { background: rgba(80,80,80,0.08); border-color: rgba(80,80,80,0.35); }
 
     .chat-log { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-height: 340px; max-height: 400px; }
 
@@ -269,6 +274,7 @@
         <div class="beat-tracker" id="beat-tracker"></div>
       </div>
       <div class="timer" id="timer">0:00</div>
+      <button class="cancel-btn" id="cancel-btn">Cancel ✕</button>
       <button class="stop-btn" id="stop-btn">Stop ■</button>
     </div>
 
@@ -280,6 +286,7 @@
     </div>
 
     <div class="input-area">
+      <button class="mute-btn" id="mute-btn" title="Toggle audio">🔊</button>
       <button class="mic-btn" id="mic-btn" title="Click to speak">🎤</button>
       <input type="text" id="user-input" placeholder="Say something to Olaf — try going off-topic!" autocomplete="off" />
       <button class="send-btn" id="send-btn">Send</button>
@@ -568,8 +575,18 @@ function startTimer() {
 // ── Audio playback ─────────────────────────────────────────────────────────────
 const _audioQueue = [];
 let _isPlaying = false;
+let isMuted = false;
+
+function toggleMute() {
+  isMuted = !isMuted;
+  const btn = document.getElementById('mute-btn');
+  btn.textContent = isMuted ? '🔇' : '🔊';
+  btn.classList.toggle('muted', isMuted);
+  if (isMuted) _audioQueue.length = 0;
+}
 
 function playAudioChunk(b64) {
+  if (isMuted) return;
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
   const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
   const pcm = new Int16Array(bytes.buffer);
@@ -652,11 +669,24 @@ function sendTextMessage() {
 function stopSession() {
   clearInterval(timerInterval);
   stopMicStreaming();
+  _audioQueue.length = 0;
+  setBusy(false);
   fetch(`${SERVER_URL}/save_session`, { method: 'POST' })
     .then(r => r.json())
     .then(d => console.log('[Session saved]', d))
     .catch(e => console.warn('[Save failed]', e));
   showQuestionnaire();
+}
+
+function cancelSession() {
+  clearInterval(timerInterval);
+  stopMicStreaming();
+  _audioQueue.length = 0;
+  setBusy(false);
+  isMuted = false;
+  document.getElementById('mute-btn').textContent = '🔊';
+  document.getElementById('mute-btn').classList.remove('muted');
+  restartDemo();
 }
 
 function restartDemo() {
@@ -809,6 +839,8 @@ function submitFeedback() {
 // ── Event wiring ───────────────────────────────────────────────────────────────
 document.getElementById('start-btn').onclick = startSession;
 document.getElementById('stop-btn').onclick = stopSession;
+document.getElementById('cancel-btn').onclick = cancelSession;
+document.getElementById('mute-btn').onclick = toggleMute;
 document.getElementById('send-btn').onclick = sendTextMessage;
 document.getElementById('user-input').addEventListener('keydown', e => { if (e.key === 'Enter') sendTextMessage(); });
 document.getElementById('mic-btn').onclick = () => { if (isListening) stopMicStreaming(); else startMicStreaming(); };

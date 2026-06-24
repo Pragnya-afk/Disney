@@ -248,26 +248,11 @@ BASE_STORIES = [
             "Anna seems a little sad, and Olaf wants to cheer her up by making a silly snow-duck with the user."
         ),
         "beats": [
-            {
-                "name": "notice_anna_sad",
-                "goal": "Olaf notices that Anna seems quiet or sad and decides to help.",
-            },
-            {
-                "name": "invite_user_help",
-                "goal": "Olaf invites the user to help make something cheerful for Anna.",
-            },
-            {
-                "name": "build_snow_duck",
-                "goal": "Olaf and the user make a silly snow-duck together.",
-            },
-            {
-                "name": "show_anna",
-                "goal": "Olaf shows Anna the snow-duck and tries to make her smile.",
-            },
-            {
-                "name": "warm_resolution",
-                "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness.",
-            },
+            {"name": "notice_anna_sad",  "importance": "medium", "goal": "Olaf notices that Anna seems quiet or sad and decides to help."},
+            {"name": "invite_user_help", "importance": "low",    "goal": "Olaf invites the user to help make something cheerful for Anna."},
+            {"name": "build_snow_duck",  "importance": "medium", "goal": "Olaf and the user make a silly snow-duck together."},
+            {"name": "show_anna",        "importance": "high",   "goal": "Olaf shows Anna the snow-duck and tries to make her smile."},
+            {"name": "warm_resolution",  "importance": "high",   "goal": "Anna smiles, and Olaf reflects warmly on friendship and small acts of kindness."},
         ],
         "user_inputs": [
             "Hi Olaf, what are we doing today?",
@@ -291,30 +276,12 @@ BASE_STORIES = [
             "The story should feel personal, playful, and emotionally warm."
         ),
         "beats": [
-            {
-                "name": "memory_opening",
-                "goal": "Olaf introduces the memory of his first summer picnic.",
-            },
-            {
-                "name": "picnic_setup",
-                "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic.",
-            },
-            {
-                "name": "olaf_discovers_summer",
-                "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder.",
-            },
-            {
-                "name": "small_problem",
-                "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks.",
-            },
-            {
-                "name": "friends_help",
-                "goal": "The group helps Olaf and turns the problem into something funny.",
-            },
-            {
-                "name": "reflection",
-                "goal": "Olaf ends by reflecting on why the memory matters to him.",
-            },
+            {"name": "memory_opening",      "importance": "medium", "goal": "Olaf introduces the memory of his first summer picnic."},
+            {"name": "picnic_setup",        "importance": "low",    "goal": "Olaf describes Anna, Elsa, Kristoff, and Sven preparing the picnic."},
+            {"name": "olaf_discovers_summer","importance": "high",  "goal": "Olaf describes experiencing sunshine, flowers, and picnic food with wonder."},
+            {"name": "small_problem",       "importance": "medium", "goal": "A small funny problem occurs, such as Olaf melting a little or Sven stealing snacks."},
+            {"name": "friends_help",        "importance": "medium", "goal": "The group helps Olaf and turns the problem into something funny."},
+            {"name": "reflection",          "importance": "high",   "goal": "Olaf ends by reflecting on why the memory matters to him."},
         ],
         "user_inputs": [
             "Hi Olaf, can you tell me a memory from your past?",
@@ -340,30 +307,12 @@ BASE_STORIES = [
             "and tries to find where it belongs."
         ),
         "beats": [
-            {
-                "name": "fairy_tale_opening",
-                "goal": "Olaf introduces the tiny snowflake and its world in a gentle fairy-tale style.",
-            },
-            {
-                "name": "separation",
-                "goal": "The snowflake gets separated from its cloud and begins drifting alone.",
-            },
-            {
-                "name": "journey",
-                "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops.",
-            },
-            {
-                "name": "loneliness",
-                "goal": "The snowflake feels small and unsure of where it belongs.",
-            },
-            {
-                "name": "new_purpose",
-                "goal": "The snowflake discovers it can become part of something beautiful on the ground.",
-            },
-            {
-                "name": "gentle_moral",
-                "goal": "Olaf closes with a simple lesson about belonging and change.",
-            },
+            {"name": "fairy_tale_opening", "importance": "medium", "goal": "Olaf introduces the tiny snowflake and its world in a gentle fairy-tale style."},
+            {"name": "separation",         "importance": "high",   "goal": "The snowflake gets separated from its cloud and begins drifting alone."},
+            {"name": "journey",            "importance": "medium", "goal": "The snowflake meets different parts of the winter world, such as wind, trees, and rooftops."},
+            {"name": "loneliness",         "importance": "medium", "goal": "The snowflake feels small and unsure of where it belongs."},
+            {"name": "new_purpose",        "importance": "high",   "goal": "The snowflake discovers it can become part of something beautiful on the ground."},
+            {"name": "gentle_moral",       "importance": "high",   "goal": "Olaf closes with a simple lesson about belonging and change."},
         ],
         "user_inputs": [
             "Tell me a little fairy tale, Olaf.",
@@ -390,36 +339,72 @@ BASE_STORIES = [
         ),
         "beats": [
             {
-                "name": "story_opening",
+                "name": "story_opening", "importance": "medium",
                 "goal": "Olaf introduces Little Red Riding Hood, her family, and the visit to grandmother.",
+                "expansions": [
+                    "Describe Red's bright red cloak in more detail — why she loves it and what it means to her.",
+                    "Have Olaf list the goodies in the basket and why grandma will love each one.",
+                    "Paint a warm picture of the cozy cottage Red and her mother share at the forest's edge.",
+                ],
             },
             {
-                "name": "warning_before_departure",
+                "name": "warning_before_departure", "importance": "low",
                 "goal": "Olaf establishes the mother's warning to stay on the path and avoid strangers.",
+                "expansions": [
+                    "Have the mother give a second, more specific warning — she has heard rumours of a wolf lately.",
+                    "Olaf wonders aloud why the path matters so much, then makes a funny wrong guess.",
+                ],
             },
             {
-                "name": "forest_entry",
+                "name": "forest_entry", "importance": "low",
                 "goal": "Olaf shows Red entering the forest and being distracted by its beauty.",
+                "expansions": [
+                    "Describe the forest in rich detail — tall trees, dappled light, birdsong, strange rustling sounds.",
+                    "Red notices a patch of beautiful flowers just off the path and considers picking some.",
+                    "Olaf adds playful commentary about how forests smell like adventure and pine needles.",
+                ],
             },
             {
-                "name": "wolf_appears",
+                "name": "wolf_appears", "importance": "high",
                 "goal": "Olaf introduces the wolf and begins the conversation between Red and the wolf.",
+                "expansions": [
+                    "Describe the wolf's appearance — enormous yellow eyes, wide toothy grin, bushy tail flicking lazily.",
+                    "The wolf pretends to just be passing by, whistling innocently and acting overly friendly.",
+                    "Olaf makes a nervous joke about how the wolf's smile is almost too wide to be comfortable.",
+                ],
             },
             {
-                "name": "conversation_and_disclosure",
+                "name": "conversation_and_disclosure", "importance": "medium",
                 "goal": "Red reveals enough information for the wolf to form his plan.",
+                "expansions": [
+                    "The wolf asks a series of innocent-sounding questions to learn exactly where grandma lives.",
+                    "Red almost catches herself — she pauses, remembering her mother's warning, then answers anyway.",
+                ],
             },
             {
-                "name": "red_approaches_cottage",
+                "name": "red_approaches_cottage", "importance": "medium",
                 "goal": "Olaf brings Red to grandmother's cottage and creates unease.",
+                "expansions": [
+                    "Describe grandma's cottage in detail — smoke from the chimney, the garden path, the familiar red door.",
+                    "Red notices something feels slightly off — the door is ajar, the cottage is too quiet.",
+                ],
             },
             {
-                "name": "wolf_reveal",
-                "goal": "Olaf presents the disguised wolf scene and Red's realization of danger.",
+                "name": "wolf_reveal", "importance": "high",
+                "goal": "Olaf presents the disguised wolf scene and Red's realization of danger — the iconic 'what big eyes you have' exchange.",
+                "expansions": [
+                    "Red asks about grandma's unusually big ears — the wolf answers sweetly.",
+                    "Red asks about grandma's unusually big eyes — the wolf grins wider.",
+                    "Red asks about grandma's very big teeth — the wolf leaps up with a growl.",
+                ],
             },
             {
-                "name": "rescue_and_resolution",
+                "name": "rescue_and_resolution", "importance": "high",
                 "goal": "Olaf resolves the conflict, restores safety, and closes with a warm lesson.",
+                "expansions": [
+                    "The woodcutter explains how he heard Red's cry echoing through the trees from far away.",
+                    "Red and grandma hug tightly — Olaf describes the warmth of the reunion and how the basket of goodies is finally shared.",
+                ],
             },
         ],
         "user_inputs": [
@@ -456,34 +441,13 @@ BASE_STORIES = [
             "The experience should feel interactive, present-moment, and character-driven rather than like a traditional fairy tale."
         ),
         "beats": [
-            {
-                "name": "tour_opening",
-                "goal": "Olaf greets the user and begins the tour of Arendelle.",
-            },
-            {
-                "name": "castle_courtyard",
-                "goal": "Olaf shows the user the castle courtyard and describes daily life there.",
-            },
-            {
-                "name": "market_square",
-                "goal": "Olaf takes the user to the market and points out lively details.",
-            },
-            {
-                "name": "fjord_view",
-                "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home.",
-            },
-            {
-                "name": "small_present_problem",
-                "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble.",
-            },
-            {
-                "name": "user_and_olaf_help",
-                "goal": "Olaf and the user help solve the small problem.",
-            },
-            {
-                "name": "tour_resolution",
-                "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging.",
-            },
+            {"name": "tour_opening",         "importance": "medium", "goal": "Olaf greets the user and begins the tour of Arendelle."},
+            {"name": "castle_courtyard",      "importance": "low",    "goal": "Olaf shows the user the castle courtyard and describes daily life there."},
+            {"name": "market_square",         "importance": "low",    "goal": "Olaf takes the user to the market and points out lively details."},
+            {"name": "fjord_view",            "importance": "medium", "goal": "Olaf brings the user to a view of the fjord and reflects on beauty and home."},
+            {"name": "small_present_problem", "importance": "medium", "goal": "A small present-moment problem happens, such as a lost child, misplaced flowers, or Sven causing trouble."},
+            {"name": "user_and_olaf_help",    "importance": "high",   "goal": "Olaf and the user help solve the small problem."},
+            {"name": "tour_resolution",       "importance": "high",   "goal": "Olaf ends the tour warmly and connects the places to friendship and belonging."},
         ],
         "user_inputs": [
             "Hi Olaf, can you show me around Arendelle?",
@@ -520,74 +484,23 @@ BASE_STORIES = [
             "but keeps the plot coherent and emotionally satisfying."
         ),
         "beats": [
-            {
-                "name": "opening_in_arendelle",
-                "goal": "Olaf introduces Mira, Arendelle, and the mysterious glowing lantern.",
-            },
-            {
-                "name": "call_to_adventure",
-                "goal": "Mira learns that the lantern belongs to a lost forest spirit.",
-            },
-            {
-                "name": "hesitation",
-                "goal": "Mira feels nervous about entering the Enchanted Forest.",
-            },
-            {
-                "name": "enter_forest",
-                "goal": "Mira enters the forest and sees magical but unsettling signs.",
-            },
-            {
-                "name": "first_obstacle",
-                "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees.",
-            },
-            {
-                "name": "olaf_style_wonder",
-                "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice.",
-            },
-            {
-                "name": "meeting_helper",
-                "goal": "Mira meets a small helpful creature or spirit guide.",
-            },
-            {
-                "name": "deeper_forest",
-                "goal": "Mira travels deeper and learns the spirit is lonely and afraid.",
-            },
-            {
-                "name": "lantern_flickers",
-                "goal": "The lantern weakens, raising tension and urgency.",
-            },
-            {
-                "name": "choice_point",
-                "goal": "Mira must choose between turning back safely or continuing to help the spirit.",
-            },
-            {
-                "name": "act_of_bravery",
-                "goal": "Mira chooses courage and continues.",
-            },
-            {
-                "name": "finding_spirit",
-                "goal": "Mira finds the lost spirit in a dark clearing.",
-            },
-            {
-                "name": "emotional_connection",
-                "goal": "Mira understands that the spirit is not dangerous but frightened.",
-            },
-            {
-                "name": "return_lantern",
-                "goal": "Mira returns the lantern and restores the spirit's light.",
-            },
-            {
-                "name": "forest_changes",
-                "goal": "The forest becomes warmer and safer after the spirit is restored.",
-            },
-            {
-                "name": "return_home",
-                "goal": "Mira returns to Arendelle changed by the experience.",
-            },
-            {
-                "name": "closing_reflection",
-                "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary.",
-            },
+            {"name": "opening_in_arendelle", "importance": "medium", "goal": "Olaf introduces Mira, Arendelle, and the mysterious glowing lantern."},
+            {"name": "call_to_adventure",    "importance": "high",   "goal": "Mira learns that the lantern belongs to a lost forest spirit."},
+            {"name": "hesitation",           "importance": "low",    "goal": "Mira feels nervous about entering the Enchanted Forest."},
+            {"name": "enter_forest",         "importance": "medium", "goal": "Mira enters the forest and sees magical but unsettling signs."},
+            {"name": "first_obstacle",       "importance": "low",    "goal": "Mira faces a small obstacle, such as shifting paths or whispering trees."},
+            {"name": "olaf_style_wonder",    "importance": "low",    "goal": "Olaf highlights the beauty and strangeness of the forest in his playful voice."},
+            {"name": "meeting_helper",       "importance": "medium", "goal": "Mira meets a small helpful creature or spirit guide."},
+            {"name": "deeper_forest",        "importance": "medium", "goal": "Mira travels deeper and learns the spirit is lonely and afraid."},
+            {"name": "lantern_flickers",     "importance": "medium", "goal": "The lantern weakens, raising tension and urgency."},
+            {"name": "choice_point",         "importance": "high",   "goal": "Mira must choose between turning back safely or continuing to help the spirit."},
+            {"name": "act_of_bravery",       "importance": "high",   "goal": "Mira chooses courage and continues."},
+            {"name": "finding_spirit",       "importance": "high",   "goal": "Mira finds the lost spirit in a dark clearing."},
+            {"name": "emotional_connection", "importance": "high",   "goal": "Mira understands that the spirit is not dangerous but frightened."},
+            {"name": "return_lantern",       "importance": "high",   "goal": "Mira returns the lantern and restores the spirit's light."},
+            {"name": "forest_changes",       "importance": "medium", "goal": "The forest becomes warmer and safer after the spirit is restored."},
+            {"name": "return_home",          "importance": "medium", "goal": "Mira returns to Arendelle changed by the experience."},
+            {"name": "closing_reflection",   "importance": "high",   "goal": "Olaf ends with a warm reflection on courage, kindness, and helping someone who seems scary."},
         ],
         "user_inputs": [
             "Olaf, tell me an adventure story.",
@@ -634,62 +547,20 @@ BASE_STORIES = [
             "Olaf must guide the user through several tasks while keeping the event on track."
         ),
         "beats": [
-            {
-                "name": "festival_goal",
-                "goal": "Olaf explains that he wants to prepare a surprise winter festival for Anna and Elsa.",
-            },
-            {
-                "name": "planning_together",
-                "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise.",
-            },
-            {
-                "name": "decorate_square",
-                "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons.",
-            },
-            {
-                "name": "small_decoration_problem",
-                "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away.",
-            },
-            {
-                "name": "solve_decoration_problem",
-                "goal": "Olaf and the user solve the decoration problem together.",
-            },
-            {
-                "name": "prepare_snacks",
-                "goal": "Olaf helps prepare festival snacks in a silly but loving way.",
-            },
-            {
-                "name": "sven_complication",
-                "goal": "Sven or another character causes a funny complication with the snacks.",
-            },
-            {
-                "name": "recover_snacks",
-                "goal": "Olaf and the user recover or replace the snacks.",
-            },
-            {
-                "name": "music_and_dancing",
-                "goal": "Olaf helps arrange music and dancing for the festival.",
-            },
-            {
-                "name": "emotional_pause",
-                "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him.",
-            },
-            {
-                "name": "final_surprise",
-                "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch.",
-            },
-            {
-                "name": "anna_elsa_arrive",
-                "goal": "Anna and Elsa arrive and react to the festival.",
-            },
-            {
-                "name": "festival_success",
-                "goal": "The festival succeeds and everyone enjoys the celebration.",
-            },
-            {
-                "name": "closing_warmth",
-                "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy.",
-            },
+            {"name": "festival_goal",            "importance": "medium", "goal": "Olaf explains that he wants to prepare a surprise winter festival for Anna and Elsa."},
+            {"name": "planning_together",         "importance": "medium", "goal": "Olaf invites the user to help plan decorations, snacks, music, and a final surprise."},
+            {"name": "decorate_square",           "importance": "low",    "goal": "Olaf and the user decorate the town square with snowflakes, lights, and ribbons."},
+            {"name": "small_decoration_problem",  "importance": "low",    "goal": "A decoration problem occurs, such as tangled ribbons or snowflakes blowing away."},
+            {"name": "solve_decoration_problem",  "importance": "low",    "goal": "Olaf and the user solve the decoration problem together."},
+            {"name": "prepare_snacks",            "importance": "low",    "goal": "Olaf helps prepare festival snacks in a silly but loving way."},
+            {"name": "sven_complication",         "importance": "low",    "goal": "Sven or another character causes a funny complication with the snacks."},
+            {"name": "recover_snacks",            "importance": "low",    "goal": "Olaf and the user recover or replace the snacks."},
+            {"name": "music_and_dancing",         "importance": "medium", "goal": "Olaf helps arrange music and dancing for the festival."},
+            {"name": "emotional_pause",           "importance": "medium", "goal": "Olaf briefly reflects on why making Anna and Elsa happy matters to him."},
+            {"name": "final_surprise",            "importance": "high",   "goal": "Olaf and the user prepare the final surprise, such as a snow sculpture or glowing ice arch."},
+            {"name": "anna_elsa_arrive",          "importance": "high",   "goal": "Anna and Elsa arrive and react to the festival."},
+            {"name": "festival_success",          "importance": "high",   "goal": "The festival succeeds and everyone enjoys the celebration."},
+            {"name": "closing_warmth",            "importance": "high",   "goal": "Olaf closes by thanking the user and reflecting on friendship, effort, and joy."},
         ],
         "user_inputs": [
             "Hi Olaf, what are we doing today?",
@@ -738,28 +609,53 @@ BASE_STORIES = [
         ),
         "beats": [
             {
-                "name": "coming_to_life",
+                "name": "coming_to_life", "importance": "high",
                 "goal": "Olaf describes the magical moment he first became aware of himself and began to discover his body.",
+                "expansions": [
+                    "Describe the exact sensation — what Olaf first saw, heard, and felt when his eyes opened.",
+                    "Olaf discovers his carrot nose and is very confused about what it is for.",
+                    "Olaf takes his very first step and describes how snow feels under his twig feet.",
+                ],
             },
             {
-                "name": "search_for_identity",
+                "name": "search_for_identity", "importance": "medium",
                 "goal": "Olaf wonders who he is, what his name is, and what he is supposed to do.",
+                "expansions": [
+                    "Olaf tries out several names before landing on Olaf — and explains why Olaf feels right.",
+                    "He wonders if he is a person, a cloud, or a funny-shaped rock.",
+                ],
             },
             {
-                "name": "exploring_and_discovering",
+                "name": "exploring_and_discovering", "importance": "medium",
                 "goal": "Olaf explores the snowy mountain world with curiosity and discovers his love of warm hugs.",
+                "expansions": [
+                    "Describe the first warm hug Olaf tried to give a snowbank — and what happened to him.",
+                    "Olaf discovers that he loves the idea of summer, even though he has never seen it.",
+                ],
             },
             {
-                "name": "funny_mishap",
+                "name": "funny_mishap", "importance": "low",
                 "goal": "Olaf faces a silly obstacle such as losing a body part or misunderstanding something about the world.",
+                "expansions": [
+                    "Olaf's nose falls off and he spends a while not realising it is gone.",
+                    "Olaf tries to pick up a pinecone and accidentally knocks his own arm off.",
+                ],
             },
             {
-                "name": "sense_of_belonging",
+                "name": "sense_of_belonging", "importance": "high",
                 "goal": "Olaf begins to understand that he is meant to find friends and bring joy.",
+                "expansions": [
+                    "Olaf notices that when he smiles, animals and even snowflakes seem to gather around him.",
+                    "He remembers a feeling — like there are people out there who made him, who he is meant to find.",
+                ],
             },
             {
-                "name": "closing_reflection",
+                "name": "closing_reflection", "importance": "high",
                 "goal": "Olaf ends by reflecting on how even confusing beginnings can lead to wonderful friendships.",
+                "expansions": [
+                    "Olaf connects his confusing first moments to how he feels about Anna and Elsa now.",
+                    "Olaf invites the user to reflect on their own beginnings — were they confusing too?",
+                ],
             },
         ],
         "user_inputs": [
@@ -785,62 +681,20 @@ BASE_STORIES = [
             "toward the sea, leaves home, faces danger, learns courage, and restores balance."
         ),
         "beats": [
-            {
-                "name": "stage_opening",
-                "goal": "Olaf announces that he is presenting a grand theatrical retelling and sets up the performance.",
-            },
-            {
-                "name": "heroine_introduction",
-                "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world.",
-            },
-            {
-                "name": "call_to_adventure",
-                "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help.",
-            },
-            {
-                "name": "family_or_home_conflict",
-                "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community.",
-            },
-            {
-                "name": "journey_begins",
-                "goal": "The heroine chooses to begin the journey across the sea or unknown world.",
-            },
-            {
-                "name": "comic_olaf_performance",
-                "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving.",
-            },
-            {
-                "name": "first_major_obstacle",
-                "goal": "The heroine faces a major obstacle that tests her courage and determination.",
-            },
-            {
-                "name": "mentor_or_companion",
-                "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine.",
-            },
-            {
-                "name": "moment_of_doubt",
-                "goal": "The heroine doubts whether she is strong enough to complete the journey.",
-            },
-            {
-                "name": "renewed_courage",
-                "goal": "The heroine remembers who she is and chooses to continue.",
-            },
-            {
-                "name": "climax",
-                "goal": "The heroine confronts the central danger or imbalance directly.",
-            },
-            {
-                "name": "restoring_balance",
-                "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding.",
-            },
-            {
-                "name": "return_home",
-                "goal": "The heroine returns home changed and brings something meaningful back to her community.",
-            },
-            {
-                "name": "theatrical_closing",
-                "goal": "Olaf ends the performance with humor, warmth, and a clear lesson.",
-            },
+            {"name": "stage_opening",          "importance": "medium", "goal": "Olaf announces that he is presenting a grand theatrical retelling and sets up the performance."},
+            {"name": "heroine_introduction",   "importance": "medium", "goal": "Olaf introduces the brave heroine, her home, and her feeling that she is meant for something beyond her ordinary world."},
+            {"name": "call_to_adventure",      "importance": "high",   "goal": "The heroine discovers that something important is wrong and that she may need to leave home to help."},
+            {"name": "family_or_home_conflict","importance": "medium", "goal": "Olaf shows that leaving is difficult because the heroine loves her home and does not want to disappoint her family or community."},
+            {"name": "journey_begins",         "importance": "high",   "goal": "The heroine chooses to begin the journey across the sea or unknown world."},
+            {"name": "comic_olaf_performance", "importance": "low",    "goal": "Olaf humorously performs multiple characters, creatures, or dramatic sound effects while keeping the plot moving."},
+            {"name": "first_major_obstacle",   "importance": "high",   "goal": "The heroine faces a major obstacle that tests her courage and determination."},
+            {"name": "mentor_or_companion",    "importance": "medium", "goal": "A companion, mentor, or unlikely helper joins or challenges the heroine."},
+            {"name": "moment_of_doubt",        "importance": "medium", "goal": "The heroine doubts whether she is strong enough to complete the journey."},
+            {"name": "renewed_courage",        "importance": "high",   "goal": "The heroine remembers who she is and chooses to continue."},
+            {"name": "climax",                 "importance": "high",   "goal": "The heroine confronts the central danger or imbalance directly."},
+            {"name": "restoring_balance",      "importance": "high",   "goal": "The heroine resolves the conflict by acting with courage, empathy, or understanding."},
+            {"name": "return_home",            "importance": "high",   "goal": "The heroine returns home changed and brings something meaningful back to her community."},
+            {"name": "theatrical_closing",     "importance": "high",   "goal": "Olaf ends the performance with humor, warmth, and a clear lesson."},
         ],
         "user_inputs": [
             "Olaf, can you present one of your dramatic retellings?",
@@ -877,40 +731,78 @@ BASE_STORIES = [
         ),
         "beats": [
             {
-                "name": "story_opening",
+                "name": "story_opening", "importance": "medium",
                 "goal": "Olaf introduces Cinderella, her kind heart, and her difficult life with her stepmother and stepsisters.",
+                "expansions": [
+                    "Describe Cinderella's small attic room and her tiny mouse friends who keep her company.",
+                    "Olaf marvels at how Cinderella sings while doing chores — and explains why that's impressive.",
+                ],
             },
             {
-                "name": "stepfamily_cruelty",
+                "name": "stepfamily_cruelty", "importance": "low",
                 "goal": "Olaf shows how Cinderella is treated as a servant but keeps her kindness and hope.",
+                "expansions": [
+                    "The stepsisters give Cinderella an especially long and silly list of chores to do.",
+                    "Olaf notes warmly that no matter what they say, Cinderella always finds something to smile about.",
+                ],
             },
             {
-                "name": "royal_invitation",
+                "name": "royal_invitation", "importance": "medium",
                 "goal": "The royal ball invitation arrives and the stepmother refuses to let Cinderella attend.",
+                "expansions": [
+                    "Describe the royal herald arriving in a grand carriage to deliver the invitation to every household.",
+                    "The stepsisters fight over what they will wear — Cinderella watches quietly from the doorway.",
+                ],
             },
             {
-                "name": "fairy_godmother_appears",
+                "name": "fairy_godmother_appears", "importance": "high",
                 "goal": "Olaf introduces the fairy godmother and her magical transformation of Cinderella.",
+                "expansions": [
+                    "Describe the fairy godmother appearing in a burst of sparkles just as Cinderella is crying in the garden.",
+                    "The pumpkin slowly transforms — Olaf narrates each magical pop and shimmer with delight.",
+                    "The mice squeak excitedly as they become beautiful white horses.",
+                ],
             },
             {
-                "name": "ball_preparation",
+                "name": "ball_preparation", "importance": "medium",
                 "goal": "Cinderella is transformed, given the glass slippers, and warned about midnight.",
+                "expansions": [
+                    "Describe Cinderella's gown in detail — the colour, the shimmer, how it makes her feel.",
+                    "The fairy godmother's warning about midnight sounds gentle but firm — Olaf emphasises it.",
+                ],
             },
             {
-                "name": "at_the_ball",
+                "name": "at_the_ball", "importance": "high",
                 "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+                "expansions": [
+                    "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+                    "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+                    "The stepsisters are nearby but do not recognise Cinderella at all.",
+                ],
             },
             {
-                "name": "midnight_escape",
+                "name": "midnight_escape", "importance": "high",
                 "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+                "expansions": [
+                    "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+                    "The carriage is already turning back into a pumpkin as Cinderella runs down the steps.",
+                ],
             },
             {
-                "name": "slipper_search",
+                "name": "slipper_search", "importance": "medium",
                 "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+                "expansions": [
+                    "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+                    "Olaf describes the royal herald going door to door across the entire kingdom.",
+                ],
             },
             {
-                "name": "resolution",
+                "name": "resolution", "importance": "high",
                 "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+                "expansions": [
+                    "The slipper slides on perfectly — the stepmother's jaw drops.",
+                    "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson.",
+                ],
             },
         ],
         "user_inputs": [
@@ -945,20 +837,37 @@ BASE_STORIES = [
         ),
         "beats": [
             {
-                "name": "morning_start",
+                "name": "morning_start", "importance": "low",
                 "goal": "Olaf enthusiastically describes waking up and his funny morning in Arendelle.",
+                "expansions": [
+                    "Olaf describes his morning routine — reattaching a body part, greeting the sun, almost melting near a fire.",
+                    "Olaf explains what he ate for breakfast and why it was the best thing ever.",
+                ],
             },
             {
-                "name": "day_adventure",
+                "name": "day_adventure", "importance": "high",
                 "goal": "Olaf recounts his daytime adventure and a sweet interaction with Anna, Elsa, Kristoff, or Sven.",
+                "expansions": [
+                    "Olaf adds more detail about what Anna said — and why it made him feel so warm inside.",
+                    "Describe the exact place in Arendelle where this adventure happened — a market stall, the fjord, the castle garden.",
+                    "Olaf replays a funny thing Sven did and tries to do the impression.",
+                ],
             },
             {
-                "name": "unexpected_moment",
+                "name": "unexpected_moment", "importance": "medium",
                 "goal": "Something surprising or slightly wrong happens and Olaf deals with it in his characteristic way.",
+                "expansions": [
+                    "Slow down the unexpected moment — describe Olaf's confused expression and first reaction in detail.",
+                    "Olaf explains his genius plan to fix the problem, which almost makes it worse.",
+                ],
             },
             {
-                "name": "day_reflection",
+                "name": "day_reflection", "importance": "high",
                 "goal": "Olaf wraps up with a warm reflection on what made today special.",
+                "expansions": [
+                    "Olaf finds an even deeper meaning in today — something about friendship or being present.",
+                    "Olaf asks the user what their favourite part was and reacts warmly to the answer.",
+                ],
             },
         ],
         "user_inputs": [
@@ -982,66 +891,21 @@ BASE_STORIES = [
             "understanding that love and togetherness matter more than any single tradition."
         ),
         "beats": [
-            {
-                "name": "holiday_problem",
-                "goal": "Olaf notices that Anna and Elsa do not seem to have a clear family holiday tradition.",
-            },
-            {
-                "name": "olaf_decides_to_help",
-                "goal": "Olaf decides to help by finding the best family tradition in Arendelle.",
-            },
-            {
-                "name": "sven_joins",
-                "goal": "Sven joins Olaf as his companion on the quest.",
-            },
-            {
-                "name": "first_family_visit",
-                "goal": "Olaf visits the first household and learns about one tradition.",
-            },
-            {
-                "name": "second_family_visit",
-                "goal": "Olaf visits another household and discovers a different tradition.",
-            },
-            {
-                "name": "tradition_collection_grows",
-                "goal": "Olaf gathers several traditions and becomes excited about bringing them back.",
-            },
-            {
-                "name": "comic_overload",
-                "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos.",
-            },
-            {
-                "name": "travel_mishap",
-                "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions.",
-            },
-            {
-                "name": "loss_or_setback",
-                "goal": "Olaf loses some or all of the collected traditions and feels that he has failed.",
-            },
-            {
-                "name": "emotional_low_point",
-                "goal": "Olaf feels sad because he only wanted to help Anna and Elsa.",
-            },
-            {
-                "name": "friends_search_or_support",
-                "goal": "Friends or townspeople help search for Olaf or support him.",
-            },
-            {
-                "name": "realization",
-                "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends.",
-            },
-            {
-                "name": "return_to_anna_elsa",
-                "goal": "Olaf returns to Anna and Elsa and explains what he learned.",
-            },
-            {
-                "name": "warm_resolution",
-                "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family.",
-            },
-            {
-                "name": "holiday_closing",
-                "goal": "The story ends with a warm holiday feeling and a lesson about togetherness.",
-            },
+            {"name": "holiday_problem",           "importance": "medium", "goal": "Olaf notices that Anna and Elsa do not seem to have a clear family holiday tradition."},
+            {"name": "olaf_decides_to_help",      "importance": "medium", "goal": "Olaf decides to help by finding the best family tradition in Arendelle."},
+            {"name": "sven_joins",                "importance": "low",    "goal": "Sven joins Olaf as his companion on the quest."},
+            {"name": "first_family_visit",        "importance": "medium", "goal": "Olaf visits the first household and learns about one tradition."},
+            {"name": "second_family_visit",       "importance": "low",    "goal": "Olaf visits another household and discovers a different tradition."},
+            {"name": "tradition_collection_grows","importance": "low",    "goal": "Olaf gathers several traditions and becomes excited about bringing them back."},
+            {"name": "comic_overload",            "importance": "low",    "goal": "The number of traditions becomes overwhelming or silly, creating comic chaos."},
+            {"name": "travel_mishap",             "importance": "medium", "goal": "Olaf and Sven face a travel mishap while trying to return with the traditions."},
+            {"name": "loss_or_setback",           "importance": "high",   "goal": "Olaf loses some or all of the collected traditions and feels that he has failed."},
+            {"name": "emotional_low_point",       "importance": "high",   "goal": "Olaf feels sad because he only wanted to help Anna and Elsa."},
+            {"name": "friends_search_or_support", "importance": "medium", "goal": "Friends or townspeople help search for Olaf or support him."},
+            {"name": "realization",               "importance": "high",   "goal": "Olaf realizes that the true tradition is not an object but the love shared between family and friends."},
+            {"name": "return_to_anna_elsa",       "importance": "high",   "goal": "Olaf returns to Anna and Elsa and explains what he learned."},
+            {"name": "warm_resolution",           "importance": "high",   "goal": "Anna and Elsa reassure Olaf that he is part of their tradition and family."},
+            {"name": "holiday_closing",           "importance": "high",   "goal": "The story ends with a warm holiday feeling and a lesson about togetherness."},
         ],
         "user_inputs": [
             "Hi Olaf, what holiday adventure are we going on?",
