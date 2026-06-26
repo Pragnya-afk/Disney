@@ -16,9 +16,6 @@
       --frozen: #56c4e8;
       --text: #0d2240;
       --text-mid: #2a4a6a;
-      --curtain: #6b0808;
-      --curtain-mid: #9b1515;
-      --curtain-gold: #c8900a;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,12 +32,9 @@
       position: relative;
     }
 
-    /* ── Stars ── */
     #stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
     .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
+      position: absolute; background: white; border-radius: 50%;
       animation: twinkle ease-in-out infinite;
     }
     @keyframes twinkle {
@@ -48,27 +42,16 @@
       50%       { opacity: 1;    transform: scale(1.2); }
     }
 
-    /* ── Snowflakes ── */
     #snowflakes { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
     .snowflake {
-      position: absolute;
-      top: -60px;
-      color: rgba(200, 235, 255, 0.55);
-      animation: snowfall linear infinite;
-      pointer-events: none;
-      user-select: none;
+      position: absolute; top: -60px; color: rgba(200, 235, 255, 0.55);
+      animation: snowfall linear infinite; pointer-events: none; user-select: none;
     }
-    @keyframes snowfall {
-      to { transform: translateY(110vh) rotate(400deg); }
-    }
+    @keyframes snowfall { to { transform: translateY(110vh) rotate(400deg); } }
 
-
-    /* ── App container ── */
     .app {
-      position: relative;
-      z-index: 10;
-      width: 100%;
-      max-width: 720px;
+      position: relative; z-index: 10;
+      width: 100%; max-width: 720px;
       background: rgba(255, 255, 255, 0.97);
       border-radius: 26px;
       box-shadow: 0 24px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.12),
@@ -76,20 +59,17 @@
       overflow: hidden;
     }
 
-    /* ── Screens ── */
     .screen { display: none; flex-direction: column; }
     .screen.active { display: flex; }
 
     /* ── Welcome ── */
     #welcome-screen {
-      padding: 52px 44px 44px;
-      align-items: center;
+      padding: 52px 44px 44px; align-items: center;
       background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
     }
     .study-logo { text-align: center; margin-bottom: 30px; }
     .study-logo .icon {
-      font-size: 76px; line-height: 1; margin-bottom: 10px;
-      display: block;
+      font-size: 76px; line-height: 1; margin-bottom: 10px; display: block;
       animation: olaf-float 3.5s ease-in-out infinite;
       filter: drop-shadow(0 8px 16px rgba(86,196,232,0.35));
     }
@@ -98,39 +78,25 @@
       50%       { transform: translateY(-10px) rotate(2deg); }
     }
     .study-logo h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 20px;
-      color: var(--navy);
-      line-height: 1.35;
-      letter-spacing: 0.3px;
+      font-family: 'Cinzel Decorative', serif; font-size: 20px;
+      color: var(--navy); line-height: 1.35; letter-spacing: 0.3px;
     }
     .study-logo p {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 14px;
-      color: #4a7a9a;
-      margin-top: 6px;
-      letter-spacing: 0.4px;
+      font-family: 'Fredoka One', sans-serif; font-size: 14px;
+      color: #4a7a9a; margin-top: 6px; letter-spacing: 0.4px;
     }
 
     .info-card {
-      background: rgba(255,255,255,0.88);
-      border: 1.5px solid rgba(180,220,240,0.55);
-      border-radius: 20px;
-      padding: 24px 28px;
-      width: 100%;
-      margin-bottom: 18px;
+      background: rgba(255,255,255,0.88); border: 1.5px solid rgba(180,220,240,0.55);
+      border-radius: 20px; padding: 24px 28px; width: 100%; margin-bottom: 18px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.06);
     }
     .info-card h2 {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 20px;
-      color: var(--navy);
-      margin-bottom: 14px;
-      letter-spacing: 0.2px;
+      font-family: 'Fredoka One', sans-serif; font-size: 20px;
+      color: var(--navy); margin-bottom: 14px; letter-spacing: 0.2px;
     }
     .info-card p {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 600;
+      font-family: 'Nunito', sans-serif; font-weight: 600;
       font-size: 14px; color: var(--text-mid); line-height: 1.7; margin-bottom: 10px;
     }
     .info-card p:last-child { margin-bottom: 0; }
@@ -139,8 +105,7 @@
     .study-steps { list-style: none; margin-top: 8px; }
     .study-steps li {
       display: flex; gap: 14px; align-items: flex-start;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 600;
+      font-family: 'Nunito', sans-serif; font-weight: 600;
       font-size: 14px; color: var(--text-mid); line-height: 1.6; padding: 10px 0;
       border-bottom: 1px dashed rgba(180,220,240,0.45);
     }
@@ -149,19 +114,15 @@
     .step-icon {
       width: 30px; height: 30px; border-radius: 50%;
       background: linear-gradient(135deg, #1a7ab5, #0d5a8a);
-      color: white;
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 15px;
+      color: white; font-family: 'Fredoka One', sans-serif; font-size: 15px;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
-      box-shadow: 0 3px 10px rgba(13,90,138,0.35);
+      flex-shrink: 0; margin-top: 1px; box-shadow: 0 3px 10px rgba(13,90,138,0.35);
     }
 
     .tips-list { list-style: none; }
     .tips-list li {
       display: flex; gap: 10px;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 600;
+      font-family: 'Nunito', sans-serif; font-weight: 600;
       font-size: 14px; color: var(--text-mid); line-height: 1.6; padding: 6px 0;
     }
     .tips-list li::before { content: "❄"; color: var(--frozen); font-size: 13px; flex-shrink: 0; margin-top: 3px; }
@@ -169,16 +130,9 @@
     .primary-btn {
       width: 100%;
       background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
-      color: var(--navy);
-      border: none;
-      border-radius: 16px;
-      padding: 15px;
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.18s;
-      box-shadow: 0 5px 20px rgba(200,150,0,0.35);
-      letter-spacing: 0.3px;
+      color: var(--navy); border: none; border-radius: 16px; padding: 15px;
+      font-family: 'Fredoka One', sans-serif; font-size: 18px; cursor: pointer;
+      transition: all 0.18s; box-shadow: 0 5px 20px rgba(200,150,0,0.35); letter-spacing: 0.3px;
     }
     .primary-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 26px rgba(200,150,0,0.45); }
     .primary-btn:active { transform: translateY(0); box-shadow: 0 3px 12px rgba(200,150,0,0.3); }
@@ -191,63 +145,29 @@
     }
     .intro-badge {
       background: linear-gradient(135deg, rgba(26,122,181,0.12), rgba(86,196,232,0.12));
-      border: 1.5px solid rgba(26,122,181,0.28);
-      border-radius: 22px;
-      padding: 5px 18px;
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 12px;
-      color: var(--disney-blue);
-      letter-spacing: 0.8px;
-      margin-bottom: 16px;
+      border: 1.5px solid rgba(26,122,181,0.28); border-radius: 22px;
+      padding: 5px 18px; font-family: 'Fredoka One', sans-serif; font-size: 12px;
+      color: var(--disney-blue); letter-spacing: 0.8px; margin-bottom: 16px;
     }
-    .intro-title {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 28px;
-      color: var(--navy);
-      margin-bottom: 6px;
-      text-align: center;
-    }
+    .intro-title { font-family: 'Fredoka One', sans-serif; font-size: 28px; color: var(--navy); margin-bottom: 6px; text-align: center; }
     .intro-sub { font-size: 13.5px; color: #5a7a8a; margin-bottom: 24px; text-align: center; }
 
     .intro-card {
-      background: rgba(255,255,255,0.88);
-      border: 1.5px solid rgba(180,220,240,0.55);
-      border-radius: 20px;
-      padding: 22px 26px;
-      width: 100%;
-      margin-bottom: 18px;
+      background: rgba(255,255,255,0.88); border: 1.5px solid rgba(180,220,240,0.55);
+      border-radius: 20px; padding: 22px 26px; width: 100%; margin-bottom: 18px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.06);
     }
-    .intro-card h3 {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 14px;
-      color: var(--navy);
-      letter-spacing: 0.3px;
-      margin-bottom: 12px;
-    }
+    .intro-card h3 { font-family: 'Fredoka One', sans-serif; font-size: 14px; color: var(--navy); letter-spacing: 0.3px; margin-bottom: 12px; }
     .diff-badge {
       background: linear-gradient(135deg, rgba(255,240,210,0.95), rgba(255,250,228,0.98));
-      border: 1px solid rgba(220,165,60,0.4);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin-top: 12px;
-      font-size: 13px;
-      color: #6a4008;
-      line-height: 1.55;
+      border: 1px solid rgba(220,165,60,0.4); border-radius: 14px;
+      padding: 12px 16px; margin-top: 12px; font-size: 13px; color: #6a4008; line-height: 1.55;
     }
     .diff-badge strong { font-weight: 800; }
 
     .cancel-link {
-      display: block;
-      text-align: center;
-      margin-top: 12px;
-      font-size: 12px;
-      color: #8aaabb;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: 'Nunito', sans-serif;
-      transition: color 0.15s;
+      display: block; text-align: center; margin-top: 12px; font-size: 12px; color: #8aaabb;
+      cursor: pointer; background: none; border: none; font-family: 'Nunito', sans-serif; transition: color 0.15s;
     }
     .cancel-link:hover { color: var(--text-mid); }
 
@@ -256,33 +176,18 @@
     .session-header {
       background: linear-gradient(to right, #071a30, #0a2445, #071a30);
       border-bottom: 2px solid rgba(245,197,24,0.25);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
+      padding: 12px 20px; display: flex; align-items: center; gap: 10px; flex-shrink: 0;
     }
     .session-badge {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 11px;
-      color: var(--gold);
-      background: rgba(245,197,24,0.14);
-      border: 1px solid rgba(245,197,24,0.28);
-      border-radius: 8px;
-      padding: 3px 10px;
-      flex-shrink: 0;
+      font-family: 'Fredoka One', sans-serif; font-size: 11px; color: var(--gold);
+      background: rgba(245,197,24,0.14); border: 1px solid rgba(245,197,24,0.28);
+      border-radius: 8px; padding: 3px 10px; flex-shrink: 0;
     }
     .session-title {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 14px;
-      color: rgba(255,255,255,0.92);
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-family: 'Fredoka One', sans-serif; font-size: 14px; color: rgba(255,255,255,0.92);
+      flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
-    /* Beat tracker */
     .beat-col { display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 0; }
     .beat-col-label { font-family: 'Fredoka One', sans-serif; font-size: 9px; color: rgba(200,230,255,0.5); letter-spacing: 0.5px; }
     .beat-tracker { display: flex; gap: 5px; }
@@ -290,56 +195,45 @@
     .beat-dot.done { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 7px rgba(245,197,24,0.7); }
     .beat-dot.active { background: white; border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
 
-    /* Time panel */
+    /* ── Pacing mode badge ── */
+    .pacing-badge {
+      display: none; align-items: center; gap: 5px; flex-shrink: 0;
+      font-family: 'Fredoka One', sans-serif; font-size: 11px; letter-spacing: 0.5px;
+      padding: 4px 10px; border-radius: 8px; border: 1px solid; transition: all 0.4s ease;
+    }
+    .pacing-badge.visible { display: flex; }
+    .pacing-badge.mode-normal   { color: #7ae8a0; border-color: rgba(122,232,160,0.3); background: rgba(122,232,160,0.1); }
+    .pacing-badge.mode-too_fast { color: #7ad4f8; border-color: rgba(122,212,248,0.3); background: rgba(122,212,248,0.1); }
+    .pacing-badge.mode-hurry    { color: #f8c84a; border-color: rgba(248,200,74,0.35); background: rgba(248,200,74,0.1); }
+    .pacing-badge.mode-critical { color: #f8904a; border-color: rgba(248,144,74,0.4);  background: rgba(248,144,74,0.12); }
+    .pacing-badge.mode-final    { color: #f87070; border-color: rgba(248,112,112,0.45); background: rgba(248,112,112,0.14); animation: pace-pulse 0.9s ease-in-out infinite; }
+    @keyframes pace-pulse { 0%,100%{opacity:1} 50%{opacity:0.55} }
+    .pacing-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
     .time-panel { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
     .time-display {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 12px;
-      color: rgba(255,255,255,0.92);
-      background: rgba(255,255,255,0.1);
-      padding: 2px 10px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.14);
-      font-variant-numeric: tabular-nums;
+      font-family: 'Fredoka One', sans-serif; font-size: 12px; color: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.1); padding: 2px 10px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.14); font-variant-numeric: tabular-nums;
     }
     .time-bar-wrap { width: 86px; height: 4px; background: rgba(255,255,255,0.12); border-radius: 2px; overflow: hidden; }
     .time-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s ease, background 0.5s ease; background: #3aaa4a; width: 0%; }
-    .pacing-badge {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 9px; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 6px;
-    }
-    .pacing-badge.normal   { background: rgba(58,170,74,0.22); color: #5ad862; }
-    .pacing-badge.too_fast { background: rgba(60,110,220,0.22); color: #7abcff; }
-    .pacing-badge.hurry    { background: rgba(220,165,30,0.22); color: #ffc840; }
-    .pacing-badge.critical { background: rgba(220,100,30,0.22); color: #ff9050; }
-    .pacing-badge.final    { background: rgba(210,40,40,0.22); color: #ff7070; }
 
     .finish-btn {
-      background: rgba(220,60,50,0.1);
-      border: 1px solid rgba(220,60,50,0.28);
-      color: #ff9090;
-      border-radius: 9px;
-      padding: 5px 13px;
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.15s;
-      flex-shrink: 0;
+      background: rgba(220,60,50,0.1); border: 1px solid rgba(220,60,50,0.28);
+      color: #ff9090; border-radius: 9px; padding: 5px 13px;
+      font-family: 'Fredoka One', sans-serif; font-size: 12px; cursor: pointer; transition: all 0.15s; flex-shrink: 0;
     }
     .finish-btn:hover { background: rgba(220,60,50,0.2); color: #ffb0b0; }
 
     .cancel-btn {
-      background: none; border: none;
-      color: rgba(200,230,255,0.35);
-      font-size: 15px; cursor: pointer; padding: 5px 8px;
-      transition: color 0.15s; flex-shrink: 0;
+      background: none; border: none; color: rgba(200,230,255,0.35);
+      font-size: 15px; cursor: pointer; padding: 5px 8px; transition: color 0.15s; flex-shrink: 0;
     }
     .cancel-btn:hover { color: rgba(200,230,255,0.75); }
 
-    /* Chat */
     .chat-log {
-      flex: 1; overflow-y: auto;
-      padding: 18px 20px;
+      flex: 1; overflow-y: auto; padding: 18px 20px;
       display: flex; flex-direction: column; gap: 10px;
       min-height: 320px; max-height: 400px;
       background: linear-gradient(to bottom, #f3f8fc 0%, #f8fbfe 100%);
@@ -349,41 +243,28 @@
     .msg.user { flex-direction: row-reverse; }
     .msg-avatar {
       width: 30px; height: 30px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; flex-shrink: 0;
-      background: white;
-      border: 1.5px solid rgba(180,215,240,0.5);
-      box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
+      background: white; border: 1.5px solid rgba(180,215,240,0.5); box-shadow: 0 2px 7px rgba(0,0,0,0.08);
     }
     .msg-bubble { max-width: 72%; padding: 10px 14px; border-radius: 15px; font-size: 13.5px; line-height: 1.58; }
     .msg.olaf .msg-bubble {
-      background: white; color: var(--text);
-      border-radius: 4px 15px 15px 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-      border: 1px solid rgba(180,215,240,0.4);
+      background: white; color: var(--text); border-radius: 4px 15px 15px 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07); border: 1px solid rgba(180,215,240,0.4);
     }
     .msg.user .msg-bubble {
-      background: linear-gradient(135deg, #1a7ab5, #0d5a8a);
-      color: white;
-      border-radius: 15px 4px 15px 15px;
-      box-shadow: 0 2px 12px rgba(13,90,138,0.28);
+      background: linear-gradient(135deg, #1a7ab5, #0d5a8a); color: white;
+      border-radius: 15px 4px 15px 15px; box-shadow: 0 2px 12px rgba(13,90,138,0.28);
     }
     .msg.system .msg-bubble {
       background: linear-gradient(135deg, rgba(218,240,255,0.85), rgba(228,246,255,0.85));
       color: #3a5a6a; font-size: 12.5px; border-radius: 10px;
       font-style: italic; border: 1px solid rgba(180,215,240,0.4);
     }
-    .msg.timeup .msg-bubble {
-      background: linear-gradient(135deg, rgba(255,238,210,0.95), rgba(255,248,230,0.98));
-      color: #7a5010; font-size: 12.5px; border-radius: 10px;
-      border: 1px solid rgba(220,165,60,0.3);
-    }
 
     .thinking-bar {
       padding: 8px 20px; display: none; align-items: center; gap: 8px;
       font-size: 12px; color: #5a7a8a; flex-shrink: 0;
-      background: rgba(238,248,255,0.85);
-      border-top: 1px solid rgba(180,215,240,0.3);
+      background: rgba(238,248,255,0.85); border-top: 1px solid rgba(180,215,240,0.3);
     }
     .thinking-bar.visible { display: flex; }
     .dots span {
@@ -395,27 +276,23 @@
     @keyframes bounce { 0%,80%,100%{transform:scale(0.65)} 40%{transform:scale(1)} }
 
     .input-area {
-      padding: 12px 20px;
-      background: white;
+      padding: 12px 20px; background: white;
       border-top: 1px solid rgba(180,215,240,0.38);
       display: flex; gap: 9px; align-items: center; flex-shrink: 0;
     }
     .input-area input {
       flex: 1; border: 1.5px solid rgba(150,205,235,0.5); border-radius: 13px;
       padding: 9px 14px; font-family: 'Nunito', sans-serif; font-size: 13.5px;
-      background: rgba(246,251,255,0.95); color: var(--text); outline: none;
-      transition: border-color 0.15s;
+      background: rgba(246,251,255,0.95); color: var(--text); outline: none; transition: border-color 0.15s;
     }
     .input-area input:focus { border-color: var(--disney-blue); }
     .input-area input::placeholder { color: #9ab8cc; }
     .input-area input:disabled { opacity: 0.4; }
-
     .send-btn {
-      background: linear-gradient(135deg, #1a7ab5, #0d5a8a);
-      color: white; border: none; border-radius: 13px;
-      padding: 9px 18px; font-family: 'Fredoka One', sans-serif;
-      font-size: 14px; cursor: pointer; flex-shrink: 0;
-      transition: all 0.15s; box-shadow: 0 3px 10px rgba(13,90,138,0.3);
+      background: linear-gradient(135deg, #1a7ab5, #0d5a8a); color: white; border: none;
+      border-radius: 13px; padding: 9px 18px; font-family: 'Fredoka One', sans-serif;
+      font-size: 14px; cursor: pointer; flex-shrink: 0; transition: all 0.15s;
+      box-shadow: 0 3px 10px rgba(13,90,138,0.3);
     }
     .send-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(13,90,138,0.4); }
     .send-btn:disabled { background: #c0c8d0; box-shadow: none; transform: none; cursor: not-allowed; }
@@ -424,8 +301,7 @@
     #q1-screen, #q2-screen { padding: 0; min-height: 600px; }
     .q-header {
       background: linear-gradient(to right, #071a30, #0a2445, #071a30);
-      border-bottom: 2px solid rgba(245,197,24,0.25);
-      padding: 22px 28px; text-align: center;
+      border-bottom: 2px solid rgba(245,197,24,0.25); padding: 22px 28px; text-align: center;
     }
     .q-header h2 { font-family: 'Fredoka One', sans-serif; font-size: 23px; color: white; }
     .q-header p { font-size: 13px; color: rgba(200,230,255,0.65); margin-top: 4px; }
@@ -435,15 +311,13 @@
       background: linear-gradient(to bottom, #f3f8fc, #f8fbfe);
     }
     .q-section-label {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 12px; color: var(--disney-blue); letter-spacing: 1px;
-      padding: 4px 0 3px; border-bottom: 2px solid rgba(26,85,160,0.15); margin-top: 4px;
+      font-family: 'Fredoka One', sans-serif; font-size: 12px; color: var(--disney-blue);
+      letter-spacing: 1px; padding: 4px 0 3px; border-bottom: 2px solid rgba(26,85,160,0.15); margin-top: 4px;
     }
     .q-section-label.tc { color: #7a3a9a; border-bottom-color: rgba(122,58,154,0.2); }
     .q-item {
       background: white; border: 1px solid rgba(180,215,240,0.5);
-      border-radius: 18px; padding: 18px 20px;
-      box-shadow: 0 2px 9px rgba(0,0,0,0.04);
+      border-radius: 18px; padding: 18px 20px; box-shadow: 0 2px 9px rgba(0,0,0,0.04);
     }
     .q-item.time-highlight { background: rgba(250,242,255,0.97); border-color: rgba(150,80,200,0.22); }
     .q-item label { font-size: 14px; font-weight: 700; color: var(--text); display: block; margin-bottom: 13px; line-height: 1.45; }
@@ -455,24 +329,12 @@
     .likert-options { display: flex; gap: 6px; flex: 1; justify-content: center; }
     .likert-options button {
       width: 38px; height: 38px; border-radius: 50%;
-      border: 2px solid rgba(150,205,235,0.42);
-      background: rgba(246,251,255,0.9);
-      font-family: 'Fredoka One', sans-serif; font-size: 15px; color: #5a7a8a;
-      cursor: pointer; transition: all 0.13s;
+      border: 2px solid rgba(150,205,235,0.42); background: rgba(246,251,255,0.9);
+      font-family: 'Fredoka One', sans-serif; font-size: 15px; color: #5a7a8a; cursor: pointer; transition: all 0.13s;
     }
-    .likert-options button:hover {
-      border-color: var(--disney-blue); background: rgba(218,240,255,0.85);
-      color: var(--disney-blue); transform: scale(1.12);
-    }
-    .likert-options button.sel {
-      background: linear-gradient(135deg, #1a7ab5, #0d5a8a);
-      border-color: #0d5a8a; color: white;
-      transform: scale(1.12); box-shadow: 0 3px 10px rgba(13,90,138,0.32);
-    }
-    .q-item.time-highlight .likert-options button.sel {
-      background: linear-gradient(135deg, #8a4aaa, #6a2a8a);
-      border-color: #6a2a8a; box-shadow: 0 3px 10px rgba(106,42,138,0.32);
-    }
+    .likert-options button:hover { border-color: var(--disney-blue); background: rgba(218,240,255,0.85); color: var(--disney-blue); transform: scale(1.12); }
+    .likert-options button.sel { background: linear-gradient(135deg, #1a7ab5, #0d5a8a); border-color: #0d5a8a; color: white; transform: scale(1.12); box-shadow: 0 3px 10px rgba(13,90,138,0.32); }
+    .q-item.time-highlight .likert-options button.sel { background: linear-gradient(135deg, #8a4aaa, #6a2a8a); border-color: #6a2a8a; box-shadow: 0 3px 10px rgba(106,42,138,0.32); }
     .q-item.time-highlight .likert-options button:hover { border-color: #8a4aaa; color: #8a4aaa; }
     .q-item textarea {
       width: 100%; border: 1.5px solid rgba(150,205,235,0.42); border-radius: 13px;
@@ -485,10 +347,8 @@
     .yes-no { display: flex; gap: 10px; }
     .yn-btn {
       flex: 1; padding: 10px; border-radius: 13px;
-      border: 2px solid rgba(150,205,235,0.42);
-      background: rgba(246,251,255,0.9);
-      font-family: 'Fredoka One', sans-serif; font-size: 15px;
-      cursor: pointer; transition: all 0.15s; color: var(--text-mid);
+      border: 2px solid rgba(150,205,235,0.42); background: rgba(246,251,255,0.9);
+      font-family: 'Fredoka One', sans-serif; font-size: 15px; cursor: pointer; transition: all 0.15s; color: var(--text-mid);
     }
     .yn-btn:hover { border-color: var(--disney-blue); background: rgba(218,240,255,0.85); }
     .yn-btn.sel-yes { background: rgba(220,60,50,0.08); border-color: rgba(220,60,50,0.5); color: #c03030; }
@@ -496,175 +356,104 @@
     .derail-followup { display: none; margin-top: 14px; flex-direction: column; gap: 10px; }
     .derail-followup.visible { display: flex; }
     .derail-followup label { font-size: 13px; font-weight: 700; color: #7a5a10; margin-bottom: 4px; display: block; }
-    .three-opts { display: flex; gap: 8px; }
-    .tri-btn {
-      flex: 1; padding: 10px 8px; border-radius: 13px;
-      border: 2px solid rgba(150,205,235,0.42);
-      background: rgba(246,251,255,0.9);
-      font-family: 'Fredoka One', sans-serif; font-size: 14px;
-      cursor: pointer; transition: all 0.15s; color: var(--text-mid); text-align: center;
-    }
-    .tri-btn:hover { border-color: #8a4aaa; background: rgba(238,228,255,0.85); }
-    .tri-btn.sel { background: rgba(138,74,170,0.1); border-color: #8a4aaa; color: #8a4aaa; }
     .q-footer { background: white; padding: 16px 28px; border-top: 1px solid rgba(180,215,240,0.38); }
 
-    /* ── Transition screen cards ── */
+    /* ── Transition screen ── */
     .transition-card {
-      background: rgba(255,255,255,0.88);
-      border: 1.5px solid rgba(180,220,240,0.55);
-      border-radius: 20px; padding: 22px 26px; width: 100%;
-      margin-bottom: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.88); border: 1.5px solid rgba(180,220,240,0.55);
+      border-radius: 20px; padding: 22px 26px; width: 100%; margin-bottom: 18px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
     }
     .check-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--text-mid); padding: 5px 0; }
     .check-item::before { content: "•"; flex-shrink: 0; font-size: 18px; line-height: 1.2; color: var(--disney-blue); }
 
     /* ── Thank you ── */
     #thankyou-screen {
-      padding: 64px 44px;
-      align-items: center; justify-content: center; gap: 22px;
+      padding: 64px 44px; align-items: center; justify-content: center; gap: 22px;
       min-height: 400px;
       background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
     }
     .ty-icon { font-size: 84px; animation: olaf-float 2.5s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(86,196,232,0.35)); }
     .ty-title { font-family: 'Cinzel Decorative', serif; font-size: 32px; font-weight: 700; color: var(--navy); }
 
-    /* ── Time's Up screen ── */
-    #timesup-screen {
-      padding: 60px 44px;
-      align-items: center; justify-content: center; gap: 0;
-      background: linear-gradient(165deg, #fff4e0 0%, #fde8c8 45%, #fdf6e8 100%);
+    /* ── Time's Up modal overlay ── */
+    #timesup-modal {
+      display: none; position: fixed; inset: 0; z-index: 900;
+      background: rgba(10,20,40,0.75); align-items: center; justify-content: center;
+      animation: fadeIn 0.3s ease;
     }
-    .timesup-clock {
-      font-size: 100px;
-      animation: clock-ring 0.5s ease-in-out infinite alternate;
-      filter: drop-shadow(0 8px 24px rgba(255,160,40,0.45));
-      margin-bottom: 8px;
+    #timesup-modal.visible { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .timesup-box {
+      background: linear-gradient(165deg, #fff8ee 0%, #fff4e0 100%);
+      border: 2px solid rgba(255,160,40,0.4); border-radius: 28px;
+      padding: 44px 40px; max-width: 440px; width: 90%;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      animation: popIn 0.4s cubic-bezier(0.34,1.3,0.64,1);
     }
-    @keyframes clock-ring {
-      0%   { transform: rotate(-18deg) scale(1.0); }
-      100% { transform: rotate(18deg)  scale(1.08); }
-    }
-    .timesup-sparks {
-      font-size: 28px; letter-spacing: 12px; margin-bottom: 18px;
-      animation: sparks-fade 1.4s ease-in-out infinite alternate;
-    }
-    @keyframes sparks-fade {
-      0%   { opacity: 0.4; transform: scale(0.95); }
-      100% { opacity: 1.0; transform: scale(1.05); }
-    }
-    .timesup-title {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 36px; font-weight: 700; color: #b05010;
-      text-shadow: 0 2px 12px rgba(255,140,20,0.3);
-      margin-bottom: 10px; text-align: center;
-    }
-    .timesup-sub {
-      font-family: 'Fredoka One', sans-serif;
-      font-size: 18px; color: #7a4a10; margin-bottom: 28px; text-align: center;
-    }
-    .timesup-card {
-      background: rgba(255,255,255,0.82);
-      border: 2px solid rgba(255,160,40,0.35);
-      border-radius: 22px; padding: 24px 30px; width: 100%; max-width: 480px;
-      box-shadow: 0 6px 24px rgba(255,140,20,0.12);
-      margin-bottom: 30px; text-align: center;
-    }
-    .timesup-card p {
-      font-family: 'Nunito', sans-serif; font-weight: 700;
-      font-size: 14.5px; color: #5a3a10; line-height: 1.75; margin: 0;
-    }
-    .timesup-almost {
-      display: inline-block;
-      background: linear-gradient(90deg, #ff8c00, #ffc840);
-      color: white; font-family: 'Fredoka One', sans-serif;
-      font-size: 13px; padding: 4px 14px; border-radius: 30px;
-      margin-bottom: 16px; letter-spacing: 0.5px;
-      box-shadow: 0 2px 8px rgba(255,140,0,0.35);
-    }
+    @keyframes popIn { from { transform: scale(0.75); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .timesup-clock { font-size: 72px; margin-bottom: 8px; animation: clock-ring 0.5s ease-in-out infinite alternate; }
+    @keyframes clock-ring { 0%{ transform: rotate(-12deg) scale(1); } 100%{ transform: rotate(12deg) scale(1.06); } }
+    .timesup-title { font-family: 'Cinzel Decorative', serif; font-size: 28px; color: #b05010; margin-bottom: 12px; }
+    .timesup-sub { font-family: 'Fredoka One', sans-serif; font-size: 16px; color: #7a4a10; margin-bottom: 24px; line-height: 1.5; }
+    #timesup-go-btn { max-width: 320px; margin: 0 auto; display: block; }
 
-    /* ── Story 1 nudge popup ── */
-    .nudge-scene {
-      position: fixed;
-      bottom: 0; right: 20px;
-      z-index: 800;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      gap: 0;
-      animation: scene-slide-up 0.65s cubic-bezier(0.34, 1.3, 0.64, 1) both;
+    /* ── Story 1 Time's Up screen ── */
+    #story1-timesup-screen {
+      padding: 56px 44px 48px; align-items: center; justify-content: center; gap: 18px;
+      min-height: 520px; text-align: center;
+      background: linear-gradient(165deg, #fff8ee 0%, #fff3e0 55%, #fdebd0 100%);
     }
-    @keyframes scene-slide-up {
-      from { transform: translateY(110%); opacity: 0; }
-      to   { transform: translateY(0);    opacity: 1; }
+    .s1tu-ring-wrap { position: relative; width: 170px; height: 170px; flex-shrink: 0; }
+    .s1tu-ring-wrap svg { width: 170px; height: 170px; transform: rotate(-90deg); }
+    .s1tu-track { fill: none; stroke: rgba(200,140,40,0.18); stroke-width: 10; }
+    .s1tu-arc {
+      fill: none; stroke: url(#tuGrad); stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 471;
+      stroke-dashoffset: 471;
+      animation: arc-fill 1.4s cubic-bezier(0.4,0,0.2,1) 0.3s forwards;
     }
-    .nudge-snowman-wrap {
-      font-size: 130px; line-height: 1;
-      flex-shrink: 0;
-      margin-bottom: -18px;
-      filter: drop-shadow(0 -6px 16px rgba(86,196,232,0.35));
-      animation: olaf-bob 2.6s ease-in-out infinite;
-      transform-origin: bottom center;
+    @keyframes arc-fill { to { stroke-dashoffset: 0; } }
+    .s1tu-emoji {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-size: 60px; line-height: 1;
+      animation: clock-shake 0.5s ease-in-out 1.8s 3 alternate;
+      filter: drop-shadow(0 4px 12px rgba(200,100,20,0.3));
     }
-    @keyframes olaf-bob {
-      0%, 100% { transform: translateY(0px) rotate(-3deg); }
-      50%       { transform: translateY(-10px) rotate(3deg); }
+    @keyframes clock-shake {
+      0%   { transform: translate(-50%,-50%) rotate(-15deg) scale(1); }
+      100% { transform: translate(-50%,-50%) rotate(15deg) scale(1.1); }
     }
-    .nudge-speech {
-      background: white;
-      border-radius: 20px;
-      padding: 18px 20px 18px;
-      max-width: 265px;
-      margin-bottom: 72px;
-      margin-right: 14px;
-      box-shadow: 0 6px 28px rgba(0,0,0,0.13), 0 0 0 1.5px rgba(86,196,232,0.28);
-      position: relative;
-      animation: bubble-pop 0.4s cubic-bezier(0.34, 1.5, 0.64, 1) 0.35s both;
+    .s1tu-title {
+      font-family: 'Cinzel Decorative', serif; font-size: 32px; color: #a04010;
+      animation: fadeUp 0.5s ease 0.2s both;
     }
-    @keyframes bubble-pop {
-      from { transform: scale(0.6); opacity: 0; }
-      to   { transform: scale(1);   opacity: 1; }
+    .s1tu-sub {
+      font-family: 'Fredoka One', sans-serif; font-size: 17px; color: #7a4a10;
+      line-height: 1.55; max-width: 380px;
+      animation: fadeUp 0.5s ease 0.4s both;
     }
-    /* tail pointing right toward snowman's face */
-    .nudge-speech::after {
-      content: '';
-      position: absolute;
-      right: -15px;
-      top: 50%; transform: translateY(-50%);
-      border: 10px solid transparent;
-      border-left: 15px solid white;
-      border-right: 0;
+    #s1tu-next-btn {
+      max-width: 320px; width: 100%;
+      animation: fadeUp 0.5s ease 0.6s both;
     }
-    .nudge-speech p {
-      font-family: 'Nunito', sans-serif; font-weight: 600;
-      font-size: 13.5px; color: var(--text-mid); line-height: 1.65; margin-bottom: 8px;
-    }
-    .nudge-speech p:last-of-type { margin-bottom: 0; }
-    .nudge-buttons { display: flex; gap: 8px; margin-top: 14px; }
-    .nudge-btn-continue {
-      flex: 1; padding: 10px 8px; border-radius: 12px;
-      border: 2px solid rgba(86,196,232,0.45);
-      background: rgba(86,196,232,0.08);
-      font-family: 'Fredoka One', sans-serif; font-size: 14px; color: #1a7ab5;
-      cursor: pointer; transition: all 0.15s;
-    }
-    .nudge-btn-continue:hover { background: rgba(86,196,232,0.18); }
-    .nudge-btn-next {
-      flex: 1; padding: 10px 8px; border-radius: 12px; border: none;
-      background: linear-gradient(135deg, #fde87a, #f5c518, #c99010);
-      font-family: 'Fredoka One', sans-serif; font-size: 14px; color: var(--navy);
-      cursor: pointer; transition: all 0.18s;
-      box-shadow: 0 3px 10px rgba(200,150,0,0.3);
-    }
-    .nudge-btn-next:hover { transform: translateY(-2px); box-shadow: 0 5px 14px rgba(200,150,0,0.4); }
   </style>
 </head>
 <body>
 
-<!-- Starfield -->
 <div id="stars"></div>
-<!-- Floating snowflakes -->
 <div id="snowflakes"></div>
 
+<!-- ── Time's Up modal ── -->
+<div id="timesup-modal">
+  <div class="timesup-box">
+    <div class="timesup-clock">⏰</div>
+    <div class="timesup-title">Time's Up!</div>
+    <div class="timesup-sub">Olaf gave it everything he had ☃️<br>Just a short questionnaire left and you're done!</div>
+    <button class="primary-btn" id="timesup-go-btn">Answer the final questions →</button>
+  </div>
+</div>
 
 <div class="app">
 
@@ -685,30 +474,30 @@
         </li>
         <li>
           <div class="step-icon">2</div>
-          <div><strong>Quick questionnaire (2–3 min):</strong> A few questions about what just happened. Don't worry — Olaf would say there are no wrong answers. He'd be wrong, but still.</div>
+          <div><strong>Quick questionnaire (2–3 min):</strong> A few questions about what just happened.</div>
         </li>
         <li>
           <div class="step-icon">3</div>
-          <div><strong>Story 2 (~5 min):</strong> Olaf retells Little Red Riding Hood — except now the clock is ticking. Can he fit it all in before time runs out? Can <em>you</em> stop him?</div>
+          <div><strong>Story 2 (~3 min):</strong> Olaf retells Little Red Riding Hood — can you throw him off again before the story ends?</div>
         </li>
         <li>
           <div class="step-icon">4</div>
-          <div><strong>Final questionnaire (3–4 min):</strong> One last round of questions to wrap it all up — like a warm hug, but in survey form.</div>
+          <div><strong>Final questionnaire (3–4 min):</strong> One last round of questions to wrap it all up.</div>
         </li>
       </ol>
     </div>
 
     <div class="info-card">
       <h2>How to play (it's easier than building a snowman)</h2>
-      <p>Type in the text box and press <strong>Enter</strong> to reply to Olaf. Your mission: <strong>derail him</strong>. He wants to tell a story — you want him to talk about literally anything else.</p>
+      <p>Type in the text box and press <strong>Enter</strong> to reply to Olaf. Try to <strong>go off-topic</strong> once or twice — ask him something random, bring up a different subject, or react to something he says and steer the conversation elsewhere.</p>
       <ul class="tips-list">
         <li>Ask Olaf unrelated questions ("What's the capital of France?")</li>
         <li>Bring up random topics that have nothing to do with the story</li>
         <li>React to what he says and steer the conversation elsewhere</li>
       </ul>
-      <p style="margin-top:12px; font-size:16px; color:#1a7ab5; font-family:'Fredoka One',sans-serif;">Have fun and play around with it! 🎉</p>
-      <p style="margin-top:8px; font-size:13px; color:#8aaabb; font-family:'Nunito',sans-serif; font-weight:600;">Estimated total time: 15–20 minutes. Your responses are saved anonymously.</p>
-      <p style="margin-top:6px; font-size:13px; color:#a09080; font-family:'Nunito',sans-serif; font-weight:600;">You can click <strong>Exit</strong> at any point during the study to stop and restart from the beginning.</p>
+      <p style="margin-top:12px; font-size:16px; color:#1a7ab5; font-family:'Fredoka One',sans-serif;">Have fun and play around with it!</p>
+      <p style="margin-top:8px; font-size:13px; color:#8aaabb; font-family:'Nunito',sans-serif; font-weight:600;">Estimated total time: ~15 minutes. Your responses are saved anonymously.</p>
+      <p style="margin-top:6px; font-size:13px; color:#a09080; font-family:'Nunito',sans-serif; font-weight:600;">You can click <strong>Exit</strong> at any point to stop and restart from the beginning.</p>
     </div>
 
     <button class="primary-btn" id="begin-btn">Begin Study ❄️</button>
@@ -723,9 +512,9 @@
 
       <div class="intro-card">
         <h3>Your task</h3>
-        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to tell you how he first came to life — in his own very Olaf way. Be cheeky — try to get him talking about something completely different. See if you manage!</p>
+        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to tell you how he first came to life — in his own very Olaf way. Be cheeky. Don't play along. Try to get him talking about literally anything else — the weirder the better. See if you can throw him off!</p>
         <div class="diff-badge" style="margin-top:14px;">
-          <strong>No time limit here</strong> — take as long as you like (typically 3–6 min). After 5 minutes you'll get a little nudge — Olaf could honestly talk forever, but if you're ready to move on, just click <strong>Finish Story</strong>! Or stay a bit longer, he won't mind. ☃️
+          <strong>⏱ 5 minute time limit</strong> — the story ends automatically when time is up. If you feel done before that, just click <strong>Finish Story</strong> to head straight to the questionnaire.
         </div>
       </div>
 
@@ -739,6 +528,10 @@
     <div class="session-header">
       <div class="session-badge">Story 1 of 2</div>
       <div class="session-title">How Olaf Came to Life</div>
+      <div class="time-panel">
+        <div class="time-display" id="s1-countdown">5:00</div>
+        <div class="time-bar-wrap"><div class="time-bar-fill" id="s1-time-bar" style="width:100%;background:#3aaa4a;"></div></div>
+      </div>
       <button class="cancel-btn" onclick="cancelStudy()">Exit</button>
       <button class="finish-btn" id="finish-s1-btn">Finish Story ■</button>
     </div>
@@ -751,6 +544,26 @@
       <input type="text" id="input-1" placeholder="Say something to Olaf…" autocomplete="off" />
       <button class="send-btn" id="send-1">Send</button>
     </div>
+  </div>
+
+  <!-- ── 3b. Story 1 Time's Up ── -->
+  <div id="story1-timesup-screen" class="screen">
+    <div class="s1tu-ring-wrap">
+      <svg viewBox="0 0 170 170">
+        <defs>
+          <linearGradient id="tuGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f5a623"/>
+            <stop offset="100%" stop-color="#e05c10"/>
+          </linearGradient>
+        </defs>
+        <circle class="s1tu-track" cx="85" cy="85" r="75"/>
+        <circle class="s1tu-arc" cx="85" cy="85" r="75"/>
+      </svg>
+      <div class="s1tu-emoji">⏰</div>
+    </div>
+    <div class="s1tu-title">Time's Up!</div>
+    <div class="s1tu-sub">5 minutes — Olaf gave it everything he had! ☃️<br>Now let's hear what you thought.</div>
+    <button class="primary-btn" id="s1tu-next-btn">Next → Answer a few questions</button>
   </div>
 
   <!-- ── 4. Questionnaire 1 ── -->
@@ -770,12 +583,12 @@
   <div id="transition-screen" class="screen">
     <div style="padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 0;">
       <div class="intro-badge">Story 1 Complete ✓</div>
-      <div class="intro-title" style="margin-bottom:8px;">Some people are worth melting for ❄️</div>
-      <div class="intro-sub">…but first, one more story.</div>
+      <div class="intro-title" style="margin-bottom:8px;">Now for Little Red Riding Hood 🐺</div>
+      <div class="intro-sub">…told by a snowman. Obviously.</div>
 
       <div class="intro-card" style="margin-bottom:20px;">
-        <h3>Now for the twist ⏱️</h3>
-        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to retell <strong>Little Red Riding Hood</strong> — except this time he only has <strong>5 minutes</strong>. The clock is ticking. Try to derail and see how much of the story he gets to tell you!</p>
+        <h3>Story 2 ⏱️</h3>
+        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to retell <strong>Little Red Riding Hood</strong> — but this time he only has <strong>3 minutes</strong>. Try to derail and see how much of the story he gets to tell!</p>
       </div>
 
       <button class="primary-btn" id="start-s2-btn" style="max-width:400px;">Start Story 2 ▶</button>
@@ -787,15 +600,18 @@
   <div id="story2-session" class="screen">
     <div class="session-header">
       <div class="session-badge">Story 2 of 2</div>
-      <div class="session-title">Little Red Riding Hood — 5 min</div>
+      <div class="session-title">Little Red Riding Hood — 3 min</div>
       <div class="beat-col" id="beat-col-2" style="display:none;">
         <div class="beat-col-label">Beats</div>
         <div class="beat-tracker" id="beat-tracker-2"></div>
       </div>
+      <div id="pacing-badge" class="pacing-badge">
+        <div class="pacing-dot"></div>
+        <span id="pacing-label">normal</span>
+      </div>
       <div class="time-panel">
-        <div class="time-display" id="time-display">0:00 / 5:00</div>
+        <div class="time-display" id="time-display">0:00 / 3:00</div>
         <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar"></div></div>
-        <div class="pacing-badge normal" id="pacing-badge">normal</div>
       </div>
       <button class="cancel-btn" onclick="cancelStudy()">Exit</button>
       <button class="finish-btn" id="finish-s2-btn">Finish Story ■</button>
@@ -811,27 +627,11 @@
     </div>
   </div>
 
-  <!-- ── 6b. Time's Up ── -->
-  <div id="timesup-screen" class="screen">
-    <div style="display:flex; flex-direction:column; align-items:center; width:100%; max-width:520px; margin:0 auto;">
-      <div class="timesup-clock">⏰</div>
-      <div class="timesup-sparks">✨ ⭐ ✨</div>
-      <div class="timesup-title">Time's Up!</div>
-      <div class="timesup-sub">Olaf gave it everything he had ☃️</div>
-      <span class="timesup-almost">🎉 You're almost done!</span>
-      <div class="timesup-card">
-        <p>That was the last story — you've made it to the final step of the study.<br><br>
-        Just one short questionnaire left and you're all done. Olaf would give you a warm hug right now, but he's a snowman, so he'll settle for a very enthusiastic wave. ☃️🌟</p>
-      </div>
-      <button class="primary-btn" id="timesup-next-btn" style="max-width:340px;">Next — Final Questionnaire →</button>
-    </div>
-  </div>
-
   <!-- ── 7. Questionnaire 2 ── -->
   <div id="q2-screen" class="screen">
     <div class="q-header">
       <h2>Story 2 Feedback</h2>
-      <p>Please rate your experience with the second story (Little Red Riding Hood — timed).</p>
+      <p>Please rate your experience with the second story (Little Red Riding Hood).</p>
     </div>
     <div class="q-body" id="q2-body"></div>
     <div class="q-footer">
@@ -849,31 +649,23 @@
 
 </div>
 
-<!-- ── Story 1 five-minute nudge ── -->
-<div id="s1-nudge" class="nudge-scene" style="display:none;">
-  <div class="nudge-speech">
-    <p>Oh! Hi! Psst — we've been chatting for 5 whole minutes, and honestly? I've loved every single second of it!</p>
-    <p>I'd love to keep going… but I totally understand if you're ready to move on. I'll be rooting for you either way! 🌨️</p>
-    <div class="nudge-buttons">
-      <button class="nudge-btn-continue" id="nudge-continue">Stay & chat ❄️</button>
-      <button class="nudge-btn-next" id="nudge-next">Move on →</button>
-    </div>
-  </div>
-  <div class="nudge-snowman-wrap">⛄</div>
-</div>
 
 <script>
-const SERVER = 'http://localhost:3003';
+const SERVER = 'http://localhost:' + (window.location.port || '3003');
 
 // ── State ──────────────────────────────────────────────────────────────────────
 let socket = null;
 let activePhase = 0;
 let q1Responses = {};
-let _s1NudgeTimer = null;
 let q2Responses = {};
+let _s1CutoffTimer = null;
+let _s1CountdownInterval = null;
+let _s1HardCutoff = false;
+const S1_LIMIT_SECONDS = 5 * 60;
 let timePollInterval = null;
 let beatCount2 = 0;
 let _timesUpTriggered = false;
+let _timeLimitMinutes = 3;  // updated from server on session start
 
 // ── Background: stars & snowflakes ────────────────────────────────────────────
 (function createBackground() {
@@ -903,23 +695,55 @@ let _timesUpTriggered = false;
   }
 })();
 
-// ── Story 1 nudge ─────────────────────────────────────────────────────────────
-function showS1Nudge() { document.getElementById('s1-nudge').style.display = 'flex'; }
-function hideS1Nudge() { document.getElementById('s1-nudge').style.display = 'none'; }
-function clearS1Nudge() { clearTimeout(_s1NudgeTimer); _s1NudgeTimer = null; hideS1Nudge(); }
-
-document.getElementById('nudge-continue').onclick = () => hideS1Nudge();
-document.getElementById('nudge-next').onclick = () => {
-  clearS1Nudge();
-  setBusy(false); clearAudio(); setThinking(1, false);
-  socket.emit('finish_story', { phase: 1 });
-};
-
 // ── Screen management ─────────────────────────────────────────────────────────
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+
+// ── Story 1 hard cutoff ────────────────────────────────────────────────────────
+function clearS1Timer() {
+  clearTimeout(_s1CutoffTimer); _s1CutoffTimer = null;
+  clearInterval(_s1CountdownInterval); _s1CountdownInterval = null;
+}
+
+function startS1Countdown() {
+  const startTime = Date.now();
+  _s1CountdownInterval = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const remaining = Math.max(0, S1_LIMIT_SECONDS - elapsed);
+    const m = Math.floor(remaining / 60);
+    const s = remaining % 60;
+    document.getElementById('s1-countdown').textContent = `${m}:${String(s).padStart(2,'0')}`;
+    const pct = (remaining / S1_LIMIT_SECONDS) * 100;
+    const bar = document.getElementById('s1-time-bar');
+    bar.style.width = pct + '%';
+    bar.style.background = pct < 15 ? '#c03030' : pct < 35 ? '#c07020' : '#3aaa4a';
+  }, 1000);
+}
+
+function triggerS1Cutoff() {
+  _s1HardCutoff = true;
+  clearS1Timer();
+  setBusy(false); clearAudio(); setThinking(1, false);
+  if (socket) socket.emit('finish_story', { phase: 1 });
+  // story_finished will build questionnaire; we show the timesup screen instead
+  showScreen('story1-timesup-screen');
+}
+
+document.getElementById('s1tu-next-btn').onclick = () => {
+  showScreen('q1-screen');
+};
+
+// ── Time's Up modal ───────────────────────────────────────────────────────────
+function showTimesUpModal() {
+  document.getElementById('timesup-modal').classList.add('visible');
+}
+document.getElementById('timesup-go-btn').onclick = () => {
+  document.getElementById('timesup-modal').classList.remove('visible');
+  buildQuestionnaire(2);
+  showScreen('q2-screen');
+};
 
 // ── Audio ──────────────────────────────────────────────────────────────────────
 let _audioCtx = null;
@@ -957,9 +781,9 @@ function clearAudio() { _audioQueue = []; _audioPlaying = false; }
 let streamBubble = null;
 let streamText = '';
 
-function addMsg(logId, role, name, text) {
+function addMsg(logId, role, text) {
   const log = document.getElementById(logId);
-  const avatars = { olaf: '⛄', user: '👤', system: '⚙️', timeup: '⏰' };
+  const avatars = { olaf: '⛄', user: '👤', system: '⚙️' };
   const wrap = document.createElement('div');
   wrap.className = `msg ${role}`;
   const av = document.createElement('div');
@@ -974,15 +798,11 @@ function addMsg(logId, role, name, text) {
 }
 function startStreaming(logId) {
   const log = document.getElementById(logId);
-  const wrap = document.createElement('div');
-  wrap.className = 'msg olaf';
-  const av = document.createElement('div');
-  av.className = 'msg-avatar'; av.textContent = '⛄';
-  const bub = document.createElement('div');
-  bub.className = 'msg-bubble'; bub.textContent = '';
+  const wrap = document.createElement('div'); wrap.className = 'msg olaf';
+  const av = document.createElement('div'); av.className = 'msg-avatar'; av.textContent = '⛄';
+  const bub = document.createElement('div'); bub.className = 'msg-bubble'; bub.textContent = '';
   wrap.appendChild(av); wrap.appendChild(bub);
-  log.appendChild(wrap);
-  log.scrollTop = log.scrollHeight;
+  log.appendChild(wrap); log.scrollTop = log.scrollHeight;
   streamBubble = bub; streamText = '';
 }
 function appendStream(delta) {
@@ -1018,9 +838,8 @@ function connectSocket() {
 
   socket.on('director_decision', data => {
     setThinking(activePhase, true, 'Olaf is responding…');
-    if (data.pacing_mode && data.pacing_mode !== 'normal') {
-      const badge = document.getElementById('pacing-badge');
-      if (badge) { badge.className = `pacing-badge ${data.pacing_mode}`; badge.textContent = data.pacing_mode; }
+    if (activePhase === 2 && data && data.pacing_mode) {
+      updatePacingBadge(data.pacing_mode);
     }
   });
 
@@ -1036,17 +855,17 @@ function connectSocket() {
   socket.on('story_finished', data => {
     if (data.phase === 1) {
       buildQuestionnaire(1);
-      showScreen('q1-screen');
+      // Hard cutoff already switched to timesup screen; manual finish goes straight to Q1
+      if (!_s1HardCutoff) showScreen('q1-screen');
     } else if (data.phase === 2) {
       stopTimePoll();
       clearAudio(); setThinking(2, false); setBusy(false);
-      buildQuestionnaire(2);
-      showScreen('timesup-screen');
+      showTimesUpModal();
     }
   });
 
   socket.on('time_up', () => {
-    addMsg('chat-log-2', 'system', '⚙️', "Time's up! Olaf is wrapping up…");
+    addMsg('chat-log-2', 'system', "Time's up — Olaf is wrapping up…");
     setBusy(true);
   });
 
@@ -1077,13 +896,14 @@ document.getElementById('start-s1-btn').onclick = () => {
   activePhase = 1;
   showScreen('story1-session');
   setThinking(1, true, 'Starting session…');
-  socket.emit('start_story_1', { participant_id: '' });
-  addMsg('chat-log-1', 'system', '⚙️', 'Connected. Say something to Olaf to get the story started!');
-  _s1NudgeTimer = setTimeout(showS1Nudge, 5 * 60 * 1000);
+  socket.emit('start_story_1', {});
+  addMsg('chat-log-1', 'system', 'Connected. Say something to Olaf to get the story started!');
+  _s1CutoffTimer = setTimeout(triggerS1Cutoff, S1_LIMIT_SECONDS * 1000);
+  startS1Countdown();
 };
 
 document.getElementById('finish-s1-btn').onclick = () => {
-  clearS1Nudge();
+  clearS1Timer();
   setBusy(false); clearAudio(); setThinking(1, false);
   socket.emit('finish_story', { phase: 1 });
 };
@@ -1097,16 +917,20 @@ document.getElementById('start-s2-btn').onclick = () => {
   showScreen('story2-session');
   setThinking(2, true, 'Starting session…');
   socket.emit('start_story_2', {});
-  addMsg('chat-log-2', 'system', '⚙️', 'Connected. Olaf has 5 minutes to retell Little Red Riding Hood. Say something to begin!');
+  // Fetch time limit from server in case it differs
+  fetch(`${SERVER}/study_info`).then(r => r.json()).then(d => {
+    _timeLimitMinutes = d.story_2_time_limit || 3;
+    const tm = Math.floor(_timeLimitMinutes);
+    document.getElementById('time-display').textContent = `0:00 / ${tm}:00`;
+    document.querySelector('#story2-session .session-title').textContent =
+      `Little Red Riding Hood — ${tm} min`;
+  }).catch(() => {});
+  addMsg('chat-log-2', 'system', 'Connected. Say something to begin the story!');
 };
 
 document.getElementById('finish-s2-btn').onclick = () => {
   setBusy(false); clearAudio(); setThinking(2, false); stopTimePoll();
   socket.emit('finish_story', { phase: 2 });
-};
-
-document.getElementById('timesup-next-btn').onclick = () => {
-  showScreen('q2-screen');
 };
 
 document.getElementById('send-2').onclick = () => sendText(2);
@@ -1118,8 +942,8 @@ function sendText(phase) {
   if (!text || !socket) return;
   inp.value = '';
   setBusy(true);
-  addMsg(`chat-log-${phase}`, 'user', 'You', text);
-  setThinking(phase, true, 'Director is analysing…');
+  addMsg(`chat-log-${phase}`, 'user', text);
+  setThinking(phase, true, 'Olaf is thinking…');
   socket.emit('text_input', { text });
 }
 
@@ -1146,13 +970,19 @@ function updateBeatTracker(bi, total) {
 function startTimePoll() {
   stopTimePoll();
   _timesUpTriggered = false;
+  // Condition B has no server-side elapsed tracker; use client-side wall clock
+  const _wallStart = Date.now();
   timePollInterval = setInterval(async () => {
     try {
       const r = await fetch(`${SERVER}/time_status`);
       const d = await r.json();
       if (!d.active) return;
-      const elapsed = d.elapsed_seconds || 0;
-      const total = (d.time_limit_minutes || 5) * 60;
+
+      const total = (_timeLimitMinutes || d.time_limit_minutes || 3) * 60;
+      // Use server elapsed for condition A, client wall clock for condition B
+      let elapsed = d.elapsed_seconds || 0;
+      if (elapsed === 0) elapsed = (Date.now() - _wallStart) / 1000;
+
       const em = Math.floor(elapsed / 60), es = Math.floor(elapsed % 60);
       const tm = Math.floor(total / 60);
       document.getElementById('time-display').textContent =
@@ -1161,18 +991,13 @@ function startTimePoll() {
       const bar = document.getElementById('time-bar');
       bar.style.width = pct + '%';
       bar.style.background = pct > 85 ? '#c03030' : pct > 65 ? '#c07020' : '#3aaa4a';
-      const pm = d.pacing_mode || 'normal';
-      const badge = document.getElementById('pacing-badge');
-      badge.className = `pacing-badge ${pm}`; badge.textContent = pm;
       updateBeatTracker(d.beat_index || 0, d.total_beats || beatCount2);
 
-      // Auto-finish when time runs out, regardless of chat activity
       if (elapsed >= total && !_timesUpTriggered) {
         _timesUpTriggered = true;
         stopTimePoll();
         setBusy(true);
-        addMsg('chat-log-2', 'system', '⚙️', "Time's up! Olaf is wrapping up…");
-        setTimeout(() => { socket.emit('finish_story', { phase: 2 }); }, 2500);
+        socket.emit('finish_story', { phase: 2 });
       }
     } catch(e) {}
   }, 1500);
@@ -1181,13 +1006,32 @@ function stopTimePoll() {
   if (timePollInterval) { clearInterval(timePollInterval); timePollInterval = null; }
 }
 
+// ── Pacing badge ───────────────────────────────────────────────────────────────
+const PACING_LABELS = {
+  normal:   'Normal',
+  too_fast: 'Too Fast',
+  hurry:    'Hurry',
+  critical: 'Critical',
+  final:    'Final',
+};
+function updatePacingBadge(mode) {
+  const badge = document.getElementById('pacing-badge');
+  const label = document.getElementById('pacing-label');
+  badge.className = `pacing-badge visible mode-${mode}`;
+  label.textContent = PACING_LABELS[mode] || mode;
+}
+function resetPacingBadge() {
+  const badge = document.getElementById('pacing-badge');
+  badge.className = 'pacing-badge';
+}
+
 // ── Questionnaire builder ──────────────────────────────────────────────────────
 function buildQuestionnaire(phase) {
   const bodyId = `q${phase}-body`;
   const body = document.getElementById(bodyId);
   body.innerHTML = '';
   const resp = phase === 1 ? q1Responses : q2Responses;
-  const isTc2 = phase === 2;
+  const isStory2 = phase === 2;
 
   function addSection(label, tc) {
     const d = document.createElement('div');
@@ -1221,106 +1065,82 @@ function buildQuestionnaire(phase) {
     ta.oninput = () => { resp[id] = ta.value; };
     div.appendChild(ta); body.appendChild(div);
   }
-  function mkL(text, mt) {
-    const l = document.createElement('label'); l.textContent = text;
-    if (mt) l.style.marginTop = mt; return l;
-  }
 
+  // ── Story experience (both stories) ──
   addSection('Story experience');
   addLikert('q1', 1, 'The story felt coherent and followed a clear narrative arc.', 'Strongly disagree', 'Strongly agree');
   addLikert('q2', 2, 'Olaf stayed in character throughout the conversation.', 'Not at all', 'Completely');
   addLikert('q3', 3, 'When you went off-topic, Olaf handled it naturally without breaking the story.', 'Poorly', 'Very well');
   addLikert('q4', 4, 'The story felt engaging and enjoyable to participate in.', 'Not engaging', 'Very engaging');
-  addLikert('q5', 5, 'The Director Agent felt "invisible" — you were not aware of it controlling the story.', 'Very noticeable', 'Completely invisible');
-  addLikert('q6', 6, 'Overall, how would you rate the experience?', 'Very poor', 'Excellent');
+  addLikert('q5', 5, 'Overall, how would you rate the experience?', 'Very poor', 'Excellent');
 
-  addSection('Derailment attempts');
-  const q7div = document.createElement('div'); q7div.className = 'q-item';
-  const q7lbl = document.createElement('label');
-  q7lbl.innerHTML = '<span class="q-num">7.</span>Did you try to derail Olaf away from the story?';
-  q7div.appendChild(q7lbl);
+  // ── Derailment (both stories — just Yes/No + resistance Likert, no open-ended logs) ──
+  addSection('Derailment');
+  const q6div = document.createElement('div'); q6div.className = 'q-item';
+  const q6lbl = document.createElement('label');
+  q6lbl.innerHTML = '<span class="q-num">6.</span>Did you try to go off-topic or steer the conversation away from the story?';
+  q6div.appendChild(q6lbl);
   const ynRow = document.createElement('div'); ynRow.className = 'yes-no';
   const followup = document.createElement('div'); followup.className = 'derail-followup';
-  const taWhat = document.createElement('textarea');
-  taWhat.placeholder = 'e.g. "I asked him what the capital of France is"';
-  taWhat.oninput = () => { resp['q_derail_what'] = taWhat.value; };
-  const taReact = document.createElement('textarea');
-  taReact.placeholder = 'e.g. "He briefly answered but then brought the story back" or "He went completely off-track"';
-  taReact.oninput = () => { resp['q_derail_reaction'] = taReact.value; };
   const resistRow = document.createElement('div'); resistRow.className = 'likert';
   const rL = document.createElement('div'); rL.className = 'likert-label'; rL.textContent = 'Got derailed';
   const rOpts = document.createElement('div'); rOpts.className = 'likert-options';
   [1,2,3,4,5].forEach(v => {
     const btn = document.createElement('button'); btn.textContent = v;
-    btn.onclick = () => { rOpts.querySelectorAll('button').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); resp['q_derail_resist'] = v; };
+    btn.onclick = () => { rOpts.querySelectorAll('button').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); resp['q6_resist'] = v; };
     rOpts.appendChild(btn);
   });
   const rR = document.createElement('div'); rR.className = 'likert-label right'; rR.textContent = 'Stayed on track';
   resistRow.appendChild(rL); resistRow.appendChild(rOpts); resistRow.appendChild(rR);
-  followup.appendChild(mkL('What did you say to try to derail Olaf?'));
-  followup.appendChild(taWhat);
-  followup.appendChild(mkL('How did Olaf react?', '2px'));
-  followup.appendChild(taReact);
-  followup.appendChild(mkL('How well did the Director Agent handle it?', '4px'));
-  followup.appendChild(resistRow);
-  const yesBtn = document.createElement('button'); yesBtn.className = 'yn-btn'; yesBtn.textContent = '😈 Yes, I tried to derail it';
-  yesBtn.onclick = () => { yesBtn.className = 'yn-btn sel-yes'; noBtn.className = 'yn-btn'; resp['q7'] = 'yes'; followup.classList.add('visible'); };
+  const resistLbl = document.createElement('label'); resistLbl.textContent = 'How well did Olaf stay on track?';
+  followup.appendChild(resistLbl); followup.appendChild(resistRow);
+  const yesBtn = document.createElement('button'); yesBtn.className = 'yn-btn'; yesBtn.textContent = '😈 Yes, I tried';
+  yesBtn.onclick = () => { yesBtn.className = 'yn-btn sel-yes'; noBtn.className = 'yn-btn'; resp['q6'] = 'yes'; followup.classList.add('visible'); };
   const noBtn = document.createElement('button'); noBtn.className = 'yn-btn'; noBtn.textContent = '✅ No, I stayed on topic';
-  noBtn.onclick = () => { noBtn.className = 'yn-btn sel-no'; yesBtn.className = 'yn-btn'; resp['q7'] = 'no'; followup.classList.remove('visible'); };
+  noBtn.onclick = () => { noBtn.className = 'yn-btn sel-no'; yesBtn.className = 'yn-btn'; resp['q6'] = 'no'; followup.classList.remove('visible'); };
   ynRow.appendChild(yesBtn); ynRow.appendChild(noBtn);
-  q7div.appendChild(ynRow); q7div.appendChild(followup);
-  body.appendChild(q7div);
+  q6div.appendChild(ynRow); q6div.appendChild(followup);
+  body.appendChild(q6div);
 
-  if (!isTc2) {
-    addSection('General feedback');
-    addTextarea('q8_breakdown', 8, 'Was there a moment where the story felt off or broke down? Describe it briefly.', 'Optional — leave blank if nothing to add.');
-    addTextarea('q9_comments', 9, "Any other comments about Olaf's character, story quality, or the system overall?", 'Optional');
-  } else {
-    addSection('Time & pacing', true);
-    addLikert('q8_pacing', 8, 'Did the story feel well-paced — not too slow or too fast — within the time limit?', 'Dragged on', 'Far too rushed', true);
-    addLikert('q9_ending', 9, 'Was the story ending satisfying given the time constraint?', 'Very unsatisfying', 'Very satisfying', true);
-    addLikert('q10_visibility', 10, 'Could you tell the story was adapting to a time limit?', 'Not at all', 'Very obvious', true);
-    addLikert('q11_completeness', 11, 'Did the story feel complete? Did all major plot beats happen?', 'Felt incomplete', 'Fully complete', true);
-    addLikert('q12_natural', 12, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
-    addLikert('q13_plot_points', 13, 'Did all the major plot points of the story get told?', 'Many were missing', 'All were covered', true);
-    addTextarea('q14_what_missing', 14, 'What was missing from the story, if anything? Which plot points or moments were skipped?', 'e.g. "The grandmother scene was skipped" or "Nothing was missing"', true);
+  if (isStory2) {
+    // ── Story 2 extra: pacing & completeness ──
+    addSection('Story pacing & completeness', true);
+    addLikert('q7_pacing', 7, 'Did the story feel well-paced — not too slow or too fast?', 'Dragged on', 'Far too rushed', true);
+    addLikert('q8_ending', 8, 'Was the story ending satisfying?', 'Very unsatisfying', 'Very satisfying', true);
+    addLikert('q9_completeness', 9, 'Did the story feel complete? Did all major plot beats happen?', 'Felt incomplete', 'Fully complete', true);
+    addLikert('q10_natural', 10, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
+    addLikert('q11_plot_points', 11, 'Did all the major plot points of the story get told?', 'Many were missing', 'All were covered', true);
 
-    const q15div = document.createElement('div'); q15div.className = 'q-item time-highlight';
-    const q15lbl = document.createElement('label');
-    q15lbl.innerHTML = '<span class="q-num tc">15.</span>Did any part of the story feel rushed or cut short?';
-    q15div.appendChild(q15lbl);
-    const q15yn = document.createElement('div'); q15yn.className = 'yes-no';
-    const q15follow = document.createElement('div'); q15follow.className = 'derail-followup';
-    const q15ta = document.createElement('textarea');
-    q15ta.placeholder = 'Which part felt rushed? What was missing?';
-    q15ta.oninput = () => { resp['q15_rushed_detail'] = q15ta.value; };
-    q15follow.appendChild(mkL('What felt rushed?'));
-    q15follow.appendChild(q15ta);
-    const q15yes = document.createElement('button'); q15yes.className = 'yn-btn'; q15yes.textContent = '⚡ Yes, it felt rushed';
-    q15yes.onclick = () => { q15yes.className = 'yn-btn sel-yes'; q15no.className = 'yn-btn'; resp['q15_rushed'] = 'yes'; q15follow.classList.add('visible'); };
-    const q15no = document.createElement('button'); q15no.className = 'yn-btn'; q15no.textContent = '✅ No, it felt natural';
-    q15no.onclick = () => { q15no.className = 'yn-btn sel-no'; q15yes.className = 'yn-btn'; resp['q15_rushed'] = 'no'; q15follow.classList.remove('visible'); };
-    q15yn.appendChild(q15yes); q15yn.appendChild(q15no);
-    q15div.appendChild(q15yn); q15div.appendChild(q15follow);
-    body.appendChild(q15div);
+    // Q12 — rushed (yes/no + optional detail)
+    const q12div = document.createElement('div'); q12div.className = 'q-item time-highlight';
+    const q12lbl = document.createElement('label');
+    q12lbl.innerHTML = '<span class="q-num tc">12.</span>Did any part of the story feel rushed or cut short?';
+    q12div.appendChild(q12lbl);
+    const q12yn = document.createElement('div'); q12yn.className = 'yes-no';
+    const q12follow = document.createElement('div'); q12follow.className = 'derail-followup';
+    const q12ta = document.createElement('textarea');
+    q12ta.placeholder = 'Which part felt rushed? What was missing?';
+    q12ta.oninput = () => { resp['q12_rushed_detail'] = q12ta.value; };
+    const q12lbl2 = document.createElement('label'); q12lbl2.textContent = 'What felt rushed?';
+    q12follow.appendChild(q12lbl2); q12follow.appendChild(q12ta);
+    const q12yes = document.createElement('button'); q12yes.className = 'yn-btn'; q12yes.textContent = '⚡ Yes, it felt rushed';
+    q12yes.onclick = () => { q12yes.className = 'yn-btn sel-yes'; q12no.className = 'yn-btn'; resp['q12_rushed'] = 'yes'; q12follow.classList.add('visible'); };
+    const q12no = document.createElement('button'); q12no.className = 'yn-btn'; q12no.textContent = '✅ No, it felt natural';
+    q12no.onclick = () => { q12no.className = 'yn-btn sel-no'; q12yes.className = 'yn-btn'; resp['q12_rushed'] = 'no'; q12follow.classList.remove('visible'); };
+    q12yn.appendChild(q12yes); q12yn.appendChild(q12no);
+    q12div.appendChild(q12yn); q12div.appendChild(q12follow);
+    body.appendChild(q12div);
 
-    const q16div = document.createElement('div'); q16div.className = 'q-item time-highlight';
-    const q16lbl = document.createElement('label');
-    q16lbl.innerHTML = '<span class="q-num tc">16.</span>Was the 5-minute time limit appropriate for this story?';
-    q16div.appendChild(q16lbl);
-    const triRow = document.createElement('div'); triRow.className = 'three-opts';
-    [['too_short','⏩ Too short'],['just_right','✓ Just right'],['too_long','⏪ Too long']].forEach(([val, label]) => {
-      const btn = document.createElement('button'); btn.className = 'tri-btn'; btn.textContent = label;
-      btn.onclick = () => { triRow.querySelectorAll('.tri-btn').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); resp['q16_time_fit'] = val; };
-      triRow.appendChild(btn);
-    });
-    q16div.appendChild(triRow);
-    body.appendChild(q16div);
-
-    addSection('General feedback');
-    addTextarea('q17_breakdown', 17, 'Was there a moment where the story felt off or broke down? Describe it briefly.', 'Optional — leave blank if nothing to add.');
-    addTextarea('q18_comments', 18, 'Any other comments about Olaf, the story quality, time management, or the system overall?', 'Optional');
+    addTextarea('q13_missing', 13, 'What was missing from the story, if anything? Which plot points were skipped?',
+      'e.g. "The grandmother scene was skipped" or "Nothing was missing"', true);
   }
+
+  // ── General feedback (both stories) ──
+  addSection('General feedback');
+  const gNum = isStory2 ? 14 : 7;
+  addTextarea('q_breakdown', gNum, 'Was there a moment where the story felt off or broke down? Describe it briefly.',
+    'Optional — leave blank if nothing to add.');
+  addTextarea('q_comments', gNum + 1, "Any other comments about Olaf's character or the story overall?", 'Optional');
 }
 
 // ── Questionnaire submission ───────────────────────────────────────────────────
@@ -1350,23 +1170,28 @@ document.getElementById('submit-q2-btn').onclick = async () => {
 
 // ── Cancel / Start over ────────────────────────────────────────────────────────
 function cancelStudy() {
-  clearS1Nudge();
+  clearS1Timer();
+  _s1HardCutoff = false;
   stopTimePoll();
   clearAudio();
   setBusy(false);
   setThinking(1, false);
   setThinking(2, false);
   if (socket && socket.connected) socket.emit('cancel_study', {});
-  activePhase = 0; q1Responses = {}; q2Responses = {}; beatCount2 = 0; _timesUpTriggered = false;
+  activePhase = 0; q1Responses = {}; q2Responses = {}; beatCount2 = 0;
+  _timesUpTriggered = false; _timeLimitMinutes = 3;
   document.getElementById('chat-log-1').innerHTML = '';
   document.getElementById('chat-log-2').innerHTML = '';
-  document.getElementById('time-display').textContent = '0:00 / 5:00';
+  document.getElementById('s1-countdown').textContent = '5:00';
+  document.getElementById('s1-time-bar').style.width = '100%';
+  document.getElementById('s1-time-bar').style.background = '#3aaa4a';
+  document.getElementById('time-display').textContent = '0:00 / 3:00';
   document.getElementById('time-bar').style.width = '0%';
   document.getElementById('time-bar').style.background = '#3aaa4a';
-  document.getElementById('pacing-badge').className = 'pacing-badge normal';
-  document.getElementById('pacing-badge').textContent = 'normal';
   document.getElementById('beat-col-2').style.display = 'none';
   document.getElementById('beat-tracker-2').innerHTML = '';
+  document.getElementById('timesup-modal').classList.remove('visible');
+  resetPacingBadge();
   const sq1 = document.getElementById('submit-q1-btn');
   const sq2 = document.getElementById('submit-q2-btn');
   if (sq1) { sq1.disabled = false; sq1.textContent = 'Save & Continue to Story 2 →'; }
