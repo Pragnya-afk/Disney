@@ -713,23 +713,6 @@ def save_session():
         return jsonify({"saved": False, "error": str(e)})
 
 
-@app.route("/save_questionnaire", methods=["POST"])
-def save_questionnaire():
-    try:
-        data = request.get_json()
-        output_dir = os.path.join(REAL_TIME_DIR, "outputs")
-        os.makedirs(output_dir, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        scenario = data.get("scenario", "unknown")
-        filename = f"{timestamp}_{scenario}_tc_questionnaire.json"
-        path = os.path.join(output_dir, filename)
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
-        print(f"[Questionnaire saved] {path}")
-        return jsonify({"saved": True, "path": path})
-    except Exception as e:
-        print(f"[Questionnaire save error] {e}")
-        return jsonify({"saved": False, "error": str(e)})
 
 
 if __name__ == "__main__":
