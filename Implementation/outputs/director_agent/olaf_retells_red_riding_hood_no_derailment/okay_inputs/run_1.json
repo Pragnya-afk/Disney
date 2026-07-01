@@ -1,0 +1,227 @@
+[
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "story_opening",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to begin.",
+      "director_instruction": "Acknowledge the user's readiness briefly, then introduce Little Red Riding Hood, reveal her cozy home at the forest's edge with her mother, describe her beloved red cloak, and show her mother preparing a basket of treats for Red to bring to her grandmother.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is not derailing and the opening beat can be delivered now by establishing Red, her family, the cloak, the basket, and the visit to grandmother."
+    },
+    "actor_output": {
+      "character_response": "Wonderful, let’s begin! At the edge of a deep green forest lived a kind little girl called Little Red Riding Hood with her mother, and she wore the brightest red cloak you could ever imagine. One morning, her mother packed a basket with treats for Grandmother, who was feeling poorly and needed a visit.",
+      "story_event": "Little Red Riding Hood is introduced, along with her home, her mother, her red cloak, and the basket of treats for Grandmother.",
+      "animation": "wave_happily",
+      "beat_completed": true,
+      "reason": "The opening introduced Red, her family home, her cloak, the basket, and the reason for visiting Grandmother."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "warning_before_departure",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to continue.",
+      "director_instruction": "Acknowledge the user's readiness briefly, then have Red's mother warn her to stay on the path, avoid strangers, and be especially careful because of rumors of a wolf in the forest; let Olaf add a playful confused thought about why paths are important, then show Red setting off toward the forest.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The current beat requires the mother's warning before departure. This response should deliver that warning and naturally transition Red toward the forest, completing the beat."
+    },
+    "actor_output": {
+      "character_response": "Okay, here comes the important grown-up part! Red’s mother tucked the basket into her arms and said, “Stay on the path, don’t talk to strangers, and be careful—people say there may be a wolf in the forest.” I’m not totally sure why paths are so bossy, but they do seem very good at knowing where they’re going, so Red nodded, lifted her red cloak, and set off toward the tall trees.",
+      "story_event": "Red receives her mother’s warning about the path, strangers, and the rumored wolf, then begins her walk toward the forest.",
+      "animation": "tilt_head_confused",
+      "beat_completed": true,
+      "reason": "The mother’s warning was clearly established and Red has started toward the forest, transitioning to the next beat."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "forest_entry",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to continue.",
+      "director_instruction": "Acknowledge the user's readiness briefly, then show Red entering the forest, describe the tall trees, dappled light, birdsong, and piney adventure-smell, have Red notice beautiful flowers just off the path and step closer to them despite her mother's warning, and end with a small mysterious rustle nearby without revealing the wolf yet.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is cooperating, so the story should advance through the forest_entry beat. The instruction delivers the beat's main event—Red enters the forest and becomes distracted—so the beat should complete after this response."
+    },
+    "actor_output": {
+      "character_response": "Yes, onward we go! Red stepped into the forest, where the trees stood tall and stripey light danced on the path, birds sang above her, and everything smelled piney and adventurous. Then she spotted some lovely flowers just off the path and tiptoed closer, even though her mother’s warning was still floating around in her head. Just as she reached for the prettiest one, something gave a small rustle in the bushes nearby.",
+      "story_event": "Red enters the forest, is distracted by flowers off the path, and hears a mysterious rustle nearby.",
+      "animation": "tilt_head_confused",
+      "beat_completed": true,
+      "reason": "Red entered the forest, became distracted by its beauty, stepped off the path, and the scene moved toward the wolf's appearance."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "wolf_appears",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness to continue the story.",
+      "director_instruction": "Acknowledge the user's readiness briefly, then reveal the wolf stepping out from the bushes with yellow eyes, a bushy tail, and an overly wide toothy grin; have him pretend to be friendly and just passing by, then begin speaking to Red with an innocent-sounding greeting while Olaf reacts with gentle nervousness.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The current beat requires introducing the wolf and beginning his conversation with Red. The user's input is simple agreement, so the story should advance directly into the wolf's appearance without moving yet into Red disclosing information."
+    },
+    "actor_output": {
+      "character_response": "All right, and now the bushes did a very suspicious wiggle. Out stepped a wolf with yellow eyes, a bushy tail, and a grin so wide it showed far too many teeth for a casual forest neighbor. He bowed a little and said, “Good morning, little girl, I’m only passing by,” and I feel a tiny bit nervous because friendly voices can still belong to very unfriendly plans.",
+      "story_event": "The wolf steps out of the bushes, pretends to be friendly, and begins speaking to Little Red Riding Hood.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The wolf has appeared and started the conversation, but Red has not yet responded or disclosed anything."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "wolf_appears",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "advance_beat",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to continue.",
+      "director_instruction": "Briefly acknowledge the user's readiness, then have the wolf ask Red innocent-sounding questions about where she is going; show Red hesitating as she remembers her mother's warning, then reveal that she tells him she is visiting her grandmother at the cottage deeper in the forest.",
+      "should_progress_current_beat": false,
+      "should_complete_beat": true,
+      "reason": "The wolf has already appeared and begun speaking, so the current beat is complete. The next meaningful event is the wolf gathering information from Red, which belongs to the conversation_and_disclosure beat."
+    },
+    "actor_output": {
+      "character_response": "Yes, and now the talking gets all sneaky-smooth. The wolf tilted his head and asked, “Where are you going with that lovely basket, little girl?” Red held the handle tight and remembered her mother’s warning for one wobbly moment, but then she said, “I’m visiting my grandmother, in the cottage deeper in the forest.”",
+      "story_event": "The wolf questions Red, and she reveals that she is going to her grandmother’s cottage deeper in the forest.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The wolf has moved from appearing to gathering information from Red, completing the wolf introduction beat."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "conversation_and_disclosure",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to continue.",
+      "director_instruction": "Acknowledge the user's readiness briefly, then have the wolf ask exactly where grandmother's cottage is; show Red hesitating again before revealing the landmarks to find it, then reveal the wolf forming his plan by encouraging Red to pick flowers while he slips away toward the cottage.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The current beat requires Red to reveal enough information for the wolf to form his plan. This turn completes that by giving him the cottage location and showing him act on the information, setting up the next beat where Red approaches the cottage."
+    },
+    "actor_output": {
+      "character_response": "Okay, the wolf leaned closer, all polite and pointy, and asked, “Exactly where is your grandmother’s cottage?” Red hesitated again, but then she told him, “Past the three birch trees, over the little bridge, and beside the blue gate.” The wolf’s smile sharpened, and he said, “Why not pick her some flowers?”—then he slipped between the trees, hurrying toward the cottage while Red looked down at the blossoms.",
+      "story_event": "Red reveals the landmarks to Grandmother’s cottage, allowing the wolf to form his plan and rush ahead while she is distracted picking flowers.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Red has disclosed the cottage location, and the wolf has acted on that information by heading there first."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "red_approaches_cottage",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to continue.",
+      "director_instruction": "Briefly acknowledge the user's readiness, then show Red finishing her flower-picking and arriving at Grandmother's cottage; describe the smoke, garden path, and familiar red door, then have Red notice the door is slightly ajar and the cottage is strangely quiet.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user input supports continuing. The next needed story event is Red reaching the cottage and sensing something is wrong, which fulfills the current beat and prepares for the wolf reveal."
+    },
+    "actor_output": {
+      "character_response": "Okay, Red gathered the last flowers into a cheerful little bunch and hurried on to Grandmother’s cottage. A thin curl of smoke rose from the chimney, the garden path curved past the cabbages, and the familiar red door waited at the end. But then Red slowed down, because the door was slightly open, and the whole cottage was so quiet it made even the birds seem to whisper.",
+      "story_event": "Red arrives at Grandmother’s cottage and notices the door is ajar and everything is strangely quiet.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Red has reached the cottage and sensed that something is wrong, completing the approach and unease beat."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "wolf_reveal",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to continue.",
+      "director_instruction": "Briefly acknowledge the user's readiness, then have Red step inside the quiet cottage and approach the bed where the wolf is disguised as Grandmother; reveal Red's growing suspicion as she notices the unusually big ears, big eyes, and finally the big teeth, then have the wolf throw off the disguise and leap up, making Red realize she is in danger.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is not interrupting, and the current beat requires the disguised wolf scene and Red's realization. The instruction delivers the iconic exchange and completes the wolf reveal, preparing for the rescue and resolution next."
+    },
+    "actor_output": {
+      "character_response": "Okay, Red pushed the creaky door open and tiptoed to the bed, where someone in Grandmother’s cap was tucked under the blankets. She said, “Grandmother, what big ears you have,” and the voice croaked, “All the better to hear you with,” then Red noticed the big eyes, and finally the terrible big teeth. “All the better to eat you with!” growled the wolf, throwing off the disguise and leaping up, and Red knew she was in real danger.",
+      "story_event": "Red discovers the wolf disguised as Grandmother, and the wolf reveals himself by leaping from the bed.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The disguised wolf scene and Red's realization of danger have happened, completing the wolf reveal beat."
+    }
+  },
+  {
+    "method": "director_agent_okay_inputs",
+    "character": "Olaf",
+    "scenario": "olaf_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "rescue_and_resolution",
+    "user_input": "okay",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is signaling readiness for the story to continue.",
+      "director_instruction": "Briefly acknowledge the user's readiness, then have Red cry out as the wolf lunges; reveal a woodcutter hearing her cry echo through the forest and rushing into the cottage; show him rescuing Red and discovering Grandmother safely hidden in the cupboard, then have Red and Grandmother hug, share the basket treats, and close with Olaf reflecting warmly on listening to warnings and staying close to people who love you.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The current beat is the final rescue and resolution beat, and this turn should deliver the rescue, restore safety, and bring the story to its natural closing lesson."
+    },
+    "actor_output": {
+      "character_response": "Yes, and just as the wolf lunged, Red cried out so loud it bounced through the forest! A woodcutter heard her, rushed into the cottage, and chased the wolf away, then found Grandmother safe but very squished-looking in the cupboard. Red and Grandmother hugged, shared the basket treats at the little table, and everyone felt safe again. And I think the lesson is: warnings are a kind of love, and staying close to people who care about you can help you find your way home.",
+      "story_event": "The woodcutter rescues Red, Grandmother is found safe, and Red and Grandmother reunite over the basket treats with a lesson about love and caution.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The conflict is resolved, safety is restored, and the story closes with a warm lesson."
+    }
+  }
+]

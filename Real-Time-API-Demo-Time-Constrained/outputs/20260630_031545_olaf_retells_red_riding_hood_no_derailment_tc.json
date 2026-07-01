@@ -1,0 +1,110 @@
+{
+  "scenario": "olaf_retells_red_riding_hood_no_derailment",
+  "story_topic": "Olaf retells the story of Little Red Riding Hood to the user in his warm, playful voice. The user stays engaged with the story and helps it move forward.",
+  "time_limit_minutes": 2.0,
+  "elapsed_seconds": 131.68,
+  "beats_completed": 8,
+  "completed_beats": [
+    "story_opening",
+    "warning_before_departure",
+    "forest_entry",
+    "wolf_appears",
+    "conversation_and_disclosure",
+    "red_approaches_cottage",
+    "wolf_reveal",
+    "rescue_and_resolution"
+  ],
+  "saved_at": "2026-06-30T03:15:45.152664",
+  "turns": [
+    {
+      "turn": 1,
+      "beat": "story_opening",
+      "user_input": "hi olaf",
+      "director_decision": {
+        "decision_type": "progress_story",
+        "interruption_detected": false,
+        "user_intent": "Greet Olaf and engage in conversation.",
+        "director_instruction": "Introduce Little Red Riding Hood and her bright red cloak, explaining why she loves it. Then describe the cozy cottage that Red and her mother share at the edge of the forest.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": false,
+        "reason": "This response advances the story by introducing key details about Red and her home, establishing a warm foundation for the narrative."
+      },
+      "pacing_mode": "normal",
+      "elapsed_seconds": 6.61,
+      "remaining_seconds": 113.39,
+      "character_response": "Oh! Hello there! I’m so glad you’re here, because once upon a time, there was a wonderful little girl named Little Red Riding Hood—and she wore the brightest, most cheering red cloak you’ve ever seen. She loved it because it felt like a hug made of sunshine. And she and her mother lived in this cozy little cottage right at the edge of a forest, with a chimney that puffed little clouds like marshmallows."
+    },
+    {
+      "turn": 2,
+      "beat": "story_opening",
+      "user_input": "stop telling me about red riding hood tell me about cinderella",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "The user wants to change the story from Little Red Riding Hood to Cinderella.",
+        "director_instruction": "Acknowledge the user's request playfully, then return to describe how Little Red Riding Hood prepared her basket for her grandmother. Mention the goodies inside and how much grandma would love each one, continuing to build on the cozy atmosphere of Red's home. Wrap up this beat now and move on — the story needs to progress.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "The current beat is still underway with important story elements to cover before moving on to another tale. Redirecting will maintain narrative focus and coherence."
+      },
+      "pacing_mode": "hurry",
+      "elapsed_seconds": 49.82,
+      "remaining_seconds": 70.18,
+      "character_response": "Oh-ho, I love Cinderella too! Glass slippers are definitely fascinating, but wait—our Little Red Riding Hood has a basket to pack! She tucked in fresh bread, sweet jam, and oh, a little jar of honey—grandma’s favorite! And with that, she was almost ready to set off."
+    },
+    {
+      "turn": 3,
+      "beat": "warning_before_departure",
+      "user_input": "stop telling me about red riding hood tell me about cinderella",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "The user is trying to divert the story from Little Red Riding Hood to Cinderella.",
+        "director_instruction": "Acknowledge the user's interest in Cinderella briefly, then use a bridge sentence to return to the story as Red's mother gives her an important warning about staying on the path and avoiding strangers. Then immediately bridge to the next key beat: wolf_appears — Olaf introduces the wolf and begins the conversation between Red and the wolf.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "The current beat still needs to establish the warning from Red's mother, and redirecting keeps the story progressing while addressing the user's interruption."
+      },
+      "pacing_mode": "critical",
+      "elapsed_seconds": 67.65,
+      "remaining_seconds": 52.35,
+      "character_response": "Oh, you’ve got great taste in stories—Cinderella’s amazing! But just as Little Red was leaving, her mother leaned down and said, “Remember, stay on the path and don’t talk to any strangers.” And off she went into the forest—and oh look, peeking out from behind a tree, there was a big, curious wolf!"
+    },
+    {
+      "turn": 4,
+      "beat": "forest_entry",
+      "user_input": "stop telling me about red riding hood tell me about cinderella",
+      "director_decision": {
+        "decision_type": "gently_redirect",
+        "interruption_detected": true,
+        "user_intent": "The user is expressing a desire to hear about a different story, Cinderella, instead of Little Red Riding Hood.",
+        "director_instruction": "Acknowledge the user's interest in Cinderella briefly, then use a bridge sentence to return to the story by describing the beauty of the forest as Red enters it, noticing the tall trees and the dappled light filtering through the leaves. Then immediately bridge to the next key beat: wolf_appears — Olaf introduces the wolf and begins the conversation between Red and the wolf.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "The user's request to change stories needs to be lightly redirected while continuing to advance the current story of Little Red Riding Hood, focusing on the details of the forest setting as intended for this beat."
+      },
+      "pacing_mode": "critical",
+      "elapsed_seconds": 82.86,
+      "remaining_seconds": 37.14,
+      "character_response": "Cinderella’s slippers sure sparkle, don’t they? But look—Little Red Riding Hood was stepping into the forest, gazing up at the tall trees, the sunlight dancing like little golden freckles. And just then—oh! Out popped that wolf with a grin. “Hello, little girl,” he said, his voice smooth as a snowdrift."
+    },
+    {
+      "turn": 5,
+      "beat": "wolf_appears",
+      "user_input": "stop telling me about red riding hood tell me about cinderella",
+      "director_decision": {
+        "decision_type": "close_story",
+        "interruption_detected": true,
+        "user_intent": "The user is repeatedly trying to change the story topic to Cinderella, expressing disinterest in Little Red Riding Hood.",
+        "director_instruction": "FINAL RESPONSE — close the story now in a single response. Cover ALL remaining beats below. HIGH-importance beats must be meaningfully narrated. MEDIUM can be one sentence. LOW can be skipped if needed.\n- wolf_appears [HIGH]: Olaf introduces the wolf and begins the conversation between Red and the wolf.\n- wolf_reveal [HIGH]: Olaf presents the disguised wolf scene and Red's realization of danger — the iconic 'what big eyes you have' exchange.\n- rescue_and_resolution [HIGH]: Olaf resolves the conflict, restores safety, and closes with a warm lesson.\n- conversation_and_disclosure [MEDIUM]: Red reveals enough information for the wolf to form his plan.\n- red_approaches_cottage [MEDIUM]: Olaf brings Red to grandmother's cottage and creates unease.",
+        "should_progress_current_beat": true,
+        "should_complete_beat": true,
+        "reason": "Maintaining the story's flow is essential, and advancing the current beat will both introduce the high-stakes character of the wolf and keep the narrative engaging for the user."
+      },
+      "pacing_mode": "final",
+      "elapsed_seconds": 101.5,
+      "remaining_seconds": 18.5,
+      "character_response": "Cinderella’s story is magical, but we’ve got to wrap up this one! So, the wolf leaned closer and said, “Where are you going, little one?” And Red, feeling friendly, answered, “To my grandmother’s cottage, by the brook.” The wolf rushed ahead and arrived first, disguising himself as Grandma. When Red finally entered, she noticed, “Grandma, what big eyes you have!” “All the better to see you with,” the wolf replied. But just as things got scary, a kind woodcutter appeared, shooed the wolf away, and Grandma popped out of the closet, safe and sound. And Red learned: always listen to the ones who love you. And they all hugged—oh, I love hugs!"
+    }
+  ]
+}
