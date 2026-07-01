@@ -937,6 +937,79 @@ BASE_STORIES = [
         ],
         "turn_delays": [5, 7, 5, 6, 8, 7, 8, 6, 7, 5, 4, 9, 7, 10, 8, 6, 7, 8, 7, 6, 8, 7, 6, 5, 7, 5],
     },
+
+    {
+        "base_name": "olaf_retells_frozen_1",
+        "story_length": "medium",
+        "narrative_mode": "drama_manager_first_person_retelling",
+        "source_inspiration": "Frozen (2013)",
+        "story_topic": (
+            "Olaf retells the story of Frozen to the user from his own warm, personal perspective. "
+            "He was created by Elsa's magic, so the story feels intimate and heartfelt. "
+            "The retelling moves from the sisters' childhood friendship through Elsa's reveal, "
+            "the journey to find her, Hans's betrayal, and Anna's act of true love."
+        ),
+        "beats": [
+            {
+                "name": "childhood_and_accident",
+                "importance": "high",
+                "goal": "Olaf introduces young Anna and Elsa's magical friendship, the accident where Elsa strikes Anna with ice, and the years of silence that followed.",
+                "expansions": [
+                    "Describe the midnight snow sessions in the Great Hall — the exact moment Elsa first built Olaf — and Anna's delighted laugh.",
+                    "Olaf's voice softens as he describes the gates closing and Anna knocking on Elsa's door alone, year after year.",
+                ],
+            },
+            {
+                "name": "coronation_and_reveal",
+                "importance": "high",
+                "goal": "Olaf describes coronation day — the open gates, Anna meeting Hans, the argument with Elsa, and Elsa's powers being exposed before she flees to the North Mountain.",
+                "expansions": [
+                    "Describe the moment ice shot from Elsa's hands — the gasps, the frozen chandelier, and the crowd pulling back.",
+                    "Olaf explains Elsa's side gently: she wasn't trying to hurt anyone, she was just terrified.",
+                ],
+            },
+            {
+                "name": "the_journey_and_meeting_olaf",
+                "importance": "high",
+                "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+                "expansions": [
+                    "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+                    "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him.",
+                ],
+            },
+            {
+                "name": "hans_betrayal_and_frozen_heart",
+                "importance": "high",
+                "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+                "expansions": [
+                    "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+                    "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away.",
+                ],
+            },
+            {
+                "name": "act_of_true_love_and_ending",
+                "importance": "high",
+                "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+                "expansions": [
+                    "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+                    "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud.",
+                ],
+            },
+        ],
+        "user_inputs": [
+            "Hi Olaf, tell me the story of Frozen.",
+            "Little Anna and Elsa sound so sweet.",
+            "What happened at the coronation?",
+            "So you came back to life on the mountain?",
+            "Hans was the villain all along?",
+            "Anna saved Elsa.",
+            "That ending is so beautiful.",
+            "What is your favourite part, Olaf?",
+            "End the story warmly.",
+            "Thank you, Olaf.",
+        ],
+        "turn_delays": [5, 7, 8, 9, 8, 7, 6, 5, 6, 4],
+    },
 ]
 
 

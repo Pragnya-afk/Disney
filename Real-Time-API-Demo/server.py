@@ -253,9 +253,14 @@ def handle_director_tool(ws, event: dict):
     print(f"[Director: {decision.get('decision_type')}] {decision.get('director_instruction', '')[:60]}...")
 
     if _current_sid:
+        with _lock:
+            current_beat_index = _state["beat_index"]
+            total_beats = len(_state["beats"])
         socketio.emit("director_decision", {
             "decision_type": decision.get("decision_type"),
             "instruction": decision.get("director_instruction", "")[:80],
+            "beat_index": current_beat_index,
+            "total_beats": total_beats,
         }, room=_current_sid)
 
     _transcript.append({
@@ -318,8 +323,12 @@ def run_openai_ws():
 
         if etype == "session.created":
             if _current_sid:
+                with _lock:
+                    beats_payload = list(_state.get("beats", []))
                 socketio.emit("session_started", {
-                    "scenario": _state.get("scenario_name", "")
+                    "scenario": _state.get("scenario_name", ""),
+                    "beats": beats_payload,
+                    "beat_index": _state.get("beat_index", 0),
                 }, room=_current_sid)
 
         elif etype == "response.output_audio.delta":

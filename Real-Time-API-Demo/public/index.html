@@ -360,10 +360,6 @@
         <div class="sc-label">Now playing</div>
         <div class="sc-name" id="header-scenario-name">—</div>
       </div>
-      <div class="beat-col">
-        <div class="beat-col-label">Beats</div>
-        <div class="beat-tracker" id="beat-tracker"></div>
-      </div>
       <div class="timer" id="timer">0:00</div>
       <button class="mute-btn" id="mute-btn" title="Toggle audio">🔊</button>
       <button class="cancel-btn" id="cancel-btn" title="Cancel">✕</button>
@@ -490,21 +486,18 @@ function connectSocket() {
   socket.on('connect', () => console.log('[Socket] connected:', socket.id));
   socket.on('disconnect', () => { setThinking(false); setBusy(false); });
 
-  socket.on('session_started', async () => {
+  socket.on('session_started', (data) => {
     addMsg('system', '', 'Connected. Speak or type — Olaf will respond after a moment. Try going off-topic!');
     setThinking(false);
-    try {
-      const res = await fetch(`${SERVER_URL}/state`);
-      const state = await res.json();
-      scenarioBeats = state.beats || [];
-      buildBeatTracker(scenarioBeats.length);
-    } catch(e) {}
+    scenarioBeats = (data && data.beats) || [];
+    buildBeatTracker(scenarioBeats.length);
+    updateBeatTracker((data && data.beat_index) || 0, scenarioBeats.length);
   });
 
-  socket.on('director_decision', () => {
-    fetch(`${SERVER_URL}/state`).then(r => r.json()).then(state => {
-      updateBeatTracker(state.beat_index, scenarioBeats.length);
-    }).catch(() => {});
+  socket.on('director_decision', (data) => {
+    if (data && typeof data.beat_index === 'number' && typeof data.total_beats === 'number') {
+      updateBeatTracker(data.beat_index, data.total_beats);
+    }
     setThinking(true, 'Olaf is responding…');
   });
 
@@ -595,25 +588,8 @@ function setBusy(on) {
   document.getElementById('user-input').disabled = on;
 }
 
-function buildBeatTracker(count) {
-  const tracker = document.getElementById('beat-tracker');
-  tracker.innerHTML = '';
-  for (let i = 0; i < count; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'beat-dot' + (i === 0 ? ' active' : '');
-    dot.id = `bd-${i}`;
-    dot.title = scenarioBeats[i]?.name || `Beat ${i + 1}`;
-    tracker.appendChild(dot);
-  }
-}
-
-function updateBeatTracker(beatIndex, total) {
-  for (let i = 0; i < total; i++) {
-    const dot = document.getElementById(`bd-${i}`);
-    if (!dot) continue;
-    dot.className = 'beat-dot' + (i < beatIndex ? ' done' : i === beatIndex ? ' active' : '');
-  }
-}
+function buildBeatTracker() {}
+function updateBeatTracker() {}
 
 function startTimer() {
   clearInterval(timerInterval);

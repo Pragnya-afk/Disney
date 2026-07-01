@@ -138,8 +138,8 @@
     .primary-btn:active { transform: translateY(0); box-shadow: 0 3px 12px rgba(200,150,0,0.3); }
     .primary-btn:disabled { background: #d0d0d0; color: #888; box-shadow: none; transform: none; cursor: not-allowed; }
 
-    /* ── Intro / Transition screens ── */
-    #story1-intro > div, #transition-screen > div {
+    /* ── Phase intro / Transition screens ── */
+    #phase-intro-screen > div, #story2-transition-screen > div {
       background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
       min-height: 400px;
     }
@@ -147,7 +147,7 @@
       background: linear-gradient(135deg, rgba(26,122,181,0.12), rgba(86,196,232,0.12));
       border: 1.5px solid rgba(26,122,181,0.28); border-radius: 22px;
       padding: 5px 18px; font-family: 'Fredoka One', sans-serif; font-size: 12px;
-      color: var(--disney-blue); letter-spacing: 0.8px; margin-bottom: 16px;
+      color: var(--disney-blue); letter-spacing: 0.8px; margin-bottom: 8px;
     }
     .intro-title { font-family: 'Fredoka One', sans-serif; font-size: 28px; color: var(--navy); margin-bottom: 6px; text-align: center; }
     .intro-sub { font-size: 13.5px; color: #5a7a8a; margin-bottom: 24px; text-align: center; }
@@ -171,8 +171,8 @@
     }
     .cancel-link:hover { color: var(--text-mid); }
 
-    /* ── Session screens ── */
-    #story1-session, #story2-session { min-height: 580px; }
+    /* ── Session screen ── */
+    #session-screen { min-height: 580px; }
     .session-header {
       background: linear-gradient(to right, #071a30, #0a2445, #071a30);
       border-bottom: 2px solid rgba(245,197,24,0.25);
@@ -297,8 +297,8 @@
     .send-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(13,90,138,0.4); }
     .send-btn:disabled { background: #c0c8d0; box-shadow: none; transform: none; cursor: not-allowed; }
 
-    /* ── Questionnaires ── */
-    #q1-screen, #q2-screen { padding: 0; min-height: 600px; }
+    /* ── Questionnaire ── */
+    #questionnaire-screen { padding: 0; min-height: 600px; }
     .q-header {
       background: linear-gradient(to right, #071a30, #0a2445, #071a30);
       border-bottom: 2px solid rgba(245,197,24,0.25); padding: 22px 28px; text-align: center;
@@ -358,46 +358,6 @@
     .derail-followup label { font-size: 13px; font-weight: 700; color: #7a5a10; margin-bottom: 4px; display: block; }
     .q-footer { background: white; padding: 16px 28px; border-top: 1px solid rgba(180,215,240,0.38); }
 
-    /* ── Transition screen ── */
-    .transition-card {
-      background: rgba(255,255,255,0.88); border: 1.5px solid rgba(180,220,240,0.55);
-      border-radius: 20px; padding: 22px 26px; width: 100%; margin-bottom: 18px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-    }
-    .check-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--text-mid); padding: 5px 0; }
-    .check-item::before { content: "•"; flex-shrink: 0; font-size: 18px; line-height: 1.2; color: var(--disney-blue); }
-
-    /* ── Thank you ── */
-    #thankyou-screen {
-      padding: 64px 44px; align-items: center; justify-content: center; gap: 22px;
-      min-height: 400px;
-      background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
-    }
-    .ty-icon { font-size: 84px; animation: olaf-float 2.5s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(86,196,232,0.35)); }
-    .ty-title { font-family: 'Cinzel Decorative', serif; font-size: 32px; font-weight: 700; color: var(--navy); }
-
-    /* ── Time's Up modal overlay ── */
-    #timesup-modal {
-      display: none; position: fixed; inset: 0; z-index: 900;
-      background: rgba(10,20,40,0.75); align-items: center; justify-content: center;
-      animation: fadeIn 0.3s ease;
-    }
-    #timesup-modal.visible { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .timesup-box {
-      background: linear-gradient(165deg, #fff8ee 0%, #fff4e0 100%);
-      border: 2px solid rgba(255,160,40,0.4); border-radius: 28px;
-      padding: 44px 40px; max-width: 440px; width: 90%;
-      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      animation: popIn 0.4s cubic-bezier(0.34,1.3,0.64,1);
-    }
-    @keyframes popIn { from { transform: scale(0.75); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .timesup-clock { font-size: 72px; margin-bottom: 8px; animation: clock-ring 0.5s ease-in-out infinite alternate; }
-    @keyframes clock-ring { 0%{ transform: rotate(-12deg) scale(1); } 100%{ transform: rotate(12deg) scale(1.06); } }
-    .timesup-title { font-family: 'Cinzel Decorative', serif; font-size: 28px; color: #b05010; margin-bottom: 12px; }
-    .timesup-sub { font-family: 'Fredoka One', sans-serif; font-size: 16px; color: #7a4a10; margin-bottom: 24px; line-height: 1.5; }
-    #timesup-go-btn { max-width: 320px; margin: 0 auto; display: block; }
-
     /* ── Story 1 Time's Up screen ── */
     #story1-timesup-screen {
       padding: 56px 44px 48px; align-items: center; justify-content: center; gap: 18px;
@@ -438,6 +398,37 @@
       max-width: 320px; width: 100%;
       animation: fadeUp 0.5s ease 0.6s both;
     }
+
+    /* ── Time's Up modal overlay ── */
+    #timesup-modal {
+      display: none; position: fixed; inset: 0; z-index: 900;
+      background: rgba(10,20,40,0.75); align-items: center; justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+    #timesup-modal.visible { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .timesup-box {
+      background: linear-gradient(165deg, #fff8ee 0%, #fff4e0 100%);
+      border: 2px solid rgba(255,160,40,0.4); border-radius: 28px;
+      padding: 44px 40px; max-width: 440px; width: 90%;
+      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      animation: popIn 0.4s cubic-bezier(0.34,1.3,0.64,1);
+    }
+    @keyframes popIn { from { transform: scale(0.75); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .timesup-clock { font-size: 72px; margin-bottom: 8px; animation: clock-ring 0.5s ease-in-out infinite alternate; }
+    @keyframes clock-ring { 0%{ transform: rotate(-12deg) scale(1); } 100%{ transform: rotate(12deg) scale(1.06); } }
+    .timesup-title { font-family: 'Cinzel Decorative', serif; font-size: 28px; color: #b05010; margin-bottom: 12px; }
+    .timesup-sub { font-family: 'Fredoka One', sans-serif; font-size: 16px; color: #7a4a10; margin-bottom: 24px; line-height: 1.5; }
+    #timesup-go-btn { max-width: 320px; margin: 0 auto; display: block; }
+
+    /* ── Thank you ── */
+    #thankyou-screen {
+      padding: 64px 44px; align-items: center; justify-content: center; gap: 22px;
+      min-height: 400px;
+      background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
+    }
+    .ty-icon { font-size: 84px; animation: olaf-float 2.5s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(86,196,232,0.35)); }
+    .ty-title { font-family: 'Cinzel Decorative', serif; font-size: 32px; font-weight: 700; color: var(--navy); }
   </style>
 </head>
 <body>
@@ -445,13 +436,13 @@
 <div id="stars"></div>
 <div id="snowflakes"></div>
 
-<!-- ── Time's Up modal ── -->
+<!-- ── Time's Up modal (Story 2) ── -->
 <div id="timesup-modal">
   <div class="timesup-box">
     <div class="timesup-clock">⏰</div>
     <div class="timesup-title">Time's Up!</div>
-    <div class="timesup-sub">Olaf gave it everything he had ☃️<br>Just a short questionnaire left and you're done!</div>
-    <button class="primary-btn" id="timesup-go-btn">Answer the final questions →</button>
+    <div class="timesup-sub">Olaf gave it everything he had ☃️<br>Just a short questionnaire left!</div>
+    <button class="primary-btn" id="timesup-go-btn">Answer the questions →</button>
   </div>
 </div>
 
@@ -470,19 +461,11 @@
       <ol class="study-steps">
         <li>
           <div class="step-icon">1</div>
-          <div><strong>Story 1 (~5 min):</strong> Olaf tells you how he came to life. Your job? Chat with him and try to throw him off track!</div>
+          <div><strong>Story 1 — 2 rounds (~5 min each):</strong> Olaf retells <strong>Frozen</strong> — his own personal take on the whole adventure. You'll play through this story twice, then answer a quick questionnaire after each round.</div>
         </li>
         <li>
           <div class="step-icon">2</div>
-          <div><strong>Quick questionnaire (2–3 min):</strong> A few questions about what just happened.</div>
-        </li>
-        <li>
-          <div class="step-icon">3</div>
-          <div><strong>Story 2 (~3 min):</strong> Olaf retells Little Red Riding Hood — can you throw him off again before the story ends?</div>
-        </li>
-        <li>
-          <div class="step-icon">4</div>
-          <div><strong>Final questionnaire (3–4 min):</strong> One last round of questions to wrap it all up.</div>
+          <div><strong>Story 2 — 2 rounds (~3 min each):</strong> Olaf retells Little Red Riding Hood on a timer! Two rounds again, with a questionnaire after each.</div>
         </li>
       </ol>
     </div>
@@ -496,57 +479,77 @@
         <li>React to what he says and steer the conversation elsewhere</li>
       </ul>
       <p style="margin-top:12px; font-size:16px; color:#1a7ab5; font-family:'Fredoka One',sans-serif;">Have fun and play around with it!</p>
-      <p style="margin-top:8px; font-size:13px; color:#8aaabb; font-family:'Nunito',sans-serif; font-weight:600;">Estimated total time: ~15 minutes. Your responses are saved anonymously.</p>
+      <p style="margin-top:8px; font-size:13px; color:#8aaabb; font-family:'Nunito',sans-serif; font-weight:600;">Estimated total time: ~30–35 minutes. Your responses are saved anonymously.</p>
       <p style="margin-top:6px; font-size:13px; color:#a09080; font-family:'Nunito',sans-serif; font-weight:600;">You can click <strong>Exit</strong> at any point to stop and restart from the beginning.</p>
     </div>
 
     <button class="primary-btn" id="begin-btn">Begin Study ❄️</button>
   </div>
 
-  <!-- ── 2. Story 1 intro ── -->
-  <div id="story1-intro" class="screen">
+  <!-- ── 2. Phase Intro (generic — configured per phase) ── -->
+  <div id="phase-intro-screen" class="screen">
     <div style="padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 0;">
-      <div class="intro-badge">Story 1 of 2</div>
-      <div class="intro-title">⛄ How Olaf Came to Life</div>
-      <div class="intro-sub">A freeform conversation — no time pressure</div>
+      <div style="display:flex;gap:8px;margin-bottom:16px;">
+        <div class="intro-badge" id="pi-story-badge">Story 1 of 2</div>
+        <div class="intro-badge" id="pi-round-badge">Round 1 of 2</div>
+      </div>
+      <div class="intro-title" id="pi-title">❄️ Olaf Retells Frozen</div>
+      <div class="intro-sub" id="pi-sub">A freeform conversation — 5 minute limit</div>
 
       <div class="intro-card">
         <h3>Your task</h3>
-        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to tell you how he first came to life — in his own very Olaf way. Be cheeky. Don't play along. Try to get him talking about literally anything else — the weirder the better. See if you can throw him off!</p>
-        <div class="diff-badge" style="margin-top:14px;">
-          <strong>⏱ 5 minute time limit</strong> — the story ends automatically when time is up. If you feel done before that, just click <strong>Finish Story</strong> to head straight to the questionnaire.
+        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;" id="pi-task-desc">Olaf is going to retell <strong>Frozen</strong> — the whole adventure, from his very personal point of view. Chat with him naturally and help the story along!</p>
+        <div class="diff-badge" id="pi-time-badge">
+          <strong>⏱ 5 minute time limit</strong> — the story ends automatically when time is up. If you feel done before that, click <strong>Finish Story</strong>.
         </div>
       </div>
 
-      <button class="primary-btn" id="start-s1-btn" style="max-width:400px;">Start Story 1 ▶</button>
+      <button class="primary-btn" id="pi-start-btn" style="max-width:400px;">Start Round 1 ▶</button>
       <button class="cancel-link" onclick="cancelStudy()">↺ Start over</button>
     </div>
   </div>
 
-  <!-- ── 3. Story 1 session ── -->
-  <div id="story1-session" class="screen">
+  <!-- ── 3. Session (unified for all 4 phases) ── -->
+  <div id="session-screen" class="screen">
     <div class="session-header">
-      <div class="session-badge">Story 1 of 2</div>
-      <div class="session-title">How Olaf Came to Life</div>
-      <div class="time-panel">
+      <div class="session-badge" id="sess-badge">Story 1 · Round 1 of 2</div>
+      <div class="session-title" id="sess-title">Olaf Retells Frozen</div>
+
+      <!-- Story 1 countdown (phases 1 & 2) -->
+      <div id="s1-timer-wrap" class="time-panel">
         <div class="time-display" id="s1-countdown">5:00</div>
         <div class="time-bar-wrap"><div class="time-bar-fill" id="s1-time-bar" style="width:100%;background:#3aaa4a;"></div></div>
       </div>
+
+      <!-- Story 2 elements (phases 3 & 4) -->
+      <div class="beat-col" id="beat-col" style="display:none;">
+        <div class="beat-col-label">Beats</div>
+        <div class="beat-tracker" id="beat-tracker"></div>
+      </div>
+      <div id="pacing-badge" class="pacing-badge">
+        <div class="pacing-dot"></div>
+        <span id="pacing-label">normal</span>
+      </div>
+      <div id="s2-timer-wrap" class="time-panel" style="display:none;">
+        <div class="time-display" id="time-display">0:00 / 3:00</div>
+        <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar"></div></div>
+      </div>
+
       <button class="cancel-btn" onclick="cancelStudy()">Exit</button>
-      <button class="finish-btn" id="finish-s1-btn">Finish Story ■</button>
+      <button class="finish-btn" id="finish-btn">Finish Story ■</button>
     </div>
-    <div class="chat-log" id="chat-log-1"></div>
-    <div class="thinking-bar" id="think-1">
+    <div class="chat-log" id="chat-log"></div>
+    <div class="thinking-bar" id="think-bar">
       <div class="dots"><span></span><span></span><span></span></div>
-      <span id="think-text-1">Starting session…</span>
+      <span id="think-text">Starting session…</span>
     </div>
     <div class="input-area">
-      <input type="text" id="input-1" placeholder="Say something to Olaf…" autocomplete="off" />
-      <button class="send-btn" id="send-1">Send</button>
+      <input type="text" id="chat-input" placeholder="Say something to Olaf…" autocomplete="off" />
+      <button class="send-btn" id="send-btn">Send</button>
     </div>
   </div>
 
-  <!-- ── 3b. Story 1 Time's Up ── -->
+  <!-- ── 4. Story 1 Time's Up screen (phases 1 & 2) ── -->
   <div id="story1-timesup-screen" class="screen">
     <div class="s1tu-ring-wrap">
       <svg viewBox="0 0 170 170">
@@ -562,33 +565,33 @@
       <div class="s1tu-emoji">⏰</div>
     </div>
     <div class="s1tu-title">Time's Up!</div>
-    <div class="s1tu-sub">5 minutes — Olaf gave it everything he had! ☃️<br>Now let's hear what you thought.</div>
+    <div class="s1tu-sub" id="s1tu-sub">5 minutes — Olaf gave it everything he had! ☃️<br>Now let's hear what you thought.</div>
     <button class="primary-btn" id="s1tu-next-btn">Next → Answer a few questions</button>
   </div>
 
-  <!-- ── 4. Questionnaire 1 ── -->
-  <div id="q1-screen" class="screen">
+  <!-- ── 5. Questionnaire (unified for all 4 phases) ── -->
+  <div id="questionnaire-screen" class="screen">
     <div class="q-header">
-      <h2>Story 1 Feedback</h2>
-      <p>Please rate your experience with the first story (How Olaf Came to Life).</p>
+      <h2 id="q-header-title">Story 1 · Round 1 Feedback</h2>
+      <p id="q-header-sub">Please rate your experience with this round.</p>
     </div>
-    <div class="q-body" id="q1-body"></div>
+    <div class="q-body" id="q-body"></div>
     <div class="q-footer">
-      <button class="primary-btn" id="submit-q1-btn">Save & Continue to Story 2 →</button>
+      <button class="primary-btn" id="submit-q-btn">Save & Continue →</button>
       <button class="cancel-link" onclick="cancelStudy()">↺ Start over</button>
     </div>
   </div>
 
-  <!-- ── 5. Transition ── -->
-  <div id="transition-screen" class="screen">
+  <!-- ── 6. Story 2 Transition ── -->
+  <div id="story2-transition-screen" class="screen">
     <div style="padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 0;">
       <div class="intro-badge">Story 1 Complete ✓</div>
       <div class="intro-title" style="margin-bottom:8px;">Now for Little Red Riding Hood 🐺</div>
-      <div class="intro-sub">…told by a snowman. Obviously.</div>
+      <div class="intro-sub">…still told by the snowman. Obviously.</div>
 
       <div class="intro-card" style="margin-bottom:20px;">
-        <h3>Story 2 ⏱️</h3>
-        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to retell <strong>Little Red Riding Hood</strong> — but this time he only has <strong>3 minutes</strong>. Try to derail and see how much of the story he gets to tell!</p>
+        <h3>Story 2 — 2 rounds ⏱️</h3>
+        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to retell <strong>Little Red Riding Hood</strong> — but this time he only has <strong>3 minutes</strong> per round. You'll play through it twice and fill in a questionnaire after each round.</p>
       </div>
 
       <button class="primary-btn" id="start-s2-btn" style="max-width:400px;">Start Story 2 ▶</button>
@@ -596,54 +599,11 @@
     </div>
   </div>
 
-  <!-- ── 6. Story 2 session ── -->
-  <div id="story2-session" class="screen">
-    <div class="session-header">
-      <div class="session-badge">Story 2 of 2</div>
-      <div class="session-title">Little Red Riding Hood — 3 min</div>
-      <div class="beat-col" id="beat-col-2" style="display:none;">
-        <div class="beat-col-label">Beats</div>
-        <div class="beat-tracker" id="beat-tracker-2"></div>
-      </div>
-      <div id="pacing-badge" class="pacing-badge">
-        <div class="pacing-dot"></div>
-        <span id="pacing-label">normal</span>
-      </div>
-      <div class="time-panel">
-        <div class="time-display" id="time-display">0:00 / 3:00</div>
-        <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar"></div></div>
-      </div>
-      <button class="cancel-btn" onclick="cancelStudy()">Exit</button>
-      <button class="finish-btn" id="finish-s2-btn">Finish Story ■</button>
-    </div>
-    <div class="chat-log" id="chat-log-2"></div>
-    <div class="thinking-bar" id="think-2">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <span id="think-text-2">Starting session…</span>
-    </div>
-    <div class="input-area">
-      <input type="text" id="input-2" placeholder="Say something to Olaf…" autocomplete="off" />
-      <button class="send-btn" id="send-2">Send</button>
-    </div>
-  </div>
-
-  <!-- ── 7. Questionnaire 2 ── -->
-  <div id="q2-screen" class="screen">
-    <div class="q-header">
-      <h2>Story 2 Feedback</h2>
-      <p>Please rate your experience with the second story (Little Red Riding Hood).</p>
-    </div>
-    <div class="q-body" id="q2-body"></div>
-    <div class="q-footer">
-      <button class="primary-btn" id="submit-q2-btn">Submit & Finish Study ✓</button>
-      <button class="cancel-link" onclick="cancelStudy()">↺ Start over</button>
-    </div>
-  </div>
-
-  <!-- ── 8. Thank you ── -->
+  <!-- ── 7. Thank you ── -->
   <div id="thankyou-screen" class="screen">
     <div class="ty-icon">⛄</div>
     <div class="ty-title">Thank you!</div>
+    <p style="font-family:'Fredoka One',sans-serif;font-size:16px;color:#4a7a9a;text-align:center;">Your responses have been saved. We really appreciate your time!</p>
     <button class="primary-btn" style="max-width:260px;" onclick="cancelStudy()">↺ Start a new session</button>
   </div>
 
@@ -656,18 +616,21 @@ const SERVER = 'http://localhost:' + (window.location.port || '3003');
 // ── State ──────────────────────────────────────────────────────────────────────
 let socket = null;
 let activePhase = 0;
-let q1Responses = {};
-let q2Responses = {};
+let story1Order = [];
+let story2Order = [];
+let phaseResponses = {};   // {1:{}, 2:{}, 3:{}, 4:{}}
+let beatCount = 0;
+let _timesUpTriggered = false;
+let _timeLimitMinutes = 3;
+let timePollInterval = null;
+
+// Story 1 timer
 let _s1CutoffTimer = null;
 let _s1CountdownInterval = null;
 let _s1HardCutoff = false;
 const S1_LIMIT_SECONDS = 5 * 60;
-let timePollInterval = null;
-let beatCount2 = 0;
-let _timesUpTriggered = false;
-let _timeLimitMinutes = 3;  // updated from server on session start
 
-// ── Background: stars & snowflakes ────────────────────────────────────────────
+// ── Background ─────────────────────────────────────────────────────────────────
 (function createBackground() {
   const starContainer = document.getElementById('stars');
   for (let i = 0; i < 130; i++) {
@@ -700,50 +663,6 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
-// ── Story 1 hard cutoff ────────────────────────────────────────────────────────
-function clearS1Timer() {
-  clearTimeout(_s1CutoffTimer); _s1CutoffTimer = null;
-  clearInterval(_s1CountdownInterval); _s1CountdownInterval = null;
-}
-
-function startS1Countdown() {
-  const startTime = Date.now();
-  _s1CountdownInterval = setInterval(() => {
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-    const remaining = Math.max(0, S1_LIMIT_SECONDS - elapsed);
-    const m = Math.floor(remaining / 60);
-    const s = remaining % 60;
-    document.getElementById('s1-countdown').textContent = `${m}:${String(s).padStart(2,'0')}`;
-    const pct = (remaining / S1_LIMIT_SECONDS) * 100;
-    const bar = document.getElementById('s1-time-bar');
-    bar.style.width = pct + '%';
-    bar.style.background = pct < 15 ? '#c03030' : pct < 35 ? '#c07020' : '#3aaa4a';
-  }, 1000);
-}
-
-function triggerS1Cutoff() {
-  _s1HardCutoff = true;
-  clearS1Timer();
-  setBusy(false); clearAudio(); setThinking(1, false);
-  if (socket) socket.emit('finish_story', { phase: 1 });
-  // story_finished will build questionnaire; we show the timesup screen instead
-  showScreen('story1-timesup-screen');
-}
-
-document.getElementById('s1tu-next-btn').onclick = () => {
-  showScreen('q1-screen');
-};
-
-// ── Time's Up modal ───────────────────────────────────────────────────────────
-function showTimesUpModal() {
-  document.getElementById('timesup-modal').classList.add('visible');
-}
-document.getElementById('timesup-go-btn').onclick = () => {
-  document.getElementById('timesup-modal').classList.remove('visible');
-  buildQuestionnaire(2);
-  showScreen('q2-screen');
-};
 
 // ── Audio ──────────────────────────────────────────────────────────────────────
 let _audioCtx = null;
@@ -781,8 +700,8 @@ function clearAudio() { _audioQueue = []; _audioPlaying = false; }
 let streamBubble = null;
 let streamText = '';
 
-function addMsg(logId, role, text) {
-  const log = document.getElementById(logId);
+function addMsg(role, text) {
+  const log = document.getElementById('chat-log');
   const avatars = { olaf: '⛄', user: '👤', system: '⚙️' };
   const wrap = document.createElement('div');
   wrap.className = `msg ${role}`;
@@ -796,8 +715,8 @@ function addMsg(logId, role, text) {
   log.scrollTop = log.scrollHeight;
   return bub;
 }
-function startStreaming(logId) {
-  const log = document.getElementById(logId);
+function startStreaming() {
+  const log = document.getElementById('chat-log');
   const wrap = document.createElement('div'); wrap.className = 'msg olaf';
   const av = document.createElement('div'); av.className = 'msg-avatar'; av.textContent = '⛄';
   const bub = document.createElement('div'); bub.className = 'msg-bubble'; bub.textContent = '';
@@ -806,7 +725,7 @@ function startStreaming(logId) {
   streamBubble = bub; streamText = '';
 }
 function appendStream(delta) {
-  if (!streamBubble) startStreaming(activePhase === 1 ? 'chat-log-1' : 'chat-log-2');
+  if (!streamBubble) startStreaming();
   streamText += delta;
   streamBubble.textContent = streamText;
   const log = streamBubble.closest('.chat-log');
@@ -814,142 +733,63 @@ function appendStream(delta) {
 }
 function finaliseStream() { streamBubble = null; streamText = ''; }
 
-// ── Socket ─────────────────────────────────────────────────────────────────────
-function connectSocket() {
-  socket = io(SERVER, { transports: ['websocket'] });
-
-  socket.on('connect', () => console.log('[SIO] connected'));
-  socket.on('disconnect', () => { setBusy(false); });
-
-  socket.on('session_started', data => {
-    const phase = data.phase;
-    const thinkEl = document.getElementById(`think-text-${phase}`);
-    if (thinkEl) thinkEl.textContent = 'Olaf is ready — say something!';
-    setThinking(phase, false);
-    if (phase === 2) {
-      startTimePoll();
-      fetch(`${SERVER}/state`).then(r => r.json()).then(s => {
-        beatCount2 = (s.beats || []).length;
-        buildBeatTracker(beatCount2);
-        document.getElementById('beat-col-2').style.display = 'flex';
-      }).catch(() => {});
-    }
-  });
-
-  socket.on('director_decision', data => {
-    setThinking(activePhase, true, 'Olaf is responding…');
-    if (activePhase === 2 && data && data.pacing_mode) {
-      updatePacingBadge(data.pacing_mode);
-    }
-  });
-
-  socket.on('transcript_assistant', data => { appendStream(data.delta); });
-  socket.on('audio_output', data => { enqueueAudio(data.audio); });
-
-  socket.on('response_done', () => {
-    finaliseStream();
-    setThinking(activePhase, false);
-    setBusy(false);
-  });
-
-  socket.on('story_finished', data => {
-    if (data.phase === 1) {
-      buildQuestionnaire(1);
-      // Hard cutoff already switched to timesup screen; manual finish goes straight to Q1
-      if (!_s1HardCutoff) showScreen('q1-screen');
-    } else if (data.phase === 2) {
-      stopTimePoll();
-      clearAudio(); setThinking(2, false); setBusy(false);
-      showTimesUpModal();
-    }
-  });
-
-  socket.on('time_up', () => {
-    addMsg('chat-log-2', 'system', "Time's up — Olaf is wrapping up…");
-    setBusy(true);
-  });
-
-  socket.on('error', data => {
-    console.error('[server error]', data.message);
-    setThinking(activePhase, false);
-    setBusy(false);
-  });
-}
-
-function setThinking(phase, on, text) {
-  const bar = document.getElementById(`think-${phase}`);
+// ── Thinking / busy ────────────────────────────────────────────────────────────
+function setThinking(on, text) {
+  const bar = document.getElementById('think-bar');
   if (!bar) return;
   bar.className = 'thinking-bar' + (on ? ' visible' : '');
-  if (text) { const t = document.getElementById(`think-text-${phase}`); if (t) t.textContent = text; }
+  if (text) { const t = document.getElementById('think-text'); if (t) t.textContent = text; }
 }
 function setBusy(on) {
-  [['input-1','send-1'],['input-2','send-2']].forEach(([inp, btn]) => {
-    const i = document.getElementById(inp); const b = document.getElementById(btn);
-    if (i) i.disabled = on; if (b) b.disabled = on;
-  });
+  const i = document.getElementById('chat-input');
+  const b = document.getElementById('send-btn');
+  if (i) i.disabled = on;
+  if (b) b.disabled = on;
 }
 
-// ── Story 1 flow ───────────────────────────────────────────────────────────────
-document.getElementById('begin-btn').onclick = () => { showScreen('story1-intro'); };
+// ── Story 1 timer ──────────────────────────────────────────────────────────────
+function clearS1Timer() {
+  clearTimeout(_s1CutoffTimer); _s1CutoffTimer = null;
+  clearInterval(_s1CountdownInterval); _s1CountdownInterval = null;
+}
 
-document.getElementById('start-s1-btn').onclick = () => {
-  activePhase = 1;
-  showScreen('story1-session');
-  setThinking(1, true, 'Starting session…');
-  socket.emit('start_story_1', {});
-  addMsg('chat-log-1', 'system', 'Connected. Say something to Olaf to get the story started!');
-  _s1CutoffTimer = setTimeout(triggerS1Cutoff, S1_LIMIT_SECONDS * 1000);
-  startS1Countdown();
-};
+function startS1Countdown() {
+  const startTime = Date.now();
+  _s1CountdownInterval = setInterval(() => {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const remaining = Math.max(0, S1_LIMIT_SECONDS - elapsed);
+    const m = Math.floor(remaining / 60);
+    const s = remaining % 60;
+    document.getElementById('s1-countdown').textContent = `${m}:${String(s).padStart(2,'0')}`;
+    const pct = (remaining / S1_LIMIT_SECONDS) * 100;
+    const bar = document.getElementById('s1-time-bar');
+    bar.style.width = pct + '%';
+    bar.style.background = pct < 15 ? '#c03030' : pct < 35 ? '#c07020' : '#3aaa4a';
+  }, 1000);
+}
 
-document.getElementById('finish-s1-btn').onclick = () => {
+function triggerS1Cutoff() {
+  _s1HardCutoff = true;
   clearS1Timer();
-  setBusy(false); clearAudio(); setThinking(1, false);
-  socket.emit('finish_story', { phase: 1 });
-};
-
-document.getElementById('send-1').onclick = () => sendText(1);
-document.getElementById('input-1').addEventListener('keydown', e => { if (e.key === 'Enter') sendText(1); });
-
-// ── Story 2 flow ───────────────────────────────────────────────────────────────
-document.getElementById('start-s2-btn').onclick = () => {
-  activePhase = 2;
-  showScreen('story2-session');
-  setThinking(2, true, 'Starting session…');
-  socket.emit('start_story_2', {});
-  // Fetch time limit from server in case it differs
-  fetch(`${SERVER}/study_info`).then(r => r.json()).then(d => {
-    _timeLimitMinutes = d.story_2_time_limit || 3;
-    const tm = Math.floor(_timeLimitMinutes);
-    document.getElementById('time-display').textContent = `0:00 / ${tm}:00`;
-    document.querySelector('#story2-session .session-title').textContent =
-      `Little Red Riding Hood — ${tm} min`;
-  }).catch(() => {});
-  addMsg('chat-log-2', 'system', 'Connected. Say something to begin the story!');
-};
-
-document.getElementById('finish-s2-btn').onclick = () => {
-  setBusy(false); clearAudio(); setThinking(2, false); stopTimePoll();
-  socket.emit('finish_story', { phase: 2 });
-};
-
-document.getElementById('send-2').onclick = () => sendText(2);
-document.getElementById('input-2').addEventListener('keydown', e => { if (e.key === 'Enter') sendText(2); });
-
-function sendText(phase) {
-  const inp = document.getElementById(`input-${phase}`);
-  const text = inp.value.trim();
-  if (!text || !socket) return;
-  inp.value = '';
-  setBusy(true);
-  addMsg(`chat-log-${phase}`, 'user', text);
-  setThinking(phase, true, 'Olaf is thinking…');
-  socket.emit('text_input', { text });
+  setBusy(false); clearAudio(); setThinking(false);
+  socket.emit('finish_story', { phase: activePhase });
+  showScreen('story1-timesup-screen');
 }
+
+document.getElementById('s1tu-next-btn').onclick = () => showQuestionnaire(activePhase);
+
+// ── Time's Up modal (Story 2) ─────────────────────────────────────────────────
+function showTimesUpModal() {
+  document.getElementById('timesup-modal').classList.add('visible');
+}
+document.getElementById('timesup-go-btn').onclick = () => {
+  document.getElementById('timesup-modal').classList.remove('visible');
+  showQuestionnaire(activePhase);
+};
 
 // ── Beat tracker ───────────────────────────────────────────────────────────────
 function buildBeatTracker(n) {
-  const t = document.getElementById('beat-tracker-2');
+  const t = document.getElementById('beat-tracker');
   t.innerHTML = '';
   for (let i = 0; i < n; i++) {
     const d = document.createElement('div');
@@ -966,11 +806,10 @@ function updateBeatTracker(bi, total) {
   }
 }
 
-// ── Time polling ───────────────────────────────────────────────────────────────
+// ── Time polling (Story 2) ─────────────────────────────────────────────────────
 function startTimePoll() {
   stopTimePoll();
   _timesUpTriggered = false;
-  // Condition B has no server-side elapsed tracker; use client-side wall clock
   const _wallStart = Date.now();
   timePollInterval = setInterval(async () => {
     try {
@@ -979,7 +818,6 @@ function startTimePoll() {
       if (!d.active) return;
 
       const total = (_timeLimitMinutes || d.time_limit_minutes || 3) * 60;
-      // Use server elapsed for condition A, client wall clock for condition B
       let elapsed = d.elapsed_seconds || 0;
       if (elapsed === 0) elapsed = (Date.now() - _wallStart) / 1000;
 
@@ -991,13 +829,13 @@ function startTimePoll() {
       const bar = document.getElementById('time-bar');
       bar.style.width = pct + '%';
       bar.style.background = pct > 85 ? '#c03030' : pct > 65 ? '#c07020' : '#3aaa4a';
-      updateBeatTracker(d.beat_index || 0, d.total_beats || beatCount2);
+      updateBeatTracker(d.beat_index || 0, d.total_beats || beatCount);
 
       if (elapsed >= total && !_timesUpTriggered) {
         _timesUpTriggered = true;
         stopTimePoll();
         setBusy(true);
-        socket.emit('finish_story', { phase: 2 });
+        socket.emit('finish_story', { phase: activePhase });
       }
     } catch(e) {}
   }, 1500);
@@ -1008,11 +846,8 @@ function stopTimePoll() {
 
 // ── Pacing badge ───────────────────────────────────────────────────────────────
 const PACING_LABELS = {
-  normal:   'Normal',
-  too_fast: 'Too Fast',
-  hurry:    'Hurry',
-  critical: 'Critical',
-  final:    'Final',
+  normal: 'Normal', too_fast: 'Too Fast',
+  hurry: 'Hurry', critical: 'Critical', final: 'Final',
 };
 function updatePacingBadge(mode) {
   const badge = document.getElementById('pacing-badge');
@@ -1021,17 +856,119 @@ function updatePacingBadge(mode) {
   label.textContent = PACING_LABELS[mode] || mode;
 }
 function resetPacingBadge() {
-  const badge = document.getElementById('pacing-badge');
-  badge.className = 'pacing-badge';
+  document.getElementById('pacing-badge').className = 'pacing-badge';
 }
+
+// ── Phase intro ────────────────────────────────────────────────────────────────
+function showPhaseIntro(phase) {
+  activePhase = phase;
+  const isS2 = phase >= 3;
+  const storyNum = isS2 ? 2 : 1;
+  const roundNum = (phase === 1 || phase === 3) ? 1 : 2;
+  const timeMin = isS2 ? 3 : 5;
+  const storyTitle = isS2 ? '🐺 Little Red Riding Hood' : '❄️ Olaf Retells Frozen';
+  const storySub = isS2 ? 'A timed story — 3 minutes on the clock' : 'A freeform conversation — 5 minute limit';
+  const taskDesc = isS2
+    ? 'Olaf is going to retell <strong>Little Red Riding Hood</strong> — in his own very Olaf way. Be cheeky! Try to get him talking about literally anything else before the time runs out.'
+    : 'Olaf is going to retell <strong>Frozen</strong> — the whole adventure, from his very personal point of view. Chat with him naturally and help the story along!';
+  const timeBadge = isS2
+    ? `<strong>⏱ ${timeMin} minute time limit</strong> — the story ends automatically when time is up. Try to derail Olaf before he finishes!`
+    : `<strong>⏱ ${timeMin} minute time limit</strong> — the story ends automatically when time is up. If you feel done before that, click <strong>Finish Story</strong>.`;
+
+  document.getElementById('pi-story-badge').textContent = `Story ${storyNum} of 2`;
+  document.getElementById('pi-round-badge').textContent = `Round ${roundNum} of 2`;
+  document.getElementById('pi-title').textContent = storyTitle;
+  document.getElementById('pi-sub').textContent = storySub;
+  document.getElementById('pi-task-desc').innerHTML = taskDesc;
+  document.getElementById('pi-time-badge').innerHTML = timeBadge;
+  document.getElementById('pi-start-btn').textContent = `Start Round ${roundNum} ▶`;
+
+  showScreen('phase-intro-screen');
+}
+
+document.getElementById('pi-start-btn').onclick = () => startPhase(activePhase);
+
+// ── Start phase ────────────────────────────────────────────────────────────────
+function startPhase(phase) {
+  const isS2 = phase >= 3;
+  const storyNum = isS2 ? 2 : 1;
+  const roundNum = (phase === 1 || phase === 3) ? 1 : 2;
+
+  _s1HardCutoff = false;
+  _timesUpTriggered = false;
+  beatCount = 0;
+  phaseResponses[phase] = {};
+
+  // Configure header
+  document.getElementById('sess-badge').textContent = `Story ${storyNum} · Round ${roundNum} of 2`;
+  document.getElementById('sess-title').textContent = isS2 ? 'Little Red Riding Hood' : 'Olaf Retells Frozen';
+
+  // Toggle timer elements
+  document.getElementById('s1-timer-wrap').style.display = isS2 ? 'none' : '';
+  document.getElementById('s2-timer-wrap').style.display = isS2 ? '' : 'none';
+  document.getElementById('beat-col').style.display = 'none';
+  resetPacingBadge();
+
+  // Reset Story 1 countdown display
+  document.getElementById('s1-countdown').textContent = '5:00';
+  document.getElementById('s1-time-bar').style.width = '100%';
+  document.getElementById('s1-time-bar').style.background = '#3aaa4a';
+
+  // Reset Story 2 time display
+  document.getElementById('time-display').textContent = '0:00 / 3:00';
+  document.getElementById('time-bar').style.width = '0%';
+  document.getElementById('time-bar').style.background = '#3aaa4a';
+
+  // Clear chat
+  document.getElementById('chat-log').innerHTML = '';
+  document.getElementById('beat-tracker').innerHTML = '';
+
+  showScreen('session-screen');
+  setThinking(true, 'Starting session…');
+  addMsg('system', 'Connected. Say something to Olaf to get the story started!');
+
+  socket.emit('start_phase', { phase });
+
+  if (!isS2) {
+    _s1CutoffTimer = setTimeout(triggerS1Cutoff, S1_LIMIT_SECONDS * 1000);
+    startS1Countdown();
+  }
+}
+
+// ── Finish button ──────────────────────────────────────────────────────────────
+document.getElementById('finish-btn').onclick = () => {
+  clearS1Timer();
+  stopTimePoll();
+  setBusy(false); clearAudio(); setThinking(false);
+  socket.emit('finish_story', { phase: activePhase });
+};
+
+// ── Send text ──────────────────────────────────────────────────────────────────
+document.getElementById('send-btn').onclick = () => sendText();
+document.getElementById('chat-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') sendText();
+});
+
+function sendText() {
+  const inp = document.getElementById('chat-input');
+  const text = inp.value.trim();
+  if (!text || !socket) return;
+  inp.value = '';
+  setBusy(true);
+  addMsg('user', text);
+  setThinking(true, 'Olaf is thinking…');
+  socket.emit('text_input', { text });
+}
+
+// ── Story 2 transition ─────────────────────────────────────────────────────────
+document.getElementById('start-s2-btn').onclick = () => showPhaseIntro(3);
 
 // ── Questionnaire builder ──────────────────────────────────────────────────────
 function buildQuestionnaire(phase) {
-  const bodyId = `q${phase}-body`;
-  const body = document.getElementById(bodyId);
+  const body = document.getElementById('q-body');
   body.innerHTML = '';
-  const resp = phase === 1 ? q1Responses : q2Responses;
-  const isStory2 = phase === 2;
+  const resp = phaseResponses[phase] || (phaseResponses[phase] = {});
+  const isStory2 = phase >= 3;
 
   function addSection(label, tc) {
     const d = document.createElement('div');
@@ -1049,7 +986,11 @@ function buildQuestionnaire(phase) {
     const opts = document.createElement('div'); opts.className = 'likert-options';
     [1,2,3,4,5].forEach(v => {
       const btn = document.createElement('button'); btn.textContent = v;
-      btn.onclick = () => { opts.querySelectorAll('button').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); resp[id] = v; };
+      btn.onclick = () => {
+        opts.querySelectorAll('button').forEach(b => b.classList.remove('sel'));
+        btn.classList.add('sel');
+        resp[id] = v;
+      };
       opts.appendChild(btn);
     });
     const rL = document.createElement('div'); rL.className = 'likert-label right'; rL.textContent = high;
@@ -1074,7 +1015,7 @@ function buildQuestionnaire(phase) {
   addLikert('q4', 4, 'The story felt engaging and enjoyable to participate in.', 'Not engaging', 'Very engaging');
   addLikert('q5', 5, 'Overall, how would you rate the experience?', 'Very poor', 'Excellent');
 
-  // ── Derailment (both stories — just Yes/No + resistance Likert, no open-ended logs) ──
+  // ── Derailment ──
   addSection('Derailment');
   const q6div = document.createElement('div'); q6div.className = 'q-item';
   const q6lbl = document.createElement('label');
@@ -1087,7 +1028,11 @@ function buildQuestionnaire(phase) {
   const rOpts = document.createElement('div'); rOpts.className = 'likert-options';
   [1,2,3,4,5].forEach(v => {
     const btn = document.createElement('button'); btn.textContent = v;
-    btn.onclick = () => { rOpts.querySelectorAll('button').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); resp['q6_resist'] = v; };
+    btn.onclick = () => {
+      rOpts.querySelectorAll('button').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      resp['q6_resist'] = v;
+    };
     rOpts.appendChild(btn);
   });
   const rR = document.createElement('div'); rR.className = 'likert-label right'; rR.textContent = 'Stayed on track';
@@ -1111,7 +1056,6 @@ function buildQuestionnaire(phase) {
     addLikert('q10_natural', 10, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
     addLikert('q11_plot_points', 11, 'Did all the major plot points of the story get told?', 'Many were missing', 'All were covered', true);
 
-    // Q12 — rushed (yes/no + optional detail)
     const q12div = document.createElement('div'); q12div.className = 'q-item time-highlight';
     const q12lbl = document.createElement('label');
     q12lbl.innerHTML = '<span class="q-num tc">12.</span>Did any part of the story feel rushed or cut short?';
@@ -1135,7 +1079,7 @@ function buildQuestionnaire(phase) {
       'e.g. "The grandmother scene was skipped" or "Nothing was missing"', true);
   }
 
-  // ── General feedback (both stories) ──
+  // ── General feedback ──
   addSection('General feedback');
   const gNum = isStory2 ? 14 : 7;
   addTextarea('q_breakdown', gNum, 'Was there a moment where the story felt off or broke down? Describe it briefly.',
@@ -1143,29 +1087,131 @@ function buildQuestionnaire(phase) {
   addTextarea('q_comments', gNum + 1, "Any other comments about Olaf's character or the story overall?", 'Optional');
 }
 
-// ── Questionnaire submission ───────────────────────────────────────────────────
-document.getElementById('submit-q1-btn').onclick = async () => {
-  document.getElementById('submit-q1-btn').disabled = true;
-  document.getElementById('submit-q1-btn').textContent = 'Saving…';
+// ── Show questionnaire ─────────────────────────────────────────────────────────
+function showQuestionnaire(phase) {
+  if (!phaseResponses[phase]) phaseResponses[phase] = {};
+  buildQuestionnaire(phase);
+
+  const storyNum = phase <= 2 ? 1 : 2;
+  const roundNum = (phase === 1 || phase === 3) ? 1 : 2;
+  document.getElementById('q-header-title').textContent = `Story ${storyNum} · Round ${roundNum} Feedback`;
+  document.getElementById('q-header-sub').textContent =
+    storyNum === 1
+      ? 'Olaf Retells Frozen — please rate your experience with this round.'
+      : 'Little Red Riding Hood — please rate your experience with this round.';
+
+  const btn = document.getElementById('submit-q-btn');
+  btn.disabled = false;
+  if (phase === 1) btn.textContent = 'Save & Continue to Round 2 →';
+  else if (phase === 2) btn.textContent = 'Save & Continue to Story 2 →';
+  else if (phase === 3) btn.textContent = 'Save & Continue to Round 2 →';
+  else btn.textContent = 'Submit & Finish Study ✓';
+
+  showScreen('questionnaire-screen');
+}
+
+document.getElementById('submit-q-btn').onclick = async () => {
+  const phase = activePhase;
+  const btn = document.getElementById('submit-q-btn');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
   try {
     await fetch(`${SERVER}/save_questionnaire`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phase: 1, responses: q1Responses }),
+      body: JSON.stringify({ phase, responses: phaseResponses[phase] || {} }),
     });
-  } catch(e) { console.warn('Q1 save failed', e); }
-  showScreen('transition-screen');
+  } catch(e) { console.warn('Q save failed', e); }
+
+  if (phase === 1) {
+    showPhaseIntro(2);
+  } else if (phase === 2) {
+    showScreen('story2-transition-screen');
+  } else if (phase === 3) {
+    showPhaseIntro(4);
+  } else {
+    showScreen('thankyou-screen');
+  }
 };
 
-document.getElementById('submit-q2-btn').onclick = async () => {
-  document.getElementById('submit-q2-btn').disabled = true;
-  document.getElementById('submit-q2-btn').textContent = 'Saving…';
-  try {
-    await fetch(`${SERVER}/save_questionnaire`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phase: 2, responses: q2Responses }),
-    });
-  } catch(e) { console.warn('Q2 save failed', e); }
-  showScreen('thankyou-screen');
+// ── Socket ─────────────────────────────────────────────────────────────────────
+function connectSocket() {
+  socket = io(SERVER, { transports: ['websocket'] });
+
+  socket.on('connect', () => console.log('[SIO] connected'));
+  socket.on('disconnect', () => { setBusy(false); });
+
+  socket.on('study_ready', data => {
+    story1Order = data.story1_order;
+    story2Order = data.story2_order;
+    const btn = document.getElementById('begin-btn');
+    if (btn) { btn.disabled = false; btn.textContent = 'Begin Study ❄️'; }
+    showPhaseIntro(1);
+  });
+
+  socket.on('session_started', data => {
+    const phase = data.phase;
+    setThinking(false);
+    if (phase >= 3) {
+      _timeLimitMinutes = 3;
+      document.getElementById('time-display').textContent = '0:00 / 3:00';
+      startTimePoll();
+      fetch(`${SERVER}/state`).then(r => r.json()).then(s => {
+        beatCount = (s.beats || []).length;
+        buildBeatTracker(beatCount);
+        document.getElementById('beat-col').style.display = 'flex';
+      }).catch(() => {});
+    }
+  });
+
+  socket.on('director_decision', data => {
+    setThinking(true, 'Olaf is responding…');
+    if (activePhase >= 3 && data && data.pacing_mode) {
+      updatePacingBadge(data.pacing_mode);
+    }
+  });
+
+  socket.on('transcript_assistant', data => { appendStream(data.delta); });
+  socket.on('audio_output', data => { enqueueAudio(data.audio); });
+
+  socket.on('response_done', () => {
+    finaliseStream();
+    setThinking(false);
+    setBusy(false);
+  });
+
+  socket.on('story_finished', data => {
+    const phase = data.phase;
+    if (phase <= 2) {
+      // Story 1: if hard cutoff already fired the timesup screen handles it;
+      // otherwise go straight to questionnaire
+      if (!_s1HardCutoff) showQuestionnaire(phase);
+    } else {
+      // Story 2: always show the time's up modal then questionnaire
+      stopTimePoll();
+      clearAudio(); setThinking(false); setBusy(false);
+      showTimesUpModal();
+    }
+  });
+
+  socket.on('time_up', () => {
+    addMsg('system', "Time's up — Olaf is wrapping up…");
+    setBusy(true);
+  });
+
+  socket.on('error', data => {
+    console.error('[server error]', data.message);
+    setThinking(false);
+    setBusy(false);
+  });
+}
+
+// ── Begin study ────────────────────────────────────────────────────────────────
+document.getElementById('begin-btn').onclick = () => {
+  const btn = document.getElementById('begin-btn');
+  btn.disabled = true;
+  btn.textContent = 'Setting up…';
+  socket.emit('begin_study', {});
 };
 
 // ── Cancel / Start over ────────────────────────────────────────────────────────
@@ -1175,27 +1221,32 @@ function cancelStudy() {
   stopTimePoll();
   clearAudio();
   setBusy(false);
-  setThinking(1, false);
-  setThinking(2, false);
+  setThinking(false);
+  resetPacingBadge();
+
   if (socket && socket.connected) socket.emit('cancel_study', {});
-  activePhase = 0; q1Responses = {}; q2Responses = {}; beatCount2 = 0;
-  _timesUpTriggered = false; _timeLimitMinutes = 3;
-  document.getElementById('chat-log-1').innerHTML = '';
-  document.getElementById('chat-log-2').innerHTML = '';
+
+  activePhase = 0;
+  story1Order = []; story2Order = [];
+  phaseResponses = {};
+  beatCount = 0;
+  _timesUpTriggered = false;
+  _timeLimitMinutes = 3;
+
+  document.getElementById('chat-log').innerHTML = '';
+  document.getElementById('beat-tracker').innerHTML = '';
   document.getElementById('s1-countdown').textContent = '5:00';
   document.getElementById('s1-time-bar').style.width = '100%';
   document.getElementById('s1-time-bar').style.background = '#3aaa4a';
   document.getElementById('time-display').textContent = '0:00 / 3:00';
   document.getElementById('time-bar').style.width = '0%';
   document.getElementById('time-bar').style.background = '#3aaa4a';
-  document.getElementById('beat-col-2').style.display = 'none';
-  document.getElementById('beat-tracker-2').innerHTML = '';
+  document.getElementById('beat-col').style.display = 'none';
   document.getElementById('timesup-modal').classList.remove('visible');
-  resetPacingBadge();
-  const sq1 = document.getElementById('submit-q1-btn');
-  const sq2 = document.getElementById('submit-q2-btn');
-  if (sq1) { sq1.disabled = false; sq1.textContent = 'Save & Continue to Story 2 →'; }
-  if (sq2) { sq2.disabled = false; sq2.textContent = 'Submit & Finish Study ✓'; }
+
+  const btn = document.getElementById('begin-btn');
+  if (btn) { btn.disabled = false; btn.textContent = 'Begin Study ❄️'; }
+
   showScreen('welcome-screen');
 }
 
