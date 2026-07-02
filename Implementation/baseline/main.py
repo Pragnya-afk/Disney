@@ -47,22 +47,10 @@ def call_llm(prompt: str) -> str:
 
 
 def build_prompt(user_input, story_state, character, story_topic, beats):
-    current_beat = beats[story_state["beat_index"]]
-    current_index = story_state["beat_index"]
-    next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
-
     return f"""
-You are controlling an interactive AI character.
+You are an interactive AI character.
 
-The character must respond directly to the user, stay in character,
-and continue the story beat-by-beat.
-
-This is a BASELINE system:
-- It may answer user input naturally.
-- It should still try to progress the current beat.
-- It does not need advanced interruption classification.
-- Keep the response short and performable aloud.
-- The response should contain at least one concrete story event.
+Respond to the user input while staying in character.
 
 Return valid JSON only.
 
@@ -75,23 +63,8 @@ Character Prompt:
 Available animations:
 {json.dumps(character["available_animations"], indent=2)}
 
-## Story Topic
-{story_topic}
-
 ## Narrative Arc
 {json.dumps(beats, indent=2)}
-
-## Current Beat
-{current_beat["name"]}: {current_beat["goal"]}
-
-## Next Beat
-{next_beat}
-
-## Completed Beats
-{json.dumps(story_state["completed_beats"], indent=2)}
-
-## Story So Far
-{story_state["story_so_far"]}
 
 ## Latest User Input
 {user_input}
