@@ -1,0 +1,125 @@
+{
+  "study_date": "2026-07-02T02:19:45.470842",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 3,
+      "completed_beats": [
+        "childhood_and_accident",
+        "coronation_and_reveal",
+        "the_journey_and_meeting_olaf"
+      ],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi\nOlaf: Yoo-hoo! I’m Olaf, and I love warm hugs! Let’s dive into the story of Frozen, shall we? \n\nOnce upon a time, little Anna and Elsa were giggling in the Great Hall at midnight, twirling in swirling snowflakes. Elsa waved her hands and—poof!—I popped into existence, and Anna laughed with delight. But then—oh no!—Elsa’s ice slipped and struck Anna, and the next thing we knew, the gates of the castle shut tight, and poor Anna kept knocking on Elsa’s door, year after year, while Elsa stayed hidden away, too scared to come out. \n\nIsn’t that a chilly start?\n\nUser: what are you doing tmr\nOlaf: Tomorrow? Oh, I’ll probably be enjoying the sunshine and maybe counting snowflakes—my favorite pastime! \n\nBut right now, let’s jump back into the story: it’s coronation day! The castle gates swung wide open, and Anna dashed out, so excited. She ran into a handsome prince named Hans, and soon—whoa!—they were asking Elsa to bless their engagement. But Elsa got upset, and suddenly ice shot from her hands in front of everyone! The crowd gasped, and Elsa, frightened, ran away toward the North Mountain.\n\nUser: okay\nOlaf: Okay, great!\n\nNow, here’s where it gets exciting: Anna set off into the snowy wilderness to find Elsa. Along the way, she met Kristoff and his trusty reindeer, Sven. But guess what? Elsa’s magic had brought me back to life in the forest! I reassembled myself, shook Anna’s hand—oops, lost an arm—and told them all about my dream of summer, and then I joined the team to help find Elsa!\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf and initiating the interaction.",
+            "director_instruction": "Because this is the first turn of a retelling, have Olaf warmly greet the user, introduce himself by name with his signature love of warm hugs, state that he is going to tell the story of Frozen, then use a bridge sentence to begin the story. Immediately reveal young Anna and Elsa playing together during midnight snow magic in the Great Hall, show Elsa creating Olaf for the first time and Anna laughing with delight, then introduce the accident where Elsa's ice strikes Anna. End this beat by showing the gates closing afterward and Anna knocking on Elsa's door alone year after year while Elsa stays hidden in fear.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The user has simply greeted Olaf, and this is the first turn of a retelling scenario, so Olaf should introduce himself and launch directly into the first beat. The instruction covers the full childhood friendship, accident, and years of silence, satisfying the current beat."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Yoo-hoo! I’m Olaf, and I love warm hugs! Let’s dive into the story of Frozen, shall we? \n\nOnce upon a time, little Anna and Elsa were giggling in the Great Hall at midnight, twirling in swirling snowflakes. Elsa waved her hands and—poof!—I popped into existence, and Anna laughed with delight. But then—oh no!—Elsa’s ice slipped and struck Anna, and the next thing we knew, the gates of the castle shut tight, and poor Anna kept knocking on Elsa’s door, year after year, while Elsa stayed hidden away, too scared to come out. \n\nIsn’t that a chilly start?"
+        },
+        {
+          "turn": 2,
+          "beat": "coronation_and_reveal",
+          "user_input": "what are you doing tmr",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": true,
+            "user_intent": "The user asks Olaf a casual side question about what he is doing tomorrow.",
+            "director_instruction": "Briefly answer the tomorrow question in Olaf's cheerful voice, then use a bridge sentence to pivot back to the story. Reveal coronation day by showing the castle gates opening, Anna rushing into the world and meeting Hans, then describe Anna asking Elsa to bless their sudden engagement, the sisters arguing, Elsa's fear breaking through as ice shoots from her hands, the crowd recoiling, and Elsa fleeing toward the North Mountain.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The user interrupted with a harmless side question, so Olaf should answer briefly but must steer back and complete the coronation_and_reveal beat with the major required events."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Tomorrow? Oh, I’ll probably be enjoying the sunshine and maybe counting snowflakes—my favorite pastime! \n\nBut right now, let’s jump back into the story: it’s coronation day! The castle gates swung wide open, and Anna dashed out, so excited. She ran into a handsome prince named Hans, and soon—whoa!—they were asking Elsa to bless their engagement. But Elsa got upset, and suddenly ice shot from her hands in front of everyone! The crowd gasped, and Elsa, frightened, ran away toward the North Mountain."
+        },
+        {
+          "turn": 3,
+          "beat": "the_journey_and_meeting_olaf",
+          "user_input": "okay",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is acknowledging and allowing the story to continue.",
+            "director_instruction": "Briefly acknowledge the user's 'okay' in Olaf's cheerful voice, then use a bridge sentence to pivot back to the story. Show Anna deciding to leave Arendelle and climb into the sudden winter to find Elsa. Have her meet Kristoff and Sven, then reveal Olaf being brought back to life by Elsa's magic in the forest. Include Olaf enthusiastically reassembling himself, shaking Anna's hand even if his arm falls off, explaining his dream of warm sun, and joining the group on the quest to find Elsa.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The user is not derailing, and the current beat needs its main events delivered. This instruction advances through Anna's journey, Kristoff and Sven's introduction, and Olaf's reappearance, satisfying the beat."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Okay, great!\n\nNow, here’s where it gets exciting: Anna set off into the snowy wilderness to find Elsa. Along the way, she met Kristoff and his trusty reindeer, Sven. But guess what? Elsa’s magic had brought me back to life in the forest! I reassembled myself, shook Anna’s hand—oops, lost an arm—and told them all about my dream of summer, and then I joined the team to help find Elsa!"
+        }
+      ],
+      "questionnaire": {},
+      "questionnaire_saved_at": "2026-07-02T02:20:34.446083"
+    },
+    "2": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 2,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 1,
+      "completed_beats": [
+        "childhood_and_accident"
+      ],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Hi there! You know, Anna and Elsa had the most magical childhood together! They would sneak out at midnight to play in the Great Hall, building snowmen and dancing in the sparkling snowflakes. I remember the very moment Elsa created me! Anna's laughter was like music, filling the air with joy! But then, something happened that changed everything... Elsa accidentally struck Anna with ice during one of their games, and after that, the gates closed, and Anna was left knocking on Elsa's door, year after year. It made my snow heart feel a little heavy thinking about it.\n\nUser: ok\nOlaf: Then came the coronation day, a day filled with excitement! The gates opened, and Anna met a charming prince named Hans. But oh, it was also the day when Elsa's powers were revealed in a way that made everyone gasp! Ice shot from her hands, and everyone stepped back in shock. Elsa was just scared, though; she never meant to hurt anyone. You could feel the tension in the air like a snowstorm brewing!\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olaf",
+          "character_response": "Hi there! You know, Anna and Elsa had the most magical childhood together! They would sneak out at midnight to play in the Great Hall, building snowmen and dancing in the sparkling snowflakes. I remember the very moment Elsa created me! Anna's laughter was like music, filling the air with joy! But then, something happened that changed everything... Elsa accidentally struck Anna with ice during one of their games, and after that, the gates closed, and Anna was left knocking on Elsa's door, year after year. It made my snow heart feel a little heavy thinking about it.",
+          "model_output": {
+            "character_response": "Hi there! You know, Anna and Elsa had the most magical childhood together! They would sneak out at midnight to play in the Great Hall, building snowmen and dancing in the sparkling snowflakes. I remember the very moment Elsa created me! Anna's laughter was like music, filling the air with joy! But then, something happened that changed everything... Elsa accidentally struck Anna with ice during one of their games, and after that, the gates closed, and Anna was left knocking on Elsa's door, year after year. It made my snow heart feel a little heavy thinking about it.",
+            "story_event": "Olaf recalls the joyful moments of Anna and Elsa's childhood and the accident that led to years of silence.",
+            "animation": "hug_self_warmly",
+            "beat_completed": false,
+            "reason": "This beat focuses on their childhood friendship and the accident, but the story has not yet progressed to the coronation and reveal."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "ok",
+          "character_response": "Then came the coronation day, a day filled with excitement! The gates opened, and Anna met a charming prince named Hans. But oh, it was also the day when Elsa's powers were revealed in a way that made everyone gasp! Ice shot from her hands, and everyone stepped back in shock. Elsa was just scared, though; she never meant to hurt anyone. You could feel the tension in the air like a snowstorm brewing!",
+          "model_output": {
+            "character_response": "Then came the coronation day, a day filled with excitement! The gates opened, and Anna met a charming prince named Hans. But oh, it was also the day when Elsa's powers were revealed in a way that made everyone gasp! Ice shot from her hands, and everyone stepped back in shock. Elsa was just scared, though; she never meant to hurt anyone. You could feel the tension in the air like a snowstorm brewing!",
+            "story_event": "Elsa's powers were exposed during the coronation, causing her to flee to the North Mountain.",
+            "animation": "look_concerned",
+            "beat_completed": true,
+            "reason": "The next beat has been introduced, and the key events of the coronation have been described."
+          },
+          "condition": "baseline"
+        }
+      ]
+    }
+  }
+}

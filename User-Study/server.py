@@ -1,4 +1,4 @@
-import os, sys, json, threading, random
+import os, sys, json, threading, random, time
 from datetime import datetime
 from flask import Flask, send_from_directory, request, jsonify
 from flask_socketio import SocketIO, emit
@@ -22,12 +22,9 @@ from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
 from baseline.main import (
     build_prompt as baseline_build_prompt,
+    call_llm as baseline_call_llm,
     safe_json_parse as baseline_safe_json_parse,
     validate_animation as baseline_validate_animation,
-)
-from auto_main import (
-    ACTOR_SYSTEM_PROMPT,
-    build_actor_prompt,
 )
 
 STORY_1_KEY = "olaf_retells_frozen_1_no_derailment"
@@ -42,8 +39,7 @@ app = Flask(__name__, static_folder="public")
 app.config["SECRET_KEY"] = "olaf-study-2026"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
-DIRECTOR_MODEL = "gpt-5.5"
-BASELINE_MODEL = "gpt-4o-mini"
+DIRECTOR_MODEL = "gpt-4o-mini"
 REALTIME_MODEL = "gpt-realtime"
 
 api_key = os.getenv("OPENAI_API_KEY")
@@ -69,6 +65,7 @@ _monitor: TemporalMonitor | None = None
 _openai_ws = None
 _current_sid = None
 _last_user_input = ""
+_last_user_activity_ts = 0.0
 _time_up_injected = False
 _auto_advance_timer: threading.Timer | None = None
 _wall_timer: threading.Timer | None = None
@@ -145,22 +142,16 @@ def _handle_baseline_input(text: str):
     story_state = {
         "beat_index": snap["beat_index"],
         "completed_beats": snap["completed_beats"],
-        "story_so_far": snap["story_so_far"],
+        # Same tail-only window as _director_prompt, so neither condition
+        # gets an unfair amount of story history in its prompt.
+        "story_so_far": snap["story_so_far"][-600:],
     }
     current_beat_name = beats[min(snap["beat_index"], len(beats) - 1)]["name"]
 
     prompt = baseline_build_prompt(text, story_state, OLAF_CHARACTER, snap["story_topic"], beats)
 
     try:
-        response = _client.chat.completions.create(
-            model=BASELINE_MODEL,
-            temperature=0.7,
-            messages=[
-                {"role": "system", "content": "You are an interactive storytelling engine for an AI character."},
-                {"role": "user", "content": prompt},
-            ],
-        )
-        raw = response.choices[0].message.content.strip()
+        raw = baseline_call_llm(prompt)
     except Exception as e:
         print(f"[baseline LLM error] {e}")
         raw = json.dumps({
@@ -179,13 +170,11 @@ def _handle_baseline_input(text: str):
     with _lock:
         _state["story_so_far"] += f"\nOlaf: {olaf_text}\n"
         _state["turns_in_current_beat"] = snap.get("turns_in_current_beat", 0) + 1
-        force_advance = _state["turns_in_current_beat"] >= 3
-        if (beat_completed or force_advance) and snap["beat_index"] < len(beats):
+        if beat_completed and snap["beat_index"] < len(beats):
             _state["completed_beats"].append(beats[snap["beat_index"]]["name"])
             _state["beat_index"] += 1
             _state["turns_in_current_beat"] = 0
-            reason = "model" if beat_completed else "turn-limit"
-            print(f"[Baseline beat → {_state['beat_index']} ({reason})]")
+            print(f"[Baseline beat → {_state['beat_index']} (model)]")
 
     _transcript.append({
         "turn": len(_transcript) + 1,
@@ -249,48 +238,6 @@ Story so far:
 {tail}""".strip()
 
 
-def _make_realtime_actor_instructions(
-    user_input: str, snap: dict, decision: dict, timed: bool = False
-) -> str:
-    """Build Realtime API session instructions from auto_main.build_actor_prompt.
-
-    Strips the JSON output-format block (Realtime API speaks plain text)
-    and adds pacing rules for the time-constrained condition.
-    """
-    prompt = build_actor_prompt(
-        user_input=user_input,
-        story_state=snap,
-        director_decision=decision,
-        character=OLAF_CHARACTER,
-        story_topic=snap["story_topic"],
-        beats=snap["beats"],
-    )
-    # Realtime API returns natural speech, not JSON — remove that section.
-    if "## Output Format" in prompt:
-        prompt = prompt[:prompt.index("## Output Format")].rstrip()
-
-    prompt += (
-        "\n\nSpeak your response naturally as Olaf. Do not return JSON."
-        "\n\nCRITICAL: Before your NEXT response to the user, you MUST call the "
-        "get_director_decision tool first. Do not speak until you have the director's instruction."
-    )
-
-    if timed:
-        tl = snap.get("time_limit", 3.0)
-        prompt += f"""
-
-## Time Constraint
-The story has a target duration of {tl} minutes.
-The pacing_mode field in the tool result tells you how to pace:
-- too_fast: ahead of schedule — expand the beat using expansion_hint if present.
-- normal: continue naturally.
-- hurry: progress faster, avoid lingering.
-- critical: compress, move toward ending quickly.
-- final: time is up — close ALL remaining beats now in one response."""
-
-    return prompt
-
-
 DIRECTOR_TOOL = {
     "type": "function",
     "name": "get_director_decision",
@@ -317,6 +264,18 @@ def _schedule_auto_advance():
 
     def _fire():
         if not _current_sid:
+            return
+        # threading.Timer.cancel() cannot stop a timer whose callback has
+        # already started running — if the user's real input lands in that
+        # narrow window, _cancel_auto_advance() (called from on_text_input)
+        # is a no-op and this still fires. Re-validate idle time here so a
+        # stale fire backs off instead of racing a real user turn: sending
+        # two concurrent response.create calls on the same Realtime session
+        # gets the second one rejected, silently dropping that turn (no
+        # director_decision, no character response, no transcript entry).
+        idle_for = time.time() - _last_user_activity_ts
+        if idle_for < AUTO_ADVANCE_SECONDS - 1:
+            _schedule_auto_advance()
             return
         cond = _condition(_study_phase)
         if cond == "baseline":
@@ -378,7 +337,7 @@ def _cancel_wall_timer():
 
 # ── Reset per-round state ──────────────────────────────────────────────────────
 def reset_story(phase: int):
-    global _transcript, _monitor, _last_user_input, _time_up_injected
+    global _transcript, _monitor, _last_user_input, _last_user_activity_ts, _time_up_injected
     cond = _condition(phase)
     sc = _SCENARIO_REGISTRY[_scenario_key(phase)]
     tl = _time_limit(phase)
@@ -393,6 +352,7 @@ def reset_story(phase: int):
         })
     _transcript = []
     _last_user_input = ""
+    _last_user_activity_ts = time.time()
     _time_up_injected = False
     _cancel_auto_advance()
     _cancel_wall_timer()
@@ -557,10 +517,12 @@ def handle_director_tool(ws, event: dict):
     else:
         return
 
+    # Refresh the system prompt with the latest beat/story state — same
+    # pattern as Real-Time-API-Demo's build_system_prompt(state_now). The
+    # director_instruction itself travels natively via the tool's
+    # function_call_output below, not baked into these instructions.
     snap_now = get_snap()
-    instructions = _make_realtime_actor_instructions(
-        user_input, snap_now, decision, timed=(cond == "time_constrained")
-    )
+    instructions = _director_prompt(snap_now, timed=(cond == "time_constrained"))
     ws.send(json.dumps({
         "type": "session.update",
         "session": {"type": "realtime", "instructions": instructions},
@@ -735,7 +697,15 @@ def run_openai_ws():
                 socketio.emit("response_done", {}, room=_current_sid)
             _schedule_auto_advance()
 
-            if _study_phase in (3, 4) and _time_up_injected:
+            # One "final" turn produces two response.done events: the tool
+            # call itself (no text) fires first, then the actual closing
+            # narration (real text) fires later once handle_director_tool's
+            # own response.create resolves. Only auto-finish on the one that
+            # actually delivered text — otherwise this can race and tear
+            # down the connection (close_ws) before the wrap-up ever streams
+            # back, since _time_up_injected is set synchronously as soon as
+            # pacing_mode hits "final", before either response.done arrives.
+            if _study_phase in (3, 4) and _time_up_injected and olaf_text:
                 threading.Thread(target=_auto_finish_active_phase, daemon=True).start()
 
         elif etype == "error":
@@ -887,10 +857,11 @@ def on_cancel_study(_data):
 
 @socketio.on("text_input")
 def on_text_input(data):
-    global _last_user_input
+    global _last_user_input, _last_user_activity_ts
     text = data.get("text", "").strip()
     if not text:
         return
+    _last_user_activity_ts = time.time()
     _cancel_auto_advance()
     _last_user_input = text
     cond = _condition(_study_phase)
