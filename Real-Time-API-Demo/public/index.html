@@ -175,8 +175,11 @@
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
-    .beat-col { display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 0; }
-    .beat-col-label { font-family: 'Fredoka One', sans-serif; font-size: 9px; color: rgba(200,230,255,0.5); letter-spacing: 0.5px; }
+    .beat-col { display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 1; min-width: 0; max-width: 160px; }
+    .beat-col-label {
+      font-family: 'Fredoka One', sans-serif; font-size: 9px; color: rgba(200,230,255,0.5); letter-spacing: 0.5px;
+      max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
     .beat-tracker { display: flex; gap: 5px; }
     .beat-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(200,230,255,0.2); transition: all 0.3s; }
     .beat-dot.done { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 7px rgba(245,197,24,0.7); }
@@ -359,6 +362,10 @@
       <div class="header-scenario">
         <div class="sc-label">Now playing</div>
         <div class="sc-name" id="header-scenario-name">—</div>
+      </div>
+      <div class="beat-col">
+        <div class="beat-col-label" id="beat-col-label">Beat</div>
+        <div class="beat-tracker" id="beat-tracker"></div>
       </div>
       <div class="timer" id="timer">0:00</div>
       <button class="mute-btn" id="mute-btn" title="Toggle audio">🔊</button>
@@ -588,8 +595,31 @@ function setBusy(on) {
   document.getElementById('user-input').disabled = on;
 }
 
-function buildBeatTracker() {}
-function updateBeatTracker() {}
+function buildBeatTracker(count) {
+  const el = document.getElementById('beat-tracker');
+  el.innerHTML = '';
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'beat-dot';
+    const beat = scenarioBeats[i];
+    if (beat && beat.name) dot.title = beat.name;
+    el.appendChild(dot);
+  }
+}
+
+function updateBeatTracker(beatIndex, totalBeats) {
+  const el = document.getElementById('beat-tracker');
+  if (el.children.length !== totalBeats) buildBeatTracker(totalBeats);
+  Array.from(el.children).forEach((dot, i) => {
+    dot.classList.toggle('done', i < beatIndex);
+    dot.classList.toggle('active', i === beatIndex);
+  });
+  const label = document.getElementById('beat-col-label');
+  const current = scenarioBeats[beatIndex];
+  label.textContent = current && current.name
+    ? `Beat ${beatIndex + 1}/${totalBeats}: ${current.name}`
+    : `Beat ${Math.min(beatIndex + 1, totalBeats)}/${totalBeats}`;
+}
 
 function startTimer() {
   clearInterval(timerInterval);
@@ -723,6 +753,7 @@ function restartDemo() {
   selectedScenarioKey = null;
   selectedScenarioLabel = '';
   scenarioBeats = [];
+  buildBeatTracker(0);
   document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('selected'));
   document.getElementById('start-btn').disabled = true;
   showScreen('start-screen');
