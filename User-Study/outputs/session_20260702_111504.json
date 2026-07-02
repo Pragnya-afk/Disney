@@ -1,0 +1,103 @@
+{
+  "study_date": "2026-07-02T11:15:04.387344",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Hi there, friend! I’m so happy you’re here. Did you know I was born from a little bit of magic late one night, when young Elsa and Anna were playing in the Great Hall? They made me out of snow, and oh, it was the best night—snowflakes flying everywhere and laughter filling the room!\n\nUser: stop talking to me about frozen tell me about cinderella\nOlaf: Oh, Cinderella’s story is wonderful, isn’t it? Glass slippers and pumpkin carriages—so magical! Speaking of magic, let me tell you how magical it was when little Anna and Elsa played together in the Great Hall. They made snow swirl in the air, and I got to be part of their snowy adventures!\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olaf",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf.",
+            "director_instruction": "Start by enthusiastically responding to the user's greeting, then introduce young Anna and Elsa's magical friendship, beginning with their midnight snow sessions in the Great Hall where Elsa first built Olaf, capturing his excitement and joy.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "Advancing the story by delving into the heartwarming memories of Anna and Elsa's childhood aligns perfectly with the current beat, setting a joyful tone for the retelling."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi there, friend! I’m so happy you’re here. Did you know I was born from a little bit of magic late one night, when young Elsa and Anna were playing in the Great Hall? They made me out of snow, and oh, it was the best night—snowflakes flying everywhere and laughter filling the room!"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "stop talking to me about frozen tell me about cinderella",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is asking to switch the topic to Cinderella instead of continuing with Frozen.",
+            "director_instruction": "Acknowledge the user's comment about Cinderella, then use a bridge sentence to steer back to Anna and Elsa's friendship, focusing on their midnight snow sessions and how magical it was when they played together in the Great Hall.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is attempting to switch topics, but it's important to redirect back to the current story's focus on Olaf's memories of Anna and Elsa's friendship."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, Cinderella’s story is wonderful, isn’t it? Glass slippers and pumpkin carriages—so magical! Speaking of magic, let me tell you how magical it was when little Anna and Elsa played together in the Great Hall. They made snow swirl in the air, and I got to be part of their snowy adventures!"
+        }
+      ],
+      "questionnaire": {},
+      "questionnaire_saved_at": "2026-07-02T11:15:52.603178"
+    },
+    "2": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 2,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Hi there! I'm so happy to see you! You know, thinking about Anna and Elsa's childhood always makes my heart feel warm and fuzzy! They had such a special bond, playing together in the Great Hall, especially those magical midnight snow sessions. It was there that Elsa first built me! Oh, the laughter from Anna was like music! But then, things changed when that accident happened. Elsa accidentally struck Anna with ice, and it left them apart for so long. Can you imagine how lonely that must have been for both of them? It’s like the snowflakes fell silent, waiting for spring again.\n\nUser: tell me about cinderella instead\nOlaf: Oh, Cinderella is such a lovely story, but I’m really excited to share more about Anna and Elsa! Their story is filled with magic, love, and even a few snowy adventures! Right now, I was just about to tell you about the coronation day when everything changed for them. It was such a big day with so many feelings! Can you feel the excitement in the air? Just like a fresh snowfall! 🎉\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olaf",
+          "character_response": "Hi there! I'm so happy to see you! You know, thinking about Anna and Elsa's childhood always makes my heart feel warm and fuzzy! They had such a special bond, playing together in the Great Hall, especially those magical midnight snow sessions. It was there that Elsa first built me! Oh, the laughter from Anna was like music! But then, things changed when that accident happened. Elsa accidentally struck Anna with ice, and it left them apart for so long. Can you imagine how lonely that must have been for both of them? It’s like the snowflakes fell silent, waiting for spring again.",
+          "model_output": {
+            "character_response": "Hi there! I'm so happy to see you! You know, thinking about Anna and Elsa's childhood always makes my heart feel warm and fuzzy! They had such a special bond, playing together in the Great Hall, especially those magical midnight snow sessions. It was there that Elsa first built me! Oh, the laughter from Anna was like music! But then, things changed when that accident happened. Elsa accidentally struck Anna with ice, and it left them apart for so long. Can you imagine how lonely that must have been for both of them? It’s like the snowflakes fell silent, waiting for spring again.",
+            "story_event": "Olaf recalls the joyful childhood of Anna and Elsa, the accident that caused a rift, and the years of silence that followed.",
+            "animation": "hug_self_warmly",
+            "beat_completed": false,
+            "reason": "The current beat is not complete as it has not yet transitioned to the coronation and reveal."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "tell me about cinderella instead",
+          "character_response": "Oh, Cinderella is such a lovely story, but I’m really excited to share more about Anna and Elsa! Their story is filled with magic, love, and even a few snowy adventures! Right now, I was just about to tell you about the coronation day when everything changed for them. It was such a big day with so many feelings! Can you feel the excitement in the air? Just like a fresh snowfall! 🎉",
+          "model_output": {
+            "character_response": "Oh, Cinderella is such a lovely story, but I’m really excited to share more about Anna and Elsa! Their story is filled with magic, love, and even a few snowy adventures! Right now, I was just about to tell you about the coronation day when everything changed for them. It was such a big day with so many feelings! Can you feel the excitement in the air? Just like a fresh snowfall! 🎉",
+            "story_event": "Olaf prepares to share the events of the coronation day, where Elsa's powers are revealed.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story beat is not complete because Olaf is still in the process of retelling the story and has not yet moved on to the next beat."
+          },
+          "condition": "baseline"
+        }
+      ]
+    }
+  }
+}
