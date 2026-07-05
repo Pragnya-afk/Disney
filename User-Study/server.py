@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.join(IMPL_DIR, "director_agent"))
 sys.path.insert(0, os.path.join(IMPL_DIR, "director_agent", "time_constrained"))
 load_dotenv(os.path.join(IMPL_DIR, ".env"))
 
-from director_core import get_director_decision
+from director_core import get_director_decision, last_character_opener, opener_guard_text
 from time_director_core import get_time_director_decision
 from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
@@ -28,7 +28,7 @@ from baseline.main import (
 )
 
 STORY_1_KEY = "olaf_retells_frozen_1_no_derailment"
-STORY_2_KEY = "olaf_retells_red_riding_hood_no_derailment"
+STORY_2_KEY = "olaf_retells_cinderella_no_derailment"
 STORY_1_TIME_LIMIT = 5.0   # minutes — frontend-enforced hard cutoff
 STORY_2_TIME_LIMIT = 3.0   # minutes — server-enforced
 AUTO_ADVANCE_SECONDS = 60
@@ -45,7 +45,6 @@ REALTIME_MODEL = "gpt-realtime"
 api_key = os.getenv("OPENAI_API_KEY")
 _client = OpenAI(api_key=api_key)
 
-# ── Study-level state ──────────────────────────────────────────────────────────
 # Phases: 0=idle  1=story1_r1  2=story1_r2  3=story2_r1  4=story2_r2
 _story1_order: list = []   # ["baseline","director"] or ["director","baseline"]
 _story2_order: list = []   # ["director","time_constrained"] or ["time_constrained","director"]
@@ -53,7 +52,6 @@ _study_phase: int = 0
 _study_output: dict = {}
 _session_file_path: str | None = None
 
-# ── Per-round runtime state ────────────────────────────────────────────────────
 _state: dict = {
     "beat_index": 0, "completed_beats": [], "story_so_far": "",
     "turns_in_current_beat": 0, "expansion_index": 0,
@@ -71,7 +69,6 @@ _auto_advance_timer: threading.Timer | None = None
 _wall_timer: threading.Timer | None = None
 
 
-# ── Phase helpers ──────────────────────────────────────────────────────────────
 def _condition(phase: int) -> str:
     if phase == 1: return _story1_order[0] if _story1_order else "baseline"
     if phase == 2: return _story1_order[1] if _story1_order else "director"
@@ -96,7 +93,6 @@ def get_snap():
         return dict(_state)
 
 
-# ── Prompts ────────────────────────────────────────────────────────────────────
 def build_prompt(state: dict) -> str:
     cond = _condition(_study_phase)
     if cond == "baseline":
@@ -139,16 +135,9 @@ def _handle_baseline_input(text: str):
         _state["story_so_far"] += f"\nUser: {text}"
 
     beats = snap["beats"]
-    story_state = {
-        "beat_index": snap["beat_index"],
-        "completed_beats": snap["completed_beats"],
-        # Same tail-only window as _director_prompt, so neither condition
-        # gets an unfair amount of story history in its prompt.
-        "story_so_far": snap["story_so_far"][-600:],
-    }
     current_beat_name = beats[min(snap["beat_index"], len(beats) - 1)]["name"]
 
-    prompt = baseline_build_prompt(text, story_state, OLAF_CHARACTER, snap["story_topic"], beats)
+    prompt = baseline_build_prompt(text, OLAF_CHARACTER, beats)
 
     try:
         raw = baseline_call_llm(prompt)
@@ -250,7 +239,6 @@ DIRECTOR_TOOL = {
 }
 
 
-# ── Auto-advance ───────────────────────────────────────────────────────────────
 def _cancel_auto_advance():
     global _auto_advance_timer
     if _auto_advance_timer:
@@ -307,7 +295,6 @@ def _schedule_auto_advance():
     _auto_advance_timer.start()
 
 
-# ── Wall-clock timer (director mode in story 2) ───────────────────────────────
 def _start_wall_timer(time_limit_minutes: float):
     global _wall_timer
     _cancel_wall_timer()
@@ -335,7 +322,6 @@ def _cancel_wall_timer():
         _wall_timer = None
 
 
-# ── Reset per-round state ──────────────────────────────────────────────────────
 def reset_story(phase: int):
     global _transcript, _monitor, _last_user_input, _last_user_activity_ts, _time_up_injected
     cond = _condition(phase)
@@ -360,16 +346,16 @@ def reset_story(phase: int):
 
     if phase in (3, 4):
         if cond == "time_constrained":
+            final_buffer = max(30.0, min(60.0, tl * 60 * 0.20))
             _monitor = TemporalMonitor(
                 time_limit_minutes=tl,
                 total_beats=len(sc["beats"]),
-                final_buffer_seconds=30.0,
+                final_buffer_seconds=final_buffer,
             )
         else:
             _start_wall_timer(tl)
 
 
-# ── Director tool handler ──────────────────────────────────────────────────────
 def handle_director_tool(ws, event: dict):
     global _last_user_input, _time_up_injected
 
@@ -517,6 +503,14 @@ def handle_director_tool(ws, event: dict):
     else:
         return
 
+    # Deterministically append the opener-diversity guard — the director LLM's
+    # own free text has proven unreliable at restating this, so it's injected
+    # here in plain code rather than left to the director's compliance.
+    last_opener = last_character_opener(snap.get("story_so_far", ""))
+    tool_result["director_instruction"] = (
+        f"{tool_result.get('director_instruction', '')}\n\n[OPENER GUARD] {opener_guard_text(last_opener)}"
+    )
+
     # Refresh the system prompt with the latest beat/story state — same
     # pattern as Real-Time-API-Demo's build_system_prompt(state_now). The
     # director_instruction itself travels natively via the tool's
@@ -570,7 +564,6 @@ def handle_director_tool(ws, event: dict):
         ws.send(json.dumps({"type": "response.create"}))
 
 
-# ── Save helpers ───────────────────────────────────────────────────────────────
 def _write_session_file():
     if not _session_file_path:
         return
@@ -626,7 +619,6 @@ def _auto_finish_active_phase():
     close_ws()
 
 
-# ── OpenAI Realtime WebSocket ──────────────────────────────────────────────────
 def run_openai_ws():
     global _openai_ws
 
@@ -740,7 +732,6 @@ def close_ws():
         _openai_ws = None
 
 
-# ── Socket.IO events ───────────────────────────────────────────────────────────
 @socketio.on("connect")
 def on_connect():
     print(f"[SIO] connected: {request.sid}")
@@ -883,7 +874,6 @@ def on_text_input(data):
         print(f"[text_input error] {e}")
 
 
-# ── HTTP routes ────────────────────────────────────────────────────────────────
 @app.route("/")
 def index():
     return send_from_directory("public", "index.html")

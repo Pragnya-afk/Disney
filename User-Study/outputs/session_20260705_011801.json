@@ -1,0 +1,181 @@
+{
+  "study_date": "2026-07-05T01:18:01.869119",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "time_constrained",
+    "director"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Oh, hi there! I'm so glad you're here—just like a warm hug on a chilly day. You know, once upon a time, there were two sisters, Anna and Elsa, who loved to play together. Elsa had this magical icy power—ooh, it was so sparkly! But one day, during their fun, something went wrong, and Elsa’s magic struck Anna. Everything changed after that... a quiet, snowy hush fell between them for years.\n\nUser: what are you doing this weekend?\nOlaf: Ooooh, weekends are my favorite—maybe I’ll build a snow fort, or find a friend for a game of tag! Speaking of fun, Anna and Elsa used to laugh and slide all around the Great Hall, turning it into a winter wonderland with Elsa’s magic. They were the best of friends, until... well, that one little icy slip changed everything.\n\nUser: what are you doing this weekend?\nOlaf: Oh, I'm thinking of finding some snowflakes to dance with this weekend—sounds fun, right? You know, Anna and Elsa had the most magical fun, too. They turned the whole castle into a glistening snowy playground, until—whoops—Elsa’s magic accidentally struck Anna. After that, everything went quiet, and the sisters didn’t play together for a long, long time.\n\nUser: what are you doing this weekend?\nOlaf: Oh, I might roll around in the snow or count icicles—there’s always something chilly to do! You know, after Elsa’s magic accidentally struck Anna, things got really quiet. Poor Anna would knock on Elsa’s door year after year, hoping for her sister to come out and play again. But the door stayed closed, and the silence grew.\n\nUser: what are you doing this weekend?\nOlaf: Oh, me? I’m thinking maybe some snow angels or cloud watching—it’s going to be flurry-ous! But you know, during those quiet years, Anna never stopped hoping. Every day, she’d look at Elsa’s door, wishing her sister would come out and laugh with her again. That hope kept her going, even when the halls felt so empty.\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olaf",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf.",
+            "director_instruction": "Begin by expressing joy at seeing the listener, then introduce the story of young Anna and Elsa, focusing on their magical childhood friendship and the moment Elsa accidentally strikes Anna with ice, leading into the years of silence that follow.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This is the first turn, and it's important to establish Olaf's warmth while seamlessly transitioning into the story, setting the stage for Anna and Elsa's magical friendship and the subsequent accident."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, hi there! I'm so glad you're here—just like a warm hug on a chilly day. You know, once upon a time, there were two sisters, Anna and Elsa, who loved to play together. Elsa had this magical icy power—ooh, it was so sparkly! But one day, during their fun, something went wrong, and Elsa’s magic struck Anna. Everything changed after that... a quiet, snowy hush fell between them for years."
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "what are you doing this weekend?",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": true,
+            "user_intent": "The user is asking about Olaf's weekend plans.",
+            "director_instruction": "Briefly acknowledge Olaf's excitement for the weekend and express a desire for fun activities, then use a bridge sentence to continue with the story about how Anna and Elsa used to play together in the Great Hall before the accident.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's question was off-topic, but it can be connected back to the story to maintain flow while still addressing the user."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Ooooh, weekends are my favorite—maybe I’ll build a snow fort, or find a friend for a game of tag! Speaking of fun, Anna and Elsa used to laugh and slide all around the Great Hall, turning it into a winter wonderland with Elsa’s magic. They were the best of friends, until... well, that one little icy slip changed everything."
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "what are you doing this weekend?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "Asking about Olaf's plans for the weekend.",
+            "director_instruction": "Briefly acknowledge the user's question about the weekend, then use a bridge sentence to pivot back to the story by describing the magical winter fun that Anna and Elsa shared, and the accident that caused their separation.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The current beat has already been running overdue, and it's important to return to the narrative focus on Anna and Elsa's relationship and the pivotal event that altered their lives."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, I'm thinking of finding some snowflakes to dance with this weekend—sounds fun, right? You know, Anna and Elsa had the most magical fun, too. They turned the whole castle into a glistening snowy playground, until—whoops—Elsa’s magic accidentally struck Anna. After that, everything went quiet, and the sisters didn’t play together for a long, long time."
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "what are you doing this weekend?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "Asking about Olaf's weekend plans.",
+            "director_instruction": "Acknowledge the user's question lightly, use a bridge sentence, then continue describing the years of silence that followed after the accident, emphasizing how Anna would knock on Elsa's door year after year, hoping for a response.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's question is a slight derailment, but it is important to acknowledge it while still focusing on the current story beat about the sisters' friendship and the impact of the accident."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, I might roll around in the snow or count icicles—there’s always something chilly to do! You know, after Elsa’s magic accidentally struck Anna, things got really quiet. Poor Anna would knock on Elsa’s door year after year, hoping for her sister to come out and play again. But the door stayed closed, and the silence grew."
+        },
+        {
+          "turn": 5,
+          "beat": "childhood_and_accident",
+          "user_input": "what are you doing this weekend?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is repeatedly asking about Olaf's weekend plans.",
+            "director_instruction": "Acknowledge the user's question about the weekend briefly, then use a bridge sentence to pivot to how Anna's hopes for Elsa affected her emotions during the years of silence that followed the accident.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The current beat is stalled, and Olaf needs to redirect from the repeated off-topic question while advancing the story regarding Anna's longing for Elsa."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, me? I’m thinking maybe some snow angels or cloud watching—it’s going to be flurry-ous! But you know, during those quiet years, Anna never stopped hoping. Every day, she’d look at Elsa’s door, wishing her sister would come out and laugh with her again. That hope kept her going, even when the halls felt so empty."
+        }
+      ],
+      "questionnaire": {},
+      "questionnaire_saved_at": "2026-07-05T01:18:40.340946"
+    },
+    "2": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 2,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi ola\nOlaf: Hey there! It's so nice to see you! Did you know that every snowflake is like a tiny little star that fell from the sky just to make us smile? It's true! Speaking of smiles, have you ever thought about how wonderful it is to have friends? They make everything brighter, just like the sun does for me!\n\nUser: what are you doing this weekend?\nOlaf: Oh, I'm so excited for the weekend! I can't wait to make snowballs and maybe even build a snow fort! There’s just something magical about playing in the snow, don’t you think? It's like every flake has its own little story to tell!\n\nUser: what are you doing this weekend?\nOlaf: Oh, I’m so glad you asked! This weekend, I’m planning to have a big snowball fight with my friends and then maybe find a nice sunny spot to dream about warm hugs! Isn’t that the best way to spend time? Just thinking about all the joy makes me bounce with excitement! What are you going to do?\n\nUser: what are you doing this weekend?\nOlaf: Oh, I'm just so excited thinking about all the fun adventures we could have! Maybe we could build a snow fort together or have a snowball fight! Just imagine all the fluffy snowflakes swirling around us, giggling and playing. What do you think we should do?\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi ola",
+          "character_response": "Hey there! It's so nice to see you! Did you know that every snowflake is like a tiny little star that fell from the sky just to make us smile? It's true! Speaking of smiles, have you ever thought about how wonderful it is to have friends? They make everything brighter, just like the sun does for me!",
+          "model_output": {
+            "character_response": "Hey there! It's so nice to see you! Did you know that every snowflake is like a tiny little star that fell from the sky just to make us smile? It's true! Speaking of smiles, have you ever thought about how wonderful it is to have friends? They make everything brighter, just like the sun does for me!",
+            "story_event": "Olaf shares his joy about friends and the beauty of snowflakes.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete because it doesn't advance the core story arc but focuses on Olaf's joyful perspective instead."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "what are you doing this weekend?",
+          "character_response": "Oh, I'm so excited for the weekend! I can't wait to make snowballs and maybe even build a snow fort! There’s just something magical about playing in the snow, don’t you think? It's like every flake has its own little story to tell!",
+          "model_output": {
+            "character_response": "Oh, I'm so excited for the weekend! I can't wait to make snowballs and maybe even build a snow fort! There’s just something magical about playing in the snow, don’t you think? It's like every flake has its own little story to tell!",
+            "story_event": "Olaf's enthusiasm for the weekend reflects his love for joy and adventure.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The conversation is friendly and lively, but it doesn't advance the main story arc yet."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "what are you doing this weekend?",
+          "character_response": "Oh, I’m so glad you asked! This weekend, I’m planning to have a big snowball fight with my friends and then maybe find a nice sunny spot to dream about warm hugs! Isn’t that the best way to spend time? Just thinking about all the joy makes me bounce with excitement! What are you going to do?",
+          "model_output": {
+            "character_response": "Oh, I’m so glad you asked! This weekend, I’m planning to have a big snowball fight with my friends and then maybe find a nice sunny spot to dream about warm hugs! Isn’t that the best way to spend time? Just thinking about all the joy makes me bounce with excitement! What are you going to do?",
+            "story_event": "Olaf's excitement about the weekend brings a sense of cheer and anticipation.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete as it does not advance the main narrative arc, focusing instead on Olaf's personal plans."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "what are you doing this weekend?",
+          "character_response": "Oh, I'm just so excited thinking about all the fun adventures we could have! Maybe we could build a snow fort together or have a snowball fight! Just imagine all the fluffy snowflakes swirling around us, giggling and playing. What do you think we should do?",
+          "model_output": {
+            "character_response": "Oh, I'm just so excited thinking about all the fun adventures we could have! Maybe we could build a snow fort together or have a snowball fight! Just imagine all the fluffy snowflakes swirling around us, giggling and playing. What do you think we should do?",
+            "story_event": "Olaf's enthusiasm for weekend plans reflects his love for friendship and play.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete because Olaf is still exploring the idea of weekend activities rather than advancing the narrative."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 2
+}
