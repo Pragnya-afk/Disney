@@ -1,6 +1,0 @@
-| method                    |   Plot |   Development |   Language Use |   Interruption Handling |   Character Fidelity |   Narrative Control |   Anthropomorphism |   Overall |
-|:--------------------------|-------:|--------------:|---------------:|------------------------:|---------------------:|--------------------:|-------------------:|----------:|
-| baseline                  |   5.15 |          5.54 |           8.62 |                    7.23 |                 9.46 |                4.46 |                nan |      6.31 |
-| codi                      |   5    |          6    |           7    |                    3    |                 2.5  |                4.5  |                nan |      4.5  |
-| director                  |   7.31 |          6.62 |           8.94 |                    8.69 |                 9.75 |                6.88 |                nan |      7.88 |
-| time_constrained (5.0min) |   7    |          6    |           9    |                    8    |                10    |                6    |                nan |      7    |
