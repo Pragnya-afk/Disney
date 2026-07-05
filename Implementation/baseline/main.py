@@ -46,7 +46,7 @@ def call_llm(prompt: str) -> str:
     return response.choices[0].message.content.strip()
 
 
-def build_prompt(user_input, story_state, character, story_topic, beats):
+def build_prompt(user_input, character, beats):
     return f"""
 You are an interactive AI character.
 
@@ -106,14 +106,8 @@ def run(character_module: str, scenario_module: str):
     character = character_mod.CHARACTER
     scenario = scenario_mod.SCENARIO
 
-    story_topic = scenario["story_topic"]
     beats = scenario["beats"]
-
-    story_state = {
-        "beat_index": 0,
-        "completed_beats": [],
-        "story_so_far": "",
-    }
+    beat_index = 0
 
     scenario_folder = scenario_module.split('.')[-1]
     output_dir = os.path.join(
@@ -131,27 +125,21 @@ def run(character_module: str, scenario_module: str):
     print(f"Loaded scenario: {scenario['scenario_name']}")
     print("Type your message. Type 'quit' to stop.\n")
 
-    while story_state["beat_index"] < len(beats):
-        current_beat = beats[story_state["beat_index"]]
+    while beat_index < len(beats):
+        current_beat = beats[beat_index]
         print(f"\nCurrent beat: {current_beat['name']}")
         user_input = input("You: ")
 
         if user_input.lower().strip() in ["quit", "exit", "stop"]:
             break
 
-        prompt = build_prompt(user_input, story_state, character, story_topic, beats)
+        prompt = build_prompt(user_input, character, beats)
         raw = call_llm(prompt)
         output = safe_json_parse(raw, character["available_animations"][0])
         output["animation"] = validate_animation(output.get("animation", ""), character)
 
         print(f"\n{character['name']}: {output['character_response']}")
         print(f"[Animation: {output['animation']}]")
-
-        story_state["story_so_far"] += (
-            f"\nUser: {user_input}"
-            f"\n{character['name']}: {output['character_response']}"
-            f"\nEvent: {output['story_event']}\n"
-        )
 
         transcript.append({
             "method": "baseline",
@@ -163,8 +151,7 @@ def run(character_module: str, scenario_module: str):
         })
 
         if output.get("beat_completed") is True:
-            story_state["completed_beats"].append(current_beat["name"])
-            story_state["beat_index"] += 1
+            beat_index += 1
 
     transcript_path = os.path.join(output_dir, "interactive.json")
 

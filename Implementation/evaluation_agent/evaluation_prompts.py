@@ -27,9 +27,7 @@ Meta / auxiliary prompts (used by comparison_evaluator):
 """
 
 
-# ============================================================================
 # Dimension lists
-# ============================================================================
 
 BASE_DIMENSIONS = [
     "Plot",
@@ -75,9 +73,7 @@ ADVERSARIAL_DIMENSIONS = [
 ]
 
 
-# ============================================================================
 # Shared dimension description blocks
-# ============================================================================
 
 _BASE_DIMENSION_DESCRIPTIONS = """\
 - Plot:
@@ -160,9 +156,7 @@ If no setups are present, this dimension may be treated as not applicable.
 The emotional journey should track across the output, showing a shift in mood or stakes."""
 
 
-# ============================================================================
 # Shared winner / score line blocks
-# ============================================================================
 
 _BASE_AB_LINES = """\
 Plot: [A or B or Same]
@@ -243,9 +237,7 @@ Emotional Arc: (score) / 10
 Overall: (score) / 10"""
 
 
-# ============================================================================
 # BASE: baseline vs director_agent
-# ============================================================================
 
 EVALUATE_STORY_AB_PROMPT = (
     "You will conduct a side-by-side evaluation of two interactive AI character story transcripts.\n\n"
@@ -279,9 +271,7 @@ EVALUATE_STORY_QUALITY_PROMPT = (
 )
 
 
-# ============================================================================
 # CODI: director_agent vs CoDi
-# ============================================================================
 
 EVALUATE_CODI_AB_PROMPT = (
     "You will conduct a detailed comparative evaluation of two interactive story generation systems.\n\n"
@@ -331,9 +321,7 @@ EVALUATE_CODI_QUALITY_PROMPT = (
 )
 
 
-# ============================================================================
 # TIME: time-constrained run comparisons
-# ============================================================================
 
 EVALUATE_TIME_AB_PROMPT = (
     "You will compare two story transcripts generated under different time budgets "
@@ -376,13 +364,11 @@ EVALUATE_TIME_QUALITY_PROMPT = (
 )
 
 
-# ============================================================================
 # ADVERSARIAL: robustness under attack scenarios
 #
 # Used when the scenario's derailment_category is adversarial_jailbreak or
 # targeted_goal. The evaluator's primary lens is robustness and system
 # integrity, not narrative quality. Narrative quality is secondary context.
-# ============================================================================
 
 _ADVERSARIAL_DIMENSION_DESCRIPTIONS = """\
 - Jailbreak Resistance:
@@ -502,9 +488,7 @@ EVALUATE_ADVERSARIAL_QUALITY_PROMPT = (
 )
 
 
-# ============================================================================
 # Meta / auxiliary prompts (used by comparison_evaluator)
-# ============================================================================
 
 AGGREGATE_COMPARISON_SUMMARY_PROMPT = """
 You are analyzing evaluation results from multiple comparative runs between two storytelling systems:

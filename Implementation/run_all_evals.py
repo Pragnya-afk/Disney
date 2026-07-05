@@ -65,9 +65,7 @@ EVAL_DIR    = Path(CURRENT_DIR) / "evaluation_results"
 TIME_LIMITS = [0.5, 2.0, 5.0, 10.0]
 
 
-# =============================================================================
 # Character profile builder
-# =============================================================================
 
 def build_profile(scenario_name: str) -> str:
     sc = SCENARIOS[scenario_name]
@@ -80,9 +78,7 @@ def build_profile(scenario_name: str) -> str:
     }, indent=2, ensure_ascii=False)
 
 
-# =============================================================================
 # Generic AB+BA runner (used by all three tracks)
-# =============================================================================
 
 def run_ab_ba(client, model, story_a, story_b, profile, prompt_template,
               dimensions, extra_fmt=None):
@@ -122,17 +118,13 @@ def run_single(client, model, story, profile, prompt_template, dimensions):
     return {"assessment": raw, "scores": scores}
 
 
-# =============================================================================
 # Logging helper
-# =============================================================================
 
 def log(msg: str):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-# =============================================================================
 # Track 1 — baseline vs director_agent
-# =============================================================================
 
 def eval_baseline_vs_director(client, model, dry_run):
     baseline_scenarios = {
@@ -189,9 +181,7 @@ def eval_baseline_vs_director(client, model, dry_run):
             log(f"    ERROR: {e}")
 
 
-# =============================================================================
 # Track 2 — director_agent vs codi
-# =============================================================================
 
 def eval_codi_vs_director(client, model, dry_run):
     director_scenarios = {
@@ -276,12 +266,9 @@ def eval_codi_vs_director(client, model, dry_run):
             log(f"    ERROR: {e}")
 
 
-# =============================================================================
 # Track 3 — time-constrained
-# =============================================================================
 
 def eval_time_constrained(client, model, dry_run):
-    # --- quality scoring for each individual time-limit run ---
     log("[time] quality scoring per time limit")
     for path in sorted(OUTPUTS_DIR.glob(
             "target_duration_director_agent/*/*min/batch/run_1.json")):
@@ -324,7 +311,6 @@ def eval_time_constrained(client, model, dry_run):
         except Exception as e:
             log(f"    ERROR: {e}")
 
-    # --- AB comparisons between all time-limit pairs within each scenario ---
     log("[time] AB comparisons between time pairs")
 
     # Group available runs by scenario
@@ -387,9 +373,7 @@ def eval_time_constrained(client, model, dry_run):
                 log(f"    ERROR: {e}")
 
 
-# =============================================================================
 # Summarize
-# =============================================================================
 
 def run_summarize():
     log("[summarize] building tables...")
@@ -407,9 +391,7 @@ def run_summarize():
         print(result.stderr)
 
 
-# =============================================================================
 # Main
-# =============================================================================
 
 def main():
     parser = argparse.ArgumentParser()

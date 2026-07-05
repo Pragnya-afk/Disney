@@ -17,6 +17,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))  # director_agent/
 from openai import OpenAI
 
 from director_prompt import DIRECTOR_SYSTEM_PROMPT, DIRECTOR_INSTRUCTIONS
+from director_core import last_character_opener, opener_guard_text
 
 
 TIME_DIRECTOR_INSTRUCTIONS = """
@@ -89,10 +90,16 @@ def build_time_director_prompt(
     previous_beat = beats[current_index - 1]["name"] if current_index > 0 else "None"
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
 
+    last_opener = last_character_opener(story_state.get("story_so_far", ""))
+
     return f"""
 {DIRECTOR_INSTRUCTIONS}
 
 {TIME_DIRECTOR_INSTRUCTIONS}
+
+## Opener Guard — check this before writing director_instruction
+
+{opener_guard_text(last_opener)}
 
 ## Character
 

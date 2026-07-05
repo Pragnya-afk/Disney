@@ -91,7 +91,6 @@ def main():
     completed = 0
     failed = []
 
-    # ── Director runs ──────────────────────────────────────────────
     for i, name in enumerate(director_todo, 1):
         label = f"[director {i}/{len(director_todo)}] {name}"
         print(f"\n{label}")
@@ -108,7 +107,6 @@ def main():
             print(f"  ERROR: {e}")
             failed.append((label, str(e)))
 
-    # ── Time-constrained runs ──────────────────────────────────────
     for i, (name, tl) in enumerate(time_todo, 1):
         label = f"[time {tl}min {i}/{len(time_todo)}] {name}"
         print(f"\n{label}")

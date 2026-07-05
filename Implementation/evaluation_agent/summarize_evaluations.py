@@ -45,9 +45,7 @@ METHOD_ORDER = ["baseline", "codi", "director", "time_constrained"]
 DERAILMENT_ORDER = ["none", "medium", "complete"]
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Path parsing
-# ──────────────────────────────────────────────────────────────────────────────
 
 _METHOD_MAP = {
     "baseline": "baseline",
@@ -137,9 +135,7 @@ def infer_base_scenario(scenario: str) -> str:
     return scenario
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Loading
-# ──────────────────────────────────────────────────────────────────────────────
 
 def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -237,9 +233,7 @@ def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     return scores_df, wins_df
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Table builders
-# ──────────────────────────────────────────────────────────────────────────────
 
 def _ordered_index(index):
     ordered = [m for m in METHOD_ORDER if m in index]
@@ -312,9 +306,7 @@ def make_pairwise_wins(wins_df: pd.DataFrame) -> pd.DataFrame:
     return table[metric_order]
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Output helpers
-# ──────────────────────────────────────────────────────────────────────────────
 
 def save_table(table: pd.DataFrame, output_dir: Path, name: str):
     table.to_csv(output_dir / f"{name}.csv")
@@ -323,9 +315,7 @@ def save_table(table: pd.DataFrame, output_dir: Path, name: str):
     print(f"  {name}.{{csv,md,tex}}")
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Main
-# ──────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(

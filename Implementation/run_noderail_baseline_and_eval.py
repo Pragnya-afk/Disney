@@ -50,7 +50,6 @@ RUN_ID = 1
 EVAL_MODEL = "gpt-4o"
 
 
-# ── Baseline runner ────────────────────────────────────────────────────────────
 
 def _call_llm(client: OpenAI, prompt: str) -> str:
     response = client.chat.completions.create(
@@ -205,7 +204,6 @@ def run_baseline(scenario: dict, character: dict, run_id: int) -> str:
     return out_path
 
 
-# ── Evaluation runner ──────────────────────────────────────────────────────────
 
 def _build_character_profile(character: dict, scenario: dict) -> str:
     return json.dumps(
@@ -286,7 +284,6 @@ def run_eval(scenario: dict, character: dict, run_id: int) -> str:
     return out_path
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
@@ -347,7 +344,6 @@ def main():
 
     completed, failed = 0, []
 
-    # ── Baseline runs ──────────────────────────────────────────────────────────
     for i, sc in enumerate(baseline_todo, 1):
         name = sc["scenario_name"]
         print(f"\n[baseline {i}/{len(baseline_todo)}] {name}")
@@ -358,7 +354,6 @@ def main():
             print(f"  ERROR: {e}")
             failed.append((f"baseline/{name}", str(e)))
 
-    # ── Evaluation runs ────────────────────────────────────────────────────────
     for i, sc in enumerate(eval_todo, 1):
         name = sc["scenario_name"]
         print(f"\n[eval {i}/{len(eval_todo)}] {name}")

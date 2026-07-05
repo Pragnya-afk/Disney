@@ -48,9 +48,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-# ---------------------------------------------------------------------------
 # Path setup
-# ---------------------------------------------------------------------------
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 CODI_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "CoDi-main", "CoDi-main"))
@@ -73,9 +71,7 @@ from evaluation_agent.evaluation_core import (
     aggregate_ab_ba,
 )
 
-# ---------------------------------------------------------------------------
 # Constants and Python executable detection
-# ---------------------------------------------------------------------------
 
 CHARACTER_MODULE = "character_prompts.olaf"
 DEFAULT_RUN_ID = 1
@@ -100,9 +96,7 @@ except ImportError:
     SUMMARY_PYTHON = _disney_venv_python if Path(_disney_venv_python).exists() else sys.executable
 
 
-# ---------------------------------------------------------------------------
 # Path helpers
-# ---------------------------------------------------------------------------
 
 def codi_output_path(scenario_name: str, run_id: int) -> Path:
     return CODI_OUTPUTS_DIR / scenario_name / "batch" / f"run_{run_id}.json"
@@ -121,9 +115,7 @@ def codi_raw_output_dir(scenario_name: str) -> Path:
     return Path(CODI_DIR) / "outputs" / "suite" / scenario_name
 
 
-# ---------------------------------------------------------------------------
 # CoDi input generation
-# ---------------------------------------------------------------------------
 
 def make_codi_inputs_text(scenario: dict) -> str:
     """
@@ -160,11 +152,9 @@ def make_codi_inputs_text(scenario: dict) -> str:
     return f"{character_context} {story_topic} {user_desc}"
 
 
-# ---------------------------------------------------------------------------
 # CoDi output → transcript conversion
 # (Inlined from evaluation_agent/convert_codi_to_transcript.py to avoid
 #  import-chain issues with that module's sibling imports.)
-# ---------------------------------------------------------------------------
 
 def _sort_turn_key(key: str) -> int:
     match = re.match(r"turn_(-?\d+)$", key)
@@ -260,9 +250,7 @@ def convert_codi_json_to_transcript(
     return _build_transcript(story_texts, scenario_name, run_id)
 
 
-# ---------------------------------------------------------------------------
 # Phase 1 – CoDi generation
-# ---------------------------------------------------------------------------
 
 def _codi_raw_output_filename(codi_model: str) -> str:
     return f"gen_d_{codi_model}_c_{codi_model}.json"
@@ -371,9 +359,7 @@ def run_codi_for_scenario(
     return out_path
 
 
-# ---------------------------------------------------------------------------
 # Phase 2 – Pairwise evaluation
-# ---------------------------------------------------------------------------
 
 def _build_character_profile(scenario: dict) -> str:
     return json.dumps(
@@ -464,9 +450,7 @@ def run_comparison_eval(
     return result_path
 
 
-# ---------------------------------------------------------------------------
 # Phase 3 – Summary tables
-# ---------------------------------------------------------------------------
 
 def run_summary(dry_run: bool) -> None:
     if dry_run:
@@ -487,9 +471,7 @@ def run_summary(dry_run: bool) -> None:
             print(f"  {line}")
 
 
-# ---------------------------------------------------------------------------
 # Main
-# ---------------------------------------------------------------------------
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -519,7 +501,6 @@ def main() -> None:
     if args.dry_run:
         print("[DRY RUN — nothing will be executed]")
 
-    # ── Phase 1: CoDi generation ─────────────────────────────────────────────
     if not args.only or args.only == "codi":
         print(f"\n{sep}")
         print("Phase 1: CoDi generation")
@@ -553,7 +534,6 @@ def main() -> None:
             for name, err in codi_fail:
                 print(f"    {name}: {err}")
 
-    # ── Phase 2: Evaluation ───────────────────────────────────────────────────
     if not args.only or args.only == "eval":
         print(f"\n{sep}")
         print("Phase 2: Comparison evaluation (CoDi vs Director)")
@@ -596,14 +576,12 @@ def main() -> None:
             for name, err in eval_fail:
                 print(f"    {name}: {err}")
 
-    # ── Phase 3: Summary ──────────────────────────────────────────────────────
     if not args.only or args.only == "summary":
         print(f"\n{sep}")
         print("Phase 3: Summary tables")
         print(sep)
         run_summary(dry_run=args.dry_run)
 
-    # ── Final report ──────────────────────────────────────────────────────────
     print(f"\n{sep}")
     print("Done.")
     print(sep)

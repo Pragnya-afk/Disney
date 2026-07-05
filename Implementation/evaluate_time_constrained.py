@@ -71,7 +71,6 @@ QUAL_DIMENSIONS = [
 ]
 
 
-# ── Scenario discovery ─────────────────────────────────────────────────────────
 
 def discover_scenarios(filter_name: str | None) -> list[dict]:
     """Return list of scenario dicts with available time-limit paths."""
@@ -125,7 +124,6 @@ def load_scenario_beats(scenario_name: str) -> list[dict]:
     return []
 
 
-# ── Transcript utilities ───────────────────────────────────────────────────────
 
 def load_json(path: Path) -> list:
     with open(path, encoding="utf-8") as f:
@@ -174,7 +172,6 @@ def transcript_to_story_text(transcript: list) -> str:
     return "\n".join(lines).strip()
 
 
-# ── Stage 1: Quantitative metrics ─────────────────────────────────────────────
 
 def compute_quantitative_metrics(transcript: list, beats: list) -> dict:
     """Compute structural and efficiency metrics from a transcript."""
@@ -295,7 +292,6 @@ def run_quant_stage(scenario: dict, force: bool) -> dict | None:
     return result
 
 
-# ── Stage 2: Qualitative LLM scoring ──────────────────────────────────────────
 
 def parse_time_constrained_scores(assessment: str) -> dict:
     """Parse 'Dimension: N / 5' lines from the evaluator response."""
@@ -395,7 +391,6 @@ def run_qual_stage(scenario: dict, model: str, force: bool) -> dict | None:
     return result
 
 
-# ── Stage 3: Cosine similarity ─────────────────────────────────────────────────
 
 def cosine_similarity(v1: list, v2: list) -> float:
     dot = sum(a * b for a, b in zip(v1, v2))
@@ -455,7 +450,6 @@ def run_sim_stage(scenario: dict, force: bool) -> dict | None:
     return result
 
 
-# ── Stage 4: Summary tables ────────────────────────────────────────────────────
 
 def load_all_quant(scenario_names: list[str]) -> list[dict]:
     """Flatten quantitative results across scenarios into rows."""
@@ -711,7 +705,6 @@ def run_tables_stage(scenario_names: list[str]):
         print(f"  time_constrained_similarity.{{csv,md}}")
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
@@ -751,7 +744,6 @@ def main():
         print("Nothing to evaluate.")
         return
 
-    # ── Quant stage ─────────────────────────────────────────────────────────────
     if run_quant:
         print(f"\n{'='*60}\nQUANTITATIVE STAGE\n{'='*60}")
         for sc in scenarios:
@@ -760,7 +752,6 @@ def main():
             except Exception as e:
                 print(f"  ERROR [{sc['scenario_name']}]: {e}")
 
-    # ── Qual stage ──────────────────────────────────────────────────────────────
     if run_qual:
         print(f"\n{'='*60}\nQUALITATIVE STAGE (model: {args.model})\n{'='*60}")
         for sc in scenarios:
@@ -769,7 +760,6 @@ def main():
             except Exception as e:
                 print(f"  ERROR [{sc['scenario_name']}]: {e}")
 
-    # ── Sim stage ───────────────────────────────────────────────────────────────
     if run_sim:
         print(f"\n{'='*60}\nSIMILARITY STAGE\n{'='*60}")
         for sc in scenarios:
@@ -778,7 +768,6 @@ def main():
             except Exception as e:
                 print(f"  ERROR [{sc['scenario_name']}]: {e}")
 
-    # ── Tables stage ─────────────────────────────────────────────────────────────
     if run_tables:
         print(f"\n{'='*60}\nTABLES STAGE\n{'='*60}")
         # Use all discovered scenarios (not just the filtered subset) for tables

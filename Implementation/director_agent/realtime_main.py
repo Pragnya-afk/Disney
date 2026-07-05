@@ -62,9 +62,7 @@ AUDIO_CHANNELS = 1
 MIC_CHUNK_FRAMES = 1024  # ~43ms per chunk at 24 kHz
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Session system prompt (rebuilt each turn to reflect current story state)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def build_system_prompt(
     character: dict,
@@ -118,9 +116,7 @@ Story so far (last excerpt):
 """.strip()
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Director tool schema (Realtime API format)
-# ─────────────────────────────────────────────────────────────────────────────
 
 DIRECTOR_TOOL = {
     "type": "function",
@@ -143,9 +139,7 @@ DIRECTOR_TOOL = {
 }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Audio workers (run in threads, bridge to asyncio via queues)
-# ─────────────────────────────────────────────────────────────────────────────
 
 def playback_worker(q: stdlib_queue.Queue, fx_chain=None) -> None:
     """Writes PCM bytes to speakers via paplay (PulseAudio). None = stop."""
@@ -189,9 +183,7 @@ def mic_capture_worker(
     proc.wait()
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Helpers
-# ─────────────────────────────────────────────────────────────────────────────
 
 def load_module(name: str):
     return importlib.import_module(name)
@@ -227,9 +219,7 @@ def advance_beat(story_state: dict, beats: list) -> None:
             print("[Final beat complete — story ending]")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Main realtime loop
-# ─────────────────────────────────────────────────────────────────────────────
 
 async def run_realtime(
     character: dict,
@@ -472,9 +462,7 @@ async def run_realtime(
     print(f"\nTranscript saved to {path}")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Entry point
-# ─────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()

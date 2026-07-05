@@ -57,7 +57,6 @@ DIRECTOR_OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs" / "director_agent"
 EVAL_RESULTS_DIR = Path(CURRENT_DIR) / "evaluation_results"
 
 
-# ── Scenario matching ──────────────────────────────────────────────────────────
 
 # Maps common CoDi scenario name patterns to director-agent folder names.
 # Add entries here when CoDi covers scenarios with different naming conventions.
@@ -105,7 +104,6 @@ def find_director_output(scenario_name: str, run_id: int) -> Path | None:
     return None
 
 
-# ── Scenario context loading ───────────────────────────────────────────────────
 
 def load_scenario_context(scenario_name: str) -> dict | None:
     """Try to load story_topic and beats from a scenarios module."""
@@ -148,7 +146,6 @@ def build_character_profile(scenario_name: str) -> str:
     return json.dumps(payload, indent=2, ensure_ascii=False)
 
 
-# ── Evaluation runner ──────────────────────────────────────────────────────────
 
 def run_codi_eval(
     codi_path: Path,
@@ -208,7 +205,6 @@ def run_codi_eval(
     return out_path
 
 
-# ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
