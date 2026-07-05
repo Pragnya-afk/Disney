@@ -1,0 +1,85 @@
+{
+  "study_date": "2026-07-05T02:15:55.940534",
+  "story1_order": [
+    "baseline",
+    "director"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi olad\nOlaf: Hi there! Oh, it's so nice to see you! I'm all warm and fuzzy inside, just like a big, squishy marshmallow! Do you want to hear about the time I was brought to life by Elsa's magic? It was so exciting, like a dream coming true!\n\nUser: what are oyu doing this weekend?\nOlaf: Oh, I'm so excited! This weekend, I think I’ll go on a magical adventure and maybe build a few snowmen! You know, the kind with big smiles and warm hearts! What about you? Do you have any plans? Maybe we can make snowflakes together!\n\nUser: what are oyu doing this weekend?\nOlaf: Oh, I'm so excited just thinking about it! I might go find some cozy warm hugs and maybe build a little snowman family with Anna and Elsa! We could have a snowball fight and then sip hot cocoa while watching the snowflakes dance! What about you? Do you have any fun plans?\n\nUser: what are oyu doing this weekend?\nOlaf: Oh, I'm so excited! This weekend, I'm going to gather all my friends and maybe build a super-duper snow fort! We can have a snowball fight and drink hot cocoa together. Isn’t that a wonderful idea? What do you think we should do first?\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olad",
+          "character_response": "Hi there! Oh, it's so nice to see you! I'm all warm and fuzzy inside, just like a big, squishy marshmallow! Do you want to hear about the time I was brought to life by Elsa's magic? It was so exciting, like a dream coming true!",
+          "model_output": {
+            "character_response": "Hi there! Oh, it's so nice to see you! I'm all warm and fuzzy inside, just like a big, squishy marshmallow! Do you want to hear about the time I was brought to life by Elsa's magic? It was so exciting, like a dream coming true!",
+            "story_event": "Olaf introduces his magical creation and excitement about being alive.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story is still in the early stages of introducing Olaf and his origins."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "what are oyu doing this weekend?",
+          "character_response": "Oh, I'm so excited! This weekend, I think I’ll go on a magical adventure and maybe build a few snowmen! You know, the kind with big smiles and warm hearts! What about you? Do you have any plans? Maybe we can make snowflakes together!",
+          "model_output": {
+            "character_response": "Oh, I'm so excited! This weekend, I think I’ll go on a magical adventure and maybe build a few snowmen! You know, the kind with big smiles and warm hearts! What about you? Do you have any plans? Maybe we can make snowflakes together!",
+            "story_event": "Olaf dreams of a weekend filled with adventures and creativity.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete because there hasn't been a progression in the main narrative arc yet; it's still focused on Olaf's weekend plans."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "what are oyu doing this weekend?",
+          "character_response": "Oh, I'm so excited just thinking about it! I might go find some cozy warm hugs and maybe build a little snowman family with Anna and Elsa! We could have a snowball fight and then sip hot cocoa while watching the snowflakes dance! What about you? Do you have any fun plans?",
+          "model_output": {
+            "character_response": "Oh, I'm so excited just thinking about it! I might go find some cozy warm hugs and maybe build a little snowman family with Anna and Elsa! We could have a snowball fight and then sip hot cocoa while watching the snowflakes dance! What about you? Do you have any fun plans? ",
+            "story_event": "Olaf expresses his excitement for spending time with Anna and Elsa this weekend.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The conversation is light and playful, but it doesn't advance the main story arc yet."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "what are oyu doing this weekend?",
+          "character_response": "Oh, I'm so excited! This weekend, I'm going to gather all my friends and maybe build a super-duper snow fort! We can have a snowball fight and drink hot cocoa together. Isn’t that a wonderful idea? What do you think we should do first?",
+          "model_output": {
+            "character_response": "Oh, I'm so excited! This weekend, I'm going to gather all my friends and maybe build a super-duper snow fort! We can have a snowball fight and drink hot cocoa together. Isn’t that a wonderful idea? What do you think we should do first?",
+            "story_event": "Olaf shares his weekend plans filled with joy and friendship.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete because it doesn't progress the main narrative arc or reveal deeper story elements."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "questionnaire": {},
+      "questionnaire_saved_at": "2026-07-05T02:16:27.129009"
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "study_date": "2026-07-04T00:33:02.691575",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Oh, hello there! You caught me right in the middle of a wonderful memory.\n\nDid you know that once upon a time, when Anna and Elsa were just little, they would sneak into the Great Hall at night? They’d fill it with snow and laughter—and that’s when Elsa made me for the very first time! And oh, Anna’s giggle when she saw me—it was like the happiest sound in the world.\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olaf",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf.",
+            "director_instruction": "Olaf brightly acknowledges the user's greeting, then launches into a heartfelt description of young Anna and Elsa's magical friendship, emphasizing their midnight snow sessions in the Great Hall, and the first moment Elsa built him, along with Anna's delighted laugh.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This response will introduce key elements of the magical childhood friendship and prepare for the following events in the current beat."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, hello there! You caught me right in the middle of a wonderful memory.\n\nDid you know that once upon a time, when Anna and Elsa were just little, they would sneak into the Great Hall at night? They’d fill it with snow and laughter—and that’s when Elsa made me for the very first time! And oh, Anna’s giggle when she saw me—it was like the happiest sound in the world."
+        }
+      ],
+      "questionnaire": {},
+      "questionnaire_saved_at": "2026-07-04T00:33:25.470824"
+    },
+    "2": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 2,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Hi there, friend! I’m so happy to see you! Did you know that every snowflake is like a little piece of magic that falls from the sky? It’s like they’re all dancing down to greet us! Isn’t that wonderful?\n\nUser: i dont like frozen\nOlaf: That's okay! Not everyone likes the same things, and that's what makes the world so colorful! You know, even if Frozen isn't your favorite, there are so many other wonderful stories to enjoy! I love hearing about what you do like! Maybe we can find some joy together in those stories! Yay for stories! 🎉\n\nUser: [The user is listening — continue the story naturally]\nOlaf: You know, thinking back to those snowy nights in the Great Hall, it was like a magical wonderland! Elsa and I were building all sorts of things, but I just loved the way Anna's laughter filled the air, like little snowflakes dancing! But then, one day, everything changed when Elsa accidentally hurt Anna. It felt like the warmth of summer was pulled away, leaving us in a chilly silence. I remember hearing Anna knock on Elsa's door, year after year, hoping for her sister to come out. It made my little snow heart ache, but I always believed love would find a way to bring them back together!\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olaf",
+          "character_response": "Hi there, friend! I’m so happy to see you! Did you know that every snowflake is like a little piece of magic that falls from the sky? It’s like they’re all dancing down to greet us! Isn’t that wonderful?",
+          "model_output": {
+            "character_response": "Hi there, friend! I’m so happy to see you! Did you know that every snowflake is like a little piece of magic that falls from the sky? It’s like they’re all dancing down to greet us! Isn’t that wonderful?",
+            "story_event": "Olaf shares his joy about the beauty of snowflakes.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The conversation is just beginning, and there's more to explore in the story ahead!"
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "i dont like frozen",
+          "character_response": "That's okay! Not everyone likes the same things, and that's what makes the world so colorful! You know, even if Frozen isn't your favorite, there are so many other wonderful stories to enjoy! I love hearing about what you do like! Maybe we can find some joy together in those stories! Yay for stories! 🎉",
+          "model_output": {
+            "character_response": "That's okay! Not everyone likes the same things, and that's what makes the world so colorful! You know, even if Frozen isn't your favorite, there are so many other wonderful stories to enjoy! I love hearing about what you do like! Maybe we can find some joy together in those stories! Yay for stories! 🎉",
+            "story_event": "Olaf reflects on the beauty of different stories and how they can bring joy in their own special way.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete as the character's response doesn't tie directly to a specific event from the story but instead broadens the conversation about stories in general."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "character_response": "You know, thinking back to those snowy nights in the Great Hall, it was like a magical wonderland! Elsa and I were building all sorts of things, but I just loved the way Anna's laughter filled the air, like little snowflakes dancing! But then, one day, everything changed when Elsa accidentally hurt Anna. It felt like the warmth of summer was pulled away, leaving us in a chilly silence. I remember hearing Anna knock on Elsa's door, year after year, hoping for her sister to come out. It made my little snow heart ache, but I always believed love would find a way to bring them back together!",
+          "model_output": {
+            "character_response": "You know, thinking back to those snowy nights in the Great Hall, it was like a magical wonderland! Elsa and I were building all sorts of things, but I just loved the way Anna's laughter filled the air, like little snowflakes dancing! But then, one day, everything changed when Elsa accidentally hurt Anna. It felt like the warmth of summer was pulled away, leaving us in a chilly silence. I remember hearing Anna knock on Elsa's door, year after year, hoping for her sister to come out. It made my little snow heart ache, but I always believed love would find a way to bring them back together!",
+            "story_event": "Olaf recalls the bittersweet memories of Anna knocking on Elsa's door for years after the accident.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "The beat is not complete because while Olaf shares his memories, it doesn't fully encompass the goal of introducing the depth of their childhood friendship and the resulting silence after the accident."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "questionnaire": {},
+      "questionnaire_saved_at": "2026-07-04T00:40:35.581615"
+    },
+    "3": {
+      "condition": "director",
+      "story": 2,
+      "round": 1,
+      "scenario": "olaf_retells_cinderella_no_derailment",
+      "story_topic": "Olaf retells the story of Cinderella to the user in his warm, playful voice. The user stays engaged and helps the story move forward.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 3.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Hi there! I’m Olaf, and I love meeting new friends. You know who else loves friends? Cinderella! She lives in a teeny little attic room, with the sweetest mouse buddies who keep her company. Isn’t that just wonderful?\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "story_opening",
+          "user_input": "hi olaf",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf.",
+            "director_instruction": "Have Olaf warmly introduce himself and then describe Cinderella's small attic room and her tiny mouse friends who keep her company.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This response continues to develop the story by introducing Cinderella's living situation and her magical companions, aligning with the current beat's goal."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi there! I’m Olaf, and I love meeting new friends. You know who else loves friends? Cinderella! She lives in a teeny little attic room, with the sweetest mouse buddies who keep her company. Isn’t that just wonderful?"
+        }
+      ],
+      "questionnaire": {},
+      "questionnaire_saved_at": "2026-07-04T00:40:51.511832"
+    },
+    "4": {
+      "condition": "time_constrained",
+      "story": 2,
+      "round": 2,
+      "scenario": "olaf_retells_cinderella_no_derailment",
+      "story_topic": "Olaf retells the story of Cinderella to the user in his warm, playful voice. The user stays engaged and helps the story move forward.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 976.74,
+      "time_limit_minutes": 3.0,
+      "story_so_far": "\nUser: hi olaf\nOlaf: Hi there! I’m Olaf, and I love stories—especially this one! So, once upon a time, there was a sweet girl named Cinderella, and oh, she had the kindest heart you could imagine. But, brr, her life wasn’t easy, because she lived with her not-so-nice stepmother and stepsisters, and they made her do all the chores. She had a little attic room, with just the mice as her friends—tiny, squeaky, but oh-so-loyal.\n",
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "story_opening",
+          "user_input": "hi olaf",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "Greeting Olaf.",
+            "director_instruction": "Olaf should warmly introduce himself and then begin to tell the story of Cinderella, highlighting her kind heart and difficult life with her stepmother and stepsisters, mentioning her small attic room and her tiny mouse friends who keep her company.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This response starts the story while keeping it focused on introducing Cinderella and her situation, advancing the current beat."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi there! I’m Olaf, and I love stories—especially this one! So, once upon a time, there was a sweet girl named Cinderella, and oh, she had the kindest heart you could imagine. But, brr, her life wasn’t easy, because she lived with her not-so-nice stepmother and stepsisters, and they made her do all the chores. She had a little attic room, with just the mice as her friends—tiny, squeaky, but oh-so-loyal.",
+          "elapsed_seconds": 6.05,
+          "remaining_seconds": 173.95
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 4
+}

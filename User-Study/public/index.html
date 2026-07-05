@@ -353,6 +353,7 @@
     .yn-btn:hover { border-color: var(--disney-blue); background: rgba(218,240,255,0.85); }
     .yn-btn.sel-yes { background: rgba(220,60,50,0.08); border-color: rgba(220,60,50,0.5); color: #c03030; }
     .yn-btn.sel-no  { background: rgba(40,160,80,0.08); border-color: rgba(40,160,80,0.4); color: #2a8a3a; }
+    .yn-btn.sel-neutral { background: rgba(26,122,181,0.08); border-color: rgba(26,122,181,0.5); color: var(--disney-blue); }
     .derail-followup { display: none; margin-top: 14px; flex-direction: column; gap: 10px; }
     .derail-followup.visible { display: flex; }
     .derail-followup label { font-size: 13px; font-weight: 700; color: #7a5a10; margin-bottom: 4px; display: block; }
@@ -461,11 +462,11 @@
       <ol class="study-steps">
         <li>
           <div class="step-icon">1</div>
-          <div><strong>Story 1 — 2 rounds (~5 min each):</strong> Olaf retells <strong>Frozen</strong> — his own personal take on the whole adventure. You'll play through this story twice, then answer a quick questionnaire after each round.</div>
+          <div><strong>Story 1 — 2 rounds (~5 min each):</strong> Olaf retells <strong>Frozen</strong>,  his own personal take on the whole adventure. You'll play through this story twice, then answer a quick questionnaire after each round.</div>
         </li>
         <li>
           <div class="step-icon">2</div>
-          <div><strong>Story 2 — 2 rounds (~3 min each):</strong> Olaf retells Little Red Riding Hood on a timer! Two rounds again, with a questionnaire after each.</div>
+          <div><strong>Story 2 — 2 rounds (~3 min each):</strong> Olaf retells <strong>Cinderella</strong> on a timer! Two rounds again, with a questionnaire after each.</div>
         </li>
       </ol>
     </div>
@@ -531,8 +532,8 @@
         <span id="pacing-label">normal</span>
       </div>
       <div id="s2-timer-wrap" class="time-panel" style="display:none;">
-        <div class="time-display" id="time-display">0:00 / 3:00</div>
-        <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar"></div></div>
+        <div class="time-display" id="time-display">3:00</div>
+        <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar" style="width:100%;background:#3aaa4a;"></div></div>
       </div>
 
       <button class="cancel-btn" onclick="cancelStudy()">Exit</button>
@@ -586,12 +587,12 @@
   <div id="story2-transition-screen" class="screen">
     <div style="padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 0;">
       <div class="intro-badge">Story 1 Complete ✓</div>
-      <div class="intro-title" style="margin-bottom:8px;">Now for Little Red Riding Hood 🐺</div>
+      <div class="intro-title" style="margin-bottom:8px;">Now for Cinderella 👠</div>
       <div class="intro-sub">…still told by the snowman. Obviously.</div>
 
       <div class="intro-card" style="margin-bottom:20px;">
         <h3>Story 2 — 2 rounds ⏱️</h3>
-        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to retell <strong>Little Red Riding Hood</strong> — but this time he only has <strong>3 minutes</strong> per round. You'll play through it twice and fill in a questionnaire after each round.</p>
+        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to retell <strong>Cinderella</strong> — but this time he only has <strong>3 minutes</strong> per round. You'll play through it twice and fill in a questionnaire after each round.</p>
       </div>
 
       <button class="primary-btn" id="start-s2-btn" style="max-width:400px;">Start Story 2 ▶</button>
@@ -820,15 +821,15 @@ function startTimePoll() {
       const total = (_timeLimitMinutes || d.time_limit_minutes || 3) * 60;
       let elapsed = d.elapsed_seconds || 0;
       if (elapsed === 0) elapsed = (Date.now() - _wallStart) / 1000;
+      const remaining = Math.max(0, total - elapsed);
 
-      const em = Math.floor(elapsed / 60), es = Math.floor(elapsed % 60);
-      const tm = Math.floor(total / 60);
+      const rm = Math.floor(remaining / 60), rs = Math.floor(remaining % 60);
       document.getElementById('time-display').textContent =
-        `${em}:${String(es).padStart(2,'0')} / ${tm}:00`;
-      const pct = Math.min(100, (elapsed / total) * 100);
+        `${rm}:${String(rs).padStart(2,'0')}`;
+      const pct = Math.max(0, Math.min(100, (remaining / total) * 100));
       const bar = document.getElementById('time-bar');
       bar.style.width = pct + '%';
-      bar.style.background = pct > 85 ? '#c03030' : pct > 65 ? '#c07020' : '#3aaa4a';
+      bar.style.background = pct < 15 ? '#c03030' : pct < 35 ? '#c07020' : '#3aaa4a';
       updateBeatTracker(d.beat_index || 0, d.total_beats || beatCount);
 
       if (elapsed >= total && !_timesUpTriggered) {
@@ -866,10 +867,10 @@ function showPhaseIntro(phase) {
   const storyNum = isS2 ? 2 : 1;
   const roundNum = (phase === 1 || phase === 3) ? 1 : 2;
   const timeMin = isS2 ? 3 : 5;
-  const storyTitle = isS2 ? '🐺 Little Red Riding Hood' : '❄️ Olaf Retells Frozen';
+  const storyTitle = isS2 ? '👠 Cinderella' : '❄️ Olaf Retells Frozen';
   const storySub = isS2 ? 'A timed story — 3 minutes on the clock' : 'A freeform conversation — 5 minute limit';
   const taskDesc = isS2
-    ? 'Olaf is going to retell <strong>Little Red Riding Hood</strong> — in his own very Olaf way. Be cheeky! Try to get him talking about literally anything else before the time runs out.'
+    ? 'Olaf is going to retell <strong>Cinderella</strong> — in his own very Olaf way. Be cheeky! Try to get him talking about literally anything else before the time runs out.'
     : 'Olaf is going to retell <strong>Frozen</strong> — the whole adventure, from his very personal point of view. Chat with him naturally and help the story along!';
   const timeBadge = isS2
     ? `<strong>⏱ ${timeMin} minute time limit</strong> — the story ends automatically when time is up. Try to derail Olaf before he finishes!`
@@ -901,7 +902,7 @@ function startPhase(phase) {
 
   // Configure header
   document.getElementById('sess-badge').textContent = `Story ${storyNum} · Round ${roundNum} of 2`;
-  document.getElementById('sess-title').textContent = isS2 ? 'Little Red Riding Hood' : 'Olaf Retells Frozen';
+  document.getElementById('sess-title').textContent = isS2 ? 'Cinderella' : 'Olaf Retells Frozen';
 
   // Toggle timer elements
   document.getElementById('s1-timer-wrap').style.display = isS2 ? 'none' : '';
@@ -915,8 +916,8 @@ function startPhase(phase) {
   document.getElementById('s1-time-bar').style.background = '#3aaa4a';
 
   // Reset Story 2 time display
-  document.getElementById('time-display').textContent = '0:00 / 3:00';
-  document.getElementById('time-bar').style.width = '0%';
+  document.getElementById('time-display').textContent = '3:00';
+  document.getElementById('time-bar').style.width = '100%';
   document.getElementById('time-bar').style.background = '#3aaa4a';
 
   // Clear chat
@@ -1011,15 +1012,14 @@ function buildQuestionnaire(phase) {
   addSection('Story experience');
   addLikert('q1', 1, 'The story felt coherent and followed a clear narrative arc.', 'Strongly disagree', 'Strongly agree');
   addLikert('q2', 2, 'Olaf stayed in character throughout the conversation.', 'Not at all', 'Completely');
-  addLikert('q3', 3, 'When you went off-topic, Olaf handled it naturally without breaking the story.', 'Poorly', 'Very well');
-  addLikert('q4', 4, 'The story felt engaging and enjoyable to participate in.', 'Not engaging', 'Very engaging');
-  addLikert('q5', 5, 'Overall, how would you rate the experience?', 'Very poor', 'Excellent');
+  addLikert('q4', 3, 'The story felt engaging and enjoyable to participate in.', 'Not engaging', 'Very engaging');
+  addLikert('q5', 4, 'Overall, how would you rate the experience?', 'Very poor', 'Excellent');
 
   // ── Derailment ──
   addSection('Derailment');
   const q6div = document.createElement('div'); q6div.className = 'q-item';
   const q6lbl = document.createElement('label');
-  q6lbl.innerHTML = '<span class="q-num">6.</span>Did you try to go off-topic or steer the conversation away from the story?';
+  q6lbl.innerHTML = '<span class="q-num">5.</span>Did you try to go off-topic or steer the conversation away from the story?';
   q6div.appendChild(q6lbl);
   const ynRow = document.createElement('div'); ynRow.className = 'yes-no';
   const followup = document.createElement('div'); followup.className = 'derail-followup';
@@ -1050,38 +1050,68 @@ function buildQuestionnaire(phase) {
   if (isStory2) {
     // ── Story 2 extra: pacing & completeness ──
     addSection('Story pacing & completeness', true);
-    addLikert('q7_pacing', 7, 'Did the story feel well-paced — not too slow or too fast?', 'Dragged on', 'Far too rushed', true);
-    addLikert('q8_ending', 8, 'Was the story ending satisfying?', 'Very unsatisfying', 'Very satisfying', true);
-    addLikert('q9_completeness', 9, 'Did the story feel complete? Did all major plot beats happen?', 'Felt incomplete', 'Fully complete', true);
+    addLikert('q7_pacing', 6, 'Did the story feel well-paced — not too slow or too fast?', 'Dragged on', 'Far too rushed', true);
+    addLikert('q8_ending', 7, 'Was the story ending satisfying?', 'Very unsatisfying', 'Very satisfying', true);
+
+    // Q8: does the participant know this story?
+    const q8div = document.createElement('div'); q8div.className = 'q-item time-highlight';
+    const q8lbl = document.createElement('label');
+    q8lbl.innerHTML = '<span class="q-num tc">8.</span>Were you already familiar with this story before this session?';
+    q8div.appendChild(q8lbl);
+    const q8yn = document.createElement('div'); q8yn.className = 'yes-no';
+    const q8yes = document.createElement('button'); q8yes.className = 'yn-btn'; q8yes.textContent = '📖 Yes, I know it';
+    q8yes.onclick = () => { q8yes.className = 'yn-btn sel-neutral'; q8no.className = 'yn-btn'; resp['q8_knows_story'] = 'yes'; };
+    const q8no = document.createElement('button'); q8no.className = 'yn-btn'; q8no.textContent = '🤷 No, I don\'t';
+    q8no.onclick = () => { q8no.className = 'yn-btn sel-neutral'; q8yes.className = 'yn-btn'; resp['q8_knows_story'] = 'no'; };
+    q8yn.appendChild(q8yes); q8yn.appendChild(q8no);
+    q8div.appendChild(q8yn);
+    body.appendChild(q8div);
+
+    // Q9: did all the major plot points happen? if not, which were skipped?
+    const q9div = document.createElement('div'); q9div.className = 'q-item time-highlight';
+    const q9lbl = document.createElement('label');
+    q9lbl.innerHTML = '<span class="q-num tc">9.</span>Did all the major plot points of the story happen?';
+    q9div.appendChild(q9lbl);
+    const q9yn = document.createElement('div'); q9yn.className = 'yes-no';
+    const q9follow = document.createElement('div'); q9follow.className = 'derail-followup';
+    const q9ta = document.createElement('textarea');
+    q9ta.placeholder = 'e.g. "The grandmother scene was skipped"';
+    q9ta.oninput = () => { resp['q9_plot_points_skipped'] = q9ta.value; };
+    const q9lbl2 = document.createElement('label'); q9lbl2.textContent = 'Which plot points were skipped?';
+    q9follow.appendChild(q9lbl2); q9follow.appendChild(q9ta);
+    const q9yes = document.createElement('button'); q9yes.className = 'yn-btn'; q9yes.textContent = '✅ Yes, all happened';
+    q9yes.onclick = () => { q9yes.className = 'yn-btn sel-no'; q9no.className = 'yn-btn'; resp['q9_plot_points_complete'] = 'yes'; q9follow.classList.remove('visible'); };
+    const q9no = document.createElement('button'); q9no.className = 'yn-btn'; q9no.textContent = '⚡ No, some were skipped';
+    q9no.onclick = () => { q9no.className = 'yn-btn sel-yes'; q9yes.className = 'yn-btn'; resp['q9_plot_points_complete'] = 'no'; q9follow.classList.add('visible'); };
+    q9yn.appendChild(q9yes); q9yn.appendChild(q9no);
+    q9div.appendChild(q9yn); q9div.appendChild(q9follow);
+    body.appendChild(q9div);
+
     addLikert('q10_natural', 10, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
-    addLikert('q11_plot_points', 11, 'Did all the major plot points of the story get told?', 'Many were missing', 'All were covered', true);
 
-    const q12div = document.createElement('div'); q12div.className = 'q-item time-highlight';
-    const q12lbl = document.createElement('label');
-    q12lbl.innerHTML = '<span class="q-num tc">12.</span>Did any part of the story feel rushed or cut short?';
-    q12div.appendChild(q12lbl);
-    const q12yn = document.createElement('div'); q12yn.className = 'yes-no';
-    const q12follow = document.createElement('div'); q12follow.className = 'derail-followup';
-    const q12ta = document.createElement('textarea');
-    q12ta.placeholder = 'Which part felt rushed? What was missing?';
-    q12ta.oninput = () => { resp['q12_rushed_detail'] = q12ta.value; };
-    const q12lbl2 = document.createElement('label'); q12lbl2.textContent = 'What felt rushed?';
-    q12follow.appendChild(q12lbl2); q12follow.appendChild(q12ta);
-    const q12yes = document.createElement('button'); q12yes.className = 'yn-btn'; q12yes.textContent = '⚡ Yes, it felt rushed';
-    q12yes.onclick = () => { q12yes.className = 'yn-btn sel-yes'; q12no.className = 'yn-btn'; resp['q12_rushed'] = 'yes'; q12follow.classList.add('visible'); };
-    const q12no = document.createElement('button'); q12no.className = 'yn-btn'; q12no.textContent = '✅ No, it felt natural';
-    q12no.onclick = () => { q12no.className = 'yn-btn sel-no'; q12yes.className = 'yn-btn'; resp['q12_rushed'] = 'no'; q12follow.classList.remove('visible'); };
-    q12yn.appendChild(q12yes); q12yn.appendChild(q12no);
-    q12div.appendChild(q12yn); q12div.appendChild(q12follow);
-    body.appendChild(q12div);
-
-    addTextarea('q13_missing', 13, 'What was missing from the story, if anything? Which plot points were skipped?',
-      'e.g. "The grandmother scene was skipped" or "Nothing was missing"', true);
+    const q11div = document.createElement('div'); q11div.className = 'q-item time-highlight';
+    const q11lbl = document.createElement('label');
+    q11lbl.innerHTML = '<span class="q-num tc">11.</span>Did any part of the story feel rushed or cut short?';
+    q11div.appendChild(q11lbl);
+    const q11yn = document.createElement('div'); q11yn.className = 'yes-no';
+    const q11follow = document.createElement('div'); q11follow.className = 'derail-followup';
+    const q11ta = document.createElement('textarea');
+    q11ta.placeholder = 'Which part felt rushed? What was missing?';
+    q11ta.oninput = () => { resp['q11_rushed_detail'] = q11ta.value; };
+    const q11lbl2 = document.createElement('label'); q11lbl2.textContent = 'What felt rushed?';
+    q11follow.appendChild(q11lbl2); q11follow.appendChild(q11ta);
+    const q11yes = document.createElement('button'); q11yes.className = 'yn-btn'; q11yes.textContent = '⚡ Yes, it felt rushed';
+    q11yes.onclick = () => { q11yes.className = 'yn-btn sel-yes'; q11no.className = 'yn-btn'; resp['q11_rushed'] = 'yes'; q11follow.classList.add('visible'); };
+    const q11no = document.createElement('button'); q11no.className = 'yn-btn'; q11no.textContent = '✅ No, it felt natural';
+    q11no.onclick = () => { q11no.className = 'yn-btn sel-no'; q11yes.className = 'yn-btn'; resp['q11_rushed'] = 'no'; q11follow.classList.remove('visible'); };
+    q11yn.appendChild(q11yes); q11yn.appendChild(q11no);
+    q11div.appendChild(q11yn); q11div.appendChild(q11follow);
+    body.appendChild(q11div);
   }
 
   // ── General feedback ──
   addSection('General feedback');
-  const gNum = isStory2 ? 14 : 7;
+  const gNum = isStory2 ? 12 : 6;
   addTextarea('q_breakdown', gNum, 'Was there a moment where the story felt off or broke down? Describe it briefly.',
     'Optional — leave blank if nothing to add.');
   addTextarea('q_comments', gNum + 1, "Any other comments about Olaf's character or the story overall?", 'Optional');
@@ -1098,7 +1128,7 @@ function showQuestionnaire(phase) {
   document.getElementById('q-header-sub').textContent =
     storyNum === 1
       ? 'Olaf Retells Frozen — please rate your experience with this round.'
-      : 'Little Red Riding Hood — please rate your experience with this round.';
+      : 'Cinderella — please rate your experience with this round.';
 
   const btn = document.getElementById('submit-q-btn');
   btn.disabled = false;
@@ -1154,7 +1184,7 @@ function connectSocket() {
     setThinking(false);
     if (phase >= 3) {
       _timeLimitMinutes = 3;
-      document.getElementById('time-display').textContent = '0:00 / 3:00';
+      document.getElementById('time-display').textContent = '3:00';
       startTimePoll();
       fetch(`${SERVER}/state`).then(r => r.json()).then(s => {
         beatCount = (s.beats || []).length;
@@ -1238,8 +1268,8 @@ function cancelStudy() {
   document.getElementById('s1-countdown').textContent = '5:00';
   document.getElementById('s1-time-bar').style.width = '100%';
   document.getElementById('s1-time-bar').style.background = '#3aaa4a';
-  document.getElementById('time-display').textContent = '0:00 / 3:00';
-  document.getElementById('time-bar').style.width = '0%';
+  document.getElementById('time-display').textContent = '3:00';
+  document.getElementById('time-bar').style.width = '100%';
   document.getElementById('time-bar').style.background = '#3aaa4a';
   document.getElementById('beat-col').style.display = 'none';
   document.getElementById('timesup-modal').classList.remove('visible');
