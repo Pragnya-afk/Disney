@@ -29,9 +29,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-# ---------------------------------------------------------------------------
 # Paths
-# ---------------------------------------------------------------------------
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 DIRECTOR_AGENT_DIR = os.path.join(CURRENT_DIR, "director_agent")
@@ -46,9 +44,7 @@ load_dotenv(os.path.join(CURRENT_DIR, ".env"))
 
 from openai import OpenAI
 
-# ---------------------------------------------------------------------------
 # Load scenario and character
-# ---------------------------------------------------------------------------
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
@@ -77,9 +73,7 @@ OUTPUTS_PATH = (
 EVAL_MODEL = "gpt-4o"
 DIRECTOR_MODEL = "gpt-5.5"
 
-# ---------------------------------------------------------------------------
 # Director imports (from director_agent package)
-# ---------------------------------------------------------------------------
 
 from director_core import get_director_decision
 from auto_main import (
@@ -91,9 +85,7 @@ from auto_main import (
     should_close_story,
 )
 
-# ---------------------------------------------------------------------------
 # Evaluation imports
-# ---------------------------------------------------------------------------
 
 from evaluation_core import (
     make_client as eval_make_client,
@@ -104,9 +96,7 @@ from evaluation_core import (
     aggregate_ab_ba,
 )
 
-# ---------------------------------------------------------------------------
 # Phase 1 – Director generation with "okay" inputs
-# ---------------------------------------------------------------------------
 
 def run_director_okay() -> list:
     print(f"\n{'='*60}")
@@ -220,9 +210,7 @@ def run_director_okay() -> list:
     print(f"  Saved {len(transcript)} turns → {DIRECTOR_OKAY_PATH}")
     return transcript
 
-# ---------------------------------------------------------------------------
 # Phase 2 – Load CoDi output
-# ---------------------------------------------------------------------------
 
 def load_codi() -> list:
     print(f"\n{'='*60}")
@@ -241,9 +229,7 @@ def load_codi() -> list:
     print(f"  Loaded {len(transcript)} turns from {CODI_PATH}")
     return transcript
 
-# ---------------------------------------------------------------------------
 # Phase 3 – Pairwise evaluation
-# ---------------------------------------------------------------------------
 
 def run_eval(transcript_codi: list, transcript_director: list, model: str) -> dict:
     print(f"\n{'='*60}")
@@ -307,9 +293,7 @@ def run_eval(transcript_codi: list, transcript_director: list, model: str) -> di
     print(f"\n  Saved evaluation → {EVAL_PATH}")
     return result
 
-# ---------------------------------------------------------------------------
 # Phase 4 – Extract character outputs side-by-side
-# ---------------------------------------------------------------------------
 
 def extract_character_outputs(transcript_codi: list, transcript_director: list) -> None:
     print(f"\n{'='*60}")
@@ -318,7 +302,6 @@ def extract_character_outputs(transcript_codi: list, transcript_director: list) 
 
     lines = []
 
-    # --- Director section ---
     lines.append("=== DIRECTOR_AGENT ===\n")
     for turn in transcript_director:
         turn_num  = turn.get("turn_index", "?")
@@ -335,7 +318,6 @@ def extract_character_outputs(transcript_codi: list, transcript_director: list) 
         lines.append(f"Character: {response}")
         lines.append("")
 
-    # --- CoDi section ---
     lines.append("=== CODI ===\n")
     for turn in transcript_codi:
         turn_num = turn.get("turn_index", "?")
@@ -359,9 +341,7 @@ def extract_character_outputs(transcript_codi: list, transcript_director: list) 
     print(text)
 
 
-# ---------------------------------------------------------------------------
 # Summary printer
-# ---------------------------------------------------------------------------
 
 def print_summary(result: dict) -> None:
     print(f"\n{'='*60}")
@@ -389,9 +369,7 @@ def print_summary(result: dict) -> None:
 
     print(f"\nFull results saved to:\n  {EVAL_PATH}")
 
-# ---------------------------------------------------------------------------
 # Main
-# ---------------------------------------------------------------------------
 
 def main() -> None:
     parser = argparse.ArgumentParser()

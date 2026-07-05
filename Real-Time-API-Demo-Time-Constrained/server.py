@@ -15,7 +15,6 @@ import websocket
 
 load_dotenv()
 
-# ── Path setup ─────────────────────────────────────────────────────────────────
 REAL_TIME_DIR = os.path.dirname(os.path.abspath(__file__))
 IMPLEMENTATION_DIR = os.path.join(os.path.dirname(REAL_TIME_DIR), "Disney", "Implementation")
 if not os.path.isdir(IMPLEMENTATION_DIR):
@@ -27,6 +26,7 @@ sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent", "time_cons
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from time_director_core import get_time_director_decision
+from director_core import last_character_opener, opener_guard_text
 from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
@@ -46,7 +46,6 @@ def apply_fx(pcm: bytes, fx_chain, sample_rate: int = 24_000) -> bytes:
     clipped = np.clip(processed, -1.0, 1.0)
     return (clipped * 32767).astype(np.int16).tobytes()
 
-# ── Config ─────────────────────────────────────────────────────────────────────
 app = Flask(__name__, static_folder="public")
 app.config["SECRET_KEY"] = "olaf-tc-demo-secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
@@ -60,7 +59,6 @@ api_key = os.getenv("OPENAI_API_KEY")
 _openai_client = OpenAI(api_key=api_key)
 olaf_fx = get_fx_chain(OLAF_AUDIOFX_CONFIG)
 
-# ── Scenario registry ──────────────────────────────────────────────────────────
 _SUITE_FILE = "olaf_derailment_scenario_suite"
 _SKIP_FILES = {_SUITE_FILE, "__init__"}
 _SKIP_PATTERNS = ("medium_derail", "complete_derail")
@@ -100,7 +98,6 @@ AVAILABLE_SCENARIOS = {
     if k.endswith("_no_derailment")
 }
 
-# ── Session state ──────────────────────────────────────────────────────────────
 _state: dict = {
     "beat_index": 0,
     "completed_beats": [],
@@ -139,7 +136,7 @@ def reset_state(scenario_key: str, time_limit: float = 5.0):
     _last_user_input = ""
     _time_up_injected = False
     time_limit_seconds = time_limit * 60
-    final_buffer = max(30.0, min(60.0, time_limit_seconds * 0.30))
+    final_buffer = max(30.0, min(60.0, time_limit_seconds * 0.20))
     _monitor = TemporalMonitor(
         time_limit_minutes=time_limit,
         total_beats=len(_state["beats"]),
@@ -152,7 +149,6 @@ def get_state_snapshot():
         return dict(_state)
 
 
-# ── System prompt ──────────────────────────────────────────────────────────────
 def build_system_prompt(state: dict) -> str:
     beats = state["beats"]
     idx = state["beat_index"]
@@ -219,7 +215,6 @@ DIRECTOR_TOOL = {
     },
 }
 
-# ── Director tool handler ──────────────────────────────────────────────────────
 
 def handle_director_tool(ws, event: dict):
     global _last_user_input, _time_up_injected
@@ -283,7 +278,6 @@ def handle_director_tool(ws, event: dict):
             for b in sorted_beats
         ]
 
-    # ── Pacing enforcement ─────────────────────────────────────────────────────
     suggested_expansion = None
 
     if pacing_mode == "too_fast":
@@ -370,6 +364,14 @@ def handle_director_tool(ws, event: dict):
     if suggested_expansion:
         tool_result["expansion_hint"] = suggested_expansion
 
+    # Deterministically append the opener-diversity guard — the director LLM's
+    # own free text has proven unreliable at restating this, so it's injected
+    # here in plain code rather than left to the director's compliance.
+    last_opener = last_character_opener(state_snapshot.get("story_so_far", ""))
+    tool_result["director_instruction"] = (
+        f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_text(last_opener)}"
+    )
+
     print(
         f"[Director: {decision.get('decision_type')} | Pacing: {pacing_mode} | "
         f"Remaining: {temporal_state.get('remaining_seconds', 0):.0f}s] "
@@ -425,7 +427,6 @@ def handle_director_tool(ws, event: dict):
         ws.send(json.dumps({"type": "response.create"}))
 
 
-# ── OpenAI Realtime WebSocket ──────────────────────────────────────────────────
 
 def run_openai_ws():
     global _openai_ws
@@ -540,7 +541,6 @@ def run_openai_ws():
     ws.run_forever()
 
 
-# ── Socket.IO event handlers ───────────────────────────────────────────────────
 
 @socketio.on("connect")
 def on_connect():
@@ -624,7 +624,6 @@ def on_text_input(data):
         print(f"[text_input error] {e}")
 
 
-# ── HTTP routes ────────────────────────────────────────────────────────────────
 
 @app.route("/")
 def index():

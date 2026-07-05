@@ -62,9 +62,7 @@ MIC_CHUNK_FRAMES = 1024
 TIME_CHECK_INTERVAL = 4.0  # seconds between time-up checks
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # System prompt
-# ─────────────────────────────────────────────────────────────────────────────
 
 def build_system_prompt(
     character: dict,
@@ -130,9 +128,7 @@ Story so far (last excerpt):
 """.strip()
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Director tool schema
-# ─────────────────────────────────────────────────────────────────────────────
 
 DIRECTOR_TOOL = {
     "type": "function",
@@ -155,9 +151,7 @@ DIRECTOR_TOOL = {
 }
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Audio workers
-# ─────────────────────────────────────────────────────────────────────────────
 
 def playback_worker(q: stdlib_queue.Queue, fx_chain=None) -> None:
     """Writes PCM bytes to speakers via paplay (PulseAudio). None = stop."""
@@ -201,9 +195,7 @@ def mic_capture_worker(
     proc.wait()
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Helpers
-# ─────────────────────────────────────────────────────────────────────────────
 
 def load_module(name: str):
     return importlib.import_module(name)
@@ -250,9 +242,7 @@ def advance_beat(story_state: dict, beats: list) -> None:
             print("[Final beat complete — story ending]")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Main realtime loop
-# ─────────────────────────────────────────────────────────────────────────────
 
 async def run_realtime(
     character: dict,
@@ -543,9 +533,7 @@ async def run_realtime(
     print(f"\nTranscript saved to {path}")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Entry point
-# ─────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()

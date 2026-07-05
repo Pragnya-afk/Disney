@@ -315,8 +315,8 @@
         <div class="beat-tracker" id="beat-tracker"></div>
       </div>
       <div class="time-panel">
-        <div class="time-display" id="time-display">0:00 / —:——</div>
-        <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar-fill"></div></div>
+        <div class="time-display" id="time-display">—:——</div>
+        <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar-fill" style="width:100%;"></div></div>
         <div class="pacing-badge normal" id="pacing-badge">normal</div>
       </div>
       <button class="cancel-btn" id="cancel-btn">Cancel ✕</button>
@@ -590,7 +590,6 @@ function stopTimePoll() {
 }
 
 function updateTimePanel(data) {
-  const elapsed = data.elapsed_seconds || 0;
   const remaining = data.remaining_seconds || 0;
   const limitSec = timeLimitSeconds || (data.time_limit_minutes * 60);
   const pacing = data.pacing_mode || 'normal';
@@ -601,9 +600,9 @@ function updateTimePanel(data) {
     return `${m}:${sec.toString().padStart(2,'0')}`;
   };
 
-  document.getElementById('time-display').textContent = `${fmt(elapsed)} / ${fmt(limitSec)}`;
+  document.getElementById('time-display').textContent = fmt(remaining);
 
-  const pct = limitSec > 0 ? Math.min(100, (elapsed / limitSec) * 100) : 0;
+  const pct = limitSec > 0 ? Math.max(0, Math.min(100, (remaining / limitSec) * 100)) : 0;
   const fill = document.getElementById('time-bar-fill');
   fill.style.width = pct + '%';
 
@@ -801,8 +800,8 @@ function startSession() {
   document.getElementById('chat-log').innerHTML = '';
   scenarioBeats = [];
   buildBeatTracker(0);
-  document.getElementById('time-display').textContent = `0:00 / ${selectedTimeLimitMinutes}:00`;
-  document.getElementById('time-bar-fill').style.width = '0%';
+  document.getElementById('time-display').textContent = `${selectedTimeLimitMinutes}:00`;
+  document.getElementById('time-bar-fill').style.width = '100%';
   document.getElementById('pacing-badge').className = 'pacing-badge normal';
   document.getElementById('pacing-badge').textContent = 'normal';
   setThinking(true, 'Starting session…');

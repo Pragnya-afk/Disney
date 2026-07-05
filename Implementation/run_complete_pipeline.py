@@ -35,9 +35,7 @@ from pathlib import Path
 CURRENT_DIR = Path(__file__).parent
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Helpers
-# ──────────────────────────────────────────────────────────────────────────────
 
 def log(msg: str):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
@@ -58,9 +56,7 @@ def run_phase(label: str, script_args: list[str]) -> int:
     return result.returncode
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Main
-# ──────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
@@ -80,43 +76,36 @@ def main():
 
     log(f"=== run_complete_pipeline | model={args.model} | dry_run={args.dry_run} ===")
 
-    # ------------------------------------------------------------------
     # Phase 1 — Baseline
     # Runs baseline for all 30 suite scenarios.
     # Uses run_baseline_suite.py which extends run_noderail_baseline_and_eval.py
     # to cover medium- and complete-derailment scenarios as well.
-    # ------------------------------------------------------------------
     if args.only in (None, "baseline"):
         run_phase(
             "Baseline — all 30 scenarios",
             ["run_baseline_suite.py"] + dry,
         )
 
-    # ------------------------------------------------------------------
     # Phase 2 — Director + Time-Constrained
     # Runs any missing director and target-duration runs.
     # All 30 × 4-time-limit = 120 runs are already done; this is a
     # safety pass that will skip everything already completed.
-    # ------------------------------------------------------------------
     if args.only in (None, "director"):
         run_phase(
             "Director + Time-Constrained — all 30 scenarios × 4 time limits",
             ["run_full_suite.py"] + dry,
         )
 
-    # ------------------------------------------------------------------
     # Phase 3 — CoDi Generation
     # Calls run_codi_suite_and_compare.py --only codi which generates
     # CoDi outputs for every scenario not yet done.
     # CoDi outputs land in outputs/codi/{scenario}/batch/run_1.json.
-    # ------------------------------------------------------------------
     if args.only in (None, "codi"):
         run_phase(
             "CoDi Generation — all 30 scenarios",
             ["run_codi_suite_and_compare.py", "--only", "codi"] + dry,
         )
 
-    # ------------------------------------------------------------------
     # Phase 4 — Evaluations + Summary Tables
     # run_all_evals.py discovers all existing outputs automatically and
     # runs three evaluation tracks (skipping already-evaluated pairs):
@@ -128,7 +117,6 @@ def main():
     #   table_scores_by_scenario.{csv,md,tex}
     #   table_derailment_robustness.{csv,md,tex}
     #   table_pairwise_wins.{csv,md,tex}
-    # ------------------------------------------------------------------
     if args.only in (None, "eval"):
         run_phase(
             "Evaluations (all tracks) + Summary Tables",

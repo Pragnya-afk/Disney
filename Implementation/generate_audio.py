@@ -45,9 +45,7 @@ SAMPLE_WIDTH = 2   # 16-bit
 CHANNELS = 1
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Audio helpers
-# ──────────────────────────────────────────────────────────────────────────────
 
 def silence(ms: int) -> bytes:
     """Return ms milliseconds of 16-bit mono silence."""
@@ -64,9 +62,7 @@ def save_wav(pcm: bytes, path: Path):
         wf.writeframes(pcm)
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # TTS
-# ──────────────────────────────────────────────────────────────────────────────
 
 def tts(client: OpenAI, text: str, voice: str, model: str, instructions: str | None = None, speed: float = 1.0) -> bytes:
     """Call OpenAI TTS and return raw PCM bytes."""
@@ -77,9 +73,7 @@ def tts(client: OpenAI, text: str, voice: str, model: str, instructions: str | N
     return response.content
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Transcript parsing
-# ──────────────────────────────────────────────────────────────────────────────
 
 def extract_turns(transcript: list) -> list[tuple[str, str]]:
     """
@@ -104,9 +98,7 @@ def extract_turns(transcript: list) -> list[tuple[str, str]]:
     return turns
 
 
-# ──────────────────────────────────────────────────────────────────────────────
 # Main
-# ──────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(

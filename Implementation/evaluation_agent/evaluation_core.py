@@ -59,9 +59,7 @@ except ImportError:
     )
 
 
-# ------------------------------------------------------------
 # Path configuration
-# ------------------------------------------------------------
 
 CURRENT_DIR = os.path.dirname(__file__)
 IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
@@ -71,9 +69,7 @@ IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
 sys.path.append(IMPLEMENTATION_DIR)
 
 
-# ------------------------------------------------------------
 # OpenAI configuration
-# ------------------------------------------------------------
 
 # Load environment variables from the project-level .env file.
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
@@ -92,9 +88,7 @@ def make_client() -> OpenAI:
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-# ------------------------------------------------------------
 # File and profile loading utilities
-# ------------------------------------------------------------
 
 def load_json(path: str):
     """
@@ -173,9 +167,7 @@ def load_scenario_context(scenario_module: str) -> dict:
     }
 
 
-# ------------------------------------------------------------
 # Transcript conversion
-# ------------------------------------------------------------
 
 def transcript_to_story(transcript: list) -> str:
     """
@@ -257,9 +249,7 @@ def transcript_to_story(transcript: list) -> str:
     return "\n".join(lines).strip()
 
 
-# ------------------------------------------------------------
 # Evaluator model call
-# ------------------------------------------------------------
 
 def call_evaluator(client: OpenAI, model: str, prompt: str) -> str:
     """
@@ -303,9 +293,7 @@ def call_evaluator(client: OpenAI, model: str, prompt: str) -> str:
     return response.choices[0].message.content.strip()
 
 
-# ------------------------------------------------------------
 # Output parsing utilities
-# ------------------------------------------------------------
 
 def parse_ab_winners(assessment: str, dimensions: list = None) -> dict:
     """
@@ -387,9 +375,7 @@ def parse_single_scores(assessment: str, dimensions: list = None) -> dict:
     return scores
 
 
-# ------------------------------------------------------------
 # Evaluation procedures
-# ------------------------------------------------------------
 
 def run_ab_evaluation(
     client: OpenAI,
@@ -475,9 +461,7 @@ def run_single_evaluation(
     }
 
 
-# ------------------------------------------------------------
 # AB/BA aggregation
-# ------------------------------------------------------------
 
 def convert_ba_to_original_labels(ba_winners: dict) -> dict:
     """
@@ -544,9 +528,7 @@ def aggregate_ab_ba(ab_winners: dict, ba_winners_converted: dict) -> dict:
     return aggregated
 
 
-# ------------------------------------------------------------
 # CoDi transcript conversion
-# ------------------------------------------------------------
 
 def extract_codi_director_decision(direct_response: str) -> Dict[str, str]:
     """
@@ -681,9 +663,7 @@ def transcript_to_story_with_director(transcript: List[Dict]) -> str:
     return "\n".join(lines).strip()
 
 
-# ------------------------------------------------------------
 # CoDi evaluation runners
-# ------------------------------------------------------------
 
 def run_codi_comparison(
     client: OpenAI,
@@ -759,9 +739,7 @@ def run_codi_quality_eval(
     }
 
 
-# ------------------------------------------------------------
 # Adversarial evaluation runners
-# ------------------------------------------------------------
 
 def run_adversarial_comparison(
     client: OpenAI,
@@ -844,9 +822,7 @@ def run_adversarial_quality_eval(
     }
 
 
-# ------------------------------------------------------------
 # Main entry point
-# ------------------------------------------------------------
 
 def main():
     """

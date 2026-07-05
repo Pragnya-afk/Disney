@@ -1,0 +1,55 @@
+# ── Default: normalize line endings for anything text-ish ──
+* text=auto eol=lf
+
+# ── Source code ──
+*.py text diff=python
+*.js text
+*.html text diff=html
+*.css text
+*.sh text eol=lf
+*.ipynb text -diff
+
+# ── Docs / config text ──
+*.md text
+*.txt text
+*.yaml text
+*.yml text
+*.tex text
+*.editorconfig text
+.env text
+.gitignore text
+.gitattributes text
+
+# ── Data text (no line-ending surprises, but no special diff driver either) ──
+*.json text
+*.jsonl text
+*.csv text
+*.log text
+
+# ── Binary assets — never diff, never convert line endings ──
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.wav binary
+*.mp3 binary
+*.fbx binary
+*.tfrecords binary
+*.pyc binary
+
+# ── Vendored / third-party code — exclude from GitHub language stats & diffs ──
+**/socket.io.min.js linguist-vendored -diff
+*.min.js linguist-vendored -diff
+**/node_modules/** linguist-vendored
+CoDi-main/** linguist-vendored
+AIDungeon-develop/** linguist-vendored
+package-lock.json linguist-generated -diff
+
+# ── Generated evaluation/session output data — exclude from language stats ──
+Implementation/outputs/** linguist-generated
+Implementation/evaluation_results/** linguist-generated
+Implementation/comparison_results/** linguist-generated
+Implementation/evaluation_summary/** linguist-generated
+User-Study/outputs/** linguist-generated
+Real-Time-API-Demo/outputs/** linguist-generated
+Real-Time-API-Demo-Time-Constrained/outputs/** linguist-generated

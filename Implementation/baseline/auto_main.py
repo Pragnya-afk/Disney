@@ -47,11 +47,7 @@ def call_llm(prompt: str) -> str:
     return response.choices[0].message.content.strip()
 
 
-def build_prompt(user_input, story_state, character, story_topic, beats):
-    current_beat = beats[story_state["beat_index"]]
-    current_index = story_state["beat_index"]
-    next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
-
+def build_prompt(user_input, character, beats):
     return f"""
 You are controlling an interactive AI character.
 
@@ -76,23 +72,8 @@ Character Prompt:
 Available animations:
 {json.dumps(character["available_animations"], indent=2)}
 
-## Story Topic
-{story_topic}
-
 ## Narrative Arc
 {json.dumps(beats, indent=2)}
-
-## Current Beat
-{current_beat["name"]}: {current_beat["goal"]}
-
-## Next Beat
-{next_beat}
-
-## Completed Beats
-{json.dumps(story_state["completed_beats"], indent=2)}
-
-## Story So Far
-{story_state["story_so_far"]}
 
 ## Latest User Input
 {user_input}
@@ -134,7 +115,6 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
     character = character_mod.CHARACTER
     scenario = scenario_mod.SCENARIO
 
-    story_topic = scenario["story_topic"]
     beats = scenario["beats"]
     user_inputs = scenario["user_inputs"]
     scenario_name = scenario["scenario_name"]
@@ -142,11 +122,7 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
     # Use scenario module name for output folder
     scenario_folder = scenario_module.split('.')[-1]
 
-    story_state = {
-        "beat_index": 0,
-        "completed_beats": [],
-        "story_so_far": "",
-    }
+    beat_index = 0
 
     output_dir = os.path.join(
         IMPLEMENTATION_DIR,
@@ -160,21 +136,15 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
     transcript = []
 
     for turn_idx, user_input in enumerate(user_inputs, start=1):
-        if story_state["beat_index"] >= len(beats):
+        if beat_index >= len(beats):
             break
 
-        current_beat = beats[story_state["beat_index"]]
+        current_beat = beats[beat_index]
 
-        prompt = build_prompt(user_input, story_state, character, story_topic, beats)
+        prompt = build_prompt(user_input, character, beats)
         raw = call_llm(prompt)
         output = safe_json_parse(raw, character["available_animations"][0])
         output["animation"] = validate_animation(output.get("animation", ""), character)
-
-        story_state["story_so_far"] += (
-            f"\nUser: {user_input}"
-            f"\n{character['name']}: {output['character_response']}"
-            f"\nEvent: {output['story_event']}\n"
-        )
 
         transcript.append({
             "method": "baseline",
@@ -188,8 +158,7 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
         })
 
         if output.get("beat_completed") is True:
-            story_state["completed_beats"].append(current_beat["name"])
-            story_state["beat_index"] += 1
+            beat_index += 1
 
     transcript_path = os.path.join(output_dir, f"run_{run_id}.json")
 
