@@ -616,6 +616,7 @@ const SERVER = 'http://localhost:' + (window.location.port || '3003');
 
 // ── State ──────────────────────────────────────────────────────────────────────
 let socket = null;
+let serverSid = null;   // request.sid as seen by the server — does not always match socket.id
 let activePhase = 0;
 let story1Order = [];
 let story2Order = [];
@@ -814,7 +815,7 @@ function startTimePoll() {
   const _wallStart = Date.now();
   timePollInterval = setInterval(async () => {
     try {
-      const r = await fetch(`${SERVER}/time_status`);
+      const r = await fetch(`${SERVER}/time_status?sid=${serverSid}`);
       const d = await r.json();
       if (!d.active) return;
 
@@ -1149,7 +1150,7 @@ document.getElementById('submit-q-btn').onclick = async () => {
   try {
     await fetch(`${SERVER}/save_questionnaire`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phase, responses: phaseResponses[phase] || {} }),
+      body: JSON.stringify({ sid: serverSid, phase, responses: phaseResponses[phase] || {} }),
     });
   } catch(e) { console.warn('Q save failed', e); }
 
@@ -1170,6 +1171,7 @@ function connectSocket() {
 
   socket.on('connect', () => console.log('[SIO] connected'));
   socket.on('disconnect', () => { setBusy(false); });
+  socket.on('server_sid', data => { serverSid = data.sid; });
 
   socket.on('study_ready', data => {
     story1Order = data.story1_order;
@@ -1186,7 +1188,7 @@ function connectSocket() {
       _timeLimitMinutes = 3;
       document.getElementById('time-display').textContent = '3:00';
       startTimePoll();
-      fetch(`${SERVER}/state`).then(r => r.json()).then(s => {
+      fetch(`${SERVER}/state?sid=${serverSid}`).then(r => r.json()).then(s => {
         beatCount = (s.beats || []).length;
         buildBeatTracker(beatCount);
         document.getElementById('beat-col').style.display = 'flex';
