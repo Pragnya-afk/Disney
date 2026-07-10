@@ -612,7 +612,7 @@
 
 
 <script>
-const SERVER = 'http://localhost:' + (window.location.port || '3003');
+const SERVER = 'http://' + window.location.hostname + ':' + (window.location.port || '3003');
 
 // ── State ──────────────────────────────────────────────────────────────────────
 let socket = null;
