@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent", "time_cons
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from time_director_core import get_time_director_decision
-from director_core import last_character_opener, opener_guard_text
+from director_core import last_character_opener, opener_guard_actor_text
 from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
@@ -369,7 +369,7 @@ def handle_director_tool(ws, event: dict):
     # here in plain code rather than left to the director's compliance.
     last_opener = last_character_opener(state_snapshot.get("story_so_far", ""))
     tool_result["director_instruction"] = (
-        f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_text(last_opener)}"
+        f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_actor_text(last_opener)}"
     )
 
     print(

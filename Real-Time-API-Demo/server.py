@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent"))
 
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
-from director_core import get_director_decision, last_character_opener, opener_guard_text
+from director_core import get_director_decision, last_character_opener, opener_guard_actor_text
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
 from audio_fx import get_fx_chain
@@ -249,7 +249,7 @@ def handle_director_tool(ws, event: dict):
     # here in plain code rather than left to the director's compliance.
     last_opener = last_character_opener(state_snapshot.get("story_so_far", ""))
     tool_result["director_instruction"] = (
-        f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_text(last_opener)}"
+        f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_actor_text(last_opener)}"
     )
 
     print(f"[Director: {decision.get('decision_type')}] {decision.get('director_instruction', '')[:60]}...")
