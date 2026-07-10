@@ -74,6 +74,26 @@ def opener_guard_text(last_opener: str | None) -> str:
     )
 
 
+def opener_guard_actor_text(last_opener: str | None) -> str:
+    """Terse opener-guard text for injection into the actor-facing director_instruction.
+
+    Unlike opener_guard_text (used in the director LLM's own reasoning prompt),
+    this is read by the realtime actor model as a literal instruction, not
+    reasoned about — so it stays a single short imperative line while still
+    preserving the filler-family ban that stops the model bouncing between
+    filler spellings (e.g. "Oh" -> "Ooh" -> "Well").
+    """
+    if not last_opener:
+        return "No opener restriction (first turn)."
+
+    if _normalize_opener(last_opener) in _FILLER_OPENER_FAMILY:
+        return (
+            f'Do not open with "{last_opener}" or a similar filler (Ooh, Well, Wow, Ah, Hmm). '
+            'Use a concrete action, name, sound, or line instead.'
+        )
+    return f'Do not open with "{last_opener}" again — use a different opening.'
+
+
 def build_director_prompt(
     user_input: str,
     story_state: dict,
