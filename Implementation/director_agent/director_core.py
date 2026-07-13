@@ -27,13 +27,16 @@ _FILLER_OPENER_FAMILY = {
 }
 
 
-def beat_pacing_label(turns_in_current_beat: int) -> str:
-    """Map turns spent in the current beat to an escalating pacing label."""
-    if turns_in_current_beat <= 1:
-        return "on_track"
-    if turns_in_current_beat == 2:
+def beat_pacing_label(turns_in_current_beat: int) -> str | None:
+    """Map turns spent in the current beat to an escalating pacing label.
+
+    Returns None for turns 0-3, where no pacing pressure is applied yet.
+    """
+    if turns_in_current_beat <= 3:
+        return None
+    if turns_in_current_beat == 4:
         return "lingering"
-    if turns_in_current_beat <= 4:
+    if turns_in_current_beat <= 6:
         return "overdue"
     return "stalled"
 
@@ -112,7 +115,7 @@ def build_director_prompt(
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
 
     turns_in_current_beat = story_state.get("turns_in_current_beat", 0)
-    pacing_label = beat_pacing_label(turns_in_current_beat)
+    pacing_label = beat_pacing_label(turns_in_current_beat) or "none (no pacing pressure yet)"
 
     last_opener = last_character_opener(story_state.get("story_so_far", ""))
 
