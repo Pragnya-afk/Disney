@@ -169,7 +169,7 @@ def _handle_baseline_input(sess: Session, text: str):
     beats = snap["beats"]
     current_beat_name = beats[min(snap["beat_index"], len(beats) - 1)]["name"]
 
-    prompt = baseline_build_prompt(text, OLAF_CHARACTER, beats)
+    prompt = baseline_build_prompt(text, OLAF_CHARACTER, beats, snap.get("story_so_far", ""))
 
     try:
         raw = baseline_call_llm(prompt)

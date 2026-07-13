@@ -46,7 +46,7 @@ def call_llm(prompt: str) -> str:
     return response.choices[0].message.content.strip()
 
 
-def build_prompt(user_input, character, beats):
+def build_prompt(user_input, character, beats, story_so_far=""):
     return f"""
 You are an interactive AI character.
 
@@ -65,6 +65,9 @@ Available animations:
 
 ## Narrative Arc
 {json.dumps(beats, indent=2)}
+
+## Story So Far
+{story_so_far if story_so_far else "(story just started)"}
 
 ## Latest User Input
 {user_input}
@@ -119,6 +122,7 @@ def run(character_module: str, scenario_module: str):
     )
     os.makedirs(output_dir, exist_ok=True)
     transcript = []
+    story_so_far = ""
 
     print("\nInteractive baseline started.")
     print(f"Loaded character: {character['name']}")
@@ -133,13 +137,15 @@ def run(character_module: str, scenario_module: str):
         if user_input.lower().strip() in ["quit", "exit", "stop"]:
             break
 
-        prompt = build_prompt(user_input, character, beats)
+        prompt = build_prompt(user_input, character, beats, story_so_far)
         raw = call_llm(prompt)
         output = safe_json_parse(raw, character["available_animations"][0])
         output["animation"] = validate_animation(output.get("animation", ""), character)
 
         print(f"\n{character['name']}: {output['character_response']}")
         print(f"[Animation: {output['animation']}]")
+
+        story_so_far += f"\nUser: {user_input}\n{character['name']}: {output['character_response']}\n"
 
         transcript.append({
             "method": "baseline",
