@@ -358,6 +358,12 @@
     .derail-followup.visible { display: flex; }
     .derail-followup label { font-size: 13px; font-weight: 700; color: #7a5a10; margin-bottom: 4px; display: block; }
     .q-footer { background: white; padding: 16px 28px; border-top: 1px solid rgba(180,215,240,0.38); }
+    .q-item.q-error { border-color: rgba(220,60,50,0.55); box-shadow: 0 0 0 2px rgba(220,60,50,0.12); }
+    .q-submit-error {
+      display: none; color: #c03030; font-size: 13px; font-weight: 700;
+      margin-bottom: 10px; text-align: center;
+    }
+    .q-submit-error.visible { display: block; }
 
     /* ── Story 1 Time's Up screen ── */
     #story1-timesup-screen {
@@ -582,6 +588,7 @@
     </div>
     <div class="q-body" id="q-body"></div>
     <div class="q-footer">
+      <p class="q-submit-error" id="q-submit-error"></p>
       <button class="primary-btn" id="submit-q-btn">Save & Continue →</button>
       <button class="cancel-link" onclick="cancelStudy()">↺ Start over</button>
     </div>
@@ -633,6 +640,7 @@ function conditionForPhase(phase) {
 }
 
 let phaseResponses = {};   // {1:{}, 2:{}, 3:{}, 4:{}}
+let requiredQuestions = []; // [{id, el}] for the currently-built questionnaire, used to validate submit
 let beatCount = 0;
 let _timesUpTriggered = false;
 let _timeLimitMinutes = 5;
@@ -984,6 +992,7 @@ function buildQuestionnaire(phase) {
   body.innerHTML = '';
   const resp = phaseResponses[phase] || (phaseResponses[phase] = {});
   const isStory2 = phase >= 3;
+  requiredQuestions = [];
 
   function addSection(label, tc) {
     const d = document.createElement('div');
@@ -1011,6 +1020,7 @@ function buildQuestionnaire(phase) {
     const rL = document.createElement('div'); rL.className = 'likert-label right'; rL.textContent = high;
     row.appendChild(lL); row.appendChild(opts); row.appendChild(rL);
     div.appendChild(row); body.appendChild(div);
+    requiredQuestions.push({ id, el: div });
   }
   function addTextarea(id, n, text, ph, tc) {
     const div = document.createElement('div'); div.className = 'q-item' + (tc ? ' time-highlight' : '');
@@ -1060,26 +1070,36 @@ function buildQuestionnaire(phase) {
   ynRow.appendChild(yesBtn); ynRow.appendChild(noBtn);
   q6div.appendChild(ynRow); q6div.appendChild(followup);
   body.appendChild(q6div);
+  requiredQuestions.push({ id: 'q6', el: q6div });
 
   if (isStory2) {
     // ── Story 2 extra: pacing & completeness ──
     addSection('Story pacing & completeness', true);
 
-    // Q6: did the story feel well-paced? (kept as yes/no — a 1-5 scale with
-    // "dragged on" and "far too rushed" as the two ends made the middle
-    // option read as ambiguous rather than clearly "well paced")
+    // Q6: pacing — merged from two separate yes/no questions (well-paced? / rushed-or-cut-short?)
+    // into one 3-way question, since "rushed" (timer condition) and "cut short" (no-timer
+    // condition) were never both true at once — asking them separately read as contradictory.
     const q7div = document.createElement('div'); q7div.className = 'q-item time-highlight';
     const q7lbl = document.createElement('label');
-    q7lbl.innerHTML = '<span class="q-num tc">6.</span>Did the story feel well-paced?';
+    q7lbl.innerHTML = '<span class="q-num tc">6.</span>Did the story\'s pacing feel right?';
     q7div.appendChild(q7lbl);
     const q7yn = document.createElement('div'); q7yn.className = 'yes-no';
-    const q7yes = document.createElement('button'); q7yes.className = 'yn-btn'; q7yes.textContent = '✅ Yes, well-paced';
-    q7yes.onclick = () => { q7yes.className = 'yn-btn sel-no'; q7no.className = 'yn-btn'; resp['q7_pacing_wellpaced'] = 'yes'; };
-    const q7no = document.createElement('button'); q7no.className = 'yn-btn'; q7no.textContent = '⚡ No, off-paced';
-    q7no.onclick = () => { q7no.className = 'yn-btn sel-yes'; q7yes.className = 'yn-btn'; resp['q7_pacing_wellpaced'] = 'no'; };
-    q7yn.appendChild(q7yes); q7yn.appendChild(q7no);
-    q7div.appendChild(q7yn);
+    const q7follow = document.createElement('div'); q7follow.className = 'derail-followup';
+    const q7ta = document.createElement('textarea');
+    q7ta.placeholder = 'What felt rushed or cut short?';
+    q7ta.oninput = () => { resp['q_pacing_detail'] = q7ta.value; };
+    const q7lbl2 = document.createElement('label'); q7lbl2.textContent = 'What felt rushed or cut short?';
+    q7follow.appendChild(q7lbl2); q7follow.appendChild(q7ta);
+    const q7wellpaced = document.createElement('button'); q7wellpaced.className = 'yn-btn'; q7wellpaced.textContent = '✅ Well-paced';
+    q7wellpaced.onclick = () => { q7wellpaced.className = 'yn-btn sel-no'; q7rushed.className = 'yn-btn'; q7cutshort.className = 'yn-btn'; resp['q_pacing'] = 'well-paced'; q7follow.classList.remove('visible'); };
+    const q7rushed = document.createElement('button'); q7rushed.className = 'yn-btn'; q7rushed.textContent = '⚡ Rushed';
+    q7rushed.onclick = () => { q7rushed.className = 'yn-btn sel-yes'; q7wellpaced.className = 'yn-btn'; q7cutshort.className = 'yn-btn'; resp['q_pacing'] = 'rushed'; q7follow.classList.add('visible'); };
+    const q7cutshort = document.createElement('button'); q7cutshort.className = 'yn-btn'; q7cutshort.textContent = '✂️ Cut short';
+    q7cutshort.onclick = () => { q7cutshort.className = 'yn-btn sel-yes'; q7wellpaced.className = 'yn-btn'; q7rushed.className = 'yn-btn'; resp['q_pacing'] = 'cut-short'; q7follow.classList.add('visible'); };
+    q7yn.appendChild(q7wellpaced); q7yn.appendChild(q7rushed); q7yn.appendChild(q7cutshort);
+    q7div.appendChild(q7yn); q7div.appendChild(q7follow);
     body.appendChild(q7div);
+    requiredQuestions.push({ id: 'q_pacing', el: q7div });
 
     addLikert('q8_ending', 7, 'Was the story ending satisfying?', 'Very unsatisfying', 'Very satisfying', true);
 
@@ -1102,32 +1122,14 @@ function buildQuestionnaire(phase) {
     q8yn.appendChild(q8yes); q8yn.appendChild(q8no);
     q8div.appendChild(q8yn); q8div.appendChild(q8follow);
     body.appendChild(q8div);
+    requiredQuestions.push({ id: 'q8_knows_story', el: q8div });
 
     addLikert('q10_natural', 9, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
-
-    const q11div = document.createElement('div'); q11div.className = 'q-item time-highlight';
-    const q11lbl = document.createElement('label');
-    q11lbl.innerHTML = '<span class="q-num tc">10.</span>Did any part of the story feel rushed or cut short?';
-    q11div.appendChild(q11lbl);
-    const q11yn = document.createElement('div'); q11yn.className = 'yes-no';
-    const q11follow = document.createElement('div'); q11follow.className = 'derail-followup';
-    const q11ta = document.createElement('textarea');
-    q11ta.placeholder = 'Which part felt rushed? What was missing?';
-    q11ta.oninput = () => { resp['q11_rushed_detail'] = q11ta.value; };
-    const q11lbl2 = document.createElement('label'); q11lbl2.textContent = 'What felt rushed?';
-    q11follow.appendChild(q11lbl2); q11follow.appendChild(q11ta);
-    const q11yes = document.createElement('button'); q11yes.className = 'yn-btn'; q11yes.textContent = '⚡ Yes, it felt rushed';
-    q11yes.onclick = () => { q11yes.className = 'yn-btn sel-yes'; q11no.className = 'yn-btn'; resp['q11_rushed'] = 'yes'; q11follow.classList.add('visible'); };
-    const q11no = document.createElement('button'); q11no.className = 'yn-btn'; q11no.textContent = '✅ No, it felt natural';
-    q11no.onclick = () => { q11no.className = 'yn-btn sel-no'; q11yes.className = 'yn-btn'; resp['q11_rushed'] = 'no'; q11follow.classList.remove('visible'); };
-    q11yn.appendChild(q11yes); q11yn.appendChild(q11no);
-    q11div.appendChild(q11yn); q11div.appendChild(q11follow);
-    body.appendChild(q11div);
   }
 
   // ── General feedback ──
   addSection('General feedback');
-  const gNum = isStory2 ? 11 : 6;
+  const gNum = isStory2 ? 10 : 6;
   addTextarea('q_breakdown', gNum, 'Was there a moment where the story felt off or broke down? Describe it briefly.',
     'Optional — leave blank if nothing to add.');
   addTextarea('q_comments', gNum + 1, "Any other comments about Olaf's character or the story overall?", 'Optional');
@@ -1153,12 +1155,32 @@ function showQuestionnaire(phase) {
   else if (phase === 3) btn.textContent = 'Save & Continue to Round 2 →';
   else btn.textContent = 'Submit & Finish Study ✓';
 
+  const errEl = document.getElementById('q-submit-error');
+  errEl.textContent = '';
+  errEl.classList.remove('visible');
+
   showScreen('questionnaire-screen');
 }
 
 document.getElementById('submit-q-btn').onclick = async () => {
   const phase = activePhase;
   const btn = document.getElementById('submit-q-btn');
+  const errEl = document.getElementById('q-submit-error');
+
+  const resp = phaseResponses[phase] || {};
+  const missing = requiredQuestions.filter(q => resp[q.id] === undefined);
+  requiredQuestions.forEach(q => q.el.classList.remove('q-error'));
+
+  if (missing.length > 0) {
+    missing.forEach(q => q.el.classList.add('q-error'));
+    errEl.textContent = `Please answer all questions before submitting (${missing.length} remaining).`;
+    errEl.classList.add('visible');
+    missing[0].el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  errEl.textContent = '';
+  errEl.classList.remove('visible');
   btn.disabled = true;
   btn.textContent = 'Saving…';
 
