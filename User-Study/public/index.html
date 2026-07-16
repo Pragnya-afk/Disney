@@ -400,29 +400,31 @@
       animation: fadeUp 0.5s ease 0.6s both;
     }
 
-    /* ── Time's Up modal overlay ── */
+    /* ── Time's Up banner (docked to bottom, doesn't cover the last message) ── */
     #timesup-modal {
-      display: none; position: fixed; inset: 0; z-index: 900;
-      background: rgba(10,20,40,0.75); align-items: center; justify-content: center;
-      animation: fadeIn 0.3s ease;
+      display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+      justify-content: center; padding: 16px; pointer-events: none;
     }
     #timesup-modal.visible { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     .timesup-box {
+      pointer-events: auto;
+      display: flex; align-items: center; gap: 18px;
       background: linear-gradient(165deg, #fff8ee 0%, #fff4e0 100%);
-      border: 2px solid rgba(255,160,40,0.4); border-radius: 28px;
-      padding: 44px 40px; max-width: 440px; width: 90%;
-      text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      animation: popIn 0.4s cubic-bezier(0.34,1.3,0.64,1);
+      border: 2px solid rgba(255,160,40,0.4); border-radius: 20px;
+      padding: 16px 26px; max-width: 560px; width: 100%;
+      text-align: left; box-shadow: 0 -8px 30px rgba(0,0,0,0.28);
+      animation: slideUp 0.4s cubic-bezier(0.34,1.3,0.64,1);
     }
-    @keyframes popIn { from { transform: scale(0.75); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-    .timesup-clock { font-size: 72px; margin-bottom: 8px; animation: clock-ring 0.5s ease-in-out infinite alternate; }
+    .timesup-clock { font-size: 40px; flex-shrink: 0; animation: clock-ring 0.5s ease-in-out infinite alternate; }
     @keyframes clock-ring { 0%{ transform: rotate(-12deg) scale(1); } 100%{ transform: rotate(12deg) scale(1.06); } }
-    .timesup-title { font-family: 'Cinzel Decorative', serif; font-size: 28px; color: #b05010; margin-bottom: 12px; }
-    .timesup-sub { font-family: 'Fredoka One', sans-serif; font-size: 16px; color: #7a4a10; margin-bottom: 24px; line-height: 1.5; }
-    #timesup-go-btn { max-width: 320px; margin: 0 auto; display: block; }
+    .timesup-text { flex: 1; min-width: 0; }
+    .timesup-title { font-family: 'Cinzel Decorative', serif; font-size: 18px; color: #b05010; }
+    .timesup-sub { font-family: 'Fredoka One', sans-serif; font-size: 12px; color: #7a4a10; line-height: 1.4; margin-top: 2px; }
+    #timesup-go-btn { max-width: 200px; flex-shrink: 0; }
 
-    /* ── Thank you ── */
+    /* ── 
+    Thank you ── */
     #thankyou-screen {
       padding: 64px 44px; align-items: center; justify-content: center; gap: 22px;
       min-height: 400px;
@@ -437,19 +439,21 @@
 <div id="stars"></div>
 <div id="snowflakes"></div>
 
-<!-- ── Time's Up modal (Story 2) ── -->
+<!-- Time's Up modal (Story 2) -->
 <div id="timesup-modal">
   <div class="timesup-box">
     <div class="timesup-clock">⏰</div>
-    <div class="timesup-title">Time's Up!</div>
-    <div class="timesup-sub">Olaf gave it everything he had ☃️<br>Just a short questionnaire left!</div>
+    <div class="timesup-text">
+      <div class="timesup-title">Time's Up!</div>
+      <div class="timesup-sub">Take your time reading Olaf's last line above ☃️ — then the questionnaire.</div>
+    </div>
     <button class="primary-btn" id="timesup-go-btn">Answer the questions →</button>
   </div>
 </div>
 
 <div class="app">
 
-  <!-- ── 1. Welcome ── -->
+  <!-- 1. Welcome  -->
   <div id="welcome-screen" class="screen active">
     <div class="study-logo">
       <span class="icon">⛄</span>
@@ -466,28 +470,28 @@
         </li>
         <li>
           <div class="step-icon">2</div>
-          <div><strong>Story 2 — 2 rounds (~3 min each):</strong> Olaf retells <strong>Cinderella</strong> on a timer! Two rounds again, with a questionnaire after each.</div>
+          <div><strong>Story 2 — 2 rounds (~5 min each):</strong> Olaf retells <strong>Cinderella</strong> on a timer! Two rounds again, with a questionnaire after each.</div>
         </li>
       </ol>
     </div>
 
     <div class="info-card">
       <h2>How to play (it's easier than building a snowman)</h2>
-      <p>Type in the text box and press <strong>Enter</strong> to reply to Olaf. Try to <strong>go off-topic</strong> — ask him something random, bring up a different subject, or react to something he says and steer the conversation elsewhere.</p>
+      <p>Type in the text box and press <strong>Enter</strong> to reply to Olaf. Try to <strong>go off-topic</strong>, ask him something random, bring up a different subject, or react to something he says and steer the conversation elsewhere.</p>
       <ul class="tips-list">
         <li>Ask Olaf unrelated questions ("What's the capital of France?")</li>
         <li>Bring up random topics that have nothing to do with the story</li>
         <li>React to what he says and steer the conversation elsewhere</li>
       </ul>
       <p style="margin-top:12px; font-size:16px; color:#1a7ab5; font-family:'Fredoka One',sans-serif;">Have fun and play around with it!</p>
-      <p style="margin-top:8px; font-size:13px; color:#8aaabb; font-family:'Nunito',sans-serif; font-weight:600;">Estimated total time: ~30–35 minutes. Your responses are saved anonymously.</p>
+      <p style="margin-top:8px; font-size:13px; color:#8aaabb; font-family:'Nunito',sans-serif; font-weight:600;">Estimated total time: ~25–30 minutes. Your responses are saved anonymously.</p>
       <p style="margin-top:6px; font-size:13px; color:#a09080; font-family:'Nunito',sans-serif; font-weight:600;">You can click <strong>Exit</strong> at any point to stop and restart from the beginning.</p>
     </div>
 
     <button class="primary-btn" id="begin-btn">Begin Study ❄️</button>
   </div>
 
-  <!-- ── 2. Phase Intro (generic — configured per phase) ── -->
+  <!-- ── 2. Phase Intro (generic  configured per phase) ── -->
   <div id="phase-intro-screen" class="screen">
     <div style="padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 0;">
       <div style="display:flex;gap:8px;margin-bottom:16px;">
@@ -532,7 +536,7 @@
         <span id="pacing-label">normal</span>
       </div>
       <div id="s2-timer-wrap" class="time-panel" style="display:none;">
-        <div class="time-display" id="time-display">3:00</div>
+        <div class="time-display" id="time-display">5:00</div>
         <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar" style="width:100%;background:#3aaa4a;"></div></div>
       </div>
 
@@ -592,7 +596,7 @@
 
       <div class="intro-card" style="margin-bottom:20px;">
         <h3>Story 2 — 2 rounds ⏱️</h3>
-        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">Olaf is going to retell <strong>Cinderella</strong> — but this time he only has <strong>3 minutes</strong> per round. You'll play through it twice and fill in a questionnaire after each round.</p>
+        <p style="font-family:'Nunito',sans-serif; font-weight:600; font-size:14px; color:var(--text-mid); line-height:1.7;">This time, Olaf is racing the clock — see if he can actually finish telling <strong>Cinderella</strong> before the 5 minutes run out. You'll play through it twice and fill in a questionnaire after each round.</p>
       </div>
 
       <button class="primary-btn" id="start-s2-btn" style="max-width:400px;">Start Story 2 ▶</button>
@@ -620,11 +624,20 @@ let serverSid = null;   // request.sid as seen by the server — does not always
 let activePhase = 0;
 let story1Order = [];
 let story2Order = [];
+function conditionForPhase(phase) {
+  if (phase === 1) return story1Order[0] || 'baseline';
+  if (phase === 2) return story1Order[1] || 'director';
+  if (phase === 3) return story2Order[0] || 'director';
+  if (phase === 4) return story2Order[1] || 'time_constrained';
+  return '';
+}
+
 let phaseResponses = {};   // {1:{}, 2:{}, 3:{}, 4:{}}
 let beatCount = 0;
 let _timesUpTriggered = false;
-let _timeLimitMinutes = 3;
+let _timeLimitMinutes = 5;
 let timePollInterval = null;
+let _timesUpModalTimer = null;
 
 // Story 1 timer
 let _s1CutoffTimer = null;
@@ -819,7 +832,7 @@ function startTimePoll() {
       const d = await r.json();
       if (!d.active) return;
 
-      const total = (_timeLimitMinutes || d.time_limit_minutes || 3) * 60;
+      const total = (_timeLimitMinutes || d.time_limit_minutes || 5) * 60;
       let elapsed = d.elapsed_seconds || 0;
       if (elapsed === 0) elapsed = (Date.now() - _wallStart) / 1000;
       const remaining = Math.max(0, total - elapsed);
@@ -867,9 +880,9 @@ function showPhaseIntro(phase) {
   const isS2 = phase >= 3;
   const storyNum = isS2 ? 2 : 1;
   const roundNum = (phase === 1 || phase === 3) ? 1 : 2;
-  const timeMin = isS2 ? 3 : 5;
+  const timeMin = 5;
   const storyTitle = isS2 ? '👠 Cinderella' : '❄️ Olaf Retells Frozen';
-  const storySub = isS2 ? 'A timed story — 3 minutes on the clock' : 'A freeform conversation — 5 minute limit';
+  const storySub = isS2 ? 'A timed story — 5 minutes on the clock' : 'A freeform conversation — 5 minute limit';
   const taskDesc = isS2
     ? 'Olaf is going to retell <strong>Cinderella</strong> — in his own very Olaf way. Be cheeky! Try to get him talking about literally anything else before the time runs out.'
     : 'Olaf is going to retell <strong>Frozen</strong> — the whole adventure, from his very personal point of view. Chat with him naturally and help the story along!';
@@ -917,7 +930,7 @@ function startPhase(phase) {
   document.getElementById('s1-time-bar').style.background = '#3aaa4a';
 
   // Reset Story 2 time display
-  document.getElementById('time-display').textContent = '3:00';
+  document.getElementById('time-display').textContent = '5:00';
   document.getElementById('time-bar').style.width = '100%';
   document.getElementById('time-bar').style.background = '#3aaa4a';
 
@@ -1051,7 +1064,23 @@ function buildQuestionnaire(phase) {
   if (isStory2) {
     // ── Story 2 extra: pacing & completeness ──
     addSection('Story pacing & completeness', true);
-    addLikert('q7_pacing', 6, 'Did the story feel well-paced — not too slow or too fast?', 'Dragged on', 'Far too rushed', true);
+
+    // Q6: did the story feel well-paced? (kept as yes/no — a 1-5 scale with
+    // "dragged on" and "far too rushed" as the two ends made the middle
+    // option read as ambiguous rather than clearly "well paced")
+    const q7div = document.createElement('div'); q7div.className = 'q-item time-highlight';
+    const q7lbl = document.createElement('label');
+    q7lbl.innerHTML = '<span class="q-num tc">6.</span>Did the story feel well-paced?';
+    q7div.appendChild(q7lbl);
+    const q7yn = document.createElement('div'); q7yn.className = 'yes-no';
+    const q7yes = document.createElement('button'); q7yes.className = 'yn-btn'; q7yes.textContent = '✅ Yes, well-paced';
+    q7yes.onclick = () => { q7yes.className = 'yn-btn sel-no'; q7no.className = 'yn-btn'; resp['q7_pacing_wellpaced'] = 'yes'; };
+    const q7no = document.createElement('button'); q7no.className = 'yn-btn'; q7no.textContent = '⚡ No, off-paced';
+    q7no.onclick = () => { q7no.className = 'yn-btn sel-yes'; q7yes.className = 'yn-btn'; resp['q7_pacing_wellpaced'] = 'no'; };
+    q7yn.appendChild(q7yes); q7yn.appendChild(q7no);
+    q7div.appendChild(q7yn);
+    body.appendChild(q7div);
+
     addLikert('q8_ending', 7, 'Was the story ending satisfying?', 'Very unsatisfying', 'Very satisfying', true);
 
     // Q8: does the participant know this story?
@@ -1068,31 +1097,11 @@ function buildQuestionnaire(phase) {
     q8div.appendChild(q8yn);
     body.appendChild(q8div);
 
-    // Q9: did all the major plot points happen? if not, which were skipped?
-    const q9div = document.createElement('div'); q9div.className = 'q-item time-highlight';
-    const q9lbl = document.createElement('label');
-    q9lbl.innerHTML = '<span class="q-num tc">9.</span>Did all the major plot points of the story happen?';
-    q9div.appendChild(q9lbl);
-    const q9yn = document.createElement('div'); q9yn.className = 'yes-no';
-    const q9follow = document.createElement('div'); q9follow.className = 'derail-followup';
-    const q9ta = document.createElement('textarea');
-    q9ta.placeholder = 'e.g. "The grandmother scene was skipped"';
-    q9ta.oninput = () => { resp['q9_plot_points_skipped'] = q9ta.value; };
-    const q9lbl2 = document.createElement('label'); q9lbl2.textContent = 'Which plot points were skipped?';
-    q9follow.appendChild(q9lbl2); q9follow.appendChild(q9ta);
-    const q9yes = document.createElement('button'); q9yes.className = 'yn-btn'; q9yes.textContent = '✅ Yes, all happened';
-    q9yes.onclick = () => { q9yes.className = 'yn-btn sel-no'; q9no.className = 'yn-btn'; resp['q9_plot_points_complete'] = 'yes'; q9follow.classList.remove('visible'); };
-    const q9no = document.createElement('button'); q9no.className = 'yn-btn'; q9no.textContent = '⚡ No, some were skipped';
-    q9no.onclick = () => { q9no.className = 'yn-btn sel-yes'; q9yes.className = 'yn-btn'; resp['q9_plot_points_complete'] = 'no'; q9follow.classList.add('visible'); };
-    q9yn.appendChild(q9yes); q9yn.appendChild(q9no);
-    q9div.appendChild(q9yn); q9div.appendChild(q9follow);
-    body.appendChild(q9div);
-
-    addLikert('q10_natural', 10, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
+    addLikert('q10_natural', 9, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
 
     const q11div = document.createElement('div'); q11div.className = 'q-item time-highlight';
     const q11lbl = document.createElement('label');
-    q11lbl.innerHTML = '<span class="q-num tc">11.</span>Did any part of the story feel rushed or cut short?';
+    q11lbl.innerHTML = '<span class="q-num tc">10.</span>Did any part of the story feel rushed or cut short?';
     q11div.appendChild(q11lbl);
     const q11yn = document.createElement('div'); q11yn.className = 'yes-no';
     const q11follow = document.createElement('div'); q11follow.className = 'derail-followup';
@@ -1112,7 +1121,7 @@ function buildQuestionnaire(phase) {
 
   // ── General feedback ──
   addSection('General feedback');
-  const gNum = isStory2 ? 12 : 6;
+  const gNum = isStory2 ? 11 : 6;
   addTextarea('q_breakdown', gNum, 'Was there a moment where the story felt off or broke down? Describe it briefly.',
     'Optional — leave blank if nothing to add.');
   addTextarea('q_comments', gNum + 1, "Any other comments about Olaf's character or the story overall?", 'Optional');
@@ -1185,20 +1194,22 @@ function connectSocket() {
     const phase = data.phase;
     setThinking(false);
     if (phase >= 3) {
-      _timeLimitMinutes = 3;
-      document.getElementById('time-display').textContent = '3:00';
+      _timeLimitMinutes = 5;
+      document.getElementById('time-display').textContent = '5:00';
       startTimePoll();
       fetch(`${SERVER}/state?sid=${serverSid}`).then(r => r.json()).then(s => {
         beatCount = (s.beats || []).length;
-        buildBeatTracker(beatCount);
-        document.getElementById('beat-col').style.display = 'flex';
+        if (conditionForPhase(phase) === 'time_constrained') {
+          buildBeatTracker(beatCount);
+          document.getElementById('beat-col').style.display = 'flex';
+        }
       }).catch(() => {});
     }
   });
 
   socket.on('director_decision', data => {
     setThinking(true, 'Olaf is responding…');
-    if (activePhase >= 3 && data && data.pacing_mode) {
+    if (activePhase >= 3 && conditionForPhase(activePhase) === 'time_constrained' && data && data.pacing_mode) {
       updatePacingBadge(data.pacing_mode);
     }
   });
@@ -1219,10 +1230,11 @@ function connectSocket() {
       // otherwise go straight to questionnaire
       if (!_s1HardCutoff) showQuestionnaire(phase);
     } else {
-      // Story 2: always show the time's up modal then questionnaire
+      // Story 2: always show the time's up banner then questionnaire.
+      // Delay it so the user has time to actually read Olaf's final line.
       stopTimePoll();
       clearAudio(); setThinking(false); setBusy(false);
-      showTimesUpModal();
+      _timesUpModalTimer = setTimeout(showTimesUpModal, 3000);
     }
   });
 
@@ -1251,6 +1263,7 @@ function cancelStudy() {
   clearS1Timer();
   _s1HardCutoff = false;
   stopTimePoll();
+  if (_timesUpModalTimer) { clearTimeout(_timesUpModalTimer); _timesUpModalTimer = null; }
   clearAudio();
   setBusy(false);
   setThinking(false);
@@ -1263,14 +1276,14 @@ function cancelStudy() {
   phaseResponses = {};
   beatCount = 0;
   _timesUpTriggered = false;
-  _timeLimitMinutes = 3;
+  _timeLimitMinutes = 5;
 
   document.getElementById('chat-log').innerHTML = '';
   document.getElementById('beat-tracker').innerHTML = '';
   document.getElementById('s1-countdown').textContent = '5:00';
   document.getElementById('s1-time-bar').style.width = '100%';
   document.getElementById('s1-time-bar').style.background = '#3aaa4a';
-  document.getElementById('time-display').textContent = '3:00';
+  document.getElementById('time-display').textContent = '5:00';
   document.getElementById('time-bar').style.width = '100%';
   document.getElementById('time-bar').style.background = '#3aaa4a';
   document.getElementById('beat-col').style.display = 'none';

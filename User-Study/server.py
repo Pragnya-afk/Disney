@@ -31,7 +31,7 @@ from baseline.main import (
 STORY_1_KEY = "olaf_retells_frozen_1_no_derailment"
 STORY_2_KEY = "olaf_retells_cinderella_no_derailment"
 STORY_1_TIME_LIMIT = 5.0   # minutes — frontend-enforced hard cutoff
-STORY_2_TIME_LIMIT = 3.0   # minutes — server-enforced
+STORY_2_TIME_LIMIT = 5.0   # minutes — server-enforced
 AUTO_ADVANCE_SECONDS = 60
 
 _SCENARIO_REGISTRY = {sc["scenario_name"]: sc for sc in NO_DERAILMENT_SCENARIOS}
@@ -65,7 +65,7 @@ class Session:
     state: dict = field(default_factory=lambda: {
         "beat_index": 0, "completed_beats": [], "story_so_far": "",
         "turns_in_current_beat": 0, "expansion_index": 0,
-        "beats": [], "story_topic": "", "scenario_name": "", "time_limit": 3.0,
+        "beats": [], "story_topic": "", "scenario_name": "", "time_limit": 5.0,
     })
     transcript: list = field(default_factory=list)
     monitor: "TemporalMonitor | None" = None
@@ -220,7 +220,7 @@ def _director_prompt(state: dict, timed: bool) -> str:
     cb = beats[si]
     nb = beats[si + 1]["name"] if si < len(beats) - 1 else "None"
     tail = state["story_so_far"][-600:] if state["story_so_far"] else "(story just started)"
-    tl = state.get("time_limit", 3.0)
+    tl = state.get("time_limit", 5.0)
 
     time_line = f"\nThe story has a target duration of {tl} minutes.\n" if timed else ""
     pacing = """
@@ -244,7 +244,7 @@ Do not speak until you have the director's instruction.
 
 ## Actor Rules
 - Speak only as Olaf. Never mention the Director or the tool.
-- Keep responses short: 2–4 sentences, natural when read.
+- Keep responses short: 3–5 sentences, natural when read.
 - The director_instruction in the tool result is mandatory — realize it.
 - Vary tone: sometimes excited, sometimes curious, sometimes gentle.
 - Do not start most turns with "Oh". Do not repeat the same phrases.
@@ -372,7 +372,7 @@ def reset_story(sess: Session, phase: int):
 
     if phase in (3, 4):
         if cond == "time_constrained":
-            final_buffer = max(30.0, min(60.0, tl * 60 * 0.20))
+            final_buffer = 40.0
             sess.monitor = TemporalMonitor(
                 time_limit_minutes=tl,
                 total_beats=len(sc["beats"]),
@@ -457,6 +457,7 @@ def handle_director_tool(sess: Session, ws, event: dict):
             return [f"- {b['name']} [{b.get('importance','medium').upper()}]: {b['goal']}" for b in rem]
 
         suggested_exp = None
+        next_high_idx = None
         if pacing_mode == "too_fast":
             decision["should_complete_beat"] = False
             exps = cb.get("expansions", [])
@@ -487,8 +488,11 @@ def handle_director_tool(sess: Session, ws, event: dict):
                 )
         elif pacing_mode == "critical":
             decision["should_complete_beat"] = True
-            next_high = next((b for b in beats[si + 1:] if b.get("importance") == "high"), None)
-            if next_high:
+            next_high_idx = next(
+                (i for i in range(si + 1, len(beats)) if beats[i].get("importance") == "high"), None
+            )
+            if next_high_idx is not None:
+                next_high = beats[next_high_idx]
                 decision["director_instruction"] = (
                     decision.get("director_instruction", "") +
                     f" Bridge immediately to: {next_high['name']} — {next_high['goal']}"
@@ -498,12 +502,15 @@ def handle_director_tool(sess: Session, ws, event: dict):
             with sess.lock:
                 idx = sess.state["beat_index"]
                 if pacing_mode == "final":
-                    for b in beats[idx:]:
-                        sess.state["completed_beats"].append(b["name"])
-                    sess.state["beat_index"] = len(beats)
-                elif idx < len(beats):
-                    sess.state["completed_beats"].append(beats[idx]["name"])
-                    sess.state["beat_index"] += 1
+                    target = len(beats)
+                elif pacing_mode == "critical" and next_high_idx is not None:
+                    target = next_high_idx
+                else:
+                    target = idx + 1
+                target = min(target, len(beats))
+                if idx < target:
+                    sess.state["completed_beats"].extend(b["name"] for b in beats[idx:target])
+                    sess.state["beat_index"] = target
                 sess.state["turns_in_current_beat"] = 0
                 sess.state["expansion_index"] = 0
                 print(f"[Beat → {sess.state['beat_index']} | {pacing_mode}]")
@@ -612,7 +619,6 @@ def _save_phase_data(sess: Session, phase: int, transcript_copy: list, snap: dic
         "completed_beats": snap["completed_beats"],
         "elapsed_seconds": round(elapsed, 2),
         "time_limit_minutes": sess.time_limit_for(phase),
-        "story_so_far": snap.get("story_so_far", ""),
         "turns": transcript_copy,
     }
     if abandoned:
