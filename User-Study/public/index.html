@@ -1089,12 +1089,18 @@ function buildQuestionnaire(phase) {
     q8lbl.innerHTML = '<span class="q-num tc">8.</span>Were you already familiar with this story before this session?';
     q8div.appendChild(q8lbl);
     const q8yn = document.createElement('div'); q8yn.className = 'yes-no';
+    const q8follow = document.createElement('div'); q8follow.className = 'derail-followup';
+    const q8ta = document.createElement('textarea');
+    q8ta.placeholder = 'Were any plot points missing?';
+    q8ta.oninput = () => { resp['q8_missing_plot_points'] = q8ta.value; };
+    const q8lbl2 = document.createElement('label'); q8lbl2.textContent = 'Were any plot points missing?';
+    q8follow.appendChild(q8lbl2); q8follow.appendChild(q8ta);
     const q8yes = document.createElement('button'); q8yes.className = 'yn-btn'; q8yes.textContent = '📖 Yes, I know it';
-    q8yes.onclick = () => { q8yes.className = 'yn-btn sel-neutral'; q8no.className = 'yn-btn'; resp['q8_knows_story'] = 'yes'; };
+    q8yes.onclick = () => { q8yes.className = 'yn-btn sel-neutral'; q8no.className = 'yn-btn'; resp['q8_knows_story'] = 'yes'; q8follow.classList.add('visible'); };
     const q8no = document.createElement('button'); q8no.className = 'yn-btn'; q8no.textContent = '🤷 No, I don\'t';
-    q8no.onclick = () => { q8no.className = 'yn-btn sel-neutral'; q8yes.className = 'yn-btn'; resp['q8_knows_story'] = 'no'; };
+    q8no.onclick = () => { q8no.className = 'yn-btn sel-neutral'; q8yes.className = 'yn-btn'; resp['q8_knows_story'] = 'no'; q8follow.classList.remove('visible'); };
     q8yn.appendChild(q8yes); q8yn.appendChild(q8no);
-    q8div.appendChild(q8yn);
+    q8div.appendChild(q8yn); q8div.appendChild(q8follow);
     body.appendChild(q8div);
 
     addLikert('q10_natural', 9, 'Did the story feel natural — like a genuine conversation rather than a scripted performance?', 'Not at all natural', 'Completely natural', true);
