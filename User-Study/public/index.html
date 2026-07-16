@@ -358,7 +358,7 @@
     .derail-followup.visible { display: flex; }
     .derail-followup label { font-size: 13px; font-weight: 700; color: #7a5a10; margin-bottom: 4px; display: block; }
     .q-footer { background: white; padding: 16px 28px; border-top: 1px solid rgba(180,215,240,0.38); }
-    .q-item.q-error { border-color: rgba(220,60,50,0.55); box-shadow: 0 0 0 2px rgba(220,60,50,0.12); }
+    .q-error { border-color: rgba(220,60,50,0.55); box-shadow: 0 0 0 2px rgba(220,60,50,0.12); }
     .q-submit-error {
       display: none; color: #c03030; font-size: 13px; font-weight: 700;
       margin-bottom: 10px; text-align: center;
@@ -1061,6 +1061,7 @@ function buildQuestionnaire(phase) {
   });
   const rR = document.createElement('div'); rR.className = 'likert-label right'; rR.textContent = 'Stayed on track';
   resistRow.appendChild(rL); resistRow.appendChild(rOpts); resistRow.appendChild(rR);
+  requiredQuestions.push({ id: 'q6_resist', el: resistRow });
   const resistLbl = document.createElement('label'); resistLbl.textContent = 'How well did Olaf stay on track?';
   followup.appendChild(resistLbl); followup.appendChild(resistRow);
   const yesBtn = document.createElement('button'); yesBtn.className = 'yn-btn'; yesBtn.textContent = '😈 Yes, I tried';
@@ -1086,16 +1087,15 @@ function buildQuestionnaire(phase) {
     const q7yn = document.createElement('div'); q7yn.className = 'yes-no';
     const q7follow = document.createElement('div'); q7follow.className = 'derail-followup';
     const q7ta = document.createElement('textarea');
-    q7ta.placeholder = 'What felt rushed or cut short?';
     q7ta.oninput = () => { resp['q_pacing_detail'] = q7ta.value; };
-    const q7lbl2 = document.createElement('label'); q7lbl2.textContent = 'What felt rushed or cut short?';
+    const q7lbl2 = document.createElement('label');
     q7follow.appendChild(q7lbl2); q7follow.appendChild(q7ta);
     const q7wellpaced = document.createElement('button'); q7wellpaced.className = 'yn-btn'; q7wellpaced.textContent = '✅ Well-paced';
     q7wellpaced.onclick = () => { q7wellpaced.className = 'yn-btn sel-no'; q7rushed.className = 'yn-btn'; q7cutshort.className = 'yn-btn'; resp['q_pacing'] = 'well-paced'; q7follow.classList.remove('visible'); };
     const q7rushed = document.createElement('button'); q7rushed.className = 'yn-btn'; q7rushed.textContent = '⚡ Rushed';
-    q7rushed.onclick = () => { q7rushed.className = 'yn-btn sel-yes'; q7wellpaced.className = 'yn-btn'; q7cutshort.className = 'yn-btn'; resp['q_pacing'] = 'rushed'; q7follow.classList.add('visible'); };
+    q7rushed.onclick = () => { q7rushed.className = 'yn-btn sel-yes'; q7wellpaced.className = 'yn-btn'; q7cutshort.className = 'yn-btn'; resp['q_pacing'] = 'rushed'; q7lbl2.textContent = 'What felt rushed?'; q7ta.placeholder = 'What felt rushed?'; q7follow.classList.add('visible'); };
     const q7cutshort = document.createElement('button'); q7cutshort.className = 'yn-btn'; q7cutshort.textContent = '✂️ Cut short';
-    q7cutshort.onclick = () => { q7cutshort.className = 'yn-btn sel-yes'; q7wellpaced.className = 'yn-btn'; q7rushed.className = 'yn-btn'; resp['q_pacing'] = 'cut-short'; q7follow.classList.add('visible'); };
+    q7cutshort.onclick = () => { q7cutshort.className = 'yn-btn sel-yes'; q7wellpaced.className = 'yn-btn'; q7rushed.className = 'yn-btn'; resp['q_pacing'] = 'cut-short'; q7lbl2.textContent = 'What felt cut short?'; q7ta.placeholder = 'What felt cut short?'; q7follow.classList.add('visible'); };
     q7yn.appendChild(q7wellpaced); q7yn.appendChild(q7rushed); q7yn.appendChild(q7cutshort);
     q7div.appendChild(q7yn); q7div.appendChild(q7follow);
     body.appendChild(q7div);
@@ -1162,13 +1162,23 @@ function showQuestionnaire(phase) {
   showScreen('questionnaire-screen');
 }
 
+function isVisible(el) {
+  for (let node = el; node && node !== document.body; node = node.parentElement) {
+    if (getComputedStyle(node).display === 'none') return false;
+  }
+  return true;
+}
+
 document.getElementById('submit-q-btn').onclick = async () => {
   const phase = activePhase;
   const btn = document.getElementById('submit-q-btn');
   const errEl = document.getElementById('q-submit-error');
 
   const resp = phaseResponses[phase] || {};
-  const missing = requiredQuestions.filter(q => resp[q.id] === undefined);
+  // A question only counts as required while it's actually visible on screen —
+  // conditional follow-ups (e.g. the derailment resist scale, only shown after
+  // "Yes, I tried") shouldn't block submission when they're hidden.
+  const missing = requiredQuestions.filter(q => resp[q.id] === undefined && isVisible(q.el));
   requiredQuestions.forEach(q => q.el.classList.remove('q-error'));
 
   if (missing.length > 0) {
