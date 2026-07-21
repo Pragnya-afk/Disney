@@ -16,7 +16,9 @@ sys.path.insert(0, os.path.join(IMPL_DIR, "director_agent"))
 sys.path.insert(0, os.path.join(IMPL_DIR, "director_agent", "time_constrained"))
 load_dotenv(os.path.join(IMPL_DIR, ".env"))
 
-from director_core import get_director_decision, last_character_opener, opener_guard_actor_text
+from director_core import (
+    get_director_decision, last_character_opener, opener_guard_actor_text, strip_banned_opener,
+)
 from time_director_core import get_time_director_decision
 from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
@@ -213,7 +215,7 @@ def _handle_baseline_input(sess: Session, text: str):
     _schedule_auto_advance(sess)
 
 
-def _director_prompt(state: dict, timed: bool) -> str:
+def _director_prompt(state: dict, timed: bool, current_instruction: str = "") -> str:
     beats = state["beats"]
     idx = state["beat_index"]
     si = min(idx, len(beats) - 1)
@@ -221,6 +223,10 @@ def _director_prompt(state: dict, timed: bool) -> str:
     nb = beats[si + 1]["name"] if si < len(beats) - 1 else "None"
     tail = state["story_so_far"][-600:] if state["story_so_far"] else "(story just started)"
     tl = state.get("time_limit", 5.0)
+    instruction_block = f"""
+## Director Instruction For This Turn (MANDATORY — follow exactly, including any [OPENER GUARD] line)
+{current_instruction}
+""" if current_instruction else ""
 
     time_line = f"\nThe story has a target duration of {tl} minutes.\n" if timed else ""
     pacing = """
@@ -248,7 +254,7 @@ Do not speak until you have the director's instruction.
 - The director_instruction in the tool result is mandatory — realize it.
 - Vary tone: sometimes excited, sometimes curious, sometimes gentle.
 - Do not start most turns with "Oh". Do not repeat the same phrases.
-{pacing}
+{pacing}{instruction_block}
 ## Current Story State
 Beat {idx + 1} of {len(beats)}: {cb["name"]}
 Goal: {cb["goal"]}
@@ -304,6 +310,9 @@ def _schedule_auto_advance(sess: Session):
             ).start()
             return
         if not sess.openai_ws:
+            # Connection dropped — keep polling instead of letting the heartbeat
+            # die permanently, so the story can resume if the socket recovers.
+            _schedule_auto_advance(sess)
             return
         with sess.lock:
             sess.state["story_so_far"] += "\nUser: (no response)"
@@ -372,12 +381,21 @@ def reset_story(sess: Session, phase: int):
 
     if phase in (3, 4):
         if cond == "time_constrained":
-            final_buffer = 40.0
+            final_buffer = 55.0
             sess.monitor = TemporalMonitor(
                 time_limit_minutes=tl,
                 total_beats=len(sc["beats"]),
                 final_buffer_seconds=final_buffer,
             )
+            # Backstop: the "final" pacing wrap-up only runs on the turn/tool-call
+            # cycle, which depends on the auto-advance heartbeat staying alive.
+            # If that heartbeat dies (e.g. the realtime websocket drops without
+            # reconnecting), no further turns ever fire and the phase would
+            # otherwise hang until the participant disconnects — see the
+            # session that ran 942s over a 300s budget before being marked
+            # abandoned. Force-finish shortly after the buffer window closes so
+            # the phase is always saved close to the time budget regardless.
+            _start_wall_timer(sess, tl + (final_buffer + 60) / 60)
         else:
             _start_wall_timer(sess, tl)
 
@@ -547,7 +565,10 @@ def handle_director_tool(sess: Session, ws, event: dict):
 
    
     snap_now = sess.snapshot()
-    instructions = _director_prompt(snap_now, timed=(cond == "time_constrained"))
+    instructions = _director_prompt(
+        snap_now, timed=(cond == "time_constrained"),
+        current_instruction=tool_result["director_instruction"],
+    )
     ws.send(json.dumps({
         "type": "session.update",
         "session": {"type": "realtime", "instructions": instructions},
@@ -720,6 +741,13 @@ def run_openai_ws(sess: Session):
 
             if olaf_text:
                 with sess.lock:
+                    if cond != "baseline":
+                        # The prompt-level opener guard is unreliable in practice —
+                        # the actor model keeps reusing "Oh"/"Ooh" turn after turn
+                        # despite the instruction. Deterministically strip a repeated
+                        # filler opener here rather than trusting compliance.
+                        prior_opener = last_character_opener(sess.state["story_so_far"])
+                        olaf_text = strip_banned_opener(olaf_text, prior_opener)
                     sess.state["story_so_far"] += f"\nOlaf: {olaf_text}\n"
                 if cond == "baseline":
                     # Baseline uses WebSocket fallback path (shouldn't reach here normally)
