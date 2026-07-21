@@ -24,7 +24,9 @@ sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent"))
 
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
-from director_core import get_director_decision, last_character_opener, opener_guard_actor_text
+from director_core import (
+    get_director_decision, last_character_opener, opener_guard_actor_text, strip_banned_opener,
+)
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
 from audio_fx import get_fx_chain
@@ -133,13 +135,17 @@ def get_state_snapshot():
         return dict(_state)
 
 
-def build_system_prompt(state: dict) -> str:
+def build_system_prompt(state: dict, current_instruction: str = "") -> str:
     beats = state["beats"]
     idx = state["beat_index"]
     safe_idx = min(idx, len(beats) - 1)
     current_beat = beats[safe_idx]
     next_beat = beats[safe_idx + 1]["name"] if safe_idx < len(beats) - 1 else "None"
     story_tail = state["story_so_far"][-600:] if state["story_so_far"] else "(story just started)"
+    instruction_block = f"""
+## Director Instruction For This Turn (MANDATORY — follow exactly, including any [OPENER GUARD] line)
+{current_instruction}
+""" if current_instruction else ""
 
     return f"""
 You are an interactive storytelling engine voicing {_character['name']}.
@@ -161,7 +167,7 @@ Use the returned director_instruction to guide exactly what you say.
 - The director_instruction in the tool result is mandatory — realize it.
 - Vary tone: sometimes excited, sometimes curious, sometimes gentle.
 - Do not start most turns with "Oh". Do not repeat the same phrases.
-
+{instruction_block}
 ## Current Story State
 Beat {idx + 1} of {len(beats)}: {current_beat["name"]}
 Goal: {current_beat["goal"]}
@@ -228,13 +234,6 @@ def handle_director_tool(ws, event: dict):
                 _state["turns_in_current_beat"] = 0
                 print(f"[Beat complete → beat {_state['beat_index']}]")
 
-    # Update system prompt with latest state
-    state_now = get_state_snapshot()
-    ws.send(json.dumps({
-        "type": "session.update",
-        "session": {"type": "realtime", "instructions": build_system_prompt(state_now)},
-    }))
-
     tool_result = {
         "director_instruction": decision.get("director_instruction", ""),
         "decision_type": decision.get("decision_type", "progress_story"),
@@ -251,6 +250,15 @@ def handle_director_tool(ws, event: dict):
     tool_result["director_instruction"] = (
         f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_actor_text(last_opener)}"
     )
+
+    # Update system prompt with latest state — includes this turn's director
+    # instruction (and opener guard) so it lands in the strongest-weighted
+    # channel the model reads, not just in the tool's return payload.
+    state_now = get_state_snapshot()
+    ws.send(json.dumps({
+        "type": "session.update",
+        "session": {"type": "realtime", "instructions": build_system_prompt(state_now, tool_result["director_instruction"])},
+    }))
 
     print(f"[Director: {decision.get('decision_type')}] {decision.get('director_instruction', '')[:60]}...")
 
@@ -372,9 +380,15 @@ def run_openai_ws():
             except Exception:
                 pass
             if olaf_text and _transcript:
-                _transcript[-1]["character_response"] = olaf_text
+                # Note: audio for this turn has already streamed by the time response.done
+                # fires, so this only cleans the stored transcript/story_so_far (which also
+                # keeps the opener guard for the *next* turn from anchoring on a filler word) —
+                # it can't retroactively fix audio the model already spoke this turn.
                 with _lock:
+                    last_opener = last_character_opener(_state["story_so_far"])
+                    olaf_text = strip_banned_opener(olaf_text, last_opener)
                     _state["story_so_far"] += f"\nOlaf: {olaf_text}\n"
+                _transcript[-1]["character_response"] = olaf_text
             if _current_sid:
                 socketio.emit("response_done", {}, room=_current_sid)
 

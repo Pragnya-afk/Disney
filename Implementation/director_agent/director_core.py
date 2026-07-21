@@ -23,7 +23,8 @@ def _normalize_opener(word: str) -> str:
 # only the literal previous word let the model bounce between spellings.
 # Stored pre-normalized so membership checks stay consistent with _normalize_opener.
 _FILLER_OPENER_FAMILY = {
-    _normalize_opener(w) for w in ("oh", "ooh", "well", "wow", "ah", "aw", "hmm", "hm")
+    _normalize_opener(w) for w in
+    ("oh", "ooh", "ooo", "well", "wow", "ah", "aw", "hmm", "hm", "mmm")
 }
 
 
@@ -41,14 +42,29 @@ def beat_pacing_label(turns_in_current_beat: int) -> str | None:
     return "stalled"
 
 
+_TURN_SPLIT_RE = re.compile(r"\n(?=(?:Olaf|User): )")
+
+
 def last_character_opener(story_so_far: str) -> str | None:
-    """Return the first word of the character's most recent line in story_so_far, if any."""
-    for line in reversed(story_so_far.strip().splitlines()):
-        line = line.strip()
-        if not line or line.lower().startswith("user:"):
+    """Return the first word of the character's most recent turn in story_so_far, if any.
+
+    Turns are split on "Olaf: "/"User: " prefixes rather than on every newline —
+    a character turn can itself contain blank lines (the reaction + story-narration
+    paragraphs), so naive splitlines() picked up trailing narration text instead
+    of the turn's actual opener, and any in-sentence colon within that trailing
+    text (e.g. "Now, picture this:") was then misread as a speaker prefix.
+    """
+    text = story_so_far.strip()
+    if not text:
+        return None
+    for turn in reversed(_TURN_SPLIT_RE.split(text)):
+        turn = turn.strip()
+        if not turn or turn.lower().startswith("user:"):
             continue
-        text = line.split(":", 1)[1].strip() if ":" in line else line
-        match = _OPENER_WORD_RE.match(text)
+        if not turn.lower().startswith("olaf:"):
+            continue
+        body = turn.split(":", 1)[1].strip()
+        match = _OPENER_WORD_RE.match(body)
         return match.group(0) if match else None
     return None
 
@@ -62,8 +78,8 @@ def opener_guard_text(last_opener: str | None) -> str:
         return (
             f'The previous line opened with "{last_opener}" — a generic filler exclamation.\n\n'
             'BANNED for this turn: the entire filler-exclamation family, not just this exact '
-            'spelling — "Oh", "Ooh", "Ohh", "Well", "Wow", "Ah", "Aw", "Hmm", and any close '
-            'variant of these. Whatever opens this turn — the director_instruction, or the '
+            'spelling — "Oh", "Ooh", "Ohh", "Ooo", "Well", "Wow", "Ah", "Aw", "Hmm", "Mmm", and '
+            'any close variant of these. Whatever opens this turn — the director_instruction, or the '
             'character line itself — must state the actual opening move explicitly: a concrete '
             'action, a name, a sound the character would genuinely make, direct address to the '
             'listener, or a line of dialogue. Do not leave the opening implicit and do not '
@@ -91,10 +107,40 @@ def opener_guard_actor_text(last_opener: str | None) -> str:
 
     if _normalize_opener(last_opener) in _FILLER_OPENER_FAMILY:
         return (
-            f'Do not open with "{last_opener}" or a similar filler (Ooh, Well, Wow, Ah, Hmm). '
+            f'Do not open with "{last_opener}" or a similar filler (Ooh, Ooo, Well, Wow, Ah, Hmm, Mmm). '
             'Use a concrete action, name, sound, or line instead.'
         )
     return f'Do not open with "{last_opener}" again — use a different opening.'
+
+
+_LEADING_WORD_RE = re.compile(r"^([A-Za-z']+)([,!.…\s—-]*\s*)")
+
+
+def strip_banned_opener(text: str, last_opener: str | None) -> str:
+    """Deterministically remove a repeated filler-family opener from generated text.
+
+    The prompt-level guard (opener_guard_actor_text) has proven unreliable in
+    practice — the actor model keeps reusing "Oh"/"Ooh" even when explicitly
+    told not to. This is the same escalation the codebase already applies to
+    the instruction itself (plain code instead of trusting LLM compliance),
+    extended to the actual output: if the new line opens with the same
+    filler family as the previous line, cut the filler and re-capitalize.
+    """
+    if not text or not last_opener:
+        return text
+    if _normalize_opener(last_opener) not in _FILLER_OPENER_FAMILY:
+        return text
+
+    match = _LEADING_WORD_RE.match(text)
+    if not match:
+        return text
+    if _normalize_opener(match.group(1)) not in _FILLER_OPENER_FAMILY:
+        return text
+
+    rest = text[match.end():]
+    if not rest:
+        return text
+    return rest[0].upper() + rest[1:]
 
 
 def build_director_prompt(
