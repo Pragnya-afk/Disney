@@ -52,6 +52,8 @@ You are an interactive AI character.
 
 Respond to the user input while staying in character.
 
+Keep responses short: 3-5 sentences, natural when read.
+
 Return valid JSON only.
 
 ## Character
