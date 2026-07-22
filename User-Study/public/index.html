@@ -188,28 +188,6 @@
       flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
-    .beat-col { display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 0; }
-    .beat-col-label { font-family: 'Fredoka One', sans-serif; font-size: 9px; color: rgba(200,230,255,0.5); letter-spacing: 0.5px; }
-    .beat-tracker { display: flex; gap: 5px; }
-    .beat-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(200,230,255,0.2); transition: all 0.3s; }
-    .beat-dot.done { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 7px rgba(245,197,24,0.7); }
-    .beat-dot.active { background: white; border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
-
-    /* ── Pacing mode badge ── */
-    .pacing-badge {
-      display: none; align-items: center; gap: 5px; flex-shrink: 0;
-      font-family: 'Fredoka One', sans-serif; font-size: 11px; letter-spacing: 0.5px;
-      padding: 4px 10px; border-radius: 8px; border: 1px solid; transition: all 0.4s ease;
-    }
-    .pacing-badge.visible { display: flex; }
-    .pacing-badge.mode-normal   { color: #7ae8a0; border-color: rgba(122,232,160,0.3); background: rgba(122,232,160,0.1); }
-    .pacing-badge.mode-too_fast { color: #7ad4f8; border-color: rgba(122,212,248,0.3); background: rgba(122,212,248,0.1); }
-    .pacing-badge.mode-hurry    { color: #f8c84a; border-color: rgba(248,200,74,0.35); background: rgba(248,200,74,0.1); }
-    .pacing-badge.mode-critical { color: #f8904a; border-color: rgba(248,144,74,0.4);  background: rgba(248,144,74,0.12); }
-    .pacing-badge.mode-final    { color: #f87070; border-color: rgba(248,112,112,0.45); background: rgba(248,112,112,0.14); animation: pace-pulse 0.9s ease-in-out infinite; }
-    @keyframes pace-pulse { 0%,100%{opacity:1} 50%{opacity:0.55} }
-    .pacing-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
-
     .time-panel { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
     .time-display {
       font-family: 'Fredoka One', sans-serif; font-size: 12px; color: rgba(255,255,255,0.92);
@@ -533,14 +511,6 @@
       </div>
 
       <!-- Story 2 elements (phases 3 & 4) -->
-      <div class="beat-col" id="beat-col" style="display:none;">
-        <div class="beat-col-label">Beats</div>
-        <div class="beat-tracker" id="beat-tracker"></div>
-      </div>
-      <div id="pacing-badge" class="pacing-badge">
-        <div class="pacing-dot"></div>
-        <span id="pacing-label">normal</span>
-      </div>
       <div id="s2-timer-wrap" class="time-panel" style="display:none;">
         <div class="time-display" id="time-display">5:00</div>
         <div class="time-bar-wrap"><div class="time-bar-fill" id="time-bar" style="width:100%;background:#3aaa4a;"></div></div>
@@ -641,7 +611,6 @@ function conditionForPhase(phase) {
 
 let phaseResponses = {};   // {1:{}, 2:{}, 3:{}, 4:{}}
 let requiredQuestions = []; // [{id, el}] for the currently-built questionnaire, used to validate submit
-let beatCount = 0;
 let _timesUpTriggered = false;
 let _timeLimitMinutes = 5;
 let timePollInterval = null;
@@ -810,25 +779,6 @@ document.getElementById('timesup-go-btn').onclick = () => {
   showQuestionnaire(activePhase);
 };
 
-// ── Beat tracker ───────────────────────────────────────────────────────────────
-function buildBeatTracker(n) {
-  const t = document.getElementById('beat-tracker');
-  t.innerHTML = '';
-  for (let i = 0; i < n; i++) {
-    const d = document.createElement('div');
-    d.className = 'beat-dot' + (i === 0 ? ' active' : '');
-    d.id = `bd-${i}`;
-    t.appendChild(d);
-  }
-}
-function updateBeatTracker(bi, total) {
-  for (let i = 0; i < total; i++) {
-    const d = document.getElementById(`bd-${i}`);
-    if (!d) continue;
-    d.className = 'beat-dot' + (i < bi ? ' done' : i === bi ? ' active' : '');
-  }
-}
-
 // ── Time polling (Story 2) ─────────────────────────────────────────────────────
 function startTimePoll() {
   stopTimePoll();
@@ -852,7 +802,6 @@ function startTimePoll() {
       const bar = document.getElementById('time-bar');
       bar.style.width = pct + '%';
       bar.style.background = pct < 15 ? '#c03030' : pct < 35 ? '#c07020' : '#3aaa4a';
-      updateBeatTracker(d.beat_index || 0, d.total_beats || beatCount);
 
       if (elapsed >= total && !_timesUpTriggered) {
         _timesUpTriggered = true;
@@ -865,21 +814,6 @@ function startTimePoll() {
 }
 function stopTimePoll() {
   if (timePollInterval) { clearInterval(timePollInterval); timePollInterval = null; }
-}
-
-// ── Pacing badge ───────────────────────────────────────────────────────────────
-const PACING_LABELS = {
-  normal: 'Normal', too_fast: 'Too Fast',
-  hurry: 'Hurry', critical: 'Critical', final: 'Final',
-};
-function updatePacingBadge(mode) {
-  const badge = document.getElementById('pacing-badge');
-  const label = document.getElementById('pacing-label');
-  badge.className = `pacing-badge visible mode-${mode}`;
-  label.textContent = PACING_LABELS[mode] || mode;
-}
-function resetPacingBadge() {
-  document.getElementById('pacing-badge').className = 'pacing-badge';
 }
 
 // ── Phase intro ────────────────────────────────────────────────────────────────
@@ -919,7 +853,6 @@ function startPhase(phase) {
 
   _s1HardCutoff = false;
   _timesUpTriggered = false;
-  beatCount = 0;
   phaseResponses[phase] = {};
 
   // Configure header
@@ -929,8 +862,6 @@ function startPhase(phase) {
   // Toggle timer elements
   document.getElementById('s1-timer-wrap').style.display = isS2 ? 'none' : '';
   document.getElementById('s2-timer-wrap').style.display = isS2 ? '' : 'none';
-  document.getElementById('beat-col').style.display = 'none';
-  resetPacingBadge();
 
   // Reset Story 1 countdown display
   document.getElementById('s1-countdown').textContent = '5:00';
@@ -944,7 +875,6 @@ function startPhase(phase) {
 
   // Clear chat
   document.getElementById('chat-log').innerHTML = '';
-  document.getElementById('beat-tracker').innerHTML = '';
 
   showScreen('session-screen');
   setThinking(true, 'Starting session…');
@@ -1235,21 +1165,11 @@ function connectSocket() {
       _timeLimitMinutes = 5;
       document.getElementById('time-display').textContent = '5:00';
       startTimePoll();
-      fetch(`${SERVER}/state?sid=${serverSid}`).then(r => r.json()).then(s => {
-        beatCount = (s.beats || []).length;
-        if (conditionForPhase(phase) === 'time_constrained') {
-          buildBeatTracker(beatCount);
-          document.getElementById('beat-col').style.display = 'flex';
-        }
-      }).catch(() => {});
     }
   });
 
   socket.on('director_decision', data => {
     setThinking(true, 'Olaf is responding…');
-    if (activePhase >= 3 && conditionForPhase(activePhase) === 'time_constrained' && data && data.pacing_mode) {
-      updatePacingBadge(data.pacing_mode);
-    }
   });
 
   socket.on('transcript_assistant', data => { appendStream(data.delta); });
@@ -1305,26 +1225,22 @@ function cancelStudy() {
   clearAudio();
   setBusy(false);
   setThinking(false);
-  resetPacingBadge();
 
   if (socket && socket.connected) socket.emit('cancel_study', {});
 
   activePhase = 0;
   story1Order = []; story2Order = [];
   phaseResponses = {};
-  beatCount = 0;
   _timesUpTriggered = false;
   _timeLimitMinutes = 5;
 
   document.getElementById('chat-log').innerHTML = '';
-  document.getElementById('beat-tracker').innerHTML = '';
   document.getElementById('s1-countdown').textContent = '5:00';
   document.getElementById('s1-time-bar').style.width = '100%';
   document.getElementById('s1-time-bar').style.background = '#3aaa4a';
   document.getElementById('time-display').textContent = '5:00';
   document.getElementById('time-bar').style.width = '100%';
   document.getElementById('time-bar').style.background = '#3aaa4a';
-  document.getElementById('beat-col').style.display = 'none';
   document.getElementById('timesup-modal').classList.remove('visible');
 
   const btn = document.getElementById('begin-btn');
