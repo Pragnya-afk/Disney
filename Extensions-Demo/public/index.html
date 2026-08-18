@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olaf Interactive Story — Extensions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="/socket.io.min.js"></script>
+  <style>
+    :root {
+      --gold: #f5c518;
+      --gold-light: #fde87a;
+      --gold-dark: #c99010;
+      --navy: #071a30;
+      --disney-blue: #1255a0;
+      --frozen: #56c4e8;
+      --text: #0d2240;
+      --text-mid: #2a4a6a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: radial-gradient(ellipse at 50% 0%, #0e2a50 0%, #060e1c 70%);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 32px 16px 56px;
+      overflow-x: hidden;
+    }
+
+    #stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .star {
+      position: absolute; background: white; border-radius: 50%;
+      animation: twinkle ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; transform: scale(0.8); }
+      50%       { opacity: 1;    transform: scale(1.2); }
+    }
+
+    .app {
+      position: relative; z-index: 10;
+      width: 100%; max-width: 720px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 26px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.12),
+                  inset 0 1px 0 rgba(255,255,255,0.9);
+      overflow: hidden;
+    }
+
+    .screen { display: none; flex-direction: column; }
+    .screen.active { display: flex; }
+
+    /* ── Start Screen ── */
+    #start-screen {
+      padding: 48px 44px 40px; align-items: center;
+      background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
+    }
+
+    .logo-area { text-align: center; margin-bottom: 28px; }
+    .logo-area .icon {
+      font-size: 76px; line-height: 1; margin-bottom: 10px; display: block;
+      animation: olaf-float 3.5s ease-in-out infinite;
+      filter: drop-shadow(0 8px 16px rgba(86,196,232,0.35));
+    }
+    @keyframes olaf-float {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50%       { transform: translateY(-10px) rotate(2deg); }
+    }
+    .logo-area h1 {
+      font-family: 'Cinzel Decorative', serif; font-size: 18px;
+      color: var(--navy); line-height: 1.35; letter-spacing: 0.3px;
+    }
+    .logo-area p {
+      font-family: 'Fredoka One', sans-serif; font-size: 13px;
+      color: #4a7a9a; margin-top: 6px; letter-spacing: 0.4px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.88); border: 1.5px solid rgba(180,220,240,0.55);
+      border-radius: 20px; padding: 22px 26px; width: 100%; margin-bottom: 16px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    }
+
+    .scenario-section { width: 100%; }
+    .scenario-section > label {
+      font-family: 'Fredoka One', sans-serif; font-size: 12px; color: var(--disney-blue);
+      letter-spacing: 0.8px; display: block; margin-bottom: 8px;
+      border-bottom: 2px solid rgba(26,85,160,0.15); padding-bottom: 4px;
+    }
+
+    .server-status { display: flex; align-items: center; gap: 7px; font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 12.5px; color: #5a7a8a; margin-bottom: 12px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #aaa; flex-shrink: 0; transition: background 0.3s; }
+    .status-dot.ok { background: #3a9a4a; }
+    .status-dot.err { background: #c03030; }
+    .status-dot.connecting { background: #e8a020; animation: blink 1s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; min-height: 80px; }
+    .scenario-btn {
+      background: rgba(255,255,255,0.85); border: 1.5px solid rgba(180,215,240,0.5);
+      border-radius: 14px; padding: 13px 14px; cursor: pointer; text-align: left; transition: all 0.15s;
+    }
+    .scenario-btn:hover { background: rgba(218,240,255,0.85); border-color: var(--disney-blue); }
+    .scenario-btn.selected { background: rgba(26,122,181,0.07); border-color: var(--disney-blue); border-width: 2px; }
+    .scenario-btn .s-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: var(--text); line-height: 1.3; }
+    .scenario-btn .s-key { font-family: 'Nunito', sans-serif; font-size: 11px; color: #7a9aaa; margin-top: 4px; }
+    .scenario-placeholder { grid-column: 1/-1; font-family: 'Nunito', sans-serif; font-size: 13px; color: #8aaabb; padding: 8px 0; }
+
+    .mode-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+    .mode-btn {
+      background: rgba(255,255,255,0.85); border: 1.5px solid rgba(180,215,240,0.5);
+      border-radius: 14px; padding: 10px 10px; cursor: pointer; text-align: left; transition: all 0.15s;
+    }
+    .mode-btn:hover { background: rgba(218,240,255,0.85); border-color: var(--disney-blue); }
+    .mode-btn.selected { background: rgba(26,122,181,0.07); border-color: var(--disney-blue); border-width: 2px; }
+    .mode-btn .m-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12.5px; color: var(--text); line-height: 1.3; }
+    .mode-btn .m-desc { font-family: 'Nunito', sans-serif; font-size: 10.5px; color: #7a9aaa; margin-top: 4px; line-height: 1.3; }
+
+    .time-limit-row { margin: -2px 0 16px; }
+    .time-limit-input-wrap {
+      display: flex; align-items: center; gap: 10px; font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 13px; color: var(--text-mid);
+    }
+    .time-limit-input-wrap input[type=range] { flex: 1; }
+    .time-limit-input-wrap span { min-width: 52px; text-align: right; }
+
+    .primary-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+      color: var(--navy); border: none; border-radius: 16px; padding: 14px;
+      font-family: 'Fredoka One', sans-serif; font-size: 18px; cursor: pointer;
+      transition: all 0.18s; box-shadow: 0 5px 20px rgba(200,150,0,0.35); letter-spacing: 0.3px;
+    }
+    .primary-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 26px rgba(200,150,0,0.45); }
+    .primary-btn:active { transform: translateY(0); }
+    .primary-btn:disabled { background: #d0d0d0; color: #888; box-shadow: none; transform: none; cursor: not-allowed; }
+
+    /* ── Session Screen ── */
+    #session-screen { min-height: 580px; }
+
+    .session-header {
+      background: linear-gradient(to right, #071a30, #0a2445, #071a30);
+      border-bottom: 2px solid rgba(245,197,24,0.25);
+      padding: 12px 20px; display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .header-scenario { flex: 1; min-width: 0; }
+    .header-scenario .sc-label {
+      font-family: 'Fredoka One', sans-serif; font-size: 9px; color: rgba(200,230,255,0.55);
+      letter-spacing: 0.8px;
+    }
+    .header-scenario .sc-name {
+      font-family: 'Fredoka One', sans-serif; font-size: 14px; color: rgba(255,255,255,0.92);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .beat-col { display: flex; flex-direction: column; align-items: center; gap: 3px; flex-shrink: 1; min-width: 0; max-width: 200px; }
+    .beat-col-label {
+      font-family: 'Fredoka One', sans-serif; font-size: 9px; color: rgba(200,230,255,0.5); letter-spacing: 0.5px;
+      max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .beat-tracker { display: flex; gap: 5px; }
+    .beat-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(200,230,255,0.2); transition: all 0.3s; }
+    .beat-dot.done { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 7px rgba(245,197,24,0.7); }
+    .beat-dot.active { background: white; border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
+
+    .time-col { display: flex; flex-direction: column; align-items: center; gap: 2px; flex-shrink: 0; }
+    .time-remaining { font-family: 'Fredoka One', sans-serif; font-size: 13px; color: #fff; letter-spacing: 0.3px; }
+    .time-remaining.low { color: #ff6060; animation: blink 1s infinite; }
+    .pacing-badge {
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 8px; letter-spacing: 0.4px;
+      padding: 1px 6px; border-radius: 6px; text-transform: uppercase; margin-top: 1px; white-space: nowrap;
+    }
+    .pacing-badge.normal, .pacing-badge.progress_story { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+    .pacing-badge.too_fast { background: rgba(80,180,255,0.2); color: #7fd0ff; }
+    .pacing-badge.hurry { background: rgba(245,197,24,0.2); color: var(--gold); }
+    .pacing-badge.critical { background: rgba(255,120,40,0.25); color: #ff9550; }
+    .pacing-badge.final { background: rgba(220,60,50,0.3); color: #ff8080; }
+
+    .stop-btn {
+      background: rgba(220,60,50,0.1); border: 1px solid rgba(220,60,50,0.28);
+      color: #ff9090; border-radius: 9px; padding: 5px 13px;
+      font-family: 'Fredoka One', sans-serif; font-size: 12px; cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+    }
+    .stop-btn:hover { background: rgba(220,60,50,0.2); }
+    .mute-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1.5px solid rgba(200,230,255,0.25); background: rgba(255,255,255,0.08);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 14px; transition: all 0.15s; flex-shrink: 0;
+    }
+    .mute-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(200,230,255,0.5); }
+    .mute-btn.muted { background: rgba(80,80,80,0.15); }
+    .pause-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1.5px solid rgba(200,230,255,0.25); background: rgba(255,255,255,0.08);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; color: rgba(255,255,255,0.85); transition: all 0.15s; flex-shrink: 0;
+    }
+    .pause-btn:hover { background: rgba(255,255,255,0.15); border-color: rgba(200,230,255,0.5); }
+
+    .story-tabs {
+      display: flex; gap: 6px; padding: 8px 14px; overflow-x: auto;
+      background: rgba(7,26,48,0.5); border-bottom: 1px solid rgba(245,197,24,0.15); flex-shrink: 0;
+    }
+    .story-tab {
+      display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 11.5px; color: rgba(255,255,255,0.7);
+      white-space: nowrap; transition: all 0.15s; flex-shrink: 0;
+    }
+    .story-tab:hover { background: rgba(255,255,255,0.12); }
+    .story-tab.active { background: rgba(245,197,24,0.18); border-color: rgba(245,197,24,0.5); color: #fff; }
+    .story-tab.closed { opacity: 0.55; }
+    .story-tab .tab-mode-badge {
+      font-size: 9px; padding: 1px 5px; border-radius: 6px; background: rgba(255,255,255,0.12); letter-spacing: 0.3px;
+    }
+    .story-tab .tab-dots { display: flex; gap: 2px; }
+    .story-tab .tab-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+    .story-tab .tab-dot.done { background: var(--gold); }
+    .story-tab-new {
+      padding: 6px 12px; border-radius: 10px; background: none; border: 1px dashed rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.6); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 11.5px;
+      cursor: pointer; flex-shrink: 0; transition: all 0.15s;
+    }
+    .story-tab-new:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+    .chat-log {
+      flex: 1; overflow-y: auto; padding: 18px 20px;
+      display: flex; flex-direction: column; gap: 10px;
+      min-height: 320px; max-height: 400px;
+      background: linear-gradient(to bottom, #f3f8fc 0%, #f8fbfe 100%);
+    }
+
+    .msg { display: flex; gap: 10px; align-items: flex-start; animation: fadeUp 0.22s ease; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(7px)} to{opacity:1;transform:translateY(0)} }
+    .msg.user { flex-direction: row-reverse; }
+
+    .msg-avatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
+      background: white; border: 1.5px solid rgba(180,215,240,0.5); box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+    }
+
+    .msg-bubble { max-width: 75%; padding: 10px 14px; border-radius: 15px; font-size: 13.5px; line-height: 1.58; }
+    .msg.system .msg-bubble {
+      background: linear-gradient(135deg, rgba(218,240,255,0.85), rgba(228,246,255,0.85));
+      color: #3a5a6a; font-size: 12.5px; border-radius: 10px;
+      font-style: italic; border: 1px solid rgba(180,215,240,0.4);
+    }
+    .msg.olaf .msg-bubble {
+      background: white; color: var(--text); border-radius: 4px 15px 15px 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07); border: 1px solid rgba(180,215,240,0.4);
+    }
+    .msg.user .msg-bubble {
+      background: linear-gradient(135deg, #1a7ab5, #0d5a8a); color: white;
+      border-radius: 15px 4px 15px 15px; box-shadow: 0 2px 12px rgba(13,90,138,0.28);
+    }
+    .msg.olaf.streaming .msg-bubble { border-color: rgba(26,122,181,0.3); }
+    .cursor { display: inline-block; width: 2px; height: 13px; background: var(--disney-blue); margin-left: 2px; vertical-align: middle; animation: blink-cur 0.8s infinite; }
+    @keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .thinking-bar {
+      padding: 8px 20px; display: none; align-items: center; gap: 8px;
+      font-family: 'Nunito', sans-serif; font-weight: 600;
+      font-size: 12px; color: #5a7a8a; flex-shrink: 0;
+      background: rgba(238,248,255,0.85); border-top: 1px solid rgba(180,215,240,0.3);
+    }
+    .thinking-bar.visible { display: flex; }
+    .dots span {
+      display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--frozen); margin-right: 3px; animation: bounce 1.2s infinite;
+    }
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce { 0%,80%,100%{transform:scale(0.65)} 40%{transform:scale(1)} }
+
+    .input-area {
+      padding: 12px 20px; background: white;
+      border-top: 1px solid rgba(180,215,240,0.38);
+      display: flex; gap: 9px; align-items: center; flex-shrink: 0;
+    }
+    .mic-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1.5px solid rgba(150,205,235,0.5); background: rgba(246,251,255,0.9);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; transition: all 0.15s; flex-shrink: 0;
+    }
+    .mic-btn:hover { background: rgba(218,240,255,0.85); border-color: var(--disney-blue); }
+    .mic-btn.listening { background: rgba(220,60,50,0.08); border-color: rgba(220,60,50,0.5); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(220,60,50,0.2)} 50%{box-shadow:0 0 0 6px rgba(220,60,50,0)} }
+
+    .input-area input {
+      flex: 1; border: 1.5px solid rgba(150,205,235,0.5); border-radius: 13px;
+      padding: 9px 14px; font-family: 'Nunito', sans-serif; font-size: 13.5px;
+      background: rgba(246,251,255,0.95); color: var(--text); outline: none; transition: border-color 0.15s;
+    }
+    .input-area input:focus { border-color: var(--disney-blue); }
+    .input-area input::placeholder { color: #9ab8cc; }
+    .input-area input:disabled { opacity: 0.4; }
+    .send-btn {
+      background: linear-gradient(135deg, #1a7ab5, #0d5a8a); color: white; border: none;
+      border-radius: 13px; padding: 9px 18px; font-family: 'Fredoka One', sans-serif;
+      font-size: 14px; cursor: pointer; flex-shrink: 0; transition: all 0.15s;
+      box-shadow: 0 3px 10px rgba(13,90,138,0.3);
+    }
+    .send-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(13,90,138,0.4); }
+    .send-btn:disabled { background: #c0c8d0; box-shadow: none; transform: none; cursor: not-allowed; }
+
+    /* ── Thank you ── */
+    #thankyou-screen {
+      padding: 64px 44px; align-items: center; justify-content: center; gap: 20px;
+      min-height: 400px; text-align: center;
+      background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
+    }
+    .ty-icon { font-size: 84px; animation: olaf-float 2.5s ease-in-out infinite; filter: drop-shadow(0 8px 18px rgba(86,196,232,0.35)); }
+    .ty-title { font-family: 'Cinzel Decorative', serif; font-size: 28px; color: var(--navy); }
+    .ty-sub { font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 14px; color: var(--text-mid); max-width: 380px; line-height: 1.7; }
+    .restart-btn {
+      background: rgba(255,255,255,0.88); border: 1.5px solid rgba(180,215,240,0.6);
+      border-radius: 14px; padding: 11px 28px; font-family: 'Fredoka One', sans-serif;
+      font-size: 16px; color: var(--disney-blue); cursor: pointer; transition: all 0.15s;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+    .restart-btn:hover { background: rgba(218,240,255,0.9); transform: translateY(-2px); }
+
+    /* ── Story ended ── */
+    #ended-screen {
+      padding: 64px 44px; align-items: center; justify-content: center; gap: 18px;
+      min-height: 400px; text-align: center;
+      background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
+    }
+    .ended-sub-detail { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 12.5px; color: #7a9aaa; }
+    .ended-btn-row { display: flex; gap: 12px; margin-top: 6px; }
+    .ended-btn-row .restart-btn.primary {
+      background: var(--disney-blue); color: #fff; border-color: var(--disney-blue);
+    }
+    .ended-btn-row .restart-btn.primary:hover { background: #155a8a; }
+
+    /* ── Beat Generator ── */
+    .link-btn {
+      background: none; border: none; color: var(--disney-blue); font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 13px; cursor: pointer; text-decoration: underline; padding: 4px; align-self: center;
+    }
+    #generate-screen, #review-screen {
+      padding: 40px 40px 34px; align-items: stretch;
+      background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
+    }
+    .gen-title { font-family: 'Cinzel Decorative', serif; font-size: 19px; color: var(--navy); text-align: center; margin-bottom: 16px; }
+    .field-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 11px; color: #7a9aaa; margin-bottom: 5px; display: block; }
+    .story-prompt-input {
+      width: 100%; min-height: 90px; border-radius: 14px; border: 1.5px solid rgba(180,215,240,0.6);
+      padding: 12px 14px; font-family: 'Nunito', sans-serif; font-size: 13.5px; color: var(--text); resize: vertical;
+    }
+    .beat-count-row { display: flex; align-items: center; gap: 10px; margin: 14px 0 18px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px; color: var(--text-mid); }
+    .beat-count-row input[type=range] { flex: 1; }
+    .gen-error { color: #c03030; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px; margin-top: 10px; text-align: center; }
+
+    .beat-list { display: flex; flex-direction: column; gap: 10px; max-height: 320px; overflow-y: auto; margin: 12px 0; padding-right: 4px; }
+    .beat-card { background: rgba(255,255,255,0.9); border: 1.5px solid rgba(180,215,240,0.5); border-radius: 14px; padding: 12px 14px; }
+    .beat-card-head { display: flex; gap: 8px; align-items: center; }
+    .beat-name-input { flex: 1; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; border: 1px solid rgba(180,215,240,0.6); border-radius: 8px; padding: 6px 8px; color: var(--text); }
+    .beat-importance-select { font-family: 'Nunito', sans-serif; font-size: 12px; border: 1px solid rgba(180,215,240,0.6); border-radius: 8px; padding: 6px; background: #fff; }
+    .beat-remove-btn { background: none; border: none; color: #c03030; font-size: 17px; cursor: pointer; padding: 2px 6px; line-height: 1; }
+    .beat-goal-input, .beat-expansions-input {
+      width: 100%; font-family: 'Nunito', sans-serif; font-size: 12.5px; border: 1px solid rgba(180,215,240,0.5);
+      border-radius: 8px; padding: 6px 8px; margin-top: 3px; resize: vertical; color: var(--text-mid);
+    }
+    .beat-field-label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 10px; color: #9ab5c2; margin-top: 7px; display: block; }
+    .add-beat-btn {
+      align-self: center; background: rgba(255,255,255,0.85); border: 1.5px dashed rgba(180,215,240,0.7);
+      border-radius: 12px; padding: 8px 18px; font-family: 'Nunito', sans-serif; font-weight: 700;
+      font-size: 12.5px; color: var(--disney-blue); cursor: pointer; margin-bottom: 6px;
+    }
+    .review-btn-row { display: flex; gap: 10px; margin: 8px 0 4px; }
+    .review-btn-row .restart-btn { flex: 0 0 auto; }
+    .review-btn-row .primary-btn { flex: 1; }
+    .review-btn-row .primary-btn:disabled, .add-beat-btn:disabled, #generate-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="app">
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="screen active">
+    <div class="logo-area">
+      <span class="icon">⛄</span>
+      <h1>Olaf Interactive Story — Extensions</h1>
+      <p>director mode, phase 1 scaffold</p>
+    </div>
+
+    <div class="scenario-section">
+      <div class="server-status">
+        <div class="status-dot connecting" id="status-dot"></div>
+        <span id="status-text">Connecting to server…</span>
+      </div>
+      <label>Choose a story</label>
+      <div class="scenario-grid" id="scenario-grid">
+        <div class="scenario-placeholder">Loading scenarios…</div>
+      </div>
+      <label>Director mode</label>
+      <div class="mode-toggle" id="mode-toggle">
+        <button class="mode-btn selected" id="mode-btn-director" data-mode="director">
+          <div class="m-title">Strict Director</div>
+          <div class="m-desc">Stays on track, redirects derailment</div>
+        </button>
+        <button class="mode-btn" id="mode-btn-lenient" data-mode="lenient">
+          <div class="m-title">Lenient</div>
+          <div class="m-desc">Can stop, skip ahead, or summarize</div>
+        </button>
+        <button class="mode-btn" id="mode-btn-time_constrained" data-mode="time_constrained">
+          <div class="m-title">Time Constrained</div>
+          <div class="m-desc">Paces itself to fit a time limit</div>
+        </button>
+      </div>
+      <div class="time-limit-row" id="time-limit-row" style="display:none;">
+        <label class="field-label">Target duration</label>
+        <div class="time-limit-input-wrap">
+          <input type="range" id="time-limit-slider" min="1" max="20" value="5" />
+          <span id="time-limit-value">5 min</span>
+        </div>
+      </div>
+      <button class="primary-btn" id="start-btn" disabled>Start Story ❄️</button>
+      <button class="link-btn" id="create-story-btn" style="margin-top:10px;">✨ Create Your Own Story</button>
+    </div>
+  </div>
+
+  <!-- GENERATE SCREEN -->
+  <div id="generate-screen" class="screen">
+    <div class="gen-title">✨ Create Your Own Story</div>
+    <label class="field-label">What story should Olaf tell?</label>
+    <textarea class="story-prompt-input" id="story-prompt-input"
+      placeholder="e.g. Olaf helps a lost penguin find its way back to its family before the northern lights fade..."></textarea>
+    <div class="beat-count-row">
+      <span>Beats:</span>
+      <input type="range" id="beat-count-slider" min="4" max="8" value="6" />
+      <span id="beat-count-value">6</span>
+    </div>
+    <button class="primary-btn" id="generate-btn">Generate Beats ✨</button>
+    <div class="gen-error" id="gen-error" style="display:none;"></div>
+    <button class="link-btn" style="margin-top:14px;" onclick="showScreen('start-screen')">← Back</button>
+  </div>
+
+  <!-- REVIEW SCREEN -->
+  <div id="review-screen" class="screen">
+    <div class="gen-title" id="review-title">Review Your Story</div>
+    <label class="field-label">Story topic (the premise Olaf works from)</label>
+    <textarea class="story-prompt-input" id="review-topic-input" style="min-height:56px;"></textarea>
+    <div class="beat-list" id="beat-list"></div>
+    <button class="add-beat-btn" id="add-beat-btn">+ Add Beat</button>
+    <div class="gen-error" id="review-error" style="display:none;"></div>
+
+    <label class="field-label" style="margin-top:8px;">Director mode</label>
+    <div class="mode-toggle" id="review-mode-toggle">
+      <button class="mode-btn selected" data-mode="director">
+        <div class="m-title">Strict Director</div>
+        <div class="m-desc">Stays on track, redirects derailment</div>
+      </button>
+      <button class="mode-btn" data-mode="lenient">
+        <div class="m-title">Lenient</div>
+        <div class="m-desc">Can stop, skip ahead, or summarize</div>
+      </button>
+      <button class="mode-btn" data-mode="time_constrained">
+        <div class="m-title">Time Constrained</div>
+        <div class="m-desc">Paces itself to fit a time limit</div>
+      </button>
+    </div>
+    <div class="time-limit-row" id="review-time-limit-row" style="display:none;">
+      <label class="field-label">Target duration</label>
+      <div class="time-limit-input-wrap">
+        <input type="range" id="review-time-limit-slider" min="1" max="20" value="5" />
+        <span id="review-time-limit-value">5 min</span>
+      </div>
+    </div>
+
+    <div class="review-btn-row">
+      <button class="restart-btn" id="regenerate-btn">↻ Regenerate</button>
+      <button class="primary-btn" id="start-generated-btn">Start Story ❄️</button>
+    </div>
+    <button class="link-btn" onclick="showScreen('start-screen')">← Back to start</button>
+  </div>
+
+  <!-- SESSION SCREEN -->
+  <div id="session-screen" class="screen">
+    <div class="session-header">
+      <div class="header-scenario">
+        <div class="sc-label">Now playing</div>
+        <div class="sc-name" id="header-scenario-name">—</div>
+      </div>
+      <div class="beat-col">
+        <div class="beat-col-label" id="beat-col-label">Beat</div>
+        <div class="beat-tracker" id="beat-tracker"></div>
+      </div>
+      <div class="time-col" id="time-col" style="display:none;">
+        <div class="time-remaining" id="time-remaining">—</div>
+        <div class="pacing-badge normal" id="pacing-badge">normal</div>
+      </div>
+      <button class="mute-btn" id="mute-btn" title="Toggle audio">🔊</button>
+      <button class="pause-btn" id="pause-btn" title="Pause this story">⏸</button>
+      <button class="stop-btn" id="stop-btn">Stop ■</button>
+    </div>
+
+    <div class="story-tabs" id="story-tabs"></div>
+
+    <div class="chat-log" id="chat-log"></div>
+
+    <div class="thinking-bar" id="thinking-bar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <span id="thinking-text">Olaf is thinking…</span>
+    </div>
+
+    <div class="input-area">
+      <button class="mic-btn" id="mic-btn" title="Click to speak">🎤</button>
+      <input type="text" id="user-input" placeholder="Say something to Olaf…" autocomplete="off" />
+      <button class="send-btn" id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <!-- THANK YOU SCREEN -->
+  <div id="thankyou-screen" class="screen">
+    <div class="ty-icon">⛄</div>
+    <div class="ty-title">Session ended</div>
+    <div class="ty-sub">Session saved. You can start a new story or close the tab.</div>
+    <button class="restart-btn" onclick="restartDemo()">← Start another story</button>
+  </div>
+
+  <!-- STORY ENDED SCREEN -->
+  <div id="ended-screen" class="screen">
+    <div class="ty-icon">⛄</div>
+    <div class="ty-title" id="ended-title">The story has ended</div>
+    <div class="ty-sub" id="ended-sub">—</div>
+    <div class="ended-sub-detail" id="ended-detail"></div>
+    <div class="ended-btn-row">
+      <button class="restart-btn primary" onclick="restartSameStory()">↻ Start over</button>
+      <button class="restart-btn" onclick="restartDemo()">← Tell a different story</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const SERVER_URL = window.location.origin;
+
+// ── State ──────────────────────────────────────────────────────────────────────
+let socket = null;
+let serverSid = null;
+let selectedScenarioKey = null;
+let selectedScenarioLabel = '';
+let selectedMode = 'director';
+let currentStoryId = null;
+let scenarioBeats = [];
+let reviewMode = 'director';
+let lastGeneratedStoryId = null;
+let lastPrompt = '';
+let lastTargetBeats = 6;
+let selectedTimeLimit = 5;
+let reviewTimeLimit = 5;
+let tcRemainingSeconds = null;
+let tcTickInterval = null;
+let isListening = false;
+let mediaStream = null;
+let audioCtx = null;
+let processorNode = null;
+let streamingBubble = null;
+let streamingText = '';
+
+// ── Background ─────────────────────────────────────────────────────────────────
+(function createBackground() {
+  const starContainer = document.getElementById('stars');
+  for (let i = 0; i < 130; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `left:${Math.random()*100}vw;top:${Math.random()*100}vh;` +
+      `width:${size}px;height:${size}px;` +
+      `animation-duration:${(Math.random()*4+2).toFixed(1)}s;` +
+      `animation-delay:${(Math.random()*6).toFixed(1)}s;`;
+    starContainer.appendChild(s);
+  }
+})();
+
+// ── Server status & scenario loading ──────────────────────────────────────────
+function setServerStatus(state, text) {
+  document.getElementById('status-dot').className = 'status-dot ' + state;
+  document.getElementById('status-text').textContent = text;
+}
+
+async function loadScenarios() {
+  setServerStatus('connecting', 'Connecting to server…');
+  try {
+    const res = await fetch(`${SERVER_URL}/scenarios`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const scenarios = await res.json();
+    setServerStatus('ok', 'Server connected');
+    renderScenarios(scenarios);
+  } catch(e) {
+    setServerStatus('err', 'Server not reachable');
+    document.getElementById('scenario-grid').innerHTML =
+      '<div class="scenario-placeholder" style="color:#c03030">Could not reach server.</div>';
+  }
+}
+
+function renderScenarios(scenarios) {
+  const grid = document.getElementById('scenario-grid');
+  grid.innerHTML = '';
+  if (!scenarios.length) {
+    grid.innerHTML = '<div class="scenario-placeholder">No scenarios found on server.</div>';
+    return;
+  }
+  scenarios.forEach(sc => {
+    const btn = document.createElement('button');
+    btn.className = 'scenario-btn';
+    btn.innerHTML = `<div class="s-title">${sc.label}</div><div class="s-key">${sc.beat_count} beats</div>`;
+    btn.onclick = () => {
+      document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedScenarioKey = sc.key;
+      selectedScenarioLabel = sc.label;
+      document.getElementById('start-btn').disabled = false;
+    };
+    grid.appendChild(btn);
+  });
+}
+
+// ── Socket.IO ─────────────────────────────────────────────────────────────────
+function connectSocket() {
+  socket = io(SERVER_URL, { transports: ['websocket'] });
+
+  socket.on('connect', () => console.log('[Socket] connected:', socket.id));
+  socket.on('disconnect', () => { setThinking(false); setBusy(false); });
+
+  socket.on('server_sid', (data) => { serverSid = data.sid; });
+
+  socket.on('session_started', (data) => {
+    addMsg('system', '', 'Connected. Speak or type — Olaf will respond after a moment.');
+    setThinking(false);
+    currentStoryId = (data && data.story_id) || null;
+    scenarioBeats = (data && data.beats) || [];
+    buildBeatTracker(scenarioBeats.length);
+    updateBeatTracker((data && data.beat_index) || 0, scenarioBeats.length);
+    const isTc = data && data.mode === 'time_constrained';
+    document.getElementById('time-col').style.display = isTc ? 'flex' : 'none';
+    if (isTc) {
+      startTcTicker(data.remaining_seconds);
+      setPacingBadge('normal');
+    } else {
+      stopTcTicker();
+    }
+    refreshStoryTabs();
+  });
+
+  socket.on('stories_list', renderStoryTabs);
+
+  socket.on('story_switched', (data) => {
+    currentStoryId = data.story_id;
+    document.getElementById('header-scenario-name').textContent = `${data.title} · ${modeLabel(data.mode)}`;
+    document.getElementById('chat-log').innerHTML = '';
+    (data.transcript || []).forEach(t => {
+      if (t.user_input) addMsg('user', '', t.user_input);
+      if (t.character_response) addMsg('olaf', '', t.character_response);
+    });
+    stopTcTicker();
+    document.getElementById('time-col').style.display = data.mode === 'time_constrained' ? 'flex' : 'none';
+    setThinking(false);
+    showScreen('session-screen');
+    refreshStoryTabs();
+  });
+
+  socket.on('story_ended', (data) => {
+    finaliseStreamingBubble();
+    setThinking(false);
+    setBusy(false);
+    stopTcTicker();
+    const reasonText = {
+      close_story: 'Olaf reached the end of the story!',
+      stop_confirmed: 'The story was stopped, just like you asked.',
+      jump_to_end: 'Olaf jumped straight to the ending for you.',
+      summarize_to_end: 'Olaf wrapped up the rest of the story for you.',
+      time_up: "Time's up — Olaf wrapped up the story!",
+    }[data && data.reason] || 'The story has ended.';
+    document.getElementById('ended-title').textContent = reasonText;
+    document.getElementById('ended-sub').textContent =
+      `${selectedScenarioLabel || 'This story'} is complete.`;
+    document.getElementById('ended-detail').textContent =
+      `${data.beats_completed}/${data.total_beats} beats · ${data.turns} turns`;
+    showScreen('ended-screen');
+    refreshStoryTabs();
+  });
+
+  socket.on('director_decision', (data) => {
+    if (data && typeof data.beat_index === 'number' && typeof data.total_beats === 'number') {
+      updateBeatTracker(data.beat_index, data.total_beats);
+    }
+    if (data && typeof data.remaining_seconds === 'number') {
+      tcRemainingSeconds = data.remaining_seconds;
+      updateTimeDisplay();
+      setPacingBadge(data.pacing_mode);
+    }
+    setThinking(true, 'Olaf is responding…');
+  });
+
+  socket.on('transcript_assistant', (data) => {
+    if (!streamingBubble) startStreamingBubble();
+    appendToStreamingBubble(data.delta);
+  });
+
+  socket.on('transcript_user', (data) => {
+    addMsg('user', '', data.text);
+    setThinking(true, 'Olaf is thinking…');
+  });
+
+  socket.on('audio_output', (data) => { playAudioChunk(data.audio); });
+
+  socket.on('response_done', () => {
+    finaliseStreamingBubble();
+    setThinking(false);
+    setBusy(false);
+  });
+
+  socket.on('error', (data) => {
+    addMsg('system', '', 'Error: ' + data.message);
+    setThinking(false);
+    setBusy(false);
+  });
+
+  socket.on('beats_generated', (data) => {
+    setGenBusy(false);
+    const regenBtn = document.getElementById('regenerate-btn');
+    regenBtn.disabled = false;
+    regenBtn.textContent = '↻ Regenerate';
+    lastGeneratedStoryId = data.story_id;
+    renderReview(data.story_topic, data.beats);
+    document.getElementById('review-title').textContent = 'Review Your Story';
+    showScreen('review-screen');
+  });
+
+  socket.on('beats_error', (data) => {
+    setGenBusy(false);
+    document.getElementById('start-generated-btn').disabled = false;
+    const regenBtn = document.getElementById('regenerate-btn');
+    regenBtn.disabled = false;
+    regenBtn.textContent = '↻ Regenerate';
+    if (document.getElementById('review-screen').classList.contains('active')) {
+      showReviewError(data.message);
+    } else {
+      showGenError(data.message);
+    }
+  });
+
+  socket.on('beats_saved', (data) => {
+    document.getElementById('start-generated-btn').disabled = false;
+    const title = (document.getElementById('review-topic-input').value || 'Your Story').slice(0, 40);
+    startSessionWith(lastGeneratedStoryId, title, reviewMode, reviewTimeLimit);
+  });
+}
+
+// ── UI helpers ─────────────────────────────────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function addMsg(role, _name, text) {
+  const log = document.getElementById('chat-log');
+  const wrap = document.createElement('div');
+  wrap.className = `msg ${role}`;
+  const avatars = { system: '⚙️', olaf: '⛄', user: '👤' };
+  const av = document.createElement('div');
+  av.className = 'msg-avatar'; av.textContent = avatars[role] || '?';
+  const bub = document.createElement('div');
+  bub.className = 'msg-bubble'; bub.textContent = text;
+  if (role === 'user') { wrap.appendChild(bub); wrap.appendChild(av); }
+  else { wrap.appendChild(av); wrap.appendChild(bub); }
+  log.appendChild(wrap);
+  log.scrollTop = log.scrollHeight;
+}
+
+function startStreamingBubble() {
+  const log = document.getElementById('chat-log');
+  const wrap = document.createElement('div'); wrap.className = 'msg olaf streaming';
+  const av = document.createElement('div'); av.className = 'msg-avatar'; av.textContent = '⛄';
+  const bub = document.createElement('div'); bub.className = 'msg-bubble';
+  const textSpan = document.createElement('span'); textSpan.id = 'streaming-text-span';
+  const cursor = document.createElement('span'); cursor.className = 'cursor';
+  bub.appendChild(textSpan); bub.appendChild(cursor);
+  wrap.appendChild(av); wrap.appendChild(bub);
+  log.appendChild(wrap); log.scrollTop = log.scrollHeight;
+  streamingBubble = wrap; streamingText = '';
+}
+
+function appendToStreamingBubble(delta) {
+  if (!streamingBubble) return;
+  streamingText += delta;
+  const el = document.getElementById('streaming-text-span');
+  if (el) el.textContent = streamingText;
+  document.getElementById('chat-log').scrollTop = 9999;
+}
+
+function finaliseStreamingBubble() {
+  if (!streamingBubble) return;
+  streamingBubble.classList.remove('streaming');
+  const cursor = streamingBubble.querySelector('.cursor');
+  if (cursor) cursor.remove();
+  const el = document.getElementById('streaming-text-span');
+  if (el) el.removeAttribute('id');
+  streamingBubble = null; streamingText = '';
+}
+
+function setThinking(on, text) {
+  document.getElementById('thinking-bar').className = 'thinking-bar' + (on ? ' visible' : '');
+  if (text) document.getElementById('thinking-text').textContent = text;
+}
+
+function setBusy(on) {
+  document.getElementById('send-btn').disabled = on;
+  document.getElementById('user-input').disabled = on;
+}
+
+function buildBeatTracker(count) {
+  const el = document.getElementById('beat-tracker');
+  el.innerHTML = '';
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'beat-dot';
+    const beat = scenarioBeats[i];
+    if (beat && beat.name) dot.title = beat.name;
+    el.appendChild(dot);
+  }
+}
+
+function updateBeatTracker(beatIndex, totalBeats) {
+  const el = document.getElementById('beat-tracker');
+  if (el.children.length !== totalBeats) buildBeatTracker(totalBeats);
+  Array.from(el.children).forEach((dot, i) => {
+    dot.classList.toggle('done', i < beatIndex);
+    dot.classList.toggle('active', i === beatIndex);
+  });
+  const label = document.getElementById('beat-col-label');
+  const current = scenarioBeats[beatIndex];
+  label.textContent = current && current.name
+    ? `Beat ${beatIndex + 1}/${totalBeats}: ${current.name}`
+    : `Beat ${Math.min(beatIndex + 1, totalBeats)}/${totalBeats}`;
+}
+
+// ── Time-constrained mode: countdown + pacing badge ──────────────────────────────
+function formatTime(seconds) {
+  seconds = Math.max(0, Math.round(seconds || 0));
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function updateTimeDisplay() {
+  if (tcRemainingSeconds == null) return;
+  const el = document.getElementById('time-remaining');
+  el.textContent = formatTime(tcRemainingSeconds);
+  el.classList.toggle('low', tcRemainingSeconds <= 60);
+}
+
+function startTcTicker(initialRemaining) {
+  stopTcTicker();
+  tcRemainingSeconds = initialRemaining;
+  updateTimeDisplay();
+  tcTickInterval = setInterval(() => {
+    if (tcRemainingSeconds == null) return;
+    tcRemainingSeconds = Math.max(0, tcRemainingSeconds - 1);
+    updateTimeDisplay();
+  }, 1000);
+}
+
+function stopTcTicker() {
+  if (tcTickInterval) { clearInterval(tcTickInterval); tcTickInterval = null; }
+  tcRemainingSeconds = null;
+}
+
+function setPacingBadge(mode) {
+  const el = document.getElementById('pacing-badge');
+  el.textContent = (mode || 'normal').replace(/_/g, ' ');
+  el.className = 'pacing-badge ' + (mode || 'normal');
+}
+
+// ── Audio ──────────────────────────────────────────────────────────────────────
+const _audioQueue = [];
+let _isPlaying = false;
+let isMuted = false;
+
+function toggleMute() {
+  isMuted = !isMuted;
+  const btn = document.getElementById('mute-btn');
+  btn.textContent = isMuted ? '🔇' : '🔊';
+  btn.classList.toggle('muted', isMuted);
+  if (isMuted) _audioQueue.length = 0;
+}
+
+function playAudioChunk(b64) {
+  if (isMuted) return;
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+  const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const pcm = new Int16Array(bytes.buffer);
+  const float = new Float32Array(pcm.length);
+  for (let i = 0; i < pcm.length; i++) float[i] = pcm[i] / 32768;
+  const buf = audioCtx.createBuffer(1, float.length, 24000);
+  buf.copyToChannel(float, 0);
+  _audioQueue.push(buf);
+  if (!_isPlaying) drainAudioQueue();
+}
+
+function drainAudioQueue() {
+  if (!_audioQueue.length) { _isPlaying = false; return; }
+  _isPlaying = true;
+  const src = audioCtx.createBufferSource();
+  src.buffer = _audioQueue.shift();
+  src.connect(audioCtx.destination);
+  src.onended = drainAudioQueue;
+  src.start();
+}
+
+// ── Microphone ─────────────────────────────────────────────────────────────────
+async function startMicStreaming() {
+  try {
+    mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+    const source = audioCtx.createMediaStreamSource(mediaStream);
+    processorNode = audioCtx.createScriptProcessor(4096, 1, 1);
+    processorNode.onaudioprocess = (e) => {
+      if (!isListening || !socket) return;
+      const float = e.inputBuffer.getChannelData(0);
+      const pcm = new Int16Array(float.length);
+      for (let i = 0; i < float.length; i++) pcm[i] = Math.max(-32768, Math.min(32767, float[i] * 32768));
+      const b64 = btoa(String.fromCharCode(...new Uint8Array(pcm.buffer)));
+      socket.emit('audio_input', { audio: b64 });
+    };
+    source.connect(processorNode);
+    processorNode.connect(audioCtx.destination);
+    isListening = true;
+    document.getElementById('mic-btn').classList.add('listening');
+    document.getElementById('mic-btn').textContent = '🔴';
+  } catch(e) {
+    addMsg('system', '', 'Microphone access denied. Use text input instead.');
+  }
+}
+
+function stopMicStreaming() {
+  isListening = false;
+  if (processorNode) { try { processorNode.disconnect(); } catch(e) {} processorNode = null; }
+  if (mediaStream) { mediaStream.getTracks().forEach(t => t.stop()); mediaStream = null; }
+  document.getElementById('mic-btn').classList.remove('listening');
+  document.getElementById('mic-btn').textContent = '🎤';
+}
+
+// ── Session flow ───────────────────────────────────────────────────────────────
+function modeLabel(mode) {
+  return { director: 'Strict Director', lenient: 'Lenient', time_constrained: 'Time Constrained' }[mode] || mode;
+}
+
+function shortModeLabel(mode) {
+  return { director: 'Director', lenient: 'Lenient', time_constrained: 'Timed' }[mode] || mode;
+}
+
+function startSessionWith(key, label, mode, timeLimit) {
+  if (!key || !socket) return;
+  document.getElementById('header-scenario-name').textContent = `${label} · ${modeLabel(mode)}`;
+  document.getElementById('chat-log').innerHTML = '';
+  scenarioBeats = [];
+  buildBeatTracker(0);
+  stopTcTicker();
+  document.getElementById('time-col').style.display = mode === 'time_constrained' ? 'flex' : 'none';
+  setThinking(true, 'Starting session…');
+  showScreen('session-screen');
+  socket.emit('start_story', { scenario: key, mode, time_limit: timeLimit || 5 });
+}
+
+function startSession() {
+  startSessionWith(selectedScenarioKey, selectedScenarioLabel, selectedMode, selectedTimeLimit);
+}
+
+// ── Beat generator flow ──────────────────────────────────────────────────────
+function setGenBusy(busy) {
+  document.getElementById('generate-btn').disabled = busy;
+  document.getElementById('generate-btn').textContent = busy ? 'Generating…' : 'Generate Beats ✨';
+}
+
+function showGenError(message) {
+  const el = document.getElementById('gen-error');
+  el.textContent = message;
+  el.style.display = 'block';
+}
+
+function showReviewError(message) {
+  const el = document.getElementById('review-error');
+  el.textContent = message;
+  el.style.display = 'block';
+}
+
+function generateBeats() {
+  const prompt = document.getElementById('story-prompt-input').value.trim();
+  document.getElementById('gen-error').style.display = 'none';
+  if (!prompt) { showGenError('Please describe a story first.'); return; }
+  lastPrompt = prompt;
+  lastTargetBeats = parseInt(document.getElementById('beat-count-slider').value, 10) || 6;
+  setGenBusy(true);
+  socket.emit('generate_beats', { prompt: lastPrompt, target_beats: lastTargetBeats });
+}
+
+function beatCardHtml(beat) {
+  const expansions = Array.isArray(beat.expansions) ? beat.expansions.join('\n') : '';
+  const wrap = document.createElement('div');
+  wrap.className = 'beat-card';
+  wrap.innerHTML = `
+    <div class="beat-card-head">
+      <input class="beat-name-input" value="${(beat.name || '').replace(/"/g, '&quot;')}" />
+      <select class="beat-importance-select">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
+      <button class="beat-remove-btn" title="Remove beat">✕</button>
+    </div>
+    <label class="beat-field-label">Goal</label>
+    <textarea class="beat-goal-input" rows="2"></textarea>
+    <label class="beat-field-label">Expansions (one per line)</label>
+    <textarea class="beat-expansions-input" rows="2"></textarea>
+  `;
+  wrap.querySelector('.beat-importance-select').value = beat.importance || 'medium';
+  wrap.querySelector('.beat-goal-input').value = beat.goal || '';
+  wrap.querySelector('.beat-expansions-input').value = expansions;
+  wrap.querySelector('.beat-remove-btn').onclick = () => wrap.remove();
+  return wrap;
+}
+
+function renderReview(topic, beats) {
+  document.getElementById('review-topic-input').value = topic || '';
+  const list = document.getElementById('beat-list');
+  list.innerHTML = '';
+  (beats || []).forEach(b => list.appendChild(beatCardHtml(b)));
+  document.getElementById('review-error').style.display = 'none';
+}
+
+function collectReviewFormState() {
+  const topic = document.getElementById('review-topic-input').value.trim();
+  const beats = Array.from(document.querySelectorAll('#beat-list .beat-card')).map(card => ({
+    name: card.querySelector('.beat-name-input').value.trim(),
+    importance: card.querySelector('.beat-importance-select').value,
+    goal: card.querySelector('.beat-goal-input').value.trim(),
+    expansions: card.querySelector('.beat-expansions-input').value
+      .split('\n').map(s => s.trim()).filter(Boolean),
+  }));
+  return { topic, beats };
+}
+
+function startGeneratedStory() {
+  if (!lastGeneratedStoryId || !socket) return;
+  const { topic, beats } = collectReviewFormState();
+  if (!beats.length) { showReviewError('A story needs at least one beat.'); return; }
+  document.getElementById('start-generated-btn').disabled = true;
+  socket.emit('save_beats', { story_id: lastGeneratedStoryId, story_topic: topic, beats });
+}
+
+// ── Multi-story tabs ──────────────────────────────────────────────────────────
+function refreshStoryTabs() {
+  if (socket) socket.emit('list_stories');
+}
+
+function renderStoryTabs(list) {
+  const container = document.getElementById('story-tabs');
+  container.innerHTML = '';
+  (list || []).forEach(s => {
+    const tab = document.createElement('div');
+    tab.className = 'story-tab' + (s.active ? ' active' : '') + (s.closed ? ' closed' : '');
+    const dots = Array.from({ length: s.total_beats }, (_, i) =>
+      `<span class="tab-dot${i < s.beat_index ? ' done' : ''}"></span>`
+    ).join('');
+    const timeBadge = s.mode === 'time_constrained' && typeof s.remaining_seconds === 'number'
+      ? `<span class="tab-mode-badge">${formatTime(s.remaining_seconds)}</span>` : '';
+    tab.innerHTML = `
+      <span>${s.title}</span>
+      <span class="tab-mode-badge">${shortModeLabel(s.mode)}</span>
+      ${timeBadge}
+      <span class="tab-dots">${dots}</span>
+    `;
+    if (!s.active) tab.onclick = () => switchToStory(s.story_id);
+    container.appendChild(tab);
+  });
+  const newTab = document.createElement('button');
+  newTab.className = 'story-tab-new';
+  newTab.textContent = '+ New';
+  newTab.onclick = goCreateNewStory;
+  container.appendChild(newTab);
+}
+
+function switchToStory(storyId) {
+  if (!socket) return;
+  setThinking(true, 'Switching stories…');
+  socket.emit('switch_story', { story_id: storyId });
+}
+
+function goCreateNewStory() {
+  if (socket) socket.emit('pause_story');
+  showScreen('start-screen');
+}
+
+function sendTextMessage() {
+  const inp = document.getElementById('user-input');
+  const text = inp.value.trim();
+  if (!text || !socket) return;
+  inp.value = '';
+  setBusy(true);
+  addMsg('user', '', text);
+  setThinking(true, 'Olaf is thinking…');
+  socket.emit('text_input', { text });
+}
+
+function stopSession() {
+  stopMicStreaming();
+  _audioQueue.length = 0;
+  setBusy(false);
+  const sidParam = serverSid ? `?sid=${encodeURIComponent(serverSid)}` : '';
+  fetch(`${SERVER_URL}/save_session${sidParam}`, { method: 'POST' })
+    .then(r => r.json())
+    .then(d => console.log('[Session saved]', d))
+    .catch(e => console.warn('[Save failed]', e));
+  showScreen('thankyou-screen');
+}
+
+function restartSameStory() {
+  if (!currentStoryId || !socket) return;
+  document.getElementById('chat-log').innerHTML = '';
+  scenarioBeats = [];
+  buildBeatTracker(0);
+  setThinking(true, 'Starting a new round…');
+  showScreen('session-screen');
+  socket.emit('restart_story', { story_id: currentStoryId });
+}
+
+function restartDemo() {
+  selectedScenarioKey = null;
+  selectedScenarioLabel = '';
+  scenarioBeats = [];
+  buildBeatTracker(0);
+  document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('start-btn').disabled = true;
+  isMuted = false;
+  document.getElementById('mute-btn').textContent = '🔊';
+  document.getElementById('mute-btn').classList.remove('muted');
+  showScreen('start-screen');
+}
+
+// ── Event wiring ───────────────────────────────────────────────────────────────
+document.getElementById('start-btn').onclick = startSession;
+document.getElementById('stop-btn').onclick = stopSession;
+document.getElementById('mute-btn').onclick = toggleMute;
+document.getElementById('pause-btn').onclick = () => {
+  if (socket) socket.emit('pause_story');
+  addMsg('system', '', 'Story paused. Switch tabs or start a new one — this story will keep your place.');
+  stopTcTicker();
+  setThinking(false);
+  setBusy(false);
+};
+document.getElementById('send-btn').onclick = sendTextMessage;
+document.getElementById('user-input').addEventListener('keydown', e => { if (e.key === 'Enter') sendTextMessage(); });
+document.getElementById('mic-btn').onclick = () => { if (isListening) stopMicStreaming(); else startMicStreaming(); };
+function wireModeToggle(containerId, onSelect) {
+  const container = document.getElementById(containerId);
+  container.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.onclick = () => {
+      container.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      onSelect(btn.dataset.mode);
+    };
+  });
+}
+wireModeToggle('mode-toggle', (mode) => {
+  selectedMode = mode;
+  document.getElementById('time-limit-row').style.display = mode === 'time_constrained' ? 'block' : 'none';
+});
+wireModeToggle('review-mode-toggle', (mode) => {
+  reviewMode = mode;
+  document.getElementById('review-time-limit-row').style.display = mode === 'time_constrained' ? 'block' : 'none';
+});
+document.getElementById('time-limit-slider').oninput = (e) => {
+  selectedTimeLimit = parseInt(e.target.value, 10) || 5;
+  document.getElementById('time-limit-value').textContent = `${selectedTimeLimit} min`;
+};
+document.getElementById('review-time-limit-slider').oninput = (e) => {
+  reviewTimeLimit = parseInt(e.target.value, 10) || 5;
+  document.getElementById('review-time-limit-value').textContent = `${reviewTimeLimit} min`;
+};
+
+document.getElementById('create-story-btn').onclick = () => showScreen('generate-screen');
+document.getElementById('generate-btn').onclick = generateBeats;
+document.getElementById('beat-count-slider').oninput = (e) => {
+  document.getElementById('beat-count-value').textContent = e.target.value;
+};
+document.getElementById('add-beat-btn').onclick = () => {
+  document.getElementById('beat-list').appendChild(
+    beatCardHtml({ name: 'new_beat', importance: 'medium', goal: '', expansions: [] })
+  );
+};
+document.getElementById('regenerate-btn').onclick = () => {
+  if (!lastPrompt) { showScreen('generate-screen'); return; }
+  document.getElementById('review-error').style.display = 'none';
+  document.getElementById('regenerate-btn').disabled = true;
+  document.getElementById('regenerate-btn').textContent = 'Regenerating…';
+  socket.emit('generate_beats', { prompt: lastPrompt, target_beats: lastTargetBeats });
+};
+document.getElementById('start-generated-btn').onclick = startGeneratedStory;
+
+// ── Boot ───────────────────────────────────────────────────────────────────────
+connectSocket();
+loadScenarios();
+</script>
+</body>
+</html>
