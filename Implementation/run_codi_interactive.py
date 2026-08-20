@@ -25,9 +25,13 @@ import argparse
 import subprocess
 import tempfile
 
+from dotenv import load_dotenv
+
 IMPL_DIR = os.path.dirname(__file__)
 DISNEY_DIR = os.path.dirname(IMPL_DIR)
 CODI_DIR = os.path.join(DISNEY_DIR, "CoDi-main", "CoDi-main")
+
+load_dotenv(os.path.join(IMPL_DIR, ".env"))
 
 sys.path.insert(0, IMPL_DIR)
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
@@ -108,10 +112,10 @@ def run_scenario(scenario_name: str, scenario: dict, out_base_dir: str, model: s
 
     env = os.environ.copy()
     env["LOG_DIR"] = os.path.join(CODI_DIR, "log")
-    env["OPENAI_API_KEY"] = env.get(
-        "OPENAI_API_KEY",
-        "***REMOVED-REVOKED-OPENAI-KEY***",
-    )
+    if "OPENAI_API_KEY" not in env:
+        raise RuntimeError(
+            "OPENAI_API_KEY not set — add it to Implementation/.env or export it before running."
+        )
 
     # CoDi venv python
     python = os.path.join(CODI_DIR, "venv", "bin", "python3")
