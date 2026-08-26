@@ -1,0 +1,108 @@
+{
+  "study_date": "2026-08-04T13:09:13.992914",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "time_constrained",
+    "director"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "Hi, can I create a personal website if I am a DisneyResearch|Studios student?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is asking about creating a personal website as a student.",
+            "director_instruction": "Acknowledge the user's question about creating a personal website with a couple of warm sentences. Then use a bridge sentence like 'Speaking of creativity, let me tell you about Anna and Elsa's magical friendship...' to shift back to the story and introduce young Anna and Elsa's experiences together.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is diverting from the story topic, so this response will gently redirect them back while introducing the story's current events."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh wow, making a personal website sounds as fun as building a snowman in summertime! I bet it could be a cozy little corner just for you and all your ideas.\n\nSpeaking of creativity, let me tell you about Anna and Elsa's magical friendship. When they were little, they used to have the most amazing times together—playing, laughing, and making all kinds of snowy wonders. Elsa had this incredible icy magic, and Anna was her biggest fan. Everything was perfect... until one night, something unexpected happened."
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is listening — continue the story naturally.",
+            "director_instruction": "Olaf should describe the magical night when Elsa accidentally struck Anna with ice and the impactful moment it caused in their lives. Then, as he recalls the sadness and silence that followed, he should express how much he wished he could have been there for both of them during that time.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "Continuing the story by revealing a pivotal moment in Anna and Elsa's relationship aligns with the current beat, deepening the emotional impact of their childhood."
+          },
+          "pacing_mode": "normal",
+          "character_response": "It was a night filled with snowflakes swirling through the air as Elsa and Anna laughed and played. But then—whoosh—Elsa's magic slipped, and a beam of ice struck Anna right in the head. Everything changed in that moment. The castle grew quiet, and the doors closed. And you know... I really wish I could have been there, to give them both warm hugs during that sad, silent time."
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "Okay, what BD will Anna and Elsa and choose if they play Diabolo 4?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is attempting to divert the conversation to video games, asking about Anna and Elsa's choices in Diablo 4.",
+            "director_instruction": "Acknowledge the user's question with a warm, friendly response, and then use a bridge to return to the story. Mention how much fun it would be to play games with Anna and Elsa, and then transition back to the story, focusing on the years of silence that followed the accident.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The current beat is still focused on the last event of Anna and Elsa’s childhood, and the question about video games was a clear derailment, giving space for gentle redirection while keeping the story flowing."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Ooh, that sounds like such a fun game to play with Anna and Elsa—imagine all the teamwork and laughter! I bet they'd pick something bold and adventurous, just like them.\n\nAnd speaking of fun, after that accident, there were no more games for a long time. The castle grew quiet, and the sisters were kept apart, year after year. I always wish I could have melted that silence with a warm hug or two."
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is listening — continue the story naturally.",
+            "director_instruction": "Describe how the years of silence feel for both Anna and Elsa, emphasizing their longing and love for each other. Transition into the moment when the gates finally open on coronation day, leading into the next beat.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This keeps the emotional weight of the story while advancing toward the next significant event of the opening of the gates on coronation day."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Anna would stand outside Elsa’s door, knocking and hoping, while Elsa sat inside, longing to open it but afraid. All those years, they missed each other so much—it was like two hearts pulled apart by a snowstorm. But love? Oh, it stayed, even in the quiet.\n\nAnd then, one day, everything changed—the gates swung wide for Elsa’s coronation, and the kingdom opened up. Something new was about to begin!"
+        },
+        {
+          "turn": 5,
+          "beat": "childhood_and_accident",
+          "user_input": "Will they like listen Bob Dylan's songs when staying in castle?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is trying to bring up a fun idea about music that Anna and Elsa might enjoy.",
+            "director_instruction": "Acknowledge the user's idea about music with a warm reaction, expressing how music could indeed bring joy. Then, use a bridge sentence like 'But back to the story...' to transition into the upcoming events as Elsa's coronation day marks a new beginning for the sisters.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's input is related but requires a gentle nudge back into the narrative to advance the story towards the coronation and its significance."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Music like that could make the castle feel so cozy and full of life—just imagine all those melodies filling the halls with joy! But back to the story... Elsa’s coronation day arrived, and it was a whole new beginning for the sisters. The gates opened wide, and Anna was ready to explore everything!"
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 1
+}
