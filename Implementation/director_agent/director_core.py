@@ -42,26 +42,28 @@ def beat_pacing_label(turns_in_current_beat: int) -> str | None:
     return "stalled"
 
 
-_TURN_SPLIT_RE = re.compile(r"\n(?=(?:Olaf|User): )")
+def _turn_split_re(character_name: str) -> re.Pattern:
+    return re.compile(rf"\n(?=(?:{re.escape(character_name)}|User): )")
 
 
-def last_character_opener(story_so_far: str) -> str | None:
+def last_character_opener(story_so_far: str, character_name: str = "Olaf") -> str | None:
     """Return the first word of the character's most recent turn in story_so_far, if any.
 
-    Turns are split on "Olaf: "/"User: " prefixes rather than on every newline —
-    a character turn can itself contain blank lines (the reaction + story-narration
-    paragraphs), so naive splitlines() picked up trailing narration text instead
-    of the turn's actual opener, and any in-sentence colon within that trailing
-    text (e.g. "Now, picture this:") was then misread as a speaker prefix.
+    Turns are split on "<character_name>: "/"User: " prefixes rather than on every
+    newline — a character turn can itself contain blank lines (the reaction +
+    story-narration paragraphs), so naive splitlines() picked up trailing narration
+    text instead of the turn's actual opener, and any in-sentence colon within that
+    trailing text (e.g. "Now, picture this:") was then misread as a speaker prefix.
     """
     text = story_so_far.strip()
     if not text:
         return None
-    for turn in reversed(_TURN_SPLIT_RE.split(text)):
+    prefix = f"{character_name.lower()}:"
+    for turn in reversed(_turn_split_re(character_name).split(text)):
         turn = turn.strip()
         if not turn or turn.lower().startswith("user:"):
             continue
-        if not turn.lower().startswith("olaf:"):
+        if not turn.lower().startswith(prefix):
             continue
         body = turn.split(":", 1)[1].strip()
         match = _OPENER_WORD_RE.match(body)
@@ -163,7 +165,7 @@ def build_director_prompt(
     turns_in_current_beat = story_state.get("turns_in_current_beat", 0)
     pacing_label = beat_pacing_label(turns_in_current_beat) or "none (no pacing pressure yet)"
 
-    last_opener = last_character_opener(story_state.get("story_so_far", ""))
+    last_opener = last_character_opener(story_state.get("story_so_far", ""), character["name"])
 
     return f"""
 {DIRECTOR_INSTRUCTIONS}

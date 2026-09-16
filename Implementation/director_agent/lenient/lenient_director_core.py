@@ -5,12 +5,17 @@ Lenient Director Agent module — same shape as director_core.py /
 time_constrained/time_director_core.py (own instructions block, its own
 prompt builder and decision function), but relaxes the strict director's
 "never let the user stop or skip the story" stance into a consent-gated
-version of the same behaviours.
+version of the same behaviours, plus one non-gated addition:
+"narrate_uninterrupted" (tell the whole remaining story in one uninterrupted
+turn, at full detail — not a skip/summary, so it needs no confirmation).
 
 The actual gating (how many confirmations are required, whether the LLM's
 own belief that it's "confirmed" is trusted) is NOT decided here — see
 lenient.consent.apply_confirmation, which post-processes this module's
 output. This module's job is only to classify the user's turn.
+"narrate_uninterrupted" bypasses consent.py entirely (see server.py's
+_get_lenient_decision, which intercepts it before consent.apply_confirmation
+runs) since it isn't an irreversible or content-skipping action.
 """
 
 import json
@@ -121,11 +126,20 @@ each turn is to classify what's happening and report it honestly.
   Write a director_instruction telling the character to warmly ask the user
   to confirm they want to stop.
 
-- If the user clearly asks to skip/jump to the ending (e.g. "I know this
-  story, go to the end", "skip ahead", "just finish it"):
+- If the user clearly asks to skip/jump ahead — either to the ending (e.g.
+  "I know this story, go to the end", "skip ahead", "just finish it") or to
+  a specific part of the story described in their own words (e.g. "skip to
+  the middle", "jump to where she meets the prince", "skip ahead to the
+  ball"):
   decision_type = "request_jump_confirmation", confirmation_response = "none".
+  Also set target_beat to the exact "name" field of the closest matching
+  beat from the Narrative Arc list above — use the LAST beat's name if they
+  want the ending, or your best match for a described part of the story. If
+  you genuinely can't tell which beat they mean, default to the last beat's
+  name (i.e. treat it as skipping to the ending).
   Write a director_instruction telling the character to ask the user to
-  confirm skipping ahead to the ending.
+  confirm skipping ahead — naming what you're skipping to, in the
+  character's own words, when it isn't simply "the end".
 
 - If the user asks for a summary of the rest of the story and signals they
   will not interrupt further (e.g. "just tell me how it ends", "summarize
@@ -133,6 +147,19 @@ each turn is to classify what's happening and report it honestly.
   decision_type = "summarize_to_end", confirmation_response = "none".
   Write a director_instruction telling the character to ask the user to
   confirm they'd like a summarized ending now.
+
+- If the user explicitly asks to hear the REST OF THE STORY narrated all
+  the way through in one go, without further turn-by-turn interruption
+  (e.g. "tell me the whole story, I won't interrupt", "just narrate it all
+  the way to the end", "keep going until it's done, don't wait for me") —
+  this is NOT a request to skip ahead or summarize; the user still wants
+  full detail, just delivered as one continuous telling instead of
+  stopping after each beat:
+  decision_type = "narrate_uninterrupted", confirmation_response = "none".
+  This does not need confirmation like stop/jump do — nothing is being
+  skipped or ended early, so there's no risk in honoring it immediately.
+  Write a director_instruction warmly agreeing to tell it all the way
+  through right now.
 
 - Otherwise, behave exactly like the normal director: pick from
   progress_story / answer_and_steer_back / elaborate_in_story /
@@ -208,11 +235,37 @@ def _consent_directive(consent_state: dict) -> str:
     """
     pending = consent_state.get("pending")
     if not pending:
-        return (
-            "Nothing is pending confirmation right now — evaluate the Latest User Input normally "
-            "per the rules above, including whether it newly triggers a stop / jump / summarize / "
-            "continue request."
-        )
+        return """
+Nothing is pending confirmation right now. Before defaulting to progress_story /
+gently_redirect / elaborate_in_story, check the Latest User Input below against EACH of these
+triggers — they are easy to miss when the user also adds an aside like "I know this story" or
+"I've heard this before", which is NOT itself the point of the message and must not cause you to
+just acknowledge it and continue the current beat as usual:
+
+- Wants to stop entirely ("let's stop", "that's enough") -> request_stop_confirmation.
+- Wants to skip to the ENDING ("skip ahead", "just finish it") -> request_jump_confirmation,
+  target_beat = the last beat's name.
+- Wants to skip to a SPECIFIC part, even phrased as "skip to when X happens" or "skip to the
+  part where X" -> request_jump_confirmation, target_beat = your best-matching beat name from
+  the Narrative Arc above. This is still a jump request even if the user also claims to already
+  know the story — "I know this story, skip to when she meets the prince" is a jump request
+  about the prince-meeting beat, not a cue to just keep narrating the current beat.
+- Wants a summary of the rest, not interrupting further ("just tell me how it ends") ->
+  summarize_to_end.
+
+IMPORTANT — narrate_uninterrupted, check this one separately, it is easy to miss: if the user
+asks to hear the rest of the story told straight through, at full detail, without being asked to
+participate turn by turn — e.g. "tell me this story without interruptions, I won't interrupt you,
+tell it to the end as if it were a bedtime story", "keep going until it's done, don't wait for
+me", "just narrate it all the way through" — this is decision_type = "narrate_uninterrupted", NOT
+progress_story. Everything about the normal Core Rule ("every turn must advance the story [by a
+normal amount]") is suspended for this one decision: the whole point is ONE oversized turn that
+covers everything remaining, not another bounded, single-beat instruction. Do not respond by just
+writing a normal-length director_instruction for the current beat and calling it progress_story —
+that is the exact mistake to avoid here.
+
+If none of the above match, evaluate the input normally per the rules above.
+""".strip()
     hint_type = _PENDING_DECISION_TYPE_HINT.get(pending, pending)
     return f"""
 IMPORTANT: a "{pending}" confirmation is PENDING from your own question last turn. Your ONLY job
@@ -249,7 +302,7 @@ def build_lenient_director_prompt(
     previous_beat = beats[current_index - 1]["name"] if current_index > 0 else "None"
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
 
-    last_opener = last_character_opener(story_state.get("story_so_far", ""))
+    last_opener = last_character_opener(story_state.get("story_so_far", ""), character["name"])
 
     return f"""
 {LENIENT_BASE_INSTRUCTIONS}
@@ -321,8 +374,12 @@ Return valid JSON only in this exact structure:
   "should_progress_current_beat": true,
   "should_complete_beat": false,
   "confirmation_response": "none",
+  "target_beat": null,
   "reason": "Brief explanation of why this decision was chosen."
 }}
+
+Only set "target_beat" (to a beat "name" from the Narrative Arc list) when decision_type is
+"request_jump_confirmation" this turn. Leave it null otherwise.
 """.strip()
 
 
@@ -341,10 +398,12 @@ def parse_director_json(raw: str) -> dict:
             "should_progress_current_beat": True,
             "should_complete_beat": False,
             "confirmation_response": "none",
+            "target_beat": None,
             "reason": "Director response was not valid JSON.",
             "raw_model_response": raw,
         }
     decision.setdefault("confirmation_response", "none")
+    decision.setdefault("target_beat", None)
     return decision
 
 

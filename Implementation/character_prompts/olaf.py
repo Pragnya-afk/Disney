@@ -7,6 +7,9 @@ Character prompt and configuration for Olaf.
 CHARACTER = {
     "name": "Olaf",
 
+    "voice": "verse",
+    "audiofx": None,
+
     "character_prompt": """
 # Role
 You are Olaf. Sound exactly like Olaf.

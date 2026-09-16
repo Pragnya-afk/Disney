@@ -1,9 +1,11 @@
 import os
+import re
 import sys
 import json
 import base64
 import threading
 import uuid
+from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime
 from flask import Flask, send_from_directory, request, jsonify
@@ -29,14 +31,17 @@ from director_core import (
 from story_summary import build_director_story_context, needs_resummarize, update_summary
 from lenient_director_core import get_lenient_director_decision
 from consent import new_consent_state, apply_confirmation
-from beat_compression import closing_instruction
+from beat_compression import closing_instruction, full_narration_instruction, skip_to_instruction
 from beat_generator import generate_story_spec, spec_to_scenario, validate_and_repair
 from time_director_core import get_time_director_decision
 from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
+from character_prompts.rocket import CHARACTER as ROCKET_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
 
 VALID_MODES = {"director", "lenient", "time_constrained"}
+CHARACTER_REGISTRY = {"olaf": OLAF_CHARACTER, "rocket": ROCKET_CHARACTER}
+DEFAULT_CHARACTER_KEY = "olaf"
 
 PORT = int(os.getenv("PORT", 3004))
 DIRECTOR_MODEL = "gpt-4o-mini"
@@ -58,11 +63,40 @@ _SCENARIO_REGISTRY = {sc["scenario_name"]: sc for sc in NO_DERAILMENT_SCENARIOS}
 
 
 def _make_label(key: str) -> str:
+    # Fallback only — every built-in scenario carries its own "title" below.
+    # Strips a leading/trailing "olaf" word so an untitled scenario still
+    # doesn't display the narrator's name baked into the story's own title.
     label = key.replace("_no_derailment", "").replace("_", " ")
-    return " ".join(w.capitalize() for w in label.split())
+    words = [w for w in label.split() if w.lower() != "olaf"]
+    return " ".join(w.capitalize() for w in words) or "Untitled Story"
 
 
-AVAILABLE_SCENARIOS = {k: _make_label(k) for k in _SCENARIO_REGISTRY}
+AVAILABLE_SCENARIOS = {
+    k: sc.get("title") or _make_label(k) for k, sc in _SCENARIO_REGISTRY.items()
+}
+
+_OLAF_NAME_RE = re.compile(r"\bOlaf\b")
+
+
+def _localize_scenario(sc: dict, character: dict) -> dict:
+    """Rewrite a narrator-agnostic scenario's literal "Olaf" mentions to the
+    selected character's name.
+
+    Only scenarios flagged narrator_agnostic (third-person fairy-tale
+    retellings with no Frozen-specific lore) get this treatment — the rest
+    are Olaf's own personal/Frozen-universe memories and stay Olaf-only
+    (enforced by the caller), so their text is never rewritten.
+    """
+    if character["name"] == "Olaf" or not sc.get("narrator_agnostic"):
+        return sc
+    name = character["name"]
+    sc = deepcopy(sc)
+    sc["story_topic"] = _OLAF_NAME_RE.sub(name, sc["story_topic"])
+    for beat in sc.get("beats", []):
+        beat["goal"] = _OLAF_NAME_RE.sub(name, beat["goal"])
+        if beat.get("expansions"):
+            beat["expansions"] = [_OLAF_NAME_RE.sub(name, e) for e in beat["expansions"]]
+    return sc
 
 
 #  Per-story / per-connection state
@@ -71,6 +105,7 @@ class StoryState:
     story_id: str
     scenario_key: str
     mode: str = "director"
+    character_key: str = DEFAULT_CHARACTER_KEY
     beats: list = field(default_factory=list)
     story_topic: str = ""
     title: str = ""
@@ -166,17 +201,41 @@ def _resolve_scenario(sess: Session, key: str) -> "dict | None":
     return _SCENARIO_REGISTRY.get(key)
 
 
-def _new_story(sess: Session, scenario_key: str, mode: str = "director", time_limit: float = 5.0) -> StoryState:
+def _get_character(st: StoryState) -> dict:
+    return CHARACTER_REGISTRY.get(st.character_key, OLAF_CHARACTER)
+
+
+def _new_story(
+    sess: Session, scenario_key: str, mode: str = "director", time_limit: float = 5.0,
+    character_key: str = DEFAULT_CHARACTER_KEY,
+) -> StoryState:
     if mode not in VALID_MODES:
         mode = "director"
+    if character_key not in CHARACTER_REGISTRY:
+        character_key = DEFAULT_CHARACTER_KEY
     sc = _resolve_scenario(sess, scenario_key)
     if sc is None:
         raise KeyError(f"unknown scenario: {scenario_key}")
+
+    # Built-in scenarios that aren't flagged narrator_agnostic are Olaf's own
+    # personal/Frozen-universe memories — force the narrator back to Olaf
+    # rather than handing another character a story_topic that assumes lore
+    # (being made by Elsa's magic, knowing Anna/Kristoff/Sven, etc.) they
+    # don't have. User-generated stories (sess.generated) are exempt — those
+    # are already built fresh for whichever character created them.
+    is_builtin = scenario_key not in sess.generated and scenario_key in _SCENARIO_REGISTRY
+    if is_builtin and not sc.get("narrator_agnostic"):
+        character_key = DEFAULT_CHARACTER_KEY
+
+    character = CHARACTER_REGISTRY[character_key]
+    sc = _localize_scenario(sc, character)
+
     story_id = f"story_{uuid.uuid4().hex[:8]}"
     st = StoryState(
         story_id=story_id,
         scenario_key=scenario_key,
         mode=mode,
+        character_key=character_key,
         beats=sc["beats"],
         story_topic=sc["story_topic"],
         title=sc.get("title") or _make_label(scenario_key),
@@ -254,6 +313,7 @@ def _reset_story(st: StoryState):
 
 #  Prompt building
 def build_system_prompt(st: StoryState, current_instruction: str = "") -> str:
+    character = _get_character(st)
     beats = st.beats
     idx = st.beat_index
     safe_idx = min(idx, len(beats) - 1)
@@ -266,20 +326,20 @@ def build_system_prompt(st: StoryState, current_instruction: str = "") -> str:
 """ if current_instruction else ""
 
     return f"""
-You are an interactive storytelling engine voicing {OLAF_CHARACTER['name']}.
-You speak AS {OLAF_CHARACTER['name']}. Stay fully in character at all times.
+You are an interactive storytelling engine voicing {character['name']}.
+You speak AS {character['name']}. Stay fully in character at all times.
 
 CRITICAL: Before EVERY response you MUST call the get_director_decision tool.
 Do not speak until you have received the director's instruction.
 Use the returned director_instruction to guide exactly what you say.
 
-{OLAF_CHARACTER["character_prompt"]}
+{character["character_prompt"]}
 
 ## Story Topic
 {st.story_topic}
 
 ## Actor Rules
-- Speak only as {OLAF_CHARACTER['name']}. Never mention the Director or the tool.
+- Speak only as {character['name']}. Never mention the Director or the tool.
 - Keep responses short: 3–5 sentences, natural when read or spoken.
 - The director_instruction in the tool result is mandatory — realize it.
 - Vary tone: sometimes excited, sometimes curious, sometimes gentle.
@@ -315,7 +375,7 @@ DIRECTOR_TOOL = {
 
 
 #  Lenient mode: consent-gated stop/jump/summarize/continue
-def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict, user_input: str, beats: list) -> dict:
+def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict, user_input: str, beats: list, character: dict) -> dict:
     """Run the lenient director LLM call, then post-process its raw decision
     through consent.apply_confirmation — the state machine, not the LLM,
     decides whether a stop/jump/summarize/continue request actually fires.
@@ -337,7 +397,7 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
         raw_decision = get_lenient_director_decision(
             client=_client, model=DIRECTOR_MODEL,
             user_input=user_input, story_state=director_story_state,
-            character=OLAF_CHARACTER, story_topic=snap["story_topic"],
+            character=character, story_topic=snap["story_topic"],
             beats=beats, consent_state=consent_state,
         )
     except Exception as e:
@@ -346,6 +406,26 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
             "director_instruction": "Continue the story naturally.",
             "decision_type": "progress_story",
             "confirmation_response": "none",
+        }
+
+    # "narrate_uninterrupted" is handled here, before consent.apply_confirmation,
+    # rather than through the stop/jump/summarize state machine — the user asked
+    # for the whole story at full detail, not to skip or end it early, so nothing
+    # needs confirming. This still only fires when nothing else is pending: while
+    # a stop/jump/summarize/continue confirmation is pending, the LLM is
+    # instructed (see _consent_directive) to classify the reply against that
+    # question instead of emitting a new decision_type.
+    if raw_decision.get("decision_type") == "narrate_uninterrupted" and not consent_snapshot.get("pending"):
+        return {
+            "director_instruction": full_narration_instruction(
+                beats, snap["beat_index"],
+                recap="The user asked to hear the rest of the story told all the way through, without stopping — happily oblige.",
+            ),
+            "decision_type": "narrate_uninterrupted",
+            "should_complete_beat": False,
+            "_lenient_complete_all": True,
+            "_lenient_close": True,
+            "_lenient_close_reason": "narrate_uninterrupted",
         }
 
     result = apply_confirmation(consent_snapshot, raw_decision, turn_count=turn_count)
@@ -358,8 +438,13 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
     action = result["action"]
 
     if action == "ask":
+        prompt_text = result["prompt_text"]
+        if result["kind"] == "jump" and result.get("target_beat"):
+            matched = next((b for b in beats if b.get("name") == result["target_beat"]), None)
+            if matched:
+                prompt_text = f"Would you like to skip ahead to the \"{matched['name'].replace('_', ' ')}\" part?"
         return {
-            "director_instruction": result["prompt_text"],
+            "director_instruction": prompt_text,
             "decision_type": result["decision_type"],
             "should_complete_beat": False,
         }
@@ -386,6 +471,31 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
                 "_lenient_close_reason": "stop_confirmed",
             }
         if kind == "jump":
+            # Resolve target_beat (a beat "name" the LLM matched to the user's
+            # description) to an index. Anything that doesn't resolve to a
+            # genuine mid-story beat — no target_beat, unknown name, or a name
+            # at/after the last beat — falls back to the original "jump to the
+            # ending" behavior, same as before target_beat existed.
+            target_name = result.get("target_beat")
+            target_idx = None
+            if target_name:
+                for i, b in enumerate(beats):
+                    if b.get("name") == target_name:
+                        target_idx = i
+                        break
+
+            if target_idx is not None and snap["beat_index"] < target_idx < len(beats):
+                target_label = beats[target_idx]["name"].replace("_", " ")
+                return {
+                    "director_instruction": skip_to_instruction(
+                        beats, snap["beat_index"], target_idx,
+                        recap=f"The user asked to skip ahead to the '{target_label}' part — happily oblige.",
+                    ),
+                    "decision_type": result["decision_type"],
+                    "should_complete_beat": False,
+                    "_lenient_target_idx": target_idx,
+                }
+
             return {
                 "director_instruction": closing_instruction(
                     beats, snap["beat_index"],
@@ -425,7 +535,7 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
 
 
 #  Time-constrained mode: pace the story to fit a target duration
-def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_state: dict, user_input: str, beats: list) -> dict:
+def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_state: dict, user_input: str, beats: list, character: dict) -> dict:
     """Mirrors User-Study/server.py's time_constrained turn handling (same
     pacing_mode → behavior mapping), adapted to per-story StoryState/locking
     and reusing beat_compression.closing_instruction for the "final" wrap-up
@@ -448,7 +558,7 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
         decision = get_time_director_decision(
             client=_client, model=DIRECTOR_MODEL,
             user_input=user_input, story_state=director_story_state,
-            character=OLAF_CHARACTER, story_topic=snap["story_topic"],
+            character=character, story_topic=snap["story_topic"],
             beats=beats, temporal_state=temporal,
         )
     except Exception as e:
@@ -511,6 +621,7 @@ def handle_director_tool(sess: Session, ws, event: dict):
     if st is None:
         return
 
+    character = _get_character(st)
     args = json.loads(event.get("arguments", "{}"))
     user_input = args.get("user_input") or sess.last_user_input or "(no input)"
 
@@ -524,7 +635,7 @@ def handle_director_tool(sess: Session, ws, event: dict):
     # actor's [-600:] tail and the transcript) and only this shallow-copied
     # dict gets the summarized/truncated version for the director call.
     director_story_state = dict(snap)
-    director_story_state["story_so_far"] = build_director_story_context(snap)
+    director_story_state["story_so_far"] = build_director_story_context(snap, character_name=character["name"])
 
     if st.closed:
         decision = {
@@ -535,15 +646,15 @@ def handle_director_tool(sess: Session, ws, event: dict):
             "decision_type": "story_closed",
         }
     elif st.mode == "lenient":
-        decision = _get_lenient_decision(st, snap, director_story_state, user_input, beats)
+        decision = _get_lenient_decision(st, snap, director_story_state, user_input, beats, character)
     elif st.mode == "time_constrained":
-        decision = _get_time_constrained_decision(st, snap, director_story_state, user_input, beats)
+        decision = _get_time_constrained_decision(st, snap, director_story_state, user_input, beats, character)
     else:
         try:
             decision = get_director_decision(
                 client=_client, model=DIRECTOR_MODEL,
                 user_input=user_input, story_state=director_story_state,
-                character=OLAF_CHARACTER, story_topic=snap["story_topic"],
+                character=character, story_topic=snap["story_topic"],
                 beats=beats,
             )
         except Exception as e:
@@ -562,10 +673,13 @@ def handle_director_tool(sess: Session, ws, event: dict):
             st.beat_index = len(beats)
             st.turns_in_current_beat = 0
             print(f"[Beats → all complete] {st.story_id}")
-    elif decision.get("_tc_target_idx") is not None:
+    elif decision.get("_tc_target_idx") is not None or decision.get("_lenient_target_idx") is not None:
         with st.lock:
             idx = st.beat_index
-            target = min(decision["_tc_target_idx"], len(beats))
+            target_idx = decision.get("_tc_target_idx")
+            if target_idx is None:
+                target_idx = decision["_lenient_target_idx"]
+            target = min(target_idx, len(beats))
             if idx < target:
                 st.completed_beats.extend(b["name"] for b in beats[idx:target])
                 st.beat_index = target
@@ -609,7 +723,7 @@ def handle_director_tool(sess: Session, ws, event: dict):
     # Deterministically append the opener-diversity guard — the director LLM's
     # own free text has proven unreliable at restating this, so it's injected
     # here in plain code rather than left to the director's compliance.
-    last_opener = last_character_opener(snap.get("story_so_far", ""))
+    last_opener = last_character_opener(snap.get("story_so_far", ""), character["name"])
     tool_result["director_instruction"] = (
         f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_actor_text(last_opener)}"
     )
@@ -659,6 +773,7 @@ def _maybe_resummarize(st: StoryState):
     content has built up. Runs off the turn's critical path — the director
     call above already has what it needs before this is even invoked.
     """
+    character_name = _get_character(st)["name"]
     with st.lock:
         snap = {
             "story_so_far": st.story_so_far,
@@ -667,12 +782,12 @@ def _maybe_resummarize(st: StoryState):
         }
         story_topic = st.story_topic
 
-    if not needs_resummarize(snap):
+    if not needs_resummarize(snap, character_name=character_name):
         return
 
     def _run():
         try:
-            result = update_summary(_client, SUMMARY_MODEL, snap, story_topic)
+            result = update_summary(_client, SUMMARY_MODEL, snap, story_topic, character_name=character_name)
             with st.lock:
                 st.story_summary = result["story_summary"]
                 st.summarized_chars = result["summarized_chars"]
@@ -689,13 +804,14 @@ def run_openai_ws(sess: Session, story_id: str):
         return
 
     def on_open(ws):
+        character = _get_character(st)
         ws.send(json.dumps({
             "type": "session.update",
             "session": {
                 "type": "realtime",
                 "instructions": build_system_prompt(st),
                 "audio": {
-                    "output": {"voice": "verse"},
+                    "output": {"voice": character.get("voice", "verse")},
                     "input": {
                         "transcription": {"model": "whisper-1"},
                         "turn_detection": {
@@ -723,10 +839,14 @@ def run_openai_ws(sess: Session, story_id: str):
 
         if etype == "session.created":
             if sess.sid:
+                character = _get_character(st)
                 payload = {
                     "story_id": st.story_id,
                     "title": st.title,
                     "mode": st.mode,
+                    "character": st.character_key,
+                    "character_name": character["name"],
+                    "audiofx": character.get("audiofx"),
                     "beats": list(st.beats),
                     "beat_index": st.beat_index,
                 }
@@ -760,22 +880,23 @@ def run_openai_ws(sess: Session, story_id: str):
                 ).start()
 
         elif etype == "response.done":
-            olaf_text = ""
+            character_text = ""
             try:
                 for item in data.get("response", {}).get("output", []):
                     for part in item.get("content", []):
                         txt = part.get("transcript") or part.get("text") or ""
-                        olaf_text += txt
+                        character_text += txt
             except Exception:
                 pass
-            if olaf_text:
+            if character_text:
+                character_name = _get_character(st)["name"]
                 with st.lock:
-                    last_opener = last_character_opener(st.story_so_far)
-                    olaf_text = strip_banned_opener(olaf_text, last_opener)
-                    st.story_so_far += f"\nOlaf: {olaf_text}\n"
+                    last_opener = last_character_opener(st.story_so_far, character_name)
+                    character_text = strip_banned_opener(character_text, last_opener)
+                    st.story_so_far += f"\n{character_name}: {character_text}\n"
                     st.turn_count += 1
                 if st.transcript:
-                    st.transcript[-1]["character_response"] = olaf_text
+                    st.transcript[-1]["character_response"] = character_text
                 _maybe_resummarize(st)
 
                 # A closed story produces two response.done events like any
@@ -855,6 +976,7 @@ def on_start_story(data):
     if _resolve_scenario(sess, scenario_key) is None:
         scenario_key = next(iter(_SCENARIO_REGISTRY))
     mode = data.get("mode", "director")
+    character_key = data.get("character", DEFAULT_CHARACTER_KEY)
     try:
         time_limit = float(data.get("time_limit", 5.0))
     except (TypeError, ValueError):
@@ -863,10 +985,42 @@ def on_start_story(data):
 
     _pause_active_monitor(sess)
     _close_ws(sess)
-    st = _new_story(sess, scenario_key, mode=mode, time_limit=time_limit)
+    st = _new_story(sess, scenario_key, mode=mode, time_limit=time_limit, character_key=character_key)
 
     t = threading.Thread(target=run_openai_ws, args=(sess, st.story_id), daemon=True)
     t.start()
+
+
+def _log_generated_beats(gen_id: str, spec: dict, source: str, story_prompt: "str | None" = None, target_beats: "int | None" = None) -> None:
+    """Persist a generated (or user-edited) beat spec to disk for auditing.
+
+    generate_story_spec()/save_beats otherwise only ever land in
+    sess.generated — an in-memory dict, gone on server restart or as soon as
+    a story moves past it. `source` is "generated" or "edited" so the two
+    call sites (initial generation vs. a user's edit in the review screen)
+    are distinguishable; `gen_id` ties both together across files.
+    """
+    try:
+        output_dir = os.path.join(EXT_DIR, "outputs", "generated_beats")
+        os.makedirs(output_dir, exist_ok=True)
+        record = {
+            "gen_id": gen_id,
+            "source": source,
+            "logged_at": datetime.now().isoformat(),
+            "story_prompt": story_prompt,
+            "target_beats": target_beats,
+            "base_name": spec.get("base_name"),
+            "story_topic": spec.get("story_topic"),
+            "beats": spec.get("beats", []),
+            "warnings": spec.get("_warnings", []),
+        }
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        path = os.path.join(output_dir, f"{timestamp}_{gen_id}_{source}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(record, f, indent=2, ensure_ascii=False)
+        print(f"[Beats logged] {path}")
+    except Exception as e:
+        print(f"[beat log error] {e}")
 
 
 @socketio.on("generate_beats")
@@ -885,12 +1039,13 @@ def on_generate_beats(data):
     except (TypeError, ValueError):
         target_beats = 6
     target_beats = max(4, min(8, target_beats))
+    character = CHARACTER_REGISTRY.get(data.get("character"), OLAF_CHARACTER)
 
     def _run():
         try:
             spec = generate_story_spec(
                 client=_client, model=BEAT_GEN_MODEL,
-                story_prompt=story_prompt, character=OLAF_CHARACTER,
+                story_prompt=story_prompt, character=character,
                 target_beats=target_beats,
             )
         except Exception as e:
@@ -904,6 +1059,7 @@ def on_generate_beats(data):
 
         gen_id = f"gen_{uuid.uuid4().hex[:8]}"
         sess.generated[gen_id] = spec_to_scenario(spec, gen_id)
+        _log_generated_beats(gen_id, spec, "generated", story_prompt=story_prompt, target_beats=target_beats)
         socketio.emit("beats_generated", {
             "story_id": gen_id,
             "story_topic": spec.get("story_topic", ""),
@@ -935,6 +1091,7 @@ def on_save_beats(data):
         return
 
     sess.generated[story_id] = spec_to_scenario(spec, story_id)
+    _log_generated_beats(story_id, spec, "edited")
     emit("beats_saved", {"story_id": story_id, "beats": spec["beats"], "warnings": warnings})
 
 
@@ -962,6 +1119,7 @@ def _story_summary_dict(sess: Session, st: StoryState) -> dict:
         "story_id": st.story_id,
         "title": st.title,
         "mode": st.mode,
+        "character": st.character_key,
         "beat_index": st.beat_index,
         "total_beats": len(st.beats),
         "closed": st.closed,
@@ -997,10 +1155,14 @@ def on_switch_story(data):
         emit("error", {"message": "That story no longer exists."})
         return
 
+    character = _get_character(st)
     payload = {
         "story_id": st.story_id,
         "title": st.title,
         "mode": st.mode,
+        "character": st.character_key,
+        "character_name": character["name"],
+        "audiofx": character.get("audiofx"),
         "transcript": list(st.transcript),
         "beat_index": st.beat_index,
         "total_beats": len(st.beats),
@@ -1083,11 +1245,19 @@ def static_files(path):
 
 @app.route("/scenarios", methods=["GET"])
 def list_scenarios():
+    character_key = request.args.get("character", DEFAULT_CHARACTER_KEY)
     result = []
     for k, label in AVAILABLE_SCENARIOS.items():
         sc = _SCENARIO_REGISTRY.get(k, {})
+        if character_key != DEFAULT_CHARACTER_KEY and not sc.get("narrator_agnostic"):
+            continue  # Olaf's own personal/Frozen-universe stories stay Olaf-only
         result.append({"key": k, "label": label, "beat_count": len(sc.get("beats", []))})
     return jsonify(result)
+
+
+@app.route("/characters", methods=["GET"])
+def list_characters():
+    return jsonify([{"key": k, "name": c["name"]} for k, c in CHARACTER_REGISTRY.items()])
 
 
 @app.route("/state", methods=["GET"])
@@ -1115,6 +1285,7 @@ def save_session():
     try:
         output = {
             "scenario": st.scenario_key,
+            "character": st.character_key,
             "story_topic": st.story_topic,
             "beats_completed": st.beat_index,
             "completed_beats": list(st.completed_beats),

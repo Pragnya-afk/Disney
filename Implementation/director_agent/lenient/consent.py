@@ -15,7 +15,7 @@ pattern of not trusting LLM self-compliance for behaviour that must be exact
 
 REQUIRED_CONFIRMS = {
     "stop": 2,
-    "jump": 2,
+    "jump": 1,
     "summarize": 1,
     "continue": 1,
 }
@@ -59,7 +59,6 @@ _ASK_TEXT = {
     ],
     "jump": [
         "Would you like to skip ahead to the ending?",
-        "Just to be sure — jump straight to the ending now?",
     ],
     "summarize": [
         "Would you like me to wrap up and summarize the rest of the story now?",
@@ -72,7 +71,10 @@ _ASK_TEXT = {
 
 def new_consent_state() -> dict:
     """The at-rest consent state: nothing pending."""
-    return {"pending": None, "confirm_count": 0, "required_confirms": 2, "asked_at_turn": None}
+    return {
+        "pending": None, "confirm_count": 0, "required_confirms": 2,
+        "asked_at_turn": None, "target_beat": None,
+    }
 
 
 def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = None) -> dict:
@@ -91,6 +93,8 @@ def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = N
           "consent": <new consent dict>,
           "decision_type": <decision_type to actually act on>,
           "prompt_text": <text to surface to the user, only for "ask">,
+          "target_beat": <beat name for a "jump" to a specific part, or None
+                          for "jump to the ending" / any other kind>,
         }
     """
     pending = consent.get("pending")
@@ -100,13 +104,18 @@ def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = N
     if pending is None:
         kind = _ASK_TRIGGER_DECISION_TYPES.get(decision_type)
         if not kind:
-            return {"action": "none", "kind": None, "consent": dict(consent), "decision_type": decision_type}
+            return {
+                "action": "none", "kind": None, "consent": dict(consent),
+                "decision_type": decision_type, "target_beat": None,
+            }
 
+        target_beat = decision.get("target_beat") if kind == "jump" else None
         new_consent = {
             "pending": kind,
             "confirm_count": 0,
             "required_confirms": REQUIRED_CONFIRMS[kind],
             "asked_at_turn": turn_count,
+            "target_beat": target_beat,
         }
         return {
             "action": "ask",
@@ -114,10 +123,12 @@ def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = N
             "consent": new_consent,
             "decision_type": _ASK_DECISION_TYPE[kind],
             "prompt_text": _ASK_TEXT[kind][0],
+            "target_beat": target_beat,
         }
 
     kind = pending
     required = consent.get("required_confirms", REQUIRED_CONFIRMS[kind])
+    target_beat = consent.get("target_beat")
 
     if confirmation_response == "affirm":
         confirm_count = consent.get("confirm_count", 0) + 1
@@ -127,6 +138,7 @@ def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = N
                 "kind": kind,
                 "consent": new_consent_state(),
                 "decision_type": _EXECUTE_DECISION_TYPE[kind],
+                "target_beat": target_beat,
             }
         new_consent = dict(consent)
         new_consent["confirm_count"] = confirm_count
@@ -138,6 +150,7 @@ def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = N
             "consent": new_consent,
             "decision_type": _ASK_DECISION_TYPE[kind],
             "prompt_text": text,
+            "target_beat": target_beat,
         }
 
     # "decline" or "unrelated" (or missing/malformed) — cancel and resume.
@@ -146,4 +159,5 @@ def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = N
         "kind": kind,
         "consent": new_consent_state(),
         "decision_type": "progress_story",
+        "target_beat": None,
     }

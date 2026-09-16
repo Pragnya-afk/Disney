@@ -227,6 +227,7 @@ def make_variant(base_scenario: dict, variant: str) -> dict:
 BASE_STORIES = [
     {
         "base_name": "olaf_makes_anna_smile",
+        "title": "Cheering Up Anna",
         "story_length": "super_short",
         "narrative_mode": "experience_manager_present",
         "story_topic": (
@@ -255,6 +256,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_first_summer_picnic",
+        "title": "First Summer Picnic",
         "story_length": "short",
         "narrative_mode": "experience_manager_past_memory",
         "story_topic": (
@@ -286,6 +288,8 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_lost_snowflake",
+        "title": "The Lost Snowflake",
+        "narrator_agnostic": True,
         "story_length": "short",
         "narrative_mode": "drama_manager_third_person",
         "story_topic": (
@@ -317,6 +321,8 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_retells_red_riding_hood",
+        "title": "Little Red Riding Hood",
+        "narrator_agnostic": True,
         "story_length": "medium",
         "narrative_mode": "drama_manager_third_person_retelling",
         "story_topic": (
@@ -420,6 +426,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_arendelle_tour",
+        "title": "Arendelle Tour",
         "story_length": "medium",
         "narrative_mode": "experience_manager_present",
         "story_topic": (
@@ -462,6 +469,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_lost_lantern_adventure",
+        "title": "The Lost Lantern Adventure",
         "story_length": "long",
         "narrative_mode": "drama_manager_third_person_original_story",
         "story_topic": (
@@ -525,6 +533,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_winter_festival_surprise",
+        "title": "Winter Festival Surprise",
         "story_length": "very_long",
         "narrative_mode": "experience_manager_present_with_goal",
         "story_topic": (
@@ -585,6 +594,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_once_upon_a_snowman_origin",
+        "title": "Once Upon a Snowman",
         "story_length": "short",
         "narrative_mode": "experience_manager_past_memory",
         "source_inspiration": "Once Upon a Snowman (2020)",
@@ -657,6 +667,8 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_presents_ocean_adventure",
+        "title": "The Ocean Adventure",
+        "narrator_agnostic": True,
         "story_length": "medium_long",
         "narrative_mode": "drama_manager_theatrical_retelling",
         "source_inspiration": "Olaf Presents (2021)",
@@ -709,6 +721,8 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_retells_cinderella",
+        "title": "Cinderella",
+        "narrator_agnostic": True,
         "story_length": "medium",
         "narrative_mode": "drama_manager_third_person_retelling",
         "story_topic": (
@@ -814,6 +828,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_tells_about_his_day",
+        "title": "A Day in Arendelle",
         "story_length": "very_short",
         "narrative_mode": "experience_manager_past_memory",
         "story_topic": (
@@ -867,6 +882,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_frozen_adventure_traditions",
+        "title": "Frozen Family Traditions",
         "story_length": "long",
         "narrative_mode": "experience_manager_present_with_goal",
         "source_inspiration": "Olaf's Frozen Adventure (2017)",
@@ -926,6 +942,7 @@ BASE_STORIES = [
 
     {
         "base_name": "olaf_retells_frozen_1",
+        "title": "The Story of Frozen",
         "story_length": "medium",
         "narrative_mode": "drama_manager_first_person_retelling",
         "source_inspiration": "Frozen (2013)",

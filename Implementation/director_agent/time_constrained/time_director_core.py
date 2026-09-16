@@ -90,7 +90,7 @@ def build_time_director_prompt(
     previous_beat = beats[current_index - 1]["name"] if current_index > 0 else "None"
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
 
-    last_opener = last_character_opener(story_state.get("story_so_far", ""))
+    last_opener = last_character_opener(story_state.get("story_so_far", ""), character["name"])
 
     return f"""
 {DIRECTOR_INSTRUCTIONS}

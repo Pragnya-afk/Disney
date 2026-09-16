@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Olaf Interactive Story — Extensions</title>
+  <title>Interactive Story</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="/socket.io.min.js"></script>
   <style>
@@ -61,11 +61,6 @@
     }
 
     .logo-area { text-align: center; margin-bottom: 28px; }
-    .logo-area .icon {
-      font-size: 76px; line-height: 1; margin-bottom: 10px; display: block;
-      animation: olaf-float 3.5s ease-in-out infinite;
-      filter: drop-shadow(0 8px 16px rgba(86,196,232,0.35));
-    }
     @keyframes olaf-float {
       0%, 100% { transform: translateY(0) rotate(-2deg); }
       50%       { transform: translateY(-10px) rotate(2deg); }
@@ -73,10 +68,6 @@
     .logo-area h1 {
       font-family: 'Cinzel Decorative', serif; font-size: 18px;
       color: var(--navy); line-height: 1.35; letter-spacing: 0.3px;
-    }
-    .logo-area p {
-      font-family: 'Fredoka One', sans-serif; font-size: 13px;
-      color: #4a7a9a; margin-top: 6px; letter-spacing: 0.4px;
     }
 
     .info-card {
@@ -109,6 +100,17 @@
     .scenario-btn .s-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; color: var(--text); line-height: 1.3; }
     .scenario-btn .s-key { font-family: 'Nunito', sans-serif; font-size: 11px; color: #7a9aaa; margin-top: 4px; }
     .scenario-placeholder { grid-column: 1/-1; font-family: 'Nunito', sans-serif; font-size: 13px; color: #8aaabb; padding: 8px 0; }
+
+    .character-toggle { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 18px; }
+    .character-btn {
+      background: rgba(255,255,255,0.85); border: 1.5px solid rgba(180,215,240,0.5);
+      border-radius: 14px; padding: 12px 10px; cursor: pointer; text-align: center; transition: all 0.15s;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .character-btn:hover { background: rgba(218,240,255,0.85); border-color: var(--disney-blue); }
+    .character-btn.selected { background: rgba(26,122,181,0.07); border-color: var(--disney-blue); border-width: 2px; }
+    .character-btn .c-icon { font-size: 26px; line-height: 1; }
+    .character-btn .c-title { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12.5px; color: var(--text); }
 
     .mode-toggle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
     .mode-btn {
@@ -251,7 +253,7 @@
       color: #3a5a6a; font-size: 12.5px; border-radius: 10px;
       font-style: italic; border: 1px solid rgba(180,215,240,0.4);
     }
-    .msg.olaf .msg-bubble {
+    .msg.character .msg-bubble {
       background: white; color: var(--text); border-radius: 4px 15px 15px 15px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.07); border: 1px solid rgba(180,215,240,0.4);
     }
@@ -259,7 +261,7 @@
       background: linear-gradient(135deg, #1a7ab5, #0d5a8a); color: white;
       border-radius: 15px 4px 15px 15px; box-shadow: 0 2px 12px rgba(13,90,138,0.28);
     }
-    .msg.olaf.streaming .msg-bubble { border-color: rgba(26,122,181,0.3); }
+    .msg.character.streaming .msg-bubble { border-color: rgba(26,122,181,0.3); }
     .cursor { display: inline-block; width: 2px; height: 13px; background: var(--disney-blue); margin-left: 2px; vertical-align: middle; animation: blink-cur 0.8s infinite; }
     @keyframes blink-cur { 0%,100%{opacity:1} 50%{opacity:0} }
 
@@ -345,6 +347,28 @@
       background: none; border: none; color: var(--disney-blue); font-family: 'Nunito', sans-serif;
       font-weight: 700; font-size: 13px; cursor: pointer; text-decoration: underline; padding: 4px; align-self: center;
     }
+
+    .secondary-btn {
+      width: 100%; margin-top: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 7px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(222,242,252,0.9));
+      border: 1.5px solid rgba(26,122,181,0.3);
+      color: var(--disney-blue); border-radius: 16px; padding: 12px 14px;
+      font-family: 'Fredoka One', sans-serif; font-size: 14.5px; letter-spacing: 0.2px;
+      cursor: pointer; transition: all 0.18s;
+      box-shadow: 0 3px 14px rgba(26,122,181,0.12);
+    }
+    .secondary-btn:hover {
+      background: linear-gradient(135deg, rgba(218,240,255,0.97), rgba(232,248,255,0.95));
+      border-color: var(--disney-blue); transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(26,122,181,0.22);
+    }
+    .secondary-btn:active { transform: translateY(0); box-shadow: 0 3px 10px rgba(26,122,181,0.18); }
+    .secondary-btn .sparkle { display: inline-block; animation: sparkle-spin 2.6s ease-in-out infinite; }
+    @keyframes sparkle-spin {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50%       { transform: rotate(18deg) scale(1.15); }
+    }
     #generate-screen, #review-screen {
       padding: 40px 40px 34px; align-items: stretch;
       background: linear-gradient(165deg, #e0f2fc 0%, #eef7fb 45%, #fdf6e8 100%);
@@ -379,6 +403,185 @@
     .review-btn-row .restart-btn { flex: 0 0 auto; }
     .review-btn-row .primary-btn { flex: 1; }
     .review-btn-row .primary-btn:disabled, .add-beat-btn:disabled, #generate-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ── Rocket Raccoon theme: inside the ship's workshop ── */
+    body.rocket-theme .app::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 7px;
+      background: repeating-linear-gradient(45deg, #ffcc00, #ffcc00 10px, #1a1030 10px, #1a1030 20px);
+      z-index: 5; pointer-events: none;
+    }
+    .tool-rack { display: none; }
+    body.rocket-theme .tool-rack {
+      display: flex; justify-content: center; gap: 16px; list-style: none;
+      margin: 2px 0 20px; padding-top: 12px; border-top: 2px dashed rgba(200,180,230,0.25);
+      font-size: 21px; filter: drop-shadow(0 3px 5px rgba(0,0,0,0.55));
+    }
+    .tool-rack li { display: inline-block; }
+    .tool-rack li:nth-child(odd) { transform: rotate(-9deg); }
+    .tool-rack li:nth-child(even) { transform: rotate(7deg); }
+    body.rocket-theme {
+      background:
+        radial-gradient(circle at 90% 8%, rgba(255,150,60,0.5) 0%, rgba(255,80,30,0.2) 14%, transparent 36%),
+        radial-gradient(circle at 8% 88%, rgba(110,80,255,0.3) 0%, transparent 42%),
+        radial-gradient(ellipse at 50% 0%, #3a1f6b 0%, #16072c 55%, #060310 100%);
+    }
+    body.rocket-theme #stars::before {
+      content: ''; position: absolute; top: 6%; right: 8%; width: 170px; height: 170px;
+      border-radius: 50%; background: radial-gradient(circle at 32% 32%, #ffcf8a, #ff6a3d 45%, #a83a1a 72%, transparent 100%);
+      box-shadow: 0 0 90px rgba(255,120,50,0.5); opacity: 0.6;
+    }
+    body.rocket-theme #stars::after {
+      content: ''; position: absolute; bottom: 8%; left: 5%; width: 110px; height: 110px;
+      border-radius: 50%; background: radial-gradient(circle at 40% 40%, #8a7bff, #2a1a55 70%, transparent 100%);
+      box-shadow: 0 0 55px rgba(124,92,255,0.35); opacity: 0.55;
+    }
+    body.rocket-theme #start-screen,
+    body.rocket-theme #generate-screen,
+    body.rocket-theme #review-screen,
+    body.rocket-theme #thankyou-screen,
+    body.rocket-theme #ended-screen {
+      background:
+        radial-gradient(circle at 88% 6%, rgba(255,150,60,0.45) 0%, rgba(255,90,30,0.18) 16%, transparent 40%),
+        radial-gradient(circle at 10% 92%, rgba(110,80,255,0.28) 0%, transparent 44%),
+        radial-gradient(ellipse at 30% 15%, #3a2060 0%, #1a1030 42%, #0d0818 100%);
+    }
+    body.rocket-theme .logo-area h1,
+    body.rocket-theme .ty-title,
+    body.rocket-theme .gen-title,
+    body.rocket-theme #ended-title { color: #f0e8ff; }
+    body.rocket-theme .ty-sub,
+    body.rocket-theme .ended-sub-detail,
+    body.rocket-theme .server-status { color: #b0a4d6; }
+    body.rocket-theme .scenario-section > label,
+    body.rocket-theme .field-label {
+      color: #ff8a5c; border-bottom-color: rgba(255,138,92,0.25);
+    }
+    body.rocket-theme .info-card {
+      background:
+        radial-gradient(circle 3px at 14px 14px, #9d8cc4 55%, transparent 60%),
+        radial-gradient(circle 3px at calc(100% - 14px) 14px, #9d8cc4 55%, transparent 60%),
+        radial-gradient(circle 3px at 14px calc(100% - 14px), #9d8cc4 55%, transparent 60%),
+        radial-gradient(circle 3px at calc(100% - 14px) calc(100% - 14px), #9d8cc4 55%, transparent 60%),
+        repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 10px),
+        rgba(24,14,42,0.62);
+      border-color: rgba(140,100,200,0.35);
+    }
+    body.rocket-theme .scenario-btn,
+    body.rocket-theme .character-btn,
+    body.rocket-theme .mode-btn,
+    body.rocket-theme .beat-card {
+      background:
+        repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 9px),
+        rgba(40,25,68,0.62);
+      border-color: rgba(140,100,200,0.35); color: #f0e8ff;
+    }
+    body.rocket-theme .story-prompt-input,
+    body.rocket-theme .beat-name-input,
+    body.rocket-theme .beat-importance-select,
+    body.rocket-theme .beat-goal-input,
+    body.rocket-theme .beat-expansions-input,
+    body.rocket-theme .review-topic-input,
+    body.rocket-theme #review-topic-input {
+      background: rgba(40,25,68,0.6); border-color: rgba(140,100,200,0.35); color: #f0e8ff;
+    }
+    body.rocket-theme .scenario-btn:hover,
+    body.rocket-theme .character-btn:hover,
+    body.rocket-theme .mode-btn:hover {
+      background:
+        repeating-linear-gradient(115deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 9px),
+        rgba(62,40,98,0.72);
+      border-color: #ff8a5c;
+    }
+    body.rocket-theme .scenario-btn.selected,
+    body.rocket-theme .character-btn.selected,
+    body.rocket-theme .mode-btn.selected {
+      background: rgba(255,106,61,0.18); border-color: #ff8a5c;
+    }
+    body.rocket-theme .scenario-btn .s-title,
+    body.rocket-theme .character-btn .c-title,
+    body.rocket-theme .mode-btn .m-title { color: #f0e8ff; }
+    body.rocket-theme .scenario-btn .s-key,
+    body.rocket-theme .mode-btn .m-desc,
+    body.rocket-theme .scenario-placeholder,
+    body.rocket-theme .beat-field-label { color: #9a8ec2; }
+    body.rocket-theme .time-limit-input-wrap { color: #d8cff0; }
+    body.rocket-theme .primary-btn {
+      background: linear-gradient(135deg, #ffb17a 0%, #ff6a3d 50%, #cc4a1f 100%);
+      box-shadow: 0 5px 20px rgba(255,90,30,0.35);
+    }
+    body.rocket-theme .primary-btn:hover { box-shadow: 0 8px 26px rgba(255,90,30,0.45); }
+    body.rocket-theme .restart-btn {
+      background: rgba(40,25,68,0.7); border-color: rgba(140,100,200,0.4); color: #ff8a5c;
+    }
+    body.rocket-theme .restart-btn:hover { background: rgba(62,40,98,0.8); }
+    body.rocket-theme .ended-btn-row .restart-btn.primary {
+      background: #7c5cff; color: #fff; border-color: #7c5cff;
+    }
+    body.rocket-theme .ended-btn-row .restart-btn.primary:hover { background: #6a48f0; }
+    body.rocket-theme .link-btn,
+    body.rocket-theme .add-beat-btn { color: #ff8a5c; }
+    body.rocket-theme .secondary-btn {
+      background:
+        repeating-linear-gradient(115deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 9px),
+        rgba(40,25,68,0.62);
+      border-color: rgba(255,138,92,0.4); color: #ff8a5c;
+      box-shadow: 0 3px 14px rgba(255,90,30,0.15);
+    }
+    body.rocket-theme .secondary-btn:hover {
+      background:
+        repeating-linear-gradient(115deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 9px),
+        rgba(62,40,98,0.75);
+      border-color: #ff8a5c; box-shadow: 0 7px 20px rgba(255,90,30,0.28);
+    }
+    body.rocket-theme .status-dot.ok { background: #3aeb9a; }
+    body.rocket-theme .session-header {
+      background:
+        radial-gradient(circle 3px at 12px 10px, #9d8cc4 55%, transparent 60%),
+        radial-gradient(circle 3px at calc(100% - 12px) 10px, #9d8cc4 55%, transparent 60%),
+        repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 10px),
+        linear-gradient(to right, #150a28, #201042, #150a28);
+      border-bottom-color: rgba(255,138,92,0.25);
+    }
+    body.rocket-theme .header-scenario .sc-label { color: rgba(216,207,240,0.55); }
+    body.rocket-theme .beat-col-label { color: rgba(216,207,240,0.5); }
+    body.rocket-theme .chat-log {
+      background:
+        repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 11px),
+        linear-gradient(to bottom, #140a26 0%, #1a1030 100%);
+    }
+    body.rocket-theme .msg.character .msg-bubble {
+      background: #241640; color: #f0e8ff; border-color: rgba(140,100,200,0.35);
+    }
+    body.rocket-theme .msg.system .msg-bubble {
+      background: linear-gradient(135deg, rgba(124,92,255,0.25), rgba(255,138,92,0.15));
+      color: #d8cff0; border-color: rgba(140,100,200,0.3);
+    }
+    body.rocket-theme .msg-avatar { background: #241640; border-color: rgba(140,100,200,0.4); }
+    body.rocket-theme .thinking-bar {
+      background: rgba(26,16,48,0.85); border-top-color: rgba(140,100,200,0.3); color: #b0a4d6;
+    }
+    body.rocket-theme .story-tabs {
+      background: rgba(20,10,35,0.5); border-bottom-color: rgba(255,138,92,0.15);
+    }
+    body.rocket-theme .story-tab {
+      background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: rgba(230,220,255,0.7);
+    }
+    body.rocket-theme .story-tab.active {
+      background: rgba(255,138,92,0.18); border-color: rgba(255,138,92,0.5);
+    }
+    body.rocket-theme .input-area {
+      background: #1a1030; border-top-color: rgba(140,100,200,0.3);
+    }
+    body.rocket-theme .input-area input {
+      background: rgba(36,22,64,0.8); border-color: rgba(140,100,200,0.4); color: #f0e8ff;
+    }
+    body.rocket-theme .input-area input::placeholder { color: #8a7fae; }
+    body.rocket-theme .mic-btn {
+      background: rgba(36,22,64,0.8); border-color: rgba(140,100,200,0.4);
+    }
+    body.rocket-theme .send-btn {
+      background: linear-gradient(135deg, #ff8a5c, #cc4a1f); box-shadow: 0 3px 10px rgba(204,74,31,0.35);
+    }
   </style>
 </head>
 <body>
@@ -390,15 +593,27 @@
   <!-- START SCREEN -->
   <div id="start-screen" class="screen active">
     <div class="logo-area">
-      <span class="icon">⛄</span>
-      <h1>Olaf Interactive Story — Extensions</h1>
-      <p>director mode, phase 1 scaffold</p>
+      <h1>Interactive Story</h1>
+      <ul class="tool-rack" aria-hidden="true">
+        <li>🔧</li><li>⚙️</li><li>🛠️</li><li>🔩</li><li>🧰</li><li>🔗</li>
+      </ul>
     </div>
 
     <div class="scenario-section">
       <div class="server-status">
         <div class="status-dot connecting" id="status-dot"></div>
         <span id="status-text">Connecting to server…</span>
+      </div>
+      <label>Choose your character</label>
+      <div class="character-toggle" id="character-toggle">
+        <button class="character-btn selected" data-character="olaf">
+          <div class="c-icon">⛄</div>
+          <div class="c-title">Olaf</div>
+        </button>
+        <button class="character-btn" data-character="rocket">
+          <div class="c-icon">🦝</div>
+          <div class="c-title">Rocket Raccoon</div>
+        </button>
       </div>
       <label>Choose a story</label>
       <div class="scenario-grid" id="scenario-grid">
@@ -427,16 +642,16 @@
         </div>
       </div>
       <button class="primary-btn" id="start-btn" disabled>Start Story ❄️</button>
-      <button class="link-btn" id="create-story-btn" style="margin-top:10px;">✨ Create Your Own Story</button>
+      <button class="secondary-btn" id="create-story-btn"><span class="sparkle">✨</span> Create Your Own Story</button>
     </div>
   </div>
 
   <!-- GENERATE SCREEN -->
   <div id="generate-screen" class="screen">
     <div class="gen-title">✨ Create Your Own Story</div>
-    <label class="field-label">What story should Olaf tell?</label>
+    <label class="field-label" id="gen-prompt-label">What story should your character tell?</label>
     <textarea class="story-prompt-input" id="story-prompt-input"
-      placeholder="e.g. Olaf helps a lost penguin find its way back to its family before the northern lights fade..."></textarea>
+      placeholder="e.g. A lost penguin needs help finding its way back to its family before the northern lights fade..."></textarea>
     <div class="beat-count-row">
       <span>Beats:</span>
       <input type="range" id="beat-count-slider" min="4" max="8" value="6" />
@@ -450,7 +665,7 @@
   <!-- REVIEW SCREEN -->
   <div id="review-screen" class="screen">
     <div class="gen-title" id="review-title">Review Your Story</div>
-    <label class="field-label">Story topic (the premise Olaf works from)</label>
+    <label class="field-label">Story topic (the premise your character works from)</label>
     <textarea class="story-prompt-input" id="review-topic-input" style="min-height:56px;"></textarea>
     <div class="beat-list" id="beat-list"></div>
     <button class="add-beat-btn" id="add-beat-btn">+ Add Beat</button>
@@ -524,7 +739,7 @@
 
   <!-- THANK YOU SCREEN -->
   <div id="thankyou-screen" class="screen">
-    <div class="ty-icon">⛄</div>
+    <div class="ty-icon" id="thankyou-icon">⛄</div>
     <div class="ty-title">Session ended</div>
     <div class="ty-sub">Session saved. You can start a new story or close the tab.</div>
     <button class="restart-btn" onclick="restartDemo()">← Start another story</button>
@@ -532,7 +747,7 @@
 
   <!-- STORY ENDED SCREEN -->
   <div id="ended-screen" class="screen">
-    <div class="ty-icon">⛄</div>
+    <div class="ty-icon" id="ended-icon">⛄</div>
     <div class="ty-title" id="ended-title">The story has ended</div>
     <div class="ty-sub" id="ended-sub">—</div>
     <div class="ended-sub-detail" id="ended-detail"></div>
@@ -553,6 +768,10 @@ let serverSid = null;
 let selectedScenarioKey = null;
 let selectedScenarioLabel = '';
 let selectedMode = 'director';
+let selectedCharacter = 'olaf';
+let currentCharacterKey = 'olaf';
+let characterName = 'Olaf';
+let audioFxChain = null;
 let currentStoryId = null;
 let scenarioBeats = [];
 let reviewMode = 'director';
@@ -594,7 +813,7 @@ function setServerStatus(state, text) {
 async function loadScenarios() {
   setServerStatus('connecting', 'Connecting to server…');
   try {
-    const res = await fetch(`${SERVER_URL}/scenarios`);
+    const res = await fetch(`${SERVER_URL}/scenarios?character=${encodeURIComponent(selectedCharacter)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const scenarios = await res.json();
     setServerStatus('ok', 'Server connected');
@@ -638,7 +857,9 @@ function connectSocket() {
   socket.on('server_sid', (data) => { serverSid = data.sid; });
 
   socket.on('session_started', (data) => {
-    addMsg('system', '', 'Connected. Speak or type — Olaf will respond after a moment.');
+    setActiveCharacter(data && data.character, data && data.character_name);
+    setupAudioFx(data && data.audiofx);
+    addMsg('system', '', `Connected. Speak or type — ${characterName} will respond after a moment.`);
     setThinking(false);
     currentStoryId = (data && data.story_id) || null;
     scenarioBeats = (data && data.beats) || [];
@@ -658,12 +879,14 @@ function connectSocket() {
   socket.on('stories_list', renderStoryTabs);
 
   socket.on('story_switched', (data) => {
+    setActiveCharacter(data.character, data.character_name);
+    setupAudioFx(data.audiofx);
     currentStoryId = data.story_id;
-    document.getElementById('header-scenario-name').textContent = `${data.title} · ${modeLabel(data.mode)}`;
+    document.getElementById('header-scenario-name').textContent = `${characterAvatarEmoji(data.character)} ${data.title} · ${modeLabel(data.mode)}`;
     document.getElementById('chat-log').innerHTML = '';
     (data.transcript || []).forEach(t => {
       if (t.user_input) addMsg('user', '', t.user_input);
-      if (t.character_response) addMsg('olaf', '', t.character_response);
+      if (t.character_response) addMsg('character', '', t.character_response);
     });
     stopTcTicker();
     document.getElementById('time-col').style.display = data.mode === 'time_constrained' ? 'flex' : 'none';
@@ -678,19 +901,30 @@ function connectSocket() {
     setBusy(false);
     stopTcTicker();
     const reasonText = {
-      close_story: 'Olaf reached the end of the story!',
+      close_story: `${characterName} reached the end of the story!`,
       stop_confirmed: 'The story was stopped, just like you asked.',
-      jump_to_end: 'Olaf jumped straight to the ending for you.',
-      summarize_to_end: 'Olaf wrapped up the rest of the story for you.',
-      time_up: "Time's up — Olaf wrapped up the story!",
+      jump_to_end: `${characterName} jumped straight to the ending for you.`,
+      summarize_to_end: `${characterName} wrapped up the rest of the story for you.`,
+      narrate_uninterrupted: `${characterName} told the whole story straight through for you.`,
+      time_up: `Time's up — ${characterName} wrapped up the story!`,
     }[data && data.reason] || 'The story has ended.';
     document.getElementById('ended-title').textContent = reasonText;
     document.getElementById('ended-sub').textContent =
       `${selectedScenarioLabel || 'This story'} is complete.`;
     document.getElementById('ended-detail').textContent =
       `${data.beats_completed}/${data.total_beats} beats · ${data.turns} turns`;
+    document.getElementById('ended-icon').textContent = characterAvatarEmoji(currentCharacterKey);
     showScreen('ended-screen');
     refreshStoryTabs();
+
+    // Reaching a natural ending (any reason above) never routed through
+    // stopSession()'s save call, so nothing on disk recorded it — only an
+    // explicit mid-session "stop" did. Save here too, once per ending.
+    const sidParam = serverSid ? `?sid=${encodeURIComponent(serverSid)}` : '';
+    fetch(`${SERVER_URL}/save_session${sidParam}`, { method: 'POST' })
+      .then(r => r.json())
+      .then(d => console.log('[Session saved on end]', d))
+      .catch(e => console.warn('[Save on end failed]', e));
   });
 
   socket.on('director_decision', (data) => {
@@ -702,7 +936,7 @@ function connectSocket() {
       updateTimeDisplay();
       setPacingBadge(data.pacing_mode);
     }
-    setThinking(true, 'Olaf is responding…');
+    setThinking(true, `${characterName} is responding…`);
   });
 
   socket.on('transcript_assistant', (data) => {
@@ -712,7 +946,7 @@ function connectSocket() {
 
   socket.on('transcript_user', (data) => {
     addMsg('user', '', data.text);
-    setThinking(true, 'Olaf is thinking…');
+    setThinking(true, `${characterName} is thinking…`);
   });
 
   socket.on('audio_output', (data) => { playAudioChunk(data.audio); });
@@ -756,7 +990,7 @@ function connectSocket() {
   socket.on('beats_saved', (data) => {
     document.getElementById('start-generated-btn').disabled = false;
     const title = (document.getElementById('review-topic-input').value || 'Your Story').slice(0, 40);
-    startSessionWith(lastGeneratedStoryId, title, reviewMode, reviewTimeLimit);
+    startSessionWith(lastGeneratedStoryId, title, reviewMode, reviewTimeLimit, selectedCharacter);
   });
 }
 
@@ -770,7 +1004,7 @@ function addMsg(role, _name, text) {
   const log = document.getElementById('chat-log');
   const wrap = document.createElement('div');
   wrap.className = `msg ${role}`;
-  const avatars = { system: '⚙️', olaf: '⛄', user: '👤' };
+  const avatars = { system: '⚙️', character: characterAvatarEmoji(currentCharacterKey), user: '👤' };
   const av = document.createElement('div');
   av.className = 'msg-avatar'; av.textContent = avatars[role] || '?';
   const bub = document.createElement('div');
@@ -783,8 +1017,8 @@ function addMsg(role, _name, text) {
 
 function startStreamingBubble() {
   const log = document.getElementById('chat-log');
-  const wrap = document.createElement('div'); wrap.className = 'msg olaf streaming';
-  const av = document.createElement('div'); av.className = 'msg-avatar'; av.textContent = '⛄';
+  const wrap = document.createElement('div'); wrap.className = 'msg character streaming';
+  const av = document.createElement('div'); av.className = 'msg-avatar'; av.textContent = characterAvatarEmoji(currentCharacterKey);
   const bub = document.createElement('div'); bub.className = 'msg-bubble';
   const textSpan = document.createElement('span'); textSpan.id = 'streaming-text-span';
   const cursor = document.createElement('span'); cursor.className = 'cursor';
@@ -916,9 +1150,83 @@ function drainAudioQueue() {
   _isPlaying = true;
   const src = audioCtx.createBufferSource();
   src.buffer = _audioQueue.shift();
-  src.connect(audioCtx.destination);
+  src.connect(audioFxChain || audioCtx.destination);
   src.onended = drainAudioQueue;
   src.start();
+}
+
+// ── Audio post-processing (per-character delay + reverb) ─────────────────────────
+function makeImpulseResponse(ctx, roomSize) {
+  const size = Math.max(0, Math.min(1, roomSize == null ? 0.4 : roomSize));
+  const duration = 0.5 + size * 2.5;
+  const decay = 2.0;
+  const rate = ctx.sampleRate;
+  const length = Math.max(1, Math.floor(rate * duration));
+  const impulse = ctx.createBuffer(2, length, rate);
+  for (let ch = 0; ch < 2; ch++) {
+    const data = impulse.getChannelData(ch);
+    for (let i = 0; i < length; i++) {
+      data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, decay);
+    }
+  }
+  return impulse;
+}
+
+function buildAudioFxChain(audiofx) {
+  if (!audiofx) return null;
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 24000 });
+
+  const input = audioCtx.createGain();
+  let node = input;
+
+  if (audiofx.delay) {
+    const cfg = audiofx.delay;
+    const delayNode = audioCtx.createDelay(5.0);
+    delayNode.delayTime.value = cfg.delay_seconds || 0;
+    const feedbackGain = audioCtx.createGain();
+    feedbackGain.gain.value = cfg.feedback || 0;
+    const wetGain = audioCtx.createGain();
+    wetGain.gain.value = cfg.mix != null ? cfg.mix : 0.2;
+    const dryGain = audioCtx.createGain();
+    dryGain.gain.value = 1 - wetGain.gain.value;
+
+    node.connect(dryGain);
+    node.connect(delayNode);
+    delayNode.connect(feedbackGain);
+    feedbackGain.connect(delayNode);
+    delayNode.connect(wetGain);
+
+    const sum = audioCtx.createGain();
+    dryGain.connect(sum);
+    wetGain.connect(sum);
+    node = sum;
+  }
+
+  if (audiofx.reverb) {
+    const cfg = audiofx.reverb;
+    const convolver = audioCtx.createConvolver();
+    convolver.buffer = makeImpulseResponse(audioCtx, cfg.room_size);
+    const dryGain = audioCtx.createGain();
+    dryGain.gain.value = cfg.dry_level != null ? cfg.dry_level : 0.8;
+    const wetGain = audioCtx.createGain();
+    wetGain.gain.value = cfg.wet_level != null ? cfg.wet_level : 0.2;
+
+    node.connect(dryGain);
+    node.connect(convolver);
+    convolver.connect(wetGain);
+
+    const sum = audioCtx.createGain();
+    dryGain.connect(sum);
+    wetGain.connect(sum);
+    node = sum;
+  }
+
+  node.connect(audioCtx.destination);
+  return input;
+}
+
+function setupAudioFx(audiofx) {
+  audioFxChain = buildAudioFxChain(audiofx);
 }
 
 // ── Microphone ─────────────────────────────────────────────────────────────────
@@ -963,9 +1271,25 @@ function shortModeLabel(mode) {
   return { director: 'Director', lenient: 'Lenient', time_constrained: 'Timed' }[mode] || mode;
 }
 
-function startSessionWith(key, label, mode, timeLimit) {
+function characterAvatarEmoji(key) {
+  return { olaf: '⛄', rocket: '🦝' }[key] || '⛄';
+}
+
+function applyCharacterTheme(key) {
+  document.body.classList.toggle('rocket-theme', key === 'rocket');
+}
+
+function setActiveCharacter(key, name) {
+  currentCharacterKey = key || 'olaf';
+  characterName = name || (currentCharacterKey === 'rocket' ? 'Rocket Raccoon' : 'Olaf');
+  document.getElementById('user-input').placeholder = `Say something to ${characterName}…`;
+  document.getElementById('gen-prompt-label').textContent = `What story should ${characterName} tell?`;
+  applyCharacterTheme(currentCharacterKey);
+}
+
+function startSessionWith(key, label, mode, timeLimit, character) {
   if (!key || !socket) return;
-  document.getElementById('header-scenario-name').textContent = `${label} · ${modeLabel(mode)}`;
+  document.getElementById('header-scenario-name').textContent = `${characterAvatarEmoji(character)} ${label} · ${modeLabel(mode)}`;
   document.getElementById('chat-log').innerHTML = '';
   scenarioBeats = [];
   buildBeatTracker(0);
@@ -973,11 +1297,11 @@ function startSessionWith(key, label, mode, timeLimit) {
   document.getElementById('time-col').style.display = mode === 'time_constrained' ? 'flex' : 'none';
   setThinking(true, 'Starting session…');
   showScreen('session-screen');
-  socket.emit('start_story', { scenario: key, mode, time_limit: timeLimit || 5 });
+  socket.emit('start_story', { scenario: key, mode, time_limit: timeLimit || 5, character: character || 'olaf' });
 }
 
 function startSession() {
-  startSessionWith(selectedScenarioKey, selectedScenarioLabel, selectedMode, selectedTimeLimit);
+  startSessionWith(selectedScenarioKey, selectedScenarioLabel, selectedMode, selectedTimeLimit, selectedCharacter);
 }
 
 // ── Beat generator flow ──────────────────────────────────────────────────────
@@ -1005,7 +1329,7 @@ function generateBeats() {
   lastPrompt = prompt;
   lastTargetBeats = parseInt(document.getElementById('beat-count-slider').value, 10) || 6;
   setGenBusy(true);
-  socket.emit('generate_beats', { prompt: lastPrompt, target_beats: lastTargetBeats });
+  socket.emit('generate_beats', { prompt: lastPrompt, target_beats: lastTargetBeats, character: selectedCharacter });
 }
 
 function beatCardHtml(beat) {
@@ -1079,7 +1403,7 @@ function renderStoryTabs(list) {
     const timeBadge = s.mode === 'time_constrained' && typeof s.remaining_seconds === 'number'
       ? `<span class="tab-mode-badge">${formatTime(s.remaining_seconds)}</span>` : '';
     tab.innerHTML = `
-      <span>${s.title}</span>
+      <span>${characterAvatarEmoji(s.character)} ${s.title}</span>
       <span class="tab-mode-badge">${shortModeLabel(s.mode)}</span>
       ${timeBadge}
       <span class="tab-dots">${dots}</span>
@@ -1112,7 +1436,7 @@ function sendTextMessage() {
   inp.value = '';
   setBusy(true);
   addMsg('user', '', text);
-  setThinking(true, 'Olaf is thinking…');
+  setThinking(true, `${characterName} is thinking…`);
   socket.emit('text_input', { text });
 }
 
@@ -1125,6 +1449,7 @@ function stopSession() {
     .then(r => r.json())
     .then(d => console.log('[Session saved]', d))
     .catch(e => console.warn('[Save failed]', e));
+  document.getElementById('thankyou-icon').textContent = characterAvatarEmoji(currentCharacterKey);
   showScreen('thankyou-screen');
 }
 
@@ -1175,6 +1500,18 @@ function wireModeToggle(containerId, onSelect) {
     };
   });
 }
+document.querySelectorAll('#character-toggle .character-btn').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('#character-toggle .character-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedCharacter = btn.dataset.character;
+    setActiveCharacter(selectedCharacter, btn.querySelector('.c-title').textContent);
+    selectedScenarioKey = null;
+    selectedScenarioLabel = '';
+    document.getElementById('start-btn').disabled = true;
+    loadScenarios();
+  };
+});
 wireModeToggle('mode-toggle', (mode) => {
   selectedMode = mode;
   document.getElementById('time-limit-row').style.display = mode === 'time_constrained' ? 'block' : 'none';
@@ -1207,7 +1544,7 @@ document.getElementById('regenerate-btn').onclick = () => {
   document.getElementById('review-error').style.display = 'none';
   document.getElementById('regenerate-btn').disabled = true;
   document.getElementById('regenerate-btn').textContent = 'Regenerating…';
-  socket.emit('generate_beats', { prompt: lastPrompt, target_beats: lastTargetBeats });
+  socket.emit('generate_beats', { prompt: lastPrompt, target_beats: lastTargetBeats, character: selectedCharacter });
 };
 document.getElementById('start-generated-btn').onclick = startGeneratedStory;
 
