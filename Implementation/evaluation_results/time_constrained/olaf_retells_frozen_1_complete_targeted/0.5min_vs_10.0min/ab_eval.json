@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-09-23T13:03:52.414260",
+  "story_a_path": "outputs/target_duration_director_agent/olaf_retells_frozen_1_complete_targeted/0.5min/batch/run_1.json",
+  "story_b_path": "outputs/target_duration_director_agent/olaf_retells_frozen_1_complete_targeted/10.0min/batch/run_1.json",
+  "scenario": "olaf_retells_frozen_1_complete_targeted",
+  "label_a": "0.5min",
+  "label_b": "10.0min",
+  "model": "gpt-4o",
+  "ab_evaluation": {
+    "assessment": "**Plot:**\n- **Story A**: The plot is extremely compressed due to the time constraint, but it manages to cover all the major beats of the Frozen story. The rapid resolution is coherent, though it lacks depth and emotional impact due to the brevity.\n- **Story B**: The plot unfolds more naturally, with each beat given space to develop. Despite frequent interruptions, the story maintains coherence and progresses logically through the narrative beats.\n\n**Better Story**: **B** — It provides a more complete and engaging plot progression.\n\n**Development:**\n- **Story A**: Development is minimal due to the rapid pace. Characters and settings are mentioned but not explored in depth.\n- **Story B**: Characters and settings are introduced with more detail, allowing for a richer understanding of the story's context and emotional stakes.\n\n**Better Story**: **B** — Offers more detailed development of characters and settings.\n\n**Language Use:**\n- **Story A**: Language is concise and maintains Olaf's voice, but lacks variation due to the need to cover the entire story quickly.\n- **Story B**: Language is varied and expressive, capturing Olaf's playful and warm tone effectively throughout the narrative.\n\n**Better Story**: **B** — Demonstrates more varied and expressive language use.\n\n**Interruption Handling:**\n- **Story A**: Handles the interruption by acknowledging it briefly and then completing the story rapidly.\n- **Story B**: Consistently acknowledges interruptions and redirects back to the story, maintaining narrative coherence despite frequent user attempts to stop the story.\n\n**Better Story**: **B** — Handles interruptions more gracefully and maintains narrative flow.\n\n**Character Fidelity:**\n- **Story A**: Olaf's character is maintained, but the rapid pace limits the expression of his personality.\n- **Story B**: Olaf's character is consistently portrayed with warmth, curiosity, and optimism, even during interruptions.\n\n**Better Story**: **B** — Maintains character fidelity more effectively.\n\n**Narrative Control:**\n- **Story A**: The narrative is controlled but rushed, completing all beats in a single response.\n- **Story B**: Maintains control over the narrative, progressing through beats despite interruptions.\n\n**Better Story**: **B** — Demonstrates better narrative control.\n\n**Anthropomorphism:**\n- **Story A**: Olaf feels less like an autonomous character due to the rapid pace.\n- **Story B**: Olaf behaves like a real character with agency, responding to interruptions while maintaining his narrative goals.\n\n**Better Story**: **B** — Olaf feels more like an autonomous character.\n\n**Descriptiveness:**\n- **Story A**: Limited descriptiveness due to time constraints.\n- **Story B**: Provides more sensory detail and setting texture, enhancing the story's vividness.\n\n**Better Story**: **B** — Offers more descriptiveness.\n\n**Beat Fidelity:**\n- **Story A**: Covers all beats but lacks depth.\n- **Story B**: Honors the intent of each beat, providing more depth and emotional resonance.\n\n**Better Story**: **B** — Maintains beat fidelity more effectively.\n\n**Transition Quality:**\n- **Story A**: Transitions are abrupt due to the need to cover the entire story quickly.\n- **Story B**: Transitions are smoother and more motivated, despite interruptions.\n\n**Better Story**: **B** — Provides better transition quality.\n\n**Three-Act Balance:**\n- **Story A**: The three-act structure is present but extremely compressed.\n- **Story B**: Maintains a more balanced three-act structure, with clear progression through beginning, middle, and end.\n\n**Better Story**: **B** — Preserves three-act balance more effectively.\n\n**Setup/Payoff Preservation:**\n- **Story A**: Setups and payoffs are present but rushed.\n- **Story B**: Setups and payoffs are more effectively preserved, with time to develop and resolve.\n\n**Better Story**: **B** — Preserves setups and payoffs more effectively.\n\n**Emotional Arc:**\n- **Story A**: The emotional arc is present but lacks depth due to brevity.\n- **Story B**: Provides a more developed emotional arc, with shifts in mood and stakes.\n\n**Better Story**: **B** — Offers a more developed emotional arc.\n\n**Overall:**\nBased on my assessment, the better story for each dimension is:\nPlot: B\nDevelopment: B\nLanguage Use: B\nInterruption Handling: B\nCharacter Fidelity: B\nNarrative Control: B\nAnthropomorphism: B\nDescriptiveness: B\nBeat Fidelity: B\nTransition Quality: B\nThree-Act Balance: B\nSetup/Payoff Preservation: B\nEmotional Arc: B\nOverall: B",
+    "winners": {
+      "Plot": "B",
+      "Development": "B",
+      "Language Use": "B",
+      "Interruption Handling": "B",
+      "Character Fidelity": "B",
+      "Narrative Control": "B",
+      "Anthropomorphism": "B",
+      "Descriptiveness": "B",
+      "Beat Fidelity": "B",
+      "Transition Quality": "B",
+      "Three-Act Balance": "B",
+      "Setup/Payoff Preservation": "B",
+      "Emotional Arc": "B",
+      "Overall": "B"
+    }
+  },
+  "ba_evaluation": {
+    "assessment": "**Plot:**\n- **Story A**: The plot is structured around the intended beats, but it struggles to progress due to frequent user interruptions. Despite this, Olaf consistently redirects back to the story, maintaining coherence and moving through the narrative beats, albeit slowly.\n- **Story B**: The plot is rapidly resolved in a single turn due to the user's request to stop. While it covers all the major events, the rapid resolution sacrifices depth and emotional impact.\n\n**Development:**\n- **Story A**: Characters and settings are introduced with relevant details, and Olaf's responses provide enough context to understand the situation. The story develops gradually, despite interruptions.\n- **Story B**: The development is minimal due to the rapid resolution. While key events are mentioned, there is little room for character or setting development.\n\n**Language Use:**\n- **Story A**: Olaf's language is varied, expressive, and appropriate for his character. The dialogue feels performable and maintains a whimsical tone.\n- **Story B**: The language is concise and lacks the expressiveness found in Story A, due to the need to quickly summarize the entire plot.\n\n**Interruption Handling:**\n- **Story A**: Olaf handles interruptions gracefully, acknowledging the user's input while steering back to the story. The narrative remains coherent despite frequent interruptions.\n- **Story B**: The story is closed quickly in response to the user's interruption, effectively ending the narrative.\n\n**Character Fidelity:**\n- **Story A**: Olaf remains in character throughout, displaying warmth, curiosity, and optimism. His responses align with the character profile.\n- **Story B**: Olaf's character is consistent, but the rapid resolution limits the expression of his personality.\n\n**Narrative Control:**\n- **Story A**: The narrative progresses through the intended beats, although it is slowed by interruptions. Olaf maintains control and direction.\n- **Story B**: The narrative is controlled by the need to quickly conclude, resulting in a loss of detailed progression.\n\n**Anthropomorphism:**\n- **Story A**: Olaf behaves like an autonomous agent with goals and choices, maintaining the illusion of a real character.\n- **Story B**: Olaf's autonomy is limited by the rapid conclusion, reducing the sense of agency.\n\n**Descriptiveness:**\n- **Story A**: The story includes sensory details and setting texture appropriate to its time budget, enhancing the narrative.\n- **Story B**: Descriptiveness is sacrificed for brevity, with minimal sensory detail.\n\n**Beat Fidelity:**\n- **Story A**: Each scene honors the intent of its story beat, despite interruptions.\n- **Story B**: The rapid resolution covers all beats but lacks depth and fidelity to each beat's intent.\n\n**Transition Quality:**\n- **Story A**: Scene transitions are motivated and natural, even with interruptions.\n- **Story B**: The transition is abrupt due to the need to quickly resolve the story.\n\n**Three-Act Balance:**\n- **Story A**: The story maintains a recognizable beginning, middle, and end, though it is stretched over multiple interruptions.\n- **Story B**: The three-act structure is compressed into a single turn, losing balance.\n\n**Setup/Payoff Preservation:**\n- **Story A**: Setups are preserved and resolved within the narrative, despite interruptions.\n- **Story B**: Setups and payoffs are mentioned but lack depth due to the rapid conclusion.\n\n**Emotional Arc:**\n- **Story A**: The emotional journey tracks across the output, showing shifts in mood and stakes.\n- **Story B**: The emotional arc is compressed, limiting the impact of emotional shifts.\n\nBased on my assessment, the better story for each dimension is:\nPlot: A\nDevelopment: A\nLanguage Use: A\nInterruption Handling: A\nCharacter Fidelity: A\nNarrative Control: A\nAnthropomorphism: A\nDescriptiveness: A\nBeat Fidelity: A\nTransition Quality: A\nThree-Act Balance: A\nSetup/Payoff Preservation: A\nEmotional Arc: A\nOverall: A",
+    "winners": {
+      "Plot": "A",
+      "Development": "A",
+      "Language Use": "A",
+      "Interruption Handling": "A",
+      "Character Fidelity": "A",
+      "Narrative Control": "A",
+      "Anthropomorphism": "A",
+      "Descriptiveness": "A",
+      "Beat Fidelity": "A",
+      "Transition Quality": "A",
+      "Three-Act Balance": "A",
+      "Setup/Payoff Preservation": "A",
+      "Emotional Arc": "A",
+      "Overall": "A"
+    }
+  },
+  "ba_winners_converted_to_original_labels": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "B",
+    "Interruption Handling": "B",
+    "Character Fidelity": "B",
+    "Narrative Control": "B",
+    "Anthropomorphism": "B",
+    "Descriptiveness": "B",
+    "Beat Fidelity": "B",
+    "Transition Quality": "B",
+    "Three-Act Balance": "B",
+    "Setup/Payoff Preservation": "B",
+    "Emotional Arc": "B",
+    "Overall": "B"
+  },
+  "aggregated_ab_ba_winners": {
+    "Plot": "B",
+    "Development": "B",
+    "Language Use": "B",
+    "Interruption Handling": "B",
+    "Character Fidelity": "B",
+    "Narrative Control": "B",
+    "Anthropomorphism": "B",
+    "Descriptiveness": "B",
+    "Beat Fidelity": "B",
+    "Transition Quality": "B",
+    "Three-Act Balance": "B",
+    "Setup/Payoff Preservation": "B",
+    "Emotional Arc": "B",
+    "Overall": "B"
+  }
+}

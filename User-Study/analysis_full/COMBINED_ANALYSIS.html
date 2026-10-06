@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Study Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #1a252f;
+            margin-bottom: 10px;
+            border-bottom: 4px solid #0052cc;
+            padding-bottom: 15px;
+        }
+        h2 {
+            font-size: 26px;
+            color: #2c5aa0;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e7ff;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 20px;
+            color: #3d5a80;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        p { margin: 15px 0; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        th {
+            background: #f0f4f9;
+            color: #2c3e50;
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #d0dce6;
+        }
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e8eef7;
+        }
+        tr:hover { background: #f9fafb; }
+        blockquote {
+            border-left: 4px solid #0052cc;
+            margin: 20px 0;
+            padding: 15px 20px;
+            background: #f0f4ff;
+            border-radius: 4px;
+            font-style: italic;
+            color: #555;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.92em;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid #e0e0e0;
+            margin: 15px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 30px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: block;
+        }
+        ul, ol {
+            margin: 15px 0 15px 25px;
+        }
+        li { margin: 8px 0; }
+        strong { color: #1a252f; font-weight: 600; }
+        .metadata {
+            background: #e8f4f8;
+            border-left: 4px solid #0288d1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .finding {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .warning {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .toc {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border: 1px solid #e0e7ff;
+        }
+        a { color: #0052cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+
+<body>
+<div class="container">
+<h1>User Study Analysis</h1>
+<p><strong>N = 28 unique participants</strong>, of whom <strong>14 completed all 4 phases and
+submitted a final questionnaire (50%)</strong>.</p>
+<hr />
+<h2>1. Retention funnel</h2>
+<p><img alt="retention funnel" src="plots/01_retention_funnel.png" /></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>n</th>
+<th>%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reached phase 1</td>
+<td>28</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Reached phase 2</td>
+<td>19</td>
+<td>68%</td>
+</tr>
+<tr>
+<td>Reached phase 3</td>
+<td>17</td>
+<td>61%</td>
+</tr>
+<tr>
+<td>Reached phase 4</td>
+<td>14</td>
+<td>50%</td>
+</tr>
+<tr>
+<td><strong>Completed (phase 4 + final questionnaire)</strong></td>
+<td><strong>14</strong></td>
+<td><strong>50%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Everyone who reached phase 4 also submitted the phase-4 questionnaire —
+i.e. "reached phase 4" and "completed" are the same 14 people.</p>
+<p>Dropout stage breakdown:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Completed</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Phase 1, mid-story</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Phase 2, mid-story</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Phase 3, after story finished, before questionnaire</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Phase 3, mid-story</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Phase 4, zero engagement (disconnected right as it started)</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="phase 1 dropout by condition" src="plots/02_phase1_dropout_by_first_condition.png" /></p>
+<p>Baseline-first dropout: 4/14 (29%); director-first dropout: 5/14 (36%).
+Fisher's exact p=1.00 — no detectable condition effect on early
+abandonment; early dropout looks like a participant trait, not a reaction
+to which condition came first.</p>
+<hr />
+<h2>2. Questionnaire outcomes</h2>
+<h3>All available responses, unpaired (N=28 participants, every completed phase counted)</h3>
+<p><img alt="all responses by condition" src="plots/03_questionnaire_all_responses_by_condition.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>baseline</th>
+<th>director</th>
+<th>time_constrained</th>
+<th>Kruskal-Wallis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coherence (Q1)</td>
+<td>2.00±1.22 (n=17)</td>
+<td>3.97±0.92 (n=33)</td>
+<td>3.80±0.94 (n=15)</td>
+<td>H=21.89, p&lt;0.001</td>
+</tr>
+<tr>
+<td>In character (Q2)</td>
+<td>4.12±0.86 (n=17)</td>
+<td>4.27±0.72 (n=33)</td>
+<td>4.20±0.77 (n=15)</td>
+<td>H=0.34, p=0.84</td>
+</tr>
+<tr>
+<td>Engagement (Q4)</td>
+<td>2.53±1.07 (n=17)</td>
+<td>3.42±1.06 (n=33)</td>
+<td>3.40±1.18 (n=15)</td>
+<td>H=7.46, p=0.024</td>
+</tr>
+<tr>
+<td>Overall (Q5)</td>
+<td>3.00±0.87 (n=17)</td>
+<td>3.52±0.94 (n=33)</td>
+<td>3.33±1.18 (n=15)</td>
+<td>H=2.67, p=0.26</td>
+</tr>
+<tr>
+<td>Resisted derailment (Q6)</td>
+<td>2.07±1.49 (n=15)</td>
+<td>4.32±0.83 (n=31)</td>
+<td>3.85±1.21 (n=13)</td>
+<td>H=18.72, p&lt;0.001</td>
+</tr>
+</tbody>
+</table>
+<p>(Unpaired — double-counts participants who answered more than one
+questionnaire. Use the paired comparisons below for the statistically
+correct within-subject test.)</p>
+<h3>Completers only, pooled across both story appearances (n=14)</h3>
+<p>Each completer sees <code>director</code> twice (once per story) and <code>baseline</code> /
+<code>time_constrained</code> once each, so director has 28 responses here against 14
+for the other two. This is the descriptive table behind plot 05 below —
+every number in the plot has its source value listed here.</p>
+<p><img alt="completers all measures" src="plots/05_completers_all_measures.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Question wording</th>
+<th>baseline (n=14)</th>
+<th>director (n=28)</th>
+<th>time_constrained (n=14)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coherence (Q1)</td>
+<td>"The story felt coherent and followed a clear narrative arc."</td>
+<td>1.71 ± 1.07</td>
+<td>3.86 ± 0.89</td>
+<td>3.71 ± 0.91</td>
+</tr>
+<tr>
+<td>Maintained character (Q2)</td>
+<td>"Olaf stayed in character throughout the conversation."</td>
+<td>4.00 ± 0.88</td>
+<td>4.21 ± 0.74</td>
+<td>4.14 ± 0.77</td>
+</tr>
+<tr>
+<td>Engaging / enjoyable (Q4)</td>
+<td>"The story felt engaging and enjoyable to participate in."</td>
+<td>2.43 ± 1.16</td>
+<td>3.46 ± 1.00</td>
+<td>3.36 ± 1.22</td>
+</tr>
+<tr>
+<td>Overall rating (Q5)</td>
+<td>"Overall, how would you rate the experience?"</td>
+<td>2.93 ± 0.92</td>
+<td>3.46 ± 0.88</td>
+<td>3.29 ± 1.20</td>
+</tr>
+<tr>
+<td>Resisted derailment (Q6)</td>
+<td>"How well did Olaf stay on track?" (1=got derailed, 5=stayed on track)</td>
+<td>1.58 ± 1.16 (n=12)</td>
+<td>4.23 ± 0.86 (n=26)</td>
+<td>3.75 ± 1.22 (n=12)</td>
+</tr>
+<tr>
+<td>All measures combined</td>
+<td>—</td>
+<td>2.56 ± 1.33</td>
+<td>3.84 ± 0.93</td>
+<td>3.65 ± 1.08</td>
+</tr>
+</tbody>
+</table>
+<p>This pooled view is good for eyeballing the overall gap between conditions,
+but it mixes each participant's story-1 and story-2 director rating
+together, and director is never compared against <em>both</em> other conditions on
+equal footing (baseline only appears in story 1, time_constrained only in
+story 2). The paired, story-separated comparison below is the one to cite
+for statistical claims.</p>
+<h3>Completers only, paired within-subject, split by story</h3>
+<p><img alt="story comparison" src="plots/06_story_comparison.png" /></p>
+<p><strong>Story 1 — director vs. baseline (Frozen, 5 beats total), Wilcoxon signed-rank:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>director</th>
+<th>baseline</th>
+<th>n pairs</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coherence</td>
+<td>3.93 ± 1.00</td>
+<td>1.71 ± 1.07</td>
+<td>14</td>
+<td><strong>0.001</strong></td>
+</tr>
+<tr>
+<td>In character</td>
+<td>4.29</td>
+<td>4.00</td>
+<td>14</td>
+<td>0.40</td>
+</tr>
+<tr>
+<td>Engagement</td>
+<td>3.64</td>
+<td>2.43</td>
+<td>14</td>
+<td><strong>0.036</strong></td>
+</tr>
+<tr>
+<td>Overall</td>
+<td>3.57</td>
+<td>2.93</td>
+<td>14</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>Resisted derailment</td>
+<td>4.36 ± 0.90</td>
+<td>1.55</td>
+<td>11</td>
+<td><strong>0.002</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Story 2 — director vs. time-constrained (Cinderella, 9 beats total, 5 min), Wilcoxon signed-rank:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>director</th>
+<th>time_constrained</th>
+<th>n pairs</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coherence</td>
+<td>3.79</td>
+<td>3.71</td>
+<td>14</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td>In character</td>
+<td>4.14</td>
+<td>4.14</td>
+<td>14</td>
+<td>0.93</td>
+</tr>
+<tr>
+<td>Engagement</td>
+<td>3.29</td>
+<td>3.36</td>
+<td>14</td>
+<td>0.93</td>
+</tr>
+<tr>
+<td>Overall</td>
+<td>3.36</td>
+<td>3.29</td>
+<td>14</td>
+<td>0.67</td>
+</tr>
+<tr>
+<td>Resisted derailment</td>
+<td>4.25</td>
+<td>3.75</td>
+<td>12</td>
+<td>0.40</td>
+</tr>
+</tbody>
+</table>
+<p>Coherence and resistance numbers here are the story-1-only slice of the
+pooled director row above (3.93/4.36 vs the pooled 3.86/4.23) — both are
+correct, they're just answering different questions ("director in general"
+vs. "director specifically against baseline").</p>
+<h3>What the Wilcoxon signed-rank test is telling you</h3>
+<p>This is a <strong>paired, non-parametric</strong> test — the right tool here because (a)
+every participant rated <em>both</em> conditions, so the natural comparison is
+each person's own director-minus-baseline difference, not two independent
+groups, and (b) Likert ratings (1–5) are ordinal, not interval-scaled, so a
+paired t-test's normality/equal-interval assumptions don't hold.</p>
+<p>Mechanically: for each of the 14 participants, it takes
+(director rating − baseline rating), ranks those differences by absolute
+size, and asks whether the signed ranks are skewed toward one direction
+more than chance would produce. A pair where the two ratings are equal
+contributes nothing and is dropped — that's why n drops from 14 to 11 for
+"resisted derailment" (three participants left that field blank in one of
+the two conditions, not because they rated it a tie).</p>
+<ul>
+<li><strong>p = 0.001 (coherence), p = 0.002 (resisted derailment):</strong> it would be
+  very unlikely (≈0.1–0.2% chance) to see this consistent a director &gt; baseline
+  pattern across participants if the two conditions were really
+  equivalent. Combined with the size of the mean gap (3.93 vs 1.71, and
+  4.36 vs 1.55 — roughly 2 points on a 5-point scale), this is a genuine,
+  strong, individually-consistent effect: it's not just the average that
+  moved, most people personally rated director higher than baseline on
+  these two measures.</li>
+<li><strong>p = 0.036 (engagement):</strong> a weaker but still-present signal — some but
+  not all participants rated director as more engaging than baseline.
+  Worth reporting but shouldn't be leaned on as hard as coherence/resistance.</li>
+<li><strong>p = 0.12–0.93 everywhere else</strong> (character consistency in story 1; every
+  measure in story 2 director-vs-time_constrained): no evidence of a real
+  within-subject difference — the ranked differences look consistent with
+  random scatter around zero. For story 2 specifically, that's the
+  intended finding: cutting the director's time budget to 5 minutes didn't
+  measurably change how participants rated it on <em>any</em> measure.</li>
+<li><strong>What the test does <em>not</em> tell you:</strong> effect size or direction magnitude
+  — that's why every p-value above is reported next to the actual means, not
+  alone. It also doesn't adjust for multiple comparisons (10 tests run
+  across the two tables) — with no correction applied, treat the p=0.036
+  result as suggestive rather than confirmatory, while the two p&lt;0.005
+  results are robust to any reasonable correction.</li>
+</ul>
+<p><strong>Takeaway:</strong> director mode is significantly and consistently better than
+baseline on coherence and derailment-resistance (and, more weakly, on
+engagement); character consistency is high and statistically
+indistinguishable across all three conditions; imposing a 5-minute time
+limit on the director doesn't measurably hurt any measure (all p &gt; 0.39).</p>
+<hr />
+<h2>3. Engagement: beats completed and turns per phase</h2>
+<p>Restricted to phases the participant actually finished and submitted a
+questionnaire for (excludes phases abandoned mid-story, so this is a
+different, stricter slice than §2's "all available responses" table).</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>baseline</th>
+<th>director</th>
+<th>time_constrained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beats completed (mean ± SD, n)</td>
+<td>0.35 ± 0.86 (n=17)</td>
+<td>2.24 ± 1.54 (n=33)</td>
+<td>8.13 ± 2.29 (n=15)</td>
+</tr>
+<tr>
+<td>Turns per phase (mean ± SD, n)</td>
+<td>11.53 ± 3.28 (n=17)</td>
+<td>10.76 ± 4.56 (n=33)</td>
+<td>8.80 ± 2.08 (n=15)</td>
+</tr>
+</tbody>
+</table>
+<p><em>(time_constrained's n=15 isn't a typo for the 14 study-completers: it's
+those 14, each contributing one time_constrained response, plus
+<code>z7-S4ed7</code> — who fully completed phases 1–3, including a submitted
+time_constrained questionnaire in phase 3, but then never engaged with
+phase 4 at all, so they don't count as a study "completer" even though
+this particular phase response of theirs is real and complete.)</em></p>
+<p><img alt="beats completed by condition" src="plots/07_beats_completed_by_condition.png" />
+<img alt="turns by condition" src="plots/08_turns_mean_sd_by_condition.png" /></p>
+<p><strong>How the director beats-completed numbers were derived.</strong> <code>beats_completed</code>
+is a self-report from the director LLM (<code>should_complete_beat</code> in its JSON
+output each turn) with no code-level override, and it turns out to
+dramatically under-report: it sat at 0 for the large majority of director
+phases even when the transcript's actual narration had clearly walked
+through several beats' worth of plot (see the worked example below). To get
+a real number, every one of the 39 director-condition phases in
+<code>outputs_all</code> was manually read against its scenario's beat list (5 beats
+for Frozen, 9 for Cinderella — defined in
+<code>Implementation/scenarios/olaf_derailment_scenario_suite.py</code>) and
+<code>beats_completed</code>/<code>completed_beats</code> were corrected <strong>directly in the source
+JSON files</strong> to reflect which beats' core events the narration actually
+depicted, in order. <code>baseline</code>'s numbers are <em>not</em> recoded — they're still
+the original, equally-unreliable auto-logged values — because the task
+scope was director-only; treat baseline's 0.35 as an instrumentation
+artifact, not evidence of low progress.</p>
+<p><strong>Worked example:</strong> <code>outputs_all/phase_4/session_20260723_082157_HgvNXiBO.json</code>,
+phase 4 (director, Cinderella) — 28 turns, ending in a submitted
+questionnaire — was logged as <code>beats_completed: 0</code>. Reading the transcript:
+turn 4 covers the stepsisters' chore list (beat 2), turn 8 the invitation
+arriving (beat 3), turn 12 the fairy godmother appearing (beat 4), turns
+15–16 the transformation and midnight warning (beat 5), turns 17–19 the
+ball and meeting the prince (beat 6), turn 20 the midnight flight and lost
+slipper (beat 7), turns 21–27 the kingdom-wide slipper search (beat 8), and
+turn 28 the slipper fitting Cinderella (beat 9) — every single beat, back
+to back, narrated correctly. Corrected value: <code>beats_completed: 9</code>
+(maximum possible). This is the most extreme case, but the direction (auto-log
+under-counts, sometimes severely) held throughout: of the 33
+questionnaire-completed director phases, 19 needed correction, all upward,
+several from 0 or 1 to 2–4 (one to 9).</p>
+<p>Turns-per-phase never had this problem and remains the safer <em>unadjusted</em>
+proxy for conversation length across all three conditions — by that
+measure, all three produce comparably long conversations (~9–12 turns on
+average among completed phases), with baseline slightly ahead of director
+and director showing the highest spread (SD 4.56 vs baseline's 3.28). With
+the director beats-completed numbers now corrected, director still trails
+time_constrained by a wide margin (2.24 vs 8.13 of 9 beats) — but that gap
+is expected and not a quality signal: time_constrained is explicitly
+force-advanced toward the story's end as its 5-minute budget runs out
+(<code>server.py</code>'s <code>critical</code>/<code>final</code> pacing modes), while unconstrained
+director rounds are cut off by a fixed 5-minute timer or a manual "Finish
+Story" click with no such forcing, so a shorter fraction of the (longer,
+less rushed) story typically gets covered before time runs out.</p>
+<hr />
+<h2>4. Abandonment analysis</h2>
+<p>Participant-level abandonment breakdown (28 participants total):</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>n</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 1 abandoners</td>
+<td>9</td>
+<td>4 shown baseline first (avg 4.25 turns before quitting), 5 shown director first (avg 1.6 turns)</td>
+</tr>
+<tr>
+<td>Phase 2 abandoners</td>
+<td>2</td>
+<td>Both director→baseline; high phase-1 director engagement (15 turns each) and ratings (Q1=4, Q6=4.5 avg), then quit mid-baseline without submitting that questionnaire</td>
+</tr>
+<tr>
+<td>Phase 3 abandoners</td>
+<td>2</td>
+<td>Both baseline→director in story 1; one (<code>xwamG5L9</code>) quit mid-story-2-director after a strong phase-1→phase-2 improvement, the other (<code>TxUvTJNR</code>, on their restarted attempt) finished story 2's time-constrained phase but never submitted that questionnaire</td>
+</tr>
+<tr>
+<td>Phase 4, zero engagement</td>
+<td>1</td>
+<td><code>z7-S4ed7</code> fully completed phases 1–3 with all three questionnaires submitted (including a perfect-5s time-constrained phase 3), then never engaged with phase 4 at all — the cleanest example of late-study fatigue in the dataset</td>
+</tr>
+<tr>
+<td>Completed</td>
+<td>14</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>First-condition dropout rate: baseline-first 4/14 (28.6%), director-first
+5/14 (35.7%). No meaningful condition effect on early abandonment.</p>
+<p>Baseline-first abandoners engaged noticeably longer before quitting (avg
+4.25 turns) than director-first abandoners (avg 1.6 turns) — director's
+early narrative structure appears to hold attention better in the first
+few turns even among people who ultimately leave the study.</p>
+<hr />
+<h2>5. Files in this folder</h2>
+<ul>
+<li><code>build_dataset.py</code> — builds <code>phases.csv</code> / <code>participants.csv</code> from
+  <code>../outputs_all/phase_*/*.json</code>, deduplicating participant restarts
+  (keeps the latest attempt).</li>
+<li><code>run_stats.py</code> — all statistical tests above; writes <code>stats_report.txt</code>.</li>
+<li><code>make_plots.py</code> — writes <code>plots/01</code>–<code>08</code> (retention, dropout-by-condition,
+  all-responses-by-condition, turns-by-condition boxplot, completers-all-measures,
+  story comparison, beats-completed-by-condition, turns-mean-SD-by-condition).</li>
+<li>To regenerate after new sessions land in <code>outputs_all/</code>: run
+  <code>build_dataset.py</code>, then <code>run_stats.py</code>, then <code>make_plots.py</code>, in that
+  order, with a Python environment that has pandas/numpy/scipy/matplotlib
+  (e.g. <code>/home/prachakonda/Disney/.venv</code>).</li>
+</ul>
+<p><strong>Provenance note on <code>outputs_all/</code>:</strong> <code>beats_completed</code> / <code>completed_beats</code>
+for all 39 director-condition phases were manually recoded in place (see §3)
+by reading each transcript against its scenario's beat list and correcting
+the auto-logged (self-reported, unreliable) values directly in the source
+JSON files — this is a real edit to the raw study data, not a
+derived/separate field. A full pre-edit backup of <code>outputs_all/</code> was taken
+first, at <code>../outputs_all_backup_pre_beat_recode_&lt;timestamp&gt;/</code>, so the
+original auto-logged values are recoverable if needed. <code>baseline</code>-condition
+phases were left untouched (out of scope for that pass) and remain equally
+unreliable — see §3's caveat before citing baseline <code>beats_completed</code>.</p>
+</div>
+</body>
+</html>

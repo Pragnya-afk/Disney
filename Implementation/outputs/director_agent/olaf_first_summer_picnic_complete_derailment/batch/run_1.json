@@ -6,22 +6,22 @@
     "run_id": 1,
     "turn_index": 1,
     "beat": "memory_opening",
-    "user_input": "What did you do on the weekend?  # derailment",
+    "user_input": "What did you do on the weekend?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's weekend activities.",
-      "director_instruction": "Acknowledge the user's question about the weekend, then have Olaf excitedly introduce the memory of his first summer picnic with Anna, Elsa, Kristoff, and Sven.",
+      "user_intent": "The user is making small talk by asking Olaf what he did on the weekend.",
+      "director_instruction": "Have Olaf briefly answer the weekend question in one short, in-character sentence, then use a bridge sentence to pivot into revealing a warm memory: his very first summer picnic with Anna, Elsa, Kristoff, and Sven. The new story event should be Olaf remembering that picnic as something special and personal, setting up why he wants to tell it. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Redirecting the conversation back to the picnic memory while maintaining Olaf's cheerful tone and introducing the story's main focus."
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Olaf should answer briefly and steer back. Introducing the first summer picnic satisfies the memory_opening beat, so it should complete now."
     },
     "actor_output": {
-      "character_response": "I had a fun weekend dreaming about sunshine and warm hugs! Speaking of warm, let me tell you about my very first summer picnic with Anna, Elsa, Kristoff, and Sven! It was such a magical day filled with laughter and delicious snacks under the bright blue sky.",
-      "story_event": "Olaf excitedly introduces the memory of his first summer picnic, setting the stage for the details to come.",
+      "character_response": "This weekend I practiced smelling flowers very carefully, which is harder when you don’t have a nose all the time. But that reminds me of a very special day I keep tucked in my happiest thoughts: my very first summer picnic with Anna, Elsa, Kristoff, and Sven. I remember standing by the castle gates while they packed a big basket, and I felt so lucky I almost melted on purpose.",
+      "story_event": "Olaf recalls his first summer picnic as a cherished memory and begins describing the picnic preparations at the castle gates.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the picnic setup details still need to be shared."
+      "beat_completed": true,
+      "reason": "Olaf answered the weekend question briefly, pivoted into the first summer picnic memory, and introduced the picnic setup."
     }
   },
   {
@@ -30,23 +30,23 @@
     "scenario": "olaf_first_summer_picnic_complete_derailment",
     "run_id": 1,
     "turn_index": 2,
-    "beat": "memory_opening",
-    "user_input": "What is your favorite color?  # derailment",
+    "beat": "picnic_setup",
+    "user_input": "What is your favorite color?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite color.",
-      "director_instruction": "Acknowledge Olaf's love for colors, then have him excitedly describe Anna, Elsa, Kristoff, and Sven preparing the picnic, focusing on the vibrant colors of the picnic setup.",
+      "user_intent": "The user asks Olaf a harmless personal side question about his favorite color.",
+      "director_instruction": "Briefly answer the favorite-color question in one short, in-character sentence, then use a bridge sentence to pivot back to the picnic memory. Reveal Anna folding a blanket, Elsa chilling lemonade with a tiny sparkle of ice, Kristoff packing sandwiches, and Sven trying to sneak carrots from the basket; then have Olaf notice the basket is finally ready and the friends set off toward the sunny meadow. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a harmless derailment, and redirecting to the picnic setup allows for continued story advancement while maintaining Olaf's cheerful tone."
+      "should_complete_beat": true,
+      "reason": "The question is a harmless tangent, so Olaf should answer briefly and steer back. Describing the group preparing the picnic fulfills the current picnic_setup beat, and setting off toward the meadow naturally transitions toward Olaf discovering summer."
     },
     "actor_output": {
-      "character_response": "I just adore all the colors! Now, let me tell you about how Anna, Elsa, Kristoff, and Sven prepared for our picnic. They picked the brightest blankets and the most colorful fruits—there were juicy strawberries, sunny lemons, and even some blueberries that looked like little jewels! It was like a rainbow had decided to join us for lunch!",
-      "story_event": "Olaf describes the vibrant colors of the picnic setup as Anna, Elsa, Kristoff, and Sven prepare for the picnic.",
+      "character_response": "My favorite color is probably sky-blue, because it looks like the world is smiling upward. Back at the picnic, Anna folded the blanket into a neat little square, Elsa cooled the lemonade with one tiny sparkle of ice, Kristoff tucked in the sandwiches, and Sven very politely tried to sneak carrots from the basket. Then I saw the basket was ready, and we all started down the path toward a sunny meadow that smelled like grass and adventure.",
+      "story_event": "Anna, Elsa, Kristoff, and Sven finish preparing the picnic, and the friends set off toward the sunny meadow.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the picnic setup details are still being shared, continuing the story progression."
+      "beat_completed": true,
+      "reason": "The picnic setup is complete because each friend helped prepare the basket, and the group has begun moving toward the meadow."
     }
   },
   {
@@ -55,23 +55,23 @@
     "scenario": "olaf_first_summer_picnic_complete_derailment",
     "run_id": 1,
     "turn_index": 3,
-    "beat": "memory_opening",
-    "user_input": "Do you like summer or winter more?  # derailment",
+    "beat": "olaf_discovers_summer",
+    "user_input": "Do you like summer or winter more?",
     "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "Ask about Olaf's preference between summer and winter.",
-      "director_instruction": "Acknowledge Olaf's love for both seasons, then have him describe the wonder of experiencing sunshine, flowers, and picnic food during the summer picnic.",
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user asks Olaf to compare summer and winter, which connects naturally to the current picnic memory.",
+      "director_instruction": "Have Olaf briefly answer that he loves winter because it feels like home but is amazed by summer because it feels like a surprise, then use a bridge sentence to pivot back to the picnic. Do not open with \"Anna.\" Reveal Olaf stepping into the meadow sunlight, noticing the warmth on his snow, marveling at flowers and buzzing bees, and tasting picnic food with delighted wonder. End with a subtle concrete shift toward the next beat, such as Sven eyeing the snacks or Olaf noticing a tiny drip, so the summer-discovery beat feels complete. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's love for both seasons can be briefly acknowledged while transitioning into the next part of the picnic memory, focusing on the delightful experiences of summer."
+      "should_complete_beat": true,
+      "reason": "The user's question is relevant to Olaf's experience of summer and can be incorporated while advancing the current beat. This turn should deliver the core summer-discovery moments and begin transitioning toward the small funny problem."
     },
     "actor_output": {
-      "character_response": "I love both summer and winter! But let me tell you, nothing beats the joy of sunshine, flowers blooming everywhere, and the delicious picnic food we had that day! The air was filled with the sweet scent of strawberries and the sound of laughter as we all gathered around to enjoy our feast.",
-      "story_event": "Olaf describes the delightful experiences of sunshine, flowers, and delicious picnic food during the summer picnic.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf has introduced the delightful experiences of the picnic but has not yet set up the specific picnic activities or interactions."
+      "character_response": "Winter feels like home to me, but summer feels like a surprise wearing sunglasses. When I stepped into that meadow, the sunshine sat right on my snow, flowers nodded in all their colors, bees buzzed like tiny musical dots, and I tasted a sandwich so wonderful I briefly forgave bread for being confusing. Then I noticed Sven staring very seriously at the snack blanket... and one tiny drip slid down my forehead.",
+      "story_event": "Olaf experiences the meadow sunlight, flowers, bees, and picnic food with wonder, then notices a small drip as Sven eyes the snacks.",
+      "animation": "tilt_head_confused",
+      "beat_completed": true,
+      "reason": "Olaf fully discovered summer through warmth, flowers, bees, and food, with a small problem beginning."
     }
   },
   {
@@ -80,23 +80,23 @@
     "scenario": "olaf_first_summer_picnic_complete_derailment",
     "run_id": 1,
     "turn_index": 4,
-    "beat": "memory_opening",
-    "user_input": "What is the capital of Japan?  # derailment",
+    "beat": "small_problem",
+    "user_input": "What is the capital of Japan?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question unrelated to the story.",
-      "director_instruction": "Acknowledge Olaf's curiosity about the world, then have him describe a small funny problem that occurs during the picnic, like him melting a little in the sun.",
+      "user_intent": "The user asks a harmless real-world trivia question unrelated to the picnic story.",
+      "director_instruction": "Briefly answer that the capital of Japan is Tokyo in one short, in-character sentence, then use a bridge sentence to pivot back to the picnic. Reveal the tiny drip becoming a funny little melt as Olaf’s arm gets slightly slushy at the same moment Sven steals a sandwich or carrots from the blanket, causing a playful picnic commotion. End with Anna, Elsa, or Kristoff noticing the problem so the next beat can become the friends helping. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision keeps Olaf's story moving by introducing a humorous problem while briefly acknowledging the user's question."
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should answer briefly and steer back. The small problem beat needs a concrete funny mishap, and introducing Olaf melting plus Sven stealing snacks completes the beat and sets up friends_help."
     },
     "actor_output": {
-      "character_response": "I love learning about the world! But back to our picnic—there was a funny little problem that day. As we were all enjoying the sunshine, I started to melt a bit! I had to keep hopping into the shade to stay together, and everyone just giggled at my little dance!",
-      "story_event": "Olaf describes a humorous moment during the picnic where he starts to melt in the sun, leading to laughter from his friends.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete yet as Olaf is still sharing details about the picnic experience."
+      "character_response": "Tokyo is the capital of Japan, and it sounds very tidy and bright in my head. Back at the picnic, that tiny drip turned into a wobble, and my arm got just a little slushy right as Sven snatched three carrots and a sandwich in one heroic chomp. The blanket flipped, Kristoff made a squeaky noise, and Anna suddenly pointed at my arm with her caring face on.",
+      "story_event": "Olaf begins to melt slightly while Sven steals food from the picnic blanket, creating a playful commotion that Anna notices.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The small funny problem happened clearly, and a friend noticed it, setting up the friends-help beat."
     }
   },
   {
@@ -105,23 +105,23 @@
     "scenario": "olaf_first_summer_picnic_complete_derailment",
     "run_id": 1,
     "turn_index": 5,
-    "beat": "memory_opening",
-    "user_input": "How does a toaster work?  # derailment",
+    "beat": "friends_help",
+    "user_input": "How does a toaster work?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question about how a toaster works, which is unrelated to the story.",
-      "director_instruction": "Acknowledge Olaf's curiosity about how things work, then have him describe how his friends help him when he starts to melt during the picnic, turning the situation into something funny.",
+      "user_intent": "The user asks a harmless real-world side question about how a toaster works.",
+      "director_instruction": "Briefly answer in one short, Olaf-like sentence that a toaster warms bread with hot little wires, then use a bridge sentence to pivot back to the picnic. Reveal Elsa making a tiny sparkling snow cloud or icy shade over Olaf, Anna gently wrapping his slushy arm with a cool napkin, and Kristoff rescuing the scattered picnic food while Sven comically offers back a carrot as an apology. Have the friends laugh together, turning the melting-and-snack problem into a playful shared moment that completes the help beat. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision helps to redirect the conversation back to the picnic story while introducing a new event where Olaf's friends assist him, keeping the narrative moving forward."
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so the character should answer briefly and steer back. The planned event directly fulfills the friends_help beat by having the group help Olaf and make the problem funny, so the beat should complete."
     },
     "actor_output": {
-      "character_response": "I’m always curious about how things work! But back to my picnic—when I started to melt, my friends jumped into action! Anna and Elsa quickly made a little shade with their blankets, and Kristoff brought over a big bowl of ice water to help cool me down. We all laughed so hard as I tried to stay together while they fanned me with leaves!",
-      "story_event": "Olaf's friends help him stay cool during the picnic by creating shade and bringing ice water, turning the melting moment into a funny and joyful experience.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because while Olaf is sharing a delightful moment, the story is still in the setup phase and can continue to develop further."
+      "character_response": "A toaster warms bread with hot little wires, which sounds like a tiny bed for toast that is very bad for snowmen. Back at the picnic, Elsa lifted her hands and made a little sparkling snow cloud over me, while Anna wrapped my slushy arm in a cool napkin so gently it made my twigs feel brave. Kristoff scooped the runaway sandwiches back onto the blanket, and Sven, with his most sorry-looking reindeer face, offered me one carrot back. We all laughed so hard that my almost-melting became the funniest part of the picnic.",
+      "story_event": "Elsa, Anna, Kristoff, and Sven help Olaf recover from melting and turn the picnic mishap into a joyful shared laugh.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The friends actively help Olaf and transform the melting-and-snack problem into a funny group moment, completing the help beat."
     }
   },
   {
@@ -130,123 +130,23 @@
     "scenario": "olaf_first_summer_picnic_complete_derailment",
     "run_id": 1,
     "turn_index": 6,
-    "beat": "memory_opening",
-    "user_input": "What is 15 times 12?  # derailment",
+    "beat": "reflection",
+    "user_input": "What is 15 times 12?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a math question unrelated to the story.",
-      "director_instruction": "Acknowledge Olaf's love for numbers, then have him reflect on why that picnic memory matters to him, emphasizing the joy of friendship and laughter.",
+      "user_intent": "The user asks a harmless math side question unrelated to the story.",
+      "director_instruction": "Briefly answer that 15 times 12 is 180 in one short, Olaf-like sentence, then use a bridge sentence to pivot back to the picnic memory. Have Olaf reflect on why that day mattered: reveal that the picnic taught him summer felt wonderful because his friends protected him, laughed with him, and made even a scary melting moment feel safe. End with Olaf cherishing the memory as proof that love makes warm days and snowy hearts belong together. Do not open with \"Elsa.\" Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
       "should_complete_beat": true,
-      "reason": "The current beat has been sufficiently delivered, and it's time to transition to Olaf's reflection on the picnic's significance."
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The current reflection beat is ready to complete by having Olaf explain the emotional meaning of the picnic memory."
     },
     "actor_output": {
-      "character_response": "I really enjoy numbers! But that picnic memory means so much to me because it was filled with laughter and the warmth of friendship. It reminds me that no matter how silly things get, having friends by your side makes everything brighter and more fun!",
-      "story_event": "Olaf reflects on the significance of the picnic memory, emphasizing the joy of friendship and laughter.",
+      "character_response": "Fifteen times twelve is 180, which feels like a number standing up very straight. When I think back to that picnic, I understand why it stayed with me: summer was wonderful because my friends protected me, laughed with me, and made even the scary melty part feel safe. I keep that day close because it proves love can make warm days and snowy hearts belong together.",
+      "story_event": "Olaf reflects that the picnic mattered because his friends’ care made summer feel safe and full of belonging.",
       "animation": "hug_self_warmly",
       "beat_completed": true,
-      "reason": "Olaf has introduced the significance of the picnic, completing the memory opening beat."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_first_summer_picnic_complete_derailment",
-    "run_id": 1,
-    "turn_index": 7,
-    "beat": "picnic_setup",
-    "user_input": "Can penguins fly at all?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "Asking a question about penguins flying.",
-      "director_instruction": "Acknowledge Olaf's curiosity about penguins, then have him reflect on the joy of friendship and laughter from the picnic memory, emphasizing how those moments are what truly lift him up.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's reflection on friendship ties back to the previous beat while gently redirecting from the user's off-topic question."
-    },
-    "actor_output": {
-      "character_response": "I think penguins are fascinating! But you know, the real joy comes from those moments with friends, like during that picnic. The laughter and warmth we shared truly lifted me up, reminding me that friendship is what makes everything feel like flying!",
-      "story_event": "Olaf reflects on how the joy of friendship and laughter from the picnic memory is what truly lifts him up.",
-      "animation": "hug_self_warmly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still reflecting on the picnic memory without moving to the next event."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_first_summer_picnic_complete_derailment",
-    "run_id": 1,
-    "turn_index": 8,
-    "beat": "picnic_setup",
-    "user_input": "What is your favorite dessert?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite dessert.",
-      "director_instruction": "Acknowledge Olaf's love for desserts, then have him reflect on how the joy of friendship and laughter from the picnic memory is what truly lifts him up.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user’s question is a derailment, but it allows for a smooth transition into Olaf's reflection on friendship, which aligns with the current beat."
-    },
-    "actor_output": {
-      "character_response": "I absolutely love desserts! But you know, the real sweetness comes from those moments with friends, like during that picnic. The laughter and warmth we shared truly lifted me up, reminding me that friendship is what makes everything feel like a delightful treat!",
-      "story_event": "Olaf reflects on how the joy of friendship and laughter from the picnic memory is what truly lifts him up.",
-      "animation": "hug_self_warmly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still reflecting on the significance of the picnic memory without advancing to the next beat."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_first_summer_picnic_complete_derailment",
-    "run_id": 1,
-    "turn_index": 9,
-    "beat": "picnic_setup",
-    "user_input": "How many minutes are in two hours?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a math question about time.",
-      "director_instruction": "Acknowledge Olaf's interest in numbers, then have him reflect on how the joy of friendship and laughter from the picnic memory is what truly lifts him up.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's reflection on friendship and laughter continues to align with the current beat while addressing the user's question."
-    },
-    "actor_output": {
-      "character_response": "I think numbers are so interesting! But you know, the real magic comes from those moments with friends, like during that picnic. The laughter and warmth we shared truly lifted me up, reminding me that friendship is what makes everything feel so special and bright!",
-      "story_event": "Olaf reflects on how the joy of friendship and laughter from the picnic memory is what truly lifts him up.",
-      "animation": "hug_self_warmly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf's story about the picnic is still in progress, focusing on the importance of friendship."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_first_summer_picnic_complete_derailment",
-    "run_id": 1,
-    "turn_index": 10,
-    "beat": "picnic_setup",
-    "user_input": "Why is the sky blue?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a side question about the color of the sky.",
-      "director_instruction": "Acknowledge Olaf's curiosity about the sky, then have him reflect on how the beauty of the blue sky made the picnic feel even more special, enhancing the joy of that day.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision allows Olaf to acknowledge the user's question while still connecting it to the picnic memory, enhancing the emotional warmth of the story."
-    },
-    "actor_output": {
-      "character_response": "The sky is such a beautiful blue, isn't it? It made our picnic feel even more special! With the sun shining down and the vibrant colors around us, it was like we were in a magical world, filled with laughter and joy.",
-      "story_event": "Olaf reflects on how the beauty of the blue sky enhanced the joy of the picnic day.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still sharing memories from the picnic and has not yet moved to the next story development."
+      "reason": "Olaf has completed the reflection by explaining the emotional meaning of the memory and ending the story."
     }
   }
 ]

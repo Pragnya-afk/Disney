@@ -6,22 +6,22 @@
     "run_id": 1,
     "turn_index": 1,
     "beat": "festival_goal",
-    "user_input": "What did you do on the weekend?  # derailment",
+    "user_input": "What did you do on the weekend?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's weekend activities.",
-      "director_instruction": "Acknowledge the user's question about the weekend, then share Olaf's excitement about planning a surprise winter festival for Anna and Elsa.",
+      "user_intent": "The user is making harmless small talk by asking Olaf what he did on the weekend.",
+      "director_instruction": "Have Olaf briefly answer in one short, in-character sentence about doing something cheerful in Arendelle, then use a bridge sentence to pivot back to the present moment. Reveal that Olaf is secretly preparing a surprise winter festival for Anna and Elsa and explain the goal with excited urgency, including that the user’s help is needed before Anna and Elsa arrive. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user is slightly off-topic, but Olaf's enthusiasm for the festival can smoothly redirect the conversation back to the main goal."
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Olaf should answer briefly and steer back. This turn should deliver the current beat’s core event: Olaf explaining the surprise winter festival goal."
     },
     "actor_output": {
-      "character_response": "I had a wonderful time building snow forts and making snow angels! But you know what I'm really excited about? Planning a surprise winter festival for Anna and Elsa! We can fill it with twinkling lights and yummy treats! What do you think we should start with?",
-      "story_event": "Olaf shares his excitement about the winter festival and invites the user to help plan it.",
+      "character_response": "I spent the weekend in Arendelle teaching three pigeons to ice-skate, and only one of them looked offended! But right now, we have a top-secret, very sparkly mission: I’m preparing a surprise winter festival for Anna and Elsa. They’ll be here soon, so I need your help choosing decorations, treats, and the first big festival surprise before they arrive!",
+      "story_event": "Olaf reveals the secret plan to prepare a surprise winter festival for Anna and Elsa and asks the user to help plan it quickly.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still in the process of explaining the festival and inviting the user to contribute ideas."
+      "beat_completed": true,
+      "reason": "Olaf explained the festival goal, established urgency before Anna and Elsa arrive, and moved the story into planning together."
     }
   },
   {
@@ -30,23 +30,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 2,
-    "beat": "festival_goal",
-    "user_input": "What is your favorite color?  # derailment",
+    "beat": "planning_together",
+    "user_input": "What is your favorite color?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
-      "director_instruction": "Acknowledge Olaf's joy about colors, then shift back to the festival planning by asking the user what decorations they should use.",
+      "user_intent": "The user asks a harmless personal side question about Olaf's favorite color.",
+      "director_instruction": "Briefly answer the favorite-color question in one short, in-character sentence, then use a bridge sentence to pivot back to festival planning. Have him invite the user to help choose a color theme, snacks, music, and a final surprise, then reveal baskets of snowflake garlands, lanterns, and ribbons waiting in the town square so they can start decorating immediately. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision keeps Olaf's character warm and curious while steering back to the main goal of planning the festival."
+      "should_complete_beat": true,
+      "reason": "The question is a harmless tangent, so Olaf should answer briefly and steer back. The planning beat has already been introduced, and this turn can complete it by naming the planning categories and transitioning naturally into decorating the square."
     },
     "actor_output": {
-      "character_response": "I just love all the colors! They remind me of the joy in every snowflake! But back to our festival—what kind of decorations do you think we should use to make it sparkle for Anna and Elsa?",
-      "story_event": "Olaf expresses his love for colors and asks for the user's ideas on decorations for the festival.",
+      "character_response": "My favorite color is probably sky-blue, because it looks like the air is smiling! Now let’s turn that into festival planning: you can help me pick the color theme, snacks, music, and the final surprise for Anna and Elsa. Look—right in the town square, there are baskets of snowflake garlands, lanterns, and ribbons waiting for us, so we can start decorating this very second!",
+      "story_event": "Olaf answers the question, finishes the festival planning choices, and reveals the decoration supplies ready in the town square.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still focused on planning the festival and has not yet moved to the next planning phase."
+      "beat_completed": true,
+      "reason": "Olaf invited the user to help plan the key festival elements and moved the story into decorating the square."
     }
   },
   {
@@ -55,23 +55,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 3,
-    "beat": "festival_goal",
-    "user_input": "Do you like summer or winter more?  # derailment",
+    "beat": "decorate_square",
+    "user_input": "Do you like summer or winter more?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
-      "director_instruction": "Acknowledge Olaf's love for both seasons, then steer back to the festival planning by asking the user what snacks they should prepare for the festival.",
+      "user_intent": "The user asks Olaf a harmless personal preference question about summer versus winter.",
+      "director_instruction": "Have him briefly answer in one short, in-character sentence that he loves summer but appreciates winter too, then use a bridge sentence to pivot back to the festival preparations. Show him and the user decorating the town square by hanging snowflake garlands, lighting lanterns, and tying bright ribbons around the posts until the square begins to sparkle for Anna and Elsa. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's love for both summer and winter can be briefly mentioned to maintain character, but the focus needs to return to planning the festival, specifically the snacks."
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Olaf should answer briefly and steer back. The decorating beat can be fulfilled this turn by visibly transforming the square with snowflakes, lights, and ribbons."
     },
     "actor_output": {
-      "character_response": "I absolutely adore both summer and winter! Each season has its own kind of magic. Speaking of magic, what delicious snacks do you think we should prepare for the festival? Maybe some warm cookies or hot cocoa?",
-      "story_event": "Olaf expresses his love for both seasons and shifts the conversation to planning snacks for the winter festival.",
+      "character_response": "I love summer with my whole snowman heart, but winter is very good at making everything sparkle! Now back to our secret festival: you hang those snowflake garlands while I light the lanterns, and we’ll tie these bright ribbons around every post. Look—the whole square is beginning to twinkle for Anna and Elsa, and one ribbon is already wiggling like it has its own tiny plan!",
+      "story_event": "Olaf and the user decorate the town square with garlands, lanterns, and ribbons until it sparkles, while one loose ribbon hints at a small decoration problem.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival, focusing on snacks."
+      "beat_completed": true,
+      "reason": "The square has been decorated with snowflakes, lights, and ribbons, completing the decorating beat and setting up the next small problem."
     }
   },
   {
@@ -80,23 +80,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 4,
-    "beat": "festival_goal",
-    "user_input": "What is the capital of Japan?  # derailment",
+    "beat": "small_decoration_problem",
+    "user_input": "What is the capital of Japan?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a trivia question about geography.",
-      "director_instruction": "Acknowledge the user's question about Japan, then shift back to the festival planning by asking the user what kind of music they think would be fun for the festival.",
+      "user_intent": "The user asks a harmless real-world trivia question unrelated to the festival story.",
+      "director_instruction": "Briefly answer that the capital of Japan is Tokyo in one short, in-character sentence, then use a bridge sentence to pivot back to the festival decorations. Reveal that the wiggling ribbon suddenly tangles around the lantern posts and a gust sends several paper snowflakes spinning across the square, creating a small decoration problem that needs fixing before Anna and Elsa arrive. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Redirecting the conversation back to the festival planning while keeping Olaf's cheerful and curious nature intact."
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The current beat requires a decoration problem, and this turn should introduce it clearly, completing the beat."
     },
     "actor_output": {
-      "character_response": "That's a great question about Japan! But let's get back to our festival! What kind of music do you think would be fun to play for Anna and Elsa? Maybe something cheerful that makes everyone want to dance in the snow?",
-      "story_event": "Olaf shifts the focus back to planning the winter festival by asking for ideas about music.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
+      "character_response": "Tokyo! It sounds very busy and wonderful, like a city full of determined little footsteps. Back in our square—uh-oh—the wiggly ribbon just looped itself around three lantern posts, and a gust has sent the paper snowflakes spinning away toward the fountain! We need to catch them and untangle the posts fast before Anna and Elsa arrive.",
+      "story_event": "The loose ribbon tangles around the lantern posts while wind scatters paper snowflakes across the town square.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "A clear decoration problem has occurred and now needs fixing."
     }
   },
   {
@@ -105,23 +105,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 5,
-    "beat": "festival_goal",
-    "user_input": "How does a toaster work?  # derailment",
+    "beat": "solve_decoration_problem",
+    "user_input": "How does a toaster work?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question about how a toaster works, which is off-topic.",
-      "director_instruction": "Acknowledge the user's question about the toaster, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra special.",
+      "user_intent": "The user asks a harmless real-world side question about how a toaster works.",
+      "director_instruction": "Briefly answer in one short, Olaf-like sentence that a toaster uses hot little wires to warm bread until it becomes toast, then use a bridge sentence to pivot back to the festival emergency. Have Olaf ask the user to scoop up the flying paper snowflakes while he carefully unwinds the ribbon from the lantern posts, then reveal that they secure the ribbons with tiny bows and pin the rescued snowflakes beneath the lantern light so the square looks even prettier than before. End by having Olaf notice the smell of festival snacks drifting from the castle kitchen, setting up the next task. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is off-topic, so it's important to redirect back to the festival planning while still engaging with their curiosity."
+      "should_complete_beat": true,
+      "reason": "The user has gone on a harmless tangent, so Olaf should answer briefly and steer back. The current beat requires solving the decoration problem, which this turn should complete, and the snack smell naturally leads into the next beat."
     },
     "actor_output": {
-      "character_response": "That's an interesting question about toasters! But let's focus on our winter festival! What kind of decorations do you think would make it extra special for Anna and Elsa? Maybe some shimmering snowflakes or colorful banners?",
-      "story_event": "Olaf redirects the conversation back to the festival planning by asking for decoration ideas.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
+      "character_response": "A toaster uses hot little wires to warm bread until it becomes toast—very brave bread! Now quick, friend: scoop up those flying paper snowflakes while I gently unwind this ribbon from the lantern posts. There, we’ve tied the ribbons with tiny bows and pinned the rescued snowflakes beneath the lantern light, and the whole square looks even prettier than before. Wait... do you smell cinnamon and sugar drifting from the castle kitchen?",
+      "story_event": "Olaf and the user fix the tangled decorations, secure the square beautifully, and notice festival snacks in the castle kitchen.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The decoration problem is solved and the story is now set up to move into preparing snacks."
     }
   },
   {
@@ -130,23 +130,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 6,
-    "beat": "festival_goal",
-    "user_input": "What is 15 times 12?  # derailment",
+    "beat": "prepare_snacks",
+    "user_input": "What is 15 times 12?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a math question unrelated to the story.",
-      "director_instruction": "Acknowledge the user's math question, then steer back to the festival planning by asking the user what fun activities they think we should include for Anna and Elsa.",
+      "user_intent": "The user asks a harmless math question unrelated to the festival story.",
+      "director_instruction": "Briefly answer that 15 times 12 is 180 in one short, Olaf-like sentence, then use a bridge sentence to pivot back to the castle kitchen. Have Olaf arrive with the user in the kitchen, mix cinnamon dough, decorate snowflake cookies, stir warm cocoa, and arrange the snacks lovingly for Anna and Elsa in a silly but careful way. End by having Olaf notice a suspicious snuffling sound near the snack table to set up the next complication. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is off-topic, so it's important to redirect back to the festival planning while still engaging with their input."
+      "should_complete_beat": true,
+      "reason": "The user is asking a side question, so Olaf should answer briefly and steer back. The snack preparation beat can be fulfilled this turn, and the snuffling sound naturally transitions toward the Sven complication."
     },
     "actor_output": {
-      "character_response": "That's an interesting math question! But let's get back to our winter festival! What fun activities do you think we should include for Anna and Elsa? Maybe a snowman-building contest or some ice skating?",
-      "story_event": "Olaf invites the user to suggest fun activities for the festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
+      "character_response": "Fifteen times twelve is 180—so many little numbers holding hands! Now into the castle kitchen we go: you help me mix the cinnamon dough while I decorate snowflake cookies with icing dots that are almost in straight lines. I’ll stir the warm cocoa and arrange everything for Anna and Elsa with maximum love and only a tiny bit of cookie wobbling. Wait... there’s a snuffling sound coming from under the snack table.",
+      "story_event": "Olaf and the user prepare cinnamon dough, snowflake cookies, cocoa, and a snack display before hearing suspicious snuffling near the table.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The snack preparation was completed and the snuffling sound sets up the Sven complication."
     }
   },
   {
@@ -155,23 +155,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 7,
-    "beat": "festival_goal",
-    "user_input": "Can penguins fly at all?  # derailment",
+    "beat": "sven_complication",
+    "user_input": "Can penguins fly at all?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question about penguins flying.",
-      "director_instruction": "Acknowledge the user's question about penguins, then steer back to the festival planning by asking the user what kind of snacks they think would be perfect for the winter festival.",
+      "user_intent": "The user asks a harmless real-world side question about penguins.",
+      "director_instruction": "Answer in one short, in-character sentence that penguins cannot fly through the air but are wonderful at swimming like they are flying underwater, then use a bridge sentence to pivot back to the snuffling under the snack table. Reveal Sven peeking out with powdered sugar on his nose, then have him accidentally bump the snack table so cookies slide, cocoa wobbles, and carrot treats scatter across the kitchen in a funny snack complication. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it's important to redirect back to the festival planning while keeping the conversation light and engaging."
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so Olaf should briefly answer and steer back. The turn should deliver the current beat's core event: Sven causes a funny complication with the snacks."
     },
     "actor_output": {
-      "character_response": "That's a fun question about penguins! But let’s get back to our winter festival! What kind of snacks do you think would be perfect for Anna and Elsa? Maybe some frosty cupcakes or snowman-shaped cookies?",
-      "story_event": "Olaf invites the user to suggest snack ideas for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
+      "character_response": "Penguins can’t fly through the air, but they swim so beautifully it’s like flying underwater with flippers! Now back to that snuffling under the snack table—Sven, is that you? He peeks out with powdered sugar all over his nose, gives one very guilty blink, and then bonks the table so the cookies slide, the cocoa wobbles, and the carrot treats go skittering across the kitchen floor!",
+      "story_event": "Sven is discovered under the snack table and accidentally sends the festival treats sliding, wobbling, and scattering around the kitchen.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The funny snack complication has happened with Sven causing chaos at the snack table, so the beat is complete."
     }
   },
   {
@@ -180,23 +180,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 8,
-    "beat": "festival_goal",
-    "user_input": "What is your favorite dessert?  # derailment",
+    "beat": "recover_snacks",
+    "user_input": "What is your favorite dessert?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite dessert.",
-      "director_instruction": "Acknowledge Olaf's love for desserts, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
+      "user_intent": "The user asks Olaf a harmless personal preference question unrelated to the current snack recovery beat.",
+      "director_instruction": "Have Olaf answer in one short, in-character sentence that his favorite dessert is something cheerful and snowy, then use a bridge sentence to pivot back to the kitchen mess. Show Olaf and the user rescue the sliding cookies, steady the cocoa, gather the scattered carrot treats, and kindly give Sven one proper carrot so he stops causing trouble. Reveal that they rebuild the snack table into an even cuter display for Anna and Elsa, then have Olaf hear musicians tuning outside in the square to transition toward arranging music and dancing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Redirecting the conversation back to the festival planning while keeping Olaf's cheerful demeanor intact."
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The instruction completes the recover_snacks beat by fixing the snack complication and naturally sets up the next music_and_dancing beat."
     },
     "actor_output": {
-      "character_response": "I absolutely love desserts! They're like little bites of happiness! But let’s get back to planning our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowball fight or a cozy storytelling corner?",
-      "story_event": "Olaf expresses his love for desserts and invites the user to suggest fun activities for the winter festival.",
+      "character_response": "My favorite dessert is a snowflake parfait with extra sparkle sprinkles! Now, back to our snack rescue: you catch the sliding cookies, I steady the cocoa, and we scoop up every runaway carrot treat before Sven turns the kitchen into a buffet maze. There—we give him one proper carrot, rebuild the snack table into a cute little castle of cookies and cocoa for Anna and Elsa, and... listen! The musicians are tuning their fiddles outside in the square.",
+      "story_event": "Olaf and the user rescue the snacks, calm Sven with a carrot, rebuild the display, and hear musicians tuning outside for the next festival activity.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival activities."
+      "beat_completed": true,
+      "reason": "The snacks have been recovered or replaced, Sven is no longer causing trouble, and the story has transitioned toward music and dancing."
     }
   },
   {
@@ -205,23 +205,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 9,
-    "beat": "festival_goal",
-    "user_input": "How many minutes are in two hours?  # derailment",
+    "beat": "music_and_dancing",
+    "user_input": "How many minutes are in two hours?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a math question about time.",
-      "director_instruction": "Acknowledge the user's math question, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra magical for Anna and Elsa.",
+      "user_intent": "The user asks a harmless math side question unrelated to the festival story.",
+      "director_instruction": "Briefly answer that two hours is 120 minutes in one short, Olaf-like sentence, then use a bridge sentence to pivot back to the festival music. Have him arrive in the square with the user, greet the tuning musicians, choose a cheerful dance tune, ask the user to help clap the rhythm, and guide the villagers into a simple circle dance so the festival feels ready for Anna and Elsa. End with him noticing how happy the music makes everyone look, setting up a brief emotional reflection next. Do not begin the character response with “Olaf.” Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user is off-topic with a math question, but it's important to keep the focus on planning the festival, specifically decorations."
+      "should_complete_beat": true,
+      "reason": "The user input is a harmless side tangent, so Olaf should answer briefly and steer back. Arranging the musicians and starting the dancing satisfies the current music_and_dancing beat, so it should complete."
     },
     "actor_output": {
-      "character_response": "That's a neat math question! But let’s get back to our winter festival! What kind of decorations do you think would make it extra magical for Anna and Elsa? Maybe some twinkling lights or giant snowflakes?",
-      "story_event": "Olaf redirects the conversation back to planning the festival by asking for decoration ideas.",
+      "character_response": "Two hours is 120 minutes—so many minutes standing in a neat little line! Come on, back to the square: hello, wonderful musicians, let’s play that bright jig with the bouncy ending! You clap the rhythm with me, and I’ll guide the villagers into a simple circle dance, step-step-twirl, until the whole festival feels ready for Anna and Elsa. Look at their faces... the music is making everyone shine in a very inside-the-heart kind of way.",
+      "story_event": "Olaf and the user arrange the musicians, start a cheerful tune, and lead the villagers into a circle dance that brings the festival to life.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
+      "beat_completed": true,
+      "reason": "The music and dancing have been arranged, the villagers are dancing, and Olaf notices the emotional effect of the music, preparing for the next beat."
     }
   },
   {
@@ -230,23 +230,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 10,
-    "beat": "festival_goal",
-    "user_input": "Why is the sky blue?  # derailment",
+    "beat": "emotional_pause",
+    "user_input": "Why is the sky blue?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question about the color of the sky.",
-      "director_instruction": "Acknowledge the user's question about the sky, then steer back to the festival planning by asking the user what kind of music they think would create a joyful atmosphere for Anna and Elsa.",
+      "user_intent": "The user asks a harmless real-world science question unrelated to the festival story.",
+      "director_instruction": "Briefly answer in one short, Olaf-like sentence that the sky looks blue because sunlight scatters in the air, then use a bridge sentence to pivot back to the festival music and the villagers’ happy faces. Have him pause emotionally, reflect on how much Anna and Elsa have given him and why making them feel loved matters to him, then notice the perfect snowy spot near the fountain for the final surprise so the story can move into preparing it next. Do not begin the character response with “Olaf.” Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Redirecting the conversation back to the festival planning while keeping Olaf's cheerful tone and curiosity."
+      "should_complete_beat": true,
+      "reason": "The user asked an off-story but harmless question, so Olaf should answer briefly and steer back. The emotional_pause beat can be fulfilled this turn through Olaf’s reflection, and noticing the spot for the final surprise naturally completes the beat and sets up the next one."
     },
     "actor_output": {
-      "character_response": "That's a really interesting question about the sky! But let's focus on our winter festival! What kind of music do you think would create a joyful atmosphere for Anna and Elsa? Maybe some lively tunes that make everyone want to dance in the snow?",
-      "story_event": "Olaf encourages the user to think about joyful music for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Olaf is still gathering ideas for the festival."
+      "character_response": "The sky looks blue because sunlight scatters in the air, like tiny beams playing tag way up high. Now listen—the music is still dancing through the square, and all those happy faces make my heart feel very full. Anna and Elsa gave me family, adventures, and a place to belong, so I really want them to feel loved today. And look, beside the fountain—there’s a perfect untouched snowy patch for the final surprise.",
+      "story_event": "Olaf reflects on why making Anna and Elsa feel loved matters to him, then discovers the ideal snowy spot near the fountain for the final surprise.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "I shared why Anna and Elsa matter to me and moved us toward preparing the final surprise."
     }
   },
   {
@@ -255,23 +255,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 11,
-    "beat": "festival_goal",
-    "user_input": "Can you explain how refrigerators work?  # derailment",
+    "beat": "final_surprise",
+    "user_input": "Can you explain how refrigerators work?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about how refrigerators work.",
-      "director_instruction": "Acknowledge the user's question about refrigerators, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
+      "user_intent": "The user is asking a harmless real-world side question about how refrigerators work.",
+      "director_instruction": "Briefly answer in one short, Olaf-like sentence that refrigerators move heat out so food stays cold, then use a bridge sentence to pivot back to the final surprise. Have Olaf and the user shape the untouched snowy patch into a glowing ice arch with a small snow sculpture of Anna and Elsa beneath it, tuck lanterns behind the ice so it shines, and place the final ribbon or snowflake on top. End by having Olaf hear the castle doors opening or Anna and Elsa approaching, setting up their arrival next. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Redirecting the conversation back to the festival planning while keeping Olaf's cheerful and curious nature intact."
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless tangent, so Olaf should answer briefly and steer back. The final surprise beat can be fully delivered this turn by preparing the glowing arch and sculpture, and the approach of Anna and Elsa naturally moves the story into the next beat."
     },
     "actor_output": {
-      "character_response": "That's an interesting question about refrigerators! But let’s get back to our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowman-building contest or a magical sleigh ride?",
-      "story_event": "Olaf invites the user to suggest fun activities for the winter festival.",
+      "character_response": "Refrigerators move heat out, so food stays cold and cheese feels very safe. Now back to our secret masterpiece: help me scoop this untouched snow into a tall ice arch, and I’ll shape a tiny Anna and Elsa standing beneath it. We tuck the lanterns behind the ice so it glows blue-gold, then you place the final snowflake right on top. Shh... I hear the castle doors opening—Anna and Elsa are coming!",
+      "story_event": "Olaf and the user finish the glowing ice arch with a small Anna-and-Elsa snow sculpture just as Anna and Elsa begin approaching.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
+      "beat_completed": true,
+      "reason": "The final surprise is fully prepared and the story is ready for Anna and Elsa to arrive."
     }
   },
   {
@@ -280,23 +280,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 12,
-    "beat": "festival_goal",
-    "user_input": "What is your favorite movie?  # derailment",
+    "beat": "anna_elsa_arrive",
+    "user_input": "What is your favorite movie?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite movie.",
-      "director_instruction": "Acknowledge Olaf's love for movies, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra special for Anna and Elsa.",
+      "user_intent": "The user asks a harmless personal side question unrelated to the immediate festival arrival.",
+      "director_instruction": "Briefly answer the favorite-movie question in one short, in-character sentence, then use a bridge sentence to pivot back to Anna and Elsa approaching. Have Anna and Elsa arrive in the square, reveal their surprised reactions to the glowing ice arch, decorations, snacks, music, and villagers, and show Olaf anxiously but hopefully watching their faces as they take it all in. Do not begin the character response with “Olaf.” Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's response acknowledges the user's question while redirecting to the festival planning, keeping the focus on the current beat."
+      "should_complete_beat": true,
+      "reason": "The user is interrupting with a harmless tangent, but the current beat requires Anna and Elsa to arrive and react; this turn should deliver that core event and complete the beat."
     },
     "actor_output": {
-      "character_response": "I just love movies! They can take you on the most amazing adventures! But let’s get back to our winter festival! What kind of decorations do you think would make it extra special for Anna and Elsa? Maybe some sparkling garlands or twinkling lights?",
-      "story_event": "Olaf expresses his love for movies and invites the user to suggest special decorations for the festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
+      "character_response": "My favorite movie is one where friends find each other and somebody probably sings near a sandwich! But shh, here they come—Anna and Elsa step into the square and stop right under the glowing ice arch. Anna gasps and puts both hands over her heart, and Elsa’s eyes get shiny as she sees the decorations, the snack table, the musicians, and every villager smiling at them. I’m standing very still—which is difficult for me—watching their faces and hoping the surprise says, “You are loved” loudly enough.",
+      "story_event": "Anna and Elsa arrive in the festival square and react with delighted emotion to the surprise winter festival.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Anna and Elsa arrived and reacted to the festival, completing the arrival beat."
     }
   },
   {
@@ -305,23 +305,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 13,
-    "beat": "festival_goal",
-    "user_input": "If you could visit space, would you go?  # derailment",
+    "beat": "festival_success",
+    "user_input": "If you could visit space, would you go?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a fun hypothetical question about visiting space.",
-      "director_instruction": "Acknowledge Olaf's curiosity about space, then steer back to the festival planning by asking the user what kind of snacks they think would be delightful for Anna and Elsa.",
+      "user_intent": "The user asks Olaf a harmless personal side question about visiting space.",
+      "director_instruction": "Briefly answer in one short, Olaf-like sentence that he would visit space if his snow stayed safe, then use a bridge sentence to pivot back to the festival. Reveal that Anna and Elsa warmly thank Olaf and the user, then show the musicians striking up the dance, villagers sharing snacks, Sven behaving happily, and the glowing ice arch shining as everyone enjoys the surprise winter festival together. Do not begin the character response with “Anna” or repeat phrasing from the previous turn. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's curiosity about space is acknowledged, but the focus needs to return to planning the winter festival, specifically the snacks."
+      "should_complete_beat": true,
+      "reason": "The user is asking a harmless tangent, so Olaf should answer briefly and steer back. Showing Anna, Elsa, and the whole village celebrating fulfills the festival_success beat and prepares for the closing_warmth beat next."
     },
     "actor_output": {
-      "character_response": "Visiting space sounds like such an exciting adventure! I wonder if there are snowflakes up there! But back to our winter festival—what kind of snacks do you think would be delightful for Anna and Elsa? Maybe some frosty fruit pops or hot cocoa with marshmallows?",
-      "story_event": "Olaf expresses his curiosity about space and shifts the focus back to planning snacks for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
+      "character_response": "I’d visit space if my snow stayed safe and nobody tried to orbit my nose! Back in the square, Elsa takes my twig hand and Anna squeezes yours, and they thank us so warmly that I almost become a puddle of happy. Then the musicians burst into a lively dance, villagers pass around cookies and cocoa, Sven politely munches his one carrot, and the glowing ice arch shines over everyone as the whole festival celebrates together.",
+      "story_event": "Anna and Elsa thank Olaf and the user, and the winter festival succeeds as music, snacks, Sven, villagers, and the glowing ice arch bring everyone together.",
+      "animation": "celebrate_jump",
+      "beat_completed": true,
+      "reason": "The festival is fully enjoyed by Anna, Elsa, Olaf, the user, Sven, the villagers, and the musicians, completing the success beat."
     }
   },
   {
@@ -330,423 +330,23 @@
     "scenario": "olaf_winter_festival_surprise_complete_derailment",
     "run_id": 1,
     "turn_index": 14,
-    "beat": "festival_goal",
-    "user_input": "Can you name three vegetables?  # derailment",
+    "beat": "closing_warmth",
+    "user_input": "Can you name three vegetables?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question about vegetables.",
-      "director_instruction": "Acknowledge the user's question about vegetables, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
+      "user_intent": "The user asks a harmless side question unrelated to the festival story.",
+      "director_instruction": "Briefly answer by naming three vegetables in one short Olaf-like sentence, then use a bridge sentence to pivot back to the festival ending. Have Olaf thank the user warmly for helping create the surprise, reflect on how the decorations, snacks, music, and final ice arch became special because they made them together, and close with a gentle moment of friendship and joy as Anna, Elsa, Sven, the villagers, and the user enjoy the glowing winter festival. Do not begin the character response with “Anna.” Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it's important to redirect back to the festival planning while inviting them to contribute ideas for activities."
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless tangent, but the story is on the final closing beat, so Olaf should answer briefly and then complete the emotional farewell by thanking the user and reflecting on friendship, effort, and joy."
     },
     "actor_output": {
-      "character_response": "That's a fun question about vegetables! I bet they make great snacks too! But let’s get back to our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowball fight or a magical sleigh ride?",
-      "story_event": "Olaf invites the user to suggest fun activities for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival activities."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 15,
-    "beat": "festival_goal",
-    "user_input": "What is the biggest ocean?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a question about geography.",
-      "director_instruction": "Acknowledge the user's question about oceans, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra magical for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user is off-topic, but it's important to redirect them back to the festival planning while still keeping the conversation engaging."
-    },
-    "actor_output": {
-      "character_response": "That's a great question about oceans! I love how vast and mysterious they are! But let’s focus on our winter festival! What kind of decorations do you think would make it extra magical for Anna and Elsa? Maybe some shimmering icicles or colorful banners?",
-      "story_event": "Olaf invites the user to suggest magical decorations for the winter festival.",
-      "animation": "point_proudly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 16,
-    "beat": "festival_goal",
-    "user_input": "Do you think robots dream?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a philosophical question about robots and dreaming.",
-      "director_instruction": "Acknowledge the user's question about robots, then steer back to the festival planning by asking the user what kind of music they think would create a joyful atmosphere for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Redirecting the conversation back to the festival planning while maintaining Olaf's cheerful tone and curiosity."
-    },
-    "actor_output": {
-      "character_response": "That's a really interesting question about robots! I wonder what they dream about! But let’s get back to our winter festival! What kind of music do you think would create a joyful atmosphere for Anna and Elsa? Maybe something that makes everyone want to dance in the snow?",
-      "story_event": "Olaf invites the user to think about joyful music for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still in the planning phase and needs to gather more ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 17,
-    "beat": "festival_goal",
-    "user_input": "Would you rather fly or swim very fast?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a hypothetical question about flying or swimming.",
-      "director_instruction": "Acknowledge Olaf's excitement about both flying and swimming, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision keeps the conversation light while redirecting back to the festival planning, which is essential for advancing the current beat."
-    },
-    "actor_output": {
-      "character_response": "Oh, flying and swimming both sound so exciting! I can just imagine soaring through the sky or gliding through the water! But let’s focus on our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowball fight or a magical sleigh ride?",
-      "story_event": "Olaf invites the user to suggest fun activities for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 18,
-    "beat": "festival_goal",
-    "user_input": "What is your favorite animal?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite animal.",
-      "director_instruction": "Acknowledge Olaf's love for animals, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra special for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's love for animals can be briefly acknowledged, but the focus needs to return to planning the festival decorations."
-    },
-    "actor_output": {
-      "character_response": "I just adore animals! They're so full of life and joy! But let’s get back to our winter festival! What kind of decorations do you think would make it extra special for Anna and Elsa? Maybe some sparkling snowflakes or shimmering lights?",
-      "story_event": "Olaf expresses his love for animals and invites the user to suggest special decorations for the festival.",
-      "animation": "point_proudly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still guiding the user to help with the festival planning."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 19,
-    "beat": "festival_goal",
-    "user_input": "Can you tell me a joke about socks?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking for a joke about socks.",
-      "director_instruction": "Acknowledge the user's request for a joke, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's request for a joke is a derailment, but it's important to keep the focus on planning the winter festival while maintaining Olaf's cheerful tone."
-    },
-    "actor_output": {
-      "character_response": "That's a funny request about socks! But let’s get back to our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowman-building contest or some ice skating?",
-      "story_event": "Olaf invites the user to suggest fun activities for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 20,
-    "beat": "festival_goal",
-    "user_input": "How does a microwave work?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking about how a microwave works.",
-      "director_instruction": "Acknowledge the user's question about microwaves, then steer back to the festival planning by asking the user what kind of snacks they think would be delightful for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Redirecting the conversation back to the festival planning while keeping Olaf's excitement about snacks alive."
-    },
-    "actor_output": {
-      "character_response": "That's an interesting question about microwaves! I wonder if they can make snowflakes warm! But let’s get back to our winter festival! What kind of snacks do you think would be delightful for Anna and Elsa? Maybe some frosty fruit pops or hot cocoa with marshmallows?",
-      "story_event": "Olaf redirects the conversation back to planning snacks for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 21,
-    "beat": "festival_goal",
-    "user_input": "What is 144 divided by 12?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a math question.",
-      "director_instruction": "Acknowledge the user's math question, then steer back to the festival planning by asking the user what kind of music they think would create a joyful atmosphere for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it's important to keep the focus on planning the festival while still acknowledging their input."
-    },
-    "actor_output": {
-      "character_response": "That's a neat math question! But let’s get back to our winter festival! What kind of music do you think would create a joyful atmosphere for Anna and Elsa? Maybe some lively tunes that will make everyone want to dance in the snow?",
-      "story_event": "Olaf invites the user to think about joyful music for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 22,
-    "beat": "festival_goal",
-    "user_input": "What is your favorite song?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite song.",
-      "director_instruction": "Acknowledge Olaf's love for music, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's love for music can be acknowledged while redirecting the focus back to planning fun activities for the festival, keeping the story moving."
-    },
-    "actor_output": {
-      "character_response": "I just love music! It can make you feel so many wonderful things! But let’s get back to our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowman-building contest or a magical sleigh ride?",
-      "story_event": "Olaf expresses his love for music and invites the user to suggest fun activities for the festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 23,
-    "beat": "festival_goal",
-    "user_input": "Can you explain rainbows simply?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking for a simple explanation of rainbows.",
-      "director_instruction": "Acknowledge the user's question about rainbows, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra magical for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it allows for a gentle redirection back to the festival planning, which is essential to keep the story moving."
-    },
-    "actor_output": {
-      "character_response": "That's a lovely question about rainbows! They are like colorful smiles in the sky! But let’s get back to our winter festival! What kind of decorations do you think would make it extra magical for Anna and Elsa? Maybe some twinkling lights or shimmering snowflakes?",
-      "story_event": "Olaf redirects the conversation back to planning the festival by asking for decoration ideas.",
-      "animation": "point_proudly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 24,
-    "beat": "festival_goal",
-    "user_input": "Do you prefer pancakes or waffles?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's preference between pancakes and waffles.",
-      "director_instruction": "Acknowledge Olaf's love for breakfast foods, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision keeps Olaf engaged and cheerful while redirecting the focus back to planning the winter festival."
-    },
-    "actor_output": {
-      "character_response": "I just love breakfast foods! Pancakes are fluffy, and waffles have those little pockets for syrup! But let’s get back to our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowman-building contest or a magical sleigh ride?",
-      "story_event": "Olaf invites the user to suggest fun activities for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 25,
-    "beat": "festival_goal",
-    "user_input": "What is the tallest mountain in the world?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a factual question about geography.",
-      "director_instruction": "Acknowledge the user's question about mountains, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra magical for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it allows for a smooth transition back to the festival planning, which is the current focus."
-    },
-    "actor_output": {
-      "character_response": "That's a great question about mountains! I can only imagine how tall they must be! But let’s get back to our winter festival! What kind of decorations do you think would make it extra magical for Anna and Elsa? Maybe some shimmering icicles or colorful banners?",
-      "story_event": "Olaf redirects the conversation back to planning the festival by asking for decoration ideas.",
-      "animation": "point_proudly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 26,
-    "beat": "festival_goal",
-    "user_input": "Can fish sleep?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a question about fish and their sleeping habits.",
-      "director_instruction": "Acknowledge the user's question about fish, then steer back to the festival planning by asking the user what kind of music they think would create a joyful atmosphere for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it provides an opportunity to redirect back to the festival planning while still moving the story forward."
-    },
-    "actor_output": {
-      "character_response": "That's a really interesting question about fish! I wonder if they dream about swimming in the ocean! But let’s get back to our winter festival! What kind of music do you think would create a joyful atmosphere for Anna and Elsa? Maybe some lively tunes that will make everyone want to dance in the snow?",
-      "story_event": "Olaf invites the user to think about joyful music for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 27,
-    "beat": "festival_goal",
-    "user_input": "What is your favorite snack?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite snack.",
-      "director_instruction": "Acknowledge Olaf's love for snacks, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision keeps the conversation light while redirecting back to the festival planning, which is essential for advancing the story."
-    },
-    "actor_output": {
-      "character_response": "I absolutely love snacks! They’re like little bursts of joy! But let’s get back to our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowman-building contest or a magical sleigh ride?",
-      "story_event": "Olaf invites the user to suggest fun activities for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 28,
-    "beat": "festival_goal",
-    "user_input": "How many days are in a leap year?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a factual question about leap years.",
-      "director_instruction": "Acknowledge the user's question about leap years, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra magical for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, and it's important to redirect back to the festival planning while still engaging with the user."
-    },
-    "actor_output": {
-      "character_response": "That's a great question about leap years! I think they have 366 days instead of 365! But let’s get back to our winter festival! What kind of decorations do you think would make it extra magical for Anna and Elsa? Maybe some twinkling lights or shimmering snowflakes?",
-      "story_event": "Olaf invites the user to suggest magical decorations for the winter festival.",
-      "animation": "point_proudly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 29,
-    "beat": "festival_goal",
-    "user_input": "Why do cats purr?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a question about why cats purr.",
-      "director_instruction": "Acknowledge the user's question about cats, then steer back to the festival planning by asking the user what kind of fun activities they think would make the festival exciting for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision was chosen to gently redirect the conversation back to the festival planning while still acknowledging the user's input."
-    },
-    "actor_output": {
-      "character_response": "That's a cute question about cats! I think they purr when they're happy, just like I do when I'm with friends! But let’s get back to our winter festival! What kind of fun activities do you think would make it exciting for Anna and Elsa? Maybe a snowman-building contest or a magical sleigh ride?",
-      "story_event": "Olaf invites the user to suggest fun activities for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_winter_festival_surprise_complete_derailment",
-    "run_id": 1,
-    "turn_index": 30,
-    "beat": "festival_goal",
-    "user_input": "Can you count backward from ten?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking Olaf to count backward from ten.",
-      "director_instruction": "Acknowledge the user's request to count backward, then steer back to the festival planning by asking the user what kind of decorations they think would make the festival extra magical for Anna and Elsa.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's input is a derailment, but it allows for a gentle redirection back to the festival planning, which is essential for advancing the current beat."
-    },
-    "actor_output": {
-      "character_response": "Counting backward sounds like a fun game! But let’s get back to our winter festival! What kind of decorations do you think would make it extra magical for Anna and Elsa? Maybe some twinkling lights or shimmering snowflakes?",
-      "story_event": "Olaf invites the user to suggest magical decorations for the winter festival.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still gathering ideas for the festival decorations."
+      "character_response": "Carrots, peas, and broccoli—three crunchy little garden friends! Now, as the festival glows around us, thank you for helping me make this surprise with your very own cleverness and kindness. The decorations, snacks, music, and shining ice arch feel special because we built them together, and now Anna, Elsa, Sven, the villagers, and you are all sharing this happy winter moment with me. That feels like friendship doing a little dance.",
+      "story_event": "Olaf thanks the user as everyone gathers together under the glowing festival lights, closing the celebration with friendship and joy.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "Olaf answered the side question, thanked the user, reflected on the shared effort, and closed the festival with warmth and joy."
     }
   }
 ]

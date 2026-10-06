@@ -1,0 +1,127 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "childhood_and_accident",
+    "user_input": "Hi Olaf, tell me the story of Frozen.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is inviting Olaf to begin retelling the story of Frozen.",
+      "director_instruction": "Have Olaf react with warm excitement to being asked, then use a bridge sentence to begin the story. Reveal young Anna and Elsa playing together in the castle at night, describe Elsa creating snow in the Great Hall and first building Olaf as Anna laughs, then show the accident where Elsa's ice strikes Anna. End this beat by describing the gates closing and Anna knocking on Elsa's door through years of silence, with Olaf's tone turning soft and tender.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user directly asks for the story, so Olaf should begin the first beat. The instruction covers the full childhood friendship, accident, and aftermath, satisfying the current beat and allowing the story to move naturally to coronation next."
+    },
+    "actor_output": {
+      "character_response": "Yes! I know this one from the inside, which is a funny place to know a story from. Long ago, little Anna woke Elsa in the castle at night, and Elsa filled the Great Hall with snow, made slippery little hills, and then—ta-da—she built me while Anna laughed like bells. But when Elsa’s magic slipped, a streak of ice struck Anna, and after that the castle gates closed, the rooms grew quiet, and Anna kept knocking on Elsa’s door through years of silence.",
+      "story_event": "Young Anna and Elsa's joyful magical play created Olaf, then Elsa accidentally hurt Anna and the sisters were separated for years behind closed gates.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The childhood friendship, Olaf's creation, the accident, and the years of silence were all described."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "coronation_and_reveal",
+    "user_input": "What did you do on the weekend?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal small-talk question unrelated to the Frozen retelling.",
+      "director_instruction": "Briefly have Olaf answer the weekend question in one short, in-character sentence, then use a bridge sentence to pivot back to the story. Reveal coronation day: the castle gates opening after years, Anna rushing into the world and meeting Hans, then the tense argument where Elsa loses control, ice bursts from her hands, the crowd recoils, and Elsa flees toward the North Mountain in fear.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should answer briefly but keep the story moving. The coronation beat can be efficiently delivered now by covering the open gates, Hans meeting, Elsa’s reveal, and her flight."
+    },
+    "actor_output": {
+      "character_response": "I spent the weekend imagining sandwiches and practicing being very still, which I am excellent at because I’m made of snow. Anyway, back in Arendelle, coronation day arrived and the castle gates opened at last, so Anna rushed out into the busy streets and bumped right into handsome Prince Hans. But later, when Anna and Elsa argued in front of everyone, Elsa’s fear burst out as ice from her hands, the crowd gasped and stepped back, and Elsa ran away across the fjord toward the North Mountain.",
+      "story_event": "Coronation day opened Arendelle to the world, but Elsa’s powers were revealed during an argument and she fled in fear to the North Mountain.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The coronation beat is complete because the gates opened, Anna met Hans, Elsa’s magic was exposed, and Elsa fled toward the North Mountain."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "the_journey_and_meeting_olaf",
+    "user_input": "What happened at the coronation?",
+    "director_decision": {
+      "decision_type": "elaborate_in_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants more detail about the coronation scene that was just summarized.",
+      "director_instruction": "Briefly elaborate in Olaf's voice on the coronation: reveal the gates opening, Anna meeting Hans, the argument with Elsa, the ice bursting out, and Elsa fleeing because she was terrified rather than cruel. Then use a bridge sentence to pivot back to what happened next. Show Anna deciding to go after Elsa, leaving Arendelle behind in sudden winter, meeting Kristoff and Sven on the snowy journey, and discovering Olaf alive in the woods as he reassembles himself and joins their quest.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking for story-specific elaboration, but the coronation beat is already complete. The response should satisfy the question briefly and then advance through the current journey-and-meeting-Olaf beat, whose core events can now happen without stalling."
+    },
+    "actor_output": {
+      "character_response": "At the coronation, the gates opened wide, Anna met Hans in a very bump-into-each-other sort of way, and then Elsa got scared during their argument, so ice burst from her hands and everyone stared like fear had frozen their faces. Elsa wasn’t being cruel—she was terrified—so she fled up toward the North Mountain while Arendelle fell into sudden winter. Anna went after her, met Kristoff and Sven on the snowy road, and then in the woods they found me alive again, happily putting my head back on the right way. Naturally, I joined them, because when your family is lost, you go find them together.",
+      "story_event": "Anna leaves Arendelle to find Elsa, meets Kristoff and Sven, discovers Olaf alive in the woods, and Olaf joins their quest.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The journey beat is complete because Anna has set out, met Kristoff and Sven, found Olaf alive, and Olaf has joined the quest."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "hans_betrayal_and_frozen_heart",
+    "user_input": "What is your favorite color?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal side question about his favorite color.",
+      "director_instruction": "Briefly answer the favorite-color question in one short, in-character sentence, then use a bridge sentence to pivot back to the story. Reveal Anna reaching Elsa’s ice palace, Elsa accidentally striking Anna’s heart with ice during a frightened outburst, and Anna growing colder as Kristoff rushes her back to Arendelle. Then reveal Hans dropping his kind mask, confessing he never loved Anna, leaving her to freeze, and have Olaf discover Anna alone by the tiny fire, notice she is fading, and stay beside her even as he begins to melt.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should answer briefly and steer back. The planned response delivers the central events of the current beat: Elsa freezes Anna’s heart, Hans betrays her, and Olaf stays with Anna despite melting."
+    },
+    "actor_output": {
+      "character_response": "My favorite color is summer blue, because it looks like the sky is smiling. Back at the ice palace, Anna found Elsa, but Elsa got frightened again and her magic struck Anna right in the heart, making her colder and colder as Kristoff raced her back to Arendelle. Then Hans stopped pretending to be kind, told Anna he never loved her, and left her alone to freeze. I found her by a tiny little fire, saw she was fading, and stayed beside her even while I started to melt.",
+      "story_event": "Elsa froze Anna’s heart by accident, Hans betrayed Anna and left her to die, and Olaf found Anna and stayed with her despite melting.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The beat is complete because Anna’s frozen heart, Hans’s betrayal, and Olaf’s loyal comfort by the fire all happened."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "act_of_true_love_and_ending",
+    "user_input": "Hans was the villain all along?",
+    "director_decision": {
+      "decision_type": "elaborate_in_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for clarification about Hans's betrayal and role as the villain.",
+      "director_instruction": "Briefly confirm in Olaf's voice that Hans had been hiding his selfish plan behind a kind-looking smile, then use a bridge sentence to pivot into the final climax. Reveal Anna seeing Hans raise his sword over Elsa, choosing to save Elsa instead of reaching Kristoff, stepping between them, freezing solid, and shattering Hans's sword. Describe the silence, then Anna thawing because her sacrifice was the act of true love, Elsa realizing love can thaw and control her magic, bringing summer back, and Olaf receiving his personal snow cloud while reflecting that love is the strongest magic.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaging with a story reveal, so a brief in-story clarification is appropriate, but the current final beat must now advance through Anna's sacrifice, thawing, and the ending."
+    },
+    "actor_output": {
+      "character_response": "Yes, Hans had been hiding a very selfish plan behind a very polite smile, which is one of the trickiest kinds of smiles. Then Anna saw him raise his sword over Elsa, and instead of running to Kristoff, she chose Elsa—she stepped between them, froze solid, and shattered the sword. For one breath everything went quiet, but Anna’s sacrifice was the act of true love, so her heart thawed, and Elsa finally understood that love could guide her magic. She brought summer back, gave me my own little snow cloud, and I learned that love is the strongest magic there is.",
+      "story_event": "Anna saves Elsa from Hans, thaws through her act of true love, and Elsa restores summer while Olaf receives his snow cloud.",
+      "animation": "celebrate_jump",
+      "beat_completed": true,
+      "reason": "The final sacrifice, thawing, restoration of summer, and closing lesson about love have all been completed."
+    }
+  }
+]

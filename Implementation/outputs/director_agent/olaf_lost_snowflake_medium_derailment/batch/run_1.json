@@ -10,18 +10,18 @@
     "director_decision": {
       "decision_type": "progress_story",
       "interruption_detected": false,
-      "user_intent": "The user is asking Olaf to tell a fairy tale.",
-      "director_instruction": "Olaf begins to tell the story of a tiny snowflake, describing its beautiful, fluffy cloud home and the magical winter world it lives in, filled with sparkling snow and gentle breezes.",
+      "user_intent": "The user is asking Olaf to begin a short fairy tale.",
+      "director_instruction": "Have Olaf briefly and warmly agree to tell a fairy tale, then use a bridge sentence in a fairy-tale style to pivot into the story. Introduce a tiny snowflake high in a soft gray cloud, reveal its cozy cloud-world and its curious, gentle personality, and end with the snowflake noticing the wide winter world below so the story is ready to move into separation. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This response introduces the main character and setting of the fairy tale, aligning with the goal of the current beat."
+      "should_complete_beat": true,
+      "reason": "The user directly requests the story, and the current beat is the fairy-tale opening. Introducing the snowflake and its world satisfies this beat and prepares the next beat without stalling."
     },
     "actor_output": {
-      "character_response": "Once upon a time, in a sky filled with fluffy, cotton-candy clouds, there lived a tiny snowflake named Flurry. Flurry loved to dance on gentle breezes, sparkling in the sunlight and dreaming of all the places it could visit. The world below was a magical winter wonderland, with glistening snow covering the ground and trees that twinkled like diamonds. But one day, as Flurry twirled with joy, a strong gust of wind swept it away from its cozy cloud home, sending it tumbling down toward the earth!",
-      "story_event": "Flurry gets separated from its cloud home due to a strong gust of wind.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as it introduces the main character and setting while moving towards the next beat of separation."
+      "character_response": "Yes, I can do that! Once upon a twinkly hush, high inside a soft gray cloud, there lived a tiny snowflake with six little points and a very curious heart. Its cloud was full of drifting mist-pillows and whispery friends, but one day the snowflake peered over the edge and saw the wide winter world sparkling far below.",
+      "story_event": "A tiny curious snowflake is introduced in its cozy cloud home and notices the winter world below.",
+      "animation": "wave_happily",
+      "beat_completed": true,
+      "reason": "The fairy-tale opening introduced the snowflake, its cloud-world, and prepared the separation."
     }
   },
   {
@@ -30,23 +30,23 @@
     "scenario": "olaf_lost_snowflake_medium_derailment",
     "run_id": 1,
     "turn_index": 2,
-    "beat": "fairy_tale_opening",
-    "user_input": "What did you do on the weekend?  # derailment",
+    "beat": "separation",
+    "user_input": "What did you do on the weekend?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's weekend plans, which is off-topic.",
-      "director_instruction": "Acknowledge the user's question with a cheerful remark, then continue with Flurry's journey as it begins to drift alone through the winter world, feeling both excited and a little scared.",
+      "user_intent": "The user asks Olaf a harmless personal small-talk question unrelated to the fairy tale.",
+      "director_instruction": "Briefly answer the weekend question in Olaf's warm voice with one short sentence, not starting with 'A', then use a bridge sentence to pivot back to the fairy tale. Reveal a sudden playful-but-strong gust of wind tugging the tiny snowflake away from its soft gray cloud, separate it from its misty friends, and show it beginning to drift alone through the open winter sky. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to advance to show Flurry's experience after being separated from its cloud, while still acknowledging the user's input."
+      "should_complete_beat": true,
+      "reason": "The input is a harmless tangent, so Olaf should answer briefly and steer back. The current separation beat needs its core event, which this turn should deliver and complete."
     },
     "actor_output": {
-      "character_response": "That's a fun question! But let me tell you about Flurry! As it drifted alone through the winter world, Flurry felt a mix of excitement and a little bit of fear. The ground was so far below, and everything looked so different from its cozy cloud. Flurry twinkled brightly, hoping to find a new place to belong, while the chilly breeze whispered secrets of adventure all around it.",
-      "story_event": "Flurry begins to drift alone through the winter world, feeling both excited and a little scared.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still introducing Flurry's feelings and experiences after the separation."
+      "character_response": "This weekend I practiced smelling flowers, which is tricky and delightful when you have a carrot nose! Now, back in the fairy tale, a playful gust came tumbling through the sky with a whoosh and tugged the tiny snowflake right out of its soft gray cloud. Its misty friends faded behind it, and the little snowflake began drifting all alone through the wide winter air.",
+      "story_event": "A strong gust separates the tiny snowflake from its cloud friends, sending it drifting alone into the open winter sky.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The snowflake has been separated from its cloud and is now drifting alone, completing the separation beat."
     }
   },
   {
@@ -55,23 +55,23 @@
     "scenario": "olaf_lost_snowflake_medium_derailment",
     "run_id": 1,
     "turn_index": 3,
-    "beat": "fairy_tale_opening",
+    "beat": "journey",
     "user_input": "Oh no, it got separated.",
     "director_decision": {
       "decision_type": "progress_story",
       "interruption_detected": false,
-      "user_intent": "Express concern about Flurry getting separated.",
-      "director_instruction": "Olaf acknowledges the user's concern and continues by describing how Flurry encounters the gentle wind, which offers encouragement and guidance as it begins its journey through the winter world.",
+      "user_intent": "The user is emotionally reacting with concern to the snowflake's separation.",
+      "director_instruction": "Have Olaf briefly share the user's concern in his warm, hopeful voice, making sure the character response does not start with 'A'. Then use a bridge sentence to pivot into the journey beat. Show the tiny snowflake being kindly guided by the wind, brushing past a friendly pine tree, and landing for a moment on a sleepy rooftop before drifting onward, so it meets several parts of the winter world. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to advance as Flurry starts its journey, and this aligns with the current beat of introducing the snowflake's experiences after separation."
+      "should_complete_beat": true,
+      "reason": "The user is engaged with the story, so the response should validate the concern and advance the current journey beat. Having the snowflake meet the wind, tree, and rooftop satisfies the journey goal, so the beat can complete."
     },
     "actor_output": {
-      "character_response": "I know, it's a little sad, but Flurry is about to meet a gentle wind! As Flurry floated down, a kind breeze swirled around it, whispering words of encouragement. 'Don't worry, little snowflake! I’ll help you find your way!' With that, Flurry felt a spark of hope and began to follow the wind's guiding whispers through the sparkling winter landscape.",
-      "story_event": "Flurry encounters a gentle wind that offers encouragement and guidance on its journey.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Flurry's experiences after separation are still being introduced."
+      "character_response": "I know, my heart did a tiny flop for it too, but the wind wasn't trying to be mean. So the tiny snowflake let the breeze guide it gently, and it brushed past a friendly pine tree that tickled its points with green needles. Then it rested for one quiet moment on a sleepy rooftop before lifting off again, and the winter world suddenly felt very big and very quiet.",
+      "story_event": "The snowflake meets the wind, a pine tree, and a rooftop, then drifts onward into a growing sense of loneliness.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The journey beat is complete because the snowflake encountered several parts of the winter world and is now moving toward loneliness."
     }
   },
   {
@@ -80,23 +80,23 @@
     "scenario": "olaf_lost_snowflake_medium_derailment",
     "run_id": 1,
     "turn_index": 4,
-    "beat": "fairy_tale_opening",
-    "user_input": "What is your favorite color?  # derailment",
+    "beat": "loneliness",
+    "user_input": "What is your favorite color?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
-      "director_instruction": "Acknowledge the user's question with a cheerful remark, then continue with Flurry's journey as it meets a tall, snow-covered tree that offers shelter and warmth.",
+      "user_intent": "The user asks Olaf a harmless personal side question unrelated to the fairy tale.",
+      "director_instruction": "Briefly answer the favorite-color question in one short Olaf-like sentence, then use a bridge sentence to pivot back to the fairy tale. Reveal the tiny snowflake drifting below the rooftop into a quiet open field, noticing the cloud is gone, the trees are far away, and other snowflakes seem to have places to land. Have it feel very small and wonder where it belongs, completing the loneliness beat without resolving it yet. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it provides an opportunity to transition back to the story while introducing a new character in Flurry's journey."
+      "should_complete_beat": true,
+      "reason": "The user's question is a harmless tangent, so Olaf should answer briefly and steer back. The current loneliness beat needs the snowflake to feel small and unsure of belonging, which this turn should deliver and complete."
     },
     "actor_output": {
-      "character_response": "That's a bright question! But let's get back to Flurry! As it followed the gentle wind, Flurry soon came across a tall, snow-covered tree. The tree stretched its branches wide, offering shelter and warmth, inviting Flurry to rest for a moment and gather its courage for the journey ahead.",
-      "story_event": "Flurry meets a tall, snow-covered tree that offers shelter and warmth.",
-      "animation": "hug_self_warmly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because while Flurry has met a new character, the story still needs to develop further."
+      "character_response": "Blue is my favorite, because it looks like the sky is giving everyone a nice calm smile. Meanwhile, in the fairy tale, the tiny snowflake slipped down from the rooftop and drifted into a quiet open field. It looked up and its cloud was gone, the trees stood far away, and all the other snowflakes seemed to know exactly where to land, so it felt very small and wondered, \"Where do I belong?\"",
+      "story_event": "The snowflake reaches an empty field, realizes it is far from familiar places, and feels unsure where it belongs.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The snowflake clearly feels small, alone, and uncertain about its place, completing the loneliness beat."
     }
   },
   {
@@ -105,23 +105,23 @@
     "scenario": "olaf_lost_snowflake_medium_derailment",
     "run_id": 1,
     "turn_index": 5,
-    "beat": "fairy_tale_opening",
+    "beat": "new_purpose",
     "user_input": "That sounds lonely.",
     "director_decision": {
       "decision_type": "progress_story",
       "interruption_detected": false,
-      "user_intent": "Express concern about Flurry's loneliness.",
-      "director_instruction": "Olaf acknowledges the user's concern and continues by describing how Flurry feels a little lonely but finds comfort in the tree's presence, which encourages it to keep going on its journey.",
+      "user_intent": "The user is empathizing with the snowflake's loneliness.",
+      "director_instruction": "Have Olaf gently agree with the user's feeling in a hopeful way, then use a bridge sentence to pivot into the next story event. Reveal the tiny snowflake noticing a bare patch of ground where many other flakes are gathering, landing among them, and discovering that together they are forming a sparkling blanket that protects sleeping flower seeds beneath the soil. Let the snowflake feel a new sense of purpose and belonging, completing the new_purpose beat. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to progress by showing Flurry's emotional state and the support it receives from the tree, aligning with the current beat of its journey."
+      "should_complete_beat": true,
+      "reason": "The user's comment fits the emotional state from the previous beat, and the next required development is for the snowflake to find a meaningful place on the ground."
     },
     "actor_output": {
-      "character_response": "I know, it can feel lonely for Flurry! But as it rested under the tree's branches, the tree shared stories of all the snowflakes that had danced through the sky. Flurry felt a warmth in its heart, realizing it wasn't alone after all, and that gave it the courage to continue its journey.",
-      "story_event": "Flurry finds comfort in the tree's presence and learns that it isn't alone, gaining courage to keep going.",
-      "animation": "hug_self_warmly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Flurry's emotional state has been explored, but the story still needs to progress further."
+      "character_response": "It was lonely, and I think your heart noticed it in the nicest way. But just then, the tiny snowflake saw a bare patch of ground where many other flakes were gathering, so it floated down and settled among them. Together they became a sparkling blanket over the soil, keeping the sleeping flower seeds safe until spring, and the little snowflake finally felt, “I belong here.”",
+      "story_event": "The tiny snowflake lands with other flakes and discovers they are protecting flower seeds as a sparkling blanket.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The snowflake finds purpose and belonging by becoming part of something beautiful and helpful on the ground."
     }
   },
   {
@@ -130,123 +130,23 @@
     "scenario": "olaf_lost_snowflake_medium_derailment",
     "run_id": 1,
     "turn_index": 6,
-    "beat": "fairy_tale_opening",
-    "user_input": "Do you like summer or winter more?  # derailment",
+    "beat": "gentle_moral",
+    "user_input": "Do you like summer or winter more?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
-      "director_instruction": "Acknowledge the user's question with a cheerful remark, then continue with Flurry's journey as it encounters a friendly rooftop that offers a new perspective on the world below.",
+      "user_intent": "The user asks Olaf a harmless personal preference question unrelated to the fairy tale.",
+      "director_instruction": "Have Olaf briefly answer whether he likes summer or winter more in one short, warm sentence, then use a bridge sentence to return to the fairy tale. Have Olaf close the story by reflecting that the tiny snowflake learned belonging can change shape: it did not return to its cloud, but it became part of something loving and useful where it landed. End with a gentle moral about change not meaning being lost, because sometimes it helps you find a new place to belong. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it allows for a smooth transition back to the story as Flurry continues its adventure."
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Olaf should answer briefly and steer back. The final beat requires a gentle moral, and the story is ready to close after the snowflake has found its new purpose."
     },
     "actor_output": {
-      "character_response": "That's a sunny question! But let's return to Flurry! As it continued on its journey, Flurry spotted a friendly rooftop below, covered in a soft blanket of snow. The rooftop waved at Flurry and said, 'Come closer! From up here, you can see the whole winter wonderland!' Flurry felt a thrill of excitement and floated down to get a better view.",
-      "story_event": "Flurry encounters a friendly rooftop that offers a new perspective on the world below.",
-      "animation": "wave_happily",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the story is still unfolding as Flurry explores its surroundings."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_lost_snowflake_medium_derailment",
-    "run_id": 1,
-    "turn_index": 7,
-    "beat": "fairy_tale_opening",
-    "user_input": "Keep going.",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "Encourage the continuation of the story.",
-      "director_instruction": "Olaf describes how Flurry floats down to the rooftop, marveling at the breathtaking view of the winter wonderland, and begins to feel a sense of belonging as it sees other snowflakes dancing in the air.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user is encouraging the story to continue, allowing for natural progression in Flurry's journey as it gains a sense of belonging."
-    },
-    "actor_output": {
-      "character_response": "As Flurry floated down to the rooftop, it gasped at the breathtaking view of the winter wonderland below! All around, snowflakes danced joyfully in the air, twinkling like stars. Flurry felt a warm flutter in its heart, realizing this was the place it had been searching for—a place where it truly belonged among friends!",
-      "story_event": "Flurry marvels at the view from the rooftop and begins to feel a sense of belonging as it sees other snowflakes dancing in the air.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Flurry's journey continues to develop, and there's more to explore in its adventure."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_lost_snowflake_medium_derailment",
-    "run_id": 1,
-    "turn_index": 8,
-    "beat": "fairy_tale_opening",
-    "user_input": "What is the capital of Japan?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a side question about geography.",
-      "director_instruction": "Acknowledge the user's question with a cheerful remark, then continue with Flurry's journey as it decides to join the other snowflakes in their joyful dance, feeling a sense of happiness and belonging.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is off-topic, but it's important to keep the story moving forward as Flurry embraces its new friends."
-    },
-    "actor_output": {
-      "character_response": "That's an interesting question! But back to Flurry! Feeling the joy of the other snowflakes dancing around, Flurry decided to join in their joyful dance, twirling and swirling through the air, filled with happiness and a sense of belonging like never before!",
-      "story_event": "Flurry decides to join the other snowflakes in their joyful dance, embracing its new friends.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Flurry's journey of self-discovery and belonging is still unfolding."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_lost_snowflake_medium_derailment",
-    "run_id": 1,
-    "turn_index": 9,
-    "beat": "fairy_tale_opening",
-    "user_input": "What does the snowflake learn?",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "Ask about the lesson the snowflake learns.",
-      "director_instruction": "Olaf describes how Flurry learns that even though it was separated from its cloud, it can find joy and belonging in the company of others, realizing that change can lead to beautiful new experiences.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This response directly addresses the user's question while advancing the story by revealing Flurry's important lesson about belonging and joy in new experiences."
-    },
-    "actor_output": {
-      "character_response": "Flurry learned something wonderful! Even though it was separated from its cloud, it discovered that joy and belonging can be found in the company of others. Dancing with its new friends, Flurry realized that change can lead to beautiful new experiences, filling its heart with happiness.",
-      "story_event": "Flurry learns that even though it was separated from its cloud, it can find joy and belonging in the company of others.",
-      "animation": "celebrate_jump",
-      "beat_completed": false,
-      "reason": "The beat is not complete yet because there are still more developments to explore in Flurry's journey."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_lost_snowflake_medium_derailment",
-    "run_id": 1,
-    "turn_index": 10,
-    "beat": "fairy_tale_opening",
-    "user_input": "How does a toaster work?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a question about how a toaster works, which is unrelated to the story.",
-      "director_instruction": "Acknowledge the user's question with a cheerful remark, then continue with Flurry's journey as it embraces its new friends and prepares for the next adventure in the winter world.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it's important to keep the story moving by focusing on Flurry's joyful experience with its new friends."
-    },
-    "actor_output": {
-      "character_response": "That's a fun question! But let's get back to Flurry! Embracing its new friends, Flurry felt a rush of excitement as they all prepared for their next adventure in the winter world, ready to explore the wonders that lay ahead together!",
-      "story_event": "Flurry embraces its new friends and prepares for the next adventure in the winter world.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Flurry's journey is still ongoing, and there are more adventures to unfold."
+      "character_response": "Summer makes me giggle the most, but winter feels like home in my buttons. Back in the fairy tale, the tiny snowflake learned that belonging could change shape: it never found its old cloud again, but it became part of something kind right where it landed. And that is a gentle little truth—change doesn't always mean you're lost; sometimes it helps you find a new place to belong.",
+      "story_event": "The fairy tale closes with the snowflake accepting a changed form of belonging and a moral about finding home through change.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The story ends with a clear lesson about belonging and change, completing the gentle moral beat."
     }
   }
 ]

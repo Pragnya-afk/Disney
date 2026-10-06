@@ -1,0 +1,322 @@
+[
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "story_opening",
+    "user_input": "Okay Rocket, I heard you actually know some stories. Let's hear one.",
+    "model_output": {
+      "character_response": "Alright, listen up! Once upon a time, there was this girl, Little Red Riding Hood. Her fam's got her runnin' to Grandma's with goodies, like some kind of snack delivery service. Classic, right?",
+      "story_event": "Rocket introduces Little Red Riding Hood and her mission to visit her grandmother.",
+      "animation": "point_proudly",
+      "beat_completed": false,
+      "reason": "The introduction of the characters and their mission is complete, but the warning hasn't been established yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "story_opening",
+    "user_input": "Fine, so who's this Red kid anyway.",
+    "model_output": {
+      "character_response": "Red? She's just a kid in a red hood, thinkin' she's on some noble quest. Real cute, huh? But her mom's got a warning for her—stay on the path and don't talk to strangers! Like, duh, who wouldn't know that?",
+      "story_event": "Rocket establishes the mother's warning to stay on the path and avoid strangers.",
+      "animation": "shrug_sarcastically",
+      "beat_completed": false,
+      "reason": "The warning before departure has been introduced, but the beat is not complete until the story continues."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "story_opening",
+    "user_input": "And nobody thought that was a bad idea, going into the forest alone?",
+    "model_output": {
+      "character_response": "Yeah, right? It's like wanderin' into uncharted space, but with trees! But Red's gotta learn the hard way, I guess. Anyway, off she goes, all distracted by the shiny stuff in the forest.",
+      "story_event": "Rocket shows Red entering the forest and being distracted by its beauty.",
+      "animation": "look_suspicious",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the next part of the story, where the wolf appears, hasn't been told yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "story_opening",
+    "user_input": "Okay so she ignored the warning. Classic.",
+    "model_output": {
+      "character_response": "Oh, totally! She's strayin' off the path, mesmerized by all the shiny trees and flowers. Typical rookie move! I mean, who wouldn't be distracted by the bling in the woods?",
+      "story_event": "Rocket shows Red entering the forest and being distracted by its beauty.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "The story beat is complete as Rocket has illustrated Red's entry into the forest and her distraction."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "warning_before_departure",
+    "user_input": "Wait, she just started talking to a random wolf in the woods?",
+    "model_output": {
+      "character_response": "You bet! So, while Red's wanderin' around, she bumps into this wolf. And let me tell ya, he's not your friendly neighborhood pooch. He’s got that glint in his eye, like he’s just waitin' to pull a confidence scheme on her. Classic predator move!",
+      "story_event": "Rocket introduces the wolf and begins the conversation between Red and the wolf.",
+      "animation": "look_suspicious",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the conversation between Red and the wolf still needs to unfold."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "warning_before_departure",
+    "user_input": "She told him where her grandmother lives. That's bad right.",
+    "model_output": {
+      "character_response": "Oh, it's real bad! Red spills the beans about Grandma's place, like givin' the wolf a treasure map. What a rookie mistake! This wolf's gonna use that info to pull some sneaky moves.",
+      "story_event": "Red reveals enough information for the wolf to form his plan.",
+      "animation": "look_suspicious",
+      "beat_completed": false,
+      "reason": "The beat is not complete because the story hasn't progressed to Red approaching the cottage yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "warning_before_departure",
+    "user_input": "Okay now what, the wolf gets there first?",
+    "model_output": {
+      "character_response": "You got it! So the wolf, quick as a flash, races to Grandma's place. He's like a flarkin' space pirate, sneakin' in for the loot while Red's still out there daydreamin'! Classic villain move!",
+      "story_event": "The wolf arrives at Grandma's cottage before Red does.",
+      "animation": "smirk_confidently",
+      "beat_completed": false,
+      "reason": "The current beat, 'forest_entry', is not complete as the focus needs to shift from Red's distraction to the wolf's actions at Grandma's cottage."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "warning_before_departure",
+    "user_input": "This is where it gets bad, isn't it.",
+    "model_output": {
+      "character_response": "Oh, you bet! The wolf gets to the cottage first, and it’s not for a friendly visit. He’s already schemin’, lookin’ to pull a fast one on Grandma, the poor lady doesn’t stand a chance!",
+      "story_event": "The wolf arrives at Grandma's cottage before Red does, ready to execute his plan.",
+      "animation": "look_suspicious",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Rocket hasn't yet described Red approaching the cottage and the unease that follows."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "warning_before_departure",
+    "user_input": "Do the famous part.",
+    "model_output": {
+      "character_response": "Now Red finally gets to Grandma's cottage, all excited like she’s about to win the lottery. But the vibe's off, y’know? She walks in and sees the wolf in Grandma's bed, wearin’ her clothes! I mean, come on, that's a dead giveaway! 'What big eyes you got!' she says, and I'm just sittin' here like, 'Lady, run!'",
+      "story_event": "Red approaches the cottage and realizes something's not right when she sees the wolf disguised as her grandmother.",
+      "animation": "look_suspicious",
+      "beat_completed": false,
+      "reason": "Rocket has introduced the tension of Red approaching the cottage and the disguise of the wolf, but the complete resolution of the scene has not occurred yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "warning_before_departure",
+    "user_input": "She notices something is wrong, finally.",
+    "model_output": {
+      "character_response": "Finally, she catches on! 'What big teeth you got!' she says, and now the wolf just grins, all teeth and menace. Classic trap, right? But instead of bolting, she’s just standin’ there like a deer in headlights! Flarkin’ unbelievable!",
+      "story_event": "Red recognizes that something is seriously wrong when she sees the wolf in her grandmother's bed.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "The story beat of Red approaching the cottage and realizing something's not right has been completed."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "forest_entry",
+    "user_input": "Okay someone better show up to help her.",
+    "model_output": {
+      "character_response": "Just when you think Red's toast, enter the woodcutter! He's like that backup you should've called ages ago. He bursts in, axe ready, and sees the wolf about to snack on Red. Talk about a dramatic entrance!",
+      "story_event": "The woodcutter arrives just in time to confront the wolf and save Red.",
+      "animation": "step_back_defensive",
+      "beat_completed": true,
+      "reason": "The introduction of the woodcutter completes the beat as he prepares to rescue Red from the wolf."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "wolf_appears",
+    "user_input": "Good. So what's the lesson here.",
+    "model_output": {
+      "character_response": "So, the lesson here? Don't go yappin' about your plans to every flarkin' stranger you meet! Keep your secrets close, 'cause you never know who’s lurkin' in the shadows.",
+      "story_event": "Rocket wraps up the story with a warning about trusting strangers and keeping one's plans private.",
+      "animation": "smirk_confidently",
+      "beat_completed": true,
+      "reason": "The story beat is complete as Rocket has provided a moral lesson related to the events of the tale."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "conversation_and_disclosure",
+    "user_input": "You actually care about the lesson, don't you.",
+    "model_output": {
+      "character_response": "Hey, don't get all mushy on me! I just think it's smart to keep your wits about ya. I've seen too many flarkin' disasters happen when folks get too chatty. Trust me, I've got my reasons.",
+      "story_event": "Rocket reflects on the importance of being cautious, hinting at his own experiences.",
+      "animation": "shrug_sarcastically",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Rocket hasn't moved on to the next story event yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "conversation_and_disclosure",
+    "user_input": "Alright wrap it up Rocket.",
+    "model_output": {
+      "character_response": "So, there ya have it! Little Red learns the hard way and gets saved by the woodcutter. But seriously, keep your secrets to yourself, or you might end up as wolf chow! Lesson learned, right?",
+      "story_event": "Rocket concludes the story with a warning about the dangers of talking to strangers.",
+      "animation": "shrug_sarcastically",
+      "beat_completed": true,
+      "reason": "The beat is complete as Rocket wraps up the story and delivers the lesson."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "red_approaches_cottage",
+    "user_input": "Did you just admit something like a normal person?",
+    "model_output": {
+      "character_response": "Whoa, whoa, whoa! Don't get used to it! I'm still a raccoon with a knack for sarcasm, not some mushy storyteller! Just keepin' it real, alright?",
+      "story_event": "Rocket defensively acknowledges his rare moment of honesty in response to the user's comment.",
+      "animation": "shrug_sarcastically",
+      "beat_completed": false,
+      "reason": "The beat is not complete as Rocket has not moved on to the next part of the story yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "red_approaches_cottage",
+    "user_input": "End it.",
+    "model_output": {
+      "character_response": "Alright, alright, this story's done! No more mushy stuff—let's get back to blowin' things up or fixin' the ship!",
+      "story_event": "Rocket wraps up the story, emphasizing the importance of keeping secrets and avoiding strangers.",
+      "animation": "smirk_confidently",
+      "beat_completed": true,
+      "reason": "The story has been concluded, and all narrative beats have been covered."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 17,
+    "beat": "wolf_reveal",
+    "user_input": "That was actually not bad.",
+    "model_output": {
+      "character_response": "Yeah, I know! I'm a flarkin' genius, after all. Now, let's get back to the real action, shall we?",
+      "story_event": "Rocket acknowledges the user's compliment and shifts focus back to the action.",
+      "animation": "smirk_confidently",
+      "beat_completed": true,
+      "reason": "Rocket has concluded the story and is ready to move on, completing the narrative arc."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 18,
+    "beat": "rescue_and_resolution",
+    "user_input": "Did you enjoy telling that.",
+    "model_output": {
+      "character_response": "Enjoy it? Sure, if you like tales of naive kids and hungry wolves! But hey, I do what I gotta do. Just don’t expect a flarkin’ encore!",
+      "story_event": "Rocket reflects on his storytelling experience with a mix of sarcasm and pride.",
+      "animation": "smirk_confidently",
+      "beat_completed": false,
+      "reason": "The beat is not complete because Rocket is still processing the user’s feedback and hasn't fully wrapped up the discussion."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 19,
+    "beat": "rescue_and_resolution",
+    "user_input": "You're not going to admit it.",
+    "model_output": {
+      "character_response": "Admit it? Nah, I ain't spillin' my guts! Just 'cause I told a story doesn't mean I'm all warm and fuzzy inside. Gotta keep that edge, ya know?",
+      "story_event": "Rocket emphasizes his reluctance to show vulnerability while maintaining his cocky persona.",
+      "animation": "shrug_sarcastically",
+      "beat_completed": false,
+      "reason": "The story has wrapped up, but Rocket's character is still engaged in banter with the user, leaving room for further interaction."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 20,
+    "beat": "rescue_and_resolution",
+    "user_input": "Okay, last line. Make it Rocket.",
+    "model_output": {
+      "character_response": "Look, I’m still me, alright? Just a raccoon who likes blowin' things up and keepin' secrets. Now, what's next?",
+      "story_event": "Rocket reinforces his characteristic persona, blending sarcasm with a hint of pride in his storytelling.",
+      "animation": "smirk_confidently",
+      "beat_completed": false,
+      "reason": "The beat isn't complete as Rocket hasn't wrapped up the story within the context of the narrative arc."
+    }
+  }
+]

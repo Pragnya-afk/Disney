@@ -1,0 +1,202 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "story_opening",
+    "user_input": "Okay Rocket, I heard you actually know some stories. Let's hear one.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is inviting Rocket to begin telling a story.",
+      "director_instruction": "Have Rocket grudgingly accept the request with cocky sarcasm, then use a bridge sentence to pivot into the story. Introduce Little Red Riding Hood, her mother, her sick grandmother, and the basket delivery mission, framing it like a badly planned supply run through risky territory. End with Red preparing to leave for grandmother's cottage.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user directly requests the story, so Rocket should begin the opening beat. Introducing Red, her family, and the visit to grandmother satisfies the current beat and naturally sets up the warning beat next."
+    },
+    "actor_output": {
+      "character_response": "Yeah, yeah, I know stories—try not to look so impressed. So there’s this kid, Little Red Riding Hood, lives with her ma, and Grandma’s laid up sick out in a cottage past the trees, which is already screamin’ “bad supply route.” Ma packs Red a basket of goodies like that counts as mission prep, and sends her through risky forest territory alone. Red grabs the basket, puts on the hood, and gets ready to head out.",
+      "story_event": "Little Red Riding Hood is assigned to deliver a basket to her sick grandmother through the forest and prepares to leave.",
+      "animation": "shrug_sarcastically",
+      "beat_completed": true,
+      "reason": "Rocket introduced Red, her mother, the sick grandmother, and the basket delivery mission, ending with Red preparing to depart."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "warning_before_departure",
+    "user_input": "Fine, so who's this Red kid anyway.",
+    "director_decision": {
+      "decision_type": "elaborate_in_story",
+      "interruption_detected": false,
+      "user_intent": "The user asks for more detail about Little Red Riding Hood as a character within the story.",
+      "director_instruction": "Describe Red briefly in Rocket's voice as a well-meaning, underprepared kid with more confidence than field sense, then use a bridge sentence to pivot back to the departure. Have Red's mother warn her to stay on the path, avoid strangers, and go straight to Grandmother's cottage, framing the warning like basic survival protocol before a dangerous route.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking about an in-story element, so elaboration is appropriate, but the turn should also deliver the current beat's core warning and complete it."
+    },
+    "actor_output": {
+      "character_response": "Red’s a decent kid, I guess—heart in the right place, brain apparently packed in a different basket, struttin’ around with more confidence than field sense. Before she bolts, her ma gives the one smart briefing in this whole operation: stay on the path, don’t yap with strangers, and go straight to Grandma’s cottage. Basic survival protocol, see, the kind you follow if you don’t wanna become forest lunch—and then Red steps out toward the trees anyway.",
+      "story_event": "Red's mother warns her to stay on the path, avoid strangers, and go directly to Grandmother's cottage before Red leaves for the forest.",
+      "animation": "cross_arms_annoyed",
+      "beat_completed": true,
+      "reason": "The warning was clearly established and Red has begun moving toward the forest_entry beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "forest_entry",
+    "user_input": "And nobody thought that was a bad idea, going into the forest alone?",
+    "director_decision": {
+      "decision_type": "elaborate_in_story",
+      "interruption_detected": false,
+      "user_intent": "The user is questioning the story logic of sending Red into the forest alone.",
+      "director_instruction": "Briefly validate that sending a kid alone was a terrible plan in Rocket's sarcastic survival-minded voice, then use a bridge sentence to pivot back to the route. Show Red entering the forest, compare it to unmapped space territory, and reveal that she gets distracted by the pretty trees, flowers, and birds instead of treating the trip like a dangerous mission.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaging with the story premise, so Rocket can elaborate while still advancing the forest_entry beat. Having Red enter the forest and become distracted fulfills the current beat goal, so it should complete."
+    },
+    "actor_output": {
+      "character_response": "Yeah, genius-level bad idea—sendin’ a kid solo into predator country with a snack basket and a fashion hood, real tactical masterpiece. Anyway, Red steps into the forest, which is basically unmapped space territory with bark: no clear sightlines, weird noises, probably a dozen things watchin’ her. And instead of stayin’ sharp, she’s gawkin’ at pretty trees, flowers, little chirpy birds—right when something bigger starts movin’ between the trunks.",
+      "story_event": "Red enters the forest and becomes distracted by its beauty as an unseen presence begins to move nearby.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "Red has entered the forest and been distracted by the scenery, completing the forest entry beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "wolf_appears",
+    "user_input": "Okay so she ignored the warning. Classic.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is reacting to Red ignoring the warning and recognizing the familiar fairy-tale mistake.",
+      "director_instruction": "Briefly agree with the user's observation in Rocket's sarcastic survival-minded voice, then use a bridge sentence to pivot back to the forest. Introduce the wolf stepping out like a smooth confidence-scheme predator, have him greet Red politely, and begin the conversation by asking where she is headed without yet fully revealing his plan.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaged with the story, and the current beat requires the wolf to appear and begin talking to Red. This turn should deliver that core event and then complete the beat."
+    },
+    "actor_output": {
+      "character_response": "Classic and catastrophically dumb, yeah. So while Red’s busy admirin’ leaves like they’re premium ship parts, this wolf steps out from behind a tree all polished smiles and fake manners—the kind of predator sellin’ you a busted engine core with “limited warranty.” He gives a little bow and says, “Good day, little girl, where are you headed with that basket?”",
+      "story_event": "The wolf appears in the forest, greets Red politely, and begins questioning her about her destination.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "The wolf has been introduced and the conversation with Red has begun, completing the appearance beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "conversation_and_disclosure",
+    "user_input": "Wait, she just started talking to a random wolf in the woods?",
+    "director_decision": {
+      "decision_type": "elaborate_in_story",
+      "interruption_detected": false,
+      "user_intent": "The user is incredulously questioning Red's poor choice to talk to the wolf.",
+      "director_instruction": "Have Rocket briefly mock Red's decision as terrible threat assessment, then use a bridge sentence to pivot back to the forest conversation. Reveal Red answering the wolf anyway, disclosing that she is visiting her sick grandmother, carrying food, and heading to a cottage deeper in the woods; show the wolf quietly forming his plan to get there first.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaged with the story detail, and the current beat requires Red to reveal enough information for the wolf to make his plan. This turn should deliver that disclosure and complete the beat."
+    },
+    "actor_output": {
+      "character_response": "Yeah, she absolutely did—threat assessment so bad it oughta come with warning lights and a refund policy. So Red answers him anyway: she’s takin’ food to her sick grandma, who lives in a little cottage deeper in the woods, past the path bend, because apparently she’s broadcastin’ mission details now. The wolf smiles all polite while his brain starts countin’ shortcuts, figurin’ he can beat her there and turn this whole delivery run into a trap.",
+      "story_event": "Red tells the wolf about her sick grandmother, the basket, and the cottage location, allowing the wolf to form a plan to arrive first.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "Red disclosed the key information the wolf needed, and the wolf has begun planning to reach the cottage first."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "red_approaches_cottage",
+    "user_input": "She told him where her grandmother lives. That's bad right.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is reacting to Red revealing the cottage location and seeking confirmation that it was dangerous.",
+      "director_instruction": "Briefly confirm in Rocket's sarcastic survival-minded voice that giving away Grandmother's location was extremely bad, then use a bridge sentence to pivot back to the consequences. Show the wolf taking a shortcut toward the cottage while Red dawdles, then have Red arrive at Grandmother's cottage and notice unsettling details: the door not quite shut, the forest too quiet, and something feeling wrong inside.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaged with the story, and the current beat requires Red approaching the cottage with unease. This turn should deliver that core event and prepare for the disguised wolf reveal next."
+    },
+    "actor_output": {
+      "character_response": "Bad? That’s handin’ a predator the access codes and askin’ him not to loot the ship. The wolf cuts through the trees on a shortcut while Red wanders along pickin’ flowers like she’s got all cycle, and by the time she reaches Grandma’s cottage, the door’s hangin’ not quite shut. No birds, no rustlin’, just dead-quiet forest—and Red finally gets that tiny useful alarm bell in her head tellin’ her something inside is wrong.",
+      "story_event": "The wolf reaches the cottage ahead of Red, and Red arrives to find the cottage unsettlingly quiet with the door ajar.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "Red has reached Grandmother's cottage and noticed clear signs of danger, setting up the wolf reveal."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "wolf_reveal",
+    "user_input": "Okay now what, the wolf gets there first?",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for the next plot development and confirming the wolf's move.",
+      "director_instruction": "Briefly confirm that the wolf got there first in Rocket's sarcastic tactical voice, then use a bridge sentence to pivot into the cottage scene. Reveal that the wolf has disguised himself as Grandmother in the bed, have Red step inside and notice the strange voice, huge ears, huge eyes, and huge teeth, then make her realize she is in immediate danger.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaged with the story and asking for the next event. This turn should deliver the core wolf_reveal beat by showing the disguised wolf and Red's realization, then mark the beat complete so the next turn can move into rescue and resolution."
+    },
+    "actor_output": {
+      "character_response": "Yeah, the wolf got there first—because unlike Red, he understood basic route optimization, the flarkin’ creep. So Red steps inside and there’s “Grandma” tucked in bed, voice all weird and gravelly, ears too big, eyes too wide, teeth lookin’ like they were built for cuttin’ through armor plating. Red finally connects the dots, and that little cottage stops bein’ a delivery point and turns into a trap with fur.",
+      "story_event": "Red enters the cottage, sees the wolf disguised as Grandmother, and realizes she is in immediate danger.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "The disguised wolf scene is revealed and Red recognizes the danger, completing the wolf_reveal beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "rescue_and_resolution",
+    "user_input": "This is where it gets bad, isn't it.",
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is anticipating the danger and inviting Rocket to confirm the story is reaching its darkest moment.",
+      "director_instruction": "Briefly acknowledge the user's concern in Rocket's grim, sarcastic voice, then use a bridge sentence to pivot into the rescue. Have the wolf lunge, reveal that a woodcutter nearby hears the commotion, arrives like backup that should have been called earlier, confronts and stops the wolf, then restore safety by getting Grandmother and Red out of danger. Close with Rocket's grudging lesson that you do not broadcast your destination to strangers in hostile territory.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The story is in the final rescue_and_resolution beat, and the user's input naturally sets up the danger and rescue. This turn should resolve the conflict and complete the narrative arc."
+    },
+    "actor_output": {
+      "character_response": "Yeah, this is the part where the whole op goes sideways fast. The wolf lunges, Red yells, and a woodcutter nearby finally hears the racket and busts in like backup that should’ve been called three bad decisions ago. He confronts the furball, stops him cold, and gets Red and Grandma out safe while the wolf’s scam collapses. Lesson, since apparently we need one: don’t broadcast your destination to strangers in hostile territory unless you enjoy bein’ bait.",
+      "story_event": "The woodcutter arrives in time to stop the wolf and get Red and Grandmother safely out of danger.",
+      "animation": "cross_arms_annoyed",
+      "beat_completed": true,
+      "reason": "The wolf is stopped, Red and Grandmother are safe, and Rocket delivers the closing lesson about not trusting strangers with your location."
+    }
+  }
+]

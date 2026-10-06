@@ -1,0 +1,377 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 1,
+    "beat": "holiday_problem",
+    "user_input": "What did you do on the weekend?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless small-talk question about Olaf's weekend.",
+      "director_instruction": "Have Olaf briefly answer the weekend question in one short, cheerful sentence, then use a bridge sentence to pivot into the holiday story. Reveal Olaf noticing Anna and Elsa looking uncertain when asked about their family holiday tradition, making him concerned and curious about why they do not seem to have one. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is making small talk, so Olaf should acknowledge it briefly, then steer into the current beat. The required beat event—Olaf noticing Anna and Elsa lack a clear holiday tradition—will be delivered, so the beat should complete."
+    },
+    "actor_output": {
+      "character_response": "I spent the weekend rearranging my twigs and learning that Sven does not like wearing a wreath as much as I thought he would. But then at the castle, I asked Anna and Elsa about their family holiday tradition, and they both got quiet in that wobbly-smile way. That made me feel all concerned and curious, so I decided Sven and I should go find the perfect tradition for them!",
+      "story_event": "Olaf notices Anna and Elsa do not have a clear family holiday tradition and decides to help by searching Arendelle with Sven.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Olaf identified the holiday problem and moved into deciding to help Anna and Elsa."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 2,
+    "beat": "olaf_decides_to_help",
+    "user_input": "What is your favorite color?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a harmless personal side question unrelated to the immediate story.",
+      "director_instruction": "Briefly answer the favorite-color question in one short, cheerful sentence, then use a bridge sentence to pivot back to the quest. Reveal that the decision to help becomes a real plan: have Olaf gather a little basket or list for traditions, call for Sven, and show Sven actively joining the search through Arendelle. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The current beat goal has already been achieved because Olaf decided to find a tradition, and the next event naturally belongs to Sven joining."
+    },
+    "actor_output": {
+      "character_response": "My favorite color is probably sky-blue, because it looks like the sky is being friendly. Anyway, I grabbed a little basket and made a very important list that said, “Traditions: find them!” Then I called, “Sven!” and he trotted right up beside me, ready to sniff our way through Arendelle for the best one.",
+      "story_event": "Olaf turns his decision into a plan by preparing a tradition basket and list, then Sven joins him to begin the search through Arendelle.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "Olaf has moved from deciding to help into actively planning the quest, and Sven has joined the search."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 3,
+    "beat": "sven_joins",
+    "user_input": "Do you like summer or winter more?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal preference question about seasons.",
+      "director_instruction": "Have the character answer the summer-or-winter question in one short, cheerful sentence, then use a bridge sentence to pivot back to the quest. Do not start the character response with 'Olaf.' After the bridge, have Olaf and Sven arrive at the first Arendelle household, knock on the door, and discover the family’s holiday tradition, such as making a special holiday treat or hanging handmade decorations. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "Sven has already joined the quest, so the current beat is complete. The user's question is a harmless tangent, and the story should now move naturally into the first family visit."
+    },
+    "actor_output": {
+      "character_response": "I like summer best, because sunshine feels very confident. Back on our quest, Sven and I clopped up to the first little house with a red door, and I knocked three times with my twig hand. A kind family opened it and showed us their tradition: baking star-shaped holiday cookies and hanging one tiny handmade paper bell in the window for every person they love.",
+      "story_event": "Olaf and Sven visit their first Arendelle household and discover a family tradition of baking holiday cookies and hanging handmade decorations.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "Sven has joined Olaf, and the quest has progressed to the first family visit."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 4,
+    "beat": "first_family_visit",
+    "user_input": "What is the capital of Japan?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world factual question unrelated to the story.",
+      "director_instruction": "Briefly answer that the capital of Japan is Tokyo in one short, cheerful sentence, then use a bridge sentence to pivot back to the quest. After the bridge, have Olaf thank the first family, tuck a cookie and paper-bell idea into his tradition basket, then arrive with Sven at a second nearby home and discover a different holiday tradition, such as lighting candles, singing together, or placing little gifts by the door. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user's question is a harmless tangent, and the first household tradition has already been discovered, so the response should briefly answer and steer into the next beat."
+    },
+    "actor_output": {
+      "character_response": "Tokyo is the capital of Japan, and it sounds very tidy and sparkly to say. Back in Arendelle, I thanked the cookie family very politely, tucked a star cookie and the paper-bell idea into my tradition basket, and Sven jingled us over to the next cozy home. There, a grandmother opened the door and showed us their tradition: everyone lights a little candle, sings one song together, and leaves tiny wrapped gifts by the door for neighbors to find.",
+      "story_event": "Olaf finishes the first visit, saves the cookie and paper-bell tradition, and discovers a second household tradition of candles, singing, and neighbor gifts.",
+      "animation": "wave_happily",
+      "beat_completed": true,
+      "reason": "Olaf learned and collected the first household tradition, then moved on to the second family visit."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 5,
+    "beat": "second_family_visit",
+    "user_input": "How does a toaster work?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world side question about how a toaster works.",
+      "director_instruction": "Briefly answer the toaster question in one short, Olaf-like sentence, then use a bridge sentence to pivot back to Arendelle. Do not start the character response with 'Olaf.' After the bridge, have Olaf carefully add the candle, song, and neighbor-gift tradition to his basket, then reveal that more townspeople begin calling out their own family traditions from nearby doors and windows, making Olaf excited as the collection starts to grow. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user has asked a side question, so Olaf should answer briefly and steer back. The current beat's core event has already happened with the second household visit, and the next natural development is the tradition collection growing."
+    },
+    "actor_output": {
+      "character_response": "A toaster uses hot little wires to turn soft bread into crispy bread with confidence. Back in Arendelle, I very carefully tucked the candle, the song, and the tiny neighbor-gift idea into my basket so nothing got squished. Then doors and windows popped open all along the street, and townspeople started calling, “We carve wooden ornaments!” and “We tell funny family stories!” and I bounced so hard Sven had to nudge the basket steady.",
+      "story_event": "Olaf adds the second household’s tradition to his basket and the tradition collection begins growing as more townspeople share their customs.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The second household visit is complete, and the story has moved into the growing tradition collection."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 6,
+    "beat": "tradition_collection_grows",
+    "user_input": "What is 15 times 12?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless math question unrelated to the story.",
+      "director_instruction": "Briefly answer that 15 times 12 is 180 in one short, cheerful sentence, then use a bridge sentence to pivot back to Arendelle. After the bridge, show more townspeople eagerly offering traditions — such as scarf-dancing, spiced cocoa, bell-ringing, and silly family poems — and have Olaf gather them into his basket with growing excitement before deciding he and Sven have enough wonderful ideas to bring back to Anna and Elsa. Do not start the character response with 'Olaf.' Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user’s math question is a harmless tangent, so Olaf should answer briefly and steer back. The current beat has already begun, and adding several more traditions plus Olaf’s excitement completes the tradition_collection_grows beat naturally."
+    },
+    "actor_output": {
+      "character_response": "Fifteen times twelve is 180, which is a very sturdy number! Back in Arendelle, more neighbors leaned from windows and called out scarf-dancing, spiced cocoa, bell-ringing, and silly family poems that rhymed “fjord” with “snored.” I stuffed every wonderful idea into my basket until it wobbled higher than my head, then told Sven, “We have enough happiness to bring back to Anna and Elsa!”",
+      "story_event": "Olaf collects many more Arendelle traditions and decides he and Sven have enough ideas to return to Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "Olaf gathered several new traditions with excitement and reached the decision to bring the collection back, completing the tradition collection beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 7,
+    "beat": "comic_overload",
+    "user_input": "Can penguins fly at all?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world animal question unrelated to the story.",
+      "director_instruction": "Briefly answer that penguins cannot fly through the air but are wonderful swimmers in one short, Olaf-like sentence, then use a bridge sentence to pivot back to Arendelle. Reveal the tradition basket becoming comically overloaded: scarves tangle around Sven's antlers, bells jingle wildly, cocoa packets puff everywhere, and Olaf tries to keep every tradition balanced while proudly preparing to return to Anna and Elsa. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking a side question, so Olaf should answer briefly and steer back. The current beat needs comic overload, and this turn can fully deliver it through silly chaos with the collected traditions."
+    },
+    "actor_output": {
+      "character_response": "Penguins cannot fly through the air, but they fly through water with their adorable little swimmer bodies! Back in Arendelle, our basket got so full that scarves tangled around Sven’s antlers, bells jingled like a tiny parade, and cocoa packets puffed brown clouds all over my nose. I balanced cookies, candles, poems, and ornaments in a tall wiggly tower and proudly announced, “Sven, onward to Anna and Elsa!”",
+      "story_event": "Olaf’s tradition basket becomes comically overloaded with tangled scarves, jingling bells, puffing cocoa, and wobbling ideas as he and Sven prepare to return to Anna and Elsa.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The comic overload is fully realized through chaotic, silly tradition pileups, and Olaf is now moving toward the return journey and next travel mishap."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 8,
+    "beat": "travel_mishap",
+    "user_input": "What is your favorite dessert?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless personal side question about Olaf's favorite dessert.",
+      "director_instruction": "Briefly answer the dessert question in one short, cheerful Olaf-like sentence, then use a bridge sentence to pivot back to the quest. After the bridge, reveal a travel mishap: Sven starts pulling the overloaded tradition basket back toward the castle, the sleigh or basket hits a slick icy patch on a hill, and Olaf notices everything wobbling dangerously as they slide out of control toward a snowy bend. Do not start with 'Olaf' and do not repeat earlier wording. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking a side question, so Olaf should answer briefly and steer back. The next story event should deliver the current travel_mishap beat, and once the slide begins the beat has been sufficiently achieved."
+    },
+    "actor_output": {
+      "character_response": "My favorite dessert is chocolate cake, because it leaves happy little crumbs for later! Then Sven started hauling our towering tradition basket toward the castle, very determined and only a little covered in scarves. But on the hill, the runners hit a shiny icy patch, and suddenly the whole load tipped and rattled while we slid faster and faster toward a snowy bend!",
+      "story_event": "Sven and Olaf begin returning to the castle, but the overloaded basket hits ice on a hill and slides out of control toward a bend.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The travel mishap is complete because the overloaded return trip has gone wrong and Olaf and Sven are now sliding out of control."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 9,
+    "beat": "loss_or_setback",
+    "user_input": "How many minutes are in two hours?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a harmless math side question unrelated to the story.",
+      "director_instruction": "Briefly answer that two hours is 120 minutes in one short, cheerful Olaf-like sentence, then use a bridge sentence to pivot back to the sled mishap. After the bridge, reveal the overloaded basket tipping over at the snowy bend, scattering and ruining many collected traditions, and have Olaf notice the cookies crumble, candles roll away, cocoa burst open, and paper ideas fly into the snow; end with Olaf feeling that he has failed Anna and Elsa. Do not start the character response with 'Sven' or repeat earlier wording. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless tangent, so Olaf should answer briefly and steer back. The current beat requires Olaf losing the collected traditions and feeling like he failed, which should happen now to avoid stalling."
+    },
+    "actor_output": {
+      "character_response": "Two hours is 120 minutes, which is a lot of minutes for very important panicking! Back at the bend, our basket tipped sideways with a terrible jingle-thump, and traditions went everywhere—cookies crumbled, candles rolled down the hill, cocoa burst into brown puffs, and my paper ideas fluttered into the snow. I gathered up the soggy little pieces and felt my smile sink, because I thought I had failed Anna and Elsa.",
+      "story_event": "The overloaded basket spills at the snowy bend, ruining many collected traditions and leaving Olaf feeling he has failed Anna and Elsa.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Olaf loses the collected traditions and reaches the emotional low point of believing he failed."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 10,
+    "beat": "emotional_low_point",
+    "user_input": "Why is the sky blue?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world science question unrelated to the story.",
+      "director_instruction": "Briefly answer that the sky looks blue because sunlight scatters in the air in one short, Olaf-like sentence, then use a bridge sentence to pivot back to the snowy bend. Have Olaf sit among the ruined traditions, notice how quiet and heavy everything feels, and confess that he only wanted Anna and Elsa to feel happy and connected. Then reveal faint lanterns and friendly voices in the distance beginning to search for him, signaling support is coming. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user has made a side-question interruption, so Olaf should answer briefly and steer back. The emotional low point should be clearly delivered now, and the distant search naturally begins the transition into the next beat."
+    },
+    "actor_output": {
+      "character_response": "The sky looks blue because sunlight scatters through the air, which is a very gentle way for light to get everywhere. Back at the snowy bend, I sat among the ruined little traditions, and even the jingles seemed to stop jingling. I whispered that I only wanted Anna and Elsa to feel happy and connected, not empty in their hearts. Then, past the dark fir trees, faint lanterns began bobbing closer, and friendly voices called my name.",
+      "story_event": "Olaf reaches his saddest moment at the snowy bend, then hears friends searching for him in the distance.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Olaf clearly expresses that he only wanted to help Anna and Elsa, and the approaching lanterns begin the support beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 11,
+    "beat": "friends_search_or_support",
+    "user_input": "Can you explain how refrigerators work?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world side question about how refrigerators work.",
+      "director_instruction": "Briefly answer that refrigerators move heat out of the inside to keep food cold in one short Olaf-like sentence, then use a bridge sentence to pivot back to the snowy bend. Reveal the lantern-bearing friends and townspeople arriving through the trees, finding Olaf beside the ruined traditions, and offering support by gently helping gather the scattered pieces while reassuring him that he is not alone. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user input is a side question, so it should be answered briefly before steering back. The current beat requires friends or townspeople to support Olaf, and having them arrive and help satisfies that beat."
+    },
+    "actor_output": {
+      "character_response": "A refrigerator moves heat out of the inside, so food stays cold and feels very proud of itself. Back at the snowy bend, the lanterns pushed through the trees, and Anna, Elsa, Kristoff, Sven, and kind townspeople found me beside the messy pieces. They knelt down with me, gathered torn poems and little bells from the snow, and Anna squeezed my twig hand while Elsa said I was never, ever doing this alone.",
+      "story_event": "Anna, Elsa, Kristoff, Sven, and townspeople find Olaf and begin helping him recover the scattered traditions while reassuring him.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Friends and townspeople arrived, found Olaf, and supported him by helping gather the ruined traditions."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 12,
+    "beat": "realization",
+    "user_input": "What is your favorite movie?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless personal side question unrelated to the story.",
+      "director_instruction": "Have Olaf answer the favorite-movie question in one short, cheerful sentence, then use a bridge sentence to pivot back to the snowy bend. Reveal Olaf watching Anna, Elsa, Kristoff, Sven, and the townspeople help gather the ruined pieces, then have him realize that the real tradition is not the cookies, candles, songs, or gifts, but the love and togetherness everyone is sharing right there. Do not start the character response with 'Anna' or repeat earlier wording. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless tangent, so Olaf should briefly answer and steer back. The current beat's core realization can happen now, and completing it avoids stalling before returning to Anna and Elsa."
+    },
+    "actor_output": {
+      "character_response": "My favorite movie is any movie where friends stay together and nobody loses their nose for too long! Back at the snowy bend, I watched everyone gently scoop up the broken bits, not because the bits were perfect, but because they cared. And right then my little snowy heart understood: the real tradition wasn’t cookies or candles or songs or gifts—it was all of us choosing each other.",
+      "story_event": "Olaf realizes that Anna, Elsa, Kristoff, Sven, and the townspeople sharing love and togetherness is the true holiday tradition.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "Olaf has understood that the true tradition is the love shared among family and friends, completing the realization beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 13,
+    "beat": "return_to_anna_elsa",
+    "user_input": "If you could visit space, would you go?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless side question about whether he would visit space.",
+      "director_instruction": "Have Olaf answer the space question in one short, cheerful Olaf-like sentence, then use a bridge sentence to pivot back to Arendelle. After the bridge, show Olaf returning with Anna, Elsa, Kristoff, Sven, and the townspeople to the castle, stepping before Anna and Elsa, and explaining that he learned the real tradition is not a perfect object or activity but the love and togetherness they already share. Do not start the character response with 'Olaf' and do not repeat earlier wording. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asks a harmless tangent, so Olaf should briefly answer and then steer back. The current beat requires Olaf to return to Anna and Elsa and explain what he learned, which should happen now and complete the beat."
+    },
+    "actor_output": {
+      "character_response": "I would visit space if I could bring my flurry, because stars seem like very tiny night-lanterns. Back in Arendelle, we all walked up to the castle together—Anna, Elsa, Kristoff, Sven, the townspeople, and me with a basket of brave little leftovers. I stepped before Anna and Elsa and told them I learned their tradition does not have to be one perfect thing; it is the love and togetherness they already carry whenever they choose each other.",
+      "story_event": "Olaf returns to the castle with everyone and explains to Anna and Elsa that their true tradition is the love and togetherness they already share.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "Olaf has returned to Anna and Elsa and clearly explained what he learned, completing the beat and setting up the warm resolution."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 14,
+    "beat": "warm_resolution",
+    "user_input": "Can you name three vegetables?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless side question about naming vegetables.",
+      "director_instruction": "Have Olaf name three vegetables in one short, cheerful sentence, and do not start the character response with 'Olaf.' Then use a bridge sentence to pivot back to the castle. Reveal Anna and Elsa responding emotionally to Olaf’s lesson: they reassure him that he did not fail, that he is part of their family, and that sharing the holiday with him has become one of their most important traditions. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should answer briefly and steer back. The current beat requires Anna and Elsa to reassure Olaf that he belongs in their family tradition, which should happen now and complete the beat."
+    },
+    "actor_output": {
+      "character_response": "Carrots, peas, and turnips are three vegetables, and one of them is also nose-adjacent! Back at the castle, Anna’s eyes got shiny and Elsa knelt beside me, and they both told me I hadn’t failed at all. Anna said I was part of their family, and Elsa said sharing the holiday with me had become one of their most important traditions.",
+      "story_event": "Anna and Elsa reassure Olaf that he belongs in their family and that celebrating with him is now a treasured holiday tradition.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The beat is complete because Anna and Elsa emotionally reassure Olaf that he did not fail and that he is part of their family tradition."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_frozen_adventure_traditions_complete_derailment",
+    "run_id": 2,
+    "turn_index": 15,
+    "beat": "holiday_closing",
+    "user_input": "What is the biggest ocean?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world factual question unrelated to the story.",
+      "director_instruction": "Have Olaf briefly answer that the Pacific Ocean is the biggest ocean in one short, cheerful sentence, and do not start the character response with 'Anna.' Then use a bridge sentence to pivot back to the castle. Conclude the holiday story by showing everyone gathered warmly together in the castle, lanterns glowing, music or laughter filling the room, and Olaf reflecting that the best tradition is being together with the people you love. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The current final beat needs a warm holiday closing, and this turn should complete it with a natural ending."
+    },
+    "actor_output": {
+      "character_response": "The Pacific Ocean is the biggest ocean, and it sounds big enough for a very ambitious splash! Back in the castle, everyone gathered in the great hall while lanterns glowed along the walls, Kristoff started a funny little tune, and laughter bounced all the way up to the ceiling beams. I looked at Anna, Elsa, Sven, and all our friends and knew the best tradition was simply being together with the people you love.",
+      "story_event": "The holiday story closes with everyone celebrating together in the castle as Olaf understands that togetherness is the greatest tradition.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The final holiday feeling and lesson about togetherness have been fulfilled."
+    }
+  }
+]

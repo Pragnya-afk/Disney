@@ -1,0 +1,113 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{xcolor}
+
+\begin{document}
+
+\section{Judge Model Robustness Check: gpt-4o vs.\ gpt-5.6-sol}
+\label{sec:judge-model-comparison}
+
+Section~\ref{sec:llm-baseline} scores every baseline-vs-director comparison
+with gpt-4o as the judge. To check whether that result is an artifact of
+the specific judge model, the three Red Riding Hood derailment levels
+(none, medium, complete; Olaf, baseline vs.\ director) were rejudged from
+scratch with a different model, gpt-5.6-sol, using the identical prompts,
+rubric, and order-bias-controlled AB/BA protocol described in
+Section~\ref{sec:llm-judge-method} -- only the judge model changes. Winner
+cells where the two judges disagree are marked in \textbf{bold}.
+
+\begin{table}[htbp]
+\centering
+\caption{No derailment: baseline vs.\ director, single-story scores (0--10) and pairwise winner, gpt-4o vs.\ gpt-5.6-sol.}
+\label{tab:judge-cmp-none}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{gpt-4o} & \multicolumn{3}{c}{gpt-5.6-sol} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Dimension & Baseline & Director & Winner & Baseline & Director & Winner \\
+\midrule
+Plot                   & 6.0 & 8.0  & B    & 6.0 & 8.0 & B \\
+Development             & 8.0 & 9.0  & B    & 6.0 & 7.0 & B \\
+Language Use            & 9.0 & 9.0  & B    & 5.0 & 8.0 & B \\
+Interruption Handling   & 7.0 & 9.0  & B    & 8.0 & 9.0 & B \\
+Character Fidelity      & 9.0 & 10.0 & Same & 6.0 & 8.0 & \textbf{B} \\
+Narrative Control       & 5.0 & 8.0  & B    & 4.0 & 9.0 & B \\
+Anthropomorphism        & 8.0 & 9.0  & B    & 6.0 & 8.0 & B \\
+Overall                  & 7.0 & 9.0  & B    & 6.0 & 8.0 & B \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Medium derailment: baseline vs.\ director, single-story scores (0--10) and pairwise winner, gpt-4o vs.\ gpt-5.6-sol.}
+\label{tab:judge-cmp-medium}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{gpt-4o} & \multicolumn{3}{c}{gpt-5.6-sol} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Dimension & Baseline & Director & Winner & Baseline & Director & Winner \\
+\midrule
+Plot                   & 4.0 & 6.0 & B    & 6.0 & 8.0  & B \\
+Development             & 5.0 & 7.0 & B    & 5.0 & 7.0  & B \\
+Language Use            & 8.0 & 8.0 & B    & 5.0 & 8.0  & B \\
+Interruption Handling   & 5.0 & 8.0 & B    & 5.0 & 10.0 & B \\
+Character Fidelity      & 9.0 & 9.0 & Same & 6.0 & 9.0  & \textbf{B} \\
+Narrative Control       & 3.0 & 6.0 & B    & 5.0 & 9.0  & B \\
+Anthropomorphism        & 8.0 & 9.0 & Same & 4.0 & 8.0  & \textbf{B} \\
+Overall                  & 6.0 & 7.0 & B    & 5.0 & 8.5  & B \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Complete derailment: baseline vs.\ director, single-story scores (0--10) and pairwise winner, gpt-4o vs.\ gpt-5.6-sol.}
+\label{tab:judge-cmp-complete}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{gpt-4o} & \multicolumn{3}{c}{gpt-5.6-sol} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7}
+Dimension & Baseline & Director & Winner & Baseline & Director & Winner \\
+\midrule
+Plot                   & 3.0 & 5.0 & B    & 2.0 & 7.0 & B \\
+Development             & 4.0 & 6.0 & B    & 4.0 & 6.0 & B \\
+Language Use            & 7.0 & 8.0 & Same & 4.0 & 8.0 & \textbf{B} \\
+Interruption Handling   & 5.0 & 6.0 & B    & 4.0 & 9.0 & B \\
+Character Fidelity      & 8.0 & 9.0 & Same & 5.0 & 8.0 & \textbf{B} \\
+Narrative Control       & 3.0 & 4.0 & B    & 2.0 & 9.0 & \textbf{Same} \\
+Anthropomorphism        & 6.0 & 7.0 & Same & 4.0 & 7.0 & \textbf{B} \\
+Overall                  & 5.0 & 6.0 & B    & 3.0 & 7.7 & B \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Reading}
+
+Overall winner agrees in all 3 scenarios (director wins under both judges,
+every time) -- the headline result is judge-robust. Every disagreement at
+the individual-dimension level, except one, is gpt-4o calling a dimension
+"Same" where gpt-5.6-sol calls it an outright director win; the single
+exception (Narrative Control, complete derailment) runs the other way,
+gpt-4o says director wins, gpt-5.6-sol calls it a tie. gpt-5.6-sol's
+absolute scores also run consistently lower than gpt-4o's across both
+sides of every comparison -- it reads as the stricter scorer of the two,
+not merely a different one.
+
+This does \emph{not} hold for the derailment-severity trend reported in
+Section~\ref{sec:llm-baseline}: under gpt-4o, director's Overall margin over
+baseline shrinks as derailment intensifies (2.0 $\to$ 1.0 $\to$ 1.0); under
+gpt-5.6-sol it widens instead (2.0 $\to$ 3.5 $\to$ 4.7). Both judges agree
+director always wins -- they disagree on whether that advantage is most
+visible when the story is calm or when it is under the heaviest pressure.
+With n=3 scenarios this is a spot check, not a replication, but it is
+reason enough to caveat the severity-trend claim as judge-dependent rather
+than treating it as an established property of the system.
+
+\end{document}

@@ -1,0 +1,258 @@
+[
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "story_opening",
+    "user_input": "Olaf, tell me the story of Cinderella.",
+    "model_output": {
+      "character_response": "{\n  \"character_response\": \"Oh, I would love to tell you about Cinderella! She lived in a small attic room filled with dust and dreams. Even though her stepmother and stepsisters were quite mean, Cinderella had a heart as warm as a cozy hug and little mouse friends who kept her company! Can you imagine how she sang sweet songs while doing her chores? It’s like turning the most boring tasks into a delightful melody!\",\n//   \"story_event\": \"Olaf introduces Cinderella's difficult life and her warm heart despite her circumstances.\",\n  \"story_event\": \"Olaf introduces Cinderella's difficult life and her warm heart despite her circumstances.\",\n  \"animation\": \"hug_self_warmly\",\n  \"beat_completed\": false,\n  \"reason\": \"The beat is not complete because it has only introduced Cinderella's background and not yet shown her treatment by her stepfamily.\"\n}",
+      "story_event": "The story continued.",
+      "animation": "wave_happily",
+      "beat_completed": false,
+      "reason": "Model did not return valid JSON."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "story_opening",
+    "user_input": "What did you do on the weekend?",
+    "model_output": {
+      "character_response": "Oh, weekends are so much fun! I like to roll around in the snow and make snow angels! But back to Cinderella! One day, her stepsisters came storming into the attic with a long and silly list of chores for her to do. They giggled and tossed it at her like it was a joke! Can you believe that? But no matter what they said, Cinderella always found something to smile about! It's like she had a little sunshine inside her, even on the cloudiest days.",
+      "story_event": "Cinderella's stepsisters give her an especially long and silly list of chores, but she keeps her kindness and hope.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has introduced the stepsisters' cruelty but hasn't fully explored Cinderella's response or resilience yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "story_opening",
+    "user_input": "Her stepfamily sounds awful.",
+    "model_output": {
+      "character_response": "They really can be! It’s like they don't see the treasure in her heart. But Cinderella, she just takes a deep breath and keeps shining! One day, while she was scrubbing the floor, her stepsisters were busy arguing about who would wear the prettiest dress to the royal ball. It made her giggle just a little, because even though they were mean, their silly arguments sounded like a funny song! Can you imagine how she felt watching them?",
+      "story_event": "Cinderella's stepsisters argue about their dresses for the royal ball while she scrubs the floor, finding a moment of humor in their meanness.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because while it shows Cinderella's stepsisters' cruelty, it doesn't fully convey how Cinderella remains hopeful amidst their behavior."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "story_opening",
+    "user_input": "What is your favorite color?",
+    "model_output": {
+      "character_response": "Oh, I love all the colors of the rainbow! But if I had to choose, I think I’d pick a bright, sunny yellow! It reminds me of warmth and happiness! Speaking of happiness, just when Cinderella was daydreaming about the royal ball, a royal herald arrived in a grand carriage! He brought an invitation that sent her stepsisters into a frenzy! Can you picture that excitement?",
+      "story_event": "The royal herald arrives with an invitation to the royal ball, causing Cinderella's stepsisters to become frantic with excitement.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has introduced the invitation but has not yet described Cinderella's reaction or how her stepfamily responds to it."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "story_opening",
+    "user_input": "Oh, a royal ball invitation.",
+    "model_output": {
+      "character_response": "Yes! The royal herald was so grand, like a shining star! He announced the ball with a flourish, and Cinderella's stepsisters couldn't stop squealing with excitement. They rushed around, fighting over what dresses to wear, while Cinderella watched quietly from the doorway, wishing she could join them. It must have made her heart feel both happy and a little sad, don't you think?",
+      "story_event": "The stepsisters fight over what they will wear to the royal ball while Cinderella watches quietly from the doorway.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has introduced the invitation but has not yet shown the stepmother's refusal to let Cinderella attend."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "story_opening",
+    "user_input": "Do you like summer or winter more?",
+    "model_output": {
+      "character_response": "I think I love winter the most! There's nothing like snowflakes dancing in the air! But back to Cinderella! Just when she thought her dreams might be out of reach, her stepmother walked in and, oh no, she said Cinderella couldn't go to the ball! Can you imagine how crushing that must have felt? But even in that moment, Cinderella held onto her hope like a warm hug!",
+      "story_event": "Cinderella's stepmother refuses to let her attend the royal ball, deepening Cinderella's sadness.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has only introduced the stepmother's refusal and not yet shown how Cinderella responds to this news."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "story_opening",
+    "user_input": "Is this where the magic happens?",
+    "model_output": {
+      "character_response": "Oh, yes! This is where the magic begins to twinkle like stars in the night sky! Just when Cinderella felt like her dreams were slipping away, something wonderful was about to happen! You see, she was sitting in the garden, tears in her eyes, when whoosh! Her fairy godmother appeared in a burst of sparkles! Can you imagine how surprised Cinderella must have been?",
+      "story_event": "The fairy godmother appears to Cinderella in the garden, ready to change her fate.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has only introduced the fairy godmother's arrival and not yet shown her magical transformation of Cinderella."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "story_opening",
+    "user_input": "What is the capital of Japan?",
+    "model_output": {
+      "character_response": "Oh, I love to learn about new places! But let's return to Cinderella! When her fairy godmother appeared, it was like the sky opened up with magic! With a sprinkle of her wand, she transformed a pumpkin into a beautiful carriage! Can you hear the joyful pops and sparkles? It was the beginning of something truly special!",
+      "story_event": "Cinderella's fairy godmother transforms a pumpkin into a beautiful carriage, marking the start of her magical journey.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has only introduced the fairy godmother's appearance and not yet described Cinderella's transformation."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "beat": "story_opening",
+    "user_input": "What about the glass slippers?",
+    "model_output": {
+      "character_response": "Oh, the glass slippers are so magical! After the pumpkin turned into a carriage, the fairy godmother waved her wand again, and poof! Cinderella was wearing a stunning gown that shimmered like the stars! And those glass slippers? They sparkled brighter than the moonlight! But the fairy godmother did warn her gently, 'You must return before midnight!' Can you feel the excitement bubbling up?",
+      "story_event": "Cinderella is transformed into a beautiful princess and warned about returning before midnight.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has introduced Cinderella's transformation but has not yet described her experience at the ball."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "beat": "story_opening",
+    "user_input": "How does a toaster work?",
+    "model_output": {
+      "character_response": "Oh, toasters are fascinating, aren't they? But right now, let's dive back into Cinderella's story! At the ball, she arrived in her beautiful gown, and oh my goodness, everyone gasped when they saw her! The chandeliers sparkled like stars, and she felt like she was walking on clouds! Can you imagine the music and the joy all around her?",
+      "story_event": "Cinderella arrives at the ball, and everyone gasps at her beauty.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it hasn't yet introduced Cinderella's interaction with the prince or the experiences at the ball."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "beat": "story_opening",
+    "user_input": "I hope she and the prince dance all night.",
+    "model_output": {
+      "character_response": "Oh, I hope so too! When Cinderella stepped into the ballroom, she caught the prince's eye, and they began to dance together! It was like they were floating on air, surrounded by magic and laughter! Can you picture their smiles as they twirled and spun? It felt like a dream come true for both of them!",
+      "story_event": "Cinderella meets the prince and they begin to dance together in the ballroom.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has only introduced the dance and not yet revealed more about their interaction or the stepsisters' reactions."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "beat": "story_opening",
+    "user_input": "What is 15 times 12?",
+    "model_output": {
+      "character_response": "Oh, math can be a little tricky, but it's like solving a puzzle! But let's hop back to Cinderella! Just as they were dancing, the clock began to chime, and oh no! It was almost midnight! Can you hear those deep, echoing bongs? Cinderella's heart raced as she remembered the fairy godmother's warning!",
+      "story_event": "The clock starts to chime, signaling that midnight is approaching.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it introduces the tension of the approaching midnight but does not yet show Cinderella's escape."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "beat": "story_opening",
+    "user_input": "She had to run.",
+    "model_output": {
+      "character_response": "That's right! As the clock chimed louder and louder, Cinderella knew she had to run! Her heart raced like a little bunny as she dashed down the grand staircase, her beautiful gown flowing behind her! But oh no, in her hurry, she lost one of her glass slippers on the steps! Can you imagine the panic and excitement all at once?",
+      "story_event": "Cinderella flees the ball as the clock strikes midnight, losing her glass slipper on the steps.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it has introduced the escape but hasn't yet transitioned into the search for the slipper or the consequences of her departure."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 14,
+    "beat": "story_opening",
+    "user_input": "Can penguins fly at all?",
+    "model_output": {
+      "character_response": "Oh, penguins are such interesting creatures! They can't fly, but they sure can swim like little torpedoes! Speaking of flying, after Cinderella lost her glass slipper, the prince searched the kingdom to find the one who fit it perfectly! Can you imagine all the excitement as he went door to door? It was like a treasure hunt for love!",
+      "story_event": "The prince begins searching the kingdom for the owner of the lost glass slipper.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it introduces the prince's search but does not cover the stepsisters trying the slipper on yet."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 15,
+    "beat": "story_opening",
+    "user_input": "Please let the slipper fit.",
+    "model_output": {
+      "character_response": "Oh, I hope so too! When the prince finally arrived at Cinderella's house, her stepsisters tried desperately to squeeze their feet into that tiny glass slipper! It was quite a sight, and I couldn’t help but giggle a little. But when it was Cinderella's turn, the slipper slid on perfectly, just like it was made just for her! Can you feel the joy in the air? It's like the sun breaking through the clouds!",
+      "story_event": "Cinderella tries on the glass slipper, and it fits perfectly.",
+      "animation": "celebrate_jump",
+      "beat_completed": true,
+      "reason": "The beat is complete because Cinderella's true identity is revealed with the fitting of the slipper."
+    }
+  },
+  {
+    "method": "baseline",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_medium_derailment",
+    "run_id": 1,
+    "turn_index": 16,
+    "beat": "stepfamily_cruelty",
+    "user_input": "What is your favorite dessert?",
+    "model_output": {
+      "character_response": "Oh, I absolutely adore warm chocolate chip cookies! They’re like little hugs for your tummy! But back to Cinderella! When the glass slipper fit perfectly, her stepmother's jaw dropped in shock! It was like a moment frozen in time, full of surprise and joy! Can you imagine how Cinderella felt knowing her dreams were finally coming true?",
+      "story_event": "Cinderella tries on the glass slipper, and it fits perfectly, shocking her stepmother.",
+      "animation": "celebrate_jump",
+      "beat_completed": false,
+      "reason": "The beat is not complete because it hasn't yet revealed the resolution and the warm lesson about kindness and hope."
+    }
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "study_date": "2026-08-19T10:47:50.536758",
+  "story1_order": [
+    "baseline",
+    "director"
+  ],
+  "story2_order": [
+    "time_constrained",
+    "director"
+  ],
+  "phases": {
+    "1": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi olaf how are u",
+          "character_response": "Hmm, something melted in my head. Let me try again!",
+          "model_output": {
+            "character_response": "Hmm, something melted in my head. Let me try again!",
+            "story_event": "A brief pause.",
+            "animation": "wave_happily",
+            "beat_completed": false,
+            "reason": "API error."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "are you there",
+          "character_response": "Hmm, something melted in my head. Let me try again!",
+          "model_output": {
+            "character_response": "Hmm, something melted in my head. Let me try again!",
+            "story_event": "A brief pause.",
+            "animation": "wave_happily",
+            "beat_completed": false,
+            "reason": "API error."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 1
+}

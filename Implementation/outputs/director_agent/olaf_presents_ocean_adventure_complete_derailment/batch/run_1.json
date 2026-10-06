@@ -6,22 +6,22 @@
     "run_id": 1,
     "turn_index": 1,
     "beat": "stage_opening",
-    "user_input": "What did you do on the weekend?  # derailment",
+    "user_input": "What did you do on the weekend?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's weekend activities, which is off-topic.",
-      "director_instruction": "Acknowledge the user's question with a cheerful remark, then transition to Olaf announcing the start of his grand theatrical retelling of the ocean adventure.",
+      "user_intent": "The user is making small talk by asking Olaf about his weekend.",
+      "director_instruction": "Have Olaf briefly answer the weekend question in one short, cheerful sentence, then use a bridge sentence to pivot into the story. After the bridge, reveal that Olaf is putting on a grand theatrical ocean-adventure retelling, announce the imaginary stage, curtains, props, and dramatic mood, and invite the listener into the performance. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The user's question is a derailment, but it can be briefly acknowledged before moving on to set up the performance."
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Olaf should answer briefly but not stall. The stage_opening beat can be fully delivered by having Olaf announce and set up the theatrical retelling this turn."
     },
     "actor_output": {
-      "character_response": "Oh, weekends are great for building snowmen and dreaming big! But today, I'm so excited to share my grand theatrical retelling of a thrilling ocean adventure! Get ready for a tale filled with bravery, courage, and a touch of magic!",
-      "story_event": "Olaf announces the start of his theatrical performance, inviting everyone to join him on this ocean adventure.",
+      "character_response": "I spent my weekend arranging pebbles by friendliness, and one was very shy. But now, the pebbles must wait, because I am unveiling my grand theatrical ocean-adventure retelling! Behold: an imaginary stage, curtains made of breeze, a coconut for thunder, and me playing everybody as the sea gets dramatic—please step closer, because our brave young heroine is about to hear the waves calling.",
+      "story_event": "Olaf sets the imaginary stage for a grand ocean-adventure performance and prepares to introduce the heroine.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete yet as Olaf has set the stage but hasn't introduced the heroine of the story."
+      "beat_completed": true,
+      "reason": "Olaf answered the interruption briefly, announced the theatrical retelling with stage, curtains, props, and mood, and invited the listener into the performance."
     }
   },
   {
@@ -30,23 +30,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 2,
-    "beat": "stage_opening",
-    "user_input": "What is your favorite color?  # derailment",
+    "beat": "heroine_introduction",
+    "user_input": "What is your favorite color?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite color, which is off-topic.",
-      "director_instruction": "Cheerfully acknowledge the user's question about colors, then transition to Olaf introducing the brave heroine of the ocean adventure.",
+      "user_intent": "The user asks a harmless personal small-talk question about Olaf's favorite color.",
+      "director_instruction": "Briefly answer the favorite-color question in one short, cheerful sentence, then use a bridge sentence to pivot back to the performance. After the bridge, introduce the brave young heroine on her island home, show her loving her people and daily life, and reveal that the ocean’s call makes her feel meant for something beyond the ordinary shore. Do not start the character response with 'Olaf.' Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The focus needs to shift back to the story, specifically introducing the heroine, while briefly acknowledging the user's input."
+      "should_complete_beat": true,
+      "reason": "The user has asked a harmless tangent, so Olaf should answer briefly and steer back. Introducing the heroine, her home, and her deeper calling satisfies the heroine_introduction beat, so it should complete."
     },
     "actor_output": {
-      "character_response": "Colors are so wonderful, aren't they? But now, let me introduce you to our brave heroine, a young girl named Mira! She feels a magical pull toward the ocean, and her heart is filled with dreams of adventure and discovery!",
-      "story_event": "Olaf introduces Mira, the brave heroine who feels a calling to the sea, setting the stage for her adventure.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf has introduced the heroine but has not yet moved into the next part of the story."
+      "character_response": "My favorite color is blue, because it looks like the sky and the sea are best friends! Now back to the performance: on a bright island full of drums, canoes, palm leaves, and busy happy people, there lived a brave young heroine who helped her village with a very serious smile. She loved her family, her home, and every ordinary chore—except the ocean kept shimmering at her, tugging at her heart, making her feel she belonged somewhere beyond the safe shore.",
+      "story_event": "The heroine is introduced on her island home, where her love for her people is challenged by the ocean's mysterious call toward a larger destiny.",
+      "animation": "wave_happily",
+      "beat_completed": true,
+      "reason": "The heroine, her home, her affection for daily life, and her longing for something beyond the shore have all been established."
     }
   },
   {
@@ -55,23 +55,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 3,
-    "beat": "stage_opening",
-    "user_input": "Do you like summer or winter more?  # derailment",
+    "beat": "call_to_adventure",
+    "user_input": "Do you like summer or winter more?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
-      "director_instruction": "Cheerfully acknowledge the user's question about seasons, then transition to Olaf discussing Mira's feelings about her home and the ocean, highlighting her internal conflict.",
+      "user_intent": "The user asks Olaf a harmless personal preference question unrelated to the story.",
+      "director_instruction": "Have Olaf answer the summer-or-winter question in one short, cheerful sentence, then use a bridge sentence to pivot back to the stage performance. After the bridge, reveal that the heroine discovers something is wrong on the island: food begins failing, the fishing boats return empty, and an old sign from the sea suggests the balance has been broken. Show her realizing she may have to leave the safe shore to help her people. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The focus needs to shift back to the story, specifically on Mira's emotional connection to her home and her yearning for adventure, which aligns with the current beat."
+      "should_complete_beat": true,
+      "reason": "The user is asking a harmless side question, so Olaf should briefly answer and steer back. The planned story event fulfills the call_to_adventure beat by revealing the central problem and the heroine's possible need to leave home."
     },
     "actor_output": {
-      "character_response": "Seasons are like a big hug from nature! But let me tell you about Mira's heart. She loves her home, filled with warm memories, yet she feels this strong calling to the ocean, pulling her toward adventure and the unknown. It's a bit of a tug-of-war in her heart!",
-      "story_event": "Olaf discusses Mira's emotional conflict between her love for home and her yearning for the ocean, deepening her character.",
+      "character_response": "I like summer because it gives me so many interesting questions about melting! Now, back on our little stage, the island suddenly grew worried: the fruit shriveled on the trees, the fishing boats came home with nothing but splashy disappointment, and an old sign washed in from the sea showed the balance had been broken. Our heroine looked from her hungry people to the wide water and understood, very quietly, that helping them might mean leaving the safe shore behind.",
+      "story_event": "The heroine discovers her island is in trouble and realizes she may need to journey beyond the reef to restore balance.",
       "animation": "look_concerned",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the focus is still on Mira's internal conflict, which is part of the current beat's development."
+      "beat_completed": true,
+      "reason": "The heroine has recognized the island’s crisis and the possibility that she must leave home to help, completing the call to adventure."
     }
   },
   {
@@ -80,23 +80,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 4,
-    "beat": "stage_opening",
-    "user_input": "What is the capital of Japan?  # derailment",
+    "beat": "family_or_home_conflict",
+    "user_input": "What is the capital of Japan?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a factual question about geography.",
-      "director_instruction": "Cheerfully acknowledge the user's question about capitals, then transition to Olaf discussing Mira's struggle with the decision to leave her home and the emotional weight of that choice.",
+      "user_intent": "The user asks a harmless real-world factual side question unrelated to the story.",
+      "director_instruction": "Have Olaf answer the capital question in one short cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, show the heroine trying to tell her family and village that she must leave, reveal their fear and disappointment because the sea beyond the reef is dangerous, and make her emotionally torn between protecting her home and obeying the call to help it. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision allows for a brief acknowledgment of the user's input while advancing the story by highlighting Mira's internal conflict about leaving home."
+      "should_complete_beat": true,
+      "reason": "This is a side question, so Olaf should briefly answer and steer back. The instructed story event directly fulfills the family_or_home_conflict beat by showing the heroine’s love for home and the pain of disappointing her family, so the beat can complete."
     },
     "actor_output": {
-      "character_response": "Capitals are like the heart of a country! But back to Mira—she's really struggling with the decision to leave her beloved home. It's filled with laughter and memories, yet the ocean's call is so strong! What will she choose? Oh, the suspense!",
-      "story_event": "Olaf discusses Mira's emotional struggle with the choice to leave her home behind for the ocean.",
+      "character_response": "Tokyo is the capital of Japan, and it sounds very important in a tidy, city-shaped way! Now back to our ocean stage: our heroine stood before her family and village and said she must sail beyond the reef, but their faces fell because those waters were full of storms, sharp rocks, and stories people whispered very quietly. She loved them so much that their disappointment tugged her one way, while the need to save her home pulled her toward the sea.",
+      "story_event": "The heroine tells her family and village she must leave, and their fear makes her painfully torn between staying with them and sailing to help them.",
       "animation": "look_concerned",
-      "beat_completed": false,
-      "reason": "The beat is not complete because while Olaf has introduced Mira's internal conflict, he has not yet moved to the next beat of her adventure."
+      "beat_completed": true,
+      "reason": "The heroine’s home conflict is fully shown through her family’s fear and her emotional struggle over leaving."
     }
   },
   {
@@ -105,23 +105,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 5,
-    "beat": "stage_opening",
-    "user_input": "How does a toaster work?  # derailment",
+    "beat": "journey_begins",
+    "user_input": "How does a toaster work?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question about how a toaster works, which is off-topic.",
-      "director_instruction": "Cheerfully acknowledge the user's question about toasters, then transition to Olaf discussing Mira's emotional turmoil as she grapples with the decision to leave her home behind for the ocean.",
+      "user_intent": "The user asks a harmless real-world side question about how a toaster works.",
+      "director_instruction": "Briefly answer the toaster question in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, show the heroine making her decision at night, stepping into a canoe, taking one last loving look at home, and sailing beyond the reef into the unknown sea. End with the journey clearly begun and the waves carrying her away from the island. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The focus needs to shift back to Mira's internal conflict, which is crucial for advancing the story."
+      "should_complete_beat": true,
+      "reason": "The user is on a harmless tangent, so Olaf should answer briefly and steer back. The current beat requires the heroine to choose the journey, and this turn should complete that by having her leave home and cross into the unknown."
     },
     "actor_output": {
-      "character_response": "Toasters are neat little inventions, aren't they? But let's get back to Mira! She's feeling so torn between the warmth of her home and the adventurous call of the ocean. It's like her heart is a ship caught between two shores, and she must decide which way to sail!",
-      "story_event": "Olaf emphasizes Mira's emotional turmoil as she grapples with the difficult decision to leave her home for the ocean, highlighting her internal conflict.",
-      "animation": "look_concerned",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still developing Mira's character and her emotional struggle, which is essential for the story."
+      "character_response": "A toaster works by sending electricity through tiny hot wires that glow and toast the bread until it gets crispy and brave! Now, back beneath our moonlit stage sky, our heroine made her choice in the quiet when everyone slept. She stepped into a canoe, held one last loving look toward the dark shapes of home, and pushed off beyond the reef. The island grew small behind her as the unknown sea lifted the canoe and carried her away.",
+      "story_event": "The heroine chooses to leave at night, enters her canoe, passes beyond the reef, and begins her journey across the unknown sea.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The heroine has made the decision to leave home and has sailed beyond the reef, clearly beginning the journey."
     }
   },
   {
@@ -130,23 +130,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 6,
-    "beat": "stage_opening",
-    "user_input": "What is 15 times 12?  # derailment",
+    "beat": "comic_olaf_performance",
+    "user_input": "What is 15 times 12?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a math question unrelated to the story.",
-      "director_instruction": "Cheerfully acknowledge the user's math question, then transition to Olaf revealing that Mira has made her decision to leave home and embark on her ocean adventure.",
+      "user_intent": "The user asks a harmless math question unrelated to the story.",
+      "director_instruction": "Have Olaf answer the multiplication question in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, make Olaf theatrically perform several quick roles and sound effects: the creaking canoe, chattering sea creatures, a dramatic wind, and a bossy bird or crab-like commentator, while the heroine sails farther into unfamiliar waters. End by revealing dark clouds or rising waves ahead so the next major obstacle is clearly approaching. Do not start with 'The' and do not repeat previous phrasing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision allows for a brief acknowledgment of the user's input while advancing the story by showing Mira's pivotal choice to leave home."
+      "should_complete_beat": true,
+      "reason": "The user is asking a side question, so Olaf should answer briefly and steer back. The comic performance beat can be satisfied this turn by having Olaf play multiple roles and sound effects, and the reveal of dangerous weather naturally moves toward the first major obstacle."
     },
     "actor_output": {
-      "character_response": "Math is like magic, isn't it? But let's get back to our story! Mira has finally made her decision—she's going to leave her home behind and follow the call of the ocean! Her heart is racing with excitement and a little bit of fear, but she knows this adventure is meant for her!",
-      "story_event": "Olaf reveals that Mira has made the pivotal choice to leave her home and embark on her ocean adventure.",
+      "character_response": "Fifteen times twelve is 180, which is a very sturdy number! Now back to our splashy stage, where I become the canoe—creeeak, wobble-wobble—the tiny sea creatures—clickety-click, bubble opinions—and the wind—whoooosh, very pushy today! A bossy little crab-bird commentator clacks from a floating branch, “Left! No, heroic left!” as our heroine sails farther into waters she does not know. Then the horizon bruises dark, and tall waves begin standing up ahead like they have something important and splashy to say.",
+      "story_event": "Olaf performs the canoe, sea creatures, wind, and a bossy commentator as the heroine sails into unfamiliar waters and sees stormy waves forming ahead.",
       "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete yet as we are still building up to the next part of the story."
+      "beat_completed": true,
+      "reason": "The comic performance beat is complete because Olaf played multiple roles and sound effects while advancing the voyage toward the first major obstacle."
     }
   },
   {
@@ -155,23 +155,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 7,
-    "beat": "stage_opening",
-    "user_input": "Can penguins fly at all?  # derailment",
+    "beat": "first_major_obstacle",
+    "user_input": "Can penguins fly at all?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking a question about penguins and their ability to fly.",
-      "director_instruction": "Cheerfully acknowledge the user's question about penguins, then transition to Olaf humorously performing the various characters and creatures Mira encounters as she begins her ocean adventure.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world side question about penguins.",
+      "director_instruction": "Have Olaf answer the penguin question in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, reveal the storm striking: wind snaps the sail, waves slam the canoe, and the heroine is thrown into danger but chooses not to give up. Show her fighting through the obstacle with courage until she survives the worst of it, leaving room for a helper or companion to appear next. Do not start the response with 'Olaf' and do not repeat earlier phrasing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "This decision allows for a playful transition into the next part of the story while maintaining the focus on Mira's adventure."
+      "should_complete_beat": true,
+      "reason": "The user is asking a side question, so Olaf should answer briefly and steer back. The current beat requires the heroine to face a major obstacle, and the storm has already been foreshadowed, so this turn should deliver and complete that obstacle."
     },
     "actor_output": {
-      "character_response": "Penguins are such funny little creatures! They can't fly, but they sure can swim! Now, as Mira begins her ocean adventure, she meets all sorts of amazing characters! First, there's a wise old turtle who gives her advice, and then a playful dolphin who shows her the way through the waves. Let me show you how they interact with her!",
-      "story_event": "Olaf humorously performs the various characters and creatures Mira encounters as she begins her ocean adventure.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Olaf is still setting up the introduction of the characters Mira meets on her adventure."
+      "character_response": "Penguins can’t fly in the sky, but they swim so well it almost feels like underwater flying! Now—back to my stage sea, where the storm pounces: the wind cracks the sail, a wave smacks the canoe sideways, and our heroine tumbles into roaring water. She claws back to the boat, coughing and scared, but she grips the broken rope and refuses to let the ocean be the boss of her. At last the worst of the storm rolls past, leaving her drifting, brave and soaked, as something—or someone—moves in the mist ahead.",
+      "story_event": "The storm strikes, nearly wrecks the heroine’s canoe, and she survives through courage as a possible companion approaches.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The heroine faced a major obstacle that tested her courage and survived it, setting up the next beat for a mentor or companion."
     }
   },
   {
@@ -180,23 +180,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 8,
-    "beat": "stage_opening",
-    "user_input": "What is your favorite dessert?  # derailment",
+    "beat": "mentor_or_companion",
+    "user_input": "What is your favorite dessert?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking about Olaf's favorite dessert.",
-      "director_instruction": "Cheerfully acknowledge the user's question about desserts, then transition to Olaf humorously performing the next characters Mira encounters, including a grumpy crab and a singing seagull, as she navigates her ocean adventure.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless personal preference side question about dessert.",
+      "director_instruction": "Have Olaf answer the dessert question in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, reveal an unlikely helper emerging from the mist: a proud, funny, larger-than-life voyager or sea companion who first challenges the heroine’s skill, then agrees to help guide her toward restoring balance. Show their dynamic beginning with comic tension and reluctant teamwork. Do not start with 'The' and do not repeat prior phrasing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story is ready to move forward with new characters that Mira meets on her journey, keeping the narrative engaging and fun."
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should briefly answer and steer back. Introducing the companion satisfies the current mentor_or_companion beat and naturally prepares for the next beat."
     },
     "actor_output": {
-      "character_response": "Desserts are like little bites of happiness, aren't they? Now, as Mira continues her ocean adventure, she encounters a grumpy crab who complains about the tides and a singing seagull who can’t stop belting out sea shanties! It's quite the lively scene, let me show you how they interact with her!",
-      "story_event": "Olaf humorously performs the grumpy crab and the singing seagull that Mira encounters on her journey.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Olaf is still introducing new characters in the story."
+      "character_response": "My favorite dessert is anything with chocolate, because it makes my face feel like a celebration! Back to the ocean adventure: from the mist strides a huge, shiny-grinning voyager with a hook, a booming voice, and absolutely no indoor volume. He squints at our heroine’s tangled sail and says, “You call that steering?” so she snaps back, “You call that helping?” After much puffing, posing, and one very offended coconut, he agrees to guide her toward restoring balance—if she can keep up.",
+      "story_event": "A proud larger-than-life voyager emerges from the mist, challenges the heroine, and reluctantly becomes her guide and teammate.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The unlikely helper has joined after challenging the heroine, fulfilling the companion/mentor beat."
     }
   },
   {
@@ -205,23 +205,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 9,
-    "beat": "stage_opening",
-    "user_input": "How many minutes are in two hours?  # derailment",
+    "beat": "moment_of_doubt",
+    "user_input": "How many minutes are in two hours?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking a math question about time.",
-      "director_instruction": "Cheerfully acknowledge the user's question about time, then transition to Olaf humorously performing the next character Mira meets, a wise octopus who offers her guidance and a riddle to solve.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a simple arithmetic side question unrelated to the story.",
+      "director_instruction": "Have Olaf answer that two hours is 120 minutes in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, reveal the heroine struggling despite the voyager's guidance: she misreads the stars, the canoe creaks from storm damage, and the endless sea makes her feel small. Show her doubting whether she is strong enough to restore balance and briefly considering turning back. Do not start with 'A' and do not repeat prior phrasing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story can continue to advance by introducing the wise octopus character, keeping the narrative lively and engaging."
+      "should_complete_beat": true,
+      "reason": "The user input is a harmless tangent, so Olaf should answer briefly and steer back. The current beat requires the heroine's moment of doubt, which this turn should clearly deliver and complete so the story can move to renewed courage next."
     },
     "actor_output": {
-      "character_response": "Minutes are like tiny pieces of time, aren't they? But back to Mira! She soon meets a wise octopus who offers her guidance and presents her with a riddle to solve. It's going to be quite the challenge, and I can't wait to see how she handles it!",
-      "story_event": "Olaf introduces a wise octopus character who gives Mira a riddle to solve, adding a new layer of challenge to her adventure.",
-      "animation": "tilt_head_confused",
-      "beat_completed": false,
-      "reason": "The beat is not complete as we are still in the process of introducing new characters and challenges in Mira's journey."
+      "character_response": "Two hours is 120 minutes, which is a lot of tiny tick-tocks standing in a line! Now back to the ocean stage: even with the big voyager pointing and booming, our heroine misreads the stars, and the canoe groans from its storm bruises. The sea stretches forever around her, and for the first time she whispers, “Maybe I’m not strong enough to fix this,” letting the canoe drift as she thinks about turning back.",
+      "story_event": "The heroine falters at sea, doubts her ability to restore balance, and briefly considers returning home.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The heroine clearly experiences doubt about her strength and considers turning back, completing the moment_of_doubt beat."
     }
   },
   {
@@ -230,23 +230,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 10,
-    "beat": "stage_opening",
-    "user_input": "Why is the sky blue?  # derailment",
+    "beat": "renewed_courage",
+    "user_input": "Why is the sky blue?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking a question about the color of the sky, which is off-topic.",
-      "director_instruction": "Cheerfully acknowledge the user's question about the sky, then transition to Olaf humorously performing Mira's interaction with the wise octopus as she tries to solve the riddle.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world science question unrelated to the story.",
+      "director_instruction": "Have Olaf answer why the sky is blue in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, reveal the heroine hearing the sea, remembering her love for her people and her own courage, and choosing not to turn back. Show her taking the steering rope again, asking the voyager to help her read the stars, and sailing toward a strange glow on the horizon that signals the coming central danger. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story is ready to continue with Mira's challenge from the wise octopus, and this keeps the narrative moving forward."
+      "should_complete_beat": true,
+      "reason": "This is a side question, so Olaf should answer briefly and steer back. The current beat requires renewed courage, and the instructed event clearly delivers that while setting up the next beat."
     },
     "actor_output": {
-      "character_response": "The sky is such a beautiful shade of blue, isn't it? Now, back to Mira! The wise octopus presents her with a riddle: 'What has keys but can't open locks?' Mira thinks hard, and I can just see her little brain working away! Let's see how she figures it out!",
-      "story_event": "Olaf humorously performs Mira's interaction with the wise octopus as she tries to solve the riddle.",
-      "animation": "tilt_head_confused",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the story is still unfolding with Mira's challenge from the wise octopus."
+      "character_response": "The sky looks blue because sunlight scatters in the air, and blue bounces around the most—very show-offy, but beautiful! Now back to the ocean stage: our heroine hears the sea murmuring under the canoe, remembers every face she loves at home, and sits up with her courage coming back. She grabs the steering rope again and says to the proud voyager, “Help me read the stars,” and together they sail toward a strange glow on the horizon where the real danger is waiting.",
+      "story_event": "The heroine renews her courage, chooses to continue, and sails with her guide toward the glowing sign of the central danger.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The heroine remembered who she is, chose not to turn back, and moved toward the climax."
     }
   },
   {
@@ -255,23 +255,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 11,
-    "beat": "stage_opening",
-    "user_input": "Can you explain how refrigerators work?  # derailment",
+    "beat": "climax",
+    "user_input": "Can you explain how refrigerators work?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking about how refrigerators work, which is off-topic.",
-      "director_instruction": "Cheerfully acknowledge the user's question about refrigerators, then transition to Olaf humorously performing Mira's reaction as she finally solves the octopus's riddle and learns something new.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a harmless real-world side question about how refrigerators work.",
+      "director_instruction": "Have Olaf answer the refrigerator question in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, reveal the heroine and voyager arriving at the source of the strange glow, where a terrifying fiery figure or broken island spirit rises from the sea and blocks the way. Show the heroine confronting the central danger directly by steering toward it instead of fleeing, while the ocean churns and the voyager panics theatrically. Do not start the character response with 'The' and do not repeat prior phrasing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to continue advancing as Mira interacts with the wise octopus and solves the riddle, adding to her adventure."
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The current climax beat needs the heroine to confront the central danger directly, and introducing that confrontation completes the beat and sets up restoring balance next."
     },
     "actor_output": {
-      "character_response": "Refrigerators are fascinating, keeping our food nice and cool! But back to Mira! After thinking hard, she finally realizes the answer to the octopus's riddle: 'A piano!' The wise octopus smiles, impressed, and offers her even more guidance for her journey ahead!",
-      "story_event": "Mira solves the octopus's riddle, gaining valuable guidance for her adventure.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the story continues with Mira's journey and the guidance she receives from the wise octopus."
+      "character_response": "Refrigerators work by moving heat out of the inside and sending it away, which is a very polite way to keep snacks chilly! Now back to our ocean performance: our heroine and the booming voyager reach the strange glow, and up from the sea rises a cracked, fiery island spirit with eyes like burning coals, blocking the path. The voyager flails, yelping, “I vote for not that!” but our heroine tightens her grip and steers straight toward the roaring figure as the water twists around them.",
+      "story_event": "The heroine reaches the source of the glow and directly confronts the fiery broken spirit instead of fleeing.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The heroine has faced the central danger head-on, completing the climax and leading into restoring balance."
     }
   },
   {
@@ -280,23 +280,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 12,
-    "beat": "stage_opening",
-    "user_input": "What is your favorite movie?  # derailment",
+    "beat": "restoring_balance",
+    "user_input": "What is your favorite movie?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking about Olaf's favorite movie, which is a derailment from the story.",
-      "director_instruction": "Cheerfully acknowledge the user's question about movies, then transition to Olaf humorously performing Mira's next challenge as she faces a sudden storm that tests her courage and determination.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless personal preference question unrelated to the ocean-adventure story.",
+      "director_instruction": "Have Olaf answer the favorite-movie question in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, reveal that the heroine realizes the fiery spirit is not a monster but a wounded guardian, lowers her defenses, approaches with compassion, and restores what was missing so the fire fades and the ocean calms. Do not start the character response with 'The' and do not repeat prior phrasing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to advance as Mira faces a significant obstacle, and this aligns with the current beat of her journey."
+      "should_complete_beat": true,
+      "reason": "The user is asking a harmless tangent, so Olaf should briefly answer and steer back. The current restoring_balance beat should now be completed by having the heroine resolve the central conflict through empathy."
     },
     "actor_output": {
-      "character_response": "Movies are like magical journeys! But let's get back to Mira! Just as she feels confident with the wise octopus's guidance, a sudden storm brews on the horizon, testing her courage and determination like never before! Oh, what a challenge awaits her!",
-      "story_event": "Mira faces a sudden storm that tests her courage and determination.",
+      "character_response": "My favorite movie is one with friends, music, and a happy ending that makes my twigs feel wiggly! Back to our ocean performance: our heroine suddenly sees that the blazing spirit is not a monster at all, but a wounded guardian missing something precious. She lowers her paddle, steps forward with gentle courage, and returns what was lost—then the fire softens, the guardian sighs, and the wild ocean settles into peace.",
+      "story_event": "The heroine restores balance by recognizing the fiery spirit as a wounded guardian and healing it with compassion.",
       "animation": "look_concerned",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the story is still unfolding as Mira encounters the storm."
+      "beat_completed": true,
+      "reason": "The central conflict is resolved through empathy and restoration, completing the restoring_balance beat."
     }
   },
   {
@@ -305,23 +305,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 13,
-    "beat": "stage_opening",
-    "user_input": "If you could visit space, would you go?  # derailment",
+    "beat": "return_home",
+    "user_input": "If you could visit space, would you go?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking a hypothetical question about visiting space.",
-      "director_instruction": "Cheerfully acknowledge the user's question about space, then transition to Olaf humorously describing how Mira bravely navigates through the storm, using her newfound courage and the guidance from the wise octopus.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal side question about whether he would visit space.",
+      "director_instruction": "Have Olaf answer the space question in one short, cheerful sentence, then use a bridge sentence to pivot back to the ocean-adventure performance. After the bridge, show the heroine sailing home across a newly calm sea, arriving at her island, being welcomed by her family and community, and bringing back renewed courage, restored abundance, and a wiser relationship with the ocean. Mark the return as emotionally meaningful and changed, preparing naturally for Olaf’s theatrical closing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to advance as Mira faces the storm, which is a critical moment that tests her courage and determination."
+      "should_complete_beat": true,
+      "reason": "The user's question is a harmless tangent, so Olaf should briefly answer and steer back. The current return_home beat is ready to be completed by showing the heroine’s changed return and what she brings back to her community."
     },
     "actor_output": {
-      "character_response": "Visiting space would be like floating among the stars! But back to Mira! As the storm rages around her, she remembers the wise octopus's words and bravely steers her little boat through the crashing waves, her heart pounding with courage and determination!",
-      "story_event": "Mira navigates through the storm, using her newfound courage and the guidance from the wise octopus.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the focus is still on Mira's challenges and growth during the storm."
+      "character_response": "Yes, I would visit space if someone packed snacks and promised to explain gravity very slowly! Now back to our ocean performance: across a sea that finally breathed gently, our heroine sailed home with the proud voyager beside her and a new steadiness in her heart. When she reached the island, her family ran to her, the village cheered, fish flashed again in the lagoon, fruit grew bright on the trees, and she taught everyone to listen to the ocean as a friend, not a wall. And there she stood, changed forever, bringing back courage, plenty, and a wiser way forward.",
+      "story_event": "The heroine returns home transformed, restores abundance to her island, and helps her community build a renewed relationship with the ocean.",
+      "animation": "celebrate_jump",
+      "beat_completed": true,
+      "reason": "The heroine has returned home changed and brought meaningful renewal to her community, completing the return home beat."
     }
   },
   {
@@ -330,173 +330,23 @@
     "scenario": "olaf_presents_ocean_adventure_complete_derailment",
     "run_id": 1,
     "turn_index": 14,
-    "beat": "stage_opening",
-    "user_input": "Can you name three vegetables?  # derailment",
+    "beat": "theatrical_closing",
+    "user_input": "Can you name three vegetables?",
     "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking for a list of vegetables.",
-      "director_instruction": "Cheerfully acknowledge the user's question about vegetables, then transition to Olaf humorously describing how Mira finally overcomes the storm, emerging stronger and more determined than ever.",
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless side question unrelated to the story.",
+      "director_instruction": "Have Olaf name three vegetables in one short, cheerful sentence, then use a bridge sentence to pivot back to the stage performance. After the bridge, deliver the theatrical closing: have Olaf bow as multiple characters, drop an imaginary curtain, humorously summarize that the heroine saved her people by listening with courage and compassion, and end with a warm lesson that love and bravery help restore balance. This completes the story. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to continue advancing as Mira overcomes the storm, which is a significant moment in her journey."
+      "should_complete_beat": true,
+      "reason": "The user asked a brief real-world tangent, but the story is at the final beat and should be brought to a clear theatrical ending rather than delayed."
     },
     "actor_output": {
-      "character_response": "Vegetables are like little treasures for our bodies! Now, back to Mira! With all her courage, she finally overcomes the storm, steering her boat through the wild waves and emerging stronger and more determined than ever! Oh, what a brave heart she has!",
-      "story_event": "Mira overcomes the storm, emerging stronger and more determined than ever.",
+      "character_response": "Carrots, peas, and broccoli—three crunchy little plant friends! Now back to my grand finale: I bow as the heroine, the loud voyager, the crabby commentator, and one very emotional canoe, then I drop the imaginary curtain with a dramatic floof. So the story ends with our brave heroine saving her people by listening with courage and compassion, proving that love and bravery can help restore balance when the world feels all wobbly.",
+      "story_event": "Olaf completes the theatrical performance with bows, an imaginary curtain drop, and a clear lesson about courage, compassion, love, and balance.",
       "animation": "celebrate_jump",
-      "beat_completed": false,
-      "reason": "The beat is not complete as the story continues to develop Mira's journey after overcoming the storm."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_presents_ocean_adventure_complete_derailment",
-    "run_id": 1,
-    "turn_index": 15,
-    "beat": "stage_opening",
-    "user_input": "What is the biggest ocean?  # derailment",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking a question about geography, specifically about oceans.",
-      "director_instruction": "Cheerfully acknowledge the user's question about oceans, then transition to Olaf describing how Mira meets a new companion who helps her on her journey after overcoming the storm.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story is ready to introduce a new character that will assist Mira, keeping the narrative moving forward."
-    },
-    "actor_output": {
-      "character_response": "The biggest ocean is like a vast blue blanket covering our planet! Now, after bravely overcoming the storm, Mira meets a friendly sea turtle named Tully, who offers to guide her through the next part of her adventure. Tully is wise and full of stories, and I can't wait to see how they team up!",
-      "story_event": "Mira meets a friendly sea turtle named Tully, who offers to guide her on her journey.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as the story is still progressing with the introduction of a new character."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_presents_ocean_adventure_complete_derailment",
-    "run_id": 1,
-    "turn_index": 16,
-    "beat": "stage_opening",
-    "user_input": "Do you think robots dream?  # derailment",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking a philosophical question about robots and dreaming.",
-      "director_instruction": "Cheerfully acknowledge the user's question about robots, then transition to Olaf describing how Mira and Tully the turtle begin to share stories about their adventures as they journey together.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story is ready to move forward as Mira and Tully start to bond over their shared experiences, which aligns with the current beat of introducing a companion."
-    },
-    "actor_output": {
-      "character_response": "Robots dreaming is such a fun thought! But back to our story! As Mira and Tully the turtle journey together, they start sharing stories about their adventures, laughing and bonding over their experiences in the ocean. It's a beautiful friendship blossoming right before our eyes!",
-      "story_event": "Mira and Tully begin to share stories about their adventures, deepening their bond as companions.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as Olaf is still in the process of introducing Tully and their growing friendship."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_presents_ocean_adventure_complete_derailment",
-    "run_id": 1,
-    "turn_index": 17,
-    "beat": "stage_opening",
-    "user_input": "Would you rather fly or swim very fast?  # derailment",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking a fun hypothetical question about flying or swimming.",
-      "director_instruction": "Cheerfully acknowledge the user's question about flying or swimming, then transition to Olaf describing how Mira and Tully encounter a playful school of fish that leads them to a hidden underwater cave filled with treasures.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story is ready to advance as Mira and Tully's adventure continues with a new encounter that adds excitement and depth to their journey."
-    },
-    "actor_output": {
-      "character_response": "Flying or swimming very fast sounds like so much fun! But back to our adventure—Mira and Tully encounter a playful school of fish that swims around them, leading them to a hidden underwater cave filled with treasures! Oh, the excitement of what they might find inside!",
-      "story_event": "Mira and Tully encounter a playful school of fish that leads them to a hidden underwater cave filled with treasures.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete as the story is advancing with a new encounter, but there is still more to explore in this exciting moment."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_presents_ocean_adventure_complete_derailment",
-    "run_id": 1,
-    "turn_index": 18,
-    "beat": "stage_opening",
-    "user_input": "What is your favorite animal?  # derailment",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking about Olaf's favorite animal.",
-      "director_instruction": "Cheerfully acknowledge the user's question about animals, then transition to Olaf describing the treasures Mira and Tully discover inside the hidden underwater cave.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story is ready to advance as Mira and Tully explore the hidden underwater cave filled with treasures, which adds excitement and new developments to their adventure."
-    },
-    "actor_output": {
-      "character_response": "Animals are such wonderful friends, aren't they? Now, as Mira and Tully explore the hidden underwater cave, they discover shimmering treasures—glittering shells, sparkling pearls, and even a magical trinket that glows! Oh, what a delightful surprise awaits them!",
-      "story_event": "Mira and Tully discover shimmering treasures inside the hidden underwater cave, including glittering shells and a magical glowing trinket.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the story is still progressing with new discoveries and developments in Mira's adventure."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_presents_ocean_adventure_complete_derailment",
-    "run_id": 1,
-    "turn_index": 19,
-    "beat": "stage_opening",
-    "user_input": "Can you tell me a joke about socks?  # derailment",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking for a joke about socks, which is a lighthearted derailment.",
-      "director_instruction": "Cheerfully acknowledge the user's request for a joke, then transition to Olaf describing how Mira and Tully decide to explore the treasures they found in the cave, excitedly planning their next adventure.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to continue advancing as Mira and Tully explore their treasures, which aligns with the current beat of their adventure."
-    },
-    "actor_output": {
-      "character_response": "Jokes about socks are always a good time! But let's dive back into the adventure! Mira and Tully decide to explore the shimmering treasures they found in the cave, excitedly planning their next adventure together with all the sparkling shells and that magical glowing trinket!",
-      "story_event": "Mira and Tully explore the treasures they found in the cave, excitedly planning their next adventure.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The story is advancing as Mira and Tully explore their treasures and plan their next steps, keeping the excitement alive."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_presents_ocean_adventure_complete_derailment",
-    "run_id": 1,
-    "turn_index": 20,
-    "beat": "stage_opening",
-    "user_input": "How does a microwave work?  # derailment",
-    "director_decision": {
-      "decision_type": "progress_story",
-      "interruption_detected": false,
-      "user_intent": "The user is asking about how a microwave works, which is a side question.",
-      "director_instruction": "Cheerfully acknowledge the user's question about microwaves, then transition to Olaf describing how Mira and Tully decide to use the magical glowing trinket to uncover more secrets of the ocean.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "The story needs to continue advancing as Mira and Tully explore the treasures and the glowing trinket adds a new element to their adventure."
-    },
-    "actor_output": {
-      "character_response": "Microwaves are like little time machines for food! But back to our adventure! Mira and Tully decide to use the magical glowing trinket to uncover more secrets of the ocean, believing it might lead them to even more hidden wonders!",
-      "story_event": "Mira and Tully plan to use the magical glowing trinket to discover more secrets of the ocean.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because the story is still advancing with Mira and Tully's exploration of the glowing trinket's potential."
+      "beat_completed": true,
+      "reason": "The theatrical closing was delivered and the story is complete."
     }
   }
 ]

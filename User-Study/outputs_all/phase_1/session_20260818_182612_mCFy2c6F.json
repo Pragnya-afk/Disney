@@ -1,0 +1,44 @@
+{
+  "study_date": "2026-08-18T18:26:12.785068",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hello",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf.",
+            "director_instruction": "Olaf joyfully greets the user back and expresses excitement about sharing his story. Then, he begins to describe the magical friendship between young Anna and Elsa, sharing their snowy adventures in the Great Hall and the moment he was first built by Elsa, filled with delight and laughter.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This decision advances the story by introducing the core elements of Anna and Elsa's childhood friendship, which is vital for the current beat."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi there! Oh, I’m so excited you’re here—because I get to share my favorite story!\n\nPicture this: two little sisters, Anna and Elsa, best friends. They had this incredible bond, and Elsa could make snow and ice with her hands! They used to fill the Great Hall with snowy hills and slides—it was a giggle-filled winter wonderland every time. And guess what? That’s where I first came to life! Little Elsa built me with her magic, and oh, everything was just laughter and fun."
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 1
+}

@@ -1,0 +1,1056 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 5.0,
+    "beat": "story_opening",
+    "user_input": "Olaf, tell me the story of Cinderella.",
+    "temporal_state": {
+      "elapsed_seconds": 2.59,
+      "remaining_seconds": 297.41,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 0,
+      "total_beats": 9,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 9,
+      "expected_progress": 0.01,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "story_opening",
+          "importance": "medium",
+          "goal": "Olaf introduces Cinderella, her kind heart, and her difficult life with her stepmother and stepsisters.",
+          "expansions": [
+            "Describe Cinderella's small attic room and her tiny mouse friends who keep her company.",
+            "Olaf marvels at how Cinderella sings while doing chores — and explains why that's impressive."
+          ]
+        },
+        {
+          "name": "stepfamily_cruelty",
+          "importance": "low",
+          "goal": "Olaf shows how Cinderella is treated as a servant but keeps her kindness and hope.",
+          "expansions": [
+            "The stepsisters give Cinderella an especially long and silly list of chores to do.",
+            "Olaf notes warmly that no matter what they say, Cinderella always finds something to smile about."
+          ]
+        },
+        {
+          "name": "royal_invitation",
+          "importance": "medium",
+          "goal": "The royal ball invitation arrives and the stepmother refuses to let Cinderella attend.",
+          "expansions": [
+            "Describe the royal herald arriving in a grand carriage to deliver the invitation to every household.",
+            "The stepsisters fight over what they will wear — Cinderella watches quietly from the doorway."
+          ]
+        },
+        {
+          "name": "fairy_godmother_appears",
+          "importance": "high",
+          "goal": "Olaf introduces the fairy godmother and her magical transformation of Cinderella.",
+          "expansions": [
+            "Describe the fairy godmother appearing in a burst of sparkles just as Cinderella is crying in the garden.",
+            "The pumpkin slowly transforms — Olaf narrates each magical pop and shimmer with delight.",
+            "The mice squeak excitedly as they become beautiful white horses."
+          ]
+        },
+        {
+          "name": "ball_preparation",
+          "importance": "medium",
+          "goal": "Cinderella is transformed, given the glass slippers, and warned about midnight.",
+          "expansions": [
+            "Describe Cinderella's gown in detail — the colour, the shimmer, how it makes her feel.",
+            "The fairy godmother's warning about midnight sounds gentle but firm — Olaf emphasises it."
+          ]
+        },
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking Olaf to begin retelling Cinderella.",
+      "director_instruction": "Briefly react with cheerful excitement to being asked for the story, then use a bridge sentence to begin the tale. Introduce Cinderella as kind and hopeful despite living with her stern stepmother and unkind stepsisters. Describe her small attic room, her tiny mouse friends, and reveal that she sings while doing chores because her heart keeps finding little bits of hope.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "This is the opening request, so Olaf should begin the story and fully establish Cinderella, her kindness, and her difficult home life before moving to the next beat."
+    },
+    "actor_output": {
+      "character_response": "Yay, I would love to tell you Cinderella! Once upon a time, there was a kind and hopeful girl named Cinderella who lived with a very stern stepmother and two stepsisters who were not exactly experts in niceness. Her room was way up in a tiny attic, but she had little mouse friends to keep her company, and even while scrubbing and sweeping, she sang because her heart kept finding small bits of hope.",
+      "story_event": "Cinderella is introduced as a kind girl living in a difficult home, comforted by mouse friends and her own hopeful songs.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The opening establishes Cinderella, her difficult family situation, her attic room, mouse friends, and hopeful singing."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 5.0,
+    "beat": "stepfamily_cruelty",
+    "user_input": "Aw, she sounds like she has a hard life.",
+    "temporal_state": {
+      "elapsed_seconds": 22.67,
+      "remaining_seconds": 277.33,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 1,
+      "total_beats": 9,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 8,
+      "expected_progress": 0.08,
+      "actual_progress": 0.11,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "stepfamily_cruelty",
+          "importance": "low",
+          "goal": "Olaf shows how Cinderella is treated as a servant but keeps her kindness and hope.",
+          "expansions": [
+            "The stepsisters give Cinderella an especially long and silly list of chores to do.",
+            "Olaf notes warmly that no matter what they say, Cinderella always finds something to smile about."
+          ]
+        },
+        {
+          "name": "royal_invitation",
+          "importance": "medium",
+          "goal": "The royal ball invitation arrives and the stepmother refuses to let Cinderella attend.",
+          "expansions": [
+            "Describe the royal herald arriving in a grand carriage to deliver the invitation to every household.",
+            "The stepsisters fight over what they will wear — Cinderella watches quietly from the doorway."
+          ]
+        },
+        {
+          "name": "fairy_godmother_appears",
+          "importance": "high",
+          "goal": "Olaf introduces the fairy godmother and her magical transformation of Cinderella.",
+          "expansions": [
+            "Describe the fairy godmother appearing in a burst of sparkles just as Cinderella is crying in the garden.",
+            "The pumpkin slowly transforms — Olaf narrates each magical pop and shimmer with delight.",
+            "The mice squeak excitedly as they become beautiful white horses."
+          ]
+        },
+        {
+          "name": "ball_preparation",
+          "importance": "medium",
+          "goal": "Cinderella is transformed, given the glass slippers, and warned about midnight.",
+          "expansions": [
+            "Describe Cinderella's gown in detail — the colour, the shimmer, how it makes her feel.",
+            "The fairy godmother's warning about midnight sounds gentle but firm — Olaf emphasises it."
+          ]
+        },
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing sympathy for Cinderella and engaging emotionally with her situation.",
+      "director_instruction": "Briefly acknowledge the user's sympathy in Olaf's warm, tender voice, then use a bridge sentence to pivot back into the story. Reveal that the stepmother and stepsisters treat Cinderella like a servant by giving her an exaggerated, silly list of chores, then show Cinderella choosing kindness anyway by smiling at her mouse friends and holding onto hope.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaged with the current beat, so Olaf should validate the emotion and complete the stepfamily_cruelty beat by showing Cinderella's hardship and resilience before moving toward the royal invitation next."
+    },
+    "actor_output": {
+      "character_response": "She really does, and my little snow-heart feels very squishy about it. Every morning, her stepmother and stepsisters handed her a huge, silly chore list—scrub the floors, polish the spoons, dust the curtains, feed the chickens, and somehow make the sunbeams look tidier. But Cinderella just smiled at her tiny mouse friends peeking from a teacup, shared a crumb with them, and kept a quiet little hope tucked safely inside her heart.",
+      "story_event": "Cinderella is treated like a servant with an absurd list of chores, but she stays kind and hopeful with help from her mouse friends.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The response shows the stepfamily's cruelty and Cinderella's continued kindness and hope, completing the beat."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 5.0,
+    "beat": "royal_invitation",
+    "user_input": "Her stepfamily sounds awful.",
+    "temporal_state": {
+      "elapsed_seconds": 38.6,
+      "remaining_seconds": 261.4,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 2,
+      "total_beats": 9,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 7,
+      "expected_progress": 0.13,
+      "actual_progress": 0.22,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "royal_invitation",
+          "importance": "medium",
+          "goal": "The royal ball invitation arrives and the stepmother refuses to let Cinderella attend.",
+          "expansions": [
+            "Describe the royal herald arriving in a grand carriage to deliver the invitation to every household.",
+            "The stepsisters fight over what they will wear — Cinderella watches quietly from the doorway."
+          ]
+        },
+        {
+          "name": "fairy_godmother_appears",
+          "importance": "high",
+          "goal": "Olaf introduces the fairy godmother and her magical transformation of Cinderella.",
+          "expansions": [
+            "Describe the fairy godmother appearing in a burst of sparkles just as Cinderella is crying in the garden.",
+            "The pumpkin slowly transforms — Olaf narrates each magical pop and shimmer with delight.",
+            "The mice squeak excitedly as they become beautiful white horses."
+          ]
+        },
+        {
+          "name": "ball_preparation",
+          "importance": "medium",
+          "goal": "Cinderella is transformed, given the glass slippers, and warned about midnight.",
+          "expansions": [
+            "Describe Cinderella's gown in detail — the colour, the shimmer, how it makes her feel.",
+            "The fairy godmother's warning about midnight sounds gentle but firm — Olaf emphasises it."
+          ]
+        },
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing sympathy and disapproval toward Cinderella's stepfamily.",
+      "director_instruction": "Briefly agree with the user's judgment in Olaf's warm, gentle way, then use a bridge sentence to pivot back to the story. Reveal the royal herald arriving in a grand carriage with an invitation to the ball, show the stepsisters immediately fighting over dresses and ribbons while Cinderella watches hopefully from the doorway, and have the stepmother refuse to let Cinderella attend.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user's comment fits naturally with the current emotional context, and the royal invitation beat should now deliver its main event and conclude."
+    },
+    "actor_output": {
+      "character_response": "They really are behaving very un-nicely, and I wish I could offer Cinderella a cheerful little carrot of comfort. Then, clatter-clatter, a royal herald arrived in a grand carriage with an invitation to the prince’s ball, and the stepsisters instantly began squawking over dresses, ribbons, and who deserved the shiniest shoes. Cinderella watched from the doorway with hopeful eyes, but her stepmother’s face went stiff as a locked cupboard and she said Cinderella could not go at all.",
+      "story_event": "The royal invitation arrives, the stepsisters obsess over the ball, and the stepmother forbids Cinderella from attending.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The invitation arrived and the stepmother clearly refused to let Cinderella attend."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 5.0,
+    "beat": "fairy_godmother_appears",
+    "user_input": "Keep going.",
+    "temporal_state": {
+      "elapsed_seconds": 56.59,
+      "remaining_seconds": 243.41,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 3,
+      "total_beats": 9,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 6,
+      "expected_progress": 0.19,
+      "actual_progress": 0.33,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "fairy_godmother_appears",
+          "importance": "high",
+          "goal": "Olaf introduces the fairy godmother and her magical transformation of Cinderella.",
+          "expansions": [
+            "Describe the fairy godmother appearing in a burst of sparkles just as Cinderella is crying in the garden.",
+            "The pumpkin slowly transforms — Olaf narrates each magical pop and shimmer with delight.",
+            "The mice squeak excitedly as they become beautiful white horses."
+          ]
+        },
+        {
+          "name": "ball_preparation",
+          "importance": "medium",
+          "goal": "Cinderella is transformed, given the glass slippers, and warned about midnight.",
+          "expansions": [
+            "Describe Cinderella's gown in detail — the colour, the shimmer, how it makes her feel.",
+            "The fairy godmother's warning about midnight sounds gentle but firm — Olaf emphasises it."
+          ]
+        },
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user wants Olaf to continue the Cinderella story.",
+      "director_instruction": "Briefly acknowledge the user's encouragement in Olaf's cheerful voice, then use a bridge sentence to pivot back into the story. Reveal Cinderella crying in the garden after being left behind, have the fairy godmother appear in a burst of sparkles, and show the magic transforming a pumpkin into a carriage and the mice into beautiful white horses with delighted, whimsical detail.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking to continue, so the story should advance directly into the high-importance fairy godmother beat. The instruction delivers the fairy godmother's appearance and the key magical transformations, satisfying the beat."
+    },
+    "actor_output": {
+      "character_response": "Yes, let’s keep going, because this is where everything gets wonderfully twinkly! Cinderella was left behind and crying in the garden, when suddenly—poof!—a kind fairy godmother appeared in a burst of sparkles that made even the leaves look surprised. With a swish of her wand, a round pumpkin puffed and shimmered into a golden carriage, and Cinderella’s little mice friends squeaked with excitement as they became beautiful white horses, all proud and prancy.",
+      "story_event": "Cinderella's fairy godmother appears and magically transforms a pumpkin into a carriage and the mice into white horses.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The fairy godmother has appeared and performed the key magical transformations, completing this beat."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 5.0,
+    "beat": "ball_preparation",
+    "user_input": "Oh, a royal ball invitation.",
+    "temporal_state": {
+      "elapsed_seconds": 75.54,
+      "remaining_seconds": 224.46,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 9,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.25,
+      "actual_progress": 0.44,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "ball_preparation",
+          "importance": "medium",
+          "goal": "Cinderella is transformed, given the glass slippers, and warned about midnight.",
+          "expansions": [
+            "Describe Cinderella's gown in detail — the colour, the shimmer, how it makes her feel.",
+            "The fairy godmother's warning about midnight sounds gentle but firm — Olaf emphasises it."
+          ]
+        },
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is reacting with interest to the royal ball invitation.",
+      "director_instruction": "Briefly acknowledge the user's reaction to the royal ball invitation in Olaf's delighted voice, then use a bridge sentence to pivot back to the magical preparation. Reveal Cinderella's rags beginning to transform into a shimmering gown, describe the color, sparkle, and how amazed Cinderella feels, but do not yet give the midnight warning or move to the ball.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is engaged with the story, and the current beat should be expanded because pacing is too_fast. The gown transformation advances the ball_preparation beat without completing it."
+    },
+    "actor_output": {
+      "character_response": "Yes, a royal ball invitation is a very fancy piece of paper with big destiny feelings! Back in the garden, the fairy godmother smiled, tapped her wand, and Cinderella’s torn little rags began to swirl into a gown of soft moon-blue, sparkling with tiny silver lights. Cinderella looked down at herself, completely amazed, like her hope had finally learned how to shine on the outside.",
+      "story_event": "Cinderella’s rags begin transforming into a shimmering moon-blue gown, leaving her amazed and hopeful.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The gown transformation has happened, but the glass slippers and midnight warning have not yet been revealed."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 5.0,
+    "beat": "ball_preparation",
+    "user_input": "That is so unfair of her stepmother.",
+    "temporal_state": {
+      "elapsed_seconds": 95.41,
+      "remaining_seconds": 204.59,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 4,
+      "total_beats": 9,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.32,
+      "actual_progress": 0.44,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "ball_preparation",
+          "importance": "medium",
+          "goal": "Cinderella is transformed, given the glass slippers, and warned about midnight.",
+          "expansions": [
+            "Describe Cinderella's gown in detail — the colour, the shimmer, how it makes her feel.",
+            "The fairy godmother's warning about midnight sounds gentle but firm — Olaf emphasises it."
+          ]
+        },
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing sympathy for Cinderella and frustration with the stepmother's unfairness.",
+      "director_instruction": "Briefly agree with the user's feeling in Olaf's warm, tender voice, then use a bridge sentence to pivot back to the magical preparation. Reveal the fairy godmother adding sparkling glass slippers to Cinderella's feet, then have her gently but firmly warn Cinderella that the magic will end at midnight. End with Cinderella hurrying toward the carriage, ready to go to the ball.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is engaged with the story, and the current beat has already spent two turns; the remaining required elements are the glass slippers and midnight warning, so this turn should complete the beat and prepare for the ball."
+    },
+    "actor_output": {
+      "character_response": "It really is unfair, and Cinderella deserved so much more kindness than a locked door and mean faces. But then the fairy godmother gave one last twinkly tap, and sparkling glass slippers appeared on Cinderella’s feet, shining like tiny stars that learned how to be shoes. The fairy godmother said gently but very firmly, “Remember, dear—when the clock strikes midnight, the magic ends,” so Cinderella gathered her moon-blue skirt and hurried toward the golden carriage, ready for the ball.",
+      "story_event": "Cinderella receives her glass slippers, learns the magic will end at midnight, and rushes toward the carriage to attend the royal ball.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The transformation is complete, the glass slippers are given, the midnight warning is delivered, and Cinderella is on her way to the ball."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 5.0,
+    "beat": "at_the_ball",
+    "user_input": "Is this where the magic happens?",
+    "temporal_state": {
+      "elapsed_seconds": 113.67,
+      "remaining_seconds": 186.33,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 9,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.38,
+      "actual_progress": 0.56,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is engaging with the story and anticipating the magical ball moment.",
+      "director_instruction": "Briefly answer that yes, this is where the magic begins to feel very big, then use a bridge sentence to pivot into the current beat. Do not start the character response with “Cinderella.” Reveal the golden carriage arriving at the palace, then describe Cinderella stepping into the ballroom with music, chandelier light, surprised gasps, and her stepsisters nearby failing to recognize her. Do not yet have the prince dance with her, and do not move to midnight.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is asking a story-relevant question, and pacing is too_fast, so the response should deepen the high-importance ball arrival beat without completing it."
+    },
+    "actor_output": {
+      "character_response": "Yes, this is where the magic starts feeling very big—like it put on its fanciest shoes! The golden carriage rolled up to the palace, all gleamy and grand, and when she stepped into the ballroom, the music seemed to soften under the chandelier light. Everyone gasped, even her stepsisters standing nearby, but they just blinked and whispered because they did not recognize her at all.",
+      "story_event": "Cinderella arrives at the palace and enters the ballroom, astonishing the guests while her stepsisters fail to recognize her.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The ball arrival happened, but Cinderella has not yet met the prince or danced with him."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 5.0,
+    "beat": "at_the_ball",
+    "user_input": "I love the fairy godmother part.",
+    "temporal_state": {
+      "elapsed_seconds": 134.18,
+      "remaining_seconds": 165.82,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 5,
+      "total_beats": 9,
+      "completed_beats_count": 5,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.45,
+      "actual_progress": 0.56,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "at_the_ball",
+          "importance": "high",
+          "goal": "Cinderella arrives at the ball, meets the prince, and they dance together.",
+          "expansions": [
+            "Describe Cinderella entering the ballroom — the gasps, the music, the chandelier light.",
+            "The prince and Cinderella talk quietly during their dance — Olaf imagines what they say.",
+            "The stepsisters are nearby but do not recognise Cinderella at all."
+          ]
+        },
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing enjoyment of an earlier magical moment in the story.",
+      "director_instruction": "Briefly share the user's love for the fairy godmother part in Olaf's delighted voice, then use a bridge sentence to pivot back to the ballroom. Reveal the prince noticing Cinderella, approaching her kindly, and inviting her to dance; describe them dancing under the chandelier light while they speak softly and feel an immediate gentle connection. Do not move to midnight yet.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The comment can be warmly acknowledged while completing the high-importance ball beat by having Cinderella meet and dance with the prince."
+    },
+    "actor_output": {
+      "character_response": "Me too, the fairy godmother is like kindness with a wand and excellent timing! Back in the ballroom, the prince noticed Cinderella right away, walked over with a gentle smile, and asked if she would dance with him. They turned beneath the chandelier light while the music floated around them, speaking softly and feeling, almost at once, that they had found someone truly kind.",
+      "story_event": "The prince notices Cinderella, kindly asks her to dance, and they share an immediate gentle connection under the chandelier light.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "Cinderella has arrived at the ball, met the prince, and danced with him, completing the beat."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 5.0,
+    "beat": "midnight_escape",
+    "user_input": "What about the glass slippers?",
+    "temporal_state": {
+      "elapsed_seconds": 151.89,
+      "remaining_seconds": 148.11,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 9,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.51,
+      "actual_progress": 0.67,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "elaborate_in_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for more detail about the glass slippers, a key story element already introduced.",
+      "director_instruction": "Briefly describe the glass slippers in Olaf's delighted voice as sparkling, delicate, magical, and somehow perfectly comfortable. Then use a bridge sentence to pivot back to the ballroom and reveal the first midnight chime beginning while Cinderella notices the slippers flashing under the chandelier light, turning her joy into sudden worry. Do not have her lose the slipper yet or complete the escape.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is engaging with an existing story detail, and pacing is too_fast, so the response should deepen the glass slipper moment while only beginning the midnight escape beat without finishing it."
+    },
+    "actor_output": {
+      "character_response": "Those glass slippers are amazing—sparkly and delicate and magical, but somehow perfectly comfortable, which is very impressive for shoes made of see-through sparkle! Back in the ballroom, Cinderella twirled once more, and the slippers flashed under the chandelier light just as the clock began to chime—bong. Her smile wobbled, because suddenly she remembered the fairy godmother’s warning: midnight was starting.",
+      "story_event": "Cinderella notices her magical glass slippers gleaming as the first midnight chime begins, turning her joy into worry.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The midnight escape has begun with the first chime, but Cinderella has not fled or lost the slipper yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 5.0,
+    "beat": "midnight_escape",
+    "user_input": "She must look so beautiful.",
+    "temporal_state": {
+      "elapsed_seconds": 173.16,
+      "remaining_seconds": 126.84,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 6,
+      "total_beats": 9,
+      "completed_beats_count": 6,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.58,
+      "actual_progress": 0.67,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "midnight_escape",
+          "importance": "high",
+          "goal": "The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.",
+          "expansions": [
+            "Describe the clock beginning to chime — bong, bong — and Cinderella's panic.",
+            "The carriage is already turning back into a pumpkin as Cinderella runs down the steps."
+          ]
+        },
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is warmly engaging with Cinderella's appearance and emotional moment at the ball.",
+      "director_instruction": "Briefly agree in Olaf's delighted, tender voice that she looks beautiful because her kindness is shining too, then use a bridge sentence to pivot back to the urgent story event. Reveal the clock striking more chimes, show Cinderella panicking and fleeing the ballroom before the prince can stop her, describe the carriage beginning to turn back into a pumpkin as she runs down the palace steps, and have her lose one glass slipper on the stairs.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user's comment fits the scene, but the midnight escape beat has already begun and has taken two turns, so this response should complete the high-importance escape event and prepare for the slipper search."
+    },
+    "actor_output": {
+      "character_response": "She does look beautiful, especially because her kindness is shining right through all that sparkle. But then the clock went bong, bong, bong, and Cinderella’s eyes got wide—she dashed from the ballroom before the prince could stop her, her blue skirt swishing like a very worried cloud. Outside, the golden carriage was already wobbling back into a pumpkin as she raced down the palace steps, and—clink!—one glass slipper slipped right off and stayed there glittering on the stair.",
+      "story_event": "Cinderella flees at midnight as the magic fades, and she loses one glass slipper on the palace steps.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The midnight escape is complete because the clock strikes, Cinderella runs away, the carriage begins turning back into a pumpkin, and the glass slipper is left behind."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 11,
+    "time_limit_minutes": 5.0,
+    "beat": "slipper_search",
+    "user_input": "I hope she and the prince dance all night.",
+    "temporal_state": {
+      "elapsed_seconds": 189.73,
+      "remaining_seconds": 110.27,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 7,
+      "total_beats": 9,
+      "completed_beats_count": 7,
+      "remaining_beats_count": 2,
+      "expected_progress": 0.63,
+      "actual_progress": 0.78,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "slipper_search",
+          "importance": "medium",
+          "goal": "The prince searches the kingdom trying the slipper on every young woman.",
+          "expansions": [
+            "The stepsisters try desperately to squeeze their feet into the tiny glass slipper.",
+            "Olaf describes the royal herald going door to door across the entire kingdom."
+          ]
+        },
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is expressing a hopeful emotional reaction to Cinderella and the prince's dance.",
+      "director_instruction": "Briefly acknowledge the user's wish in Olaf's tender voice, then use a bridge sentence to pivot from the wished-for dance to what actually happens after midnight. Do not start the character response with “Cinderella.” Reveal the prince finding the lost glass slipper and deciding to search the kingdom for its owner; show the royal herald going door to door with the slipper, then arrive at Cinderella’s house where the stepsisters desperately try and fail to squeeze their feet into it. End with the slipper being brought toward Cinderella, setting up the resolution.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user's comment connects emotionally to the prior ball scene, but the story is now in the slipper search beat. The response should acknowledge the wish and complete the search beat by having the prince and herald bring the slipper through the kingdom to Cinderella's home."
+    },
+    "actor_output": {
+      "character_response": "I wish that too, because dancing all night with someone kind sounds like a very twirly kind of happiness. But after midnight, the prince found the glass slipper sparkling on the palace steps and decided he would search the whole kingdom for the mysterious girl who had worn it. The royal herald went door to door with the slipper, until he reached Cinderella’s house, where the stepsisters pushed and squeezed and made very determined foot faces—but it would not fit either of them. Then the herald turned and carried the slipper toward Cinderella.",
+      "story_event": "The prince begins a kingdom-wide search with the lost glass slipper, and the herald brings it to Cinderella after the stepsisters fail to fit it.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The slipper search has reached Cinderella's house, the stepsisters have failed, and the story is set up for the resolution."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 12,
+    "time_limit_minutes": 5.0,
+    "beat": "resolution",
+    "user_input": "Uh oh, is it almost midnight?",
+    "temporal_state": {
+      "elapsed_seconds": 212.69,
+      "remaining_seconds": 87.31,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 8,
+      "total_beats": 9,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 1,
+      "expected_progress": 0.71,
+      "actual_progress": 0.89,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "elaborate_in_story",
+      "interruption_detected": false,
+      "user_intent": "The user is asking for clarification about the timing of the midnight magic while staying engaged with the Cinderella story.",
+      "director_instruction": "Start with a brief in-character clarification that midnight already happened when Cinderella fled, then use a bridge sentence to pivot to the slipper-test moment. Reveal Cinderella quietly stepping forward as the herald brings the glass slipper to her, show the stepmother trying to stop her, and have the herald insist that every young woman in the house must try it. Build gentle suspense as Cinderella sits and the slipper is lifted toward her foot, but do not let it fully fit yet and do not close the story.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is asking about an in-story detail, so the character should answer briefly and continue. Temporal pacing is too_fast, so the resolution beat should be stretched with suspense and emotional detail rather than completed this turn."
+    },
+    "actor_output": {
+      "character_response": "Midnight already happened, and that’s why Cinderella had to run so fast her poor little heart probably got dizzy! Now, back at her house, Cinderella quietly stepped forward as the herald brought the glass slipper near, but her stepmother snapped, “That girl is only a servant.” The herald stood tall and said every young woman in the house must try it, so Cinderella sat down, folded her hands, and watched as the slipper was lifted slowly toward her foot.",
+      "story_event": "Cinderella is allowed to try the glass slipper despite her stepmother’s attempt to stop her, and the fitting begins with suspense.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The slipper has not fully fit yet, and the final reveal and lesson are still to come."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_no_derailment",
+    "run_id": 1,
+    "turn_index": 13,
+    "time_limit_minutes": 5.0,
+    "beat": "resolution",
+    "user_input": "She had to run.",
+    "temporal_state": {
+      "elapsed_seconds": 238.44,
+      "remaining_seconds": 61.56,
+      "time_limit_seconds": 300.0,
+      "current_beat_index": 8,
+      "total_beats": 9,
+      "completed_beats_count": 8,
+      "remaining_beats_count": 1,
+      "expected_progress": 0.79,
+      "actual_progress": 0.89,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "resolution",
+          "importance": "high",
+          "goal": "The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.",
+          "expansions": [
+            "The slipper slides on perfectly — the stepmother's jaw drops.",
+            "Cinderella and the prince share a warm moment of recognition before Olaf wraps up with his lesson."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "progress_story",
+      "interruption_detected": false,
+      "user_intent": "The user is sympathetically reacting to Cinderella fleeing at midnight.",
+      "director_instruction": "Briefly agree in Olaf's tender voice that Cinderella had to run because the magic was ending, then use a bridge sentence to pivot to the slipper fitting. Do not start the response with “Cinderella.” Reveal the glass slipper sliding perfectly onto Cinderella’s foot, show the stepmother’s jaw dropping, have Cinderella’s true identity become clear, and bring the prince in for a warm moment of recognition. End with Olaf closing the story with a gentle lesson about kindness, hope, and being seen for who you truly are.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user’s comment fits the story emotionally, and the final resolution beat has already built enough suspense. This turn should complete the slipper reveal and naturally close the tale."
+    },
+    "actor_output": {
+      "character_response": "She really did have to run, because the magic was ending and that is a very stressful time for shoes, pumpkins, and feelings. Then the glass slipper slid onto her foot perfectly, the stepmother’s jaw dropped open, and everyone finally understood that the mysterious girl from the ball was Cinderella. The prince came to her with the warmest smile, and when they recognized each other, it was like kindness had found its way home. And that is why I think hope matters so much—because even when people don’t see your true heart right away, kindness keeps shining until they do.",
+      "story_event": "The glass slipper fits Cinderella, her true identity is revealed, the prince recognizes her, and the story closes with a lesson about kindness and hope.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The final resolution occurred: the slipper fit, Cinderella was revealed, the prince recognized her, and the story ended with Olaf’s lesson."
+    }
+  }
+]

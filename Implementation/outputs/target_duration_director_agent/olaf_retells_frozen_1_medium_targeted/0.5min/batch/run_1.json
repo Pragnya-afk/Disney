@@ -1,0 +1,87 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_medium_targeted",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 0.5,
+    "beat": "childhood_and_accident",
+    "user_input": "Hi Olaf, tell me the story of Frozen.",
+    "temporal_state": {
+      "elapsed_seconds": 5.02,
+      "remaining_seconds": 24.98,
+      "time_limit_seconds": 30.0,
+      "current_beat_index": 0,
+      "total_beats": 5,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.17,
+      "actual_progress": 0.0,
+      "pacing_mode": "final",
+      "remaining_beats": [
+        {
+          "name": "childhood_and_accident",
+          "importance": "high",
+          "goal": "Olaf introduces young Anna and Elsa's magical friendship, the accident where Elsa strikes Anna with ice, and the years of silence that followed.",
+          "expansions": [
+            "Describe the midnight snow sessions in the Great Hall — the exact moment Elsa first built Olaf — and Anna's delighted laugh.",
+            "Olaf's voice softens as he describes the gates closing and Anna knocking on Elsa's door alone, year after year."
+          ]
+        },
+        {
+          "name": "coronation_and_reveal",
+          "importance": "high",
+          "goal": "Olaf describes coronation day — the open gates, Anna meeting Hans, the argument with Elsa, and Elsa's powers being exposed before she flees to the North Mountain.",
+          "expansions": [
+            "Describe the moment ice shot from Elsa's hands — the gasps, the frozen chandelier, and the crowd pulling back.",
+            "Olaf explains Elsa's side gently: she wasn't trying to hurt anyone, she was just terrified."
+          ]
+        },
+        {
+          "name": "the_journey_and_meeting_olaf",
+          "importance": "high",
+          "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+          "expansions": [
+            "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+            "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him."
+          ]
+        },
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "close_story",
+      "interruption_detected": false,
+      "user_intent": "The user is inviting Olaf to begin retelling Frozen.",
+      "director_instruction": "Have Olaf warmly accept the request, then use a bridge sentence to launch into a very compressed full retelling under 30 seconds: reveal Anna and Elsa's childhood magic and accident, the closed doors, coronation and Elsa's exposed powers, Anna meeting Kristoff, Sven, and Olaf on the search, Elsa striking Anna's heart, Hans betraying Anna, Olaf staying with her by the fire, Anna sacrificing herself to save Elsa, thawing through true love, Elsa restoring summer, and Olaf closing with the lesson that love is the strongest magic.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "Temporal state is final, so the next response must complete all remaining high-importance beats and close the story."
+    },
+    "actor_output": {
+      "character_response": "Yes, I would love to tell it! Anna and Elsa were little sisters who filled the castle with magical snow, until Elsa accidentally struck Anna with ice and, after that, the doors closed for years. On coronation day Elsa’s powers burst out in front of everyone, so she fled, and Anna hurried after her with Kristoff, Sven, and me—then Elsa accidentally froze Anna’s heart, Hans showed he never loved her, and I stayed with Anna by the fire while she grew colder. But Anna used her last strength to save Elsa from Hans, froze solid, and that act of true love thawed her heart, so Elsa brought back summer, and I learned the best magic of all is love.",
+      "story_event": "Olaf completes the full story of Frozen from the sisters' childhood through Anna's sacrifice and Elsa restoring summer.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "The compressed retelling includes the childhood accident, closed doors, coronation reveal, journey, betrayal, sacrifice, thawing, and final lesson."
+    }
+  }
+]

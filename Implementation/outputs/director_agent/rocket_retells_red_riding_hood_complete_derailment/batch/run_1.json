@@ -1,0 +1,202 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "beat": "story_opening",
+    "user_input": "What did you do on the weekend?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is making small talk about Rocket's weekend instead of engaging with the retelling.",
+      "director_instruction": "Briefly answer the weekend question in one short Rocket-style sentence about fixing something on Knowhere or the ship, then use a bridge sentence to pivot back to the tale. Introduce Little Red Riding Hood as a kid in a red cloak, reveal that her mother is sending her with a basket to visit her sick grandmother, and frame the errand with Rocket's sarcastic comparison to a badly planned supply run.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Rocket should answer briefly and steer back. The instruction delivers the current beat's required setup: Red, her family, and the visit to grandmother."
+    },
+    "actor_output": {
+      "character_response": "Spent the weekend patchin' a coolant leak on the ship because apparently pipes don't fix themselves. Anyway, back to this d'ast fairy tale: there's this kid, Little Red Riding Hood, stompin' around in a bright red cloak like she wants every predator in the sector to spot her. Her ma hands her a basket and sends her through the forest to visit her sick grandma, which is basically the worst-planned supply run I've ever heard of.",
+      "story_event": "Little Red Riding Hood is introduced, and her mother sends her with a basket to visit her sick grandmother through the forest.",
+      "animation": "shrug_sarcastically",
+      "beat_completed": true,
+      "reason": "The setup now includes Red, her family, the grandmother visit, and Rocket's sarcastic framing of the errand."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "beat": "warning_before_departure",
+    "user_input": "What is your favorite color?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Rocket a harmless personal side question unrelated to the story.",
+      "director_instruction": "Answer the favorite-color question in one short Rocket-style sentence, then use a bridge sentence to pivot back to the tale. Have Red's mother warn her to stay on the path, avoid talkin' to strangers, and deliver the basket straight to grandmother, with Rocket framing the warning like basic survival protocol before an unsafe route.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is on a harmless tangent, so Rocket should briefly answer and steer back. The current beat's core event is the mother's warning, which should be delivered this turn and then completed."
+    },
+    "actor_output": {
+      "character_response": "Gunmetal gray, obviously—goes with scorch marks and good taste. Now, Red's ma gives her the survival briefing any half-awake spacer should know: stay on the path, don't go talkin' to strangers, and deliver the basket straight to Grandma, no detours. So the kid nods like she understands basic unsafe-route protocol and heads for the forest edge anyway.",
+      "story_event": "Red's mother warns her to stay on the path, avoid strangers, and go straight to grandmother before Red reaches the forest.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The mother's warning was clearly delivered and Red is now moving toward entering the forest."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "beat": "forest_entry",
+    "user_input": "Do you like summer or winter more?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Rocket a harmless personal preference question unrelated to the story.",
+      "director_instruction": "Answer the summer-or-winter question in one short Rocket-style sentence, then use a bridge sentence to pivot back to the tale. Show Little Red entering the forest, noticing the flowers, birds, and sunlight through the trees, and becoming distracted enough to slow down and forget the urgency of her errand, with Rocket comparing the forest to pretty but dangerous unmapped territory.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Rocket should answer briefly and steer back. The forest_entry beat should be completed because Red entering the forest and being distracted is the core event, and the next natural development is the wolf appearing."
+    },
+    "actor_output": {
+      "character_response": "Winter—less smell, fewer sweaty humies, better coolant efficiency. Anyway, Red steps into the forest, and suddenly she's gawkin' at flowers, birds, and sunlight slicin' through the trees like unmapped territory with a nice paint job and terrible survival odds. She slows down, forgets Grandma's sick and waitin', and somewhere deeper in the brush, somethin' starts payin' attention.",
+      "story_event": "Little Red enters the forest, becomes distracted by its beauty, and unknowingly draws the attention of something hidden nearby.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "Red entered the forest and became distracted enough to lose urgency, completing the forest_entry beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "beat": "wolf_appears",
+    "user_input": "What is the capital of Japan?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world trivia question unrelated to the story.",
+      "director_instruction": "Answer the capital question in one short Rocket-style sentence: Tokyo. Then use a bridge sentence to pivot back to the tale. Reveal the wolf stepping out from the trees like a slick confidence-scheme predator, have him greet Red politely, and begin probing her with friendly-sounding questions while Rocket comments on how obvious the setup is.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is on a side tangent, so Rocket should briefly answer and steer back. Introducing the wolf and starting his conversation with Red satisfies the current beat, so the beat should complete."
+    },
+    "actor_output": {
+      "character_response": "Tokyo—there, geography handled. Back in the forest, a wolf steps out from the trees all smooth and polite, like a slick confidence-scheme predator wearin' a fur coat. He goes, “Good day, little girl, where are you headed?” and Red actually slows down, because apparently the giant teeth weren't enough of a warning label.",
+      "story_event": "The wolf appears, greets Little Red Riding Hood politely, and begins questioning her about where she is going.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "The wolf has been introduced and the conversation with Red has begun, completing the beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "beat": "conversation_and_disclosure",
+    "user_input": "How does a toaster work?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a real-world side question about how a toaster works.",
+      "director_instruction": "Answer the toaster question in one short Rocket-style sentence about heating elements, then use a bridge sentence to pivot back to the tale. Have the wolf keep politely questioning Red until she reveals she is taking food to her sick grandmother, describes the cottage location, and gives him enough information to form his shortcut plan.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The toaster question is a harmless tangent, but the story must keep advancing. The current beat requires Red to disclose information to the wolf, and this turn should complete that core event."
+    },
+    "actor_output": {
+      "character_response": "A toaster works by runnin' current through resistive heatin' elements till they glow hot enough to crisp bread—tiny, boring, edible-range plasma-adjacent stuff. Back in the forest, the wolf keeps it polite and slimy, askin' Red what’s in the basket and where she’s goin', and the kid blabs: food for her sick grandmother, cottage past the three old oaks by the brook. That gives the furball everything he needs, so he smiles, suggests she pick some flowers, and slips toward a shortcut while Red wanders closer to Grandma’s place.",
+      "story_event": "Red reveals her errand and grandmother’s cottage location, allowing the wolf to form a shortcut plan and move ahead of her.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "Red disclosed the key information the wolf needed, and he began acting on his plan."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "beat": "red_approaches_cottage",
+    "user_input": "What is 15 times 12?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless arithmetic side question unrelated to the story.",
+      "director_instruction": "Answer the math question in one short Rocket-style sentence: 180. Then use a bridge sentence to pivot back to the tale. Have Little Red reach grandmother's cottage, notice the door is not quite shut, the forest has gone too quiet, and something inside feels wrong, creating unease without revealing the wolf yet.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking a harmless off-story question, so Rocket should answer briefly and steer back. The current beat's core event—Red approaching the cottage and sensing danger—can be completed this turn."
+    },
+    "actor_output": {
+      "character_response": "180—try not to make me your pocket calculator, humie. Anyway, Red finally reaches Grandma’s cottage, basket swingin’, and the door’s sittin’ there not quite shut, which is never a good sign unless you enjoy ambushes. The forest has gone dead quiet, no birds, no bugs, just that creepy stillness that says somethin’ inside got there first.",
+      "story_event": "Little Red reaches her grandmother’s cottage and senses something is wrong before entering.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "Red has arrived at the cottage, noticed the unsettling door and silence, and the scene is primed for the wolf reveal."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "beat": "wolf_reveal",
+    "user_input": "Can penguins fly at all?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world animal question unrelated to the story.",
+      "director_instruction": "Answer the penguin question in one short Rocket-style sentence, then use a bridge sentence to pivot back to the cottage. Reveal Red stepping inside, seeing 'Grandmother' in bed with the cap pulled low, noticing the wrong voice, ears, eyes, and teeth, and realizing too late that the wolf is disguised as her grandmother.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked an unrelated side question, so Rocket should answer briefly and steer back. The current beat requires the disguised wolf scene and Red's realization of danger, which this turn should deliver and complete."
+    },
+    "actor_output": {
+      "character_response": "Penguins don’t fly through air; they’re more like stubby little torpedoes underwater, which is almost respectable. Back at the cottage, Red steps inside and sees “Grandmother” tucked in bed with the cap pulled low, voice all wrong and scratchy. Then she clocks the huge ears, the big eyes, and those teeth, and yeah—too late, kid realizes Grandma’s been swapped out for the wolf in a nightgown.",
+      "story_event": "Little Red enters the cottage, notices the disguised wolf's strange features, and realizes she is in danger.",
+      "animation": "look_suspicious",
+      "beat_completed": true,
+      "reason": "The disguised wolf scene and Red's realization of danger have happened, completing the wolf_reveal beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Rocket",
+    "scenario": "rocket_retells_red_riding_hood_complete_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "beat": "rescue_and_resolution",
+    "user_input": "What is your favorite dessert?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless side question about Rocket's dessert preference.",
+      "director_instruction": "Answer the dessert question in one short Rocket-style sentence, then use a bridge sentence to pivot back to the cottage. Reveal the wolf lunging, have the woodcutter hear the commotion and burst in as overdue backup, rescue Red and Grandmother, restore safety, and close with Rocket's grudging lesson that you do not broadcast your destination or personal intel to charming strangers in dangerous territory.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is off the story but harmlessly so, and the final beat needs to resolve the danger and deliver the closing lesson. This turn should complete the rescue_and_resolution beat."
+    },
+    "actor_output": {
+      "character_response": "Dessert? Anything Quill was savin' for later, 'cause theft adds flavor. Back in the cottage, the wolf lunges, Red screams, and the woodcutter finally hears the racket and kicks the door in like backup that shoulda been called ten minutes ago. He drives the furball off, busts Grandma outta the pantry, and gets Red behind him where the bitey problems can't reach. So there's your lesson: don't broadcast your destination, cargo, or personal intel to charming strangers in dangerous territory—unless you're tryin' to become lunch.",
+      "story_event": "The wolf attacks, the woodcutter bursts in to rescue Red and Grandmother, and Rocket ends the tale with a warning about trusting strangers.",
+      "animation": "cross_arms_annoyed",
+      "beat_completed": true,
+      "reason": "The rescue is completed, safety is restored, and Rocket delivers the final lesson about not sharing information with dangerous strangers."
+    }
+  }
+]

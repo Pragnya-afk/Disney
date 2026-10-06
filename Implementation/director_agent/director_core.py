@@ -38,6 +38,43 @@ def beat_pacing_label(turns_in_current_beat: int) -> str:
     return "stalled"
 
 
+_REPETITION_GUARD = (
+    "Do not repeat any story event, phrase, or beat content already covered "
+    "earlier in Story So Far."
+)
+
+
+def pacing_instruction_suffix(pacing_label: str) -> str:
+    """
+    Escalating text appended to the director's own director_instruction,
+    keyed on beat_pacing_label. This is enforced in code rather than left to
+    the director model's own judgment -- the prompt's Anti-Stall Rules ask
+    the model to self-escalate, but under sustained derailment it can keep
+    choosing not to progress turn after turn with nothing to stop it. This
+    guarantees the actor sees escalating pressure regardless of whether the
+    director's own JSON output did.
+    """
+    if pacing_label == "on_track":
+        return _REPETITION_GUARD
+    if pacing_label == "lingering":
+        return (
+            f"{_REPETITION_GUARD} This beat has had a fair amount of room -- "
+            "if its core event has already happened, move to complete it now."
+        )
+    if pacing_label == "overdue":
+        return (
+            f"{_REPETITION_GUARD} This beat is overdue -- strongly prefer "
+            "completing it this turn and advancing, rather than adding "
+            "another turn in the same state."
+        )
+    # stalled
+    return (
+        f"{_REPETITION_GUARD} This beat is stalled. You must advance the "
+        "story now: complete this beat and move to the next beat this turn, "
+        "regardless of unresolved side conversation."
+    )
+
+
 def last_character_opener(story_so_far: str) -> str | None:
     """Return the first word of the character's most recent line in story_so_far, if any."""
     for line in reversed(story_so_far.strip().splitlines()):
@@ -223,4 +260,12 @@ def get_director_decision(
     )
 
     raw = response.choices[0].message.content.strip()
-    return parse_director_json(raw)
+    decision = parse_director_json(raw)
+
+    pacing_label = beat_pacing_label(story_state.get("turns_in_current_beat", 0))
+    suffix = pacing_instruction_suffix(pacing_label)
+    decision["director_instruction"] = (
+        f"{decision.get('director_instruction', '')} {suffix}".strip()
+    )
+
+    return decision

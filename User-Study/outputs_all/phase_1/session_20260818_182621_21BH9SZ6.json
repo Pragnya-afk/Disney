@@ -1,0 +1,44 @@
+{
+  "study_date": "2026-08-18T18:26:21.772314",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hii",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf.",
+            "director_instruction": "Olaf replies with a warm greeting and expresses his excitement to share the story. Then, he introduces young Anna and Elsa's magical friendship, describing the midnight snow sessions in the Great Hall where Elsa first built him, and how Anna's delighted laughter filled the air.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This decision progresses the current beat by developing Olaf's backstory and the bond between Anna and Elsa, aligning with the goal of introducing their friendship."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Well hello there! I’m so excited you’re here—because I get to share one of my favorite stories. It all began with two sisters, Anna and Elsa, who had the most magical friendship. Late at night, in the Great Hall, Elsa would swirl her hands and—whoosh—snow everywhere! That’s where I was first built, with Anna’s giggles echoing all around us like the tinkling of little ice bells."
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 1
+}

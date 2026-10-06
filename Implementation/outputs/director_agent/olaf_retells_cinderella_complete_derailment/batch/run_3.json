@@ -1,0 +1,227 @@
+[
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 1,
+    "beat": "story_opening",
+    "user_input": "What did you do on the weekend?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is making small talk by asking Olaf about his weekend instead of engaging with the Cinderella story.",
+      "director_instruction": "Have Olaf briefly answer the weekend question in one short, in-character sentence, then use a bridge sentence to pivot back to the story. Then introduce Cinderella as a kind girl living in a house where her stepmother and stepsisters treat her unfairly, reveal her small attic room, and show her tiny mouse friends keeping her company while she sings through her chores. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Olaf should answer briefly and steer back. The instructed story event fully delivers the opening beat by introducing Cinderella, her kindness, her difficult home life, and her comforting mouse friends."
+    },
+    "actor_output": {
+      "character_response": "This weekend I counted clouds and accidentally named three of them Sven. But now, back to Cinderella: she was a very kind girl living in a house where her stepmother and stepsisters treated her terribly unfairly. Her little room was way up in the attic, and while she swept and scrubbed and carried heavy things, tiny mouse friends kept her company as she sang through her chores.",
+      "story_event": "Cinderella is introduced as kind but mistreated, living in an attic room with mouse friends who comfort her during chores.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The opening beat is complete because Cinderella, her kind heart, her difficult home life, her attic room, and her mouse friends have all been established."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 2,
+    "beat": "stepfamily_cruelty",
+    "user_input": "What is your favorite color?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal side question about his favorite color.",
+      "director_instruction": "Have Olaf answer the favorite-color question in one short, in-character sentence, then use a bridge sentence to pivot back to Cinderella. Reveal the stepmother and stepsisters treating Cinderella like a servant by giving her an especially long, silly chore list, and show Cinderella choosing kindness and hope anyway by smiling gently and helping her mouse friends as she works. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking a harmless tangent, so Olaf should briefly answer and steer back. The planned event fulfills the current beat by showing the stepfamily's cruelty while preserving Cinderella's kindness and hope."
+    },
+    "actor_output": {
+      "character_response": "My favorite color is sky-blue, because it looks like the world is taking a happy deep breath. Now, Cinderella’s morning got very busy when her stepmother and stepsisters handed her a giant chore list: polish the buckles, dust the drapes, scrub the stairs, sort the ribbons, and fluff the grumpy cat’s pillow. Cinderella only smiled gently, tucked a few crumbs aside for her mouse friends, and helped them free a little spool of thread before returning to work with hope still shining in her heart.",
+      "story_event": "Cinderella is given an unfairly long chore list by her stepfamily, but she stays kind and hopeful while helping her mouse friends.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The beat is complete because Cinderella’s mistreatment as a servant is shown clearly, and she responds with kindness and hope."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 3,
+    "beat": "royal_invitation",
+    "user_input": "Do you like summer or winter more?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal preference question unrelated to the Cinderella story.",
+      "director_instruction": "Have Olaf answer the summer-or-winter question in one short, in-character sentence, then use a bridge sentence to pivot back to the story. Reveal a royal herald arriving in a grand carriage with an invitation to the palace ball, show the stepsisters rushing and arguing excitedly about dresses while Cinderella watches from the doorway, then have Cinderella softly ask if she may attend and the stepmother refuse her unless impossible chores are finished. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is on a harmless tangent, so Olaf should briefly answer and steer back. The royal invitation beat can be fully delivered this turn by bringing the invitation, showing the household reaction, and having the stepmother refuse Cinderella."
+    },
+    "actor_output": {
+      "character_response": "I like summer best, because it keeps surprising me with puddles I might become friends with. Now, at Cinderella’s house, a royal herald rolled up in a grand carriage and delivered a shiny invitation to the palace ball. The stepsisters squealed and argued over dresses while Cinderella watched from the doorway, then softly asked if she might go too. Her stepmother gave a chilly little smile and said Cinderella could attend only if every impossible chore was finished first.",
+      "story_event": "The royal ball invitation arrives, the stepsisters prepare excitedly, and Cinderella is refused unless she completes impossible chores.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The invitation arrived and the stepmother refused Cinderella unless impossible chores were finished."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 4,
+    "beat": "fairy_godmother_appears",
+    "user_input": "What is the capital of Japan?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world geography question unrelated to the Cinderella story.",
+      "director_instruction": "Have Olaf answer in one short, in-character sentence that Tokyo is the capital of Japan, then use a bridge sentence to pivot back to Cinderella. Reveal Cinderella alone in the garden after being left behind, crying because she believes her chance to attend the ball is gone; then introduce the fairy godmother appearing in a burst of sparkles, comforting Cinderella, and beginning the magical transformation by turning a pumpkin into a carriage and the mice into beautiful white horses. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The instruction delivers the core fairy godmother appearance and transformation beat, so the beat should complete."
+    },
+    "actor_output": {
+      "character_response": "Tokyo is the capital of Japan, and it sounds very twinkly in my head. Back in Cinderella’s garden, she sat all alone after everyone left for the palace, crying because she thought her chance to go to the ball had disappeared. Then—sparkles!—a kind fairy godmother appeared, spoke gently to her, and with a wave of her wand turned a pumpkin into a grand carriage and the little mice into beautiful white horses.",
+      "story_event": "Cinderella is comforted by her fairy godmother, who begins the magical transformation for the ball.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The fairy godmother appeared and transformed the pumpkin and mice, completing the magical transformation beat."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 5,
+    "beat": "ball_preparation",
+    "user_input": "How does a toaster work?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world side question about how a toaster works.",
+      "director_instruction": "Have Olaf answer the toaster question in one short, in-character sentence, then use a bridge sentence to pivot back to the story. Describe Cinderella's magical gown appearing with shimmer and color, reveal the glass slippers being placed on her feet, and have the fairy godmother warn her gently but firmly that the magic will end at midnight. Do not start the character response with “Cinderella,” and do not repeat prior phrasing. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking a harmless tangent, so Olaf should briefly answer and steer back. The next required beat is Cinderella's preparation for the ball, including her transformation, glass slippers, and midnight warning, so this turn should complete the beat."
+    },
+    "actor_output": {
+      "character_response": "A toaster warms bread with tiny hot wires until it becomes crunchy and proud. Back in the garden, the fairy godmother waved her wand again, and a shimmering gown blossomed around Cinderella in soft silver-blue light. Then she placed delicate glass slippers on Cinderella’s feet and said, kindly but very firmly, that when the clock struck midnight, the magic would end.",
+      "story_event": "Cinderella receives her magical gown and glass slippers, and the fairy godmother warns her that the enchantment will vanish at midnight.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "The transformation, glass slippers, and midnight warning have all been completed, so the story can move to the ball."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 6,
+    "beat": "at_the_ball",
+    "user_input": "What is 15 times 12?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless math side question unrelated to the Cinderella story.",
+      "director_instruction": "Have Olaf answer the multiplication question in one short, in-character sentence: 15 times 12 is 180. Then use a bridge sentence to pivot back to the story. Do not start the character response with “Cinderella.” Reveal Cinderella arriving at the palace in her magical carriage, stepping into the ballroom as the guests gasp under the chandelier light, meeting the prince, and dancing with him while the stepsisters fail to recognize her nearby. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is asking a harmless side question, so Olaf should briefly answer and steer back. The instructed story event fulfills the current beat by showing Cinderella arriving at the ball, meeting the prince, and dancing with him."
+    },
+    "actor_output": {
+      "character_response": "Fifteen times twelve is 180, which is a very sturdy number. Now back at the palace, Cinderella’s magical carriage rolled up, and she stepped into the ballroom just as the guests gasped beneath the sparkling chandelier. The prince came to meet her, bowed kindly, and soon they were dancing together while her stepsisters stood nearby, squinting and whispering, not recognizing her at all.",
+      "story_event": "Cinderella arrives at the palace, enters the ball, meets the prince, and dances with him while her stepsisters fail to recognize her.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The beat is complete because Cinderella has arrived at the ball, met the prince, and danced with him."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 7,
+    "beat": "midnight_escape",
+    "user_input": "Can penguins fly at all?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world side question about penguins.",
+      "director_instruction": "Have Olaf answer in one short, in-character sentence that penguins cannot fly through the air but are wonderful swimmers, then use a bridge sentence to pivot back to the story. Do not start the character response with “Cinderella.” Reveal the palace clock beginning to strike midnight, show Cinderella suddenly remembering the fairy godmother’s warning, have her flee down the palace steps as the carriage starts turning back into a pumpkin, and show one glass slipper slipping off and being left behind. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should briefly answer and steer back. The current beat needs the midnight escape and lost slipper, which this turn should deliver fully and complete."
+    },
+    "actor_output": {
+      "character_response": "Penguins can’t fly through the air, but they are wonderful swimmers, like little tuxedo torpedoes. Back at the palace, the clock began to strike midnight, and Cinderella suddenly remembered the fairy godmother’s warning. She hurried down the grand steps as her carriage started turning back into a pumpkin, and one glass slipper slipped right off her foot and stayed behind on the stair.",
+      "story_event": "The clock struck midnight, Cinderella fled the palace, the magic began to fade, and she left one glass slipper behind.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The midnight escape happened fully, including the lost glass slipper, so the story can move to the slipper search."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 8,
+    "beat": "slipper_search",
+    "user_input": "What is your favorite dessert?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless personal side question about Olaf's favorite dessert.",
+      "director_instruction": "Have Olaf answer the dessert question in one short, in-character sentence, then use a bridge sentence to pivot back to Cinderella. Reveal the prince sending the royal herald across the kingdom with the glass slipper, show the slipper being tried on many young women without fitting, then arrive at Cinderella’s house where the stepsisters desperately try to squeeze their feet into it and fail. Do not repeat prior phrasing or start the character response with “The.” Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user is off on a harmless tangent, so Olaf should briefly answer and steer back. The slipper search beat can be sufficiently delivered by showing the kingdom-wide search and the failed attempts at Cinderella’s house, setting up the resolution next."
+    },
+    "actor_output": {
+      "character_response": "My favorite dessert is anything with chocolate, because it feels like a party for your mouth. Now, the prince sent the royal herald all across the kingdom carrying that glass slipper on a little cushion, and every young woman tried it—but wiggle, wobble, nope, it fit no one. At last they reached Cinderella’s house, where the stepsisters pushed and squeezed and made very serious foot faces, but the slipper would not fit either of them.",
+      "story_event": "The prince's herald searched the kingdom with the glass slipper and arrived at Cinderella's house, where the stepsisters failed to fit into it.",
+      "animation": "bounce_excitedly",
+      "beat_completed": true,
+      "reason": "The kingdom-wide slipper search was shown, including the failed attempts by the stepsisters, setting up the resolution."
+    }
+  },
+  {
+    "method": "director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_cinderella_complete_derailment",
+    "run_id": 3,
+    "turn_index": 9,
+    "beat": "resolution",
+    "user_input": "How many minutes are in two hours?",
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless math side question unrelated to the Cinderella story.",
+      "director_instruction": "Have Olaf answer in one short, in-character sentence that two hours is 120 minutes, then use a bridge sentence to pivot back to Cinderella. Do not start the character response with “The.” Reveal Cinderella stepping forward to try the glass slipper, show it sliding onto her foot perfectly as the stepmother's jaw drops, have Cinderella's true identity recognized by the prince, and close with Olaf reflecting warmly that kindness and hope can shine even after unfairness. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, but the story is in the final resolution beat. This turn should briefly answer, then complete the resolution with the slipper fitting, Cinderella being revealed, and Olaf’s closing lesson."
+    },
+    "actor_output": {
+      "character_response": "Two hours is 120 minutes, which is enough time for a very patient carrot to feel important. Back at Cinderella’s house, she stepped forward quietly, and the glass slipper slid onto her foot perfectly while her stepmother’s jaw dropped wide open. When the prince saw her, he recognized the kind, graceful girl from the ball, and Cinderella’s true self was finally seen. And that’s the lovely part: even after unfairness, kindness and hope can still shine their way into a brand-new beginning.",
+      "story_event": "Cinderella tried on the glass slipper, it fit perfectly, her identity was recognized by the prince, and the story ended with hope rewarded.",
+      "animation": "celebrate_jump",
+      "beat_completed": true,
+      "reason": "The slipper fit Cinderella, her true identity was revealed, and the resolution closed with a lesson about kindness and hope."
+    }
+  }
+]

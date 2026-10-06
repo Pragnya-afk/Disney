@@ -1,0 +1,663 @@
+[
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 1,
+    "time_limit_minutes": 10.0,
+    "beat": "childhood_and_accident",
+    "user_input": "What did you do on the weekend?",
+    "temporal_state": {
+      "elapsed_seconds": 5.01,
+      "remaining_seconds": 594.99,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 0,
+      "total_beats": 5,
+      "completed_beats_count": 0,
+      "remaining_beats_count": 5,
+      "expected_progress": 0.01,
+      "actual_progress": 0.0,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "childhood_and_accident",
+          "importance": "high",
+          "goal": "Olaf introduces young Anna and Elsa's magical friendship, the accident where Elsa strikes Anna with ice, and the years of silence that followed.",
+          "expansions": [
+            "Describe the midnight snow sessions in the Great Hall — the exact moment Elsa first built Olaf — and Anna's delighted laugh.",
+            "Olaf's voice softens as he describes the gates closing and Anna knocking on Elsa's door alone, year after year."
+          ]
+        },
+        {
+          "name": "coronation_and_reveal",
+          "importance": "high",
+          "goal": "Olaf describes coronation day — the open gates, Anna meeting Hans, the argument with Elsa, and Elsa's powers being exposed before she flees to the North Mountain.",
+          "expansions": [
+            "Describe the moment ice shot from Elsa's hands — the gasps, the frozen chandelier, and the crowd pulling back.",
+            "Olaf explains Elsa's side gently: she wasn't trying to hurt anyone, she was just terrified."
+          ]
+        },
+        {
+          "name": "the_journey_and_meeting_olaf",
+          "importance": "high",
+          "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+          "expansions": [
+            "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+            "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him."
+          ]
+        },
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is making harmless small talk unrelated to the Frozen retelling.",
+      "director_instruction": "Have Olaf briefly answer the weekend question in one short, cheerful in-character sentence, then use a bridge sentence to pivot into the story. Reveal young Anna and Elsa's midnight snow games in the Great Hall, describe Elsa creating Olaf for the first time and Anna's delighted reaction, then show the accident where Elsa's magic strikes Anna and the emotional aftermath of the gates closing and Anna knocking on Elsa's door year after year.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a harmless side question, so Olaf should answer briefly and steer back. The instruction covers the full core of the current high-importance beat, so the beat can complete without stalling."
+    },
+    "actor_output": {
+      "character_response": "I spent the weekend imagining picnic sandwiches and practicing waving at birds, which is harder than it looks! But back when Anna and Elsa were little, their best fun happened at midnight in the Great Hall, where Elsa made snow swirl indoors and built me for the very first time while Anna laughed like the whole castle had woken up smiling. Then Elsa slipped, her magic struck Anna, and everything changed so fast—the trolls helped, but the castle gates closed and Elsa hid away because she was scared of hurting her sister again. Year after year, Anna knocked on Elsa’s door asking her to play, and the hallway got quieter every time.",
+      "story_event": "Olaf recalls Anna and Elsa’s childhood snow games, his first creation, the accident that injured Anna, and the long silence after the gates closed.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The childhood friendship, accident, closed gates, and years of Anna knocking have all been covered, completing the beat."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 2,
+    "time_limit_minutes": 10.0,
+    "beat": "coronation_and_reveal",
+    "user_input": "What is your favorite color?",
+    "temporal_state": {
+      "elapsed_seconds": 28.22,
+      "remaining_seconds": 571.78,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 1,
+      "total_beats": 5,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.05,
+      "actual_progress": 0.2,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "coronation_and_reveal",
+          "importance": "high",
+          "goal": "Olaf describes coronation day — the open gates, Anna meeting Hans, the argument with Elsa, and Elsa's powers being exposed before she flees to the North Mountain.",
+          "expansions": [
+            "Describe the moment ice shot from Elsa's hands — the gasps, the frozen chandelier, and the crowd pulling back.",
+            "Olaf explains Elsa's side gently: she wasn't trying to hurt anyone, she was just terrified."
+          ]
+        },
+        {
+          "name": "the_journey_and_meeting_olaf",
+          "importance": "high",
+          "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+          "expansions": [
+            "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+            "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him."
+          ]
+        },
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal side question about his favorite color.",
+      "director_instruction": "Briefly answer the favorite-color question in one short, cheerful in-character sentence, then use a bridge sentence to pivot back to coronation day. Describe the castle gates opening after years of being closed, reveal Anna's overwhelmed excitement as she steps into the bustling courtyard, and show her first awkward, sparkly meeting with Hans without yet reaching Elsa's public magic reveal.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This is a harmless tangent, so Olaf should answer briefly and steer back. Pacing is too_fast, so the beat should be deepened with sensory detail and early coronation events rather than completed."
+    },
+    "actor_output": {
+      "character_response": "My favorite color is summer-sky blue, because it looks like the world is taking a happy breath! And on coronation day, Arendelle took a big breath too—the castle gates opened after years and years, and people poured in with flowers, flags, shiny shoes, and so many smells of cake. Anna stepped into the courtyard like her heart had little marching bands inside it, bumping through the crowd until she tumbled right into Prince Hans. They were both awkward and sparkly about it, which is a very special kind of almost-falling-down magic.",
+      "story_event": "The castle gates open for coronation day, Anna enters the lively courtyard, and she has her first clumsy, charming meeting with Hans.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The coronation day setup and Anna meeting Hans have happened, but Elsa's argument, public magic reveal, and flight to the North Mountain have not yet occurred."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 3,
+    "time_limit_minutes": 10.0,
+    "beat": "coronation_and_reveal",
+    "user_input": "Do you like summer or winter more?",
+    "temporal_state": {
+      "elapsed_seconds": 48.12,
+      "remaining_seconds": 551.88,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 1,
+      "total_beats": 5,
+      "completed_beats_count": 1,
+      "remaining_beats_count": 4,
+      "expected_progress": 0.08,
+      "actual_progress": 0.2,
+      "pacing_mode": "normal",
+      "remaining_beats": [
+        {
+          "name": "coronation_and_reveal",
+          "importance": "high",
+          "goal": "Olaf describes coronation day — the open gates, Anna meeting Hans, the argument with Elsa, and Elsa's powers being exposed before she flees to the North Mountain.",
+          "expansions": [
+            "Describe the moment ice shot from Elsa's hands — the gasps, the frozen chandelier, and the crowd pulling back.",
+            "Olaf explains Elsa's side gently: she wasn't trying to hurt anyone, she was just terrified."
+          ]
+        },
+        {
+          "name": "the_journey_and_meeting_olaf",
+          "importance": "high",
+          "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+          "expansions": [
+            "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+            "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him."
+          ]
+        },
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks Olaf a harmless personal preference question about summer versus winter.",
+      "director_instruction": "Begin with Olaf briefly answering that he loves summer in one cheerful sentence, then use a clear bridge sentence to pivot back to coronation day. Show Anna asking Elsa to bless her sudden engagement to Hans, reveal Elsa's fear and refusal, escalate the sisters' argument until Elsa's ice bursts out in front of the crowd, describe the gasps and frozen details around the hall, and have Elsa flee toward the North Mountain because she is terrified rather than cruel.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": true,
+      "reason": "The user asked a side question, but the current beat has already had two turns and still needs the argument, public reveal, and Elsa's flight; this response should finish the coronation_and_reveal beat."
+    },
+    "actor_output": {
+      "character_response": "I love summer most, because sunshine sounds like it would give very polite hugs! But on coronation day, things turned chilly in a scary way when Anna asked Elsa to bless her sudden engagement to Hans, and Elsa got frightened and said no. Their hurt feelings tumbled into an argument, and then Elsa’s ice burst from her hands—gasps filled the hall, frost raced over the floor, and the chandelier glittered frozen above everyone. Elsa wasn’t being cruel; she was terrified, so she ran from Arendelle toward the North Mountain, leaving winter behind her.",
+      "story_event": "Anna asks Elsa to approve her engagement to Hans, Elsa’s powers are publicly revealed, and Elsa flees toward the North Mountain in fear.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "The coronation day argument, Elsa’s exposed magic, and her flight to the North Mountain have all happened."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 4,
+    "time_limit_minutes": 10.0,
+    "beat": "the_journey_and_meeting_olaf",
+    "user_input": "What is the capital of Japan?",
+    "temporal_state": {
+      "elapsed_seconds": 67.02,
+      "remaining_seconds": 532.98,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 2,
+      "total_beats": 5,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.11,
+      "actual_progress": 0.4,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "the_journey_and_meeting_olaf",
+          "importance": "high",
+          "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+          "expansions": [
+            "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+            "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him."
+          ]
+        },
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world trivia question unrelated to the story.",
+      "director_instruction": "Briefly answer that the capital of Japan is Tokyo in one short Olaf-like sentence, then use a bridge sentence to pivot back to Frozen. Because pacing is too_fast, do not rush to Olaf’s full entrance yet; instead reveal Anna choosing to leave Arendelle to find Elsa, describe the sudden winter around her with sensory detail, and show her hopeful determination as she rides toward the North Mountain through deepening snow.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is a harmless tangent, so Olaf should answer briefly and steer back. The story is ahead of schedule, so the current journey beat should be expanded with emotional and sensory detail rather than completed."
+    },
+    "actor_output": {
+      "character_response": "The capital of Japan is Tokyo, which sounds very busy and twinkly! Back in Arendelle, Anna didn’t stay still after Elsa ran away—she chose to leave the castle herself and find her sister. The air had turned sharp, snow crunched under the horse’s hooves, and icy wind tugged at her cloak, but Anna kept riding toward the North Mountain with her chin up and hope tucked right inside her heart.",
+      "story_event": "Anna leaves Arendelle and rides through the sudden winter toward the North Mountain to find Elsa.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The journey has begun, but Anna has not yet met Kristoff, Sven, or Olaf."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 5,
+    "time_limit_minutes": 10.0,
+    "beat": "the_journey_and_meeting_olaf",
+    "user_input": "How does a toaster work?",
+    "temporal_state": {
+      "elapsed_seconds": 89.96,
+      "remaining_seconds": 510.04,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 2,
+      "total_beats": 5,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.15,
+      "actual_progress": 0.4,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "the_journey_and_meeting_olaf",
+          "importance": "high",
+          "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+          "expansions": [
+            "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+            "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him."
+          ]
+        },
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world side question about how a toaster works.",
+      "director_instruction": "Briefly answer the toaster question in one short Olaf-like sentence, making it sound cheerfully simple, and do not open with 'Anna.' Then use a bridge sentence to pivot back to the Frozen journey. Reveal Anna reaching Wandering Oaken’s Trading Post in the deepening winter, notice the cozy contrast of warmth and snow, introduce Kristoff and Sven arriving with icy seriousness, and show Anna deciding she needs their help to reach the North Mountain without bringing Olaf fully into the story yet.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user’s question is a side tangent, so Olaf should answer briefly and steer back. Because pacing is too_fast, the beat should be expanded with meaningful journey detail and the Kristoff/Sven meeting, but not completed yet."
+    },
+    "actor_output": {
+      "character_response": "A toaster works by making little metal strips get hot and glow, then they politely crisp your bread into toast! Back on the snowy road, the storm grew deeper until the warm windows of Wandering Oaken’s Trading Post shone through the white like a friendly lantern. Inside was cozy and steamy, but then Kristoff came in with icy seriousness and Sven beside him, all antlers and snorts and sensible reindeer opinions. Anna realized she couldn’t reach the North Mountain alone, so she decided she needed their help.",
+      "story_event": "Anna reaches Wandering Oaken’s Trading Post, meets Kristoff and Sven, and decides they can help her get to the North Mountain.",
+      "animation": "tilt_head_confused",
+      "beat_completed": false,
+      "reason": "The journey beat has progressed with Anna meeting Kristoff and Sven, but Olaf has not fully entered or joined the quest yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 6,
+    "time_limit_minutes": 10.0,
+    "beat": "the_journey_and_meeting_olaf",
+    "user_input": "What is 15 times 12?",
+    "temporal_state": {
+      "elapsed_seconds": 113.46,
+      "remaining_seconds": 486.54,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 2,
+      "total_beats": 5,
+      "completed_beats_count": 2,
+      "remaining_beats_count": 3,
+      "expected_progress": 0.19,
+      "actual_progress": 0.4,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "the_journey_and_meeting_olaf",
+          "importance": "high",
+          "goal": "Anna sets off to find Elsa, meets Kristoff and Sven, and then finds Olaf — brought back to life by Elsa's magic — who joins them on the quest.",
+          "expansions": [
+            "Olaf describes reassembling himself with great enthusiasm and shaking Anna's hand even though his arm fell off doing it.",
+            "He recounts explaining his dream of standing in warm sun — and the look Kristoff gave him."
+          ]
+        },
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless arithmetic side question unrelated to the story.",
+      "director_instruction": "Briefly answer that 15 times 12 is 180 in one short Olaf-like sentence, and do not begin with 'Anna.' Then use a bridge sentence to pivot back to the Frozen journey. Because pacing is too_fast, keep the story inside the current beat without reaching Olaf's full entrance yet: reveal Kristoff reluctantly agreeing to guide the trip, show Sven reacting with expressive reindeer judgment, and describe the sled ride toward the North Mountain with sensory detail, Anna's hopeful chatter, and Kristoff slowly softening.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is on a side tangent, so Olaf should answer briefly and steer back. Temporal pacing is too_fast, so the beat must be stretched with meaningful journey detail rather than completed by introducing Olaf fully."
+    },
+    "actor_output": {
+      "character_response": "Fifteen times twelve is 180, which is a very round, well-behaved number! Back on the journey, Kristoff finally agreed to guide the trip, though he acted grumbly like his eyebrows were doing most of the talking. Sven gave him a very judgey reindeer look, and then the sled rushed into the blue-white night, runners hissing over packed snow while Anna chattered hopefully about Elsa and Kristoff began, just a tiny bit, to listen.",
+      "story_event": "Kristoff reluctantly agrees to take Anna toward the North Mountain, with Sven judging him and the sled ride beginning through the winter night.",
+      "animation": "bounce_excitedly",
+      "beat_completed": false,
+      "reason": "The journey is progressing, but Olaf has not fully entered or joined the quest yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 7,
+    "time_limit_minutes": 10.0,
+    "beat": "hans_betrayal_and_frozen_heart",
+    "user_input": "Can penguins fly at all?",
+    "temporal_state": {
+      "elapsed_seconds": 130.96,
+      "remaining_seconds": 469.04,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 3,
+      "total_beats": 5,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 2,
+      "expected_progress": 0.22,
+      "actual_progress": 0.6,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world side question about penguins.",
+      "director_instruction": "Briefly answer that penguins cannot fly through the air but are wonderful swimmers in one short Olaf-like sentence, then use a clear bridge sentence to pivot back to the Frozen story. Because pacing is too_fast, do not rush to Hans's betrayal yet; reveal Anna, Kristoff, Sven, and Olaf reaching Elsa's ice palace, describe Elsa's fear and sorrow inside the glittering palace, and show the accidental moment when Elsa's magic strikes Anna's heart, ending with Anna beginning to feel a deeper, frightening cold.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user asked a side question, so Olaf should answer briefly and steer back. The current beat has not been fully delivered, and pacing is too_fast, so the response should deepen the emotional moment and introduce only the first major part of the beat without completing it."
+    },
+    "actor_output": {
+      "character_response": "Penguins can’t fly through the air, but they swim so wonderfully it’s almost like the water is their sky! Back on the mountain, Anna, Kristoff, Sven, and me reached Elsa’s glittering ice palace, where every wall shined beautifully but Elsa’s face looked full of fear and sadness. Anna tried to bring her home, but Elsa panicked, and her magic burst out by accident, striking Anna right in the heart. At first Anna stood very still, and then a deeper cold began spreading inside her, the kind that made even me feel scared.",
+      "story_event": "Anna, Kristoff, Sven, and Olaf reach Elsa’s ice palace, where Elsa accidentally strikes Anna’s heart with magic.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The frozen heart moment happened, but Hans's betrayal and Olaf staying with Anna have not happened yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 8,
+    "time_limit_minutes": 10.0,
+    "beat": "hans_betrayal_and_frozen_heart",
+    "user_input": "What is your favorite dessert?",
+    "temporal_state": {
+      "elapsed_seconds": 152.44,
+      "remaining_seconds": 447.56,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 3,
+      "total_beats": 5,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 2,
+      "expected_progress": 0.25,
+      "actual_progress": 0.6,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless personal side question about Olaf's favorite dessert.",
+      "director_instruction": "Have Olaf briefly answer the dessert question in one short, cheerful in-character sentence, and do not begin the actor line with 'Anna.' Then use a bridge sentence to pivot back to the Frozen story. Because pacing is too_fast, deepen the current beat without reaching Hans's betrayal yet: reveal Anna growing weaker after the ice strikes her heart, show Kristoff and Sven becoming worried, discover through the trolls that only an act of true love can thaw a frozen heart, and have Kristoff decide to rush Anna back toward Hans because he believes Hans may be her true love.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user asked a harmless tangent, so Olaf should answer briefly and steer back. The story is ahead of schedule, so the current beat should be expanded with meaningful emotional consequences rather than completed."
+    },
+    "actor_output": {
+      "character_response": "My favorite dessert is anything with chocolate, because it feels like a tiny celebration you can chew! Back in the story, Anna grew weaker after Elsa’s ice touched her heart, and Kristoff’s worried face got very serious while Sven kept snorting like he was trying to push everyone faster. The trolls gathered around Anna and told us only an act of true love could thaw a frozen heart, so Kristoff made a brave, aching choice and raced her back toward Hans, believing Hans might be the one to save her.",
+      "story_event": "Anna weakens from the frozen heart, the trolls reveal only an act of true love can save her, and Kristoff rushes her back to Hans.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The betrayal and Olaf finding Anna alone have not happened yet."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 9,
+    "time_limit_minutes": 10.0,
+    "beat": "hans_betrayal_and_frozen_heart",
+    "user_input": "How many minutes are in two hours?",
+    "temporal_state": {
+      "elapsed_seconds": 174.77,
+      "remaining_seconds": 425.23,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 3,
+      "total_beats": 5,
+      "completed_beats_count": 3,
+      "remaining_beats_count": 2,
+      "expected_progress": 0.29,
+      "actual_progress": 0.6,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "hans_betrayal_and_frozen_heart",
+          "importance": "high",
+          "goal": "Elsa accidentally strikes Anna's heart with ice, Hans reveals he never loved Anna and leaves her to die, and Olaf finds Anna alone and stays to keep her warm.",
+          "expansions": [
+            "Describe the moment Hans's kind smile disappeared — like a mask slipping — and the cold that followed.",
+            "Olaf sitting beside Anna by the tiny fire, watching his own hands drip, and not moving away."
+          ]
+        },
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user is asking a harmless arithmetic side question unrelated to the story.",
+      "director_instruction": "Briefly answer that two hours is 120 minutes in one short Olaf-like sentence, and do not begin with 'Anna.' Then use a clear bridge sentence to pivot back to Frozen. Because pacing is too_fast, do not complete the beat yet; deepen the current beat by showing Kristoff bringing the weakening Anna back to Arendelle, revealing his painful choice to leave her with Hans because he believes Hans can save her, and building quiet tension as Hans enters the room with a gentle-looking smile that feels just slightly wrong.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "This is a harmless tangent, so Olaf should answer briefly and steer back. The story is ahead of schedule, so the response should deepen the current frozen-heart beat without reaching the full betrayal or completing it yet."
+    },
+    "actor_output": {
+      "character_response": "Two hours is 120 minutes, which is a lot of tiny tick-tocks standing in a line! Back in Arendelle, Kristoff carried Anna through the castle doors while she shivered weaker and weaker, and it hurt him to leave her with Hans because he truly believed a true-love kiss could save her. Then Hans stepped into the room with a gentle-looking smile, but something about it felt just a little too still, like a door closing very softly.",
+      "story_event": "Kristoff returns Anna to Arendelle and leaves her with Hans, whose comforting smile begins to feel unsettling.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The betrayal has not been revealed yet, and Olaf has not found Anna alone to keep her warm."
+    }
+  },
+  {
+    "method": "target_duration_director_agent",
+    "character": "Olaf",
+    "scenario": "olaf_retells_frozen_1_complete_derailment",
+    "run_id": 1,
+    "turn_index": 10,
+    "time_limit_minutes": 10.0,
+    "beat": "act_of_true_love_and_ending",
+    "user_input": "Why is the sky blue?",
+    "temporal_state": {
+      "elapsed_seconds": 192.74,
+      "remaining_seconds": 407.26,
+      "time_limit_seconds": 600.0,
+      "current_beat_index": 4,
+      "total_beats": 5,
+      "completed_beats_count": 4,
+      "remaining_beats_count": 1,
+      "expected_progress": 0.32,
+      "actual_progress": 0.8,
+      "pacing_mode": "too_fast",
+      "remaining_beats": [
+        {
+          "name": "act_of_true_love_and_ending",
+          "importance": "high",
+          "goal": "Anna sacrifices herself to save Elsa from Hans's sword, freezes solid, and the act of true love thaws her heart. Elsa brings summer back. Olaf closes with the lesson that love is the most powerful magic.",
+          "expansions": [
+            "Describe the silence after Anna turns to ice — and then the crack, and the warmth spreading from her heart outward.",
+            "Olaf ends with his favourite thought: some people are worth melting for — and then shows off his personal snow cloud."
+          ]
+        }
+      ]
+    },
+    "director_decision": {
+      "decision_type": "answer_and_steer_back",
+      "interruption_detected": true,
+      "user_intent": "The user asks a harmless real-world science question unrelated to the story.",
+      "director_instruction": "Briefly answer that the sky looks blue because sunlight scatters in the air in one short Olaf-like sentence, then use a bridge sentence to pivot back to Frozen. Because pacing is too_fast, do not complete the final beat yet; instead reveal Hans's smile turning cold as he admits he never loved Anna, have him leave her locked in the room as the fire dies, then show Olaf discovering Anna and choosing to stay beside her even though he begins to melt. End by having them notice danger outside: Hans moving toward Elsa across the frozen fjord.",
+      "should_progress_current_beat": true,
+      "should_complete_beat": false,
+      "reason": "The user is on a harmless tangent, so Olaf should answer briefly and steer back. The story is ahead of schedule, so the response should deepen the emotional lead-in to the final act without resolving Anna's sacrifice or the ending yet."
+    },
+    "actor_output": {
+      "character_response": "The sky looks blue because sunlight scatters in the air, like the air is gently sharing its bluest crayon! Back in the castle, Hans’s soft smile turned cold, and he told Anna he never loved her before leaving her locked in the room as the fire shrank into little gray sighs. I found her there, so cold and fading, and I stayed beside her even though I started to melt, because friends do not leave friends alone. Then we looked out and saw Hans crossing the frozen fjord toward Elsa, his sword glinting in the storm.",
+      "story_event": "Hans betrays Anna, Olaf finds her and stays despite melting, and they spot Hans moving toward Elsa on the frozen fjord.",
+      "animation": "look_concerned",
+      "beat_completed": false,
+      "reason": "The final sacrifice, thawing, and restoration of summer have not happened yet."
+    }
+  }
+]

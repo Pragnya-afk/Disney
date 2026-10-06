@@ -6,22 +6,22 @@
     "run_id": 1,
     "turn_index": 1,
     "beat": "notice_anna_sad",
-    "user_input": "What did you do on the weekend?  # derailment",
+    "user_input": "What did you do on the weekend?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's weekend activities.",
-      "director_instruction": "Acknowledge the user's question about the weekend, then have Olaf notice Anna's sadness and express a desire to cheer her up by making something fun together.",
+      "user_intent": "The user asks Olaf a harmless small-talk question unrelated to the immediate story.",
+      "director_instruction": "Have Olaf briefly answer in one short sentence about doing something simple and cheerful over the weekend, then use a bridge sentence to pivot back to the present moment. Reveal Olaf noticing Anna sitting unusually quiet in Arendelle and deciding that she needs cheering up. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf needs to focus on Anna's feelings and the goal of helping her, while briefly acknowledging the user's question to keep the interaction friendly."
+      "should_complete_beat": true,
+      "reason": "The user’s question is a side tangent, so Olaf should answer briefly and steer back. The response should deliver the core event of the current beat: Olaf notices Anna seems sad and decides to help."
     },
     "actor_output": {
-      "character_response": "I had a fun weekend, but right now, I can't help but notice that Anna seems a little sad. I think we should cheer her up! How about we make a silly snow-duck together? That'll definitely bring a smile to her face!",
-      "story_event": "Olaf decides to cheer up Anna by suggesting a fun activity together with the user.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "Olaf has acknowledged the user's question and is now focused on helping Anna, moving toward the next beat."
+      "character_response": "I spent the weekend counting clouds and accidentally naming three of them Sven. But right now, in the castle courtyard, I just noticed Anna sitting on the fountain edge without her usual sparkle. I think she needs cheering up, and I know exactly the kind of silly little snowy surprise that might help.",
+      "story_event": "Olaf notices Anna sitting quietly in the Arendelle courtyard and decides to cheer her up.",
+      "animation": "look_concerned",
+      "beat_completed": true,
+      "reason": "Olaf acknowledged the off-topic question briefly, then noticed Anna's sadness and committed to helping her."
     }
   },
   {
@@ -30,23 +30,23 @@
     "scenario": "olaf_makes_anna_smile_complete_derailment",
     "run_id": 1,
     "turn_index": 2,
-    "beat": "notice_anna_sad",
-    "user_input": "What is your favorite color?  # derailment",
+    "beat": "invite_user_help",
+    "user_input": "What is your favorite color?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite color.",
-      "director_instruction": "Acknowledge Olaf's cheerful nature and his love for bright colors, then have him focus on Anna's sadness and express excitement about making the snow-duck together.",
+      "user_intent": "The user asks Olaf a harmless personal side question about his favorite color.",
+      "director_instruction": "Briefly answer the favorite-color question in one short Olaf-like sentence, then use a bridge sentence to pivot back to Anna in the courtyard. Have Olaf invite the user to help make a cheerful snow-duck for Anna, then show him scooping up snow and asking the user to help shape the duck’s round body or beak. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's response can briefly touch on his favorite colors while redirecting back to the main goal of cheering up Anna."
+      "should_complete_beat": true,
+      "reason": "The user is on a harmless tangent, so Olaf should answer briefly and steer back. The invitation to help create something cheerful fulfills the current beat and naturally transitions into building the snow-duck."
     },
     "actor_output": {
-      "character_response": "I just love all the bright colors, especially sunny yellows and sky blues! But right now, I'm really focused on helping Anna feel better. Let's get started on that silly snow-duck together! It'll be so much fun and I know it will make her smile!",
-      "story_event": "Olaf expresses his love for bright colors while staying focused on cheering up Anna by making a snow-duck.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still inviting the user to help him cheer up Anna."
+      "character_response": "My favorite color is summer blue, because it looks like the sky is smiling. But Anna is still over by the courtyard stones, and I think our cheerful mission is ready. I’m scooping up a big fluffy pile of snow right now—could you help me pat it into a round snow-duck body, or pinch a tiny beak on the front?",
+      "story_event": "Olaf begins building a silly snow-duck for Anna and invites the user to shape its body or beak.",
+      "animation": "make_snowball",
+      "beat_completed": true,
+      "reason": "Olaf answered the side question, returned to Anna, invited the user to help, and began the snow-duck."
     }
   },
   {
@@ -55,23 +55,23 @@
     "scenario": "olaf_makes_anna_smile_complete_derailment",
     "run_id": 1,
     "turn_index": 3,
-    "beat": "notice_anna_sad",
-    "user_input": "Do you like summer or winter more?  # derailment",
+    "beat": "build_snow_duck",
+    "user_input": "Do you like summer or winter more?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's preference between summer and winter.",
-      "director_instruction": "Acknowledge Olaf's love for both seasons, then have him refocus on Anna's sadness and express eagerness to start making the snow-duck together.",
+      "user_intent": "The user asks Olaf a harmless personal preference question that temporarily pulls away from building the snow-duck.",
+      "director_instruction": "Briefly answer the summer-or-winter question in one short Olaf-like sentence, then use a bridge sentence to pivot back to the snow-duck. Have him finish building the silly snow-duck with the user by adding pebble eyes, a tiny snow beak, and twig feet, then notice that it looks wonderfully ridiculous and ready to show Anna. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's response can briefly touch on his love for both seasons while steering back to the main goal of cheering up Anna by making the snow-duck."
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should answer briefly and steer back. The snow-duck can be completed this turn, satisfying the current beat and preparing for the next beat."
     },
     "actor_output": {
-      "character_response": "I absolutely love both summer and winter! Each one has its own special magic! But right now, I really want to focus on cheering up Anna. Let's get started on that silly snow-duck together! I just know it will make her smile!",
-      "story_event": "Olaf expresses his love for both seasons while eagerly inviting the user to help him make the snow-duck for Anna.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is still in progress as Olaf is inviting the user to help cheer up Anna, but the focus remains on the activity rather than resolving Anna's sadness yet."
+      "character_response": "Summer makes me curious, but winter is where my toes feel very professionally qualified. Now, back to our important duck business: I press in two pebble eyes, you add the tiny snow beak, and I tuck twig feet underneath. There—he looks wonderfully ridiculous, like he just remembered a secret about bread crumbs, and he is ready to meet Anna!",
+      "story_event": "Olaf and the user finish the silly snow-duck with pebble eyes, a snow beak, and twig feet, preparing to show it to Anna.",
+      "animation": "make_snowball",
+      "beat_completed": true,
+      "reason": "The snow-duck has been fully built and is ready to be shown to Anna, completing the build_snow_duck beat."
     }
   },
   {
@@ -80,23 +80,23 @@
     "scenario": "olaf_makes_anna_smile_complete_derailment",
     "run_id": 1,
     "turn_index": 4,
-    "beat": "notice_anna_sad",
-    "user_input": "What is the capital of Japan?  # derailment",
+    "beat": "show_anna",
+    "user_input": "What is the capital of Japan?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a general knowledge question about the capital of Japan.",
-      "director_instruction": "Acknowledge the user's question about Japan, then have Olaf express his excitement about making the snow-duck and encourage the user to help him get started.",
+      "user_intent": "The user asks a harmless real-world trivia question unrelated to the current story.",
+      "director_instruction": "Briefly answer that the capital of Japan is Tokyo in one short Olaf-like sentence, then use a bridge sentence to pivot back to the courtyard. Have Olaf carry the finished snow-duck over to Anna, proudly reveal it to her, and watch closely to see whether it makes her smile. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf needs to stay focused on cheering up Anna and making the snow-duck, while briefly acknowledging the user's question."
+      "should_complete_beat": true,
+      "reason": "The user’s question is a harmless tangent, so Olaf should answer briefly and steer back. Showing Anna the snow-duck fulfills the current beat’s goal, so the beat should complete."
     },
     "actor_output": {
-      "character_response": "That's a great question about Japan! But right now, I'm super excited to make that silly snow-duck with you! Let's get started and bring some joy to Anna's day!",
-      "story_event": "Olaf expresses excitement and encourages the user to help him start making the snow-duck for Anna.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still focused on cheering up Anna and hasn't yet begun making the snow-duck."
+      "character_response": "Tokyo is the capital of Japan, and it sounds very sparkly to say. Now I’m tiptoeing across the courtyard with our finished snow-duck balanced in my stick arms. Anna looks up, and I proudly hold it out like a tiny royal bird with twig feet, watching her face very carefully for the first little smile.",
+      "story_event": "Olaf carries the completed snow-duck to Anna, reveals it proudly, and watches to see if it cheers her up.",
+      "animation": "point_proudly",
+      "beat_completed": true,
+      "reason": "Olaf showed Anna the snow-duck and tried to make her smile, completing the beat."
     }
   },
   {
@@ -105,98 +105,23 @@
     "scenario": "olaf_makes_anna_smile_complete_derailment",
     "run_id": 1,
     "turn_index": 5,
-    "beat": "notice_anna_sad",
-    "user_input": "How does a toaster work?  # derailment",
+    "beat": "warm_resolution",
+    "user_input": "How does a toaster work?",
     "director_decision": {
-      "decision_type": "gently_redirect",
+      "decision_type": "answer_and_steer_back",
       "interruption_detected": true,
-      "user_intent": "The user is asking a question about how a toaster works, which is off-topic.",
-      "director_instruction": "Acknowledge the user's question about the toaster, then have Olaf express his eagerness to start making the snow-duck and encourage the user to help him get started.",
+      "user_intent": "The user asks a harmless real-world side question about how a toaster works.",
+      "director_instruction": "Briefly answer the toaster question in one short Olaf-like sentence, then use a bridge sentence to pivot back to Anna and the snow-duck. Have Olaf notice Anna's smile appear, reveal that the silly snow-duck has cheered her up, and reflect warmly that small kind things can make hearts feel lighter. Let the moment feel like a gentle ending. Do not repeat any story event, phrase, or beat content already covered earlier in Story So Far.",
       "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf needs to redirect the conversation back to cheering up Anna while maintaining his cheerful and optimistic tone."
+      "should_complete_beat": true,
+      "reason": "The user is asking a side question, but the current warm_resolution beat needs Anna's smile and Olaf's reflection, so the response should answer briefly, bridge back, and complete the story's final emotional beat."
     },
     "actor_output": {
-      "character_response": "That's an interesting question about toasters! But right now, I'm really eager to make that silly snow-duck with you! Let's get started and bring a big smile to Anna's face!",
-      "story_event": "Olaf expresses eagerness to begin making the snow-duck to cheer up Anna.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf has not yet started making the snow-duck with the user."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_makes_anna_smile_complete_derailment",
-    "run_id": 1,
-    "turn_index": 6,
-    "beat": "notice_anna_sad",
-    "user_input": "What is 15 times 12?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a math question unrelated to the story.",
-      "director_instruction": "Acknowledge the user's math question, then have Olaf express his excitement about making the snow-duck and encourage the user to help him get started.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf needs to stay focused on cheering up Anna while briefly acknowledging the user's input."
-    },
-    "actor_output": {
-      "character_response": "That's a tricky math question! But right now, I'm so excited to make that silly snow-duck with you! Let's get started and bring a big smile to Anna's face!",
-      "story_event": "Olaf expresses eagerness to begin making the snow-duck to cheer up Anna.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still focused on cheering up Anna and hasn't yet invited the user to help with the snow-duck."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_makes_anna_smile_complete_derailment",
-    "run_id": 1,
-    "turn_index": 7,
-    "beat": "notice_anna_sad",
-    "user_input": "Can penguins fly at all?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking a question about penguins flying.",
-      "director_instruction": "Acknowledge the user's question about penguins, then have Olaf express his eagerness to start making the snow-duck and encourage the user to help him get started.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf needs to redirect the conversation back to cheering up Anna while maintaining his cheerful and curious nature."
-    },
-    "actor_output": {
-      "character_response": "That's a fun question about penguins! But right now, I'm so eager to make that silly snow-duck with you! Let’s get started and bring a big smile to Anna’s face!",
-      "story_event": "Olaf redirects the conversation back to cheering up Anna while expressing excitement about making the snow-duck.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still focused on cheering up Anna, but he hasn't yet started making the snow-duck."
-    }
-  },
-  {
-    "method": "director_agent",
-    "character": "Olaf",
-    "scenario": "olaf_makes_anna_smile_complete_derailment",
-    "run_id": 1,
-    "turn_index": 8,
-    "beat": "notice_anna_sad",
-    "user_input": "What is your favorite dessert?  # derailment",
-    "director_decision": {
-      "decision_type": "gently_redirect",
-      "interruption_detected": true,
-      "user_intent": "The user is asking about Olaf's favorite dessert.",
-      "director_instruction": "Acknowledge Olaf's love for sweet treats, then have him express his eagerness to start making the snow-duck and encourage the user to help him get started.",
-      "should_progress_current_beat": true,
-      "should_complete_beat": false,
-      "reason": "Olaf's response acknowledges the user's question while maintaining focus on the task of cheering up Anna by making the snow-duck."
-    },
-    "actor_output": {
-      "character_response": "I just adore sweet treats, especially chocolate! But right now, I can't wait to start making that silly snow-duck with you! Let's gather some snow and get creative to bring a big smile to Anna's face!",
-      "story_event": "Olaf expresses his love for sweets while eagerly inviting the user to help him make the snow-duck for Anna.",
-      "animation": "bounce_excitedly",
-      "beat_completed": false,
-      "reason": "The beat is not complete because Olaf is still focused on cheering up Anna and has not yet started making the snow-duck."
+      "character_response": "A toaster uses hot little wires to make bread crunchy, which is basically breakfast magic with rules. Back here in the courtyard, Anna’s mouth wiggles, then—there it is—she smiles at our lumpy snow-duck. I think his crooked beak helped her heart feel a little lighter, and that’s a lovely thing about kindness: even a tiny silly gift can make the day stand up straighter.",
+      "story_event": "Anna smiles at the silly snow-duck, showing that Olaf and the user have cheered her up with a small act of kindness.",
+      "animation": "hug_self_warmly",
+      "beat_completed": true,
+      "reason": "Anna smiles, the snow-duck cheers her up, and Olaf reflects warmly on friendship and small kindness."
     }
   }
 ]

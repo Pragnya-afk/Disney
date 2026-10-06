@@ -1,0 +1,56 @@
+{
+  "study_date": "2026-08-18T18:25:49.531530",
+  "story1_order": [
+    "baseline",
+    "director"
+  ],
+  "story2_order": [
+    "time_constrained",
+    "director"
+  ],
+  "phases": {
+    "1": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "hi",
+          "character_response": "Hi there, friend! Isn’t it a beautiful day? I can't wait to share all the magical adventures I’ve had with Anna and Elsa! Did you know I was built with a little bit of magic and a whole lot of love?",
+          "model_output": {
+            "character_response": "Hi there, friend! Isn’t it a beautiful day? I can't wait to share all the magical adventures I’ve had with Anna and Elsa! Did you know I was built with a little bit of magic and a whole lot of love?",
+            "story_event": "Olaf expresses his excitement about sharing his adventures.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story is just beginning, and Olaf is introducing himself and his connection to Anna and Elsa."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "character_response": "You know, one of my favorite memories is of the midnight snow sessions in the Great Hall! That’s when Elsa first built me, and Anna’s laughter filled the air like the sweetest melody. It was like magic! But then, things changed when the gates closed, and Anna had to knock on Elsa's door alone, year after year. Oh, it makes my snow heart feel a little heavy to think about.",
+          "model_output": {
+            "character_response": "You know, one of my favorite memories is of the midnight snow sessions in the Great Hall! That’s when Elsa first built me, and Anna’s laughter filled the air like the sweetest melody. It was like magic! But then, things changed when the gates closed, and Anna had to knock on Elsa's door alone, year after year. Oh, it makes my snow heart feel a little heavy to think about.",
+            "story_event": "Olaf recalls the joyful moments of being created and the sadness of the gates closing.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "The emotional core of Olaf's story is still developing as he reflects on the past, and more details can be added to deepen it."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 1
+}
