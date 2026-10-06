@@ -126,7 +126,9 @@ def validate_and_repair(spec: dict) -> tuple[dict, list[str]]:
         importance = b.get("importance")
         if importance not in VALID_IMPORTANCE:
             if importance is not None:
-                warnings.append(f"beat '{name}': invalid importance '{importance}', coerced to 'medium'.")
+                warnings.append(
+                    f"beat '{name}': invalid importance '{importance}', coerced to 'medium'."
+                )
             importance = "medium"
 
         goal = (b.get("goal") or "").strip()
@@ -140,7 +142,9 @@ def validate_and_repair(spec: dict) -> tuple[dict, list[str]]:
             warnings.append(f"beat '{name}': missing expansions, used a generic placeholder.")
         expansions = [str(e).strip() for e in expansions if str(e).strip()]
 
-        beats.append({"name": name, "importance": importance, "goal": goal, "expansions": expansions})
+        beats.append(
+            {"name": name, "importance": importance, "goal": goal, "expansions": expansions}
+        )
 
     if len(beats) > MAX_BEATS:
         first, last = beats[0], beats[-1]
@@ -150,7 +154,9 @@ def validate_and_repair(spec: dict) -> tuple[dict, list[str]]:
         keep_middle = middle_sorted[: max(0, MAX_BEATS - 2)]
         keep_names = {b["name"] for b in keep_middle}
         beats = [first] + [b for b in middle if b["name"] in keep_names] + [last]
-        warnings.append(f"trimmed beats down to {len(beats)} (max {MAX_BEATS}), keeping highest-importance middle beats.")
+        warnings.append(
+            f"trimmed beats down to {len(beats)} (max {MAX_BEATS}), keeping highest-importance middle beats."
+        )
 
     if len(beats) < MIN_BEATS:
         warnings.append(f"only {len(beats)} beats generated (recommended minimum {MIN_BEATS}).")

@@ -9,6 +9,7 @@ folding older turns into a short prose summary, while the raw, unmutated
 import re
 from openai import OpenAI
 
+
 # Same turn-splitting convention as director_core.last_character_opener —
 # turns are split on "<character_name>: "/"User: " prefixes, not on every
 # newline, since a single turn's body can itself contain blank lines.
@@ -23,6 +24,7 @@ MAX_SUMMARY_WORDS = 200
 
 def _prefix_re(character_name: str) -> re.Pattern:
     return re.compile(rf"^(?:{re.escape(character_name)}|User):\s*", re.IGNORECASE)
+
 
 SUMMARY_SYSTEM_PROMPT = (
     "You compress the earlier portion of an interactive children's story into a short, "
@@ -45,7 +47,9 @@ def split_turns(story_so_far: str, character_name: str = "Olaf") -> list[str]:
 
 
 def build_director_story_context(
-    state: dict, keep_last_turns: int = DEFAULT_KEEP_LAST_TURNS, character_name: str = "Olaf",
+    state: dict,
+    keep_last_turns: int = DEFAULT_KEEP_LAST_TURNS,
+    character_name: str = "Olaf",
 ) -> str:
     """Return the story context to hand to the director prompt.
 
@@ -111,7 +115,9 @@ def _sanitize_summary(text: str, character_name: str = "Olaf") -> str:
     return " ".join(lines).strip()
 
 
-def _build_summary_prompt(story_topic: str, previous_summary: str, fold_text: str, character_name: str = "Olaf") -> str:
+def _build_summary_prompt(
+    story_topic: str, previous_summary: str, fold_text: str, character_name: str = "Olaf"
+) -> str:
     previous_block = previous_summary.strip() or "(none yet — this is the first summary)"
     return f"""
 Story topic: {story_topic}

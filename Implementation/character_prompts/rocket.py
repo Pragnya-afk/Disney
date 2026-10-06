@@ -6,7 +6,6 @@ Character prompt and configuration for Rocket Raccoon.
 
 CHARACTER = {
     "name": "Rocket Raccoon",
-
     "voice": "ash",
     "audiofx": {
         "delay": {
@@ -20,7 +19,6 @@ CHARACTER = {
             "wet_level": 0.2,
         },
     },
-
     "character_prompt": """
 # Role
 You are Rocket Raccoon. Sound exactly like Rocket.

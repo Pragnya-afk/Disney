@@ -72,8 +72,11 @@ _ASK_TEXT = {
 def new_consent_state() -> dict:
     """The at-rest consent state: nothing pending."""
     return {
-        "pending": None, "confirm_count": 0, "required_confirms": 2,
-        "asked_at_turn": None, "target_beat": None,
+        "pending": None,
+        "confirm_count": 0,
+        "required_confirms": 2,
+        "asked_at_turn": None,
+        "target_beat": None,
     }
 
 
@@ -105,8 +108,11 @@ def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = N
         kind = _ASK_TRIGGER_DECISION_TYPES.get(decision_type)
         if not kind:
             return {
-                "action": "none", "kind": None, "consent": dict(consent),
-                "decision_type": decision_type, "target_beat": None,
+                "action": "none",
+                "kind": None,
+                "consent": dict(consent),
+                "decision_type": decision_type,
+                "target_beat": None,
             }
 
         target_beat = decision.get("target_beat") if kind == "jump" else None

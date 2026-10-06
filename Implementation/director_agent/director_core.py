@@ -23,8 +23,8 @@ def _normalize_opener(word: str) -> str:
 # only the literal previous word let the model bounce between spellings.
 # Stored pre-normalized so membership checks stay consistent with _normalize_opener.
 _FILLER_OPENER_FAMILY = {
-    _normalize_opener(w) for w in
-    ("oh", "ooh", "ooo", "well", "wow", "ah", "aw", "hmm", "hm", "mmm")
+    _normalize_opener(w)
+    for w in ("oh", "ooh", "ooo", "well", "wow", "ah", "aw", "hmm", "hm", "mmm")
 }
 
 
@@ -117,19 +117,19 @@ def opener_guard_text(last_opener: str | None) -> str:
     if _normalize_opener(last_opener) in _FILLER_OPENER_FAMILY:
         return (
             f'The previous line opened with "{last_opener}" — a generic filler exclamation.\n\n'
-            'BANNED for this turn: the entire filler-exclamation family, not just this exact '
+            "BANNED for this turn: the entire filler-exclamation family, not just this exact "
             'spelling — "Oh", "Ooh", "Ohh", "Ooo", "Well", "Wow", "Ah", "Aw", "Hmm", "Mmm", and '
-            'any close variant of these. Whatever opens this turn — the director_instruction, or the '
-            'character line itself — must state the actual opening move explicitly: a concrete '
-            'action, a name, a sound the character would genuinely make, direct address to the '
-            'listener, or a line of dialogue. Do not leave the opening implicit and do not '
-            'restate/paraphrase the last opener.'
+            "any close variant of these. Whatever opens this turn — the director_instruction, or the "
+            "character line itself — must state the actual opening move explicitly: a concrete "
+            "action, a name, a sound the character would genuinely make, direct address to the "
+            "listener, or a line of dialogue. Do not leave the opening implicit and do not "
+            "restate/paraphrase the last opener."
         )
     return (
         f'The previous line opened with "{last_opener}".\n\n'
         f'BANNED for this turn: starting with "{last_opener}" again. Whatever opens this turn — '
-        'the director_instruction, or the character line itself — must use a different, '
-        'explicit opening move.'
+        "the director_instruction, or the character line itself — must use a different, "
+        "explicit opening move."
     )
 
 
@@ -148,7 +148,7 @@ def opener_guard_actor_text(last_opener: str | None) -> str:
     if _normalize_opener(last_opener) in _FILLER_OPENER_FAMILY:
         return (
             f'Do not open with "{last_opener}" or a similar filler (Ooh, Ooo, Well, Wow, Ah, Hmm, Mmm). '
-            'Use a concrete action, name, sound, or line instead.'
+            "Use a concrete action, name, sound, or line instead."
         )
     return f'Do not open with "{last_opener}" again — use a different opening.'
 
@@ -177,7 +177,7 @@ def strip_banned_opener(text: str, last_opener: str | None) -> str:
     if _normalize_opener(match.group(1)) not in _FILLER_OPENER_FAMILY:
         return text
 
-    rest = text[match.end():]
+    rest = text[match.end() :]
     if not rest:
         return text
     return rest[0].upper() + rest[1:]

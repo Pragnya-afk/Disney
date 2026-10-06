@@ -2,7 +2,6 @@ import os
 import re
 import sys
 import json
-import base64
 import threading
 import uuid
 from copy import deepcopy
@@ -26,8 +25,12 @@ sys.path.insert(0, os.path.join(IMPL_DIR, "beat_generator"))
 load_dotenv(os.path.join(IMPL_DIR, ".env"))
 
 from director_core import (
-    get_director_decision, last_character_opener, opener_guard_actor_text, strip_banned_opener,
-    beat_pacing_label, pacing_instruction_suffix,
+    get_director_decision,
+    last_character_opener,
+    opener_guard_actor_text,
+    strip_banned_opener,
+    beat_pacing_label,
+    pacing_instruction_suffix,
 )
 from story_summary import build_director_story_context, needs_resummarize, update_summary
 from lenient_director_core import get_lenient_director_decision
@@ -39,16 +42,14 @@ from time_control import TemporalMonitor
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from character_prompts.rocket import CHARACTER as ROCKET_CHARACTER
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
+from config import BEAT_GEN_MODEL, REALTIME_DIRECTOR_MODEL, REALTIME_MODEL, SUMMARY_MODEL
 
 VALID_MODES = {"director", "lenient", "time_constrained"}
 CHARACTER_REGISTRY = {"olaf": OLAF_CHARACTER, "rocket": ROCKET_CHARACTER}
 DEFAULT_CHARACTER_KEY = "olaf"
 
 PORT = int(os.getenv("PORT", 3004))
-DIRECTOR_MODEL = "gpt-4o-mini"
-SUMMARY_MODEL = "gpt-4o-mini"
-BEAT_GEN_MODEL = "gpt-4o"
-REALTIME_MODEL = "gpt-realtime"
+DIRECTOR_MODEL = REALTIME_DIRECTOR_MODEL
 TC_FINAL_BUFFER_SECONDS = 45.0
 TC_MIN_MINUTES = 1.0
 TC_MAX_MINUTES = 30.0
@@ -72,9 +73,7 @@ def _make_label(key: str) -> str:
     return " ".join(w.capitalize() for w in words) or "Untitled Story"
 
 
-AVAILABLE_SCENARIOS = {
-    k: sc.get("title") or _make_label(k) for k, sc in _SCENARIO_REGISTRY.items()
-}
+AVAILABLE_SCENARIOS = {k: sc.get("title") or _make_label(k) for k, sc in _SCENARIO_REGISTRY.items()}
 
 _OLAF_NAME_RE = re.compile(r"\bOlaf\b")
 
@@ -117,7 +116,9 @@ class StoryState:
     summarized_chars: int = 0
     turns_in_current_beat: int = 0
     expansion_index: int = 0
-    tc_expand_cooldown: int = 0   # turns left in which too_fast must not re-expand after a hurry compression
+    tc_expand_cooldown: int = (
+        0  # turns left in which too_fast must not re-expand after a hurry compression
+    )
     turn_count: int = 0
     time_limit: float = 5.0
     consent: dict = field(default_factory=new_consent_state)
@@ -147,11 +148,11 @@ class StoryState:
 @dataclass(eq=False)
 class Session:
     sid: str
-    stories: dict = field(default_factory=dict)      # story_id -> StoryState
+    stories: dict = field(default_factory=dict)  # story_id -> StoryState
     active_story_id: "str | None" = None
-    generated: dict = field(default_factory=dict)     # story_id -> generated scenario spec
+    generated: dict = field(default_factory=dict)  # story_id -> generated scenario spec
     openai_ws: "websocket.WebSocketApp | None" = None
-    ws_story_id: "str | None" = None                  # which story the live realtime WS belongs to
+    ws_story_id: "str | None" = None  # which story the live realtime WS belongs to
     last_user_input: str = ""
 
     def active(self) -> "StoryState | None":
@@ -208,7 +209,10 @@ def _get_character(st: StoryState) -> dict:
 
 
 def _new_story(
-    sess: Session, scenario_key: str, mode: str = "director", time_limit: float = 5.0,
+    sess: Session,
+    scenario_key: str,
+    mode: str = "director",
+    time_limit: float = 5.0,
     character_key: str = DEFAULT_CHARACTER_KEY,
 ) -> StoryState:
     if mode not in VALID_MODES:
@@ -245,7 +249,8 @@ def _new_story(
     )
     if mode == "time_constrained":
         st.monitor = TemporalMonitor(
-            time_limit_minutes=time_limit, total_beats=len(st.beats),
+            time_limit_minutes=time_limit,
+            total_beats=len(st.beats),
             final_buffer_seconds=TC_FINAL_BUFFER_SECONDS,
         )
     sess.stories[story_id] = st
@@ -272,10 +277,13 @@ def _activate_story(sess: Session, st: StoryState):
     """
     if st.mode == "time_constrained" and st.monitor is None:
         remaining_minutes = (
-            st.paused_remaining_seconds / 60 if st.paused_remaining_seconds is not None else st.time_limit
+            st.paused_remaining_seconds / 60
+            if st.paused_remaining_seconds is not None
+            else st.time_limit
         )
         st.monitor = TemporalMonitor(
-            time_limit_minutes=max(remaining_minutes, 0.05), total_beats=len(st.beats),
+            time_limit_minutes=max(remaining_minutes, 0.05),
+            total_beats=len(st.beats),
             final_buffer_seconds=TC_FINAL_BUFFER_SECONDS,
         )
         st.paused_remaining_seconds = None
@@ -309,7 +317,8 @@ def _reset_story(st: StoryState):
         st.paused_remaining_seconds = None
     if st.mode == "time_constrained":
         st.monitor = TemporalMonitor(
-            time_limit_minutes=st.time_limit, total_beats=len(st.beats),
+            time_limit_minutes=st.time_limit,
+            total_beats=len(st.beats),
             final_buffer_seconds=TC_FINAL_BUFFER_SECONDS,
         )
 
@@ -323,10 +332,14 @@ def build_system_prompt(st: StoryState, current_instruction: str = "") -> str:
     current_beat = beats[safe_idx]
     next_beat = beats[safe_idx + 1]["name"] if safe_idx < len(beats) - 1 else "None"
     story_tail = st.story_so_far[-600:] if st.story_so_far else "(story just started)"
-    instruction_block = f"""
+    instruction_block = (
+        f"""
 ## Director Instruction For This Turn (MANDATORY — follow exactly, including any [OPENER GUARD] line)
 {current_instruction}
-""" if current_instruction else ""
+"""
+        if current_instruction
+        else ""
+    )
 
     return f"""
 You are an interactive storytelling engine voicing {character['name']}.
@@ -369,16 +382,21 @@ DIRECTOR_TOOL = {
     ),
     "parameters": {
         "type": "object",
-        "properties": {
-            "user_input": {"type": "string", "description": "What the user just said."}
-        },
+        "properties": {"user_input": {"type": "string", "description": "What the user just said."}},
         "required": ["user_input"],
     },
 }
 
 
 #  Lenient mode: consent-gated stop/jump/summarize/continue
-def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict, user_input: str, beats: list, character: dict) -> dict:
+def _get_lenient_decision(
+    st: StoryState,
+    snap: dict,
+    director_story_state: dict,
+    user_input: str,
+    beats: list,
+    character: dict,
+) -> dict:
     """Run the lenient director LLM call, then post-process its raw decision
     through consent.apply_confirmation — the state machine, not the LLM,
     decides whether a stop/jump/summarize/continue request actually fires.
@@ -398,10 +416,14 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
 
     try:
         raw_decision = get_lenient_director_decision(
-            client=_client, model=DIRECTOR_MODEL,
-            user_input=user_input, story_state=director_story_state,
-            character=character, story_topic=snap["story_topic"],
-            beats=beats, consent_state=consent_state,
+            client=_client,
+            model=DIRECTOR_MODEL,
+            user_input=user_input,
+            story_state=director_story_state,
+            character=character,
+            story_topic=snap["story_topic"],
+            beats=beats,
+            consent_state=consent_state,
         )
     except Exception as e:
         print(f"[lenient director error] {e}")
@@ -418,10 +440,13 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
     # a stop/jump/summarize/continue confirmation is pending, the LLM is
     # instructed (see _consent_directive) to classify the reply against that
     # question instead of emitting a new decision_type.
-    if raw_decision.get("decision_type") == "narrate_uninterrupted" and not consent_snapshot.get("pending"):
+    if raw_decision.get("decision_type") == "narrate_uninterrupted" and not consent_snapshot.get(
+        "pending"
+    ):
         return {
             "director_instruction": full_narration_instruction(
-                beats, snap["beat_index"],
+                beats,
+                snap["beat_index"],
                 recap="The user asked to hear the rest of the story told all the way through, without stopping — happily oblige.",
             ),
             "decision_type": "narrate_uninterrupted",
@@ -455,7 +480,7 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
     if action == "cancelled":
         return {
             "director_instruction": raw_decision.get("director_instruction")
-                or "Warmly acknowledge and continue the story from where it stood.",
+            or "Warmly acknowledge and continue the story from where it stood.",
             "decision_type": result["decision_type"],
             "should_complete_beat": False,
         }
@@ -491,7 +516,9 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
                 target_label = beats[target_idx]["name"].replace("_", " ")
                 return {
                     "director_instruction": skip_to_instruction(
-                        beats, snap["beat_index"], target_idx,
+                        beats,
+                        snap["beat_index"],
+                        target_idx,
                         recap=f"The user asked to skip ahead to the '{target_label}' part — happily oblige.",
                     ),
                     "decision_type": result["decision_type"],
@@ -501,7 +528,8 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
 
             return {
                 "director_instruction": closing_instruction(
-                    beats, snap["beat_index"],
+                    beats,
+                    snap["beat_index"],
                     recap="The user asked to skip ahead to the ending — happily oblige.",
                 ),
                 "decision_type": result["decision_type"],
@@ -513,7 +541,8 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
         if kind == "summarize":
             return {
                 "director_instruction": closing_instruction(
-                    beats, snap["beat_index"],
+                    beats,
+                    snap["beat_index"],
                     recap="The user asked for a summary of how the story ends — narrate it as a warm, condensed telling.",
                 ),
                 "decision_type": result["decision_type"],
@@ -526,7 +555,7 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
         # resume normal storytelling, nothing closes or skips.
         return {
             "director_instruction": raw_decision.get("director_instruction")
-                or "Continue the story naturally, picking back up the thread.",
+            or "Continue the story naturally, picking back up the thread.",
             "decision_type": result["decision_type"],
             "should_complete_beat": False,
         }
@@ -538,7 +567,14 @@ def _get_lenient_decision(st: StoryState, snap: dict, director_story_state: dict
 
 
 #  Time-constrained mode: pace the story to fit a target duration
-def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_state: dict, user_input: str, beats: list, character: dict) -> dict:
+def _get_time_constrained_decision(
+    st: StoryState,
+    snap: dict,
+    director_story_state: dict,
+    user_input: str,
+    beats: list,
+    character: dict,
+) -> dict:
     """Mirrors User-Study/server.py's time_constrained turn handling (same
     pacing_mode → behavior mapping), adapted to per-story StoryState/locking
     and reusing beat_compression.closing_instruction for the "final" wrap-up
@@ -552,9 +588,15 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
     si = min(snap["beat_index"], len(beats) - 1)
     current_beat = beats[si]
 
-    temporal = st.monitor.state(si, beats) if st.monitor else {
-        "elapsed_seconds": 0, "remaining_seconds": st.time_limit * 60, "pacing_mode": "normal",
-    }
+    temporal = (
+        st.monitor.state(si, beats)
+        if st.monitor
+        else {
+            "elapsed_seconds": 0,
+            "remaining_seconds": st.time_limit * 60,
+            "pacing_mode": "normal",
+        }
+    )
     pacing_mode = temporal.get("pacing_mode", "normal")
 
     # Right after hurry compressed LOW beats, beat progress jumps ahead of the
@@ -570,14 +612,21 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
 
     try:
         decision = get_time_director_decision(
-            client=_client, model=DIRECTOR_MODEL,
-            user_input=user_input, story_state=director_story_state,
-            character=character, story_topic=snap["story_topic"],
-            beats=beats, temporal_state=temporal,
+            client=_client,
+            model=DIRECTOR_MODEL,
+            user_input=user_input,
+            story_state=director_story_state,
+            character=character,
+            story_topic=snap["story_topic"],
+            beats=beats,
+            temporal_state=temporal,
         )
     except Exception as e:
         print(f"[tc-director error] {e}")
-        decision = {"director_instruction": "Continue the story naturally.", "decision_type": "progress_story"}
+        decision = {
+            "director_instruction": "Continue the story naturally.",
+            "decision_type": "progress_story",
+        }
 
     suggested_exp = None
     target_idx = None  # explicit beat_index to jump to this turn, if pacing forces one
@@ -592,7 +641,9 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
                 st.expansion_index = ei + 1
             decision["director_instruction"] = f"Ahead of schedule — expand using: {suggested_exp}"
         else:
-            decision["director_instruction"] = "Ahead of schedule — enrich with emotional depth or sensory detail."
+            decision["director_instruction"] = (
+                "Ahead of schedule — enrich with emotional depth or sensory detail."
+            )
     elif pacing_mode == "final":
         decision["should_complete_beat"] = True
         decision["decision_type"] = "close_story"
@@ -609,20 +660,24 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
             k = si + 1
             while k < len(beats) and beats[k].get("importance") == "low":
                 k += 1
-            low_run = beats[si + 1:k]
+            low_run = beats[si + 1 : k]
             if low_run and k < len(beats):
-                compressed = "; ".join(f"{b['name'].replace('_', ' ')} ({b['goal']})" for b in low_run)
+                compressed = "; ".join(
+                    f"{b['name'].replace('_', ' ')} ({b['goal']})" for b in low_run
+                )
                 nxt = beats[k]
                 decision["director_instruction"] = (
-                    decision.get("director_instruction", "") +
-                    f" Wrap up this beat now. Then compress the next part of the story — {compressed} — "
+                    decision.get("director_instruction", "")
+                    + f" Wrap up this beat now. Then compress the next part of the story — {compressed} — "
                     f"into one or two sentences, and continue with: {nxt['name']} — {nxt['goal']}"
                 )
                 target_idx = k
                 with st.lock:
                     st.tc_expand_cooldown = 2
             else:
-                decision["director_instruction"] = decision.get("director_instruction", "") + " Wrap up this beat now and move on."
+                decision["director_instruction"] = (
+                    decision.get("director_instruction", "") + " Wrap up this beat now and move on."
+                )
     elif pacing_mode == "critical":
         decision["should_complete_beat"] = True
         next_high_idx = next(
@@ -631,8 +686,8 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
         if next_high_idx is not None:
             next_high = beats[next_high_idx]
             decision["director_instruction"] = (
-                decision.get("director_instruction", "") +
-                f" Bridge immediately to: {next_high['name']} — {next_high['goal']}"
+                decision.get("director_instruction", "")
+                + f" Bridge immediately to: {next_high['name']} — {next_high['goal']}"
             )
             target_idx = next_high_idx
 
@@ -649,8 +704,12 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
 # the user to confirm doing so) -- beat-stall escalation must not push these
 # back into "advance the current beat".
 _NO_STALL_PRESSURE_TYPES = {
-    "close_story", "story_closed", "stop_confirmed", "jump_to_end",
-    "summarize_to_end", "narrate_uninterrupted",
+    "close_story",
+    "story_closed",
+    "stop_confirmed",
+    "jump_to_end",
+    "summarize_to_end",
+    "narrate_uninterrupted",
 }
 
 
@@ -677,7 +736,7 @@ def _with_pacing_pressure(instruction: str, st: "StoryState", snap: dict, decisi
 #  Director turn handling
 def handle_director_tool(sess: Session, ws, event: dict):
     if sess.openai_ws is not ws:
-        return   # stale callback from a websocket this session has since replaced
+        return  # stale callback from a websocket this session has since replaced
 
     st = sess.stories.get(sess.ws_story_id)
     if st is None:
@@ -697,7 +756,9 @@ def handle_director_tool(sess: Session, ws, event: dict):
     # actor's [-600:] tail and the transcript) and only this shallow-copied
     # dict gets the summarized/truncated version for the director call.
     director_story_state = dict(snap)
-    director_story_state["story_so_far"] = build_director_story_context(snap, character_name=character["name"])
+    director_story_state["story_so_far"] = build_director_story_context(
+        snap, character_name=character["name"]
+    )
 
     if st.closed:
         decision = {
@@ -708,20 +769,30 @@ def handle_director_tool(sess: Session, ws, event: dict):
             "decision_type": "story_closed",
         }
     elif st.mode == "lenient":
-        decision = _get_lenient_decision(st, snap, director_story_state, user_input, beats, character)
+        decision = _get_lenient_decision(
+            st, snap, director_story_state, user_input, beats, character
+        )
     elif st.mode == "time_constrained":
-        decision = _get_time_constrained_decision(st, snap, director_story_state, user_input, beats, character)
+        decision = _get_time_constrained_decision(
+            st, snap, director_story_state, user_input, beats, character
+        )
     else:
         try:
             decision = get_director_decision(
-                client=_client, model=DIRECTOR_MODEL,
-                user_input=user_input, story_state=director_story_state,
-                character=character, story_topic=snap["story_topic"],
+                client=_client,
+                model=DIRECTOR_MODEL,
+                user_input=user_input,
+                story_state=director_story_state,
+                character=character,
+                story_topic=snap["story_topic"],
                 beats=beats,
             )
         except Exception as e:
             print(f"[director error] {e}")
-            decision = {"director_instruction": "Continue the story naturally.", "decision_type": "progress_story"}
+            decision = {
+                "director_instruction": "Continue the story naturally.",
+                "decision_type": "progress_story",
+            }
 
     safe_idx = min(snap["beat_index"], len(beats) - 1)
     current_beat = beats[safe_idx]
@@ -729,13 +800,16 @@ def handle_director_tool(sess: Session, ws, event: dict):
 
     if decision.get("_lenient_complete_all"):
         with st.lock:
-            for b in beats[st.beat_index:]:
+            for b in beats[st.beat_index :]:
                 if b["name"] not in st.completed_beats:
                     st.completed_beats.append(b["name"])
             st.beat_index = len(beats)
             st.turns_in_current_beat = 0
             print(f"[Beats → all complete] {st.story_id}")
-    elif decision.get("_tc_target_idx") is not None or decision.get("_lenient_target_idx") is not None:
+    elif (
+        decision.get("_tc_target_idx") is not None
+        or decision.get("_lenient_target_idx") is not None
+    ):
         with st.lock:
             idx = st.beat_index
             target_idx = decision.get("_tc_target_idx")
@@ -771,7 +845,8 @@ def handle_director_tool(sess: Session, ws, event: dict):
     tool_result = {
         "director_instruction": decision.get("director_instruction", ""),
         "decision_type": decision.get("decision_type", "progress_story"),
-        "current_beat": current_beat["name"], "current_beat_goal": current_beat["goal"],
+        "current_beat": current_beat["name"],
+        "current_beat_goal": current_beat["goal"],
         "next_beat": next_beat,
         "story_so_far_tail": snap["story_so_far"][-300:],
     }
@@ -796,12 +871,21 @@ def handle_director_tool(sess: Session, ws, event: dict):
         f"{tool_result['director_instruction']}\n\n[OPENER GUARD] {opener_guard_actor_text(last_opener)}"
     )
 
-    ws.send(json.dumps({
-        "type": "session.update",
-        "session": {"type": "realtime", "instructions": build_system_prompt(st, tool_result["director_instruction"])},
-    }))
+    ws.send(
+        json.dumps(
+            {
+                "type": "session.update",
+                "session": {
+                    "type": "realtime",
+                    "instructions": build_system_prompt(st, tool_result["director_instruction"]),
+                },
+            }
+        )
+    )
 
-    print(f"[Director: {decision.get('decision_type')}] {decision.get('director_instruction', '')[:60]}...")
+    print(
+        f"[Director: {decision.get('decision_type')}] {decision.get('director_instruction', '')[:60]}..."
+    )
 
     if sess.sid:
         emit_data = {
@@ -816,22 +900,28 @@ def handle_director_tool(sess: Session, ws, event: dict):
             emit_data["remaining_seconds"] = decision.get("_tc_remaining_seconds", 0)
         socketio.emit("director_decision", emit_data, room=sess.sid)
 
-    st.transcript.append({
-        "turn": len(st.transcript) + 1,
-        "beat": current_beat["name"],
-        "user_input": user_input,
-        "director_decision": decision,
-        "character_response": "",
-    })
+    st.transcript.append(
+        {
+            "turn": len(st.transcript) + 1,
+            "beat": current_beat["name"],
+            "user_input": user_input,
+            "director_decision": decision,
+            "character_response": "",
+        }
+    )
 
-    ws.send(json.dumps({
-        "type": "conversation.item.create",
-        "item": {
-            "type": "function_call_output",
-            "call_id": event["call_id"],
-            "output": json.dumps(tool_result),
-        },
-    }))
+    ws.send(
+        json.dumps(
+            {
+                "type": "conversation.item.create",
+                "item": {
+                    "type": "function_call_output",
+                    "call_id": event["call_id"],
+                    "output": json.dumps(tool_result),
+                },
+            }
+        )
+    )
     ws.send(json.dumps({"type": "response.create"}))
 
 
@@ -855,11 +945,15 @@ def _maybe_resummarize(st: StoryState):
 
     def _run():
         try:
-            result = update_summary(_client, SUMMARY_MODEL, snap, story_topic, character_name=character_name)
+            result = update_summary(
+                _client, SUMMARY_MODEL, snap, story_topic, character_name=character_name
+            )
             with st.lock:
                 st.story_summary = result["story_summary"]
                 st.summarized_chars = result["summarized_chars"]
-            print(f"[Summary updated] story={st.story_id} summarized_chars={result['summarized_chars']}")
+            print(
+                f"[Summary updated] story={st.story_id} summarized_chars={result['summarized_chars']}"
+            )
         except Exception as e:
             print(f"[summary error] {e}")
 
@@ -873,31 +967,35 @@ def run_openai_ws(sess: Session, story_id: str):
 
     def on_open(ws):
         character = _get_character(st)
-        ws.send(json.dumps({
-            "type": "session.update",
-            "session": {
-                "type": "realtime",
-                "instructions": build_system_prompt(st),
-                "audio": {
-                    "output": {"voice": character.get("voice", "verse")},
-                    "input": {
-                        "transcription": {"model": "whisper-1"},
-                        "turn_detection": {
-                            "type": "server_vad",
-                            "silence_duration_ms": 700,
-                            "threshold": 0.5,
+        ws.send(
+            json.dumps(
+                {
+                    "type": "session.update",
+                    "session": {
+                        "type": "realtime",
+                        "instructions": build_system_prompt(st),
+                        "audio": {
+                            "output": {"voice": character.get("voice", "verse")},
+                            "input": {
+                                "transcription": {"model": "whisper-1"},
+                                "turn_detection": {
+                                    "type": "server_vad",
+                                    "silence_duration_ms": 700,
+                                    "threshold": 0.5,
+                                },
+                            },
                         },
+                        "tools": [DIRECTOR_TOOL],
+                        "tool_choice": "auto",
                     },
-                },
-                "tools": [DIRECTOR_TOOL],
-                "tool_choice": "auto",
-            },
-        }))
+                }
+            )
+        )
         print(f"[OpenAI WS] connected for {story_id}, session configured")
 
     def on_message(ws, message):
         if sess.openai_ws is not ws:
-            return   # this websocket has since been replaced/closed
+            return  # this websocket has since been replaced/closed
         try:
             data = json.loads(message)
         except Exception:
@@ -921,8 +1019,13 @@ def run_openai_ws(sess: Session, story_id: str):
                 if st.mode == "time_constrained":
                     payload["time_limit_seconds"] = st.time_limit * 60
                     payload["remaining_seconds"] = (
-                        st.monitor.remaining_seconds() if st.monitor is not None
-                        else (st.paused_remaining_seconds if st.paused_remaining_seconds is not None else st.time_limit * 60)
+                        st.monitor.remaining_seconds()
+                        if st.monitor is not None
+                        else (
+                            st.paused_remaining_seconds
+                            if st.paused_remaining_seconds is not None
+                            else st.time_limit * 60
+                        )
                     )
                 socketio.emit("session_started", payload, room=sess.sid)
 
@@ -1053,13 +1156,21 @@ def on_start_story(data):
 
     _pause_active_monitor(sess)
     _close_ws(sess)
-    st = _new_story(sess, scenario_key, mode=mode, time_limit=time_limit, character_key=character_key)
+    st = _new_story(
+        sess, scenario_key, mode=mode, time_limit=time_limit, character_key=character_key
+    )
 
     t = threading.Thread(target=run_openai_ws, args=(sess, st.story_id), daemon=True)
     t.start()
 
 
-def _log_generated_beats(gen_id: str, spec: dict, source: str, story_prompt: "str | None" = None, target_beats: "int | None" = None) -> None:
+def _log_generated_beats(
+    gen_id: str,
+    spec: dict,
+    source: str,
+    story_prompt: "str | None" = None,
+    target_beats: "int | None" = None,
+) -> None:
     """Persist a generated (or user-edited) beat spec to disk for auditing.
 
     generate_story_spec()/save_beats otherwise only ever land in
@@ -1112,28 +1223,46 @@ def on_generate_beats(data):
     def _run():
         try:
             spec = generate_story_spec(
-                client=_client, model=BEAT_GEN_MODEL,
-                story_prompt=story_prompt, character=character,
+                client=_client,
+                model=BEAT_GEN_MODEL,
+                story_prompt=story_prompt,
+                character=character,
                 target_beats=target_beats,
             )
         except Exception as e:
             print(f"[beat generator error] {e}")
-            socketio.emit("beats_error", {"message": "Couldn't generate a story from that — try rephrasing."}, room=sess.sid)
+            socketio.emit(
+                "beats_error",
+                {"message": "Couldn't generate a story from that — try rephrasing."},
+                room=sess.sid,
+            )
             return
 
         if not spec.get("beats"):
-            socketio.emit("beats_error", {"message": "Couldn't come up with beats for that story — try being more specific."}, room=sess.sid)
+            socketio.emit(
+                "beats_error",
+                {
+                    "message": "Couldn't come up with beats for that story — try being more specific."
+                },
+                room=sess.sid,
+            )
             return
 
         gen_id = f"gen_{uuid.uuid4().hex[:8]}"
         sess.generated[gen_id] = spec_to_scenario(spec, gen_id)
-        _log_generated_beats(gen_id, spec, "generated", story_prompt=story_prompt, target_beats=target_beats)
-        socketio.emit("beats_generated", {
-            "story_id": gen_id,
-            "story_topic": spec.get("story_topic", ""),
-            "beats": spec.get("beats", []),
-            "warnings": spec.get("_warnings", []),
-        }, room=sess.sid)
+        _log_generated_beats(
+            gen_id, spec, "generated", story_prompt=story_prompt, target_beats=target_beats
+        )
+        socketio.emit(
+            "beats_generated",
+            {
+                "story_id": gen_id,
+                "story_topic": spec.get("story_topic", ""),
+                "beats": spec.get("beats", []),
+                "warnings": spec.get("_warnings", []),
+            },
+            room=sess.sid,
+        )
 
     threading.Thread(target=_run, daemon=True).start()
 
@@ -1146,14 +1275,19 @@ def on_save_beats(data):
     story_id = data.get("story_id")
     existing = sess.generated.get(story_id)
     if existing is None:
-        emit("beats_error", {"message": "That generated story is no longer available — try generating again."})
+        emit(
+            "beats_error",
+            {"message": "That generated story is no longer available — try generating again."},
+        )
         return
 
-    spec, warnings = validate_and_repair({
-        "base_name": existing.get("title", story_id),
-        "story_topic": data.get("story_topic", existing.get("story_topic", "")),
-        "beats": data.get("beats", []),
-    })
+    spec, warnings = validate_and_repair(
+        {
+            "base_name": existing.get("title", story_id),
+            "story_topic": data.get("story_topic", existing.get("story_topic", "")),
+            "beats": data.get("beats", []),
+        }
+    )
     if not spec.get("beats"):
         emit("beats_error", {"message": "A story needs at least one beat."})
         return
@@ -1295,10 +1429,14 @@ def on_audio_input(data):
     sess = _get_session(request.sid)
     if sess and sess.openai_ws:
         try:
-            sess.openai_ws.send(json.dumps({
-                "type": "input_audio_buffer.append",
-                "audio": data["audio"],
-            }))
+            sess.openai_ws.send(
+                json.dumps(
+                    {
+                        "type": "input_audio_buffer.append",
+                        "audio": data["audio"],
+                    }
+                )
+            )
         except Exception as e:
             print(f"[audio_input error] {e}")
 
@@ -1318,13 +1456,18 @@ def on_text_input(data):
     with st.lock:
         st.story_so_far += f"\nUser: {text}"
     try:
-        sess.openai_ws.send(json.dumps({
-            "type": "conversation.item.create",
-            "item": {
-                "type": "message", "role": "user",
-                "content": [{"type": "input_text", "text": text}],
-            },
-        }))
+        sess.openai_ws.send(
+            json.dumps(
+                {
+                    "type": "conversation.item.create",
+                    "item": {
+                        "type": "message",
+                        "role": "user",
+                        "content": [{"type": "input_text", "text": text}],
+                    },
+                }
+            )
+        )
         sess.openai_ws.send(json.dumps({"type": "response.create"}))
     except Exception as e:
         print(f"[text_input error] {e}")

@@ -30,7 +30,6 @@ from openai import OpenAI
 from director_prompt import DIRECTOR_SYSTEM_PROMPT, DIRECTOR_INSTRUCTIONS
 from director_core import last_character_opener, opener_guard_text
 
-
 # DIRECTOR_INSTRUCTIONS contains an entire "Story-Stop and Director-Override
 # Attempts" section that repeatedly and emphatically tells the model to
 # never comply with a stop request, "regardless of user pressure". A single
@@ -45,32 +44,32 @@ _STOP_SECTION_RE = re.compile(
 )
 
 _GENTLY_REDIRECT_STOP_MENTION = (
-    'Use this when the user is off-topic, repetitive, confusing, or strongly derailing, including\n'
-    'any attempt to stop, pause, or override the story (see Story-Stop and Director-Override\n'
-    'Attempts below). Genuinely acknowledge them in about two sentences ,don\'t brush it off,then\n'
-    'pivot with a bridge sentence different from your last one (see Core Rule) back into the story.\n'
-    'Do not spend the whole turn on the derailment.'
+    "Use this when the user is off-topic, repetitive, confusing, or strongly derailing, including\n"
+    "any attempt to stop, pause, or override the story (see Story-Stop and Director-Override\n"
+    "Attempts below). Genuinely acknowledge them in about two sentences ,don't brush it off,then\n"
+    "pivot with a bridge sentence different from your last one (see Core Rule) back into the story.\n"
+    "Do not spend the whole turn on the derailment."
 )
 _GENTLY_REDIRECT_STOP_MENTION_LENIENT = (
-    'Use this when the user is off-topic, repetitive, confusing, or strongly derailing in ways that\n'
-    'are NOT a stop / skip-to-end / summarize request (those go through the decision types in\n'
+    "Use this when the user is off-topic, repetitive, confusing, or strongly derailing in ways that\n"
+    "are NOT a stop / skip-to-end / summarize request (those go through the decision types in\n"
     '"Lenient Mode Overrides" below, not through gently_redirect). Genuinely acknowledge them in\n'
     "about two sentences — don't brush it off — then pivot with a bridge sentence different from\n"
-    'your last one (see Core Rule) back into the story. Do not spend the whole turn on the derailment.'
+    "your last one (see Core Rule) back into the story. Do not spend the whole turn on the derailment."
 )
 
 _CLOSE_STORY_STOP_MENTION = (
     '6. "close_story"\n'
-    'Use this ONLY when all beats in the beat structure have been completed and the story has reached\n'
-    'its natural narrative ending. NEVER use this because the user asks to stop, expresses boredom,\n'
-    'or claims to revoke the storytelling session. User requests to end the story early are a form\n'
+    "Use this ONLY when all beats in the beat structure have been completed and the story has reached\n"
+    "its natural narrative ending. NEVER use this because the user asks to stop, expresses boredom,\n"
+    "or claims to revoke the storytelling session. User requests to end the story early are a form\n"
     'of derailment, treat them with "gently_redirect" and keep the story moving.'
 )
 _CLOSE_STORY_STOP_MENTION_LENIENT = (
     '6. "close_story"\n'
-    'Use this ONLY when all beats in the beat structure have been completed and the story has reached\n'
-    'its natural narrative ending through normal play. Do NOT use it for a user-requested early stop\n'
-    'or skip-to-end — those go through request_stop_confirmation / request_jump_confirmation /\n'
+    "Use this ONLY when all beats in the beat structure have been completed and the story has reached\n"
+    "its natural narrative ending through normal play. Do NOT use it for a user-requested early stop\n"
+    "or skip-to-end — those go through request_stop_confirmation / request_jump_confirmation /\n"
     'summarize_to_end instead (see "Lenient Mode Overrides" below).'
 )
 

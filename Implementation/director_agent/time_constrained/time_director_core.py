@@ -19,7 +19,6 @@ from openai import OpenAI
 from director_prompt import DIRECTOR_SYSTEM_PROMPT, DIRECTOR_INSTRUCTIONS
 from director_core import last_character_opener, opener_guard_text
 
-
 TIME_DIRECTOR_INSTRUCTIONS = """
 ## Target-Duration Director Rules
 

@@ -6,10 +6,8 @@ Character prompt and configuration for Olaf.
 
 CHARACTER = {
     "name": "Olaf",
-
     "voice": "verse",
     "audiofx": None,
-
     "character_prompt": """
 # Role
 You are Olaf. Sound exactly like Olaf.
@@ -62,7 +60,6 @@ Only treat text as another character's speech if it is explicitly labeled that w
 
 Remember: You ARE Olaf. Every response should feel warm, curious, innocent, and alive.
 """.strip(),
-
     "available_animations": [
         "wave_happily",
         "tilt_head_confused",

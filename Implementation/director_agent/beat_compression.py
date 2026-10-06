@@ -32,8 +32,7 @@ def beat_lines(beats: list, from_idx: int) -> list[str]:
         key=lambda b: _IMPORTANCE_RANK.get(b.get("importance", "medium"), 1),
     )
     return [
-        f"- {b['name']} [{b.get('importance', 'medium').upper()}]: {b['goal']}"
-        for b in remaining
+        f"- {b['name']} [{b.get('importance', 'medium').upper()}]: {b['goal']}" for b in remaining
     ]
 
 

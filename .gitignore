@@ -1,24 +1,29 @@
-node_modules
-.venv
-venv/
-tsconfig.json
+# Environments & secrets
 .env
-.claude
-.sixth
-Thesis_Writing
-.vscode/
+.venv/
+venv/
+node_modules/
 
 # Python artifacts
 __pycache__/
 *.pyc
+.ruff_cache/
 
-# Generated run outputs
-outputs/
+# Editor / tool state
+.vscode/
+.claude/
+.sixth
 
-# User study analysis artifacts and generated exports
-User-Study/analysis_full/
-User-Study/outputs_all/
-User-Study/overleaf_package.zip
-User-Study/overleaf_package/
-User-Study/results_section.tex
-olaf_study_ratings_table.pptx
+# Logs and runtime session logs of the realtime apps
+*.log
+Real-Time-API-Demo/outputs/*
+Real-Time-API-Demo-Time-Constrained/outputs/*
+User-Study/outputs/*
+Extensions-Demo/outputs/*
+!*/outputs/.gitkeep
+
+# Local-only material
+Thesis_Writing/
+*.pptx
+*.zip
+tsconfig.json
