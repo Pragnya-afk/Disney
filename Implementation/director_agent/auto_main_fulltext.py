@@ -331,7 +331,7 @@ def main():
     parser.add_argument("--run-id", type=int, default=1)
     args = parser.parse_args()
 
-    from run_baseline_fulltext_rrh import FULL_STORY_TEXT
+    from scenarios.red_riding_hood_full_text import FULL_STORY_TEXT
 
     run_story_fulltext(args.character, args.scenario, FULL_STORY_TEXT, args.run_id, args.scenario_name)
 

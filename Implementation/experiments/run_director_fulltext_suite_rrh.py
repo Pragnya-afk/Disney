@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER  # noqa: F401 (character loaded by module path inside run_story_fulltext)
-from run_baseline_fulltext_rrh import FULL_STORY_TEXT
+from scenarios.red_riding_hood_full_text import FULL_STORY_TEXT
 from director_agent.auto_main_fulltext import run_story_fulltext
 
 CHARACTER_MODULE = "character_prompts.olaf"
