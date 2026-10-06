@@ -56,6 +56,7 @@ The cleanup sits on top of `master` and doesn't change model calls, prompts, hyp
   - all experiment, evaluation and analysis scripts
   - the interactive and scripted runners
   - all three web servers, through the Flask test client and the director-tool path
+  - the user-study app through all four counterbalanced phases (Socket.IO test client, fake realtime websocket)
   
   The OpenAI client was replaced by a deterministic recorder and time by a virtual clock. Across all 15,238 recorded model requests (model, messages, temperature and so on), the exit codes and the 1,789 produced or modified files are identical before and after. Only paths in tracebacks of scripts that were already broken differ.
 - **Results.** Re-running the analysis on the archived data reproduces every summary table and the study statistics byte for byte. Every regenerable figure is pixel-identical to the committed PNG (only the PNG metadata differs).
