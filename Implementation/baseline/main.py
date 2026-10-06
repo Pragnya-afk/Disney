@@ -24,7 +24,9 @@ sys.path.append(IMPLEMENTATION_DIR)
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-MODEL = "gpt-4o-mini"
+from config import BASELINE_MODEL
+
+MODEL = BASELINE_MODEL
 
 
 def load_module(module_name: str):
@@ -114,7 +116,7 @@ def run(character_module: str, scenario_module: str):
     beats = scenario["beats"]
     beat_index = 0
 
-    scenario_folder = scenario_module.split('.')[-1]
+    scenario_folder = scenario_module.split(".")[-1]
     output_dir = os.path.join(
         IMPLEMENTATION_DIR,
         "outputs",
@@ -147,16 +149,20 @@ def run(character_module: str, scenario_module: str):
         print(f"\n{character['name']}: {output['character_response']}")
         print(f"[Animation: {output['animation']}]")
 
-        story_so_far += f"\nUser: {user_input}\n{character['name']}: {output['character_response']}\n"
+        story_so_far += (
+            f"\nUser: {user_input}\n{character['name']}: {output['character_response']}\n"
+        )
 
-        transcript.append({
-            "method": "baseline",
-            "character": character["name"],
-            "scenario": scenario["scenario_name"],
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "model_output": output,
-        })
+        transcript.append(
+            {
+                "method": "baseline",
+                "character": character["name"],
+                "scenario": scenario["scenario_name"],
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "model_output": output,
+            }
+        )
 
         if output.get("beat_completed") is True:
             beat_index += 1

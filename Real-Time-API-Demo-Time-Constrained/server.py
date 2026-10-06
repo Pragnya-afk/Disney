@@ -46,13 +46,15 @@ def apply_fx(pcm: bytes, fx_chain, sample_rate: int = 24_000) -> bytes:
     clipped = np.clip(processed, -1.0, 1.0)
     return (clipped * 32767).astype(np.int16).tobytes()
 
+
 app = Flask(__name__, static_folder="public")
 app.config["SECRET_KEY"] = "olaf-tc-demo-secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 PORT = int(os.getenv("PORT", 3002))
 
-DIRECTOR_MODEL = "gpt-4o-mini"
-REALTIME_MODEL = "gpt-realtime"
+from config import REALTIME_DIRECTOR_MODEL, REALTIME_MODEL
+
+DIRECTOR_MODEL = REALTIME_DIRECTOR_MODEL
 AUDIO_SAMPLE_RATE = 24_000
 
 api_key = os.getenv("OPENAI_API_KEY")
@@ -62,7 +64,6 @@ olaf_fx = get_fx_chain(OLAF_AUDIOFX_CONFIG)
 _SUITE_FILE = "olaf_derailment_scenario_suite"
 _SKIP_FILES = {_SUITE_FILE, "__init__"}
 _SKIP_PATTERNS = ("medium_derail", "complete_derail")
-
 
 
 def _make_label(key: str) -> str:
@@ -75,7 +76,11 @@ def _build_registry() -> dict:
     pattern = os.path.join(IMPLEMENTATION_DIR, "scenarios", "*.py")
     for path in sorted(glob.glob(pattern)):
         module_name = os.path.splitext(os.path.basename(path))[0]
-        if module_name in _SKIP_FILES or module_name.startswith("_") or any(p in module_name for p in _SKIP_PATTERNS):
+        if (
+            module_name in _SKIP_FILES
+            or module_name.startswith("_")
+            or any(p in module_name for p in _SKIP_PATTERNS)
+        ):
             continue
         try:
             mod = importlib.import_module(f"scenarios.{module_name}")
@@ -93,9 +98,7 @@ def _build_registry() -> dict:
 _SCENARIO_REGISTRY = _build_registry()
 
 AVAILABLE_SCENARIOS = {
-    k: _make_label(k)
-    for k in _SCENARIO_REGISTRY
-    if k.endswith("_no_derailment")
+    k: _make_label(k) for k in _SCENARIO_REGISTRY if k.endswith("_no_derailment")
 }
 
 _state: dict = {
@@ -157,10 +160,14 @@ def build_system_prompt(state: dict, current_instruction: str = "") -> str:
     next_beat = beats[safe_idx + 1]["name"] if safe_idx < len(beats) - 1 else "None"
     story_tail = state["story_so_far"][-600:] if state["story_so_far"] else "(story just started)"
     time_limit = state.get("time_limit", 5.0)
-    instruction_block = f"""
+    instruction_block = (
+        f"""
 ## Director Instruction For This Turn (MANDATORY — follow exactly, including any [OPENER GUARD] line)
 {current_instruction}
-""" if current_instruction else ""
+"""
+        if current_instruction
+        else ""
+    )
 
     return f"""
 You are an interactive storytelling engine voicing {_character['name']}.
@@ -212,9 +219,7 @@ DIRECTOR_TOOL = {
     ),
     "parameters": {
         "type": "object",
-        "properties": {
-            "user_input": {"type": "string", "description": "What the user just said."}
-        },
+        "properties": {"user_input": {"type": "string", "description": "What the user just said."}},
         "required": ["user_input"],
     },
 }
@@ -276,7 +281,9 @@ def handle_director_tool(ws, event: dict):
 
     def _remaining_beat_lines(from_idx):
         remaining = beats[from_idx:]
-        sorted_beats = sorted(remaining, key=lambda b: _importance_order.get(b.get("importance", "medium"), 1))
+        sorted_beats = sorted(
+            remaining, key=lambda b: _importance_order.get(b.get("importance", "medium"), 1)
+        )
         return [
             f"- {b['name']} [{b.get('importance','medium').upper()}]: {b['goal']}"
             for b in sorted_beats
@@ -310,8 +317,7 @@ def handle_director_tool(ws, event: dict):
         decision["director_instruction"] = (
             "FINAL RESPONSE — close the story now in a single response. "
             "Cover ALL remaining beats below. HIGH-importance beats must be meaningfully narrated. "
-            "MEDIUM can be one sentence. LOW can be skipped if needed.\n"
-            + "\n".join(lines)
+            "MEDIUM can be one sentence. LOW can be skipped if needed.\n" + "\n".join(lines)
         )
 
     elif pacing_mode == "hurry":
@@ -319,15 +325,13 @@ def handle_director_tool(ws, event: dict):
         if turns_in_beat >= 2:
             decision["should_complete_beat"] = True
             decision["director_instruction"] = (
-                decision.get("director_instruction", "") +
-                " Wrap up this beat now and move on — the story needs to progress."
+                decision.get("director_instruction", "")
+                + " Wrap up this beat now and move on — the story needs to progress."
             )
 
     elif pacing_mode == "critical":
         decision["should_complete_beat"] = True
-        next_high = next(
-            (b for b in beats[safe_idx + 1:] if b.get("importance") == "high"), None
-        )
+        next_high = next((b for b in beats[safe_idx + 1 :] if b.get("importance") == "high"), None)
         if next_high and "director_instruction" in decision:
             decision["director_instruction"] += (
                 f" Then immediately bridge to the next key beat: "
@@ -374,10 +378,19 @@ def handle_director_tool(ws, event: dict):
     # instruction (and opener guard) so it lands in the strongest-weighted
     # channel the model reads, not just in the tool's return payload.
     state_now = get_state_snapshot()
-    ws.send(json.dumps({
-        "type": "session.update",
-        "session": {"type": "realtime", "instructions": build_system_prompt(state_now, tool_result["director_instruction"])},
-    }))
+    ws.send(
+        json.dumps(
+            {
+                "type": "session.update",
+                "session": {
+                    "type": "realtime",
+                    "instructions": build_system_prompt(
+                        state_now, tool_result["director_instruction"]
+                    ),
+                },
+            }
+        )
+    )
 
     print(
         f"[Director: {decision.get('decision_type')} | Pacing: {pacing_mode} | "
@@ -386,33 +399,43 @@ def handle_director_tool(ws, event: dict):
     )
 
     if _current_sid:
-        socketio.emit("director_decision", {
-            "decision_type": decision.get("decision_type"),
-            "instruction": decision.get("director_instruction", "")[:80],
+        socketio.emit(
+            "director_decision",
+            {
+                "decision_type": decision.get("decision_type"),
+                "instruction": decision.get("director_instruction", "")[:80],
+                "pacing_mode": pacing_mode,
+                "elapsed_seconds": temporal_state.get("elapsed_seconds", 0),
+                "remaining_seconds": temporal_state.get("remaining_seconds", 0),
+            },
+            room=_current_sid,
+        )
+
+    _transcript.append(
+        {
+            "turn": len(_transcript) + 1,
+            "beat": current_beat["name"],
+            "user_input": user_input,
+            "director_decision": decision,
             "pacing_mode": pacing_mode,
             "elapsed_seconds": temporal_state.get("elapsed_seconds", 0),
             "remaining_seconds": temporal_state.get("remaining_seconds", 0),
-        }, room=_current_sid)
+            "character_response": "",
+        }
+    )
 
-    _transcript.append({
-        "turn": len(_transcript) + 1,
-        "beat": current_beat["name"],
-        "user_input": user_input,
-        "director_decision": decision,
-        "pacing_mode": pacing_mode,
-        "elapsed_seconds": temporal_state.get("elapsed_seconds", 0),
-        "remaining_seconds": temporal_state.get("remaining_seconds", 0),
-        "character_response": "",
-    })
-
-    ws.send(json.dumps({
-        "type": "conversation.item.create",
-        "item": {
-            "type": "function_call_output",
-            "call_id": event["call_id"],
-            "output": json.dumps(tool_result),
-        },
-    }))
+    ws.send(
+        json.dumps(
+            {
+                "type": "conversation.item.create",
+                "item": {
+                    "type": "function_call_output",
+                    "call_id": event["call_id"],
+                    "output": json.dumps(tool_result),
+                },
+            }
+        )
+    )
     ws.send(json.dumps({"type": "response.create"}))
 
     # Inject story-close message when time's up (once only)
@@ -420,19 +443,24 @@ def handle_director_tool(ws, event: dict):
         _time_up_injected = True
         if _current_sid:
             socketio.emit("time_up", {}, room=_current_sid)
-        ws.send(json.dumps({
-            "type": "conversation.item.create",
-            "item": {
-                "type": "message",
-                "role": "user",
-                "content": [{
-                    "type": "input_text",
-                    "text": "[Story time ended — wrap up all remaining story beats immediately with a complete, satisfying ending]",
-                }],
-            },
-        }))
+        ws.send(
+            json.dumps(
+                {
+                    "type": "conversation.item.create",
+                    "item": {
+                        "type": "message",
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "input_text",
+                                "text": "[Story time ended — wrap up all remaining story beats immediately with a complete, satisfying ending]",
+                            }
+                        ],
+                    },
+                }
+            )
+        )
         ws.send(json.dumps({"type": "response.create"}))
-
 
 
 def run_openai_ws():
@@ -440,26 +468,30 @@ def run_openai_ws():
 
     def on_open(ws):
         state = get_state_snapshot()
-        ws.send(json.dumps({
-            "type": "session.update",
-            "session": {
-                "type": "realtime",
-                "instructions": build_system_prompt(state),
-                "audio": {
-                    "output": {"voice": "verse"},
-                    "input": {
-                        "transcription": {"model": "whisper-1"},
-                        "turn_detection": {
-                            "type": "server_vad",
-                            "silence_duration_ms": 700,
-                            "threshold": 0.5,
+        ws.send(
+            json.dumps(
+                {
+                    "type": "session.update",
+                    "session": {
+                        "type": "realtime",
+                        "instructions": build_system_prompt(state),
+                        "audio": {
+                            "output": {"voice": "verse"},
+                            "input": {
+                                "transcription": {"model": "whisper-1"},
+                                "turn_detection": {
+                                    "type": "server_vad",
+                                    "silence_duration_ms": 700,
+                                    "threshold": 0.5,
+                                },
+                            },
                         },
+                        "tools": [DIRECTOR_TOOL],
+                        "tool_choice": "auto",
                     },
-                },
-                "tools": [DIRECTOR_TOOL],
-                "tool_choice": "auto",
-            },
-        }))
+                }
+            )
+        )
         print("[OpenAI WS] connected, session configured")
 
     def on_message(ws, message):
@@ -473,10 +505,14 @@ def run_openai_ws():
 
         if etype == "session.created":
             if _current_sid:
-                socketio.emit("session_started", {
-                    "scenario": _state.get("scenario_name", ""),
-                    "time_limit": _state.get("time_limit", 5.0),
-                }, room=_current_sid)
+                socketio.emit(
+                    "session_started",
+                    {
+                        "scenario": _state.get("scenario_name", ""),
+                        "time_limit": _state.get("time_limit", 5.0),
+                    },
+                    room=_current_sid,
+                )
 
         elif etype == "response.output_audio.delta":
             pcm = base64.b64decode(data["delta"])
@@ -486,9 +522,9 @@ def run_openai_ws():
                 except Exception as e:
                     print(f"[FX error] {e}")
             if _current_sid:
-                socketio.emit("audio_output", {
-                    "audio": base64.b64encode(pcm).decode()
-                }, room=_current_sid)
+                socketio.emit(
+                    "audio_output", {"audio": base64.b64encode(pcm).decode()}, room=_current_sid
+                )
 
         elif etype == "response.output_audio_transcript.delta":
             delta = data.get("delta", "")
@@ -503,9 +539,7 @@ def run_openai_ws():
 
         elif etype == "response.function_call_arguments.done":
             if data.get("name") == "get_director_decision":
-                threading.Thread(
-                    target=handle_director_tool, args=(ws, data), daemon=True
-                ).start()
+                threading.Thread(target=handle_director_tool, args=(ws, data), daemon=True).start()
 
         elif etype == "response.done":
             olaf_text = ""
@@ -552,7 +586,6 @@ def run_openai_ws():
     )
     _openai_ws = ws
     ws.run_forever()
-
 
 
 @socketio.on("connect")
@@ -606,10 +639,14 @@ def on_start_session(data):
 def on_audio_input(data):
     if _openai_ws:
         try:
-            _openai_ws.send(json.dumps({
-                "type": "input_audio_buffer.append",
-                "audio": data["audio"],
-            }))
+            _openai_ws.send(
+                json.dumps(
+                    {
+                        "type": "input_audio_buffer.append",
+                        "audio": data["audio"],
+                    }
+                )
+            )
         except Exception as e:
             print(f"[audio_input error] {e}")
 
@@ -624,18 +661,21 @@ def on_text_input(data):
     with _lock:
         _state["story_so_far"] += f"\nUser: {text}"
     try:
-        _openai_ws.send(json.dumps({
-            "type": "conversation.item.create",
-            "item": {
-                "type": "message",
-                "role": "user",
-                "content": [{"type": "input_text", "text": text}],
-            },
-        }))
+        _openai_ws.send(
+            json.dumps(
+                {
+                    "type": "conversation.item.create",
+                    "item": {
+                        "type": "message",
+                        "role": "user",
+                        "content": [{"type": "input_text", "text": text}],
+                    },
+                }
+            )
+        )
         _openai_ws.send(json.dumps({"type": "response.create"}))
     except Exception as e:
         print(f"[text_input error] {e}")
-
 
 
 @app.route("/")
@@ -667,16 +707,18 @@ def time_status():
         time_limit = _state.get("time_limit", 5.0)
     safe_idx = min(beat_index, len(beats) - 1) if beats else 0
     temporal = _monitor.state(safe_idx, beats) if beats else {}
-    return jsonify({
-        "active": True,
-        "time_limit_minutes": time_limit,
-        "elapsed_seconds": temporal.get("elapsed_seconds", 0),
-        "remaining_seconds": temporal.get("remaining_seconds", 0),
-        "pacing_mode": temporal.get("pacing_mode", "normal"),
-        "should_stop": _monitor.should_stop_for_time(),
-        "beat_index": beat_index,
-        "total_beats": len(beats),
-    })
+    return jsonify(
+        {
+            "active": True,
+            "time_limit_minutes": time_limit,
+            "elapsed_seconds": temporal.get("elapsed_seconds", 0),
+            "remaining_seconds": temporal.get("remaining_seconds", 0),
+            "pacing_mode": temporal.get("pacing_mode", "normal"),
+            "should_stop": _monitor.should_stop_for_time(),
+            "beat_index": beat_index,
+            "total_beats": len(beats),
+        }
+    )
 
 
 @app.route("/state", methods=["GET"])
@@ -723,8 +765,6 @@ def save_session():
     except Exception as e:
         print(f"Save error: {e}")
         return jsonify({"saved": False, "error": str(e)})
-
-
 
 
 if __name__ == "__main__":

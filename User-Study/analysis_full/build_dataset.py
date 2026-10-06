@@ -19,6 +19,7 @@ latest-timestamped file per participant id is kept.
 
 Produces phases.csv and participants.csv in User-Study/analysis_full/.
 """
+
 import json
 import glob
 import os
@@ -73,12 +74,17 @@ def main():
 
         phases = d.get("phases", {})
         if not phases:
-            participant_rows.append({
-                "participant_id": pid, "study_date": d.get("study_date"),
-                "first_condition": None, "n_phases_reached": 0,
-                "abandoned_at_phase": None, "dropout_stage": "never_started",
-                "n_restarts": n_restarts[pid],
-            })
+            participant_rows.append(
+                {
+                    "participant_id": pid,
+                    "study_date": d.get("study_date"),
+                    "first_condition": None,
+                    "n_phases_reached": 0,
+                    "abandoned_at_phase": None,
+                    "dropout_stage": "never_started",
+                    "n_restarts": n_restarts[pid],
+                }
+            )
             continue
 
         story1_order = d.get("story1_order") or [None, None]
@@ -99,41 +105,42 @@ def main():
             q = p.get("questionnaire", {}) or {}
             elapsed = p.get("elapsed_seconds", 0) or 0
             limit_s = (p.get("time_limit_minutes") or 0) * 60
-            finished_story = (
-                (tot_beats is not None and beats_completed >= tot_beats)
-                or (cond == "time_constrained" and limit_s and elapsed >= limit_s * 0.95)
+            finished_story = (tot_beats is not None and beats_completed >= tot_beats) or (
+                cond == "time_constrained" and limit_s and elapsed >= limit_s * 0.95
             )
 
-            phase_rows.append({
-                "participant_id": pid,
-                "study_date": d.get("study_date"),
-                "phase": phase_num,
-                "story": story,
-                "round": p.get("round"),
-                "condition": cond,
-                "order_position": order_position,
-                "scenario": scen,
-                "beats_completed": beats_completed,
-                "total_beats": tot_beats,
-                "completion_ratio": (beats_completed / tot_beats) if tot_beats else None,
-                "elapsed_seconds": elapsed,
-                "time_limit_seconds": limit_s,
-                "n_turns": len(p.get("turns", []) or []),
-                "finished_story": finished_story,
-                "has_questionnaire": bool(q),
-                "q1_coherence": q.get("q1"),
-                "q2_in_character": q.get("q2"),
-                "q4_engagement": q.get("q4"),
-                "q5_overall": q.get("q5"),
-                "q6_tried_derail": q.get("q6"),
-                "q6_resist_stayed_on_track": q.get("q6_resist"),
-                "q_pacing": q.get("q_pacing"),
-                "q8_ending_satisfying": q.get("q8_ending"),
-                "q8_knows_story": q.get("q8_knows_story"),
-                "q10_natural": q.get("q10_natural"),
-                "q_breakdown_text": q.get("q_breakdown"),
-                "q_comments_text": q.get("q_comments"),
-            })
+            phase_rows.append(
+                {
+                    "participant_id": pid,
+                    "study_date": d.get("study_date"),
+                    "phase": phase_num,
+                    "story": story,
+                    "round": p.get("round"),
+                    "condition": cond,
+                    "order_position": order_position,
+                    "scenario": scen,
+                    "beats_completed": beats_completed,
+                    "total_beats": tot_beats,
+                    "completion_ratio": (beats_completed / tot_beats) if tot_beats else None,
+                    "elapsed_seconds": elapsed,
+                    "time_limit_seconds": limit_s,
+                    "n_turns": len(p.get("turns", []) or []),
+                    "finished_story": finished_story,
+                    "has_questionnaire": bool(q),
+                    "q1_coherence": q.get("q1"),
+                    "q2_in_character": q.get("q2"),
+                    "q4_engagement": q.get("q4"),
+                    "q5_overall": q.get("q5"),
+                    "q6_tried_derail": q.get("q6"),
+                    "q6_resist_stayed_on_track": q.get("q6_resist"),
+                    "q_pacing": q.get("q_pacing"),
+                    "q8_ending_satisfying": q.get("q8_ending"),
+                    "q8_knows_story": q.get("q8_knows_story"),
+                    "q10_natural": q.get("q10_natural"),
+                    "q_breakdown_text": q.get("q_breakdown"),
+                    "q_comments_text": q.get("q_comments"),
+                }
+            )
 
         first_cond = story1_order[0] if story1_order else None
         last_phase_data = phases.get(str(int(abandoned_at))) if abandoned_at is not None else None
@@ -161,25 +168,28 @@ def main():
             last_beats = last_phase_data.get("beats_completed", 0)
             last_elapsed = last_phase_data.get("elapsed_seconds", 0) or 0
             last_limit = (last_phase_data.get("time_limit_minutes") or 0) * 60
-            story_was_finished = (
-                (last_tot is not None and last_beats >= last_tot)
-                or (last_limit and last_elapsed >= last_limit * 0.95)
+            story_was_finished = (last_tot is not None and last_beats >= last_tot) or (
+                last_limit and last_elapsed >= last_limit * 0.95
             )
             if story_was_finished:
                 dropout_stage = f"phase_{int(abandoned_at)}_after_story_before_questionnaire"
             else:
                 dropout_stage = f"phase_{int(abandoned_at)}_mid_story"
 
-        participant_rows.append({
-            "participant_id": pid, "study_date": d.get("study_date"),
-            "story1_order": story1_order, "story2_order": story2_order,
-            "first_condition": first_cond,
-            "n_phases_reached": len(phases),
-            "abandoned_at_phase": abandoned_at,
-            "completed_study": reached_and_finished_p4,
-            "dropout_stage": dropout_stage,
-            "n_restarts": n_restarts[pid],
-        })
+        participant_rows.append(
+            {
+                "participant_id": pid,
+                "study_date": d.get("study_date"),
+                "story1_order": story1_order,
+                "story2_order": story2_order,
+                "first_condition": first_cond,
+                "n_phases_reached": len(phases),
+                "abandoned_at_phase": abandoned_at,
+                "completed_study": reached_and_finished_p4,
+                "dropout_stage": dropout_stage,
+                "n_restarts": n_restarts[pid],
+            }
+        )
 
     phases_df = pd.DataFrame(phase_rows)
     participants_df = pd.DataFrame(participant_rows)

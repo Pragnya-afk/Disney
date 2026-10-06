@@ -47,6 +47,7 @@ import re
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
@@ -54,45 +55,65 @@ SCRIPT_DIR = Path(__file__).parent
 SESSIONS_DIR = SCRIPT_DIR.parent / "outputs_all" / "phase_4"
 OUT_PATH = SCRIPT_DIR / "plots" / "12_beat_compression_time_constrained.png"
 
-BEATS = ['story_opening', 'stepfamily_cruelty', 'royal_invitation', 'fairy_godmother_appears',
-         'ball_preparation', 'at_the_ball', 'midnight_escape', 'slipper_search', 'resolution']
-BEAT_LABELS = ['1. Story opening', '2. Stepfamily cruelty', '3. Royal invitation',
-               '4. Fairy godmother appears', '5. Ball preparation', '6. At the ball',
-               '7. Midnight escape', '8. Slipper search', '9. Resolution']
+BEATS = [
+    "story_opening",
+    "stepfamily_cruelty",
+    "royal_invitation",
+    "fairy_godmother_appears",
+    "ball_preparation",
+    "at_the_ball",
+    "midnight_escape",
+    "slipper_search",
+    "resolution",
+]
+BEAT_LABELS = [
+    "1. Story opening",
+    "2. Stepfamily cruelty",
+    "3. Royal invitation",
+    "4. Fairy godmother appears",
+    "5. Ball preparation",
+    "6. At the ball",
+    "7. Midnight escape",
+    "8. Slipper search",
+    "9. Resolution",
+]
 BEAT_RANK = {b: i for i, b in enumerate(BEATS)}
-CATS = ['developed', 'hurried', 'compressed', 'skipped', 'folded_final']
+CATS = ["developed", "hurried", "compressed", "skipped", "folded_final"]
 
 # Director-assigned importance per beat, from the scenario definition
 # (Implementation/scenarios/olaf_derailment_scenario_suite.py, olaf_retells_cinderella).
 # Shown as a small subtitle under each beat label so compression can be read
 # against the priority the director was actually told to protect.
 BEAT_PRIORITY = {
-    'story_opening': 'medium',
-    'stepfamily_cruelty': 'low',
-    'royal_invitation': 'medium',
-    'fairy_godmother_appears': 'high',
-    'ball_preparation': 'medium',
-    'at_the_ball': 'high',
-    'midnight_escape': 'high',
-    'slipper_search': 'medium',
-    'resolution': 'high',
+    "story_opening": "medium",
+    "stepfamily_cruelty": "low",
+    "royal_invitation": "medium",
+    "fairy_godmother_appears": "high",
+    "ball_preparation": "medium",
+    "at_the_ball": "high",
+    "midnight_escape": "high",
+    "slipper_search": "medium",
+    "resolution": "high",
 }
 
 # ---- Edit plot text here ----
-TITLE = ("Compression of Cinderella beats under time-constrained pacing (5 mins) \n")
+TITLE = "Compression of Cinderella beats under time-constrained pacing (5 mins) \n"
 CAT_LABELS = {
-    'developed': 'Developed at normal pace',
-    'hurried': 'Hurried (finished in 1 turn, no compression forced)',
-    'compressed': 'Compressed (critical pacing)',
-    'skipped': 'Skipped ahead mid-story',
-    'folded_final': 'Folded into closing turn',
+    "developed": "Developed at normal pace",
+    "hurried": "Hurried (finished in 1 turn, no compression forced)",
+    "compressed": "Compressed (critical pacing)",
+    "skipped": "Skipped ahead mid-story",
+    "folded_final": "Folded into closing turn",
 }
 XLABEL_TEMPLATE = "Number of time_constrained phases (n={n} transcripts)"
 # ---- end editable text ----
 
 CAT_COLORS = {
-    'developed': '#2E8B2E', 'hurried': '#8FBF3F', 'compressed': '#E8A33D',
-    'skipped': '#B22222', 'folded_final': '#6A3D9A',
+    "developed": "#2E8B2E",
+    "hurried": "#8FBF3F",
+    "compressed": "#E8A33D",
+    "skipped": "#B22222",
+    "folded_final": "#6A3D9A",
 }
 
 
@@ -162,18 +183,42 @@ def main():
         ax.barh(list(y), vals, left=left, color=CAT_COLORS[c], label=CAT_LABELS[c])
         for i, v in enumerate(vals):
             if v > 0:
-                ax.text(left[i] + v / 2, i, str(v), ha="center", va="center",
-                         color="white", fontsize=10, fontweight="bold")
-        left = [l + v for l, v in zip(left, vals)]
+                ax.text(
+                    left[i] + v / 2,
+                    i,
+                    str(v),
+                    ha="center",
+                    va="center",
+                    color="white",
+                    fontsize=10,
+                    fontweight="bold",
+                )
+        left = [lft + v for lft, v in zip(left, vals)]
 
     ax.set_yticks(list(y))
     ax.set_yticklabels([])  # replaced by the two-line labels drawn below
     ax.invert_yaxis()
     for i, b in enumerate(BEATS):
-        ax.text(-0.01, i - 0.16, BEAT_LABELS[i], transform=ax.get_yaxis_transform(),
-                 ha="right", va="center", fontsize=11)
-        ax.text(-0.01, i + 0.20, f"{BEAT_PRIORITY[b]} priority", transform=ax.get_yaxis_transform(),
-                 ha="right", va="center", fontsize=8, color="dimgray", style="italic")
+        ax.text(
+            -0.01,
+            i - 0.16,
+            BEAT_LABELS[i],
+            transform=ax.get_yaxis_transform(),
+            ha="right",
+            va="center",
+            fontsize=11,
+        )
+        ax.text(
+            -0.01,
+            i + 0.20,
+            f"{BEAT_PRIORITY[b]} priority",
+            transform=ax.get_yaxis_transform(),
+            ha="right",
+            va="center",
+            fontsize=8,
+            color="dimgray",
+            style="italic",
+        )
     ax.set_xlabel(XLABEL_TEMPLATE.format(n=n))
     ax.set_xlim(0, n)
     ax.set_title(TITLE)
