@@ -42,6 +42,7 @@ import argparse
 
 
 def load_json(path: str):
+    """Load a JSON file from disk."""
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -98,13 +99,7 @@ def _parse_codi_director_reason(direct_response: str) -> str:
 
 
 def extract_codi_raw_lines(codi_json_path: str, label: str = "CODI") -> str:
-    """
-    Extract from the original CoDi-main output format.
-
-    Each turn has:
-      direct_response — CoDi director's reasoning + action choice
-      story_progress  — actual narrative / character output
-    """
+    """Extract character lines from the original CoDi output format."""
     data = load_json(codi_json_path)
     if isinstance(data, list):
         data = data[0]
@@ -145,6 +140,7 @@ def extract_codi_raw_lines(codi_json_path: str, label: str = "CODI") -> str:
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--input", help="Single transcript JSON file.")

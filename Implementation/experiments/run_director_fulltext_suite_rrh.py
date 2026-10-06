@@ -34,6 +34,7 @@ RUN_ID = 1
 
 
 def output_path(scenario_name: str) -> Path:
+    """Transcript path for a full-text director run."""
     return (
         Path(IMPLEMENTATION_DIR)
         / "outputs"
@@ -45,6 +46,7 @@ def output_path(scenario_name: str) -> Path:
 
 
 def main():
+    """Run the full-text director for each RRH scenario without an output yet."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dry-run", action="store_true", help="Print what would run without executing."

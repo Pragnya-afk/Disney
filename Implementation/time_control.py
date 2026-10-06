@@ -17,6 +17,8 @@ import time
 
 
 class TemporalMonitor:
+    """Tracks elapsed time vs. beat progress and derives a pacing mode."""
+
     def __init__(
         self,
         time_limit_minutes: float,
@@ -36,22 +38,27 @@ class TemporalMonitor:
         self.critical_margin = critical_margin
 
     def elapsed_seconds(self) -> float:
+        """Seconds since the monitor was created."""
         return time.time() - self.start_time
 
     def remaining_seconds(self) -> float:
+        """Seconds left before the time limit (never negative)."""
         return max(0.0, self.time_limit_seconds - self.elapsed_seconds())
 
     def expected_progress(self) -> float:
+        """Fraction of the time budget used so far (0..1)."""
         if self.time_limit_seconds <= 0:
             return 1.0
         return min(1.0, self.elapsed_seconds() / self.time_limit_seconds)
 
     def actual_progress(self, beat_index: int) -> float:
+        """Fraction of beats completed (0..1)."""
         if self.total_beats <= 0:
             return 1.0
         return min(1.0, beat_index / self.total_beats)
 
     def pacing_mode(self, beat_index: int) -> str:
+        """Return too_fast / normal / hurry / critical / final for this beat index."""
         remaining = self.remaining_seconds()
         expected = self.expected_progress()
         actual = self.actual_progress(beat_index)
@@ -71,14 +78,17 @@ class TemporalMonitor:
         return "normal"
 
     def should_stop_for_time(self) -> bool:
+        """True once the time limit is reached."""
         return self.remaining_seconds() <= 0
 
     def should_allow_story_closure(self, beat_index: int) -> bool:
+        """Allow closing on the final beat or inside the final buffer."""
         near_final_beat = beat_index >= self.total_beats - 1
         almost_out_of_time = self.remaining_seconds() <= self.final_buffer_seconds
         return near_final_beat or almost_out_of_time
 
     def state(self, beat_index: int, beats: list) -> dict:
+        """Snapshot of timing and beat progress passed to the director prompt."""
         remaining_beats = beats[beat_index:] if beat_index < len(beats) else []
 
         return {

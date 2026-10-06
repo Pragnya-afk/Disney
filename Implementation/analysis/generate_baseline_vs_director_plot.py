@@ -60,11 +60,13 @@ plt.rcParams["font.size"] = 14
 
 
 def load(path):
+    """Load a JSON file."""
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
 def load_baseline_vs_director():
+    """Average single-story scores per metric for baseline (A) and director (B)."""
     paths = sorted(glob.glob("evaluation_results/baseline_vs_director/*/eval_run_1.json"))
     paths = [
         p for p in paths if not any(Path(p).parent.name.startswith(pfx) for pfx in EXCLUDE_PREFIXES)
@@ -112,6 +114,7 @@ def load_pairwise_wins():
     # olaf_derailment_scenario_suite) to match the n=30 scope used everywhere
     # else in this thesis (the CoDi comparison, the time-budget ablation) --
     # leaving the 33-scenario set as the odd one out otherwise.
+    """Count AB/BA-aggregated wins and ties per metric."""
     paths = [p for p in _filtered_paths() if Path(p).parent.name not in LEGACY_RRH_NAMES]
     wins_a, wins_b, ties = defaultdict(int), defaultdict(int), defaultdict(int)
     for p in paths:
@@ -129,6 +132,7 @@ def load_pairwise_wins():
 
 
 def load_by_derailment_level(metric="Overall"):
+    """Average one metric per derailment level for both methods."""
     paths = _filtered_paths()
 
     def level(name):
@@ -155,6 +159,7 @@ def load_by_derailment_level(metric="Overall"):
 
 
 def plot(avg_a, avg_b):
+    """Figure 01: scores by metric."""
     x = range(len(METRICS))
     width = 0.38
     fig, ax = plt.subplots(figsize=(13, 6.5))
@@ -193,6 +198,7 @@ def plot(avg_a, avg_b):
 
 
 def plot_pairwise_wins(wins_a, wins_b, ties, n):
+    """Figure 02: stacked pairwise wins."""
     x = range(len(METRICS))
     a_vals = [wins_a[m] for m in METRICS]
     tie_vals = [ties[m] for m in METRICS]
@@ -225,6 +231,7 @@ def plot_pairwise_wins(wins_a, wins_b, ties, n):
 
 
 def plot_by_derailment_level(baseline, director, metric="Overall", title=None, out_name=None):
+    """Figure 03 (and 16/17): one metric by derailment level."""
     levels = ["None", "Medium", "Complete"]
     x = range(len(levels))
     width = 0.35
@@ -270,6 +277,7 @@ def plot_by_derailment_level(baseline, director, metric="Overall", title=None, o
 
 
 def main():
+    """Render all baseline-vs-director figures."""
     avg_a, avg_b, n = load_baseline_vs_director()
     print(f"Scenarios included: {n}")
     plot(avg_a, avg_b)

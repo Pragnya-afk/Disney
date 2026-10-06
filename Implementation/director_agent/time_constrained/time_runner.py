@@ -16,6 +16,7 @@ from time_auto_main import run_story
 
 
 def main():
+    """Run the scripted time-constrained director --runs times."""
     parser = argparse.ArgumentParser()
 
     parser.add_argument(

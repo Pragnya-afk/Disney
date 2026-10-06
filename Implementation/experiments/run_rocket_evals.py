@@ -53,10 +53,12 @@ EVAL_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_results"
 
 
 def log(msg: str):
+    """Timestamped progress print."""
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
 def build_profile(scenario_name: str) -> str:
+    """Character + scenario profile JSON for the judge."""
     sc = SCENARIOS[scenario_name]
     return json.dumps(
         {
@@ -72,6 +74,7 @@ def build_profile(scenario_name: str) -> str:
 
 
 def run_ab_ba(client, model, story_a, story_b, profile, prompt_template, dimensions):
+    """Run AB then BA judge calls and aggregate them."""
     fmt = dict(character_profile=profile, story_a=story_a, story_b=story_b)
     ab_raw = call_evaluator(client, model, prompt_template.format(**fmt))
     ab_wins = parse_ab_winners(ab_raw, dimensions)
@@ -92,6 +95,7 @@ def run_ab_ba(client, model, story_a, story_b, profile, prompt_template, dimensi
 
 
 def run_single(client, model, story, profile, prompt_template, dimensions):
+    """Single-story judge call; returns raw text and scores."""
     raw = call_evaluator(
         client, model, prompt_template.format(character_profile=profile, story=story)
     )
@@ -100,6 +104,7 @@ def run_single(client, model, story, profile, prompt_template, dimensions):
 
 
 def eval_baseline_vs_director(client, model, dry_run):
+    """Baseline vs. director for every Rocket scenario with both outputs."""
     baseline_scenarios = {
         p.parent.parent.name for p in OUTPUTS_DIR.glob("baseline/rocket_*/batch/run_1.json")
     }
@@ -156,6 +161,7 @@ def eval_baseline_vs_director(client, model, dry_run):
 
 
 def run_summarize():
+    """Rebuild evaluation_summary/ tables."""
     log("[summarize] building tables...")
     import subprocess
 
@@ -179,6 +185,7 @@ def run_summarize():
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default=JUDGE_MODEL)
     parser.add_argument("--dry-run", action="store_true")

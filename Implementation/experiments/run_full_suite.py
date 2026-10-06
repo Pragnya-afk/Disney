@@ -36,6 +36,7 @@ RUN_ID = 1
 
 
 def director_output_path(scenario_name: str) -> Path:
+    """Transcript path for a director run."""
     return (
         Path(IMPLEMENTATION_DIR)
         / "outputs"
@@ -47,6 +48,7 @@ def director_output_path(scenario_name: str) -> Path:
 
 
 def time_output_path(scenario_name: str, time_limit: float) -> Path:
+    """Transcript path for a time-constrained run."""
     return (
         Path(IMPLEMENTATION_DIR)
         / "outputs"
@@ -59,6 +61,7 @@ def time_output_path(scenario_name: str, time_limit: float) -> Path:
 
 
 def main():
+    """Run director and time-constrained runs for every suite scenario."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dry-run", action="store_true", help="Print what would run without executing."

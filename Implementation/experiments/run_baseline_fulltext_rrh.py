@@ -48,6 +48,7 @@ MODEL = BASELINE_MODEL
 
 
 def call_llm(client, prompt):
+    """Single baseline LLM call (temperature 0.7)."""
     response = client.chat.completions.create(
         model=MODEL,
         temperature=0.7,
@@ -63,6 +64,7 @@ def call_llm(client, prompt):
 
 
 def build_prompt(user_input, story_so_far, character, full_text):
+    """Baseline prompt with the full story text instead of beats."""
     return f"""
 You are controlling an interactive AI character.
 
@@ -111,6 +113,7 @@ Available animations:
 
 
 def safe_parse(raw, fallback_animation):
+    """Parse model JSON; on failure wrap the raw text."""
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
@@ -124,12 +127,14 @@ def safe_parse(raw, fallback_animation):
 
 
 def validate_animation(animation, character):
+    """Return the animation if supported, else the character's first animation."""
     if animation in character["available_animations"]:
         return animation
     return character["available_animations"][0]
 
 
 def run_fulltext(scenario: dict, character: dict, run_id: int) -> str:
+    """Run one full-text baseline story and save the transcript."""
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
     scenario_name = scenario["scenario_name"]
@@ -179,6 +184,7 @@ def run_fulltext(scenario: dict, character: dict, run_id: int) -> str:
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dry-run", action="store_true", help="Print what would run without executing."

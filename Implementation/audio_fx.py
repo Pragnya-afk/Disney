@@ -15,7 +15,8 @@ except ImportError:
     )
 
 
-def get_fx_chain(audio_config=None):
+def get_fx_chain(audio_config: dict | None = None):
+    """Build a pitch-shift/reverb chain from a config dict, or None if no config."""
     if audio_config is None:
         return None
 

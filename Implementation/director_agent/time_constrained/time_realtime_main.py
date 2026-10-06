@@ -73,6 +73,7 @@ def build_system_prompt(
     beats: list,
     time_limit: float,
 ) -> str:
+    """Build the realtime voice session instructions including the time budget."""
     idx = story_state["beat_index"]
     safe_idx = min(idx, len(beats) - 1)
     current_beat = beats[safe_idx]
@@ -204,10 +205,12 @@ def mic_capture_worker(
 
 
 def load_module(name: str):
+    """Import a module by dotted name."""
     return importlib.import_module(name)
 
 
 def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
+    """Return SCENARIOS[scenario_name] from a suite module, or its single SCENARIO."""
     mod = load_module(scenario_module)
     if scenario_name:
         if not hasattr(mod, "SCENARIOS"):
@@ -221,6 +224,7 @@ def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
 
 
 def text_indicates_next_beat(text: str, current_beat_name: str) -> bool:
+    """Keyword heuristic: does the spoken text already describe the next beat?"""
     text = text.lower()
     beat_keywords = {
         "story_opening": ["mother warned", "stay on the path", "entered the forest"],
@@ -239,6 +243,7 @@ def text_indicates_next_beat(text: str, current_beat_name: str) -> bool:
 
 
 def advance_beat(story_state: dict, beats: list) -> None:
+    """Mark the current beat complete and move to the next one."""
     idx = story_state["beat_index"]
     if idx < len(beats):
         story_state["completed_beats"].append(beats[idx]["name"])
@@ -556,6 +561,7 @@ async def run_realtime(
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(

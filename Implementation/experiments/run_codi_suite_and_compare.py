@@ -105,14 +105,17 @@ except ImportError:
 
 
 def codi_output_path(scenario_name: str, run_id: int) -> Path:
+    """Path of the converted CoDi transcript."""
     return CODI_OUTPUTS_DIR / scenario_name / "batch" / f"run_{run_id}.json"
 
 
 def director_output_path(scenario_name: str, run_id: int) -> Path:
+    """Path of the director transcript."""
     return DIRECTOR_OUTPUTS_DIR / scenario_name / "batch" / f"run_{run_id}.json"
 
 
 def eval_result_path(scenario_name: str, run_id: int) -> Path:
+    """Path of the CoDi-vs-director evaluation result."""
     return EVAL_RESULTS_DIR / scenario_name / f"pairwise_codi_vs_director_run_{run_id}.json"
 
 
@@ -125,10 +128,7 @@ def codi_raw_output_dir(scenario_name: str) -> Path:
 
 
 def make_codi_inputs_text(scenario: dict) -> str:
-    """
-    Build a natural-language 'inputs' description for CoDi from a scenario dict.
-    Matches the format used in CoDi's data/example.jsonl.
-    """
+    """Natural-language CoDi input description built from a scenario."""
     story_topic = scenario["story_topic"]
     derailment_level = scenario.get("derailment_level", "none")
 
@@ -274,10 +274,7 @@ def run_codi_for_scenario(
     dry_run: bool,
     force: bool,
 ) -> Optional[Path]:
-    """
-    Generate a CoDi output for one scenario and convert it to transcript format.
-    Returns the saved transcript path, or None if skipped/failed.
-    """
+    """Generate a CoDi story for one scenario and convert it to a transcript."""
     scenario_name = scenario["scenario_name"]
     out_path = codi_output_path(scenario_name, run_id)
 
@@ -403,10 +400,7 @@ def run_comparison_eval(
     model: str,
     force: bool,
 ) -> Optional[Path]:
-    """
-    Run AB + BA pairwise evaluation for one scenario (CoDi vs Director).
-    Returns the saved result path, or None if skipped/failed.
-    """
+    """Run AB + BA evaluation for one scenario (CoDi vs. director)."""
     scenario_name = scenario["scenario_name"]
     result_path = eval_result_path(scenario_name, run_id)
 
@@ -478,6 +472,7 @@ def run_comparison_eval(
 
 
 def run_summary(dry_run: bool) -> None:
+    """Rebuild evaluation_summary/ tables."""
     if dry_run:
         print("  [dry] would regenerate summary tables")
         return
@@ -500,6 +495,7 @@ def run_summary(dry_run: bool) -> None:
 
 
 def main() -> None:
+    """CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Run CoDi for the full scenario suite, evaluate vs Director, and summarize."
     )

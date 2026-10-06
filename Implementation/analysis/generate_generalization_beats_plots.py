@@ -49,6 +49,7 @@ plt.rcParams["font.size"] = 12
 
 
 def load(path):
+    """Load a JSON file."""
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
@@ -57,6 +58,7 @@ def load(path):
 
 
 def load_rocket_bvd():
+    """Average scores and count wins for the Rocket baseline-vs-director runs."""
     paths = sorted(glob.glob("evaluation_results/baseline_vs_director/rocket_*/eval_run_1.json"))
     sum_a, sum_b, n_a, n_b = (
         defaultdict(float),
@@ -93,6 +95,7 @@ def load_rocket_bvd():
 
 
 def load_rocket_derailment():
+    """Rocket Overall score per derailment level."""
     groups = {
         "None": ["rocket_retells_red_riding_hood_no_derailment"],
         "Medium": [
@@ -123,6 +126,7 @@ def load_rocket_derailment():
 
 
 def load_beats_vs_fulltext():
+    """Average scores and count wins for beats vs. full-text director."""
     paths = sorted(glob.glob("evaluation_results/beats_vs_fulltext_director/*/eval_run_1.json"))
     sum_a, sum_b, n_a, n_b = (
         defaultdict(float),
@@ -162,6 +166,7 @@ def load_beats_vs_fulltext():
 
 
 def grouped_bar_scores(avg_a, avg_b, label_a, label_b, title, subtitle, out_name):
+    """Grouped bar chart of per-metric scores."""
     x = range(len(METRICS))
     width = 0.38
     fig, ax = plt.subplots(figsize=(13, 6.5))
@@ -195,6 +200,7 @@ def grouped_bar_scores(avg_a, avg_b, label_a, label_b, title, subtitle, out_name
 
 
 def stacked_pairwise_wins(wins_a, wins_b, ties, n, label_a, label_b, title, subtitle, out_name):
+    """Stacked bar chart of pairwise wins and ties."""
     fig, ax = plt.subplots(figsize=(13, 7.5))
     x = range(len(METRICS))
     a_vals = [wins_a[m] for m in METRICS]
@@ -226,6 +232,7 @@ def stacked_pairwise_wins(wins_a, wins_b, ties, n, label_a, label_b, title, subt
 
 
 def derailment_level_bar(baseline, director, title, out_name):
+    """Bar chart of a score by derailment level."""
     levels = ["None", "Medium", "Complete"]
     x = range(len(levels))
     width = 0.35
@@ -269,6 +276,7 @@ def derailment_level_bar(baseline, director, title, out_name):
 
 
 def per_scenario_bar(per_scenario, label_a, label_b, title, subtitle, out_name):
+    """Per-scenario Overall scores for two methods."""
     order = [
         "olaf_retells_red_riding_hood_no_derailment",
         "olaf_retells_red_riding_hood_medium_derailment",
@@ -320,6 +328,7 @@ def per_scenario_bar(per_scenario, label_a, label_b, title, subtitle, out_name):
 
 def main():
     # Rocket: baseline vs director
+    """Render figures 08-13."""
     avg_a, avg_b, wins_a, wins_b, ties, per_scenario = load_rocket_bvd()
     n = len(per_scenario)
     grouped_bar_scores(

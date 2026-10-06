@@ -38,11 +38,7 @@ from evaluation_agent.evaluation_core import (
 
 
 def call_evaluator(client, model: str, prompt: str) -> str:
-    """
-    Same as evaluation_core.call_evaluator, but without forcing temperature=0 --
-    newer reasoning-style models (gpt-5.x family) reject any explicit
-    temperature other than their default (1) and error out otherwise.
-    """
+    """Judge call without a temperature argument (gpt-5.x rejects non-default values)."""
     response = client.chat.completions.create(
         model=model,
         messages=[
@@ -66,6 +62,7 @@ IMPLEMENTATION_DIR = Path(__file__).parent.parent
 
 
 def build_profile(scenario_name: str) -> str:
+    """Character + scenario profile JSON for the judge."""
     sc = SCENARIOS[scenario_name]
     return json.dumps(
         {
@@ -86,6 +83,7 @@ def build_profile(scenario_name: str) -> str:
 
 
 def run_single(client, model, story, profile, prompt_template, dimensions):
+    """Single-story judge call; returns raw text and scores."""
     raw = call_evaluator(
         client, model, prompt_template.format(character_profile=profile, story=story)
     )
@@ -94,6 +92,7 @@ def run_single(client, model, story, profile, prompt_template, dimensions):
 
 
 def run_ab_ba(client, model, story_a, story_b, profile, prompt_template, dimensions):
+    """Run AB then BA judge calls and aggregate them."""
     fmt = dict(character_profile=profile, story_a=story_a, story_b=story_b)
     ab_raw = call_evaluator(client, model, prompt_template.format(**fmt))
     ab_wins = parse_ab_winners(ab_raw, dimensions)
@@ -114,6 +113,7 @@ def run_ab_ba(client, model, story_a, story_b, profile, prompt_template, dimensi
 
 
 def run_one(client, model, scenario):
+    """Re-judge one beats-vs-full-text scenario with the given model."""
     path_a = IMPLEMENTATION_DIR / "outputs" / "director_agent" / scenario / "batch" / "run_1.json"
     path_b = (
         IMPLEMENTATION_DIR
@@ -161,6 +161,7 @@ def run_one(client, model, scenario):
 
 
 def print_comparison(model, scenario, new_result):
+    """Print new vs. existing verdicts side by side."""
     existing_path = (
         IMPLEMENTATION_DIR
         / "evaluation_results"
@@ -189,6 +190,7 @@ def print_comparison(model, scenario, new_result):
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", required=True, help="Judge model to use, e.g. gpt-5.6-sol")
     parser.add_argument("--scenarios", nargs="+", required=True, help="One or more scenario names")

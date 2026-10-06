@@ -85,14 +85,17 @@ Return valid JSON only.
 
 
 def make_client() -> OpenAI:
+    """Create an OpenAI client from OPENAI_API_KEY."""
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def load_module(module_name: str):
+    """Import a module by dotted name (e.g. character_prompts.olaf)."""
     return importlib.import_module(module_name)
 
 
 def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
+    """Return SCENARIOS[scenario_name] from a suite module, or its single SCENARIO."""
     mod = load_module(scenario_module)
     if scenario_name:
         if not hasattr(mod, "SCENARIOS"):
@@ -113,6 +116,7 @@ def build_actor_prompt(
     story_topic: str,
     beats: list,
 ) -> str:
+    """Build the actor prompt from the story state and the director's decision."""
     current_beat = beats[story_state["beat_index"]]
     current_index = story_state["beat_index"]
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
@@ -188,6 +192,7 @@ Return valid JSON only in this exact structure:
 
 
 def safe_json_parse(raw: str, fallback: dict) -> dict:
+    """Parse model JSON, returning the fallback (with the raw text) on failure."""
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
@@ -196,12 +201,14 @@ def safe_json_parse(raw: str, fallback: dict) -> dict:
 
 
 def validate_animation(animation: str, character: dict) -> str:
+    """Return the animation if the character supports it, else its first animation."""
     if animation in character["available_animations"]:
         return animation
     return character["available_animations"][0]
 
 
 def text_indicates_next_beat(actor_output: dict, current_beat_name: str) -> bool:
+    """Keyword heuristic: does the actor output already describe the next beat?"""
     text = (
         actor_output.get("character_response", "") + " " + actor_output.get("story_event", "")
     ).lower()
@@ -262,6 +269,7 @@ def should_complete_beat(
     story_state: dict,
     beats: list,
 ) -> bool:
+    """Complete the beat if the director, the actor or the keyword heuristic says so."""
     current_beat_name = beats[story_state["beat_index"]]["name"]
 
     if director_decision.get("should_complete_beat") is True:

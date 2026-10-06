@@ -31,10 +31,12 @@ MODEL = BASELINE_MODEL
 
 
 def load_module(module_name: str):
+    """Import a module by dotted name."""
     return importlib.import_module(module_name)
 
 
 def call_llm(prompt: str) -> str:
+    """Single baseline LLM call (temperature 0.7); returns the raw text."""
     response = client.chat.completions.create(
         model=MODEL,
         temperature=0.7,
@@ -49,7 +51,8 @@ def call_llm(prompt: str) -> str:
     return response.choices[0].message.content.strip()
 
 
-def build_prompt(user_input, character, beats):
+def build_prompt(user_input: str, character: dict, beats: list) -> str:
+    """Build the single-call baseline prompt (character + full beat list + user input)."""
     return f"""
 You are controlling an interactive AI character.
 
@@ -91,7 +94,8 @@ Available animations:
 """.strip()
 
 
-def safe_json_parse(raw, fallback_animation):
+def safe_json_parse(raw: str, fallback_animation: str) -> dict:
+    """Parse model JSON; on failure wrap the raw text as the character response."""
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
@@ -105,12 +109,14 @@ def safe_json_parse(raw, fallback_animation):
 
 
 def validate_animation(animation: str, character: dict) -> str:
+    """Return the animation if the character supports it, else its first animation."""
     if animation in character["available_animations"]:
         return animation
     return character["available_animations"][0]
 
 
 def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
+    """Run one scripted baseline story and save the transcript; returns its path."""
     character_mod = load_module(character_module)
     scenario_mod = load_module(scenario_module)
 
@@ -173,7 +179,8 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
     return transcript_path
 
 
-def main():
+def main() -> None:
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(

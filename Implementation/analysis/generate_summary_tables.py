@@ -30,6 +30,7 @@ IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def main():
+    """Regenerate evaluation_summary/ tables via summarize_evaluations.py."""
     import argparse
 
     parser = argparse.ArgumentParser(

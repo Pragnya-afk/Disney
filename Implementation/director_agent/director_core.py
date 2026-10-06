@@ -45,15 +45,7 @@ _REPETITION_GUARD = (
 
 
 def pacing_instruction_suffix(pacing_label: str) -> str:
-    """
-    Escalating text appended to the director's own director_instruction,
-    keyed on beat_pacing_label. This is enforced in code rather than left to
-    the director model's own judgment -- the prompt's Anti-Stall Rules ask
-    the model to self-escalate, but under sustained derailment it can keep
-    choosing not to progress turn after turn with nothing to stop it. This
-    guarantees the actor sees escalating pressure regardless of whether the
-    director's own JSON output did.
-    """
+    """Escalating anti-stall text appended in code to the director_instruction."""
     if pacing_label == "on_track":
         return _REPETITION_GUARD
     if pacing_label == "lingering":

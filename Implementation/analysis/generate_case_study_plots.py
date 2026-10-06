@@ -99,6 +99,7 @@ CINDERELLA_5MIN = {
 def two_bar_plot(
     scores_a, scores_b, label_a, label_b, title, out_name, color_a=ORANGE, color_b=BLUE
 ):
+    """Grouped bar chart of two conditions' per-metric scores."""
     x = range(len(METRICS))
     width = 0.38
     fig, ax = plt.subplots(figsize=(13, 6.5))
@@ -141,6 +142,7 @@ def two_bar_plot(
 
 
 def main():
+    """Render figures 14 (Frozen) and 15 (Cinderella)."""
     two_bar_plot(
         FROZEN_BASELINE,
         FROZEN_DIRECTOR,

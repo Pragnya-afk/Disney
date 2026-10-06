@@ -41,6 +41,7 @@ SCENARIO_MODULE = "scenarios.olaf_derailment_scenario_suite"
 
 
 def main():
+    """Regenerate the director run for each listed medium-derailment scenario."""
     for i, name in enumerate(NAMES, 1):
         print(f"\n[{i}/{len(NAMES)}] {name}")
         try:

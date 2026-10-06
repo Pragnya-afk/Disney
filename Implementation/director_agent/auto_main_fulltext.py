@@ -56,6 +56,7 @@ def build_actor_prompt_fulltext(
     character: dict,
     full_story_text: str,
 ) -> str:
+    """Build the actor prompt for the full-text (no beats) director variant."""
     turns_since_progress = story_state.get("turns_since_progress", 0)
 
     progress_hint = (
@@ -119,6 +120,7 @@ def run_story_fulltext(
     run_id: int,
     scenario_name_override: str | None = None,
 ) -> str:
+    """Run one scripted full-text director story and save the transcript."""
     client = make_client()
 
     character_mod = load_module(character_module)
@@ -226,6 +228,7 @@ def run_story_fulltext(
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(

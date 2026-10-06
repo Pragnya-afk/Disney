@@ -44,6 +44,7 @@ def should_close_story(director_decision: dict, story_state: dict, beats: list) 
     # Only honour close_story when all beats are genuinely done.
     # This guards against the director misclassifying a story-stop attempt
     # as a legitimate end-of-story signal.
+    """Honour close_story only once the final beat has been reached."""
     if director_decision.get("decision_type") != "close_story":
         return False
     return story_state["beat_index"] >= len(beats) - 1
@@ -55,6 +56,7 @@ def run_story(
     run_id: int,
     scenario_name_override: str | None = None,
 ) -> str:
+    """Run one scripted director-agent story and save the transcript; returns its path."""
     client = make_client()
 
     character_mod = load_module(character_module)
@@ -174,6 +176,7 @@ def run_story(
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(

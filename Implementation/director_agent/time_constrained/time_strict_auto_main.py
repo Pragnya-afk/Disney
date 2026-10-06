@@ -90,6 +90,8 @@ Return valid JSON only.
 
 
 class StrictTemporalMonitor(TemporalMonitor):
+    """TemporalMonitor that also refuses to start turns that would overrun the limit."""
+
     def __init__(
         self,
         time_limit_minutes: float,
@@ -107,15 +109,18 @@ class StrictTemporalMonitor(TemporalMonitor):
         self.safety_multiplier = safety_multiplier
         self.turn_durations = []
 
-    def record_turn_duration(self, duration_seconds: float):
+    def record_turn_duration(self, duration_seconds: float) -> None:
+        """Record how long one turn took."""
         self.turn_durations.append(duration_seconds)
 
     def average_turn_duration(self) -> float:
+        """Mean turn duration (default 7 s, floor 2 s)."""
         if not self.turn_durations:
             return 7.0
         return max(2.0, mean(self.turn_durations))
 
     def can_start_next_turn(self) -> bool:
+        """True if another turn fits in the remaining time."""
         expected_turn = max(
             self.min_turn_buffer_seconds,
             self.average_turn_duration() * self.safety_multiplier,
@@ -123,6 +128,7 @@ class StrictTemporalMonitor(TemporalMonitor):
         return self.remaining_seconds() > expected_turn
 
     def pacing_mode(self, beat_index: int) -> str:
+        """Force 'final' inside the final buffer, else defer to TemporalMonitor."""
         if self.remaining_seconds() <= self.final_buffer_seconds:
             return "final"
         return super().pacing_mode(beat_index)
@@ -137,6 +143,7 @@ def build_actor_prompt(
     beats: list,
     temporal_state: dict,
 ) -> str:
+    """Build the time-aware actor prompt (adds pacing mode and remaining time)."""
     current_beat = beats[story_state["beat_index"]]
     current_index = story_state["beat_index"]
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
@@ -222,6 +229,7 @@ def should_complete_beat(
     beats: list,
     temporal_state: dict,
 ) -> bool:
+    """Decide whether to advance the beat, taking the pacing mode into account."""
     pacing_mode = temporal_state.get("pacing_mode", "normal")
 
     if director_decision.get("should_complete_beat") is True:
@@ -243,6 +251,7 @@ def should_complete_beat(
 
 
 def should_close_story(director_decision: dict, temporal_state: dict) -> bool:
+    """Close on close_story or once the pacing mode is 'final'."""
     if director_decision.get("decision_type") == "close_story":
         return True
 
@@ -258,6 +267,7 @@ def choose_user_input(
     remaining_seconds: float,
     story_complete: bool,
 ) -> str:
+    """Use the scripted input, or a generic continue/finish prompt once they run out."""
     if turn_idx <= len(scenario_inputs):
         return scenario_inputs[turn_idx - 1]
 
@@ -267,7 +277,8 @@ def choose_user_input(
     return "Please continue the story in the remaining time."
 
 
-def wait_for_time_limit(start_time: float, time_limit_seconds: float):
+def wait_for_time_limit(start_time: float, time_limit_seconds: float) -> None:
+    """Sleep until the full time limit has elapsed."""
     remaining = time_limit_seconds - (time.time() - start_time)
     if remaining > 0:
         time.sleep(remaining)
@@ -279,6 +290,7 @@ def run_story(
     run_id: int,
     time_limit: float,
 ) -> str:
+    """Run one strict wall-clock-limited story and save the transcript."""
     load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
     client = make_client()
 
@@ -454,6 +466,7 @@ def run_story(
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(

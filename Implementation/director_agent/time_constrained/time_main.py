@@ -163,6 +163,7 @@ def build_actor_prompt(
     beats: list,
     temporal_state: dict,
 ) -> str:
+    """Build the time-aware actor prompt (adds pacing mode and remaining time)."""
     current_beat = beats[story_state["beat_index"]]
     current_index = story_state["beat_index"]
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
@@ -250,6 +251,7 @@ def call_actor_agent(
     beats: list,
     temporal_state: dict,
 ) -> dict:
+    """Call the actor LLM for one turn and return its parsed JSON output."""
     prompt = build_actor_prompt(
         user_input=user_input,
         story_state=story_state,
@@ -289,6 +291,7 @@ def should_complete_beat(
     beats: list,
     temporal_state: dict,
 ) -> bool:
+    """Decide whether to advance the beat, taking the pacing mode into account."""
     current_beat_name = beats[story_state["beat_index"]]["name"]
     pacing_mode = temporal_state.get("pacing_mode", "normal")
 
@@ -323,6 +326,7 @@ def should_close_story(
     monitor: TemporalMonitor,
     story_state: dict,
 ) -> bool:
+    """Close in 'final' pacing mode, or on close_story when the monitor allows it."""
     pacing_mode = temporal_state.get("pacing_mode")
 
     if pacing_mode == "final":
@@ -344,6 +348,7 @@ def generate_story_closing(
     scenario_name: str,
     time_limit: float,
 ) -> None:
+    """Generate a final closing line when the story is stopped for time."""
     remaining_beat_goals = [f"{b['name']}: {b['goal']}" for b in beats[story_state["beat_index"] :]]
 
     director_decision = {
@@ -392,6 +397,7 @@ def generate_story_closing(
 
 
 def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
+    """Return SCENARIOS[scenario_name] from a suite module, or its single SCENARIO."""
     scenario_mod = load_module(scenario_module)
     if scenario_name:
         if not hasattr(scenario_mod, "SCENARIOS"):
@@ -408,6 +414,7 @@ def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
 def run(
     character_module: str, scenario_module: str, time_limit: float, scenario_name: str | None = None
 ):
+    """Interactive terminal loop with a target story duration."""
     character_mod = load_module(character_module)
     scenario = load_scenario(scenario_module, scenario_name)
 
@@ -563,6 +570,7 @@ def run(
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(

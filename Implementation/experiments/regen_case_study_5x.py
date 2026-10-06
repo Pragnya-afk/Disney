@@ -77,6 +77,7 @@ GENERAL_SCORE_RE = re.compile(r"Score:?\**\s*(\d+(?:\.\d+)?)\s*/\s*10")
 
 
 def recover_scores(assessment, scores):
+    """Fill missing metric scores using a looser regex over the raw judge text."""
     for m in METRICS:
         if scores.get(m) is not None:
             continue
@@ -89,6 +90,7 @@ def recover_scores(assessment, scores):
 
 
 def build_profile(scenario_name):
+    """Character + scenario profile JSON for the judge."""
     sc = SCENARIOS[scenario_name]
     return json.dumps(
         {
@@ -104,6 +106,7 @@ def build_profile(scenario_name):
 
 
 def judge_single(client, transcript_path, profile):
+    """Single-story judge scores for one transcript."""
     transcript = json.loads(Path(transcript_path).read_text())
     story = transcript_to_story(transcript)
     raw = call_evaluator(
@@ -117,6 +120,7 @@ def judge_single(client, transcript_path, profile):
 
 
 def path_for(cond, scenario_name, run_id):
+    """Transcript path for a condition, scenario and run id."""
     if cond == "baseline":
         return (
             IMPLEMENTATION_DIR
@@ -149,6 +153,7 @@ def path_for(cond, scenario_name, run_id):
 
 
 def main():
+    """Generate 5 runs per condition, judge them and save the averages."""
     client = make_client()
     all_results = {}
 

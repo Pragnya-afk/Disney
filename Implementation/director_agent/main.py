@@ -38,6 +38,7 @@ MODEL = INTERACTIVE_MODEL
 
 
 def safe_json_parse(raw: str, fallback: dict) -> dict:
+    """Parse model JSON, returning the fallback unchanged on failure."""
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
@@ -52,6 +53,7 @@ def call_actor_agent(
     story_topic: str,
     beats: list,
 ) -> dict:
+    """Call the actor LLM for one turn and return its parsed JSON output."""
     prompt = build_actor_prompt(
         user_input=user_input,
         story_state=story_state,
@@ -85,10 +87,12 @@ def call_actor_agent(
 
 
 def should_close_story(director_decision: dict) -> bool:
+    """True if the director decided to close the story."""
     return director_decision.get("decision_type") == "close_story"
 
 
-def run(character_module: str, scenario_module: str):
+def run(character_module: str, scenario_module: str) -> None:
+    """Interactive terminal loop: director + actor respond to typed user input."""
     character_mod = load_module(character_module)
     scenario_mod = load_module(scenario_module)
 
@@ -197,7 +201,8 @@ def run(character_module: str, scenario_module: str):
     print(f"Saved transcript to {transcript_path}")
 
 
-def main():
+def main() -> None:
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(

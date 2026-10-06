@@ -32,6 +32,7 @@ RUN_ID = 1
 
 
 def director_output_path(scenario_name: str) -> Path:
+    """Transcript path for a director run."""
     return (
         Path(IMPLEMENTATION_DIR)
         / "outputs"
@@ -43,6 +44,7 @@ def director_output_path(scenario_name: str) -> Path:
 
 
 def main():
+    """Run the director for every Rocket suite scenario without an output yet."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dry-run", action="store_true", help="Print what would run without executing."

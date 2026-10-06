@@ -35,6 +35,7 @@ from config import JUDGE_MODEL
 
 
 def load_module(module_name: str):
+    """Import a module by dotted name."""
     return importlib.import_module(module_name)
 
 
@@ -56,6 +57,7 @@ def build_character_profile(character_module: str, scenario_module: str) -> str:
 
 
 def main():
+    """CLI: evaluate baseline vs. director over a scenario's batch runs."""
     parser = argparse.ArgumentParser()
 
     parser.add_argument(

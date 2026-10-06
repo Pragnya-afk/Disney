@@ -39,11 +39,13 @@ FNAME_RE = re.compile(r"session_(\d{8})_(\d{6})_(.+)\.json$")
 
 
 def total_beats(scenario_name):
+    """Number of beats in a scenario, or None if unknown."""
     sc = SCENARIOS.get(scenario_name)
     return len(sc["beats"]) if sc else None
 
 
 def load_latest_per_participant():
+    """Keep the latest session file per participant; returns (files, n_restarts)."""
     groups = defaultdict(list)
     for fp in sorted(glob.glob(SRC_GLOB)):
         base = os.path.basename(fp)
@@ -63,6 +65,7 @@ def load_latest_per_participant():
 
 
 def main():
+    """Write phases.csv and participants.csv."""
     latest, n_restarts = load_latest_per_participant()
 
     phase_rows = []

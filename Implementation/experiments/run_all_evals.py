@@ -71,6 +71,7 @@ TIME_LIMITS = [0.5, 2.0, 5.0, 10.0]
 
 
 def build_profile(scenario_name: str) -> str:
+    """Character + scenario profile JSON for the judge."""
     sc = SCENARIOS[scenario_name]
     return json.dumps(
         {
@@ -91,10 +92,7 @@ def build_profile(scenario_name: str) -> str:
 def run_ab_ba(
     client, model, story_a, story_b, profile, prompt_template, dimensions, extra_fmt=None
 ):
-    """
-    Run AB then BA, aggregate, return dict with all results.
-    extra_fmt: extra .format() kwargs for the prompt (e.g. label_a, label_b).
-    """
+    """Run AB then BA judge calls and aggregate them."""
     fmt = dict(character_profile=profile, story_a=story_a, story_b=story_b)
     if extra_fmt:
         fmt.update(extra_fmt)
@@ -121,6 +119,7 @@ def run_ab_ba(
 
 
 def run_single(client, model, story, profile, prompt_template, dimensions):
+    """Single-story judge call; returns raw text and scores."""
     raw = call_evaluator(
         client, model, prompt_template.format(character_profile=profile, story=story)
     )
@@ -132,6 +131,7 @@ def run_single(client, model, story, profile, prompt_template, dimensions):
 
 
 def log(msg: str):
+    """Timestamped progress print."""
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
@@ -139,6 +139,7 @@ def log(msg: str):
 
 
 def eval_baseline_vs_director(client, model, dry_run):
+    """Track 1: baseline vs. director for every scenario with both outputs."""
     baseline_scenarios = {
         p.parent.parent.name for p in OUTPUTS_DIR.glob("baseline/*/batch/run_1.json")
     }
@@ -198,6 +199,7 @@ def eval_baseline_vs_director(client, model, dry_run):
 
 
 def eval_codi_vs_director(client, model, dry_run):
+    """Track 2: director vs. CoDi."""
     director_scenarios = {
         p.parent.parent.name for p in OUTPUTS_DIR.glob("director_agent/*/batch/run_1.json")
     }
@@ -298,6 +300,7 @@ def eval_codi_vs_director(client, model, dry_run):
 
 
 def eval_time_constrained(client, model, dry_run):
+    """Track 3: time-constrained quality scores and pairwise comparisons."""
     log("[time] quality scoring per time limit")
     for path in sorted(OUTPUTS_DIR.glob("target_duration_director_agent/*/*min/batch/run_1.json")):
         parts = path.parts
@@ -428,6 +431,7 @@ def eval_time_constrained(client, model, dry_run):
 
 
 def run_summarize():
+    """Rebuild evaluation_summary/ tables."""
     log("[summarize] building tables...")
     import subprocess
 
@@ -454,6 +458,7 @@ def run_summarize():
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default=JUDGE_MODEL)
     parser.add_argument("--only", choices=["baseline", "codi", "time", "summarize"], default=None)

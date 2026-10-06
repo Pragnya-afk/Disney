@@ -110,11 +110,13 @@ def _time_limit(phase: int) -> float:
 
 
 def get_snap():
+    """Thread-safe copy of the story state."""
     with _lock:
         return dict(_state)
 
 
 def build_prompt(state: dict) -> str:
+    """Build the realtime instructions for the current phase's condition."""
     cond = _condition(_study_phase)
     if cond == "baseline":
         return _baseline_prompt(state)
@@ -365,6 +367,7 @@ def _cancel_wall_timer():
 
 
 def reset_story(phase: int):
+    """Reset story state, timers and monitor for a study phase."""
     global _transcript, _monitor, _last_user_input, _last_user_activity_ts, _time_up_injected
     cond = _condition(phase)
     sc = _SCENARIO_REGISTRY[_scenario_key(phase)]
@@ -405,6 +408,7 @@ def reset_story(phase: int):
 
 
 def handle_director_tool(ws, event: dict):
+    """Answer the get_director_decision tool call for director conditions."""
     global _last_user_input, _time_up_injected
 
     cond = _condition(_study_phase)
@@ -722,6 +726,7 @@ def _auto_finish_active_phase():
 
 
 def run_openai_ws():
+    """Open the OpenAI Realtime websocket for the current phase."""
     global _openai_ws
 
     def on_open(ws):
@@ -833,6 +838,7 @@ def run_openai_ws():
 
 
 def close_ws():
+    """Close the realtime websocket if open."""
     global _openai_ws
     if _openai_ws:
         try:
@@ -844,11 +850,13 @@ def close_ws():
 
 @socketio.on("connect")
 def on_connect():
+    """Log a participant connection."""
     print(f"[SIO] connected: {request.sid}")
 
 
 @socketio.on("disconnect")
 def on_disconnect():
+    """Close the session and timers when the participant disconnects."""
     global _current_sid
     print(f"[SIO] disconnected: {request.sid}")
     close_ws()
@@ -859,6 +867,7 @@ def on_disconnect():
 
 @socketio.on("begin_study")
 def on_begin_study(_data):
+    """Start a session: randomise condition order and create the session file."""
     global _story1_order, _story2_order, _current_sid, _study_output, _study_phase, _session_file_path
     _current_sid = request.sid
     _study_phase = 0
@@ -891,6 +900,7 @@ def on_begin_study(_data):
 
 @socketio.on("start_phase")
 def on_start_phase(data):
+    """Start one of the four story phases."""
     global _study_phase, _current_sid
     phase = data.get("phase")
     if phase not in (1, 2, 3, 4):
@@ -911,6 +921,7 @@ def on_start_phase(data):
 
 @socketio.on("finish_story")
 def on_finish_story(data):
+    """End the current phase and save its transcript."""
     phase = data.get("phase", _study_phase)
     close_ws()
     _cancel_auto_advance()
@@ -932,6 +943,7 @@ def on_finish_story(data):
 
 @socketio.on("cancel_study")
 def on_cancel_study(_data):
+    """Abandon the current session after a participant restart."""
     global _study_phase, _current_sid
     print("[cancel_study] participant restarted")
     close_ws()
@@ -963,6 +975,7 @@ def on_cancel_study(_data):
 
 @socketio.on("text_input")
 def on_text_input(data):
+    """Forward typed participant input to the realtime websocket."""
     global _last_user_input, _last_user_activity_ts
     text = data.get("text", "").strip()
     if not text:
@@ -1000,16 +1013,19 @@ def on_text_input(data):
 
 @app.route("/")
 def index():
+    """Serve the study page."""
     return send_from_directory("public", "index.html")
 
 
 @app.route("/<path:path>")
 def static_files(path):
+    """Serve static frontend files."""
     return send_from_directory("public", path)
 
 
 @app.route("/time_status")
 def time_status():
+    """Return timer state for the time-limited phases (3 and 4)."""
     if _study_phase not in (3, 4):
         return jsonify({"active": False})
     cond = _condition(_study_phase)
@@ -1048,16 +1064,19 @@ def time_status():
 
 @app.route("/state")
 def get_state():
+    """Return the current story state as JSON."""
     return jsonify(get_snap())
 
 
 @app.route("/study_setup")
 def study_setup():
+    """Return the randomised condition order for both stories."""
     return jsonify({"story1_order": _story1_order, "story2_order": _story2_order})
 
 
 @app.route("/study_info")
 def study_info():
+    """Return the per-story time limits shown to participants."""
     return jsonify(
         {
             "story_1_time_limit": STORY_1_TIME_LIMIT,
@@ -1070,6 +1089,7 @@ def study_info():
 
 @app.route("/save_questionnaire", methods=["POST"])
 def save_questionnaire():
+    """Store a phase questionnaire in the session file."""
     try:
         data = request.get_json()
         phase = data.get("phase")

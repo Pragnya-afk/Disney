@@ -56,7 +56,8 @@ def silence(ms: int) -> bytes:
     return b"\x00\x00" * n_samples
 
 
-def save_wav(pcm: bytes, path: Path):
+def save_wav(pcm: bytes, path: Path) -> None:
+    """Write 16-bit mono PCM to a WAV file."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with wave.open(str(path), "wb") as wf:
         wf.setnchannels(CHANNELS)
@@ -88,10 +89,7 @@ def tts(
 
 
 def extract_turns(transcript: list) -> list[tuple[str, str]]:
-    """
-    Return a list of (speaker, text) pairs in dialogue order.
-    speaker is either "user" or "character".
-    """
+    """Return (speaker, text) pairs in dialogue order."""
     turns = []
     for turn in transcript:
         user_text = turn.get("user_input", "").strip()
@@ -114,6 +112,7 @@ def extract_turns(transcript: list) -> list[tuple[str, str]]:
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Generate a WAV audio file from a story transcript JSON."
     )

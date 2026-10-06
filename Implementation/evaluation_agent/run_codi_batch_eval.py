@@ -157,6 +157,7 @@ def summarize_results(results_dir: str, summary_dir: str):
 
 
 def main():
+    """CLI: evaluate CoDi vs. director over the batch outputs."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", default="character_prompts.olaf")
     parser.add_argument("--model", default=JUDGE_MODEL)

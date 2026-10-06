@@ -14,7 +14,8 @@ import argparse
 from auto_main import run_story
 
 
-def main():
+def main() -> None:
+    """Run the scripted director agent --runs times."""
     parser = argparse.ArgumentParser()
 
     parser.add_argument(

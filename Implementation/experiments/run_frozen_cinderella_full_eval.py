@@ -51,14 +51,17 @@ TARGET_NAMES = sorted(
 
 
 def baseline_path(name):
+    """Baseline transcript path."""
     return IMPLEMENTATION_DIR / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
 
 
 def director_path(name):
+    """Director transcript path."""
     return IMPLEMENTATION_DIR / "outputs" / "director_agent" / name / "batch" / f"run_{RUN_ID}.json"
 
 
 def time_path(name, tl):
+    """Time-constrained transcript path for a time limit."""
     return (
         IMPLEMENTATION_DIR
         / "outputs"
@@ -71,6 +74,7 @@ def time_path(name, tl):
 
 
 def generate(dry_run: bool):
+    """Generate missing baseline/director/time-constrained transcripts."""
     print(f"Target scenarios ({len(TARGET_NAMES)}):")
     for n in TARGET_NAMES:
         print(f"  {n}")
@@ -135,6 +139,7 @@ def generate(dry_run: bool):
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--only", choices=["generate", "evaluate"], default=None)

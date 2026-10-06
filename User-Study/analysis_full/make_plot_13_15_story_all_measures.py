@@ -39,6 +39,7 @@ COND_LABELS = {
 def make_story_plot(
     story_num, story_label, cond_a, cond_b, out_name, base_ylim=5.6, show_n_diff=True
 ):
+    """Paired per-measure comparison of two conditions for one story."""
     s = comp[comp["story"] == story_num]
     conds = [cond_a, cond_b]
     legend_handles = [Patch(facecolor=COND_COLORS[c], label=COND_LABELS[c]) for c in conds]

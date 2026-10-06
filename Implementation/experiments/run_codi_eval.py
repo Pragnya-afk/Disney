@@ -140,6 +140,7 @@ def load_scenario_context(scenario_name: str) -> dict | None:
 
 
 def build_character_profile(scenario_name: str) -> str:
+    """Character + scenario profile JSON for the judge."""
     scenario_context = load_scenario_context(scenario_name)
     payload = {"character": OLAF_CHARACTER}
     if scenario_context:
@@ -207,6 +208,7 @@ def run_codi_eval(
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Evaluate CoDi outputs against director-agent outputs."
     )

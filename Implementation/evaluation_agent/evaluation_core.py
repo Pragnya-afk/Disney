@@ -77,15 +77,7 @@ load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 
 def make_client() -> OpenAI:
-    """
-    Create an OpenAI client.
-
-    Returns
-    -------
-    OpenAI
-        Client initialized with the API key stored in the
-        OPENAI_API_KEY environment variable.
-    """
+    """Create an OpenAI client from OPENAI_API_KEY."""
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
@@ -93,42 +85,13 @@ def make_client() -> OpenAI:
 
 
 def load_json(path: str):
-    """
-    Load a JSON file from disk.
-
-    Parameters
-    ----------
-    path : str
-        Path to the JSON file.
-
-    Returns
-    -------
-    Any
-        Parsed JSON content.
-    """
+    """Load a JSON file from disk."""
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def load_character_profile(character_module: str) -> str:
-    """
-    Load character-specific evaluation context from a Python module.
-
-    The imported module is expected to define:
-        - CHARACTER
-
-    Parameters
-    ----------
-    character_module : str
-        Import path of the character module, e.g.
-        `character_prompts.olaf`.
-
-    Returns
-    -------
-    str
-        JSON-formatted string containing the subset of character
-        information required by the evaluator.
-    """
+    """Return the character profile (name, prompt, animations) as a JSON string."""
     module = importlib.import_module(character_module)
 
     character = module.CHARACTER
@@ -143,23 +106,7 @@ def load_character_profile(character_module: str) -> str:
 
 
 def load_scenario_context(scenario_module: str) -> dict:
-    """
-    Load story context from a scenario module.
-
-    The imported module is expected to define:
-        - SCENARIO (with story_topic and beats)
-
-    Parameters
-    ----------
-    scenario_module : str
-        Import path of the scenario module, e.g.
-        `scenarios.olaf_retells_red_riding_hood_medium`.
-
-    Returns
-    -------
-    dict
-        Dictionary containing story_topic and beats.
-    """
+    """Return story topic and beats from a scenario module."""
     module = importlib.import_module(scenario_module)
     scenario = module.SCENARIO
 
@@ -173,32 +120,7 @@ def load_scenario_context(scenario_module: str) -> dict:
 
 
 def transcript_to_story(transcript: list) -> str:
-    """
-    Convert a transcript JSON structure into a readable textual story.
-
-    The evaluator model operates on a textual representation rather
-    than raw structured JSON. This function therefore serializes each
-    turn into a consistent, human-readable format.
-
-    Supported transcript structures
-    -------------------------------
-    1. Baseline format:
-       Each turn contains `model_output`.
-
-    2. Director-agent format:
-       Each turn contains `actor_output` and may also include
-       `director_decision`.
-
-    Parameters
-    ----------
-    transcript : list
-        List of transcript turns.
-
-    Returns
-    -------
-    str
-        Flattened story-like text used as input to the evaluator.
-    """
+    """Render a baseline or director transcript as readable story text for the judge."""
     lines = []
 
     for i, turn in enumerate(transcript, start=1):
@@ -256,26 +178,7 @@ def transcript_to_story(transcript: list) -> str:
 
 
 def call_evaluator(client: OpenAI, model: str, prompt: str) -> str:
-    """
-    Submit an evaluation prompt to the language model.
-
-    A deterministic setting is used to improve reproducibility
-    across evaluation runs.
-
-    Parameters
-    ----------
-    client : OpenAI
-        OpenAI client instance.
-    model : str
-        Model name to use for evaluation.
-    prompt : str
-        Fully formatted user prompt.
-
-    Returns
-    -------
-    str
-        Raw textual evaluation produced by the model.
-    """
+    """Send one judge prompt to the evaluator model at temperature 0."""
     response = client.chat.completions.create(
         model=model,
         temperature=0.0,
@@ -301,28 +204,7 @@ def call_evaluator(client: OpenAI, model: str, prompt: str) -> str:
 
 
 def parse_ab_winners(assessment: str, dimensions: list = None) -> dict:
-    """
-    Parse categorical winners from a pairwise A/B assessment.
-
-    The expected response format includes entries such as:
-        Plot: A
-        Development: B
-        Overall: Same
-
-    Parameters
-    ----------
-    assessment : str
-        Raw evaluator response.
-    dimensions : list, optional
-        Dimension names to parse. Defaults to BASE_DIMENSIONS.
-        Pass CODI_DIMENSIONS or TIME_DIMENSIONS for those contexts.
-
-    Returns
-    -------
-    dict
-        Mapping from evaluation dimension to one of:
-        {"A", "B", "Same", "ParseError"}.
-    """
+    """Parse 'Dimension: A|B|Same' lines; missing dimensions become ParseError."""
     if dimensions is None:
         dimensions = BASE_DIMENSIONS
 
@@ -342,27 +224,7 @@ def parse_ab_winners(assessment: str, dimensions: list = None) -> dict:
 
 
 def parse_single_scores(assessment: str, dimensions: list = None) -> dict:
-    """
-    Parse numerical quality scores from a single-story assessment.
-
-    The expected response format includes entries such as:
-        Plot: 8 / 10
-        Character Fidelity: 9.5 / 10
-
-    Parameters
-    ----------
-    assessment : str
-        Raw evaluator response.
-    dimensions : list, optional
-        Dimension names to parse. Defaults to BASE_DIMENSIONS.
-        Pass CODI_DIMENSIONS or TIME_DIMENSIONS for those contexts.
-
-    Returns
-    -------
-    dict
-        Mapping from evaluation dimension to a float score.
-        Missing dimensions are assigned None.
-    """
+    """Parse 'Dimension: x / 10' lines; missing dimensions become None."""
     if dimensions is None:
         dimensions = BASE_DIMENSIONS
 
@@ -390,28 +252,7 @@ def run_ab_evaluation(
     story_b: str,
     character_profile: str,
 ) -> dict:
-    """
-    Run a pairwise A/B evaluation.
-
-    Parameters
-    ----------
-    client : OpenAI
-        OpenAI client instance.
-    model : str
-        Model name.
-    story_a : str
-        Textual representation of story A.
-    story_b : str
-        Textual representation of story B.
-    character_profile : str
-        JSON-formatted character and story context.
-
-    Returns
-    -------
-    dict
-        Dictionary containing the full assessment text and the
-        parsed winners by evaluation dimension.
-    """
+    """Run one pairwise A/B judge call and parse the winners."""
     prompt = EVALUATE_STORY_AB_PROMPT.format(
         character_profile=character_profile,
         story_a=story_a,
@@ -433,26 +274,7 @@ def run_single_evaluation(
     story: str,
     character_profile: str,
 ) -> dict:
-    """
-    Run an independent quality evaluation for a single story.
-
-    Parameters
-    ----------
-    client : OpenAI
-        OpenAI client instance.
-    model : str
-        Model name.
-    story : str
-        Textual representation of the story.
-    character_profile : str
-        JSON-formatted character and story context.
-
-    Returns
-    -------
-    dict
-        Dictionary containing the full assessment text and the
-        parsed numerical scores.
-    """
+    """Run one single-story judge call and parse the scores."""
     prompt = EVALUATE_STORY_QUALITY_PROMPT.format(
         character_profile=character_profile,
         story=story,
@@ -471,23 +293,7 @@ def run_single_evaluation(
 
 
 def convert_ba_to_original_labels(ba_winners: dict) -> dict:
-    """
-    Convert BA evaluation labels back to the original A/B reference frame.
-
-    In the BA setting, the original story order is reversed:
-        BA.A corresponds to original B
-        BA.B corresponds to original A
-
-    Parameters
-    ----------
-    ba_winners : dict
-        Winners parsed from the BA evaluation.
-
-    Returns
-    -------
-    dict
-        Winners expressed again in terms of the original A/B labels.
-    """
+    """Map winners from the swapped (BA) run back to the original A/B labels."""
     converted = {}
 
     for dim, winner in ba_winners.items():
@@ -502,25 +308,7 @@ def convert_ba_to_original_labels(ba_winners: dict) -> dict:
 
 
 def aggregate_ab_ba(ab_winners: dict, ba_winners_converted: dict) -> dict:
-    """
-    Aggregate AB and BA results to mitigate order effects.
-
-    A dimension is assigned a winner only if both orderings
-    agree after BA is converted back into the original label space.
-    Otherwise, the result is marked as "Same".
-
-    Parameters
-    ----------
-    ab_winners : dict
-        Winners from the AB evaluation.
-    ba_winners_converted : dict
-        BA winners converted to the original label space.
-
-    Returns
-    -------
-    dict
-        Aggregated winner labels by dimension.
-    """
+    """Combine AB and BA verdicts per dimension to cancel position bias."""
     aggregated = {}
 
     for dim in ab_winners:
@@ -571,11 +359,7 @@ def extract_codi_director_decision(direct_response: str) -> Dict[str, str]:
 
 
 def convert_codi_output_to_transcript(codi_json_path: str) -> List[Dict[str, Any]]:
-    """
-    Convert a CoDi JSON output file to the standard transcript format.
-
-    Handles both part-based (part_N → turn_N) and flat (turn_N) structures.
-    """
+    """Convert a CoDi JSON output file to the standard transcript format."""
     data = load_json(codi_json_path)
 
     if isinstance(data, list):
@@ -685,11 +469,7 @@ def run_codi_comparison(
     character_name: str,
     scenario_name: str,
 ) -> Dict[str, Any]:
-    """
-    Run a pairwise A/B comparison between the Implementation and CoDi systems.
-
-    Uses EVALUATE_CODI_AB_PROMPT and CODI_DIMENSIONS.
-    """
+    """Pairwise A/B judge call: Implementation director vs. CoDi."""
     implementation_story = transcript_to_story_with_director(implementation_transcript)
     codi_story = transcript_to_story_with_director(codi_transcript)
 
@@ -723,11 +503,7 @@ def run_codi_quality_eval(
     character_name: str,
     scenario_name: str,
 ) -> Dict[str, Any]:
-    """
-    Run an independent quality evaluation for a single CoDi or Implementation story.
-
-    Uses EVALUATE_CODI_QUALITY_PROMPT and CODI_DIMENSIONS.
-    """
+    """Single-story judge call for a CoDi or Implementation story."""
     story = transcript_to_story(transcript)
 
     prompt = EVALUATE_CODI_QUALITY_PROMPT.format(
@@ -763,12 +539,7 @@ def run_adversarial_comparison(
     scenario_name: str,
     derailment_category: str,
 ) -> Dict[str, Any]:
-    """
-    Run a pairwise A/B comparison focused on adversarial robustness.
-
-    Uses EVALUATE_ADVERSARIAL_AB_PROMPT and ADVERSARIAL_DIMENSIONS.
-    Applies when derailment_category is 'adversarial_jailbreak' or 'targeted_goal'.
-    """
+    """Pairwise A/B judge call focused on adversarial robustness."""
     story_a = transcript_to_story_with_director(transcript_a)
     story_b = transcript_to_story_with_director(transcript_b)
 
@@ -805,11 +576,7 @@ def run_adversarial_quality_eval(
     scenario_name: str,
     derailment_category: str,
 ) -> Dict[str, Any]:
-    """
-    Run an independent robustness quality evaluation for a single adversarial transcript.
-
-    Uses EVALUATE_ADVERSARIAL_QUALITY_PROMPT and ADVERSARIAL_DIMENSIONS.
-    """
+    """Single-story robustness judge call for an adversarial transcript."""
     story = transcript_to_story_with_director(transcript)
 
     prompt = EVALUATE_ADVERSARIAL_QUALITY_PROMPT.format(
@@ -838,20 +605,7 @@ def run_adversarial_quality_eval(
 
 
 def main():
-    """
-    Execute the transcript evaluation pipeline.
-
-    Workflow
-    --------
-    1. Parse command-line arguments
-    2. Load transcripts and character profile
-    3. Convert transcripts into evaluator-readable stories
-    4. Run single-story evaluation for both stories
-    5. Run pairwise A/B evaluation
-    6. Optionally run reversed B/A evaluation and aggregate results
-    7. Save all outputs to disk
-    8. Print a concise summary to the terminal
-    """
+    """CLI: evaluate one pair of transcripts (AB + BA + single-story scores)."""
     parser = argparse.ArgumentParser()
 
     parser.add_argument(

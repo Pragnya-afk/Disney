@@ -74,6 +74,7 @@ def build_codi_inputs(scenario: dict) -> str:
 
 
 def build_jsonl_record(scenario_name: str, scenario: dict) -> dict:
+    """Build one CoDi JSONL input record for a scenario."""
     return {
         "example_id": scenario_name,
         "inputs": build_codi_inputs(scenario),
@@ -82,6 +83,7 @@ def build_jsonl_record(scenario_name: str, scenario: dict) -> dict:
 
 
 def run_scenario(scenario_name: str, scenario: dict, out_base_dir: str, model: str, dry_run: bool):
+    """Run CoDi's generation.py for one scenario."""
     record = build_jsonl_record(scenario_name, scenario)
 
     out_dir = os.path.join(out_base_dir, scenario_name)
@@ -165,6 +167,7 @@ def run_scenario(scenario_name: str, scenario: dict, out_base_dir: str, model: s
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--scenarios", nargs="*", default=None)
     parser.add_argument("--model", default=CODI_MODEL)

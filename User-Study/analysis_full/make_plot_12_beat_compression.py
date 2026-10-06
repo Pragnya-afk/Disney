@@ -118,6 +118,7 @@ CAT_COLORS = {
 
 
 def classify_sessions():
+    """Classify each Cinderella beat per completer as developed/hurried/compressed/skipped/folded."""
     results = {}
     for f in sorted(glob.glob(str(SESSIONS_DIR / "*.json"))):
         m = re.match(r"session_\d{8}_\d{6}_(.+)\.json", Path(f).name)
@@ -163,6 +164,7 @@ def classify_sessions():
 
 
 def main():
+    """Render figure 12."""
     results = classify_sessions()
     n = len(results)
 

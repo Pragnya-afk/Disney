@@ -130,21 +130,25 @@ def load_scenario_beats(scenario_name: str) -> list[dict]:
 
 
 def load_json(path: Path) -> list:
+    """Load a JSON file."""
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
 def get_character_response(turn: dict) -> str:
+    """Character line of a baseline or director turn."""
     output = turn.get("actor_output") or turn.get("model_output", {})
     return output.get("character_response", "")
 
 
 def get_beat_completed(turn: dict) -> bool:
+    """beat_completed flag of a baseline or director turn."""
     output = turn.get("actor_output") or turn.get("model_output", {})
     return bool(output.get("beat_completed"))
 
 
 def transcript_to_full_text(transcript: list) -> str:
+    """Concatenate all character lines of a transcript."""
     return " ".join(get_character_response(t) for t in transcript).strip()
 
 
@@ -308,6 +312,7 @@ def parse_time_constrained_scores(assessment: str) -> dict:
 
 
 def build_character_profile_for_scenario(scenario_name: str) -> str:
+    """Character profile JSON for the judge prompt."""
     try:
         from character_prompts.olaf import CHARACTER
     except ImportError:
@@ -397,6 +402,7 @@ def run_qual_stage(scenario: dict, model: str, force: bool) -> dict | None:
 
 
 def cosine_similarity(v1: list, v2: list) -> float:
+    """Cosine similarity of two vectors."""
     dot = sum(a * b for a, b in zip(v1, v2))
     n1 = sum(a * a for a in v1) ** 0.5
     n2 = sum(b * b for b in v2) ** 0.5
@@ -404,6 +410,7 @@ def cosine_similarity(v1: list, v2: list) -> float:
 
 
 def get_embedding(client, text: str, model: str = EMBEDDING_MODEL) -> list:
+    """Embed text (first 8000 chars) with the OpenAI embeddings API."""
     resp = client.embeddings.create(input=[text[:8000]], model=model)
     return resp.data[0].embedding
 
@@ -735,6 +742,7 @@ def run_tables_stage(scenario_names: list[str]):
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Evaluate time-constrained director-agent outputs."
     )

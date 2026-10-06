@@ -187,6 +187,7 @@ def run_baseline(scenario: dict, character: dict, run_id: int) -> str:
 
 
 def main():
+    """Run the baseline for every Olaf suite scenario without an output yet."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dry-run", action="store_true", help="Print what would run without executing."

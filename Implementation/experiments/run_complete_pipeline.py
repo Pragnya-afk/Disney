@@ -41,10 +41,12 @@ from config import JUDGE_MODEL  # noqa: E402
 
 
 def log(msg: str):
+    """Timestamped progress print."""
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
 def run_phase(label: str, script_args: list[str]) -> int:
+    """Run one pipeline phase as a subprocess; returns its exit code."""
     bar = "=" * 60
     log(bar)
     log(f"PHASE: {label}")
@@ -63,6 +65,7 @@ def run_phase(label: str, script_args: list[str]) -> int:
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Run the complete Disney evaluation pipeline end-to-end."
     )

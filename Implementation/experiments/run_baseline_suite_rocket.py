@@ -28,6 +28,7 @@ from character_prompts.rocket import CHARACTER
 
 
 def main():
+    """Run the baseline for every Rocket suite scenario without an output yet."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dry-run", action="store_true", help="Print what would run without executing."

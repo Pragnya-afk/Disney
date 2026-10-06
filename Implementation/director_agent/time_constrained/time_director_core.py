@@ -83,6 +83,7 @@ def build_time_director_prompt(
     beats: list,
     temporal_state: dict,
 ) -> str:
+    """Build the director prompt including the temporal (pacing) state."""
     current_index = story_state["beat_index"]
     current_beat = beats[current_index]
 
@@ -164,6 +165,7 @@ Return valid JSON only in this exact structure:
 
 
 def parse_director_json(raw: str) -> dict:
+    """Parse the director JSON, falling back to a safe steer-back decision."""
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
@@ -194,6 +196,7 @@ def get_time_director_decision(
     beats: list,
     temporal_state: dict,
 ) -> dict:
+    """Call the time-aware director and return its structured decision."""
     prompt = build_time_director_prompt(
         user_input=user_input,
         story_state=story_state,

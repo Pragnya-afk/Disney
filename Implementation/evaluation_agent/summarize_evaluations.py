@@ -56,17 +56,7 @@ _METHOD_MAP = {
 
 
 def parse_story_path(path_str: str) -> dict:
-    """
-    Extract method, scenario, and time_limit from a story output path.
-
-    Handles path variants produced by different runner scripts:
-        outputs/baseline/<scenario>/batch/run_N.json
-        outputs/director_agent/<scenario>/batch/run_N.json
-        outputs/target_duration_director_agent/<scenario>/<time>min/batch/run_N.json
-        outputs/codi/<scenario>/batch/run_N.json
-        outputs/codi_<scenario>.json          (legacy filename-encoded codi)
-        Implementation/outputs/...            (with repo-root prefix)
-    """
+    """Extract method, scenario and time limit from a story output path."""
     path = path_str.replace("\\", "/")
 
     # Strip any absolute or relative prefix up to and including "Implementation/"
@@ -115,6 +105,7 @@ def _method_display(meta: dict) -> str:
 
 
 def infer_derailment(scenario: str) -> str:
+    """Map a scenario name to its derailment level: none, medium, complete or unknown."""
     s = scenario.lower()
     if "complete_derail" in s:
         return "complete"
@@ -126,6 +117,7 @@ def infer_derailment(scenario: str) -> str:
 
 
 def infer_base_scenario(scenario: str) -> str:
+    """Strip the derailment suffix/prefix from a scenario name."""
     for suffix in ("_complete_derailment", "_medium_derailment", "_no_derailment"):
         if scenario.endswith(suffix):
             return scenario[: -len(suffix)]
@@ -139,14 +131,7 @@ def infer_base_scenario(scenario: str) -> str:
 
 
 def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """
-    Scan input_dir recursively for evaluation JSON files.
-
-    Returns
-    -------
-    scores_df : one row per story per file (method, scenario, metric scores)
-    wins_df   : one row per (file, metric) with the pairwise winner
-    """
+    """Scan input_dir for evaluation JSONs; return (scores, wins) DataFrames."""
     score_rows = []
     win_rows = []
 
@@ -284,11 +269,7 @@ def make_derailment_robustness(scores_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def make_pairwise_wins(wins_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    rows = comparison pair (e.g. 'baseline vs director')
-    cols = metric
-    values = "MethodA: N | MethodB: M | Tie: T"
-    """
+    """Pivot pairwise wins: rows = method pair, columns = metric, cells = win counts."""
     if wins_df.empty:
         return pd.DataFrame()
 
@@ -317,7 +298,8 @@ def make_pairwise_wins(wins_df: pd.DataFrame) -> pd.DataFrame:
 # Output helpers
 
 
-def save_table(table: pd.DataFrame, output_dir: Path, name: str):
+def save_table(table: pd.DataFrame, output_dir: Path, name: str) -> None:
+    """Write a table as CSV, Markdown and LaTeX."""
     table.to_csv(output_dir / f"{name}.csv")
     table.to_markdown(output_dir / f"{name}.md")
     table.to_latex(output_dir / f"{name}.tex", float_format="%.2f")
@@ -328,6 +310,7 @@ def save_table(table: pd.DataFrame, output_dir: Path, name: str):
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser(
         description="Summarize pairwise evaluation results into pivot tables."
     )

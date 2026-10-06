@@ -139,6 +139,7 @@ Return valid JSON only.
 
 
 def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
+    """Return SCENARIOS[scenario_name] from a suite module, or its single SCENARIO."""
     scenario_mod = load_module(scenario_module)
     if scenario_name:
         if not hasattr(scenario_mod, "SCENARIOS"):
@@ -161,6 +162,7 @@ def build_actor_prompt(
     beats: list,
     temporal_state: dict,
 ) -> str:
+    """Build the time-aware actor prompt (adds pacing mode and remaining time)."""
     current_beat = beats[story_state["beat_index"]]
     current_index = story_state["beat_index"]
     next_beat = beats[current_index + 1]["name"] if current_index < len(beats) - 1 else "None"
@@ -246,6 +248,7 @@ def should_complete_beat(
     beats: list,
     temporal_state: dict,
 ) -> bool:
+    """Decide whether to advance the beat, taking the pacing mode into account."""
     current_beat_name = beats[story_state["beat_index"]]["name"]
     pacing_mode = temporal_state.get("pacing_mode", "normal")
 
@@ -280,6 +283,7 @@ def should_close_story(
     monitor: TemporalMonitor,
     story_state: dict,
 ) -> bool:
+    """Close in 'final' pacing mode, or on close_story when the monitor allows it."""
     pacing_mode = temporal_state.get("pacing_mode")
 
     if pacing_mode == "final":
@@ -298,6 +302,7 @@ def run_story(
     time_limit: float,
     scenario_name_override: str | None = None,
 ) -> str:
+    """Run one scripted time-constrained story and save the transcript; returns its path."""
     client = make_client()
 
     character_mod = load_module(character_module)
@@ -447,6 +452,7 @@ def run_story(
 
 
 def main():
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument(
