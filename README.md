@@ -1,89 +1,108 @@
-# Olaf Interactive Storytelling — User Study & Demos
+# Olaf Interactive Storytelling: User Study and Live Demos
 
-This branch contains only what's needed to run the three live apps:
+This branch of the controllable-storytelling Bachelor thesis holds everything needed to run the **live** apps and to reproduce the **user-study analysis**:
 
-- **`User-Study/`** — the full participant-facing study (Story 1: Frozen, baseline vs. director; Story 2: Cinderella, director vs. time-constrained), with questionnaires and session logging.
-- **`Real-Time-API-Demo/`** — a standalone voice demo of the director-driven storytelling agent (multiple scenarios, beat tracking, audio effects).
-- **`Real-Time-API-Demo-Time-Constrained/`** — the same, but under a target time limit with pacing-aware beat compression.
+- **`User-Study/`**: the participant-facing study, plus its analysis and the cleaned session data.
+  - Story 1 (Frozen): baseline vs. director.
+  - Story 2 (Cinderella): director vs. time-constrained director.
+  - Two rounds per story in randomised order, with a questionnaire after each round.
+- **`Real-Time-API-Demo/`**: a voice demo of the director-driven storyteller (scenario picker, beat tracker, Olaf voice effects).
+- **`Real-Time-API-Demo-Time-Constrained/`**: the same demo with a target story duration and pacing-aware beat compression.
 
-All three are Flask + Socket.IO apps that talk to OpenAI's Realtime API, sharing a small set of narrative-logic modules under `Implementation/`.
+All three are Flask + Socket.IO apps that use OpenAI's Realtime API and share the narrative logic in `Implementation/`. The scripted experiments and the LLM-as-judge evaluation are on `master`.
 
-## Repo layout
+## Repository layout
 
 ```
-Implementation/                          shared narrative logic (imported by all three apps)
-  director_agent/
-    director_core.py                     director LLM call + prompt builder
-    director_prompt.py                   static director instructions
-    time_constrained/time_director_core.py   time-aware director variant
-  baseline/main.py                       no-director baseline condition (User-Study only)
+Implementation/                          shared narrative logic (imported by all three apps via sys.path)
+  config.py                              model names (baseline, director, realtime)
+  director_agent/director_core.py        director prompt + decision call, opener guard
+  director_agent/director_prompt.py      director system prompt and rules
+  director_agent/time_constrained/time_director_core.py   time-aware director
+  baseline/main.py                       baseline condition (single chat call per turn)
   character_prompts/olaf.py              Olaf's character definition
-  scenarios/olaf_derailment_scenario_suite.py   story beat structures
-  time_control.py                        TemporalMonitor (pacing for time-constrained mode)
-  audio_fx.py                            audio effects chain (voice demos only)
-
-User-Study/                              server.py, public/, requirements.txt
-Real-Time-API-Demo/                      server.py, public/, requirements.txt
-Real-Time-API-Demo-Time-Constrained/     server.py, public/, requirements.txt
+  scenarios/olaf_derailment_scenario_suite.py   beat plans (13 stories x 7 derailment variants)
+  time_control.py                        TemporalMonitor: pacing modes for a target duration
+  audio_fx.py                            pitch/reverb chain for the demo voice
+User-Study/
+  server.py, public/                     study app (one Session object per participant)
+  outputs_all/phase_*/                   cleaned session files used in the analysis (pseudonymous)
+  analysis_full/                         dataset builder, statistics and figures
+Real-Time-API-Demo/                      server.py, public/
+Real-Time-API-Demo-Time-Constrained/     server.py, public/
+thesis_snippets/user_study/              results section, appendix (prompts + beats), Overleaf package
 ```
 
-Each app is self-contained (its own `requirements.txt`, own `public/` frontend) and reaches into `Implementation/` via `sys.path` at startup — there's no separate install step for `Implementation/` itself.
+## Setup
 
-## Prerequisites
-
-- Python 3.12 (also works on other recent 3.x versions)
-- An OpenAI API key with access to the Realtime API (`gpt-realtime`) and `gpt-4o-mini`
-
-## Setup (per app)
-
-Each app needs its own virtualenv (or at least its own `pip install`) and its own `.env` file with:
-
-```
-OPENAI_API_KEY=sk-...
-```
-
-### 1. User-Study
+Requires **Python 3.12**.
 
 ```bash
-cd User-Study
-python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-echo "OPENAI_API_KEY=sk-..." > .env
-python3 server.py
+make setup                          # python3.12 -m venv .venv && pip install -r requirements.txt
+source .venv/bin/activate
+cp .env.example Implementation/.env # add an OpenAI key with Realtime API access
 ```
 
-Runs on `http://localhost:3003` by default (override with `PORT=xxxx`). Open that URL in a browser to start the study flow: Story 1 (Frozen, 2 rounds, baseline vs. director, 5 min each) → Story 2 (Cinderella, 2 rounds, director vs. time-constrained, 3 min each), with a questionnaire after every round. Session transcripts + questionnaire responses are saved to `User-Study/outputs/session_<timestamp>.json`.
+`requirements.txt` pins the versions used during the study, and `requirements-lock.txt` is the full freeze. Each app also has its own pinned `requirements.txt` if you prefer one virtualenv per app.
 
-### 2. Real-Time-API-Demo
+## Run
 
-```bash
-cd Real-Time-API-Demo
-python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-echo "OPENAI_API_KEY=sk-..." > .env
-python3 server.py
-```
+| Command | What | URL |
+|---|---|---|
+| `make study-app` | user study | http://localhost:3003 |
+| `make demo` | director voice demo | http://localhost:3000 |
+| `make demo-time` | time-constrained voice demo | http://localhost:3002 |
+| `make analysis` | rebuild the study dataset, stats report and figures (no API calls) | — |
 
-Runs on `http://localhost:3000` by default. Lets you pick a scenario and play through it with the director-driven voice agent. Session logs land in `Real-Time-API-Demo/outputs/`.
+Override ports with `PORT=xxxx`. All three apps can run side by side.
 
-### 3. Real-Time-API-Demo-Time-Constrained
+### User study flow
+- Story 1: Olaf retells **Frozen** in two 5-minute rounds, baseline and director in random order.
+- Story 2: Olaf retells **Cinderella** in two 5-minute rounds, director and time-constrained in random order.
+- A questionnaire follows every round.
+- Each participant's transcripts and answers go to `User-Study/outputs/session_<timestamp>_<sid>.json`.
+- Condition order is drawn with Python's unseeded `random`, by design.
 
-```bash
-cd Real-Time-API-Demo-Time-Constrained
-python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-echo "OPENAI_API_KEY=sk-..." > .env
-python3 server.py
-```
+### Models
+`Implementation/config.py`:
+- director: `gpt-4o-mini`
+- study baseline: `gpt-4o-mini` at temperature 0.7
+- voice: `gpt-realtime`
 
-Runs on `http://localhost:3002` by default. Same as above, but with a selectable target time limit — the director paces the story (`pacing_mode`: `too_fast` / `normal` / `hurry` / `critical` / `final`) to land the ending close to that limit. Logs land in `Real-Time-API-Demo-Time-Constrained/outputs/`.
+## Scenario suite
 
-## Running more than one at once
+`scenarios/olaf_derailment_scenario_suite.py` defines 13 base stories, each in 7 matched variants (`make_variant`):
 
-Each server defaults to its own port — `Real-Time-API-Demo`: 3000, `Real-Time-API-Demo-Time-Constrained`: 3002, `User-Study`: 3003 — so all three can run side by side in separate terminals/venvs without conflicting. Override any of them with `PORT=xxxx python3 server.py`.
+| Variant | User inputs |
+|---|---|
+| `no_derailment` | on-topic throughout |
+| `medium_derailment` / `complete_derailment` | random off-topic questions (every second turn / every turn) |
+| `medium_adversarial` / `complete_adversarial` | jailbreak attempts: prompt injection, identity attacks |
+| `medium_targeted` / `complete_targeted` | coherent attempts to stop the story, including direct instructions to the director |
 
-## Notes
+Medium variants replace every second input, starting at the second turn, so the story always starts cleanly. The live apps use the `no_derailment` variants.
 
-- `outputs/` directories are gitignored except for a `.gitkeep` placeholder — session logs are generated at runtime and shouldn't be committed.
-- `Implementation/baseline/main.py`'s `build_prompt` intentionally gives the baseline condition *only* the character prompt and the beat list (no story history) — this is a deliberate simplification for a clean baseline-vs-director comparison, not a bug.
-- The director's "Opener Guard" mechanism (in `director_core.py` / injected into each app's `handle_director_tool`) deterministically bans repeating the previous turn's opening word/filler exclamation family (e.g. "Oh"/"Ooh"/"Well") — this is enforced in plain code in the tool-result payload, not left to the director LLM's own compliance, since that proved unreliable in testing.
+## Study analysis → thesis
+
+All of these run from `User-Study/analysis_full/` (or `make analysis`) and read only `outputs_all/phase_*/*.json`:
+
+| Output | Script | Used in |
+|---|---|---|
+| `phases.csv`, `participants.csv` | `build_dataset.py` (latest session per participant; restarts excluded) | all of the below |
+| `stats_report.txt` | `run_stats.py` | results tables, statistics |
+| `plots/01`–`08` | `make_plots.py` | fig. 05 (all conditions) |
+| `plots/09`–`11` | `make_plot_09_10_11.py` | fig. 10, 11 (pacing, ending) |
+| `plots/12` | `make_plot_12_beat_compression.py` | fig. 12 (beat compression) |
+| `plots/13`, `15` | `make_plot_13_15_story_all_measures.py` | Story 1 / Story 2 measures |
+| `plots/16`, `17` | `make_plot_16_17_derailment_paired.py` | paired derailment resistance |
+| `plots_hq/*` | `make_plots_hq.py` (writes to `plots/`; the committed copies are in `plots_hq/`) | presentation figures |
+
+The section text is in `thesis_snippets/user_study/results_section.tex`.
+
+## Implementation notes
+
+- **Opener guard**:
+  - The director prompt bans repeating the previous turn's opening word or filler exclamation family ("Oh"/"Ooh"/"Well").
+  - Each app also injects the ban into the tool result in plain code, and `strip_banned_opener` removes a repeated filler from the output, because LLM compliance alone proved unreliable.
+- **Pacing**: the time-constrained director gets a `pacing_mode` from `TemporalMonitor` (`too_fast` / `normal` / `hurry` / `critical` / `final`) and compresses or expands beats to end near the time limit.
+- Session logs under each app's `outputs/` are gitignored; only the cleaned study data in `outputs_all/` is versioned.
