@@ -9,7 +9,7 @@ The modified generation.py appends each user input to story_progress after every
 main story step, so CoDi's director sees and reacts to the actual user messages.
 
 Outputs land in:
-  CoDi-main/CoDi-main/outputs/suite_interactive/<scenario_name>/
+  third_party/CoDi-main/CoDi-main/outputs/suite_interactive/<scenario_name>/
     gen_d_gpt-4o_c_gpt-4o.json   — raw CoDi generation output
 
 Usage (from Disney/):
@@ -29,7 +29,7 @@ from dotenv import load_dotenv
 
 IMPL_DIR = os.path.dirname(__file__)
 DISNEY_DIR = os.path.dirname(IMPL_DIR)
-CODI_DIR = os.path.join(DISNEY_DIR, "CoDi-main", "CoDi-main")
+CODI_DIR = os.path.join(DISNEY_DIR, "third_party", "CoDi-main", "CoDi-main")
 
 load_dotenv(os.path.join(IMPL_DIR, ".env"))
 

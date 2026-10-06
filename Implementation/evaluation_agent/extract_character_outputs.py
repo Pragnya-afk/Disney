@@ -31,7 +31,7 @@ Baseline vs director:
 Director vs CoDi (original CoDi-main format):
         python evaluation_agent/extract_character_outputs.py \
             --director outputs/director_agent/olaf_arendelle_tour_no_derailment/batch/run_1.json \
-            --codi-raw ../../CoDi-main/CoDi-main/outputs/suite/olaf_arendelle_tour_no_derailment/gen_d_gpt-4o_c_gpt-4o.json \
+            --codi-raw ../../third_party/CoDi-main/CoDi-main/outputs/suite/olaf_arendelle_tour_no_derailment/gen_d_gpt-4o_c_gpt-4o.json \
             --out evaluation_results/olaf_arendelle_tour_no_derailment/character_outputs.txt
 """
 

@@ -31,7 +31,7 @@ Usage (run from Implementation/):
   python run_codi_suite_and_compare.py --codi-model gpt-4o-mini
 
 Output locations:
-  CoDi raw outputs  : ../CoDi-main/CoDi-main/outputs/suite/{scenario}/
+  CoDi raw outputs  : ../third_party/CoDi-main/CoDi-main/outputs/suite/{scenario}/
   CoDi transcripts  : outputs/codi/{scenario}/batch/run_{id}.json
   Eval results      : evaluation_results/{scenario}/pairwise_codi_vs_director_run_{id}.json
   Summary tables    : evaluation_summary/
@@ -51,7 +51,7 @@ from typing import Any, Dict, List, Optional
 # Path setup
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-CODI_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "CoDi-main", "CoDi-main"))
+CODI_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "third_party", "CoDi-main", "CoDi-main"))
 
 sys.path.insert(0, CURRENT_DIR)
 sys.path.insert(0, os.path.join(CURRENT_DIR, "evaluation_agent"))

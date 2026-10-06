@@ -5,7 +5,7 @@
 # This script helps generate comparable results across multiple scenarios.
 #
 # Usage:
-#   ./comparison_batch_runner.sh --impl-dir Implementation/outputs --codi-dir CoDi-main/CoDi-main/outputs/generation --scenarios "scenario1,scenario2"
+#   ./comparison_batch_runner.sh --impl-dir Implementation/outputs --codi-dir third_party/CoDi-main/CoDi-main/outputs/generation --scenarios "scenario1,scenario2"
 #
 # Or copy one of the example usages below and run directly.
 
@@ -58,10 +58,10 @@ if [ -z "$IMPL_DIR" ] || [ -z "$CODI_DIR" ] || [ -z "$SCENARIOS" ]; then
     echo "Usage: $0 --impl-dir <dir> --codi-dir <dir> --scenarios <scenario_list>"
     echo ""
     echo "Example 1 - Single scenario:"
-    echo "  $0 --impl-dir Implementation/outputs --codi-dir CoDi-main/outputs/generation --scenarios olaf_retells_red_riding_hood"
+    echo "  $0 --impl-dir Implementation/outputs --codi-dir third_party/CoDi-main/outputs/generation --scenarios olaf_retells_red_riding_hood"
     echo ""
     echo "Example 2 - Multiple scenarios:"
-    echo "  $0 --impl-dir Implementation/outputs --codi-dir CoDi-main/outputs/generation --scenarios \"olaf_retells_red_riding_hood,olaf_first_summer_picnic\""
+    echo "  $0 --impl-dir Implementation/outputs --codi-dir third_party/CoDi-main/outputs/generation --scenarios \"olaf_retells_red_riding_hood,olaf_first_summer_picnic\""
     echo ""
     exit 1
 fi
