@@ -24,9 +24,7 @@ _ENDING_QUESTION = (
 
 
 def beat_lines(beats: list, from_idx: int) -> list[str]:
-    """Return the beats from from_idx onward, sorted by importance
-    (high first), formatted as "- name [IMPORTANCE]: goal" lines.
-    """
+    """Remaining beats sorted by importance as '- name [IMPORTANCE]: goal' lines."""
     remaining = sorted(
         beats[from_idx:],
         key=lambda b: _IMPORTANCE_RANK.get(b.get("importance", "medium"), 1),
@@ -37,13 +35,7 @@ def beat_lines(beats: list, from_idx: int) -> list[str]:
 
 
 def closing_instruction(beats: list, from_idx: int, recap: str = "") -> str:
-    """Build a director_instruction that closes out all remaining beats
-    in one response. HIGH beats must be narrated, MEDIUM compressed to
-    one sentence, LOW can be skipped.
-
-    `recap` is an optional short lead-in (e.g. an acknowledgment of the
-    user's request to skip/summarize) prepended before the beat list.
-    """
+    """director_instruction that closes out all remaining beats in one response."""
     lead = f"{recap.strip()}\n\n" if recap.strip() else ""
     return (
         f"{lead}FINAL RESPONSE — close the story now. "
@@ -54,15 +46,7 @@ def closing_instruction(beats: list, from_idx: int, recap: str = "") -> str:
 
 
 def full_narration_instruction(beats: list, from_idx: int, recap: str = "") -> str:
-    """Build a director_instruction that narrates every remaining beat, in
-    story order and at full detail, in one uninterrupted turn.
-
-    Unlike closing_instruction, this is not a skip-ahead or a summary — the
-    user explicitly asked to hear the rest of the story told all the way
-    through without pausing for turn-by-turn interruption, so no beat is
-    compressed or skipped, and beats stay in narrative order rather than
-    being ranked by importance.
-    """
+    """director_instruction that narrates every remaining beat in one turn."""
     lead = f"{recap.strip()}\n\n" if recap.strip() else ""
     remaining = beats[from_idx:]
     lines = [f"- {b['name']}: {b['goal']}" for b in remaining]
@@ -79,16 +63,7 @@ def full_narration_instruction(beats: list, from_idx: int, recap: str = "") -> s
 
 
 def skip_to_instruction(beats: list, from_idx: int, to_idx: int, recap: str = "") -> str:
-    """Build a director_instruction that jumps straight to beat to_idx,
-    skipping everything between from_idx and to_idx without narrating,
-    summarizing, or bridging through any of it.
-
-    Unlike closing_instruction / full_narration_instruction, this does NOT
-    end the story — it's a mid-story skip, not a jump to the ending. The
-    user asked to skip AHEAD to a specific part, not to hear a compressed
-    recap of what they're skipping past, so the beats in between are simply
-    marked passed (by the caller updating beat_index) and never mentioned.
-    """
+    """director_instruction that jumps straight to beat to_idx without bridging."""
     lead = f"{recap.strip()}\n\n" if recap.strip() else ""
     target = beats[to_idx] if to_idx < len(beats) else None
     if target is None:

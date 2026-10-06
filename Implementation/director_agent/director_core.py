@@ -29,10 +29,7 @@ _FILLER_OPENER_FAMILY = {
 
 
 def beat_pacing_label(turns_in_current_beat: int) -> str | None:
-    """Map turns spent in the current beat to an escalating pacing label.
-
-    Returns None for turns 0-1, where no pacing pressure is applied yet.
-    """
+    """Map turns in the current beat to a pacing label (None for turns 0-1)."""
     if turns_in_current_beat <= 1:
         return None
     if turns_in_current_beat == 2:
@@ -49,17 +46,7 @@ _REPETITION_GUARD = (
 
 
 def pacing_instruction_suffix(pacing_label: str | None) -> str:
-    """
-    Escalating text appended to the director's own director_instruction,
-    keyed on beat_pacing_label. This is enforced in code rather than left to
-    the director model's own judgment -- the prompt's Anti-Stall Rules ask
-    the model to self-escalate, but under sustained derailment it can keep
-    choosing not to progress turn after turn with nothing to stop it. This
-    guarantees the actor sees escalating pressure regardless of whether the
-    director's own JSON output did.
-
-    A None label (no pacing pressure yet) still gets the repetition guard.
-    """
+    """Escalating anti-stall text appended in code to the director_instruction."""
     if pacing_label is None:
         return _REPETITION_GUARD
     if pacing_label == "lingering":
@@ -85,14 +72,7 @@ def _turn_split_re(character_name: str) -> re.Pattern:
 
 
 def last_character_opener(story_so_far: str, character_name: str = "Olaf") -> str | None:
-    """Return the first word of the character's most recent turn in story_so_far, if any.
-
-    Turns are split on "<character_name>: "/"User: " prefixes rather than on every
-    newline — a character turn can itself contain blank lines (the reaction +
-    story-narration paragraphs), so naive splitlines() picked up trailing narration
-    text instead of the turn's actual opener, and any in-sentence colon within that
-    trailing text (e.g. "Now, picture this:") was then misread as a speaker prefix.
-    """
+    """First word of the character's most recent turn in story_so_far, if any."""
     text = story_so_far.strip()
     if not text:
         return None
@@ -134,14 +114,7 @@ def opener_guard_text(last_opener: str | None) -> str:
 
 
 def opener_guard_actor_text(last_opener: str | None) -> str:
-    """Terse opener-guard text for injection into the actor-facing director_instruction.
-
-    Unlike opener_guard_text (used in the director LLM's own reasoning prompt),
-    this is read by the realtime actor model as a literal instruction, not
-    reasoned about — so it stays a single short imperative line while still
-    preserving the filler-family ban that stops the model bouncing between
-    filler spellings (e.g. "Oh" -> "Ooh" -> "Well").
-    """
+    """One-line opener ban injected into the actor-facing director_instruction."""
     if not last_opener:
         return "No opener restriction (first turn)."
 
@@ -157,15 +130,7 @@ _LEADING_WORD_RE = re.compile(r"^([A-Za-z']+)([,!.…\s—-]*\s*)")
 
 
 def strip_banned_opener(text: str, last_opener: str | None) -> str:
-    """Deterministically remove a repeated filler-family opener from generated text.
-
-    The prompt-level guard (opener_guard_actor_text) has proven unreliable in
-    practice — the actor model keeps reusing "Oh"/"Ooh" even when explicitly
-    told not to. This is the same escalation the codebase already applies to
-    the instruction itself (plain code instead of trusting LLM compliance),
-    extended to the actual output: if the new line opens with the same
-    filler family as the previous line, cut the filler and re-capitalize.
-    """
+    """Remove a repeated filler-family opener (Oh/Ooh/Well...) from generated text."""
     if not text or not last_opener:
         return text
     if _normalize_opener(last_opener) not in _FILLER_OPENER_FAMILY:

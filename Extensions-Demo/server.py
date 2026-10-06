@@ -79,14 +79,7 @@ _OLAF_NAME_RE = re.compile(r"\bOlaf\b")
 
 
 def _localize_scenario(sc: dict, character: dict) -> dict:
-    """Rewrite a narrator-agnostic scenario's literal "Olaf" mentions to the
-    selected character's name.
-
-    Only scenarios flagged narrator_agnostic (third-person fairy-tale
-    retellings with no Frozen-specific lore) get this treatment — the rest
-    are Olaf's own personal/Frozen-universe memories and stay Olaf-only
-    (enforced by the caller), so their text is never rewritten.
-    """
+    """Replace literal 'Olaf' mentions in a scenario with the selected character's name."""
     if character["name"] == "Olaf" or not sc.get("narrator_agnostic"):
         return sc
     name = character["name"]
@@ -102,6 +95,8 @@ def _localize_scenario(sc: dict, character: dict) -> dict:
 #  Per-story / per-connection state
 @dataclass
 class StoryState:
+    """State of one story tab: scenario, mode, character, progress, summary, consent, timer."""
+
     story_id: str
     scenario_key: str
     mode: str = "director"
@@ -147,6 +142,8 @@ class StoryState:
 
 @dataclass(eq=False)
 class Session:
+    """Per-connection state: open stories, active story, generated specs and websocket."""
+
     sid: str
     stories: dict = field(default_factory=dict)  # story_id -> StoryState
     active_story_id: "str | None" = None
@@ -195,10 +192,7 @@ def _close_ws(sess: Session):
 
 
 def _resolve_scenario(sess: Session, key: str) -> "dict | None":
-    """Session-generated stories take priority over the fixed registry —
-    sess.generated is per-session and never mutates the shared, thread-unsafe
-    module-level _SCENARIO_REGISTRY.
-    """
+    """Look up a scenario key, preferring the session's generated stories."""
     if key in sess.generated:
         return sess.generated[key]
     return _SCENARIO_REGISTRY.get(key)
@@ -259,12 +253,7 @@ def _new_story(
 
 
 def _pause_active_monitor(sess: Session):
-    """Freeze the currently-active story's countdown (if it's a
-    time_constrained one) before its WS is closed for a switch/pause/new
-    story — otherwise the clock silently keeps running via wall time while
-    the story isn't even connected, which would burn its budget for no
-    story progress at all.
-    """
+    """Freeze the active time-constrained story's countdown."""
     st = sess.active()
     if st and st.mode == "time_constrained" and st.monitor is not None:
         st.paused_remaining_seconds = st.monitor.remaining_seconds()
@@ -272,9 +261,7 @@ def _pause_active_monitor(sess: Session):
 
 
 def _activate_story(sess: Session, st: StoryState):
-    """Make st the session's active story, resuming its countdown (if
-    time_constrained) from wherever it was frozen rather than from scratch.
-    """
+    """Make a story active, resuming its countdown where it was frozen."""
     if st.mode == "time_constrained" and st.monitor is None:
         remaining_minutes = (
             st.paused_remaining_seconds / 60
@@ -291,12 +278,7 @@ def _activate_story(sess: Session, st: StoryState):
 
 
 def _reset_story(st: StoryState):
-    """Re-init a StoryState in place for "start over" — keeps identity
-    (story_id, scenario_key, mode, beats, story_topic, title) but wipes all
-    progress. Callers must still close and reopen the realtime WS afterward:
-    resetting this dict alone does not clear the actor's own conversation
-    memory of the finished run.
-    """
+    """Reset a story's progress in place, keeping its identity and settings."""
     with st.lock:
         st.beat_index = 0
         st.completed_beats = []
@@ -325,6 +307,7 @@ def _reset_story(st: StoryState):
 
 #  Prompt building
 def build_system_prompt(st: StoryState, current_instruction: str = "") -> str:
+    """Build the realtime session instructions for a story."""
     character = _get_character(st)
     beats = st.beats
     idx = st.beat_index
@@ -397,15 +380,7 @@ def _get_lenient_decision(
     beats: list,
     character: dict,
 ) -> dict:
-    """Run the lenient director LLM call, then post-process its raw decision
-    through consent.apply_confirmation — the state machine, not the LLM,
-    decides whether a stop/jump/summarize/continue request actually fires.
-
-    Returns a dict shaped like a normal director decision (director_instruction,
-    decision_type, should_complete_beat) plus, only when an irreversible action
-    is executing this turn, the private _lenient_close / _lenient_close_reason /
-    _lenient_complete_all keys the caller uses to update StoryState.
-    """
+    """Lenient director call, post-processed by the consent state machine."""
     with st.lock:
         consent_snapshot = dict(st.consent)
         continue_asks = st.continue_asks
@@ -575,16 +550,7 @@ def _get_time_constrained_decision(
     beats: list,
     character: dict,
 ) -> dict:
-    """Mirrors User-Study/server.py's time_constrained turn handling (same
-    pacing_mode → behavior mapping), adapted to per-story StoryState/locking
-    and reusing beat_compression.closing_instruction for the "final" wrap-up
-    instead of re-deriving the same beat-ranking text inline.
-
-    Returns a normal-shaped decision (director_instruction, decision_type,
-    should_complete_beat) plus private _tc_* bookkeeping keys the caller uses
-    to advance beat_index correctly (final/critical can jump more than one
-    beat at once) and to surface pacing/timing to the client UI.
-    """
+    """Time-constrained director call with pacing-mode handling."""
     si = min(snap["beat_index"], len(beats) - 1)
     current_beat = beats[si]
 
@@ -714,13 +680,7 @@ _NO_STALL_PRESSURE_TYPES = {
 
 
 def _with_pacing_pressure(instruction: str, st: "StoryState", snap: dict, decision: dict) -> str:
-    """Append the beat-stall escalation text to the actor-facing instruction.
-
-    Keyed on turns spent in the current beat (beat_pacing_label). Exempt
-    decisions -- closing/skipping/confirmation turns, and time-constrained
-    turns where the temporal monitor is deliberately holding (too_fast) or
-    closing (final) the beat -- only get the repetition guard.
-    """
+    """Append the beat-stall escalation text to the actor-facing instruction."""
     decision_type = decision.get("decision_type", "")
     exempt = (
         st.closed
@@ -735,6 +695,7 @@ def _with_pacing_pressure(instruction: str, st: "StoryState", snap: dict, decisi
 
 #  Director turn handling
 def handle_director_tool(sess: Session, ws, event: dict):
+    """Answer the get_director_decision tool call for the story's mode."""
     if sess.openai_ws is not ws:
         return  # stale callback from a websocket this session has since replaced
 
@@ -927,10 +888,7 @@ def handle_director_tool(sess: Session, ws, event: dict):
 
 #  Realtime websocket lifecycle
 def _maybe_resummarize(st: StoryState):
-    """Fire-and-forget: fold older turns into st.story_summary if enough new
-    content has built up. Runs off the turn's critical path — the director
-    call above already has what it needs before this is even invoked.
-    """
+    """Fold older turns into the story summary once enough new text has built up."""
     character_name = _get_character(st)["name"]
     with st.lock:
         snap = {
@@ -961,6 +919,7 @@ def _maybe_resummarize(st: StoryState):
 
 
 def run_openai_ws(sess: Session, story_id: str):
+    """Open the OpenAI Realtime websocket for a story and relay its events."""
     st = sess.stories.get(story_id)
     if st is None:
         return
@@ -1121,6 +1080,7 @@ def run_openai_ws(sess: Session, story_id: str):
 #  Socket.IO handlers
 @socketio.on("connect")
 def on_connect():
+    """Create a session and tell the client its server-side sid."""
     _create_session(request.sid)
     # The client's own socket.id does not reliably match request.sid on this
     # Flask-SocketIO/python-socketio version — tell the client its real
@@ -1131,6 +1091,7 @@ def on_connect():
 
 @socketio.on("disconnect")
 def on_disconnect():
+    """Drop the session and close its websocket."""
     sess = _remove_session(request.sid)
     if sess:
         _close_ws(sess)
@@ -1139,6 +1100,7 @@ def on_disconnect():
 
 @socketio.on("start_story")
 def on_start_story(data):
+    """Start a new story tab (scenario, mode, character, time limit)."""
     sess = _get_session(request.sid)
     if sess is None:
         sess = _create_session(request.sid)
@@ -1171,14 +1133,7 @@ def _log_generated_beats(
     story_prompt: "str | None" = None,
     target_beats: "int | None" = None,
 ) -> None:
-    """Persist a generated (or user-edited) beat spec to disk for auditing.
-
-    generate_story_spec()/save_beats otherwise only ever land in
-    sess.generated — an in-memory dict, gone on server restart or as soon as
-    a story moves past it. `source` is "generated" or "edited" so the two
-    call sites (initial generation vs. a user's edit in the review screen)
-    are distinguishable; `gen_id` ties both together across files.
-    """
+    """Write a generated or edited beat spec to outputs/generated_beats/."""
     try:
         output_dir = os.path.join(EXT_DIR, "outputs", "generated_beats")
         os.makedirs(output_dir, exist_ok=True)
@@ -1204,6 +1159,7 @@ def _log_generated_beats(
 
 @socketio.on("generate_beats")
 def on_generate_beats(data):
+    """Generate a custom story spec from the user's prompt."""
     sess = _get_session(request.sid)
     if sess is None:
         sess = _create_session(request.sid)
@@ -1269,6 +1225,7 @@ def on_generate_beats(data):
 
 @socketio.on("save_beats")
 def on_save_beats(data):
+    """Save user edits to a generated story spec."""
     sess = _get_session(request.sid)
     if sess is None:
         return
@@ -1299,6 +1256,7 @@ def on_save_beats(data):
 
 @socketio.on("restart_story")
 def on_restart_story(data):
+    """Restart a story from the beginning, keeping its settings."""
     sess = _get_session(request.sid)
     if sess is None:
         return
@@ -1339,6 +1297,7 @@ def _story_summary_dict(sess: Session, st: StoryState) -> dict:
 
 @socketio.on("list_stories")
 def on_list_stories():
+    """Send the list of the session's story tabs."""
     sess = _get_session(request.sid)
     if sess is None:
         emit("stories_list", [])
@@ -1348,6 +1307,7 @@ def on_list_stories():
 
 @socketio.on("switch_story")
 def on_switch_story(data):
+    """Make another story tab active and reconnect its realtime session."""
     sess = _get_session(request.sid)
     if sess is None:
         return
@@ -1387,6 +1347,7 @@ def on_switch_story(data):
 
 @socketio.on("pause_story")
 def on_pause_story():
+    """Pause the active story's countdown and close its websocket."""
     sess = _get_session(request.sid)
     if sess is None:
         return
@@ -1396,14 +1357,7 @@ def on_pause_story():
 
 @socketio.on("close_story_tab")
 def on_close_story_tab(data):
-    """Discard a story from the session entirely (its tab disappears).
-
-    If it owns the live realtime WS, that connection is closed first so no
-    late director/audio callbacks land on a story that no longer exists
-    (handle_director_tool already no-ops once sess.stories has no entry).
-    The client decides what to show next, based on `was_active` and the
-    remaining stories in the accompanying stories_list.
-    """
+    """Discard a story from the session."""
     sess = _get_session(request.sid)
     if sess is None:
         return
@@ -1426,6 +1380,7 @@ def on_close_story_tab(data):
 
 @socketio.on("audio_input")
 def on_audio_input(data):
+    """Forward microphone audio to the realtime websocket."""
     sess = _get_session(request.sid)
     if sess and sess.openai_ws:
         try:
@@ -1443,6 +1398,7 @@ def on_audio_input(data):
 
 @socketio.on("text_input")
 def on_text_input(data):
+    """Forward typed user input to the realtime websocket."""
     sess = _get_session(request.sid)
     if sess is None or not sess.openai_ws:
         return
@@ -1476,16 +1432,19 @@ def on_text_input(data):
 #  REST
 @app.route("/")
 def index():
+    """Serve the demo page."""
     return send_from_directory("public", "index.html")
 
 
 @app.route("/<path:path>")
 def static_files(path):
+    """Serve static frontend files."""
     return send_from_directory("public", path)
 
 
 @app.route("/scenarios", methods=["GET"])
 def list_scenarios():
+    """List built-in scenarios, localised to the selected character."""
     character_key = request.args.get("character", DEFAULT_CHARACTER_KEY)
     result = []
     for k, label in AVAILABLE_SCENARIOS.items():
@@ -1498,11 +1457,13 @@ def list_scenarios():
 
 @app.route("/characters", methods=["GET"])
 def list_characters():
+    """List selectable characters."""
     return jsonify([{"key": k, "name": c["name"]} for k, c in CHARACTER_REGISTRY.items()])
 
 
 @app.route("/state", methods=["GET"])
 def get_state():
+    """Return the session's active story state as JSON."""
     sid = request.args.get("sid")
     sess = _get_session(sid)
     if sess is None:
@@ -1515,6 +1476,7 @@ def get_state():
 
 @app.route("/save_session", methods=["POST"])
 def save_session():
+    """Save the session's story transcripts to outputs/."""
     sid = request.args.get("sid") or (request.get_json(silent=True) or {}).get("sid")
     sess = _get_session(sid)
     if sess is None:

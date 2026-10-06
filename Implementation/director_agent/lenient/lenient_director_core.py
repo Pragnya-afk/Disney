@@ -295,6 +295,7 @@ def build_lenient_director_prompt(
     beats: list,
     consent_state: dict,
 ) -> str:
+    """Build the lenient-mode director prompt (includes the consent state)."""
     current_index = story_state["beat_index"]
     current_beat = beats[current_index]
 
@@ -383,6 +384,7 @@ Only set "target_beat" (to a beat "name" from the Narrative Arc list) when decis
 
 
 def parse_director_json(raw: str) -> dict:
+    """Parse the lenient director JSON, falling back to a safe steer-back decision."""
     try:
         decision = json.loads(raw)
     except json.JSONDecodeError:
@@ -416,6 +418,7 @@ def get_lenient_director_decision(
     beats: list,
     consent_state: dict,
 ) -> dict:
+    """Call the lenient director and return its structured decision."""
     prompt = build_lenient_director_prompt(
         user_input=user_input,
         story_state=story_state,

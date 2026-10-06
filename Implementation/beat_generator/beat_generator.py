@@ -37,6 +37,7 @@ def build_beat_generation_prompt(
     target_beats: int = 6,
     expansions_per_beat: int = 3,
 ) -> str:
+    """Build the prompt asking the LLM for a beat-by-beat story spec."""
     return f"""
 You are designing the beat structure for an interactive storytelling session
 narrated in character by {character["name"]}.
@@ -89,10 +90,7 @@ Rules:
 
 
 def validate_and_repair(spec: dict) -> tuple[dict, list[str]]:
-    """Enforce the schema's hard constraints, coercing what can be safely
-    coerced and warning about what can't. Never raises — always returns a
-    usable spec so the caller can decide whether the warnings matter.
-    """
+    """Enforce the spec schema, coercing fixable fields; returns (spec, warnings)."""
     warnings: list[str] = []
     spec = dict(spec) if isinstance(spec, dict) else {}
 
@@ -179,10 +177,7 @@ def generate_story_spec(
     target_beats: int = 6,
     expansions_per_beat: int = 3,
 ) -> dict:
-    """One-shot generation of a director-ready story spec from a free-text
-    prompt. Returns the validated/repaired spec with a "_warnings" key
-    listing anything that had to be coerced.
-    """
+    """Generate a director-ready story spec from a free-text prompt (one LLM call)."""
     prompt = build_beat_generation_prompt(
         story_prompt=story_prompt,
         character=character,
@@ -214,10 +209,7 @@ def generate_story_spec(
 
 
 def spec_to_scenario(spec: dict, story_id: str) -> dict:
-    """Wrap a generated spec into the shape the story-starting code
-    (_new_story / _resolve_scenario) consumes — the same shape as an entry
-    read out of the fixed scenario registry.
-    """
+    """Wrap a generated spec in the same shape as a fixed-registry scenario."""
     return {
         "scenario_name": story_id,
         "story_topic": spec.get("story_topic", ""),

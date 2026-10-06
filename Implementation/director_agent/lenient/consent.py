@@ -81,25 +81,7 @@ def new_consent_state() -> dict:
 
 
 def apply_confirmation(consent: dict, decision: dict, turn_count: int | None = None) -> dict:
-    """Advance the consent state machine by one turn's director decision.
-
-    `decision` is the raw dict returned by the lenient director LLM — must
-    contain `decision_type` and `confirmation_response`
-    ("affirm"|"decline"|"unrelated"|"none"). The LLM's own decision_type is
-    trusted only to *detect a new request* when nothing is pending; once a
-    confirmation is pending, only confirmation_response drives the outcome.
-
-    Returns:
-        {
-          "action": "none" | "ask" | "execute" | "cancelled",
-          "kind": "stop" | "jump" | "summarize" | "continue" | None,
-          "consent": <new consent dict>,
-          "decision_type": <decision_type to actually act on>,
-          "prompt_text": <text to surface to the user, only for "ask">,
-          "target_beat": <beat name for a "jump" to a specific part, or None
-                          for "jump to the ending" / any other kind>,
-        }
-    """
+    """Advance the consent state machine by one turn's director decision."""
     pending = consent.get("pending")
     decision_type = decision.get("decision_type", "")
     confirmation_response = decision.get("confirmation_response", "none")

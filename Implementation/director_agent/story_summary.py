@@ -34,12 +34,7 @@ SUMMARY_SYSTEM_PROMPT = (
 
 
 def split_turns(story_so_far: str, character_name: str = "Olaf") -> list[str]:
-    """Split story_so_far into individual "<character_name>: ..."/"User: ..." turns.
-
-    Returns each turn as the exact substring produced by the split (not
-    re-stripped), so callers that need to slice story_so_far by turn
-    boundaries can do so consistently.
-    """
+    """Split story_so_far into individual '<character>: ...' / 'User: ...' turns."""
     text = story_so_far or ""
     if not text.strip():
         return []
@@ -51,13 +46,7 @@ def build_director_story_context(
     keep_last_turns: int = DEFAULT_KEEP_LAST_TURNS,
     character_name: str = "Olaf",
 ) -> str:
-    """Return the story context to hand to the director prompt.
-
-    Once a story_summary exists, this returns a bounded "summary + recent
-    verbatim turns" block instead of the full story_so_far. Before that
-    (no summary yet), it returns story_so_far unchanged — the raw log
-    itself is never mutated by this module.
-    """
+    """Story context for the director: summary of older turns plus recent turns."""
     story_so_far = state.get("story_so_far", "") or ""
     story_summary = (state.get("story_summary") or "").strip()
     if not story_summary:
@@ -79,12 +68,7 @@ def needs_resummarize(
     resummarize_every: int = DEFAULT_RESUMMARIZE_EVERY_TURNS,
     character_name: str = "Olaf",
 ) -> bool:
-    """Decide whether enough new content has accumulated to (re)summarize.
-
-    summarized_chars is a snapshot of len(story_so_far) taken the last time
-    update_summary ran, so slicing story_so_far from that offset gives
-    exactly the turns added since then.
-    """
+    """Decide whether enough new content has accumulated to (re)summarize."""
     story_so_far = state.get("story_so_far", "") or ""
     total_turns = split_turns(story_so_far, character_name)
     if len(total_turns) <= keep_last_turns:
@@ -148,12 +132,7 @@ def update_summary(
     keep_last_turns: int = DEFAULT_KEEP_LAST_TURNS,
     character_name: str = "Olaf",
 ) -> dict:
-    """Fold everything except the last keep_last_turns turns into story_summary.
-
-    Returns {"story_summary": str, "summarized_chars": int}. Callers are
-    responsible for writing these back onto their own state under a lock —
-    this function does not mutate `state`.
-    """
+    """Fold everything except the last keep_last_turns turns into story_summary."""
     story_so_far = state.get("story_so_far", "") or ""
     turns = split_turns(story_so_far, character_name)
 
