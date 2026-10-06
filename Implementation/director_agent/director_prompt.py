@@ -305,19 +305,19 @@ the beat this turn.
 
 Pacing labels:
 
-1. none (0-3 turns in this beat)
+1. none (0-1 turns in this beat)
 - No added pressure. Follow the normal beat-completion rules above.
 
-2. lingering (4 turns in this beat)
+2. lingering (2 turns in this beat)
 - The beat has had a fair amount of room. If its core event has happened, complete
   it now rather than adding another turn in the same state.
 
-3. overdue (5-6 turns in this beat)
+3. overdue (3-4 turns in this beat)
 - Strongly prefer completing the beat this turn. Only stay if the beat's core event has
   genuinely not happened yet — not because one more turn of detail would be nice.
 - Actively look for the next natural moment to close this beat out.
 
-4. stalled (7+ turns in this beat)
+4. stalled (5+ turns in this beat)
 - This is a strong signal that something is keeping the story from moving — likely
   repeated derailment or over-caution. Treat this as a final warning.
 - Unless there is a clear, compelling narrative reason the beat cannot close yet, complete

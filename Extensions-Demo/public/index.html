@@ -223,6 +223,12 @@
     .story-tab .tab-dots { display: flex; gap: 2px; }
     .story-tab .tab-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.2); }
     .story-tab .tab-dot.done { background: var(--gold); }
+    .story-tab .tab-close {
+      margin-left: 2px; width: 16px; height: 16px; border-radius: 50%; display: inline-flex;
+      align-items: center; justify-content: center; font-size: 10px; line-height: 1;
+      color: rgba(255,255,255,0.5); transition: all 0.15s;
+    }
+    .story-tab .tab-close:hover { background: rgba(255,255,255,0.18); color: #fff; }
     .story-tab-new {
       padding: 6px 12px; border-radius: 10px; background: none; border: 1px dashed rgba(255,255,255,0.3);
       color: rgba(255,255,255,0.6); font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 11.5px;
@@ -672,7 +678,7 @@
     <div class="gen-error" id="review-error" style="display:none;"></div>
 
     <label class="field-label" style="margin-top:8px;">Director mode</label>
-    <div class="mode-toggle" id="review-mode-toggle">
+    <div class="mode-toggle" id="review-mode-toggle" style="grid-template-columns: repeat(2, 1fr);">
       <button class="mode-btn selected" data-mode="director">
         <div class="m-title">Strict Director</div>
         <div class="m-desc">Stays on track, redirects derailment</div>
@@ -681,10 +687,14 @@
         <div class="m-title">Lenient</div>
         <div class="m-desc">Can stop, skip ahead, or summarize</div>
       </button>
+      <!-- Time Constrained hidden for self-created stories for now: generated beats
+           aren't yet planned for a time budget. Restore this button (and set the
+           grid back to 3 columns) to re-enable it.
       <button class="mode-btn" data-mode="time_constrained">
         <div class="m-title">Time Constrained</div>
         <div class="m-desc">Paces itself to fit a time limit</div>
       </button>
+      -->
     </div>
     <div class="time-limit-row" id="review-time-limit-row" style="display:none;">
       <label class="field-label">Target duration</label>
@@ -877,6 +887,19 @@ function connectSocket() {
   });
 
   socket.on('stories_list', renderStoryTabs);
+
+  socket.on('story_tab_closed', (data) => {
+    if (!data || !data.was_active) return;
+    // The live story is gone — stop anything still playing or listening for it.
+    stopMicStreaming();
+    _audioQueue.length = 0;
+    stopTcTicker();
+    setThinking(false);
+    setBusy(false);
+    currentStoryId = null;
+    document.getElementById('chat-log').innerHTML = '';
+    pendingActiveClose = true;   // resolved in renderStoryTabs once the new list arrives
+  });
 
   socket.on('story_switched', (data) => {
     setActiveCharacter(data.character, data.character_name);
@@ -1407,10 +1430,22 @@ function renderStoryTabs(list) {
       <span class="tab-mode-badge">${shortModeLabel(s.mode)}</span>
       ${timeBadge}
       <span class="tab-dots">${dots}</span>
+      <span class="tab-close" title="Close this story">✕</span>
     `;
     if (!s.active) tab.onclick = () => switchToStory(s.story_id);
+    tab.querySelector('.tab-close').onclick = (e) => {
+      e.stopPropagation();   // don't also switch to the tab being closed
+      closeStoryTab(s);
+    };
     container.appendChild(tab);
   });
+  // Closing the active story: once the server has sent the remaining list,
+  // move to the most recent remaining story, or back to the start screen.
+  if (pendingActiveClose) {
+    pendingActiveClose = false;
+    if (list && list.length) switchToStory(list[list.length - 1].story_id);
+    else showScreen('start-screen');
+  }
   const newTab = document.createElement('button');
   newTab.className = 'story-tab-new';
   newTab.textContent = '+ New';
@@ -1422,6 +1457,15 @@ function switchToStory(storyId) {
   if (!socket) return;
   setThinking(true, 'Switching stories…');
   socket.emit('switch_story', { story_id: storyId });
+}
+
+let pendingActiveClose = false;
+
+function closeStoryTab(s) {
+  if (!socket) return;
+  // Finished stories close straight away; in-progress ones lose their place.
+  if (!s.closed && !confirm(`Close "${s.title}"? Its progress will be lost.`)) return;
+  socket.emit('close_story_tab', { story_id: s.story_id });
 }
 
 function goCreateNewStory() {

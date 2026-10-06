@@ -27,6 +27,7 @@ load_dotenv(os.path.join(IMPL_DIR, ".env"))
 
 from director_core import (
     get_director_decision, last_character_opener, opener_guard_actor_text, strip_banned_opener,
+    beat_pacing_label, pacing_instruction_suffix,
 )
 from story_summary import build_director_story_context, needs_resummarize, update_summary
 from lenient_director_core import get_lenient_director_decision
@@ -116,6 +117,7 @@ class StoryState:
     summarized_chars: int = 0
     turns_in_current_beat: int = 0
     expansion_index: int = 0
+    tc_expand_cooldown: int = 0   # turns left in which too_fast must not re-expand after a hurry compression
     turn_count: int = 0
     time_limit: float = 5.0
     consent: dict = field(default_factory=new_consent_state)
@@ -295,6 +297,7 @@ def _reset_story(st: StoryState):
         st.summarized_chars = 0
         st.turns_in_current_beat = 0
         st.expansion_index = 0
+        st.tc_expand_cooldown = 0
         st.turn_count = 0
         st.consent = new_consent_state()
         st.continue_asks = 0
@@ -554,6 +557,17 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
     }
     pacing_mode = temporal.get("pacing_mode", "normal")
 
+    # Right after hurry compressed LOW beats, beat progress jumps ahead of the
+    # clock; without this the monitor would immediately flip to too_fast and
+    # pad the story back out with expansions, oscillating between the two.
+    with st.lock:
+        cooldown = st.tc_expand_cooldown
+        if cooldown:
+            st.tc_expand_cooldown = cooldown - 1
+    if cooldown and pacing_mode == "too_fast":
+        pacing_mode = "normal"
+        temporal = {**temporal, "pacing_mode": "normal"}
+
     try:
         decision = get_time_director_decision(
             client=_client, model=DIRECTOR_MODEL,
@@ -589,7 +603,26 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
     elif pacing_mode == "hurry":
         if snap.get("turns_in_current_beat", 0) >= 2:
             decision["should_complete_beat"] = True
-            decision["director_instruction"] = decision.get("director_instruction", "") + " Wrap up this beat now and move on."
+            # Slightly behind: the LOW (flavour/transition) beats that follow are
+            # compressed into a short transition rather than told in full, and the
+            # story continues with the next MEDIUM or HIGH beat.
+            k = si + 1
+            while k < len(beats) and beats[k].get("importance") == "low":
+                k += 1
+            low_run = beats[si + 1:k]
+            if low_run and k < len(beats):
+                compressed = "; ".join(f"{b['name'].replace('_', ' ')} ({b['goal']})" for b in low_run)
+                nxt = beats[k]
+                decision["director_instruction"] = (
+                    decision.get("director_instruction", "") +
+                    f" Wrap up this beat now. Then compress the next part of the story — {compressed} — "
+                    f"into one or two sentences, and continue with: {nxt['name']} — {nxt['goal']}"
+                )
+                target_idx = k
+                with st.lock:
+                    st.tc_expand_cooldown = 2
+            else:
+                decision["director_instruction"] = decision.get("director_instruction", "") + " Wrap up this beat now and move on."
     elif pacing_mode == "critical":
         decision["should_complete_beat"] = True
         next_high_idx = next(
@@ -610,6 +643,35 @@ def _get_time_constrained_decision(st: StoryState, snap: dict, director_story_st
     decision["_tc_target_idx"] = target_idx
     print(f"[TC | {pacing_mode} | {temporal.get('remaining_seconds', 0):.0f}s left]")
     return decision
+
+
+# Decisions that deliberately end, skip, summarize or pause the story (or ask
+# the user to confirm doing so) -- beat-stall escalation must not push these
+# back into "advance the current beat".
+_NO_STALL_PRESSURE_TYPES = {
+    "close_story", "story_closed", "stop_confirmed", "jump_to_end",
+    "summarize_to_end", "narrate_uninterrupted",
+}
+
+
+def _with_pacing_pressure(instruction: str, st: "StoryState", snap: dict, decision: dict) -> str:
+    """Append the beat-stall escalation text to the actor-facing instruction.
+
+    Keyed on turns spent in the current beat (beat_pacing_label). Exempt
+    decisions -- closing/skipping/confirmation turns, and time-constrained
+    turns where the temporal monitor is deliberately holding (too_fast) or
+    closing (final) the beat -- only get the repetition guard.
+    """
+    decision_type = decision.get("decision_type", "")
+    exempt = (
+        st.closed
+        or decision_type in _NO_STALL_PRESSURE_TYPES
+        or decision_type.startswith("request_")
+        or any(key.startswith("_lenient_") for key in decision)
+        or decision.get("_tc_pacing_mode") in ("too_fast", "final")
+    )
+    label = None if exempt else beat_pacing_label(snap.get("turns_in_current_beat", 0))
+    return f"{instruction} {pacing_instruction_suffix(label)}".strip()
 
 
 #  Director turn handling
@@ -719,6 +781,12 @@ def handle_director_tool(sess: Session, ws, event: dict):
         tool_result["remaining_seconds"] = decision.get("_tc_remaining_seconds", 0)
         if decision.get("_tc_expansion_hint"):
             tool_result["expansion_hint"] = decision["_tc_expansion_hint"]
+
+    # Deterministically append the beat-stall escalation — the director prompt
+    # only *asks* the model to escalate, so the pressure is enforced here.
+    tool_result["director_instruction"] = _with_pacing_pressure(
+        tool_result["director_instruction"], st, snap, decision
+    )
 
     # Deterministically append the opener-diversity guard — the director LLM's
     # own free text has proven unreliable at restating this, so it's injected
@@ -1190,6 +1258,36 @@ def on_pause_story():
         return
     _pause_active_monitor(sess)
     _close_ws(sess)
+
+
+@socketio.on("close_story_tab")
+def on_close_story_tab(data):
+    """Discard a story from the session entirely (its tab disappears).
+
+    If it owns the live realtime WS, that connection is closed first so no
+    late director/audio callbacks land on a story that no longer exists
+    (handle_director_tool already no-ops once sess.stories has no entry).
+    The client decides what to show next, based on `was_active` and the
+    remaining stories in the accompanying stories_list.
+    """
+    sess = _get_session(request.sid)
+    if sess is None:
+        return
+    story_id = data.get("story_id")
+    if story_id not in sess.stories:
+        emit("stories_list", [_story_summary_dict(sess, st) for st in sess.stories.values()])
+        return
+
+    was_active = story_id == sess.active_story_id
+    if sess.ws_story_id == story_id:
+        _close_ws(sess)
+    del sess.stories[story_id]
+    if was_active:
+        sess.active_story_id = None
+
+    print(f"[Story tab closed] {story_id} (was_active={was_active})")
+    emit("story_tab_closed", {"story_id": story_id, "was_active": was_active})
+    emit("stories_list", [_story_summary_dict(sess, st) for st in sess.stories.values()])
 
 
 @socketio.on("audio_input")

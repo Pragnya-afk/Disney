@@ -31,15 +31,53 @@ _FILLER_OPENER_FAMILY = {
 def beat_pacing_label(turns_in_current_beat: int) -> str | None:
     """Map turns spent in the current beat to an escalating pacing label.
 
-    Returns None for turns 0-3, where no pacing pressure is applied yet.
+    Returns None for turns 0-1, where no pacing pressure is applied yet.
     """
-    if turns_in_current_beat <= 3:
+    if turns_in_current_beat <= 1:
         return None
-    if turns_in_current_beat == 4:
+    if turns_in_current_beat == 2:
         return "lingering"
-    if turns_in_current_beat <= 6:
+    if turns_in_current_beat <= 4:
         return "overdue"
     return "stalled"
+
+
+_REPETITION_GUARD = (
+    "Do not repeat any story event, phrase, or beat content already covered "
+    "earlier in Story So Far."
+)
+
+
+def pacing_instruction_suffix(pacing_label: str | None) -> str:
+    """
+    Escalating text appended to the director's own director_instruction,
+    keyed on beat_pacing_label. This is enforced in code rather than left to
+    the director model's own judgment -- the prompt's Anti-Stall Rules ask
+    the model to self-escalate, but under sustained derailment it can keep
+    choosing not to progress turn after turn with nothing to stop it. This
+    guarantees the actor sees escalating pressure regardless of whether the
+    director's own JSON output did.
+
+    A None label (no pacing pressure yet) still gets the repetition guard.
+    """
+    if pacing_label is None:
+        return _REPETITION_GUARD
+    if pacing_label == "lingering":
+        return (
+            f"{_REPETITION_GUARD} This beat has had a fair amount of room -- "
+            "if its core event has already happened, move to complete it now."
+        )
+    if pacing_label == "overdue":
+        return (
+            f"{_REPETITION_GUARD} Strongly prefer completing this beat this "
+            "turn and advancing to the next beat."
+        )
+    # stalled
+    return (
+        f"{_REPETITION_GUARD} This beat is stalled. You must advance the "
+        "story now: complete this beat and move to the next beat this turn, "
+        "regardless of unresolved side conversation."
+    )
 
 
 def _turn_split_re(character_name: str) -> re.Pattern:
