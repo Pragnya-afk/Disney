@@ -17,7 +17,7 @@ Every phase is idempotent — completed work is never re-run.
 Safe to interrupt and restart.
 
 Usage (from Implementation/):
-    nohup python3 run_complete_pipeline.py > pipeline.log 2>&1 &
+    nohup python3 experiments/run_complete_pipeline.py > pipeline.log 2>&1 &
     tail -f pipeline.log
 
 Options:
@@ -32,7 +32,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-CURRENT_DIR = Path(__file__).parent
+IMPLEMENTATION_DIR = Path(__file__).parent.parent
 
 
 # Helpers
@@ -48,7 +48,7 @@ def run_phase(label: str, script_args: list[str]) -> int:
     log(bar)
     result = subprocess.run(
         [sys.executable] + script_args,
-        cwd=str(CURRENT_DIR),
+        cwd=str(IMPLEMENTATION_DIR),
     )
     if result.returncode != 0:
         log(f"  WARNING: phase '{label}' exited with code {result.returncode}")
@@ -83,7 +83,7 @@ def main():
     if args.only in (None, "baseline"):
         run_phase(
             "Baseline — all 30 scenarios",
-            ["run_baseline_suite.py"] + dry,
+            ["experiments/run_baseline_suite.py"] + dry,
         )
 
     # Phase 2 — Director + Time-Constrained
@@ -93,7 +93,7 @@ def main():
     if args.only in (None, "director"):
         run_phase(
             "Director + Time-Constrained — all 30 scenarios × 4 time limits",
-            ["run_full_suite.py"] + dry,
+            ["experiments/run_full_suite.py"] + dry,
         )
 
     # Phase 3 — CoDi Generation
@@ -103,7 +103,7 @@ def main():
     if args.only in (None, "codi"):
         run_phase(
             "CoDi Generation — all 30 scenarios",
-            ["run_codi_suite_and_compare.py", "--only", "codi"] + dry,
+            ["experiments/run_codi_suite_and_compare.py", "--only", "codi"] + dry,
         )
 
     # Phase 4 — Evaluations + Summary Tables
@@ -120,7 +120,7 @@ def main():
     if args.only in (None, "eval"):
         run_phase(
             "Evaluations (all tracks) + Summary Tables",
-            ["run_all_evals.py", "--model", args.model] + dry,
+            ["experiments/run_all_evals.py", "--model", args.model] + dry,
         )
 
     log("=== pipeline complete ===")

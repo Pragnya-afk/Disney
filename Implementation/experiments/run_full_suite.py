@@ -1,5 +1,5 @@
 """
-run_full_suite.py
+experiments/run_full_suite.py
 
 Run all scenarios in the suite for:
   - director_agent (no time limit)
@@ -9,10 +9,10 @@ Skips any scenario/time-limit combination whose output file already exists.
 Safe to interrupt and restart — completed runs are never re-run.
 
 Usage (run from Implementation/):
-    python run_full_suite.py
-    python run_full_suite.py --dry-run        # print what would run, do nothing
-    python run_full_suite.py --only director  # only run director_agent
-    python run_full_suite.py --only time      # only run time-constrained
+    python experiments/run_full_suite.py
+    python experiments/run_full_suite.py --dry-run        # print what would run, do nothing
+    python experiments/run_full_suite.py --only director  # only run director_agent
+    python experiments/run_full_suite.py --only time      # only run time-constrained
 """
 
 import argparse
@@ -20,10 +20,10 @@ import os
 import sys
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(__file__)
-sys.path.insert(0, CURRENT_DIR)
-sys.path.insert(0, os.path.join(CURRENT_DIR, "director_agent"))
-sys.path.insert(0, os.path.join(CURRENT_DIR, "director_agent", "time_constrained"))
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.insert(0, IMPLEMENTATION_DIR)
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent"))
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent", "time_constrained"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from director_agent.auto_main import run_story as run_director
@@ -36,11 +36,11 @@ RUN_ID = 1
 
 
 def director_output_path(scenario_name: str) -> Path:
-    return Path(CURRENT_DIR) / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{RUN_ID}.json"
+    return Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{RUN_ID}.json"
 
 
 def time_output_path(scenario_name: str, time_limit: float) -> Path:
-    return Path(CURRENT_DIR) / "outputs" / "target_duration_director_agent" / scenario_name / f"{time_limit}min" / "batch" / f"run_{RUN_ID}.json"
+    return Path(IMPLEMENTATION_DIR) / "outputs" / "target_duration_director_agent" / scenario_name / f"{time_limit}min" / "batch" / f"run_{RUN_ID}.json"
 
 
 def main():

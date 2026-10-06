@@ -1,5 +1,5 @@
 """
-evaluate_time_constrained.py
+experiments/evaluate_time_constrained.py
 
 Comprehensive evaluation of time-constrained director-agent outputs.
 
@@ -25,13 +25,13 @@ Outputs
   evaluation_summary/time_constrained_similarity.{csv,md}
 
 Usage (run from Implementation/):
-    python evaluate_time_constrained.py
-    python evaluate_time_constrained.py --dry-run
-    python evaluate_time_constrained.py --only quant
-    python evaluate_time_constrained.py --only qual --model gpt-4o
-    python evaluate_time_constrained.py --only tables
-    python evaluate_time_constrained.py --scenario olaf_arendelle_tour_no_derailment
-    python evaluate_time_constrained.py --force
+    python experiments/evaluate_time_constrained.py
+    python experiments/evaluate_time_constrained.py --dry-run
+    python experiments/evaluate_time_constrained.py --only quant
+    python experiments/evaluate_time_constrained.py --only qual --model gpt-4o
+    python experiments/evaluate_time_constrained.py --only tables
+    python experiments/evaluate_time_constrained.py --scenario olaf_arendelle_tour_no_derailment
+    python experiments/evaluate_time_constrained.py --force
 """
 
 import os
@@ -43,18 +43,18 @@ from datetime import datetime
 from pathlib import Path
 from statistics import mean, stdev
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CURRENT_DIR)
-sys.path.insert(0, os.path.join(CURRENT_DIR, "evaluation_agent"))
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, IMPLEMENTATION_DIR)
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "evaluation_agent"))
 
 from dotenv import load_dotenv
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 TIME_LIMITS = ["0.5min", "2.0min", "5.0min", "10.0min"]
-TC_OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs" / "target_duration_director_agent"
-DIRECTOR_OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs" / "director_agent"
-EVAL_TC_DIR = Path(CURRENT_DIR) / "evaluation_results" / "time_constrained"
-SUMMARY_DIR = Path(CURRENT_DIR) / "evaluation_summary"
+TC_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "target_duration_director_agent"
+DIRECTOR_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
+EVAL_TC_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_results" / "time_constrained"
+SUMMARY_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_summary"
 
 DEFAULT_MODEL = "gpt-4o"
 DEFAULT_RUN_ID = 1

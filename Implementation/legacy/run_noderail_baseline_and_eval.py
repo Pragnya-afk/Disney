@@ -1,5 +1,5 @@
 """
-run_noderail_baseline_and_eval.py
+legacy/run_noderail_baseline_and_eval.py
 
 Runs the baseline (no director) on all 10 no-derailment scenarios from the
 suite, then runs pairwise evaluation comparing each baseline run against the
@@ -10,10 +10,10 @@ Director outputs  → outputs/director_agent/{scenario_name}/batch/run_1.json  (
 Evaluation results→ evaluation_results/{scenario_name}/pairwise_run_1.json
 
 Usage (run from Implementation/):
-    python run_noderail_baseline_and_eval.py
-    python run_noderail_baseline_and_eval.py --dry-run
-    python run_noderail_baseline_and_eval.py --only baseline
-    python run_noderail_baseline_and_eval.py --only eval
+    python legacy/run_noderail_baseline_and_eval.py
+    python legacy/run_noderail_baseline_and_eval.py --dry-run
+    python legacy/run_noderail_baseline_and_eval.py --only baseline
+    python legacy/run_noderail_baseline_and_eval.py --only eval
 """
 
 import os
@@ -23,15 +23,15 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CURRENT_DIR)
-sys.path.insert(0, os.path.join(CURRENT_DIR, "director_agent"))
-sys.path.insert(0, os.path.join(CURRENT_DIR, "evaluation_agent"))
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, IMPLEMENTATION_DIR)
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent"))
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "evaluation_agent"))
 
 from dotenv import load_dotenv
 from openai import OpenAI
 
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from scenarios.olaf_derailment_scenario_suite import NO_DERAILMENT_SCENARIOS
 from character_prompts.olaf import CHARACTER
@@ -155,7 +155,7 @@ def run_baseline(scenario: dict, character: dict, run_id: int) -> str:
     beats = scenario["beats"]
     user_inputs = scenario["user_inputs"]
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs", "baseline", scenario_name, "batch")
+    output_dir = os.path.join(IMPLEMENTATION_DIR, "outputs", "baseline", scenario_name, "batch")
     os.makedirs(output_dir, exist_ok=True)
 
     story_state = {
@@ -222,10 +222,10 @@ def run_eval(scenario: dict, character: dict, run_id: int) -> str:
     scenario_name = scenario["scenario_name"]
 
     baseline_path = os.path.join(
-        CURRENT_DIR, "outputs", "baseline", scenario_name, "batch", f"run_{run_id}.json"
+        IMPLEMENTATION_DIR, "outputs", "baseline", scenario_name, "batch", f"run_{run_id}.json"
     )
     director_path = os.path.join(
-        CURRENT_DIR, "outputs", "director_agent", scenario_name, "batch", f"run_{run_id}.json"
+        IMPLEMENTATION_DIR, "outputs", "director_agent", scenario_name, "batch", f"run_{run_id}.json"
     )
 
     if not os.path.exists(baseline_path):
@@ -273,7 +273,7 @@ def run_eval(scenario: dict, character: dict, run_id: int) -> str:
         "aggregated_ab_ba_winners": aggregated,
     }
 
-    result_dir = os.path.join(CURRENT_DIR, "evaluation_results", scenario_name)
+    result_dir = os.path.join(IMPLEMENTATION_DIR, "evaluation_results", scenario_name)
     os.makedirs(result_dir, exist_ok=True)
     out_path = os.path.join(result_dir, f"pairwise_run_{run_id}.json")
 
@@ -310,9 +310,9 @@ def main():
 
     for sc in scenarios:
         name = sc["scenario_name"]
-        baseline_out = Path(CURRENT_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
-        director_out = Path(CURRENT_DIR) / "outputs" / "director_agent" / name / "batch" / f"run_{RUN_ID}.json"
-        eval_out = Path(CURRENT_DIR) / "evaluation_results" / name / f"pairwise_run_{RUN_ID}.json"
+        baseline_out = Path(IMPLEMENTATION_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
+        director_out = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent" / name / "batch" / f"run_{RUN_ID}.json"
+        eval_out = Path(IMPLEMENTATION_DIR) / "evaluation_results" / name / f"pairwise_run_{RUN_ID}.json"
 
         if not args.only or args.only == "baseline":
             if baseline_out.exists():

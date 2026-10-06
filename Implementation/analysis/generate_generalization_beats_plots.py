@@ -1,5 +1,5 @@
 """
-generate_generalization_beats_plots.py
+analysis/generate_generalization_beats_plots.py
 
 Generates plots matching the style of evaluation_summary/plots/01-07
 (same colors, layout, title format) for the two new comparisons written
@@ -13,7 +13,7 @@ up in generalization_and_beats_ablation_section.tex:
   13_beats_vs_fulltext_by_scenario.png
 
 Usage (from Implementation/):
-    python generate_generalization_beats_plots.py
+    python analysis/generate_generalization_beats_plots.py
 """
 
 import json
@@ -25,7 +25,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-OUT_DIR = Path(__file__).parent / "evaluation_summary" / "plots"
+OUT_DIR = Path(__file__).parent.parent / "evaluation_summary" / "plots"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 METRICS = [

@@ -1,5 +1,5 @@
 """
-run_baseline_suite_rocket.py
+experiments/run_baseline_suite_rocket.py
 
 Run the baseline (no director) for all 7 scenarios in the Rocket
 red-riding-hood derailment suite. Mirrors run_baseline_suite.py
@@ -10,8 +10,8 @@ Skips any scenario whose output file already exists.
 Safe to interrupt and restart.
 
 Usage (from Implementation/):
-    python run_baseline_suite_rocket.py
-    python run_baseline_suite_rocket.py --dry-run
+    python experiments/run_baseline_suite_rocket.py
+    python experiments/run_baseline_suite_rocket.py --dry-run
 """
 
 import argparse
@@ -19,8 +19,8 @@ import os
 import sys
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CURRENT_DIR)
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, IMPLEMENTATION_DIR)
 
 from run_baseline_suite import run_baseline, RUN_ID
 from scenarios.rocket_retells_red_riding_hood_scenario_suite import SCENARIOS
@@ -37,7 +37,7 @@ def main():
 
     todo = []
     for name in scenario_list:
-        out = Path(CURRENT_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
+        out = Path(IMPLEMENTATION_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
         if out.exists():
             print(f"  [skip] {name}")
         else:

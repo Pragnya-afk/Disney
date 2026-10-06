@@ -1,11 +1,11 @@
 """
-comparison_analysis.py
+legacy/comparison_analysis.py
 
 Aggregation and statistical analysis pipeline for thesis evaluation.
 Summarizes multiple comparison runs and generates insights for publication.
 
 Usage:
-    python comparison_analysis.py \
+    python legacy/comparison_analysis.py \
         --results-dir implementation/comparison_results \
         --out-dir implementation/comparison_analysis \
         --model gpt-4o

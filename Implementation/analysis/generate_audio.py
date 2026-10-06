@@ -1,5 +1,5 @@
 """
-generate_audio.py
+analysis/generate_audio.py
 
 Generate an audio file from a transcript JSON.
 
@@ -13,10 +13,10 @@ Good defaults:
     --user-voice      shimmer  (soft, clear)
 
 Usage (run from Implementation/):
-    python generate_audio.py \\
+    python analysis/generate_audio.py \\
         --transcript outputs/director_agent/complete_derail_red_riding_hood/batch/run_1.json
 
-    python generate_audio.py \\
+    python analysis/generate_audio.py \\
         --transcript outputs/director_agent/complete_derail_red_riding_hood/batch/run_1.json \\
         --output audio/my_story.wav \\
         --character-voice fable \\
@@ -34,9 +34,11 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from openai import OpenAI
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # Implementation/
 from audio_fx import get_fx_chain, apply_fx, OLAF_AUDIOFX_CONFIG
 
-IMPLEMENTATION_DIR = os.path.dirname(__file__)
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(__file__))
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 # OpenAI PCM specs (fixed by the API)

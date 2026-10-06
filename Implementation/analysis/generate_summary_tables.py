@@ -1,5 +1,5 @@
 """
-generate_summary_tables.py
+analysis/generate_summary_tables.py
 
 Convenience entry point for regenerating all evaluation summary tables.
 
@@ -18,15 +18,15 @@ Outputs (evaluation_summary/):
     table_pairwise_wins.{csv,md,tex}       pairwise win counts per comparison pair
 
 Usage (run from Implementation/):
-    python generate_summary_tables.py
-    python generate_summary_tables.py --input_dir evaluation_results --output_dir evaluation_summary
+    python analysis/generate_summary_tables.py
+    python analysis/generate_summary_tables.py --input_dir evaluation_results --output_dir evaluation_summary
 """
 
 import sys
 import os
 import subprocess
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def main():
@@ -50,7 +50,7 @@ def main():
     )
     args = parser.parse_args()
 
-    summarize_script = os.path.join(CURRENT_DIR, "evaluation_agent", "summarize_evaluations.py")
+    summarize_script = os.path.join(IMPLEMENTATION_DIR, "evaluation_agent", "summarize_evaluations.py")
 
     cmd = [
         sys.executable,
@@ -62,7 +62,7 @@ def main():
     print(f"Scanning: {args.input_dir}")
     print(f"Writing:  {args.output_dir}\n")
 
-    result = subprocess.run(cmd, cwd=CURRENT_DIR)
+    result = subprocess.run(cmd, cwd=IMPLEMENTATION_DIR)
     sys.exit(result.returncode)
 
 

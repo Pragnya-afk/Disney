@@ -1,5 +1,5 @@
 """
-regen_medium_derailment_director.py
+experiments/regen_medium_derailment_director.py
 
 Same as regen_complete_derailment_director.py but for the 10 medium-derailment
 scenarios (of the 33-scenario baseline-vs-director set) that can still be
@@ -7,18 +7,18 @@ regenerated. Overwrites outputs/director_agent/<name>/batch/run_1.json for
 each -- pre-fix versions were already backed up to run_1_prefix.json.
 
 Usage (from Implementation/):
-    python regen_medium_derailment_director.py
+    python experiments/regen_medium_derailment_director.py
 """
 
 import sys
 from pathlib import Path
 
-CURRENT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(CURRENT_DIR))
-sys.path.insert(0, str(CURRENT_DIR / "director_agent"))
+IMPLEMENTATION_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(IMPLEMENTATION_DIR))
+sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent"))
 
 from dotenv import load_dotenv
-load_dotenv(str(CURRENT_DIR / ".env"))
+load_dotenv(str(IMPLEMENTATION_DIR / ".env"))
 
 from director_agent.auto_main import run_story
 

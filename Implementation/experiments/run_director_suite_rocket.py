@@ -1,5 +1,5 @@
 """
-run_director_suite_rocket.py
+experiments/run_director_suite_rocket.py
 
 Run the director agent (no time limit) for all 7 scenarios in the
 Rocket red-riding-hood derailment suite. Mirrors the director phase
@@ -10,8 +10,8 @@ Skips any scenario whose output file already exists.
 Safe to interrupt and restart.
 
 Usage (from Implementation/):
-    python run_director_suite_rocket.py
-    python run_director_suite_rocket.py --dry-run
+    python experiments/run_director_suite_rocket.py
+    python experiments/run_director_suite_rocket.py --dry-run
 """
 
 import argparse
@@ -19,9 +19,9 @@ import os
 import sys
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(__file__)
-sys.path.insert(0, CURRENT_DIR)
-sys.path.insert(0, os.path.join(CURRENT_DIR, "director_agent"))
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.insert(0, IMPLEMENTATION_DIR)
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent"))
 
 from scenarios.rocket_retells_red_riding_hood_scenario_suite import SCENARIOS
 from director_agent.auto_main import run_story as run_director
@@ -32,7 +32,7 @@ RUN_ID = 1
 
 
 def director_output_path(scenario_name: str) -> Path:
-    return Path(CURRENT_DIR) / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{RUN_ID}.json"
+    return Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{RUN_ID}.json"
 
 
 def main():

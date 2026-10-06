@@ -1,5 +1,5 @@
 """
-run_codi_eval.py
+experiments/run_codi_eval.py
 
 Runs pairwise evaluation comparing CoDi outputs against corresponding
 director-agent outputs.
@@ -17,10 +17,10 @@ These files are automatically picked up by summarize_evaluations.py
 the evaluation summary tables.
 
 Usage (run from Implementation/):
-    python run_codi_eval.py
-    python run_codi_eval.py --dry-run
-    python run_codi_eval.py --scenario noderail_red_riding_hood
-    python run_codi_eval.py --run-id 1 --model gpt-4o
+    python experiments/run_codi_eval.py
+    python experiments/run_codi_eval.py --dry-run
+    python experiments/run_codi_eval.py --scenario noderail_red_riding_hood
+    python experiments/run_codi_eval.py --run-id 1 --model gpt-4o
 """
 
 import os
@@ -30,12 +30,12 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CURRENT_DIR)
-sys.path.insert(0, os.path.join(CURRENT_DIR, "evaluation_agent"))
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, IMPLEMENTATION_DIR)
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "evaluation_agent"))
 
 from dotenv import load_dotenv
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
 from evaluation_agent.evaluation_core import (
@@ -52,9 +52,9 @@ CHARACTER_MODULE = "character_prompts.olaf"
 DEFAULT_RUN_ID = 1
 DEFAULT_EVAL_MODEL = "gpt-4o"
 
-CODI_OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs" / "codi"
-DIRECTOR_OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs" / "director_agent"
-EVAL_RESULTS_DIR = Path(CURRENT_DIR) / "evaluation_results"
+CODI_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "codi"
+DIRECTOR_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
+EVAL_RESULTS_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_results"
 
 
 

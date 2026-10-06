@@ -1,5 +1,5 @@
 """
-Implementation/run_codi_interactive.py
+Implementation/experiments/run_codi_interactive.py
 
 Run CoDi's generation pipeline with the interactive user inputs from our
 olaf_derailment_scenario_suite.  Each scenario is converted to a CoDi-compatible
@@ -13,9 +13,9 @@ Outputs land in:
     gen_d_gpt-4o_c_gpt-4o.json   — raw CoDi generation output
 
 Usage (from Disney/):
-    python Implementation/run_codi_interactive.py
-    python Implementation/run_codi_interactive.py --scenarios olaf_first_summer_picnic_no_derailment
-    python Implementation/run_codi_interactive.py --dry-run     # print JSONL, don't run
+    python Implementation/experiments/run_codi_interactive.py
+    python Implementation/experiments/run_codi_interactive.py --scenarios olaf_first_summer_picnic_no_derailment
+    python Implementation/experiments/run_codi_interactive.py --dry-run     # print JSONL, don't run
 """
 
 import os
@@ -27,7 +27,7 @@ import tempfile
 
 from dotenv import load_dotenv
 
-IMPL_DIR = os.path.dirname(__file__)
+IMPL_DIR = os.path.dirname(os.path.dirname(__file__))
 DISNEY_DIR = os.path.dirname(IMPL_DIR)
 CODI_DIR = os.path.join(DISNEY_DIR, "third_party", "CoDi-main", "CoDi-main")
 

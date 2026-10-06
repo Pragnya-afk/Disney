@@ -1,5 +1,5 @@
 """
-run_rrh_codi_vs_director_okay.py
+legacy/run_rrh_codi_vs_director_okay.py
 
 Compare CoDi vs Director on the Red Riding Hood (no-derailment) scenario
 where the Director receives only "okay" as the user input for every turn
@@ -16,10 +16,10 @@ Eval result         : evaluation_results/olaf_retells_red_riding_hood_no_derailm
 
 Usage
 -----
-    python run_rrh_codi_vs_director_okay.py
-    python run_rrh_codi_vs_director_okay.py --skip-director  # reuse existing director okay run
-    python run_rrh_codi_vs_director_okay.py --skip-eval      # only (re)generate transcripts
-    python run_rrh_codi_vs_director_okay.py --model gpt-4o   # evaluation model
+    python legacy/run_rrh_codi_vs_director_okay.py
+    python legacy/run_rrh_codi_vs_director_okay.py --skip-director  # reuse existing director okay run
+    python legacy/run_rrh_codi_vs_director_okay.py --skip-eval      # only (re)generate transcripts
+    python legacy/run_rrh_codi_vs_director_okay.py --model gpt-4o   # evaluation model
 """
 
 import argparse
@@ -31,16 +31,16 @@ from pathlib import Path
 
 # Paths
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-DIRECTOR_AGENT_DIR = os.path.join(CURRENT_DIR, "director_agent")
-EVAL_AGENT_DIR = os.path.join(CURRENT_DIR, "evaluation_agent")
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DIRECTOR_AGENT_DIR = os.path.join(IMPLEMENTATION_DIR, "director_agent")
+EVAL_AGENT_DIR = os.path.join(IMPLEMENTATION_DIR, "evaluation_agent")
 
-sys.path.insert(0, CURRENT_DIR)
+sys.path.insert(0, IMPLEMENTATION_DIR)
 sys.path.insert(0, DIRECTOR_AGENT_DIR)
 sys.path.insert(0, EVAL_AGENT_DIR)
 
 from dotenv import load_dotenv
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from openai import OpenAI
 
@@ -54,19 +54,19 @@ SCENARIO = SCENARIOS[SCENARIO_NAME]
 OKAY_INPUTS = ["okay"] * 30  # more than enough for all beats to complete
 
 DIRECTOR_OKAY_PATH = (
-    Path(CURRENT_DIR) / "outputs" / "director_agent"
+    Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
     / SCENARIO_NAME / "okay_inputs" / "run_1.json"
 )
 CODI_PATH = (
-    Path(CURRENT_DIR) / "outputs" / "codi"
+    Path(IMPLEMENTATION_DIR) / "outputs" / "codi"
     / SCENARIO_NAME / "batch" / "run_1.json"
 )
 EVAL_PATH = (
-    Path(CURRENT_DIR) / "evaluation_results"
+    Path(IMPLEMENTATION_DIR) / "evaluation_results"
     / SCENARIO_NAME / "pairwise_codi_vs_director_okay.json"
 )
 OUTPUTS_PATH = (
-    Path(CURRENT_DIR) / "evaluation_results"
+    Path(IMPLEMENTATION_DIR) / "evaluation_results"
     / SCENARIO_NAME / "character_outputs_okay.txt"
 )
 

@@ -1,5 +1,5 @@
 """
-generate_baseline_vs_director_plot.py
+analysis/generate_baseline_vs_director_plot.py
 
 Regenerates all three baseline-vs-director figures from
 evaluation_results/baseline_vs_director/*/eval_run_1.json:
@@ -15,7 +15,7 @@ are separate evaluation efforts not part of these figures.
 To change a title, edit the TITLE_* constants below and re-run.
 
 Usage (from Implementation/):
-    python generate_baseline_vs_director_plot.py
+    python analysis/generate_baseline_vs_director_plot.py
 """
 
 import json
@@ -27,7 +27,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-OUT_DIR = Path(__file__).parent / "evaluation_summary" / "plots"
+OUT_DIR = Path(__file__).parent.parent / "evaluation_summary" / "plots"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 OUT_NAME = "01_baseline_vs_director_scores_by_metric.png"
 OUT_NAME_WINS = "02_baseline_vs_director_pairwise_wins.png"

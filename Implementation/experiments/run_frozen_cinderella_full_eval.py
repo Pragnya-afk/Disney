@@ -1,5 +1,5 @@
 """
-run_frozen_cinderella_full_eval.py
+experiments/run_frozen_cinderella_full_eval.py
 
 Generates baseline / director / time-constrained transcripts, then runs the
 LLM-as-judge evaluation, for exactly the two full-story scenarios used in
@@ -12,23 +12,23 @@ the other ~47 scenario variants elsewhere in the suite that have no
 transcripts yet.
 
 Usage (from Implementation/):
-    python run_frozen_cinderella_full_eval.py --dry-run
-    python run_frozen_cinderella_full_eval.py
-    python run_frozen_cinderella_full_eval.py --only generate
-    python run_frozen_cinderella_full_eval.py --only evaluate
+    python experiments/run_frozen_cinderella_full_eval.py --dry-run
+    python experiments/run_frozen_cinderella_full_eval.py
+    python experiments/run_frozen_cinderella_full_eval.py --only generate
+    python experiments/run_frozen_cinderella_full_eval.py --only evaluate
 """
 
 import argparse
 import sys
 from pathlib import Path
 
-CURRENT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(CURRENT_DIR))
-sys.path.insert(0, str(CURRENT_DIR / "director_agent"))
-sys.path.insert(0, str(CURRENT_DIR / "director_agent" / "time_constrained"))
+IMPLEMENTATION_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(IMPLEMENTATION_DIR))
+sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent"))
+sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent" / "time_constrained"))
 
 from dotenv import load_dotenv
-load_dotenv(str(CURRENT_DIR / ".env"))
+load_dotenv(str(IMPLEMENTATION_DIR / ".env"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER
@@ -48,15 +48,15 @@ TARGET_NAMES = sorted(
 
 
 def baseline_path(name):
-    return CURRENT_DIR / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
+    return IMPLEMENTATION_DIR / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
 
 
 def director_path(name):
-    return CURRENT_DIR / "outputs" / "director_agent" / name / "batch" / f"run_{RUN_ID}.json"
+    return IMPLEMENTATION_DIR / "outputs" / "director_agent" / name / "batch" / f"run_{RUN_ID}.json"
 
 
 def time_path(name, tl):
-    return CURRENT_DIR / "outputs" / "target_duration_director_agent" / name / f"{tl}min" / "batch" / f"run_{RUN_ID}.json"
+    return IMPLEMENTATION_DIR / "outputs" / "target_duration_director_agent" / name / f"{tl}min" / "batch" / f"run_{RUN_ID}.json"
 
 
 def generate(dry_run: bool):
@@ -138,8 +138,8 @@ def main():
             for track in ("baseline", "time", "summarize"):
                 print(f"\n{'='*60}\nEvaluation track: {track}\n{'='*60}")
                 subprocess.run(
-                    [sys.executable, "run_all_evals.py", "--model", args.model, "--only", track],
-                    cwd=str(CURRENT_DIR),
+                    [sys.executable, "experiments/run_all_evals.py", "--model", args.model, "--only", track],
+                    cwd=str(IMPLEMENTATION_DIR),
                     check=False,
                 )
 

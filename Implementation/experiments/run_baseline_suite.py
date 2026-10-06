@@ -1,5 +1,5 @@
 """
-run_baseline_suite.py
+experiments/run_baseline_suite.py
 
 Run the baseline (no director) for ALL 30 scenarios in the suite.
 Extends run_noderail_baseline_and_eval.py which only covers no-derailment.
@@ -8,8 +8,8 @@ Skips any scenario whose output file already exists.
 Safe to interrupt and restart.
 
 Usage (from Implementation/):
-    python run_baseline_suite.py
-    python run_baseline_suite.py --dry-run
+    python experiments/run_baseline_suite.py
+    python experiments/run_baseline_suite.py --dry-run
 """
 
 import argparse
@@ -18,11 +18,11 @@ import os
 import sys
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CURRENT_DIR)
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, IMPLEMENTATION_DIR)
 
 from dotenv import load_dotenv
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from openai import OpenAI
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
@@ -133,7 +133,7 @@ def run_baseline(scenario: dict, character: dict, run_id: int) -> str:
     beats = scenario["beats"]
     user_inputs = scenario["user_inputs"]
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs", "baseline", scenario_name, "batch")
+    output_dir = os.path.join(IMPLEMENTATION_DIR, "outputs", "baseline", scenario_name, "batch")
     os.makedirs(output_dir, exist_ok=True)
 
     story_state = {"beat_index": 0, "completed_beats": [], "story_so_far": ""}
@@ -188,7 +188,7 @@ def main():
 
     todo = []
     for name in scenario_list:
-        out = Path(CURRENT_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
+        out = Path(IMPLEMENTATION_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
         if out.exists():
             print(f"  [skip] {name}")
         else:

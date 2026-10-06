@@ -1,5 +1,5 @@
 """
-generate_case_study_plots.py
+analysis/generate_case_study_plots.py
 
 Plots for the thesis case-study section comparing the LLM judge against the
 live user study, for the exact two stories participants played (Frozen,
@@ -18,7 +18,7 @@ assessment text, because evaluation_core.py's score parser does not match the ju
 "**Dimension:**\\nScore: X / 10" formatting (see thesis note on this bug).
 
 Usage (from Implementation/):
-    python generate_case_study_plots.py
+    python analysis/generate_case_study_plots.py
 """
 
 from pathlib import Path
@@ -27,7 +27,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-OUT_DIR = Path(__file__).parent / "evaluation_summary" / "plots"
+OUT_DIR = Path(__file__).parent.parent / "evaluation_summary" / "plots"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 METRICS = [

@@ -1,5 +1,5 @@
 """
-regen_case_study_5x.py
+experiments/regen_case_study_5x.py
 
 For the two case-study scenarios (Frozen, Cinderella, complete-derailment),
 generate 5 independent runs per condition and judge each with a single-story
@@ -17,7 +17,7 @@ time-constrained track are unaffected by that fix, so existing run_1 is
 reused where present and only runs 2-5 are generated fresh.
 
 Usage (from Implementation/):
-    python regen_case_study_5x.py
+    python experiments/regen_case_study_5x.py
 """
 
 import json
@@ -25,13 +25,13 @@ import re
 import sys
 from pathlib import Path
 
-CURRENT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(CURRENT_DIR))
-sys.path.insert(0, str(CURRENT_DIR / "director_agent"))
-sys.path.insert(0, str(CURRENT_DIR / "director_agent" / "time_constrained"))
+IMPLEMENTATION_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(IMPLEMENTATION_DIR))
+sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent"))
+sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent" / "time_constrained"))
 
 from dotenv import load_dotenv
-load_dotenv(str(CURRENT_DIR / ".env"))
+load_dotenv(str(IMPLEMENTATION_DIR / ".env"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER
@@ -99,11 +99,11 @@ def judge_single(client, transcript_path, profile):
 
 def path_for(cond, scenario_name, run_id):
     if cond == "baseline":
-        return CURRENT_DIR / "outputs" / "baseline" / scenario_name / "batch" / f"run_{run_id}.json"
+        return IMPLEMENTATION_DIR / "outputs" / "baseline" / scenario_name / "batch" / f"run_{run_id}.json"
     if cond == "director":
-        return CURRENT_DIR / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{run_id}.json"
+        return IMPLEMENTATION_DIR / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{run_id}.json"
     if cond == "time5":
-        return (CURRENT_DIR / "outputs" / "target_duration_director_agent" / scenario_name
+        return (IMPLEMENTATION_DIR / "outputs" / "target_duration_director_agent" / scenario_name
                 / "5.0min" / "batch" / f"run_{run_id}.json")
     raise ValueError(cond)
 
@@ -152,7 +152,7 @@ def main():
             all_results[scenario_name][cond] = {"runs": per_run_scores, "average": avg}
             print(f"  AVERAGE ({cond}): {avg}", flush=True)
 
-    out_path = CURRENT_DIR / "evaluation_results" / "case_study_5x_results.json"
+    out_path = IMPLEMENTATION_DIR / "evaluation_results" / "case_study_5x_results.json"
     out_path.write_text(json.dumps(all_results, indent=2))
     print(f"\nSaved: {out_path}", flush=True)
 

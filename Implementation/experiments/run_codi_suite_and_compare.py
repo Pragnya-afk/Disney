@@ -1,5 +1,5 @@
 """
-run_codi_suite_and_compare.py
+experiments/run_codi_suite_and_compare.py
 
 End-to-end pipeline:
   Phase 1 – codi   : Run CoDi generation for every scenario in the suite
@@ -11,24 +11,24 @@ All three phases run by default; use --only to run a single phase.
 
 Usage (run from Implementation/):
   # Full pipeline
-  python run_codi_suite_and_compare.py
+  python experiments/run_codi_suite_and_compare.py
 
   # Preview what would run without executing
-  python run_codi_suite_and_compare.py --dry-run
+  python experiments/run_codi_suite_and_compare.py --dry-run
 
   # Single phases
-  python run_codi_suite_and_compare.py --only codi
-  python run_codi_suite_and_compare.py --only eval
-  python run_codi_suite_and_compare.py --only summary
+  python experiments/run_codi_suite_and_compare.py --only codi
+  python experiments/run_codi_suite_and_compare.py --only eval
+  python experiments/run_codi_suite_and_compare.py --only summary
 
   # Re-run everything even if outputs exist
-  python run_codi_suite_and_compare.py --force
+  python experiments/run_codi_suite_and_compare.py --force
 
   # Use a different evaluation model
-  python run_codi_suite_and_compare.py --model gpt-4o-mini
+  python experiments/run_codi_suite_and_compare.py --model gpt-4o-mini
 
   # Use a specific CoDi generation model
-  python run_codi_suite_and_compare.py --codi-model gpt-4o-mini
+  python experiments/run_codi_suite_and_compare.py --codi-model gpt-4o-mini
 
 Output locations:
   CoDi raw outputs  : ../third_party/CoDi-main/CoDi-main/outputs/suite/{scenario}/
@@ -50,14 +50,14 @@ from typing import Any, Dict, List, Optional
 
 # Path setup
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-CODI_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "third_party", "CoDi-main", "CoDi-main"))
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CODI_DIR = os.path.abspath(os.path.join(IMPLEMENTATION_DIR, "..", "third_party", "CoDi-main", "CoDi-main"))
 
-sys.path.insert(0, CURRENT_DIR)
-sys.path.insert(0, os.path.join(CURRENT_DIR, "evaluation_agent"))
+sys.path.insert(0, IMPLEMENTATION_DIR)
+sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "evaluation_agent"))
 
 from dotenv import load_dotenv
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
@@ -78,9 +78,9 @@ DEFAULT_RUN_ID = 1
 DEFAULT_EVAL_MODEL = "gpt-4o"
 DEFAULT_CODI_MODEL = "gpt-4o"
 
-CODI_OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs" / "codi"
-DIRECTOR_OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs" / "director_agent"
-EVAL_RESULTS_DIR = Path(CURRENT_DIR) / "evaluation_results"
+CODI_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "codi"
+DIRECTOR_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
+EVAL_RESULTS_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_results"
 
 # CoDi has its own venv with required dependencies.
 CODI_PYTHON = str(Path(CODI_DIR) / "venv" / "bin" / "python")
@@ -92,7 +92,7 @@ try:
     import pandas  # noqa: F401
     SUMMARY_PYTHON = sys.executable
 except ImportError:
-    _disney_venv_python = str(Path(CURRENT_DIR).parent / ".venv" / "bin" / "python")
+    _disney_venv_python = str(Path(IMPLEMENTATION_DIR).parent / ".venv" / "bin" / "python")
     SUMMARY_PYTHON = _disney_venv_python if Path(_disney_venv_python).exists() else sys.executable
 
 
@@ -460,7 +460,7 @@ def run_summary(dry_run: bool) -> None:
     print(f"  Using Python: {SUMMARY_PYTHON}")
     result = subprocess.run(
         [SUMMARY_PYTHON, "evaluation_agent/summarize_evaluations.py"],
-        cwd=CURRENT_DIR,
+        cwd=IMPLEMENTATION_DIR,
         capture_output=True,
         text=True,
     )
@@ -587,7 +587,7 @@ def main() -> None:
     print(sep)
 
     if not args.dry_run and (not args.only or args.only == "summary"):
-        summary_dir = Path(CURRENT_DIR) / "evaluation_summary"
+        summary_dir = Path(IMPLEMENTATION_DIR) / "evaluation_summary"
         print(f"\nTables written to: {summary_dir}")
         if summary_dir.exists():
             for f in sorted(summary_dir.glob("*.md")):

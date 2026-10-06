@@ -1,5 +1,5 @@
 """
-run_judge_model_comparison.py
+experiments/run_judge_model_comparison.py
 
 Reruns one existing pairwise evaluation with a different judge model, to
 check whether the judge's verdict is sensitive to which model is doing the
@@ -8,13 +8,16 @@ evaluation pipeline (evaluation_agent.evaluation_core) -- only the model
 changes.
 
 Usage (from Implementation/):
-    python run_judge_model_comparison.py --model gpt-5.6-sol
+    python experiments/run_judge_model_comparison.py --model gpt-5.6-sol
 """
 
 import argparse
 import json
 from datetime import datetime
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # Implementation/
 
 from dotenv import load_dotenv
 load_dotenv(".env")
@@ -56,7 +59,7 @@ def call_evaluator(client, model: str, prompt: str) -> str:
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER
 
-CURRENT_DIR = Path(__file__).parent
+IMPLEMENTATION_DIR = Path(__file__).parent.parent
 
 
 def build_profile(scenario_name: str) -> str:
@@ -102,8 +105,8 @@ def run_ab_ba(client, model, story_a, story_b, profile, prompt_template, dimensi
 
 
 def run_one(client, model, scenario):
-    path_a = CURRENT_DIR / "outputs" / "director_agent" / scenario / "batch" / "run_1.json"
-    path_b = CURRENT_DIR / "outputs" / "director_agent_fulltext" / scenario / "batch" / "run_1.json"
+    path_a = IMPLEMENTATION_DIR / "outputs" / "director_agent" / scenario / "batch" / "run_1.json"
+    path_b = IMPLEMENTATION_DIR / "outputs" / "director_agent_fulltext" / scenario / "batch" / "run_1.json"
 
     profile = build_profile(scenario)
     story_a = transcript_to_story_with_director(load_json(str(path_a)))
@@ -117,8 +120,8 @@ def run_one(client, model, scenario):
 
     result = {
         "timestamp": datetime.now().isoformat(),
-        "story_a_path": str(path_a.relative_to(CURRENT_DIR)),
-        "story_b_path": str(path_b.relative_to(CURRENT_DIR)),
+        "story_a_path": str(path_a.relative_to(IMPLEMENTATION_DIR)),
+        "story_b_path": str(path_b.relative_to(IMPLEMENTATION_DIR)),
         "scenario": scenario,
         "model": model,
         "note": "A = beats-based director, B = full-text director",
@@ -126,7 +129,7 @@ def run_one(client, model, scenario):
         **ab_ba,
     }
 
-    out_dir = CURRENT_DIR / "evaluation_results" / "beats_vs_fulltext_director" / scenario
+    out_dir = IMPLEMENTATION_DIR / "evaluation_results" / "beats_vs_fulltext_director" / scenario
     out_dir.mkdir(parents=True, exist_ok=True)
     safe_model_name = model.replace("/", "_")
     out_path = out_dir / f"eval_run_1_{safe_model_name}.json"
@@ -136,7 +139,7 @@ def run_one(client, model, scenario):
 
 
 def print_comparison(model, scenario, new_result):
-    existing_path = CURRENT_DIR / "evaluation_results" / "beats_vs_fulltext_director" / scenario / "eval_run_1.json"
+    existing_path = IMPLEMENTATION_DIR / "evaluation_results" / "beats_vs_fulltext_director" / scenario / "eval_run_1.json"
     if not existing_path.exists():
         return
     gpt4o = json.loads(existing_path.read_text())

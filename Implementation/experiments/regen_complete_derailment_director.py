@@ -1,5 +1,5 @@
 """
-regen_complete_derailment_director.py
+experiments/regen_complete_derailment_director.py
 
 One-off script: regenerate the director_agent transcripts for the 10
 complete-derailment scenarios (of the 33-scenario baseline-vs-director set)
@@ -9,18 +9,18 @@ pacing_instruction_suffix fix is in place. Overwrites outputs/director_agent/
 up to run_1_prefix.json.
 
 Usage (from Implementation/):
-    python regen_complete_derailment_director.py
+    python experiments/regen_complete_derailment_director.py
 """
 
 import sys
 from pathlib import Path
 
-CURRENT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(CURRENT_DIR))
-sys.path.insert(0, str(CURRENT_DIR / "director_agent"))
+IMPLEMENTATION_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(IMPLEMENTATION_DIR))
+sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent"))
 
 from dotenv import load_dotenv
-load_dotenv(str(CURRENT_DIR / ".env"))
+load_dotenv(str(IMPLEMENTATION_DIR / ".env"))
 
 from director_agent.auto_main import run_story
 

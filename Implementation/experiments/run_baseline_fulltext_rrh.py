@@ -1,5 +1,5 @@
 """
-run_baseline_fulltext_rrh.py
+experiments/run_baseline_fulltext_rrh.py
 
 Ablation: full-story-text baseline for the Olaf "Little Red Riding
 Hood" derailment suite, to compare against the existing beats-based
@@ -19,8 +19,8 @@ This does NOT run these outputs through the evaluator -- it just
 produces transcripts under outputs/baseline_fulltext/ for review.
 
 Usage (from Implementation/):
-    python run_baseline_fulltext_rrh.py
-    python run_baseline_fulltext_rrh.py --dry-run
+    python experiments/run_baseline_fulltext_rrh.py
+    python experiments/run_baseline_fulltext_rrh.py --dry-run
 """
 
 import argparse
@@ -29,11 +29,11 @@ import os
 import sys
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CURRENT_DIR)
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, IMPLEMENTATION_DIR)
 
 from dotenv import load_dotenv
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from openai import OpenAI
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
@@ -193,7 +193,7 @@ def run_fulltext(scenario: dict, character: dict, run_id: int) -> str:
     scenario_name = scenario["scenario_name"]
     user_inputs = scenario["user_inputs"]
 
-    output_dir = os.path.join(CURRENT_DIR, "outputs", "baseline_fulltext", scenario_name, "batch")
+    output_dir = os.path.join(IMPLEMENTATION_DIR, "outputs", "baseline_fulltext", scenario_name, "batch")
     os.makedirs(output_dir, exist_ok=True)
 
     story_so_far = ""
@@ -242,7 +242,7 @@ def main():
 
     todo = []
     for name in scenario_list:
-        out = Path(CURRENT_DIR) / "outputs" / "baseline_fulltext" / name / "batch" / f"run_{RUN_ID}.json"
+        out = Path(IMPLEMENTATION_DIR) / "outputs" / "baseline_fulltext" / name / "batch" / f"run_{RUN_ID}.json"
         if out.exists():
             print(f"  [skip] {name}")
         else:

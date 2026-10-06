@@ -13,7 +13,7 @@ Safe to interrupt and restart.
 After all evaluations, summarizes results into tables under evaluation_summary/.
 
 Usage (from Implementation/):
-    nohup python run_all_evals.py --model gpt-4o > eval_all.log 2>&1 &
+    nohup python experiments/run_all_evals.py --model gpt-4o > eval_all.log 2>&1 &
     tail -f eval_all.log
 
 Options:
@@ -30,11 +30,11 @@ from datetime import datetime
 from itertools import combinations
 from pathlib import Path
 
-CURRENT_DIR = os.path.dirname(__file__)
-sys.path.insert(0, CURRENT_DIR)
+IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.insert(0, IMPLEMENTATION_DIR)
 
 from dotenv import load_dotenv
-load_dotenv(os.path.join(CURRENT_DIR, ".env"))
+load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from evaluation_agent.evaluation_core import (
     make_client,
@@ -60,8 +60,8 @@ from evaluation_agent.evaluation_core import (
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER
 
-OUTPUTS_DIR = Path(CURRENT_DIR) / "outputs"
-EVAL_DIR    = Path(CURRENT_DIR) / "evaluation_results"
+OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs"
+EVAL_DIR    = Path(IMPLEMENTATION_DIR) / "evaluation_results"
 TIME_LIMITS = [0.5, 2.0, 5.0, 10.0]
 
 
@@ -165,8 +165,8 @@ def eval_baseline_vs_director(client, model, dry_run):
 
             result = {
                 "timestamp": datetime.now().isoformat(),
-                "story_a_path": str(path_a.relative_to(CURRENT_DIR)),
-                "story_b_path": str(path_b.relative_to(CURRENT_DIR)),
+                "story_a_path": str(path_a.relative_to(IMPLEMENTATION_DIR)),
+                "story_b_path": str(path_b.relative_to(IMPLEMENTATION_DIR)),
                 "scenario": scenario,
                 "model": model,
                 "single_story_scores": {"A": single_a, "B": single_b},
@@ -247,8 +247,8 @@ def eval_codi_vs_director(client, model, dry_run):
 
             result = {
                 "timestamp": datetime.now().isoformat(),
-                "story_a_path": str(path_impl.relative_to(CURRENT_DIR)),
-                "story_b_path": str(path_codi.relative_to(CURRENT_DIR)),
+                "story_a_path": str(path_impl.relative_to(IMPLEMENTATION_DIR)),
+                "story_b_path": str(path_codi.relative_to(IMPLEMENTATION_DIR)),
                 "scenario": scenario,
                 "model": model,
                 "single_story_scores": {
@@ -295,7 +295,7 @@ def eval_time_constrained(client, model, dry_run):
 
             result = {
                 "timestamp": datetime.now().isoformat(),
-                "story_a_path": str(path.relative_to(CURRENT_DIR)),
+                "story_a_path": str(path.relative_to(IMPLEMENTATION_DIR)),
                 "scenario": scenario,
                 "time_limit": time_lbl,
                 "model": model,
@@ -356,8 +356,8 @@ def eval_time_constrained(client, model, dry_run):
 
                 result = {
                     "timestamp": datetime.now().isoformat(),
-                    "story_a_path": str(path_a.relative_to(CURRENT_DIR)),
-                    "story_b_path": str(path_b.relative_to(CURRENT_DIR)),
+                    "story_a_path": str(path_a.relative_to(IMPLEMENTATION_DIR)),
+                    "story_b_path": str(path_b.relative_to(IMPLEMENTATION_DIR)),
                     "scenario": scenario,
                     "label_a": lbl_a,
                     "label_b": lbl_b,
@@ -381,8 +381,8 @@ def run_summarize():
     result = subprocess.run(
         [sys.executable, "-m", "evaluation_agent.summarize_evaluations",
          "--input_dir",  str(EVAL_DIR),
-         "--output_dir", str(Path(CURRENT_DIR) / "evaluation_summary")],
-        cwd=CURRENT_DIR,
+         "--output_dir", str(Path(IMPLEMENTATION_DIR) / "evaluation_summary")],
+        cwd=IMPLEMENTATION_DIR,
         capture_output=True,
         text=True,
     )
