@@ -24,119 +24,29 @@ import os
 import sys
 import json
 import argparse
-import importlib
 from dotenv import load_dotenv
-from openai import OpenAI
 
 CURRENT_DIR = os.path.dirname(__file__)
 IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
 sys.path.append(IMPLEMENTATION_DIR)
 
 from director_core_fulltext import get_director_decision_fulltext
+from director_agent.actor_common import (
+    ACTOR_INSTRUCTIONS,
+    ACTOR_SYSTEM_PROMPT,
+    load_module,
+    load_scenario,
+    make_client,
+    safe_json_parse,
+    validate_animation,
+)
 
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
-
-
-def make_client() -> OpenAI:
-    return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 from config import DIRECTOR_BATCH_MODEL
 
 MODEL = DIRECTOR_BATCH_MODEL
-
-
-ACTOR_SYSTEM_PROMPT = """
-You are an interactive storytelling engine for an AI character.
-
-You speak as the character.
-You must stay in character and follow the Director Agent's instruction.
-""".strip()
-
-
-ACTOR_INSTRUCTIONS = """
-You are controlling an interactive AI character.
-
-You must speak as the character.
-Follow the Director Agent's instruction, but keep the response natural,
-character-consistent, and performable aloud.
-
-## Actor Rules
-
-- Speak only as the character.
-- Do not mention the Director Agent.
-- Do not explain the system.
-- If the user interrupted, answer briefly and return to the story.
-- If the user helped the story, incorporate their idea.
-- If the user is off-topic, gently redirect.
-- Keep the response short: 2 to 4 sentences.
-- Choose exactly one animation from the available animation list.
-- Do not invent new animations.
-- The response must contain a concrete new story development, not just commentary.
-- The director_instruction is mandatory. Realize the event described there.
-
-## Anti-Repetition Rules
-
-- Do not start most turns with "Oh".
-- Do not use "Oh" in consecutive turns.
-- Do not repeatedly use phrases like:
-  - "Isn't that..."
-  - "What a..."
-  - "It's like..."
-  - "I love that..."
-  - "That's a great question..."
-- Do not end multiple turns with a rhetorical question.
-- Do not reuse the same cozy metaphor style every turn.
-- If you used a snow, hug, or warmth metaphor recently, avoid using another one unless truly necessary.
-- Vary the emotional shape of the response:
-  - sometimes excited
-  - sometimes curious
-  - sometimes concerned
-  - sometimes gentle
-  - sometimes direct
-- Prefer concrete scene details over generic Olaf filler.
-
-## Strong Style Rule
-
-The response must sound like Olaf, but not like the same Olaf sentence pattern every turn.
-Character fidelity must come from tone and warmth, not from repeating the same catchphrases.
-
-## Response Balance Rule
-
-If the user input is disruptive or off-track:
-- acknowledge it in at most one short sentence
-- spend the rest of the response on the story event
-
-The story event is more important than the acknowledgment.
-
-Do not let the acknowledgment dominate the response.
-
-## Storytelling Rules
-
-- After acknowledging the user, spend most of the response on the story itself.
-- Each response should push the retelling forward with at least one new event, reveal, or shift.
-- Do not stay in commentary mode for the whole turn.
-- If the director indicates a concrete event, that event must happen in the response.
-
-## Output Format
-
-Return valid JSON only.
-""".strip()
-
-
-def load_module(module_name: str):
-    return importlib.import_module(module_name)
-
-
-def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
-    mod = load_module(scenario_module)
-    if scenario_name:
-        if not hasattr(mod, "SCENARIOS"):
-            raise ValueError("--scenario-name requires a suite module with a SCENARIOS dict.")
-        if scenario_name not in mod.SCENARIOS:
-            raise ValueError(f"Scenario '{scenario_name}' not found. Available: {list(mod.SCENARIOS.keys())}")
-        return mod.SCENARIOS[scenario_name]
-    return mod.SCENARIO
 
 
 def build_actor_prompt_fulltext(
@@ -200,20 +110,6 @@ Return valid JSON only in this exact structure:
   "reason": "Briefly explain why the story did or did not advance this turn."
 }}
 """.strip()
-
-
-def safe_json_parse(raw: str, fallback: dict) -> dict:
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        fallback["raw_model_response"] = raw
-        return fallback
-
-
-def validate_animation(animation: str, character: dict) -> str:
-    if animation in character["available_animations"]:
-        return animation
-    return character["available_animations"][0]
 
 
 def run_story_fulltext(

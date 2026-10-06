@@ -17,7 +17,6 @@ This runner will:
 """
 
 import argparse
-import importlib
 import json
 import os
 import sys
@@ -25,7 +24,6 @@ import time
 from statistics import mean
 
 from dotenv import load_dotenv
-from openai import OpenAI
 
 CURRENT_DIR = os.path.dirname(__file__)
 IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
@@ -33,27 +31,18 @@ sys.path.append(IMPLEMENTATION_DIR)
 
 from time_control import TemporalMonitor
 from time_director_core import get_time_director_decision
-
-
-def make_client() -> OpenAI:
-    return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-
-def load_module(module_name: str):
-    return importlib.import_module(module_name)
+from director_agent.actor_common import (
+    ACTOR_SYSTEM_PROMPT,
+    load_module,
+    make_client,
+    safe_json_parse,
+    validate_animation,
+)
 
 
 from config import INTERACTIVE_MODEL
 
 MODEL = INTERACTIVE_MODEL
-
-
-ACTOR_SYSTEM_PROMPT = """
-You are an interactive storytelling engine for an AI character.
-
-You speak as the character.
-You must stay in character and follow the Director Agent's instruction.
-""".strip()
 
 
 ACTOR_INSTRUCTIONS = """
@@ -224,20 +213,6 @@ Return valid JSON only in this exact structure:
   "reason": "Briefly explain why the beat is or is not complete."
 }}
 """.strip()
-
-
-def safe_json_parse(raw: str, fallback: dict) -> dict:
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        fallback["raw_model_response"] = raw
-        return fallback
-
-
-def validate_animation(animation: str, character: dict) -> str:
-    if animation in character["available_animations"]:
-        return animation
-    return character["available_animations"][0]
 
 
 def should_complete_beat(

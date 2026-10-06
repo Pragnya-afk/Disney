@@ -20,9 +20,7 @@ import sys
 import json
 import time
 import argparse
-import importlib
 from dotenv import load_dotenv
-from openai import OpenAI
 
 CURRENT_DIR = os.path.dirname(__file__)
 IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(CURRENT_DIR))
@@ -31,25 +29,21 @@ sys.path.append(CURRENT_DIR)
 
 from time_control import TemporalMonitor
 from time_director_core import get_time_director_decision
+from director_agent.actor_common import (
+    ACTOR_SYSTEM_PROMPT,
+    load_module,
+    make_client,
+    safe_json_parse,
+    text_indicates_next_beat,
+    validate_animation,
+)
 
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
-
-
-def make_client() -> OpenAI:
-    return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 from config import DIRECTOR_BATCH_MODEL
 
 MODEL = DIRECTOR_BATCH_MODEL
-
-
-ACTOR_SYSTEM_PROMPT = """
-You are an interactive storytelling engine for an AI character.
-
-You speak as the character.
-You must stay in character and follow the Director Agent's instruction.
-""".strip()
 
 
 ACTOR_INSTRUCTIONS = """
@@ -142,10 +136,6 @@ Do not let the acknowledgment dominate the response.
 
 Return valid JSON only.
 """.strip()
-
-
-def load_module(module_name: str):
-    return importlib.import_module(module_name)
 
 
 def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
@@ -245,66 +235,6 @@ Return valid JSON only in this exact structure:
   "reason": "Briefly explain why the beat is or is not complete."
 }}
 """.strip()
-
-
-def safe_json_parse(raw: str, fallback: dict) -> dict:
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        fallback["raw_model_response"] = raw
-        return fallback
-
-
-def validate_animation(animation: str, character: dict) -> str:
-    if animation in character["available_animations"]:
-        return animation
-    return character["available_animations"][0]
-
-
-def text_indicates_next_beat(actor_output: dict, current_beat_name: str) -> bool:
-    text = (
-        actor_output.get("character_response", "") + " " +
-        actor_output.get("story_event", "")
-    ).lower()
-
-    beat_to_keywords = {
-        "story_opening": [
-            "mother warned", "stay on the path", "entered the forest", "into the forest"
-        ],
-        "home_and_family_setup": [
-            "stay on the path", "avoid strangers", "entered the forest", "into the woods"
-        ],
-        "warning_before_departure": [
-            "entered the forest", "into the forest", "flowers", "birds", "wolf"
-        ],
-        "forest_entry": [
-            "wolf", "talked to the wolf", "charming wolf", "asked where she was going"
-        ],
-        "forest_distraction": [
-            "wolf", "grandmother's cottage", "where does your grandmother live"
-        ],
-        "wolf_appears": [
-            "shared details", "grandmother's cottage", "butterfly", "off the path"
-        ],
-        "conversation_and_disclosure": [
-            "cottage", "door", "inside", "disguised", "grandmother in bed"
-        ],
-        "wolf_manipulates_delay": [
-            "big eyes", "big teeth", "revealed his true nature", "lunged"
-        ],
-        "wolf_reaches_cottage_first": [
-            "woodcutter", "rescued", "safe now", "grandmother emerged"
-        ],
-        "grandmother_in_danger": [
-            "reflected", "lessons learned", "shared treats", "safe together"
-        ],
-        "red_approaches_cottage": [
-            "lessons learned", "shared treats", "safe together", "look out for each other"
-        ],
-    }
-
-    keywords = beat_to_keywords.get(current_beat_name, [])
-    return any(keyword in text for keyword in keywords)
 
 
 def should_complete_beat(
