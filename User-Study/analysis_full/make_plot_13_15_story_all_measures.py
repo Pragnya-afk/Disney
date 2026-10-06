@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
@@ -28,10 +29,16 @@ measures = [
 ]
 
 
-COND_LABELS = {"baseline": "baseline", "director": "director", "time_constrained": "time-constrained"}
+COND_LABELS = {
+    "baseline": "baseline",
+    "director": "director",
+    "time_constrained": "time-constrained",
+}
 
 
-def make_story_plot(story_num, story_label, cond_a, cond_b, out_name, base_ylim=5.6, show_n_diff=True):
+def make_story_plot(
+    story_num, story_label, cond_a, cond_b, out_name, base_ylim=5.6, show_n_diff=True
+):
     s = comp[comp["story"] == story_num]
     conds = [cond_a, cond_b]
     legend_handles = [Patch(facecolor=COND_COLORS[c], label=COND_LABELS[c]) for c in conds]
@@ -62,16 +69,32 @@ def make_story_plot(story_num, story_label, cond_a, cond_b, out_name, base_ylim=
         ax.tick_params(axis="y", labelsize=11)
     legend_ax = axes[5]
     legend_ax.axis("off")
-    legend_ax.legend(handles=legend_handles, loc="center", fontsize=16, frameon=False,
-                      title="Condition", title_fontsize=17)
-    fig.suptitle(f"{story_label} -- questionnaire outcomes, {cond_a} vs {cond_b} (completers, n={len(completers)})",
-                 fontsize=16, fontweight="bold")
+    legend_ax.legend(
+        handles=legend_handles,
+        loc="center",
+        fontsize=16,
+        frameon=False,
+        title="Condition",
+        title_fontsize=17,
+    )
+    fig.suptitle(
+        f"{story_label} -- questionnaire outcomes, {cond_a} vs {cond_b} (completers, n={len(completers)})",
+        fontsize=16,
+        fontweight="bold",
+    )
     fig.tight_layout(rect=[0, 0, 1, 0.95])
     fig.savefig(os.path.join(PLOTS_DIR, out_name), dpi=150)
     plt.close(fig)
 
 
 make_story_plot(1, "Story 1: Frozen", "director", "baseline", "13_story1_all_measures.png")
-make_story_plot(2, "Story 2: Cinderella", "director", "time_constrained", "15_story2_all_measures.png", show_n_diff=False)
+make_story_plot(
+    2,
+    "Story 2: Cinderella",
+    "director",
+    "time_constrained",
+    "15_story2_all_measures.png",
+    show_n_diff=False,
+)
 
 print("Wrote 13_story1_all_measures.png and 15_story2_all_measures.png to", PLOTS_DIR)

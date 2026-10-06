@@ -1,0 +1,24 @@
+[project]
+name = "controllable-storytelling"
+version = "1.0.0"
+description = "Bachelor thesis: controllable storytelling for interactive AI characters (director agent, baselines, evaluation, user study)."
+requires-python = ">=3.12,<3.13"
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+extend-exclude = "third_party/"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["third_party"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+# E402: scripts extend sys.path before local imports by design; E501: long prompt strings are kept verbatim.
+ignore = ["E402", "E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# re-exports prompt constants/dimensions to the experiment scripts
+"Implementation/evaluation_agent/evaluation_core.py" = ["F401"]

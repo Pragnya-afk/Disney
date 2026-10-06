@@ -26,7 +26,6 @@ Meta / auxiliary prompts (used by comparison_evaluator):
     DIMENSION_RUBRICS
 """
 
-
 # Dimension lists
 
 BASE_DIMENSIONS = [
@@ -247,9 +246,7 @@ EVALUATE_STORY_AB_PROMPT = (
     + "\n\n"
     "Provide a detailed assessment of the two stories across these dimensions.\n\n"
     "Conclude your assessment with this exact template:\n\n"
-    "Based on my assessment, the better story for each dimension is:\n"
-    + _BASE_AB_LINES
-    + "\n\n"
+    "Based on my assessment, the better story for each dimension is:\n" + _BASE_AB_LINES + "\n\n"
     "[Character Profile]\n{character_profile}\n\n"
     "[Story A]\n{story_a}\n\n"
     "[Story B]\n{story_b}\n\n"
@@ -258,9 +255,7 @@ EVALUATE_STORY_AB_PROMPT = (
 
 EVALUATE_STORY_QUALITY_PROMPT = (
     "Review the given interactive AI character story transcript.\n\n"
-    "Evaluate it based on the following dimensions:\n\n"
-    + _BASE_DIMENSION_DESCRIPTIONS
-    + "\n\n"
+    "Evaluate it based on the following dimensions:\n\n" + _BASE_DIMENSION_DESCRIPTIONS + "\n\n"
     "Provide a detailed assessment.\n"
     "Then conclude with scores from 1 to 10 using this exact format:\n\n"
     + _BASE_SCORE_LINES
@@ -292,9 +287,7 @@ EVALUATE_CODI_AB_PROMPT = (
     "- Clearly articulate which system performs better and why\n"
     "- Acknowledge trade-offs between the two approaches\n\n"
     "Conclude your assessment with this exact template:\n\n"
-    "Based on my assessment, the better story for each dimension is:\n"
-    + _CODI_AB_LINES
-    + "\n\n"
+    "Based on my assessment, the better story for each dimension is:\n" + _CODI_AB_LINES + "\n\n"
     "[Character Profile]\n{character_profile}\n\n"
     "[Story A — Implementation Director Agent]\n{story_a}\n\n"
     "[Story B — CoDi Framework]\n{story_b}\n\n"
@@ -336,9 +329,7 @@ EVALUATE_TIME_AB_PROMPT = (
     + "\n\n"
     "Provide a detailed assessment of the two stories across these dimensions.\n\n"
     "Conclude your assessment with this exact template:\n\n"
-    "Based on my assessment, the better story for each dimension is:\n"
-    + _TIME_AB_LINES
-    + "\n\n"
+    "Based on my assessment, the better story for each dimension is:\n" + _TIME_AB_LINES + "\n\n"
     "[Character Profile]\n{character_profile}\n\n"
     "[Story A — Time Budget: {label_a}]\n{story_a}\n\n"
     "[Story B — Time Budget: {label_b}]\n{story_b}\n\n"
@@ -583,7 +574,6 @@ DIMENSION_RUBRICS = {
 8-9 (Excellent): Strong narrative structure, clear progression, logical coherence throughout
 10 (Perfect): Masterful structure with compelling progression and complete coherence
 """,
-
     "narrative_control": """
 1-3 (Poor): System frequently gets stuck, loops, or derails; no clear progression through beats
 4-5 (Fair): System progresses but slowly or with some redundancy; occasional backtracking
@@ -591,7 +581,6 @@ DIMENSION_RUBRICS = {
 8-9 (Excellent): System expertly guides progression; clear beat transitions; efficient pacing
 10 (Perfect): Masterful control; beats flow naturally; pacing is optimal; compelling momentum
 """,
-
     "character_fidelity": """
 1-3 (Poor): Character frequently breaks character; inconsistent personality; generic assistant voice
 4-5 (Fair): Character mostly consistent but with occasional breaks; some generic moments
@@ -599,7 +588,6 @@ DIMENSION_RUBRICS = {
 8-9 (Excellent): Character consistently authentic; decisions align with profile; strong voice
 10 (Perfect): Character is completely authentic; every action aligns with profile; compelling personality
 """,
-
     "language_expressiveness": """
 1-3 (Poor): Bland, repetitive language; poor sentence variety; awkward phrasing
 4-5 (Fair): Basic language with some variety but frequent repetition
@@ -607,7 +595,6 @@ DIMENSION_RUBRICS = {
 8-9 (Excellent): Rich, varied language; natural phrasing; excellent tone; expressive
 10 (Perfect): Masterful language use; exceptional variety; perfectly natural; highly expressive
 """,
-
     "interactive_response": """
 1-3 (Poor): System ignores user input or responds with jarring transitions; poor interruption handling
 4-5 (Fair): System acknowledges input but transitions can feel forced
@@ -615,7 +602,6 @@ DIMENSION_RUBRICS = {
 8-9 (Excellent): System gracefully handles interruptions; natural integration; user feels heard
 10 (Perfect): Seamless interruption handling; all user input meaningfully incorporated
 """,
-
     "detail_thoroughness": """
 1-3 (Poor): Sparse narrative; minimal description; underdeveloped scenes; vague details
 4-5 (Fair): Basic details provided; some scenes feel underdeveloped; inconsistent depth
@@ -623,7 +609,6 @@ DIMENSION_RUBRICS = {
 8-9 (Excellent): Rich details throughout; thorough scene development; excellent world-building
 10 (Perfect): Exceptionally detailed; comprehensive scene development; immersive world-building
 """,
-
     "narrative_polish": """
 1-3 (Poor): Rough prose; grammar issues; awkward phrasing; poor transitions; unpolished
 4-5 (Fair): Generally readable but with occasional rough edges; uneven polish

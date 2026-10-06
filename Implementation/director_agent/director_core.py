@@ -95,19 +95,19 @@ def opener_guard_text(last_opener: str | None) -> str:
     if _normalize_opener(last_opener) in _FILLER_OPENER_FAMILY:
         return (
             f'The previous line opened with "{last_opener}" — a generic filler exclamation.\n\n'
-            'BANNED for this turn: the entire filler-exclamation family, not just this exact '
+            "BANNED for this turn: the entire filler-exclamation family, not just this exact "
             'spelling — "Oh", "Ooh", "Ohh", "Well", "Wow", "Ah", "Aw", "Hmm", and any close '
-            'variant of these. Whatever opens this turn — the director_instruction, or the '
-            'character line itself — must state the actual opening move explicitly: a concrete '
-            'action, a name, a sound the character would genuinely make, direct address to the '
-            'listener, or a line of dialogue. Do not leave the opening implicit and do not '
-            'restate/paraphrase the last opener.'
+            "variant of these. Whatever opens this turn — the director_instruction, or the "
+            "character line itself — must state the actual opening move explicitly: a concrete "
+            "action, a name, a sound the character would genuinely make, direct address to the "
+            "listener, or a line of dialogue. Do not leave the opening implicit and do not "
+            "restate/paraphrase the last opener."
         )
     return (
         f'The previous line opened with "{last_opener}".\n\n'
         f'BANNED for this turn: starting with "{last_opener}" again. Whatever opens this turn — '
-        'the director_instruction, or the character line itself — must use a different, '
-        'explicit opening move.'
+        "the director_instruction, or the character line itself — must use a different, "
+        "explicit opening move."
     )
 
 

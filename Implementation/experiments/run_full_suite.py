@@ -36,17 +36,36 @@ RUN_ID = 1
 
 
 def director_output_path(scenario_name: str) -> Path:
-    return Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{RUN_ID}.json"
+    return (
+        Path(IMPLEMENTATION_DIR)
+        / "outputs"
+        / "director_agent"
+        / scenario_name
+        / "batch"
+        / f"run_{RUN_ID}.json"
+    )
 
 
 def time_output_path(scenario_name: str, time_limit: float) -> Path:
-    return Path(IMPLEMENTATION_DIR) / "outputs" / "target_duration_director_agent" / scenario_name / f"{time_limit}min" / "batch" / f"run_{RUN_ID}.json"
+    return (
+        Path(IMPLEMENTATION_DIR)
+        / "outputs"
+        / "target_duration_director_agent"
+        / scenario_name
+        / f"{time_limit}min"
+        / "batch"
+        / f"run_{RUN_ID}.json"
+    )
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="Print what would run without executing.")
-    parser.add_argument("--only", choices=["director", "time"], default=None, help="Run only one method.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print what would run without executing."
+    )
+    parser.add_argument(
+        "--only", choices=["director", "time"], default=None, help="Run only one method."
+    )
     args = parser.parse_args()
 
     scenario_names = sorted(SCENARIOS.keys())
@@ -74,7 +93,9 @@ def main():
                     time_todo.append((name, tl))
 
     total = len(director_todo) + len(time_todo)
-    print(f"\nTo run: {len(director_todo)} director + {len(time_todo)} time-constrained = {total} total")
+    print(
+        f"\nTo run: {len(director_todo)} director + {len(time_todo)} time-constrained = {total} total"
+    )
 
     if args.dry_run:
         print("\n-- dry run, not executing --")

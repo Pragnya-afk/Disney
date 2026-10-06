@@ -70,7 +70,6 @@ sys.path.append(IMPLEMENTATION_DIR)
 
 from config import EVALUATION_CORE_CLI_MODEL  # noqa: E402
 
-
 # OpenAI configuration
 
 # Load environment variables from the project-level .env file.
@@ -91,6 +90,7 @@ def make_client() -> OpenAI:
 
 
 # File and profile loading utilities
+
 
 def load_json(path: str):
     """
@@ -170,6 +170,7 @@ def load_scenario_context(scenario_module: str) -> dict:
 
 
 # Transcript conversion
+
 
 def transcript_to_story(transcript: list) -> str:
     """
@@ -253,6 +254,7 @@ def transcript_to_story(transcript: list) -> str:
 
 # Evaluator model call
 
+
 def call_evaluator(client: OpenAI, model: str, prompt: str) -> str:
     """
     Submit an evaluation prompt to the language model.
@@ -296,6 +298,7 @@ def call_evaluator(client: OpenAI, model: str, prompt: str) -> str:
 
 
 # Output parsing utilities
+
 
 def parse_ab_winners(assessment: str, dimensions: list = None) -> dict:
     """
@@ -378,6 +381,7 @@ def parse_single_scores(assessment: str, dimensions: list = None) -> dict:
 
 
 # Evaluation procedures
+
 
 def run_ab_evaluation(
     client: OpenAI,
@@ -465,6 +469,7 @@ def run_single_evaluation(
 
 # AB/BA aggregation
 
+
 def convert_ba_to_original_labels(ba_winners: dict) -> dict:
     """
     Convert BA evaluation labels back to the original A/B reference frame.
@@ -532,6 +537,7 @@ def aggregate_ab_ba(ab_winners: dict, ba_winners_converted: dict) -> dict:
 
 # CoDi transcript conversion
 
+
 def extract_codi_director_decision(direct_response: str) -> Dict[str, str]:
     """
     Parse reasoning, choice, and instruction from a CoDi direct_response field.
@@ -589,17 +595,19 @@ def convert_codi_output_to_transcript(codi_json_path: str) -> List[Dict[str, Any
         if story_progress and not re.match(
             r"^(PART|ACT|STORY)\s+\d*\s+ENDS$", story_progress.strip(), re.IGNORECASE
         ):
-            transcript.append({
-                "method": "codi",
-                "turn_index": turn_idx,
-                "beat": f"turn_{turn_idx}",
-                "user_input": "",
-                "director_decision": extract_codi_director_decision(direct_response),
-                "model_output": {
-                    "character_response": story_progress.strip(),
-                    "story_event": story_progress.strip(),
-                },
-            })
+            transcript.append(
+                {
+                    "method": "codi",
+                    "turn_index": turn_idx,
+                    "beat": f"turn_{turn_idx}",
+                    "user_input": "",
+                    "director_decision": extract_codi_director_decision(direct_response),
+                    "model_output": {
+                        "character_response": story_progress.strip(),
+                        "story_event": story_progress.strip(),
+                    },
+                }
+            )
             turn_idx += 1
 
     if any(k.startswith("part_") for k in narrative):
@@ -666,6 +674,7 @@ def transcript_to_story_with_director(transcript: List[Dict]) -> str:
 
 
 # CoDi evaluation runners
+
 
 def run_codi_comparison(
     client: OpenAI,
@@ -742,6 +751,7 @@ def run_codi_quality_eval(
 
 
 # Adversarial evaluation runners
+
 
 def run_adversarial_comparison(
     client: OpenAI,
@@ -825,6 +835,7 @@ def run_adversarial_quality_eval(
 
 
 # Main entry point
+
 
 def main():
     """
@@ -952,9 +963,7 @@ def main():
             character_profile=character_profile,
         )
 
-        ba_winners_converted = convert_ba_to_original_labels(
-            ba_result["winners"]
-        )
+        ba_winners_converted = convert_ba_to_original_labels(ba_result["winners"])
 
         aggregated = aggregate_ab_ba(
             ab_result["winners"],

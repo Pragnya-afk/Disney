@@ -13,7 +13,6 @@ representation variable (beats vs. full text) rather than changing the
 director's actual policy.
 """
 
-
 DIRECTOR_SYSTEM_PROMPT_FULLTEXT = """
 You are a narrative director for an interactive AI character story.
 

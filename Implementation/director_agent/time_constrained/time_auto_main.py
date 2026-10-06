@@ -10,7 +10,7 @@ Example:
       --time-limit 5 \
       --run-id 1
 
-Roughly the time limit 
+Roughly the time limit
 is enforced by the Director Agent's instructions to the Actor, and by the Director's beat completion decisions.
 
 """
@@ -142,7 +142,9 @@ def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
     scenario_mod = load_module(scenario_module)
     if scenario_name:
         if not hasattr(scenario_mod, "SCENARIOS"):
-            raise ValueError(f"--scenario-name requires a suite module with a SCENARIOS dict, but {scenario_module} has none.")
+            raise ValueError(
+                f"--scenario-name requires a suite module with a SCENARIOS dict, but {scenario_module} has none."
+            )
         if scenario_name not in scenario_mod.SCENARIOS:
             available = list(scenario_mod.SCENARIOS.keys())
             raise ValueError(f"Scenario '{scenario_name}' not found. Available: {available}")
@@ -394,9 +396,7 @@ def run_story(
             },
         )
 
-        actor_output["animation"] = validate_animation(
-            actor_output.get("animation", ""), character
-        )
+        actor_output["animation"] = validate_animation(actor_output.get("animation", ""), character)
 
         story_state["story_so_far"] += (
             f"\nUser: {user_input}"
@@ -407,19 +407,21 @@ def run_story(
             f"\nEvent: {actor_output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "target_duration_director_agent",
-            "character": character["name"],
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": turn_idx,
-            "time_limit_minutes": time_limit,
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "temporal_state": temporal_state,
-            "director_decision": director_decision,
-            "actor_output": actor_output,
-        })
+        transcript.append(
+            {
+                "method": "target_duration_director_agent",
+                "character": character["name"],
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": turn_idx,
+                "time_limit_minutes": time_limit,
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "temporal_state": temporal_state,
+                "director_decision": director_decision,
+                "actor_output": actor_output,
+            }
+        )
 
         if should_complete_beat(
             actor_output=actor_output,
@@ -447,8 +449,14 @@ def run_story(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite")
-    parser.add_argument("--scenario-name", default=None, help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment")
+    parser.add_argument(
+        "--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite"
+    )
+    parser.add_argument(
+        "--scenario-name",
+        default=None,
+        help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment",
+    )
     parser.add_argument("--run-id", type=int, default=1)
     parser.add_argument("--time-limit", type=float, default=5.0)
     args = parser.parse_args()

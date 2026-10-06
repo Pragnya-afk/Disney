@@ -105,7 +105,7 @@ def run(character_module: str, scenario_module: str):
         "turns_in_current_beat": 0,
     }
 
-    scenario_folder = scenario_module.split('.')[-1]
+    scenario_folder = scenario_module.split(".")[-1]
     output_dir = os.path.join(
         IMPLEMENTATION_DIR,
         "outputs",
@@ -121,12 +121,12 @@ def run(character_module: str, scenario_module: str):
     print(f"Loaded scenario: {scenario['scenario_name']}")
     print("Type your message. Type 'quit' to stop.\n")
 
-# Each turn, get user input, call director agent for decision, call actor agent for response, update story state, and repeat until story ends or user quits.
+    # Each turn, get user input, call director agent for decision, call actor agent for response, update story state, and repeat until story ends or user quits.
     while story_state["beat_index"] < len(beats):
         current_beat = beats[story_state["beat_index"]]
 
         print(f"\nCurrent beat: {current_beat['name']}")
-        
+
         # Currently user input first before character introduces themself
         user_input = input("You: ")
 
@@ -144,7 +144,7 @@ def run(character_module: str, scenario_module: str):
             story_topic=story_topic,
             beats=beats,
         )
-# Actor agent call and response handling ie recieves director decision and produces character response, story event, animation, and beat completion status. Also updates story state and transcript.
+        # Actor agent call and response handling ie recieves director decision and produces character response, story event, animation, and beat completion status. Also updates story state and transcript.
         actor_output = call_actor_agent(
             user_input=user_input,
             story_state=story_state,
@@ -154,9 +154,7 @@ def run(character_module: str, scenario_module: str):
             beats=beats,
         )
 
-        actor_output["animation"] = validate_animation(
-            actor_output.get("animation", ""), character
-        )
+        actor_output["animation"] = validate_animation(actor_output.get("animation", ""), character)
 
         print(f"\nDirector decision: {director_decision.get('decision_type')}")
         print(f"{character['name']}: {actor_output['character_response']}")
@@ -170,15 +168,17 @@ def run(character_module: str, scenario_module: str):
             f"\nEvent: {actor_output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "director_agent",
-            "character": character["name"],
-            "scenario": scenario["scenario_name"],
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "director_decision": director_decision,
-            "actor_output": actor_output,
-        })
+        transcript.append(
+            {
+                "method": "director_agent",
+                "character": character["name"],
+                "scenario": scenario["scenario_name"],
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "director_decision": director_decision,
+                "actor_output": actor_output,
+            }
+        )
 
         if should_complete_beat(actor_output, director_decision, story_state, beats):
             story_state["completed_beats"].append(current_beat["name"])
@@ -200,7 +200,9 @@ def run(character_module: str, scenario_module: str):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument(
+        "--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail"
+    )
     args = parser.parse_args()
 
     run(args.character, args.scenario)

@@ -31,6 +31,7 @@ sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent"))
 sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent" / "time_constrained"))
 
 from dotenv import load_dotenv
+
 load_dotenv(str(IMPLEMENTATION_DIR / ".env"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
@@ -40,8 +41,12 @@ from director_agent.auto_main import run_story as run_director
 from director_agent.time_constrained.time_auto_main import run_story as run_time
 
 from evaluation_agent.evaluation_core import (
-    make_client, transcript_to_story, call_evaluator, parse_single_scores,
-    BASE_DIMENSIONS, EVALUATE_STORY_QUALITY_PROMPT,
+    make_client,
+    transcript_to_story,
+    call_evaluator,
+    parse_single_scores,
+    BASE_DIMENSIONS,
+    EVALUATE_STORY_QUALITY_PROMPT,
 )
 from config import JUDGE_MODEL
 
@@ -55,8 +60,14 @@ SCENARIOS_TO_RUN = {
 }
 
 METRICS = [
-    "Plot", "Development", "Language Use", "Interruption Handling",
-    "Character Fidelity", "Narrative Control", "Anthropomorphism", "Overall",
+    "Plot",
+    "Development",
+    "Language Use",
+    "Interruption Handling",
+    "Character Fidelity",
+    "Narrative Control",
+    "Anthropomorphism",
+    "Overall",
 ]
 
 # Same recovery regex used earlier in this session for the judge's
@@ -70,7 +81,7 @@ def recover_scores(assessment, scores):
         if scores.get(m) is not None:
             continue
         idx = assessment.find(m)
-        window = assessment[idx: idx + 900] if idx != -1 else ""
+        window = assessment[idx : idx + 900] if idx != -1 else ""
         match = GENERAL_SCORE_RE.search(window)
         if match:
             scores[m] = float(match.group(1))
@@ -79,20 +90,27 @@ def recover_scores(assessment, scores):
 
 def build_profile(scenario_name):
     sc = SCENARIOS[scenario_name]
-    return json.dumps({
-        "name": CHARACTER["name"],
-        "character_prompt": CHARACTER["character_prompt"],
-        "available_animations": CHARACTER["available_animations"],
-        "story_topic": sc["story_topic"],
-        "beats": sc["beats"],
-    }, indent=2, ensure_ascii=False)
+    return json.dumps(
+        {
+            "name": CHARACTER["name"],
+            "character_prompt": CHARACTER["character_prompt"],
+            "available_animations": CHARACTER["available_animations"],
+            "story_topic": sc["story_topic"],
+            "beats": sc["beats"],
+        },
+        indent=2,
+        ensure_ascii=False,
+    )
 
 
 def judge_single(client, transcript_path, profile):
     transcript = json.loads(Path(transcript_path).read_text())
     story = transcript_to_story(transcript)
-    raw = call_evaluator(client, JUDGE_MODEL, EVALUATE_STORY_QUALITY_PROMPT.format(
-        character_profile=profile, story=story))
+    raw = call_evaluator(
+        client,
+        JUDGE_MODEL,
+        EVALUATE_STORY_QUALITY_PROMPT.format(character_profile=profile, story=story),
+    )
     scores = parse_single_scores(raw, BASE_DIMENSIONS)
     scores = recover_scores(raw, scores)
     return scores
@@ -100,12 +118,33 @@ def judge_single(client, transcript_path, profile):
 
 def path_for(cond, scenario_name, run_id):
     if cond == "baseline":
-        return IMPLEMENTATION_DIR / "outputs" / "baseline" / scenario_name / "batch" / f"run_{run_id}.json"
+        return (
+            IMPLEMENTATION_DIR
+            / "outputs"
+            / "baseline"
+            / scenario_name
+            / "batch"
+            / f"run_{run_id}.json"
+        )
     if cond == "director":
-        return IMPLEMENTATION_DIR / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{run_id}.json"
+        return (
+            IMPLEMENTATION_DIR
+            / "outputs"
+            / "director_agent"
+            / scenario_name
+            / "batch"
+            / f"run_{run_id}.json"
+        )
     if cond == "time5":
-        return (IMPLEMENTATION_DIR / "outputs" / "target_duration_director_agent" / scenario_name
-                / "5.0min" / "batch" / f"run_{run_id}.json")
+        return (
+            IMPLEMENTATION_DIR
+            / "outputs"
+            / "target_duration_director_agent"
+            / scenario_name
+            / "5.0min"
+            / "batch"
+            / f"run_{run_id}.json"
+        )
     raise ValueError(cond)
 
 
@@ -126,8 +165,12 @@ def main():
 
                 if cond == "director":
                     print(f"  [gen] director run {run_id}", flush=True)
-                    run_director(character_module=CHARACTER_MODULE, scenario_module=SCENARIO_MODULE,
-                                 run_id=run_id, scenario_name_override=scenario_name)
+                    run_director(
+                        character_module=CHARACTER_MODULE,
+                        scenario_module=SCENARIO_MODULE,
+                        run_id=run_id,
+                        scenario_name_override=scenario_name,
+                    )
                 elif cond == "baseline":
                     if not path.exists():
                         print(f"  [gen] baseline run {run_id}", flush=True)
@@ -137,8 +180,13 @@ def main():
                 elif cond == "time5":
                     if not path.exists():
                         print(f"  [gen] time5 run {run_id}", flush=True)
-                        run_time(character_module=CHARACTER_MODULE, scenario_module=SCENARIO_MODULE,
-                                 run_id=run_id, time_limit=5.0, scenario_name_override=scenario_name)
+                        run_time(
+                            character_module=CHARACTER_MODULE,
+                            scenario_module=SCENARIO_MODULE,
+                            run_id=run_id,
+                            time_limit=5.0,
+                            scenario_name_override=scenario_name,
+                        )
                     else:
                         print(f"  [reuse] time5 run {run_id}", flush=True)
 

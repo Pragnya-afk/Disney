@@ -20,6 +20,7 @@ sys.path.insert(0, str(IMPLEMENTATION_DIR))
 sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent"))
 
 from dotenv import load_dotenv
+
 load_dotenv(str(IMPLEMENTATION_DIR / ".env"))
 
 from director_agent.auto_main import run_story

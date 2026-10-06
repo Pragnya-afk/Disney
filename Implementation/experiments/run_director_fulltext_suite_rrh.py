@@ -24,7 +24,7 @@ sys.path.insert(0, IMPLEMENTATION_DIR)
 sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "director_agent"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
-from character_prompts.olaf import CHARACTER  # noqa: F401 (character loaded by module path inside run_story_fulltext)
+from character_prompts.olaf import CHARACTER  # noqa: F401
 from scenarios.red_riding_hood_full_text import FULL_STORY_TEXT
 from director_agent.auto_main_fulltext import run_story_fulltext
 
@@ -34,12 +34,21 @@ RUN_ID = 1
 
 
 def output_path(scenario_name: str) -> Path:
-    return Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent_fulltext" / scenario_name / "batch" / f"run_{RUN_ID}.json"
+    return (
+        Path(IMPLEMENTATION_DIR)
+        / "outputs"
+        / "director_agent_fulltext"
+        / scenario_name
+        / "batch"
+        / f"run_{RUN_ID}.json"
+    )
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="Print what would run without executing.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print what would run without executing."
+    )
     args = parser.parse_args()
 
     scenario_names = sorted(n for n in SCENARIOS if "retells_red_riding_hood" in n)

@@ -1,4 +1,9 @@
-import os, sys, json, threading, random, time
+import json
+import os
+import random
+import sys
+import threading
+import time
 from datetime import datetime
 from flask import Flask, send_from_directory, request, jsonify
 from flask_socketio import SocketIO, emit
@@ -29,8 +34,8 @@ from baseline.main import (
 
 STORY_1_KEY = "olaf_retells_frozen_1_no_derailment"
 STORY_2_KEY = "olaf_retells_cinderella_no_derailment"
-STORY_1_TIME_LIMIT = 5.0   # minutes — frontend-enforced hard cutoff
-STORY_2_TIME_LIMIT = 3.0   # minutes — server-enforced
+STORY_1_TIME_LIMIT = 5.0  # minutes — frontend-enforced hard cutoff
+STORY_2_TIME_LIMIT = 3.0  # minutes — server-enforced
 AUTO_ADVANCE_SECONDS = 60
 
 _SCENARIO_REGISTRY = {sc["scenario_name"]: sc for sc in NO_DERAILMENT_SCENARIOS}
@@ -47,16 +52,22 @@ api_key = os.getenv("OPENAI_API_KEY")
 _client = OpenAI(api_key=api_key)
 
 # Phases: 0=idle  1=story1_r1  2=story1_r2  3=story2_r1  4=story2_r2
-_story1_order: list = []   # ["baseline","director"] or ["director","baseline"]
-_story2_order: list = []   # ["director","time_constrained"] or ["time_constrained","director"]
+_story1_order: list = []  # ["baseline","director"] or ["director","baseline"]
+_story2_order: list = []  # ["director","time_constrained"] or ["time_constrained","director"]
 _study_phase: int = 0
 _study_output: dict = {}
 _session_file_path: str | None = None
 
 _state: dict = {
-    "beat_index": 0, "completed_beats": [], "story_so_far": "",
-    "turns_in_current_beat": 0, "expansion_index": 0,
-    "beats": [], "story_topic": "", "scenario_name": "", "time_limit": 3.0,
+    "beat_index": 0,
+    "completed_beats": [],
+    "story_so_far": "",
+    "turns_in_current_beat": 0,
+    "expansion_index": 0,
+    "beats": [],
+    "story_topic": "",
+    "scenario_name": "",
+    "time_limit": 3.0,
 }
 _lock = threading.Lock()
 _transcript: list = []
@@ -71,23 +82,32 @@ _wall_timer: threading.Timer | None = None
 
 
 def _condition(phase: int) -> str:
-    if phase == 1: return _story1_order[0] if _story1_order else "baseline"
-    if phase == 2: return _story1_order[1] if _story1_order else "director"
-    if phase == 3: return _story2_order[0] if _story2_order else "director"
-    if phase == 4: return _story2_order[1] if _story2_order else "time_constrained"
+    if phase == 1:
+        return _story1_order[0] if _story1_order else "baseline"
+    if phase == 2:
+        return _story1_order[1] if _story1_order else "director"
+    if phase == 3:
+        return _story2_order[0] if _story2_order else "director"
+    if phase == 4:
+        return _story2_order[1] if _story2_order else "time_constrained"
     return "director"
+
 
 def _story_num(phase: int) -> int:
     return 1 if phase <= 2 else 2
 
+
 def _round_num(phase: int) -> int:
     return 1 if phase in (1, 3) else 2
+
 
 def _scenario_key(phase: int) -> str:
     return STORY_1_KEY if phase <= 2 else STORY_2_KEY
 
+
 def _time_limit(phase: int) -> float:
     return STORY_1_TIME_LIMIT if phase <= 2 else STORY_2_TIME_LIMIT
+
 
 def get_snap():
     with _lock:
@@ -144,13 +164,15 @@ def _handle_baseline_input(text: str):
         raw = baseline_call_llm(prompt)
     except Exception as e:
         print(f"[baseline LLM error] {e}")
-        raw = json.dumps({
-            "character_response": "Hmm, something melted in my head. Let me try again!",
-            "story_event": "A brief pause.",
-            "animation": OLAF_CHARACTER["available_animations"][0],
-            "beat_completed": False,
-            "reason": "API error.",
-        })
+        raw = json.dumps(
+            {
+                "character_response": "Hmm, something melted in my head. Let me try again!",
+                "story_event": "A brief pause.",
+                "animation": OLAF_CHARACTER["available_animations"][0],
+                "beat_completed": False,
+                "reason": "API error.",
+            }
+        )
 
     output = baseline_safe_json_parse(raw, OLAF_CHARACTER["available_animations"][0])
     output["animation"] = baseline_validate_animation(output.get("animation", ""), OLAF_CHARACTER)
@@ -166,14 +188,16 @@ def _handle_baseline_input(text: str):
             _state["turns_in_current_beat"] = 0
             print(f"[Baseline beat → {_state['beat_index']} (model)]")
 
-    _transcript.append({
-        "turn": len(_transcript) + 1,
-        "beat": current_beat_name,
-        "user_input": text,
-        "character_response": olaf_text,
-        "model_output": output,
-        "condition": "baseline",
-    })
+    _transcript.append(
+        {
+            "turn": len(_transcript) + 1,
+            "beat": current_beat_name,
+            "user_input": text,
+            "character_response": olaf_text,
+            "model_output": output,
+            "condition": "baseline",
+        }
+    )
 
     if _current_sid:
         socketio.emit("transcript_assistant", {"delta": olaf_text}, room=_current_sid)
@@ -192,14 +216,18 @@ def _director_prompt(state: dict, timed: bool) -> str:
     tl = state.get("time_limit", 3.0)
 
     time_line = f"\nThe story has a target duration of {tl} minutes.\n" if timed else ""
-    pacing = """
+    pacing = (
+        """
 ## Pacing Rules (from pacing_mode in tool result)
 - too_fast: ahead of schedule — expand beat. Use expansion_hint if present.
 - normal: continue naturally.
 - hurry: progress faster, avoid lingering.
 - critical: compress, move toward ending quickly.
 - final: time is up — close all remaining beats now in one response.
-""" if timed else ""
+"""
+        if timed
+        else ""
+    )
 
     return f"""You are an interactive storytelling engine voicing Olaf the snowman.
 You speak AS Olaf. Stay fully in character at all times.{time_line}
@@ -279,13 +307,26 @@ def _schedule_auto_advance():
         with _lock:
             _state["story_so_far"] += "\nUser: (no response)"
         try:
-            _openai_ws.send(json.dumps({
-                "type": "conversation.item.create",
-                "item": {"type": "message", "role": "user",
-                         "content": [{"type": "input_text",
-                                      "text": "[The user is listening — continue the story naturally]"}]},
-            }))
-            _openai_ws.send(json.dumps({"type": "response.create", "response": {"tool_choice": "required"}}))
+            _openai_ws.send(
+                json.dumps(
+                    {
+                        "type": "conversation.item.create",
+                        "item": {
+                            "type": "message",
+                            "role": "user",
+                            "content": [
+                                {
+                                    "type": "input_text",
+                                    "text": "[The user is listening — continue the story naturally]",
+                                }
+                            ],
+                        },
+                    }
+                )
+            )
+            _openai_ws.send(
+                json.dumps({"type": "response.create", "response": {"tool_choice": "required"}})
+            )
         except Exception as e:
             print(f"[auto-advance error] {e}")
             return
@@ -330,13 +371,19 @@ def reset_story(phase: int):
     tl = _time_limit(phase)
 
     with _lock:
-        _state.update({
-            "beats": sc["beats"], "story_topic": sc["story_topic"],
-            "scenario_name": _scenario_key(phase), "beat_index": 0,
-            "completed_beats": [], "story_so_far": "",
-            "turns_in_current_beat": 0, "expansion_index": 0,
-            "time_limit": tl,
-        })
+        _state.update(
+            {
+                "beats": sc["beats"],
+                "story_topic": sc["story_topic"],
+                "scenario_name": _scenario_key(phase),
+                "beat_index": 0,
+                "completed_beats": [],
+                "story_so_far": "",
+                "turns_in_current_beat": 0,
+                "expansion_index": 0,
+                "time_limit": tl,
+            }
+        )
     _transcript = []
     _last_user_input = ""
     _last_user_activity_ts = time.time()
@@ -378,14 +425,20 @@ def handle_director_tool(ws, event: dict):
     if cond == "director":
         try:
             decision = get_director_decision(
-                client=_client, model=DIRECTOR_MODEL,
-                user_input=user_input, story_state=snap,
-                character=OLAF_CHARACTER, story_topic=snap["story_topic"],
+                client=_client,
+                model=DIRECTOR_MODEL,
+                user_input=user_input,
+                story_state=snap,
+                character=OLAF_CHARACTER,
+                story_topic=snap["story_topic"],
                 beats=beats,
             )
         except Exception as e:
             print(f"[director error] {e}")
-            decision = {"director_instruction": "Continue the story naturally.", "decision_type": "progress_story"}
+            decision = {
+                "director_instruction": "Continue the story naturally.",
+                "decision_type": "progress_story",
+            }
 
         if decision.get("should_complete_beat"):
             with _lock:
@@ -399,7 +452,9 @@ def handle_director_tool(ws, event: dict):
         tool_result = {
             "director_instruction": decision.get("director_instruction", ""),
             "decision_type": decision.get("decision_type", "progress_story"),
-            "current_beat": cb["name"], "current_beat_goal": cb["goal"], "next_beat": nb,
+            "current_beat": cb["name"],
+            "current_beat_goal": cb["goal"],
+            "next_beat": nb,
         }
         emit_data = {
             "decision_type": decision.get("decision_type"),
@@ -408,27 +463,42 @@ def handle_director_tool(ws, event: dict):
         }
 
     elif cond == "time_constrained":
-        temporal = _monitor.state(si, beats) if _monitor else {
-            "elapsed_seconds": 0, "remaining_seconds": snap["time_limit"] * 60, "pacing_mode": "normal",
-        }
+        temporal = (
+            _monitor.state(si, beats)
+            if _monitor
+            else {
+                "elapsed_seconds": 0,
+                "remaining_seconds": snap["time_limit"] * 60,
+                "pacing_mode": "normal",
+            }
+        )
         pacing_mode = temporal.get("pacing_mode", "normal")
 
         try:
             decision = get_time_director_decision(
-                client=_client, model=DIRECTOR_MODEL,
-                user_input=user_input, story_state=snap,
-                character=OLAF_CHARACTER, story_topic=snap["story_topic"],
-                beats=beats, temporal_state=temporal,
+                client=_client,
+                model=DIRECTOR_MODEL,
+                user_input=user_input,
+                story_state=snap,
+                character=OLAF_CHARACTER,
+                story_topic=snap["story_topic"],
+                beats=beats,
+                temporal_state=temporal,
             )
         except Exception as e:
             print(f"[tc-director error] {e}")
-            decision = {"director_instruction": "Continue the story naturally.", "decision_type": "progress_story"}
+            decision = {
+                "director_instruction": "Continue the story naturally.",
+                "decision_type": "progress_story",
+            }
 
         _imp = {"high": 0, "medium": 1, "low": 2}
 
         def beat_lines(from_idx):
             rem = sorted(beats[from_idx:], key=lambda b: _imp.get(b.get("importance", "medium"), 1))
-            return [f"- {b['name']} [{b.get('importance','medium').upper()}]: {b['goal']}" for b in rem]
+            return [
+                f"- {b['name']} [{b.get('importance','medium').upper()}]: {b['goal']}" for b in rem
+            ]
 
         suggested_exp = None
         if pacing_mode == "too_fast":
@@ -439,9 +509,13 @@ def handle_director_tool(ws, event: dict):
                 suggested_exp = exps[ei]
                 with _lock:
                     _state["expansion_index"] = ei + 1
-                decision["director_instruction"] = f"Ahead of schedule — expand using: {suggested_exp}"
+                decision["director_instruction"] = (
+                    f"Ahead of schedule — expand using: {suggested_exp}"
+                )
             else:
-                decision["director_instruction"] = "Ahead of schedule — enrich with emotional depth or sensory detail."
+                decision["director_instruction"] = (
+                    "Ahead of schedule — enrich with emotional depth or sensory detail."
+                )
         elif pacing_mode == "final":
             decision["should_complete_beat"] = True
             decision["decision_type"] = "close_story"
@@ -461,11 +535,11 @@ def handle_director_tool(ws, event: dict):
                 )
         elif pacing_mode == "critical":
             decision["should_complete_beat"] = True
-            next_high = next((b for b in beats[si + 1:] if b.get("importance") == "high"), None)
+            next_high = next((b for b in beats[si + 1 :] if b.get("importance") == "high"), None)
             if next_high:
                 decision["director_instruction"] = (
-                    decision.get("director_instruction", "") +
-                    f" Bridge immediately to: {next_high['name']} — {next_high['goal']}"
+                    decision.get("director_instruction", "")
+                    + f" Bridge immediately to: {next_high['name']} — {next_high['goal']}"
                 )
 
         if decision.get("should_complete_beat"):
@@ -488,7 +562,9 @@ def handle_director_tool(ws, event: dict):
             "pacing_mode": pacing_mode,
             "elapsed_seconds": temporal.get("elapsed_seconds", 0),
             "remaining_seconds": temporal.get("remaining_seconds", 0),
-            "current_beat": cb["name"], "current_beat_goal": cb["goal"], "next_beat": nb,
+            "current_beat": cb["name"],
+            "current_beat_goal": cb["goal"],
+            "next_beat": nb,
             "story_so_far_tail": snap["story_so_far"][-300:],
         }
         if suggested_exp:
@@ -518,10 +594,14 @@ def handle_director_tool(ws, event: dict):
     # function_call_output below, not baked into these instructions.
     snap_now = get_snap()
     instructions = _director_prompt(snap_now, timed=(cond == "time_constrained"))
-    ws.send(json.dumps({
-        "type": "session.update",
-        "session": {"type": "realtime", "instructions": instructions},
-    }))
+    ws.send(
+        json.dumps(
+            {
+                "type": "session.update",
+                "session": {"type": "realtime", "instructions": instructions},
+            }
+        )
+    )
 
     if _current_sid:
         socketio.emit("director_decision", emit_data, room=_current_sid)
@@ -539,29 +619,46 @@ def handle_director_tool(ws, event: dict):
         entry["remaining_seconds"] = temporal.get("remaining_seconds", 0)
     _transcript.append(entry)
 
-    ws.send(json.dumps({
-        "type": "conversation.item.create",
-        "item": {
-            "type": "function_call_output",
-            "call_id": event["call_id"],
-            "output": json.dumps(tool_result),
-        },
-    }))
+    ws.send(
+        json.dumps(
+            {
+                "type": "conversation.item.create",
+                "item": {
+                    "type": "function_call_output",
+                    "call_id": event["call_id"],
+                    "output": json.dumps(tool_result),
+                },
+            }
+        )
+    )
     ws.send(json.dumps({"type": "response.create"}))
 
-    if (cond == "time_constrained" and _monitor
-            and _monitor.should_stop_for_time() and not _time_up_injected):
+    if (
+        cond == "time_constrained"
+        and _monitor
+        and _monitor.should_stop_for_time()
+        and not _time_up_injected
+    ):
         _time_up_injected = True
         if _current_sid:
             socketio.emit("time_up", {}, room=_current_sid)
-        ws.send(json.dumps({
-            "type": "conversation.item.create",
-            "item": {
-                "type": "message", "role": "user",
-                "content": [{"type": "input_text",
-                             "text": "[Story time ended — wrap up all remaining beats with a complete, satisfying ending]"}],
-            },
-        }))
+        ws.send(
+            json.dumps(
+                {
+                    "type": "conversation.item.create",
+                    "item": {
+                        "type": "message",
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "input_text",
+                                "text": "[Story time ended — wrap up all remaining beats with a complete, satisfying ending]",
+                            }
+                        ],
+                    },
+                }
+            )
+        )
         ws.send(json.dumps({"type": "response.create"}))
 
 
@@ -576,8 +673,9 @@ def _write_session_file():
         print(f"[write_session_file error] {e}")
 
 
-def _save_phase_data(phase: int, transcript_copy: list, snap: dict,
-                     elapsed: float = 0, abandoned: bool = False) -> None:
+def _save_phase_data(
+    phase: int, transcript_copy: list, snap: dict, elapsed: float = 0, abandoned: bool = False
+) -> None:
     cond = _condition(phase)
     phase_data = {
         "condition": cond,
@@ -602,6 +700,7 @@ def _save_phase_data(phase: int, transcript_copy: list, snap: dict,
 
 def _auto_finish_active_phase():
     import time as _time
+
     _time.sleep(1.0)
     phase = _study_phase
     with _lock:
@@ -616,7 +715,9 @@ def _auto_finish_active_phase():
     _save_phase_data(phase, transcript_copy, snap, elapsed)
     print(f"[Study] Phase {phase} auto-finished ({len(transcript_copy)} turns)")
     if _current_sid:
-        socketio.emit("story_finished", {"phase": phase, "turns": len(transcript_copy)}, room=_current_sid)
+        socketio.emit(
+            "story_finished", {"phase": phase, "turns": len(transcript_copy)}, room=_current_sid
+        )
     close_ws()
 
 
@@ -649,8 +750,11 @@ def run_openai_ws():
             if _current_sid:
                 socketio.emit("session_started", {"phase": _study_phase}, room=_current_sid)
 
-        elif etype in ("response.text.delta", "response.audio_transcript.delta",
-                       "response.output_audio_transcript.delta"):
+        elif etype in (
+            "response.text.delta",
+            "response.audio_transcript.delta",
+            "response.output_audio_transcript.delta",
+        ):
             delta = data.get("delta", "")
             if delta and _current_sid:
                 socketio.emit("transcript_assistant", {"delta": delta}, room=_current_sid)
@@ -674,12 +778,14 @@ def run_openai_ws():
                     _state["story_so_far"] += f"\nOlaf: {olaf_text}\n"
                 if cond == "baseline":
                     # Baseline uses WebSocket fallback path (shouldn't reach here normally)
-                    _transcript.append({
-                        "turn": len(_transcript) + 1,
-                        "user_input": _last_user_input or "(auto-advance)",
-                        "character_response": olaf_text,
-                        "condition": "baseline",
-                    })
+                    _transcript.append(
+                        {
+                            "turn": len(_transcript) + 1,
+                            "user_input": _last_user_input or "(auto-advance)",
+                            "character_response": olaf_text,
+                            "condition": "baseline",
+                        }
+                    )
                 elif _transcript:
                     _transcript[-1]["character_response"] = olaf_text
                 # gpt-realtime sends full text in response.done, not via text.delta events
@@ -717,7 +823,10 @@ def run_openai_ws():
     ws = websocket.WebSocketApp(
         f"wss://api.openai.com/v1/realtime?model={REALTIME_MODEL}",
         header={"Authorization": f"Bearer {api_key}"},
-        on_open=on_open, on_message=on_message, on_error=on_error, on_close=on_close,
+        on_open=on_open,
+        on_message=on_message,
+        on_error=on_error,
+        on_close=on_close,
     )
     _openai_ws = ws
     ws.run_forever()
@@ -768,11 +877,16 @@ def on_begin_study(_data):
         "phases": {},
     }
     _write_session_file()
-    emit("study_ready", {
-        "story1_order": _story1_order,
-        "story2_order": _story2_order,
-    })
-    print(f"[Study] Randomized — S1: {_story1_order}  S2: {_story2_order}  file: {_session_file_path}")
+    emit(
+        "study_ready",
+        {
+            "story1_order": _story1_order,
+            "story2_order": _story2_order,
+        },
+    )
+    print(
+        f"[Study] Randomized — S1: {_story1_order}  S2: {_story2_order}  file: {_session_file_path}"
+    )
 
 
 @socketio.on("start_phase")
@@ -865,12 +979,21 @@ def on_text_input(data):
     with _lock:
         _state["story_so_far"] += f"\nUser: {text}"
     try:
-        _openai_ws.send(json.dumps({
-            "type": "conversation.item.create",
-            "item": {"type": "message", "role": "user",
-                     "content": [{"type": "input_text", "text": text}]},
-        }))
-        _openai_ws.send(json.dumps({"type": "response.create", "response": {"tool_choice": "required"}}))
+        _openai_ws.send(
+            json.dumps(
+                {
+                    "type": "conversation.item.create",
+                    "item": {
+                        "type": "message",
+                        "role": "user",
+                        "content": [{"type": "input_text", "text": text}],
+                    },
+                }
+            )
+        )
+        _openai_ws.send(
+            json.dumps({"type": "response.create", "response": {"tool_choice": "required"}})
+        )
     except Exception as e:
         print(f"[text_input error] {e}")
 
@@ -898,23 +1021,29 @@ def time_status():
     if cond == "time_constrained" and _monitor:
         si = min(bi, len(beats) - 1) if beats else 0
         t = _monitor.state(si, beats) if beats else {}
-        return jsonify({
-            "active": True,
-            "elapsed_seconds": t.get("elapsed_seconds", 0),
-            "remaining_seconds": t.get("remaining_seconds", 0),
-            "pacing_mode": t.get("pacing_mode", "normal"),
-            "beat_index": bi, "total_beats": len(beats),
-            "time_limit_minutes": tl,
-        })
+        return jsonify(
+            {
+                "active": True,
+                "elapsed_seconds": t.get("elapsed_seconds", 0),
+                "remaining_seconds": t.get("remaining_seconds", 0),
+                "pacing_mode": t.get("pacing_mode", "normal"),
+                "beat_index": bi,
+                "total_beats": len(beats),
+                "time_limit_minutes": tl,
+            }
+        )
 
-    return jsonify({
-        "active": True,
-        "elapsed_seconds": 0,
-        "remaining_seconds": tl * 60,
-        "pacing_mode": "normal",
-        "beat_index": bi, "total_beats": len(beats),
-        "time_limit_minutes": tl,
-    })
+    return jsonify(
+        {
+            "active": True,
+            "elapsed_seconds": 0,
+            "remaining_seconds": tl * 60,
+            "pacing_mode": "normal",
+            "beat_index": bi,
+            "total_beats": len(beats),
+            "time_limit_minutes": tl,
+        }
+    )
 
 
 @app.route("/state")
@@ -929,12 +1058,14 @@ def study_setup():
 
 @app.route("/study_info")
 def study_info():
-    return jsonify({
-        "story_1_time_limit": STORY_1_TIME_LIMIT,
-        "story_2_time_limit": STORY_2_TIME_LIMIT,
-        "story1_order": _story1_order,
-        "story2_order": _story2_order,
-    })
+    return jsonify(
+        {
+            "story_1_time_limit": STORY_1_TIME_LIMIT,
+            "story_2_time_limit": STORY_2_TIME_LIMIT,
+            "story1_order": _story1_order,
+            "story2_order": _story2_order,
+        }
+    )
 
 
 @app.route("/save_questionnaire", methods=["POST"])

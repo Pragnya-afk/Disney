@@ -183,9 +183,7 @@ def run_story_fulltext(
             },
         )
 
-        actor_output["animation"] = validate_animation(
-            actor_output.get("animation", ""), character
-        )
+        actor_output["animation"] = validate_animation(actor_output.get("animation", ""), character)
 
         story_state["story_so_far"] += (
             f"\nUser: {user_input}"
@@ -195,19 +193,25 @@ def run_story_fulltext(
             f"\nEvent: {actor_output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "director_agent_fulltext",
-            "character": character["name"],
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": turn_idx,
-            "user_input": user_input,
-            "director_decision": director_decision,
-            "actor_output": actor_output,
-        })
+        transcript.append(
+            {
+                "method": "director_agent_fulltext",
+                "character": character["name"],
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": turn_idx,
+                "user_input": user_input,
+                "director_decision": director_decision,
+                "actor_output": actor_output,
+            }
+        )
 
-        advanced = bool(director_decision.get("should_advance_story")) or bool(actor_output.get("story_advanced"))
-        story_state["turns_since_progress"] = 0 if advanced else story_state["turns_since_progress"] + 1
+        advanced = bool(director_decision.get("should_advance_story")) or bool(
+            actor_output.get("story_advanced")
+        )
+        story_state["turns_since_progress"] = (
+            0 if advanced else story_state["turns_since_progress"] + 1
+        )
 
         if director_decision.get("decision_type") == "close_story":
             break
@@ -224,14 +228,18 @@ def run_story_fulltext(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite")
+    parser.add_argument(
+        "--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite"
+    )
     parser.add_argument("--scenario-name", default=None)
     parser.add_argument("--run-id", type=int, default=1)
     args = parser.parse_args()
 
     from scenarios.red_riding_hood_full_text import FULL_STORY_TEXT
 
-    run_story_fulltext(args.character, args.scenario, FULL_STORY_TEXT, args.run_id, args.scenario_name)
+    run_story_fulltext(
+        args.character, args.scenario, FULL_STORY_TEXT, args.run_id, args.scenario_name
+    )
 
 
 if __name__ == "__main__":

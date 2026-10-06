@@ -50,12 +50,15 @@ from typing import Any, Dict, List, Optional
 # Path setup
 
 IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CODI_DIR = os.path.abspath(os.path.join(IMPLEMENTATION_DIR, "..", "third_party", "CoDi-main", "CoDi-main"))
+CODI_DIR = os.path.abspath(
+    os.path.join(IMPLEMENTATION_DIR, "..", "third_party", "CoDi-main", "CoDi-main")
+)
 
 sys.path.insert(0, IMPLEMENTATION_DIR)
 sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "evaluation_agent"))
 
 from dotenv import load_dotenv
+
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
@@ -91,6 +94,7 @@ if not Path(CODI_PYTHON).exists():
 # summarize_evaluations.py needs pandas; try a venv that has it.
 try:
     import pandas  # noqa: F401
+
     SUMMARY_PYTHON = sys.executable
 except ImportError:
     _disney_venv_python = str(Path(IMPLEMENTATION_DIR).parent / ".venv" / "bin" / "python")
@@ -98,6 +102,7 @@ except ImportError:
 
 
 # Path helpers
+
 
 def codi_output_path(scenario_name: str, run_id: int) -> Path:
     return CODI_OUTPUTS_DIR / scenario_name / "batch" / f"run_{run_id}.json"
@@ -117,6 +122,7 @@ def codi_raw_output_dir(scenario_name: str) -> Path:
 
 
 # CoDi input generation
+
 
 def make_codi_inputs_text(scenario: dict) -> str:
     """
@@ -156,6 +162,7 @@ def make_codi_inputs_text(scenario: dict) -> str:
 # CoDi output → transcript conversion
 # (Inlined from evaluation_agent/convert_codi_to_transcript.py to avoid
 #  import-chain issues with that module's sibling imports.)
+
 
 def _sort_turn_key(key: str) -> int:
     match = re.match(r"turn_(-?\d+)$", key)
@@ -207,21 +214,23 @@ def _build_transcript(
 ) -> List[Dict[str, Any]]:
     transcript = []
     for idx, text in enumerate(story_texts, start=1):
-        transcript.append({
-            "method": "codi",
-            "character": "Olaf",
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": idx,
-            "beat": f"turn_{idx}",
-            "user_input": "",
-            "model_output": {
-                "character_response": text,
-                "story_event": text,
-                "animation": "",
-                "beat_completed": False,
-            },
-        })
+        transcript.append(
+            {
+                "method": "codi",
+                "character": "Olaf",
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": idx,
+                "beat": f"turn_{idx}",
+                "user_input": "",
+                "model_output": {
+                    "character_response": text,
+                    "story_event": text,
+                    "animation": "",
+                    "beat_completed": False,
+                },
+            }
+        )
     return transcript
 
 
@@ -252,6 +261,7 @@ def convert_codi_json_to_transcript(
 
 
 # Phase 1 – CoDi generation
+
 
 def _codi_raw_output_filename(codi_model: str) -> str:
     return f"gen_d_{codi_model}_c_{codi_model}.json"
@@ -288,21 +298,33 @@ def run_codi_for_scenario(
         # Write JSONL input for this scenario
         jsonl_path = raw_dir / "input.jsonl"
         with open(jsonl_path, "w", encoding="utf-8") as f:
-            f.write(json.dumps({
-                "example_id": scenario_name,
-                "inputs": make_codi_inputs_text(scenario),
-            }) + "\n")
+            f.write(
+                json.dumps(
+                    {
+                        "example_id": scenario_name,
+                        "inputs": make_codi_inputs_text(scenario),
+                    }
+                )
+                + "\n"
+            )
 
         cmd = [
             CODI_PYTHON,
             "generation.py",
-            "--data-file", str(jsonl_path),
-            "--out-dir", str(raw_dir),
-            "--planner-agent-base-model", codi_model,
-            "--director-agent-base-model", codi_model,
-            "--character-agent-base-model", codi_model,
-            "--editor-agent-base-model", codi_model,
-            "--max-turn", "100",
+            "--data-file",
+            str(jsonl_path),
+            "--out-dir",
+            str(raw_dir),
+            "--planner-agent-base-model",
+            codi_model,
+            "--director-agent-base-model",
+            codi_model,
+            "--character-agent-base-model",
+            codi_model,
+            "--editor-agent-base-model",
+            codi_model,
+            "--max-turn",
+            "100",
         ]
 
         codi_log_dir = str(Path(CODI_DIR) / "log")
@@ -361,6 +383,7 @@ def run_codi_for_scenario(
 
 
 # Phase 2 – Pairwise evaluation
+
 
 def _build_character_profile(scenario: dict) -> str:
     return json.dumps(
@@ -453,6 +476,7 @@ def run_comparison_eval(
 
 # Phase 3 – Summary tables
 
+
 def run_summary(dry_run: bool) -> None:
     if dry_run:
         print("  [dry] would regenerate summary tables")
@@ -474,21 +498,31 @@ def run_summary(dry_run: bool) -> None:
 
 # Main
 
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Run CoDi for the full scenario suite, evaluate vs Director, and summarize."
     )
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Print what would run without executing.")
-    parser.add_argument("--only", choices=["codi", "eval", "summary"],
-                        help="Run only one phase (default: all three).")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print what would run without executing."
+    )
+    parser.add_argument(
+        "--only",
+        choices=["codi", "eval", "summary"],
+        help="Run only one phase (default: all three).",
+    )
     parser.add_argument("--run-id", type=int, default=DEFAULT_RUN_ID)
-    parser.add_argument("--model", default=DEFAULT_EVAL_MODEL,
-                        help="LLM model for evaluation (default: gpt-4o).")
-    parser.add_argument("--codi-model", default=DEFAULT_CODI_MODEL,
-                        help="LLM model for CoDi generation (default: gpt-4o).")
-    parser.add_argument("--force", action="store_true",
-                        help="Re-run phases even if output already exists.")
+    parser.add_argument(
+        "--model", default=DEFAULT_EVAL_MODEL, help="LLM model for evaluation (default: gpt-4o)."
+    )
+    parser.add_argument(
+        "--codi-model",
+        default=DEFAULT_CODI_MODEL,
+        help="LLM model for CoDi generation (default: gpt-4o).",
+    )
+    parser.add_argument(
+        "--force", action="store_true", help="Re-run phases even if output already exists."
+    )
     args = parser.parse_args()
 
     scenario_names = sorted(SCENARIOS.keys())
@@ -508,8 +542,7 @@ def main() -> None:
         print(sep)
 
         codi_todo = [
-            n for n in scenario_names
-            if not codi_output_path(n, args.run_id).exists() or args.force
+            n for n in scenario_names if not codi_output_path(n, args.run_id).exists() or args.force
         ]
         skip_count = len(scenario_names) - len(codi_todo)
         if skip_count:
@@ -521,8 +554,11 @@ def main() -> None:
             print(f"\n[codi {i}/{len(codi_todo)}] {name}")
             try:
                 path = run_codi_for_scenario(
-                    SCENARIOS[name], args.run_id, args.codi_model,
-                    dry_run=args.dry_run, force=args.force,
+                    SCENARIOS[name],
+                    args.run_id,
+                    args.codi_model,
+                    dry_run=args.dry_run,
+                    force=args.force,
                 )
                 if path:
                     codi_ok += 1
@@ -563,9 +599,7 @@ def main() -> None:
                 print(f"  [dry] would evaluate {name}")
                 continue
             try:
-                path = run_comparison_eval(
-                    SCENARIOS[name], args.run_id, args.model, args.force
-                )
+                path = run_comparison_eval(SCENARIOS[name], args.run_id, args.model, args.force)
                 if path:
                     eval_ok += 1
             except Exception as exc:

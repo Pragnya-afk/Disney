@@ -47,6 +47,7 @@ sys.path.insert(0, IMPLEMENTATION_DIR)
 sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "evaluation_agent"))
 
 from dotenv import load_dotenv
+
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 TIME_LIMITS = ["0.5min", "2.0min", "5.0min", "10.0min"]
@@ -72,7 +73,6 @@ QUAL_DIMENSIONS = [
 ]
 
 
-
 def discover_scenarios(filter_name: str | None) -> list[dict]:
     """Return list of scenario dicts with available time-limit paths."""
     if not TC_OUTPUTS_DIR.exists():
@@ -96,11 +96,13 @@ def discover_scenarios(filter_name: str | None) -> list[dict]:
 
         director_path = DIRECTOR_OUTPUTS_DIR / sc_dir.name / "batch" / f"run_{DEFAULT_RUN_ID}.json"
 
-        scenarios.append({
-            "scenario_name": sc_dir.name,
-            "time_paths": time_paths,
-            "director_path": director_path if director_path.exists() else None,
-        })
+        scenarios.append(
+            {
+                "scenario_name": sc_dir.name,
+                "time_paths": time_paths,
+                "director_path": director_path if director_path.exists() else None,
+            }
+        )
 
     return scenarios
 
@@ -109,6 +111,7 @@ def load_scenario_beats(scenario_name: str) -> list[dict]:
     """Try to load beat list from the scenario suite."""
     try:
         from scenarios.olaf_derailment_scenario_suite import SCENARIOS
+
         if scenario_name in SCENARIOS:
             return SCENARIOS[scenario_name]["beats"]
     except ImportError:
@@ -116,6 +119,7 @@ def load_scenario_beats(scenario_name: str) -> list[dict]:
 
     # Try individual scenario modules
     import importlib
+
     try:
         mod = importlib.import_module(f"scenarios.{scenario_name}")
         return mod.SCENARIO["beats"]
@@ -123,7 +127,6 @@ def load_scenario_beats(scenario_name: str) -> list[dict]:
         pass
 
     return []
-
 
 
 def load_json(path: Path) -> list:
@@ -173,7 +176,6 @@ def transcript_to_story_text(transcript: list) -> str:
     return "\n".join(lines).strip()
 
 
-
 def compute_quantitative_metrics(transcript: list, beats: list) -> dict:
     """Compute structural and efficiency metrics from a transcript."""
     if not transcript:
@@ -209,9 +211,7 @@ def compute_quantitative_metrics(transcript: list, beats: list) -> dict:
     total_words = sum(word_counts)
     words_per_beat = total_words / max(beats_covered, 1)
 
-    pacing_variance = (
-        stdev(word_counts) if len(word_counts) > 1 else 0.0
-    )
+    pacing_variance = stdev(word_counts) if len(word_counts) > 1 else 0.0
 
     # Truncation detection
     last_turn = transcript[-1]
@@ -229,9 +229,7 @@ def compute_quantitative_metrics(transcript: list, beats: list) -> dict:
             break
 
     approx_tokens = total_words * 1.3
-    tokens_per_second = (
-        round(approx_tokens / elapsed_seconds, 2) if elapsed_seconds > 0 else None
-    )
+    tokens_per_second = round(approx_tokens / elapsed_seconds, 2) if elapsed_seconds > 0 else None
 
     return {
         "scene_count": len(transcript),
@@ -263,7 +261,9 @@ def run_quant_stage(scenario: dict, force: bool) -> dict | None:
 
     beats = load_scenario_beats(scenario_name)
     if not beats:
-        print(f"  [quant] WARNING: no beats found for {scenario_name}, metrics will use 0 as total.")
+        print(
+            f"  [quant] WARNING: no beats found for {scenario_name}, metrics will use 0 as total."
+        )
 
     result = {
         "scenario": scenario_name,
@@ -275,23 +275,26 @@ def run_quant_stage(scenario: dict, force: bool) -> dict | None:
         transcript = load_json(path)
         metrics = compute_quantitative_metrics(transcript, beats)
         result["time_limits"][tl] = metrics
-        print(f"  [quant] {scenario_name} / {tl}: {metrics['scene_count']} turns, "
-              f"{metrics['beats_covered']}/{metrics['total_beats']} beats, "
-              f"{metrics['total_words']} words")
+        print(
+            f"  [quant] {scenario_name} / {tl}: {metrics['scene_count']} turns, "
+            f"{metrics['beats_covered']}/{metrics['total_beats']} beats, "
+            f"{metrics['total_words']} words"
+        )
 
     # Also compute for director reference if available
     if scenario["director_path"]:
         transcript = load_json(scenario["director_path"])
         metrics = compute_quantitative_metrics(transcript, beats)
         result["time_limits"]["director"] = metrics
-        print(f"  [quant] {scenario_name} / director: {metrics['scene_count']} turns, "
-              f"{metrics['beats_covered']}/{metrics['total_beats']} beats")
+        print(
+            f"  [quant] {scenario_name} / director: {metrics['scene_count']} turns, "
+            f"{metrics['beats_covered']}/{metrics['total_beats']} beats"
+        )
 
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(result, indent=2, ensure_ascii=False))
     print(f"  [quant] saved → {out_path}")
     return result
-
 
 
 def parse_time_constrained_scores(assessment: str) -> dict:
@@ -315,6 +318,7 @@ def build_character_profile_for_scenario(scenario_name: str) -> str:
     story_topic = ""
     try:
         from scenarios.olaf_derailment_scenario_suite import SCENARIOS
+
         if scenario_name in SCENARIOS:
             story_topic = SCENARIOS[scenario_name].get("story_topic", "")
     except ImportError:
@@ -392,7 +396,6 @@ def run_qual_stage(scenario: dict, model: str, force: bool) -> dict | None:
     return result
 
 
-
 def cosine_similarity(v1: list, v2: list) -> float:
     dot = sum(a * b for a, b in zip(v1, v2))
     n1 = sum(a * a for a in v1) ** 0.5
@@ -451,7 +454,6 @@ def run_sim_stage(scenario: dict, force: bool) -> dict | None:
     return result
 
 
-
 def load_all_quant(scenario_names: list[str]) -> list[dict]:
     """Flatten quantitative results across scenarios into rows."""
     rows = []
@@ -496,17 +498,25 @@ def load_all_sim(scenario_names: list[str]) -> list[dict]:
             for lb, sim in inner.items():
                 if la >= lb:
                     continue  # deduplicate symmetric pairs
-                rows.append({
-                    "scenario": sc_name,
-                    "label_a": la,
-                    "label_b": lb,
-                    "cosine_similarity": sim,
-                })
+                rows.append(
+                    {
+                        "scenario": sc_name,
+                        "label_a": la,
+                        "label_b": lb,
+                        "cosine_similarity": sim,
+                    }
+                )
     return rows
 
 
-def save_table_csv_md(rows: list[dict], pivot_index: str, pivot_cols: str,
-                       pivot_values: list[str], out_dir: Path, name: str):
+def save_table_csv_md(
+    rows: list[dict],
+    pivot_index: str,
+    pivot_cols: str,
+    pivot_values: list[str],
+    out_dir: Path,
+    name: str,
+):
     """Save a pivot table as CSV and Markdown without requiring pandas."""
     if not rows:
         print(f"  [tables] no data for {name}, skipping.")
@@ -526,7 +536,9 @@ def save_table_csv_md(rows: list[dict], pivot_index: str, pivot_cols: str,
 
     # Unique index values and column values
     index_vals = sorted(set(r[pivot_index] for r in rows))
-    col_vals_order = [tl for tl in (TIME_LIMITS + ["director"]) if any(r[pivot_cols] == tl for r in rows)]
+    col_vals_order = [
+        tl for tl in (TIME_LIMITS + ["director"]) if any(r[pivot_cols] == tl for r in rows)
+    ]
     other_cols = sorted(set(r[pivot_cols] for r in rows) - set(col_vals_order))
     col_vals = col_vals_order + other_cols
 
@@ -571,9 +583,16 @@ def run_tables_stage(scenario_names: list[str]):
     quant_rows = load_all_quant(scenario_names)
     if quant_rows:
         quant_metrics = [
-            "scene_count", "beats_covered", "beat_cover_rate", "beat_completion_rate",
-            "beat_merge_rate", "total_words", "words_per_beat",
-            "pacing_variance", "truncated", "approx_tokens_per_second",
+            "scene_count",
+            "beats_covered",
+            "beat_cover_rate",
+            "beat_completion_rate",
+            "beat_merge_rate",
+            "total_words",
+            "words_per_beat",
+            "pacing_variance",
+            "truncated",
+            "approx_tokens_per_second",
         ]
         for metric in quant_metrics:
             rows_with_val = [r for r in quant_rows if r.get(metric) is not None]
@@ -590,6 +609,7 @@ def run_tables_stage(scenario_names: list[str]):
 
         # Also a combined quantitative overview table: index=time_limit, cols=metric, agg over scenarios
         from collections import defaultdict
+
         agg: dict[tuple, list] = defaultdict(list)
         for row in quant_rows:
             tl = row["time_limit"]
@@ -636,6 +656,7 @@ def run_tables_stage(scenario_names: list[str]):
 
         # Also: index=time_limit, cols=dimension, aggregated across scenarios
         from collections import defaultdict
+
         agg_q: dict[tuple, list] = defaultdict(list)
         for row in qual_rows:
             tl = row["time_limit"]
@@ -671,12 +692,15 @@ def run_tables_stage(scenario_names: list[str]):
     # Similarity: pairs, mean cosine similarity across scenarios
     sim_rows = load_all_sim(scenario_names)
     if sim_rows:
-        all_labels = sorted(set(r["label_a"] for r in sim_rows) | set(r["label_b"] for r in sim_rows))
+        all_labels = sorted(
+            set(r["label_a"] for r in sim_rows) | set(r["label_b"] for r in sim_rows)
+        )
         label_order = [tl for tl in (TIME_LIMITS + ["director"]) if tl in all_labels]
-        other_labels = [l for l in all_labels if l not in label_order]
+        other_labels = [lbl for lbl in all_labels if lbl not in label_order]
         ordered_labels = label_order + other_labels
 
         from collections import defaultdict
+
         pair_sims: dict[tuple, list] = defaultdict(list)
         for row in sim_rows:
             pair_sims[(row["label_a"], row["label_b"])].append(row["cosine_similarity"])
@@ -692,7 +716,9 @@ def run_tables_stage(scenario_names: list[str]):
                         row_data = [la]
                         for lb in ordered_labels:
                             vals = pair_sims.get((la, lb), [])
-                            row_data.append(round(mean(vals), 4) if vals else ("1.0" if la == lb else ""))
+                            row_data.append(
+                                round(mean(vals), 4) if vals else ("1.0" if la == lb else "")
+                            )
                         f.write(",".join(str(c) for c in row_data) + "\n")
                 else:
                     f.write("| " + " | ".join(header_s) + " |\n")
@@ -701,10 +727,11 @@ def run_tables_stage(scenario_names: list[str]):
                         row_data = [la]
                         for lb in ordered_labels:
                             vals = pair_sims.get((la, lb), [])
-                            row_data.append(round(mean(vals), 4) if vals else ("1.0" if la == lb else ""))
+                            row_data.append(
+                                round(mean(vals), 4) if vals else ("1.0" if la == lb else "")
+                            )
                         f.write("| " + " | ".join(str(c) for c in row_data) + " |\n")
         print("  time_constrained_similarity.{csv,md}")
-
 
 
 def main():
@@ -772,7 +799,11 @@ def main():
     if run_tables:
         print(f"\n{'='*60}\nTABLES STAGE\n{'='*60}")
         # Use all discovered scenarios (not just the filtered subset) for tables
-        all_tc_names = [d.name for d in EVAL_TC_DIR.iterdir() if d.is_dir()] if EVAL_TC_DIR.exists() else scenario_names
+        all_tc_names = (
+            [d.name for d in EVAL_TC_DIR.iterdir() if d.is_dir()]
+            if EVAL_TC_DIR.exists()
+            else scenario_names
+        )
         run_tables_stage(all_tc_names)
 
     print("\nDone.")

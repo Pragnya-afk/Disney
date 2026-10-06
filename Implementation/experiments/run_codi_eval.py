@@ -35,6 +35,7 @@ sys.path.insert(0, IMPLEMENTATION_DIR)
 sys.path.insert(0, os.path.join(IMPLEMENTATION_DIR, "evaluation_agent"))
 
 from dotenv import load_dotenv
+
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from character_prompts.olaf import CHARACTER as OLAF_CHARACTER
@@ -59,7 +60,6 @@ DIRECTOR_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
 EVAL_RESULTS_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_results"
 
 
-
 # Maps common CoDi scenario name patterns to director-agent folder names.
 # Add entries here when CoDi covers scenarios with different naming conventions.
 SCENARIO_ALIAS_MAP = {
@@ -79,20 +79,20 @@ def find_director_output(scenario_name: str, run_id: int) -> Path | None:
 
     # Common transformations: noderail_ prefix → no_derailment suffix
     if scenario_name.startswith("noderail_"):
-        base = scenario_name[len("noderail_"):]
+        base = scenario_name[len("noderail_") :]
         candidates += [
             f"{base}_no_derailment",
             f"olaf_retells_{base}_no_derailment",
             f"olaf_{base}_no_derailment",
         ]
     if scenario_name.startswith("complete_derail_"):
-        base = scenario_name[len("complete_derail_"):]
+        base = scenario_name[len("complete_derail_") :]
         candidates += [
             f"{base}_complete_derailment",
             f"olaf_retells_{base}_complete_derailment",
         ]
     if scenario_name.startswith("medium_derail_"):
-        base = scenario_name[len("medium_derail_"):]
+        base = scenario_name[len("medium_derail_") :]
         candidates += [
             f"{base}_medium_derailment",
             f"olaf_retells_{base}_medium_derailment",
@@ -104,7 +104,6 @@ def find_director_output(scenario_name: str, run_id: int) -> Path | None:
             return path
 
     return None
-
 
 
 def load_scenario_context(scenario_name: str) -> dict | None:
@@ -130,6 +129,7 @@ def load_scenario_context(scenario_name: str) -> dict | None:
     # Also try loading from the suite via the director-matched name
     try:
         from scenarios.olaf_derailment_scenario_suite import SCENARIOS
+
         for name, sc in SCENARIOS.items():
             if scenario_name in name or SCENARIO_ALIAS_MAP.get(scenario_name, "") == name:
                 return {"story_topic": sc["story_topic"], "beats": sc["beats"]}
@@ -146,7 +146,6 @@ def build_character_profile(scenario_name: str) -> str:
         payload["story_topic"] = scenario_context["story_topic"]
         payload["beats"] = scenario_context["beats"]
     return json.dumps(payload, indent=2, ensure_ascii=False)
-
 
 
 def run_codi_eval(
@@ -207,7 +206,6 @@ def run_codi_eval(
     return out_path
 
 
-
 def main():
     parser = argparse.ArgumentParser(
         description="Evaluate CoDi outputs against director-agent outputs."
@@ -242,14 +240,18 @@ def main():
             continue
 
         director_path = find_director_output(scenario_name, args.run_id)
-        eval_out = EVAL_RESULTS_DIR / scenario_name / f"pairwise_codi_vs_director_run_{args.run_id}.json"
+        eval_out = (
+            EVAL_RESULTS_DIR / scenario_name / f"pairwise_codi_vs_director_run_{args.run_id}.json"
+        )
 
-        items.append({
-            "scenario_name": scenario_name,
-            "codi_path": codi_path,
-            "director_path": director_path,
-            "eval_out": eval_out,
-        })
+        items.append(
+            {
+                "scenario_name": scenario_name,
+                "codi_path": codi_path,
+                "director_path": director_path,
+                "eval_out": eval_out,
+            }
+        )
 
     print(f"CoDi scenarios found: {len(items)}\n")
     for item in items:
@@ -258,7 +260,9 @@ def main():
         print(f"  [{status}] {item['scenario_name']}{done}")
         if not item["director_path"]:
             print(f"           -> No matching director output in {DIRECTOR_OUTPUTS_DIR}")
-            print("              Run the director on this scenario first, or add an alias to SCENARIO_ALIAS_MAP.")
+            print(
+                "              Run the director on this scenario first, or add an alias to SCENARIO_ALIAS_MAP."
+            )
 
     if args.dry_run:
         print("\n-- dry run, stopping here --")

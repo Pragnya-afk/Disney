@@ -32,12 +32,21 @@ RUN_ID = 1
 
 
 def director_output_path(scenario_name: str) -> Path:
-    return Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent" / scenario_name / "batch" / f"run_{RUN_ID}.json"
+    return (
+        Path(IMPLEMENTATION_DIR)
+        / "outputs"
+        / "director_agent"
+        / scenario_name
+        / "batch"
+        / f"run_{RUN_ID}.json"
+    )
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="Print what would run without executing.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print what would run without executing."
+    )
     args = parser.parse_args()
 
     scenario_names = sorted(SCENARIOS.keys())

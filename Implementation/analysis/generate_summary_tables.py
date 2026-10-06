@@ -50,13 +50,17 @@ def main():
     )
     args = parser.parse_args()
 
-    summarize_script = os.path.join(IMPLEMENTATION_DIR, "evaluation_agent", "summarize_evaluations.py")
+    summarize_script = os.path.join(
+        IMPLEMENTATION_DIR, "evaluation_agent", "summarize_evaluations.py"
+    )
 
     cmd = [
         sys.executable,
         summarize_script,
-        "--input_dir", args.input_dir,
-        "--output_dir", args.output_dir,
+        "--input_dir",
+        args.input_dir,
+        "--output_dir",
+        args.output_dir,
     ]
 
     print(f"Scanning: {args.input_dir}")

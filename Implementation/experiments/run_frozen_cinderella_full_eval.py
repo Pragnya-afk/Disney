@@ -28,6 +28,7 @@ sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent"))
 sys.path.insert(0, str(IMPLEMENTATION_DIR / "director_agent" / "time_constrained"))
 
 from dotenv import load_dotenv
+
 load_dotenv(str(IMPLEMENTATION_DIR / ".env"))
 
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
@@ -43,7 +44,8 @@ CHARACTER_MODULE = "character_prompts.olaf"
 SCENARIO_MODULE = "scenarios.olaf_derailment_scenario_suite"
 
 TARGET_NAMES = sorted(
-    n for n in SCENARIOS
+    n
+    for n in SCENARIOS
     if n.startswith("olaf_retells_frozen_1") or n.startswith("olaf_retells_cinderella")
 )
 
@@ -57,7 +59,15 @@ def director_path(name):
 
 
 def time_path(name, tl):
-    return IMPLEMENTATION_DIR / "outputs" / "target_duration_director_agent" / name / f"{tl}min" / "batch" / f"run_{RUN_ID}.json"
+    return (
+        IMPLEMENTATION_DIR
+        / "outputs"
+        / "target_duration_director_agent"
+        / name
+        / f"{tl}min"
+        / "batch"
+        / f"run_{RUN_ID}.json"
+    )
 
 
 def generate(dry_run: bool):
@@ -67,10 +77,14 @@ def generate(dry_run: bool):
 
     baseline_todo = [n for n in TARGET_NAMES if not baseline_path(n).exists()]
     director_todo = [n for n in TARGET_NAMES if not director_path(n).exists()]
-    time_todo = [(n, tl) for n in TARGET_NAMES for tl in TIME_LIMITS if not time_path(n, tl).exists()]
+    time_todo = [
+        (n, tl) for n in TARGET_NAMES for tl in TIME_LIMITS if not time_path(n, tl).exists()
+    ]
 
-    print(f"\nTo run: {len(baseline_todo)} baseline, {len(director_todo)} director, "
-          f"{len(time_todo)} time-constrained")
+    print(
+        f"\nTo run: {len(baseline_todo)} baseline, {len(director_todo)} director, "
+        f"{len(time_todo)} time-constrained"
+    )
 
     if dry_run:
         return
@@ -132,14 +146,24 @@ def main():
 
     if args.only in (None, "evaluate"):
         if args.dry_run:
-            print("\n(dry-run) would now run: python run_all_evals.py --model "
-                  f"{args.model} --only baseline / --only time / --only summarize")
+            print(
+                "\n(dry-run) would now run: python run_all_evals.py --model "
+                f"{args.model} --only baseline / --only time / --only summarize"
+            )
         else:
             import subprocess
+
             for track in ("baseline", "time", "summarize"):
                 print(f"\n{'='*60}\nEvaluation track: {track}\n{'='*60}")
                 subprocess.run(
-                    [sys.executable, "experiments/run_all_evals.py", "--model", args.model, "--only", track],
+                    [
+                        sys.executable,
+                        "experiments/run_all_evals.py",
+                        "--model",
+                        args.model,
+                        "--only",
+                        track,
+                    ],
                     cwd=str(IMPLEMENTATION_DIR),
                     check=False,
                 )

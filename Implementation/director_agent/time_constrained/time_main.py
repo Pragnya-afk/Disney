@@ -344,9 +344,7 @@ def generate_story_closing(
     scenario_name: str,
     time_limit: float,
 ) -> None:
-    remaining_beat_goals = [
-        f"{b['name']}: {b['goal']}" for b in beats[story_state["beat_index"]:]
-    ]
+    remaining_beat_goals = [f"{b['name']}: {b['goal']}" for b in beats[story_state["beat_index"] :]]
 
     director_decision = {
         "decision_type": "close_story",
@@ -377,25 +375,29 @@ def generate_story_closing(
     print(f"{character['name']}: {actor_output['character_response']}")
     print(f"[Animation: {actor_output['animation']}]")
 
-    transcript.append({
-        "method": "target_duration_director_agent",
-        "character": character["name"],
-        "scenario": scenario_name,
-        "time_limit_minutes": time_limit,
-        "beat": beats[story_state["beat_index"]]["name"],
-        "user_input": "[auto-close]",
-        "temporal_state": closing_temporal_state,
-        "director_decision": director_decision,
-        "actor_output": actor_output,
-        "auto_close": True,
-    })
+    transcript.append(
+        {
+            "method": "target_duration_director_agent",
+            "character": character["name"],
+            "scenario": scenario_name,
+            "time_limit_minutes": time_limit,
+            "beat": beats[story_state["beat_index"]]["name"],
+            "user_input": "[auto-close]",
+            "temporal_state": closing_temporal_state,
+            "director_decision": director_decision,
+            "actor_output": actor_output,
+            "auto_close": True,
+        }
+    )
 
 
 def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
     scenario_mod = load_module(scenario_module)
     if scenario_name:
         if not hasattr(scenario_mod, "SCENARIOS"):
-            raise ValueError(f"--scenario-name requires a suite module with a SCENARIOS dict, but {scenario_module} has none.")
+            raise ValueError(
+                f"--scenario-name requires a suite module with a SCENARIOS dict, but {scenario_module} has none."
+            )
         if scenario_name not in scenario_mod.SCENARIOS:
             available = list(scenario_mod.SCENARIOS.keys())
             raise ValueError(f"Scenario '{scenario_name}' not found. Available: {available}")
@@ -403,7 +405,9 @@ def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
     return scenario_mod.SCENARIO
 
 
-def run(character_module: str, scenario_module: str, time_limit: float, scenario_name: str | None = None):
+def run(
+    character_module: str, scenario_module: str, time_limit: float, scenario_name: str | None = None
+):
     character_mod = load_module(character_module)
     scenario = load_scenario(scenario_module, scenario_name)
 
@@ -494,9 +498,7 @@ def run(character_module: str, scenario_module: str, time_limit: float, scenario
             temporal_state=temporal_state,
         )
 
-        actor_output["animation"] = validate_animation(
-            actor_output.get("animation", ""), character
-        )
+        actor_output["animation"] = validate_animation(actor_output.get("animation", ""), character)
 
         print(f"\nDirector decision: {director_decision.get('decision_type')}")
         print(f"{character['name']}: {actor_output['character_response']}")
@@ -511,17 +513,19 @@ def run(character_module: str, scenario_module: str, time_limit: float, scenario
             f"\nEvent: {actor_output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "target_duration_director_agent",
-            "character": character["name"],
-            "scenario": scenario["scenario_name"],
-            "time_limit_minutes": time_limit,
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "temporal_state": temporal_state,
-            "director_decision": director_decision,
-            "actor_output": actor_output,
-        })
+        transcript.append(
+            {
+                "method": "target_duration_director_agent",
+                "character": character["name"],
+                "scenario": scenario["scenario_name"],
+                "time_limit_minutes": time_limit,
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "temporal_state": temporal_state,
+                "director_decision": director_decision,
+                "actor_output": actor_output,
+            }
+        )
 
         if should_complete_beat(
             actor_output=actor_output,
@@ -535,7 +539,10 @@ def run(character_module: str, scenario_module: str, time_limit: float, scenario
             story_state["turns_in_current_beat"] = 0
 
         # Re-check temporal state after API calls (time may have elapsed)
-        temporal_state = monitor.state(story_state["beat_index"] if story_state["beat_index"] < len(beats) else len(beats) - 1, beats)
+        temporal_state = monitor.state(
+            story_state["beat_index"] if story_state["beat_index"] < len(beats) else len(beats) - 1,
+            beats,
+        )
 
         if should_close_story(director_decision, temporal_state, monitor, story_state):
             generate_story_closing(temporal_state=temporal_state, **closing_kwargs)
@@ -558,8 +565,14 @@ def run(character_module: str, scenario_module: str, time_limit: float, scenario
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite")
-    parser.add_argument("--scenario-name", default=None, help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment")
+    parser.add_argument(
+        "--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite"
+    )
+    parser.add_argument(
+        "--scenario-name",
+        default=None,
+        help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment",
+    )
     parser.add_argument("--time-limit", type=float, default=5.0)
     args = parser.parse_args()
 

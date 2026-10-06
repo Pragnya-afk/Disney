@@ -28,6 +28,7 @@ IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, IMPLEMENTATION_DIR)
 
 from dotenv import load_dotenv
+
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from evaluation_agent.evaluation_core import (
@@ -57,13 +58,17 @@ def log(msg: str):
 
 def build_profile(scenario_name: str) -> str:
     sc = SCENARIOS[scenario_name]
-    return json.dumps({
-        "name": CHARACTER["name"],
-        "character_prompt": CHARACTER["character_prompt"],
-        "available_animations": CHARACTER["available_animations"],
-        "story_topic": sc["story_topic"],
-        "beats": sc["beats"],
-    }, indent=2, ensure_ascii=False)
+    return json.dumps(
+        {
+            "name": CHARACTER["name"],
+            "character_prompt": CHARACTER["character_prompt"],
+            "available_animations": CHARACTER["available_animations"],
+            "story_topic": sc["story_topic"],
+            "beats": sc["beats"],
+        },
+        indent=2,
+        ensure_ascii=False,
+    )
 
 
 def run_ab_ba(client, model, story_a, story_b, profile, prompt_template, dimensions):
@@ -87,19 +92,19 @@ def run_ab_ba(client, model, story_a, story_b, profile, prompt_template, dimensi
 
 
 def run_single(client, model, story, profile, prompt_template, dimensions):
-    raw = call_evaluator(client, model, prompt_template.format(character_profile=profile, story=story))
+    raw = call_evaluator(
+        client, model, prompt_template.format(character_profile=profile, story=story)
+    )
     scores = parse_single_scores(raw, dimensions)
     return {"assessment": raw, "scores": scores}
 
 
 def eval_baseline_vs_director(client, model, dry_run):
     baseline_scenarios = {
-        p.parent.parent.name
-        for p in OUTPUTS_DIR.glob("baseline/rocket_*/batch/run_1.json")
+        p.parent.parent.name for p in OUTPUTS_DIR.glob("baseline/rocket_*/batch/run_1.json")
     }
     director_scenarios = {
-        p.parent.parent.name
-        for p in OUTPUTS_DIR.glob("director_agent/rocket_*/batch/run_1.json")
+        p.parent.parent.name for p in OUTPUTS_DIR.glob("director_agent/rocket_*/batch/run_1.json")
     }
     pairs = sorted(baseline_scenarios & director_scenarios)
     log(f"[baseline vs director / rocket] {len(pairs)} matching scenarios")
@@ -122,12 +127,15 @@ def eval_baseline_vs_director(client, model, dry_run):
             story_a = transcript_to_story(load_json(str(path_a)))
             story_b = transcript_to_story(load_json(str(path_b)))
 
-            single_a = run_single(client, model, story_a, profile,
-                                   EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS)
-            single_b = run_single(client, model, story_b, profile,
-                                   EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS)
-            ab_ba = run_ab_ba(client, model, story_a, story_b, profile,
-                               EVALUATE_STORY_AB_PROMPT, BASE_DIMENSIONS)
+            single_a = run_single(
+                client, model, story_a, profile, EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS
+            )
+            single_b = run_single(
+                client, model, story_b, profile, EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS
+            )
+            ab_ba = run_ab_ba(
+                client, model, story_a, story_b, profile, EVALUATE_STORY_AB_PROMPT, BASE_DIMENSIONS
+            )
 
             result = {
                 "timestamp": datetime.now().isoformat(),
@@ -150,10 +158,17 @@ def eval_baseline_vs_director(client, model, dry_run):
 def run_summarize():
     log("[summarize] building tables...")
     import subprocess
+
     result = subprocess.run(
-        [sys.executable, "-m", "evaluation_agent.summarize_evaluations",
-         "--input_dir", str(EVAL_DIR),
-         "--output_dir", str(Path(IMPLEMENTATION_DIR) / "evaluation_summary")],
+        [
+            sys.executable,
+            "-m",
+            "evaluation_agent.summarize_evaluations",
+            "--input_dir",
+            str(EVAL_DIR),
+            "--output_dir",
+            str(Path(IMPLEMENTATION_DIR) / "evaluation_summary"),
+        ],
         cwd=IMPLEMENTATION_DIR,
         capture_output=True,
         text=True,

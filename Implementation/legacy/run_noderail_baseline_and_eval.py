@@ -50,7 +50,6 @@ RUN_ID = 1
 EVAL_MODEL = "gpt-4o"
 
 
-
 def _call_llm(client: OpenAI, prompt: str) -> str:
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -181,16 +180,18 @@ def run_baseline(scenario: dict, character: dict, run_id: int) -> str:
             f"\nEvent: {output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "baseline",
-            "character": character["name"],
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": turn_idx,
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "model_output": output,
-        })
+        transcript.append(
+            {
+                "method": "baseline",
+                "character": character["name"],
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": turn_idx,
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "model_output": output,
+            }
+        )
 
         if output.get("beat_completed") is True:
             story_state["completed_beats"].append(current_beat["name"])
@@ -202,7 +203,6 @@ def run_baseline(scenario: dict, character: dict, run_id: int) -> str:
 
     print(f"  [baseline] saved → {out_path}")
     return out_path
-
 
 
 def _build_character_profile(character: dict, scenario: dict) -> str:
@@ -225,7 +225,12 @@ def run_eval(scenario: dict, character: dict, run_id: int) -> str:
         IMPLEMENTATION_DIR, "outputs", "baseline", scenario_name, "batch", f"run_{run_id}.json"
     )
     director_path = os.path.join(
-        IMPLEMENTATION_DIR, "outputs", "director_agent", scenario_name, "batch", f"run_{run_id}.json"
+        IMPLEMENTATION_DIR,
+        "outputs",
+        "director_agent",
+        scenario_name,
+        "batch",
+        f"run_{run_id}.json",
     )
 
     if not os.path.exists(baseline_path):
@@ -284,7 +289,6 @@ def run_eval(scenario: dict, character: dict, run_id: int) -> str:
     return out_path
 
 
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -310,9 +314,25 @@ def main():
 
     for sc in scenarios:
         name = sc["scenario_name"]
-        baseline_out = Path(IMPLEMENTATION_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
-        director_out = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent" / name / "batch" / f"run_{RUN_ID}.json"
-        eval_out = Path(IMPLEMENTATION_DIR) / "evaluation_results" / name / f"pairwise_run_{RUN_ID}.json"
+        baseline_out = (
+            Path(IMPLEMENTATION_DIR)
+            / "outputs"
+            / "baseline"
+            / name
+            / "batch"
+            / f"run_{RUN_ID}.json"
+        )
+        director_out = (
+            Path(IMPLEMENTATION_DIR)
+            / "outputs"
+            / "director_agent"
+            / name
+            / "batch"
+            / f"run_{RUN_ID}.json"
+        )
+        eval_out = (
+            Path(IMPLEMENTATION_DIR) / "evaluation_results" / name / f"pairwise_run_{RUN_ID}.json"
+        )
 
         if not args.only or args.only == "baseline":
             if baseline_out.exists():
@@ -365,7 +385,9 @@ def main():
             failed.append((f"eval/{name}", str(e)))
 
     print(f"\n{'='*60}")
-    print(f"Done. {completed}/{len(baseline_todo) + len(eval_todo)} succeeded, {len(failed)} failed.")
+    print(
+        f"Done. {completed}/{len(baseline_todo) + len(eval_todo)} succeeded, {len(failed)} failed."
+    )
     if failed:
         print("\nFailed:")
         for label, err in failed:

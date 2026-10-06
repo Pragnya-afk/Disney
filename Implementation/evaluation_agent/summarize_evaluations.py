@@ -71,11 +71,11 @@ def parse_story_path(path_str: str) -> dict:
 
     # Strip any absolute or relative prefix up to and including "Implementation/"
     if "/Implementation/" in path:
-        path = path[path.index("/Implementation/") + len("/Implementation/"):]
+        path = path[path.index("/Implementation/") + len("/Implementation/") :]
     else:
         for prefix in ("Implementation/", "./Implementation/"):
             if path.startswith(prefix):
-                path = path[len(prefix):]
+                path = path[len(prefix) :]
 
     parts = [p for p in path.split("/") if p]
 
@@ -93,7 +93,7 @@ def parse_story_path(path_str: str) -> dict:
 
     # Legacy: "codi_<scenario>.json" was placed directly under outputs/
     if method_raw.startswith("codi_"):
-        scenario = method_raw.removesuffix(".json")[len("codi_"):]
+        scenario = method_raw.removesuffix(".json")[len("codi_") :]
         return {"method": "codi", "scenario": scenario, "time_limit": None}
 
     scenario = parts[1] if len(parts) > 1 else "unknown"
@@ -131,11 +131,12 @@ def infer_base_scenario(scenario: str) -> str:
             return scenario[: -len(suffix)]
     for prefix in ("complete_derail_", "medium_derail_", "noderail_"):
         if scenario.startswith(prefix):
-            return scenario[len(prefix):]
+            return scenario[len(prefix) :]
     return scenario
 
 
 # Loading
+
 
 def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
@@ -174,7 +175,11 @@ def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
             sss = data["single_story_scores"]
             # Support both exact keys ("A", "B") and prefixed keys ("A_baseline", "B_director", "A_codi", …)
             entry = sss.get(label) or next(
-                (v for k, v in sss.items() if k.upper().startswith(label + "_") or k.upper() == label),
+                (
+                    v
+                    for k, v in sss.items()
+                    if k.upper().startswith(label + "_") or k.upper() == label
+                ),
                 None,
             )
             scores = (entry or {}).get("scores", {})
@@ -200,21 +205,21 @@ def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
                 if metric not in METRICS:
                     continue
                 winner_method = (
-                    disp_a if winner_label == "A"
-                    else disp_b if winner_label == "B"
-                    else "Same"
+                    disp_a if winner_label == "A" else disp_b if winner_label == "B" else "Same"
                 )
-                win_rows.append({
-                    "file": str(path),
-                    "scenario": scenario,
-                    "base_scenario": base_scenario,
-                    "derailment_level": derailment,
-                    "pair": pair,
-                    "method_a": disp_a,
-                    "method_b": disp_b,
-                    "metric": metric,
-                    "winner": winner_method,
-                })
+                win_rows.append(
+                    {
+                        "file": str(path),
+                        "scenario": scenario,
+                        "base_scenario": base_scenario,
+                        "derailment_level": derailment,
+                        "pair": pair,
+                        "method_a": disp_a,
+                        "method_b": disp_b,
+                        "metric": metric,
+                        "winner": winner_method,
+                    }
+                )
 
     if loaded == 0:
         raise ValueError(
@@ -234,6 +239,7 @@ def load_evaluation_files(input_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 # Table builders
+
 
 def _ordered_index(index):
     ordered = [m for m in METHOD_ORDER if m in index]
@@ -293,11 +299,13 @@ def make_pairwise_wins(wins_df: pd.DataFrame) -> pd.DataFrame:
         a_wins = (group["winner"] == method_a).sum()
         b_wins = (group["winner"] == method_b).sum()
         ties = (group["winner"] == "Same").sum()
-        summary_rows.append({
-            "pair": pair,
-            "metric": metric,
-            "summary": f"{method_a}: {a_wins} | {method_b}: {b_wins} | Tie: {ties}",
-        })
+        summary_rows.append(
+            {
+                "pair": pair,
+                "metric": metric,
+                "summary": f"{method_a}: {a_wins} | {method_b}: {b_wins} | Tie: {ties}",
+            }
+        )
 
     df = pd.DataFrame(summary_rows)
     table = df.pivot(index="pair", columns="metric", values="summary")
@@ -308,6 +316,7 @@ def make_pairwise_wins(wins_df: pd.DataFrame) -> pd.DataFrame:
 
 # Output helpers
 
+
 def save_table(table: pd.DataFrame, output_dir: Path, name: str):
     table.to_csv(output_dir / f"{name}.csv")
     table.to_markdown(output_dir / f"{name}.md")
@@ -316,6 +325,7 @@ def save_table(table: pd.DataFrame, output_dir: Path, name: str):
 
 
 # Main
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -341,7 +351,9 @@ def main():
     scores_df, wins_df = load_evaluation_files(input_dir)
 
     scores_df.to_csv(output_dir / "all_runs_flat.csv", index=False)
-    print(f"  all_runs_flat.csv  ({len(scores_df)} story records from {scores_df['file'].nunique()} files)")
+    print(
+        f"  all_runs_flat.csv  ({len(scores_df)} story records from {scores_df['file'].nunique()} files)"
+    )
 
     print("\nGenerating tables ...")
     save_table(make_scores_by_metric(scores_df), output_dir, "table_scores_by_metric")

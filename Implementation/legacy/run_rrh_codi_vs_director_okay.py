@@ -40,6 +40,7 @@ sys.path.insert(0, DIRECTOR_AGENT_DIR)
 sys.path.insert(0, EVAL_AGENT_DIR)
 
 from dotenv import load_dotenv
+
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from openai import OpenAI
@@ -54,20 +55,22 @@ SCENARIO = SCENARIOS[SCENARIO_NAME]
 OKAY_INPUTS = ["okay"] * 30  # more than enough for all beats to complete
 
 DIRECTOR_OKAY_PATH = (
-    Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
-    / SCENARIO_NAME / "okay_inputs" / "run_1.json"
+    Path(IMPLEMENTATION_DIR)
+    / "outputs"
+    / "director_agent"
+    / SCENARIO_NAME
+    / "okay_inputs"
+    / "run_1.json"
 )
-CODI_PATH = (
-    Path(IMPLEMENTATION_DIR) / "outputs" / "codi"
-    / SCENARIO_NAME / "batch" / "run_1.json"
-)
+CODI_PATH = Path(IMPLEMENTATION_DIR) / "outputs" / "codi" / SCENARIO_NAME / "batch" / "run_1.json"
 EVAL_PATH = (
-    Path(IMPLEMENTATION_DIR) / "evaluation_results"
-    / SCENARIO_NAME / "pairwise_codi_vs_director_okay.json"
+    Path(IMPLEMENTATION_DIR)
+    / "evaluation_results"
+    / SCENARIO_NAME
+    / "pairwise_codi_vs_director_okay.json"
 )
 OUTPUTS_PATH = (
-    Path(IMPLEMENTATION_DIR) / "evaluation_results"
-    / SCENARIO_NAME / "character_outputs_okay.txt"
+    Path(IMPLEMENTATION_DIR) / "evaluation_results" / SCENARIO_NAME / "character_outputs_okay.txt"
 )
 
 EVAL_MODEL = "gpt-4o"
@@ -97,6 +100,7 @@ from evaluation_core import (
 )
 
 # Phase 1 – Director generation with "okay" inputs
+
 
 def run_director_okay() -> list:
     print(f"\n{'='*60}")
@@ -182,17 +186,19 @@ def run_director_okay() -> list:
             f"\nEvent: {actor_output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "director_agent_okay_inputs",
-            "character": OLAF_CHARACTER["name"],
-            "scenario": SCENARIO_NAME,
-            "run_id": 1,
-            "turn_index": turn_idx,
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "director_decision": director_decision,
-            "actor_output": actor_output,
-        })
+        transcript.append(
+            {
+                "method": "director_agent_okay_inputs",
+                "character": OLAF_CHARACTER["name"],
+                "scenario": SCENARIO_NAME,
+                "run_id": 1,
+                "turn_index": turn_idx,
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "director_decision": director_decision,
+                "actor_output": actor_output,
+            }
+        )
 
         if should_complete_beat(actor_output, director_decision, story_state, beats):
             print(f"    -> beat '{current_beat['name']}' completed")
@@ -210,7 +216,9 @@ def run_director_okay() -> list:
     print(f"  Saved {len(transcript)} turns → {DIRECTOR_OKAY_PATH}")
     return transcript
 
+
 # Phase 2 – Load CoDi output
+
 
 def load_codi() -> list:
     print(f"\n{'='*60}")
@@ -229,7 +237,9 @@ def load_codi() -> list:
     print(f"  Loaded {len(transcript)} turns from {CODI_PATH}")
     return transcript
 
+
 # Phase 3 – Pairwise evaluation
+
 
 def run_eval(transcript_codi: list, transcript_director: list, model: str) -> dict:
     print(f"\n{'='*60}")
@@ -237,7 +247,7 @@ def run_eval(transcript_codi: list, transcript_director: list, model: str) -> di
     print(f"{'='*60}")
 
     story_codi = transcript_to_story(transcript_codi)
-    story_dir  = transcript_to_story(transcript_director)
+    story_dir = transcript_to_story(transcript_director)
 
     character_profile = json.dumps(
         {
@@ -264,7 +274,7 @@ def run_eval(transcript_codi: list, transcript_director: list, model: str) -> di
     ba = run_ab_evaluation(client, model, story_dir, story_codi, character_profile)
 
     ba_converted = convert_ba_to_original_labels(ba["winners"])
-    aggregated   = aggregate_ab_ba(ab["winners"], ba_converted)
+    aggregated = aggregate_ab_ba(ab["winners"], ba_converted)
 
     result = {
         "timestamp": datetime.now().isoformat(),
@@ -293,7 +303,9 @@ def run_eval(transcript_codi: list, transcript_director: list, model: str) -> di
     print(f"\n  Saved evaluation → {EVAL_PATH}")
     return result
 
+
 # Phase 4 – Extract character outputs side-by-side
+
 
 def extract_character_outputs(transcript_codi: list, transcript_director: list) -> None:
     print(f"\n{'='*60}")
@@ -304,13 +316,13 @@ def extract_character_outputs(transcript_codi: list, transcript_director: list) 
 
     lines.append("=== DIRECTOR_AGENT ===\n")
     for turn in transcript_director:
-        turn_num  = turn.get("turn_index", "?")
-        beat      = turn.get("beat", "")
-        user_in   = turn.get("user_input", "okay")
-        decision  = turn.get("director_decision", {})
-        instr     = decision.get("director_instruction", "")
+        turn_num = turn.get("turn_index", "?")
+        beat = turn.get("beat", "")
+        user_in = turn.get("user_input", "okay")
+        decision = turn.get("director_decision", {})
+        instr = decision.get("director_instruction", "")
         actor_out = turn.get("actor_output", {})
-        response  = actor_out.get("character_response", "").strip()
+        response = actor_out.get("character_response", "").strip()
 
         lines.append(f"[Turn {turn_num} | Beat: {beat}]")
         lines.append(f"User:      {user_in}")
@@ -321,8 +333,8 @@ def extract_character_outputs(transcript_codi: list, transcript_director: list) 
     lines.append("=== CODI ===\n")
     for turn in transcript_codi:
         turn_num = turn.get("turn_index", "?")
-        beat     = turn.get("beat", "")
-        out      = turn.get("model_output", {})
+        beat = turn.get("beat", "")
+        out = turn.get("model_output", {})
         response = out.get("character_response", "").strip()
 
         lines.append(f"[Turn {turn_num} | Beat: {beat}]")
@@ -343,6 +355,7 @@ def extract_character_outputs(transcript_codi: list, transcript_director: list) 
 
 # Summary printer
 
+
 def print_summary(result: dict) -> None:
     print(f"\n{'='*60}")
     print("Summary")
@@ -357,7 +370,7 @@ def print_summary(result: dict) -> None:
         print(f"  {dim:<35} → {marker}")
 
     codi_scores = single.get("codi", {}).get("scores", {})
-    dir_scores  = single.get("director", {}).get("scores", {})
+    dir_scores = single.get("director", {}).get("scores", {})
 
     print("\nIndependent quality scores:")
     print(f"  {'Dimension':<35} CoDi    Director")
@@ -369,16 +382,23 @@ def print_summary(result: dict) -> None:
 
     print(f"\nFull results saved to:\n  {EVAL_PATH}")
 
+
 # Main
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--skip-director", action="store_true",
-                        help="Skip director generation (reuse existing okay_inputs/run_1.json).")
-    parser.add_argument("--skip-eval", action="store_true",
-                        help="Generate transcripts only, skip evaluation.")
-    parser.add_argument("--model", default=EVAL_MODEL,
-                        help=f"Evaluation model (default: {EVAL_MODEL}).")
+    parser.add_argument(
+        "--skip-director",
+        action="store_true",
+        help="Skip director generation (reuse existing okay_inputs/run_1.json).",
+    )
+    parser.add_argument(
+        "--skip-eval", action="store_true", help="Generate transcripts only, skip evaluation."
+    )
+    parser.add_argument(
+        "--model", default=EVAL_MODEL, help=f"Evaluation model (default: {EVAL_MODEL})."
+    )
     args = parser.parse_args()
 
     print(f"Scenario : {SCENARIO_NAME}")

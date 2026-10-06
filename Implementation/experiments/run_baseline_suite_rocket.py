@@ -29,7 +29,9 @@ from character_prompts.rocket import CHARACTER
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="Print what would run without executing.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print what would run without executing."
+    )
     args = parser.parse_args()
 
     scenario_list = sorted(SCENARIOS.keys())
@@ -37,7 +39,14 @@ def main():
 
     todo = []
     for name in scenario_list:
-        out = Path(IMPLEMENTATION_DIR) / "outputs" / "baseline" / name / "batch" / f"run_{RUN_ID}.json"
+        out = (
+            Path(IMPLEMENTATION_DIR)
+            / "outputs"
+            / "baseline"
+            / name
+            / "batch"
+            / f"run_{RUN_ID}.json"
+        )
         if out.exists():
             print(f"  [skip] {name}")
         else:

@@ -122,7 +122,7 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
     scenario_name = scenario["scenario_name"]
 
     # Use scenario module name for output folder
-    scenario_folder = scenario_module.split('.')[-1]
+    scenario_folder = scenario_module.split(".")[-1]
 
     beat_index = 0
 
@@ -148,16 +148,18 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
         output = safe_json_parse(raw, character["available_animations"][0])
         output["animation"] = validate_animation(output.get("animation", ""), character)
 
-        transcript.append({
-            "method": "baseline",
-            "character": character["name"],
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": turn_idx,
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "model_output": output,
-        })
+        transcript.append(
+            {
+                "method": "baseline",
+                "character": character["name"],
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": turn_idx,
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "model_output": output,
+            }
+        )
 
         if output.get("beat_completed") is True:
             beat_index += 1
@@ -174,7 +176,9 @@ def run_story(character_module: str, scenario_module: str, run_id: int) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument(
+        "--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail"
+    )
     parser.add_argument("--run-id", type=int, default=1)
     args = parser.parse_args()
 

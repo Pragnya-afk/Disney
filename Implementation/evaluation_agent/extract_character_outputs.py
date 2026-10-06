@@ -83,8 +83,12 @@ def _parse_codi_director_reason(direct_response: str) -> str:
     """Pull out the Reason + Choice/Description from CoDi's direct_response."""
     if not direct_response:
         return ""
-    reason = re.search(r"Reason:\s*(.+?)(?=Choice:|Description:|Pass|$)", direct_response, re.DOTALL)
-    choice = re.search(r"(?:Choice|Description):\s*(.+?)$", direct_response, re.DOTALL | re.IGNORECASE)
+    reason = re.search(
+        r"Reason:\s*(.+?)(?=Choice:|Description:|Pass|$)", direct_response, re.DOTALL
+    )
+    choice = re.search(
+        r"(?:Choice|Description):\s*(.+?)$", direct_response, re.DOTALL | re.IGNORECASE
+    )
     parts = []
     if reason:
         parts.append("Reason: " + reason.group(1).strip())
@@ -179,7 +183,9 @@ def main():
     if single_mode:
         transcript = load_json(args.input)
         lower = args.input.lower()
-        label = "CODI" if "codi" in lower else "DIRECTOR_AGENT" if "director" in lower else "BASELINE"
+        label = (
+            "CODI" if "codi" in lower else "DIRECTOR_AGENT" if "director" in lower else "BASELINE"
+        )
         sections.append(extract_character_lines(transcript, label))
 
     elif baseline_director_mode:

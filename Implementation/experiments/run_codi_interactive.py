@@ -92,7 +92,10 @@ def run_scenario(scenario_name: str, scenario: dict, out_base_dir: str, model: s
         with open(out_file) as f:
             existing = json.load(f)
         existing_list = existing if isinstance(existing, list) else [existing]
-        if any(d.get("example_id") == scenario_name and d.get("edit_state") == "finished" for d in existing_list):
+        if any(
+            d.get("example_id") == scenario_name and d.get("edit_state") == "finished"
+            for d in existing_list
+        ):
             print(f"[SKIP] Already done: {scenario_name}")
             return
 
@@ -126,13 +129,20 @@ def run_scenario(scenario_name: str, scenario: dict, out_base_dir: str, model: s
     cmd = [
         python,
         os.path.join(CODI_DIR, "generation.py"),
-        "--data-file", jsonl_path,
-        "--out-dir", out_dir,
-        "--max-turn", "40",
-        "--planner-agent-base-model", model,
-        "--director-agent-base-model", model,
-        "--character-agent-base-model", model,
-        "--editor-agent-base-model", model,
+        "--data-file",
+        jsonl_path,
+        "--out-dir",
+        out_dir,
+        "--max-turn",
+        "40",
+        "--planner-agent-base-model",
+        model,
+        "--director-agent-base-model",
+        model,
+        "--character-agent-base-model",
+        model,
+        "--editor-agent-base-model",
+        model,
     ]
     # Resume from partial output if generation already completed
     if os.path.exists(out_file):

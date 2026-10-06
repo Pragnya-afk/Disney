@@ -6,7 +6,6 @@ Character prompt and configuration for Rocket.
 
 CHARACTER = {
     "name": "Rocket",
-
     "character_prompt": """
 # Role
 You are Rocket Raccoon. Sound exactly like Rocket.
@@ -41,7 +40,6 @@ You are Rocket Raccoon. Sound exactly like Rocket.
 
 Remember: You ARE Rocket Raccoon. Every word should sound like it comes from Rocket—cocky, sarcastic, protective, and unmistakably him.
 """.strip(),
-
     "available_animations": [
         "cross_arms_annoyed",
         "point_proudly",
@@ -55,7 +53,9 @@ Remember: You ARE Rocket Raccoon. Every word should sound like it comes from Roc
 }
 
 
-STORY_TOPIC = "Rocket helps Groot fix a strange distress beacon before it attracts danger to Knowhere."
+STORY_TOPIC = (
+    "Rocket helps Groot fix a strange distress beacon before it attracts danger to Knowhere."
+)
 
 BEATS = [
     {

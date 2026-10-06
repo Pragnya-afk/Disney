@@ -25,6 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # Implementation/
 
 from dotenv import load_dotenv
+
 load_dotenv(".env")
 
 from evaluation_agent.evaluation_core import (
@@ -69,17 +70,23 @@ def call_evaluator(client, model: str, prompt: str) -> str:
 
 def build_profile(scenario_name: str) -> str:
     sc = SCENARIOS[scenario_name]
-    return json.dumps({
-        "name": CHARACTER["name"],
-        "character_prompt": CHARACTER["character_prompt"],
-        "available_animations": CHARACTER["available_animations"],
-        "story_topic": sc["story_topic"],
-        "beats": sc["beats"],
-    }, indent=2, ensure_ascii=False)
+    return json.dumps(
+        {
+            "name": CHARACTER["name"],
+            "character_prompt": CHARACTER["character_prompt"],
+            "available_animations": CHARACTER["available_animations"],
+            "story_topic": sc["story_topic"],
+            "beats": sc["beats"],
+        },
+        indent=2,
+        ensure_ascii=False,
+    )
 
 
 def run_single(client, model, story, profile, prompt_template, dimensions):
-    raw = call_evaluator(client, model, prompt_template.format(character_profile=profile, story=story))
+    raw = call_evaluator(
+        client, model, prompt_template.format(character_profile=profile, story=story)
+    )
     scores = parse_single_scores(raw, dimensions)
     return {"assessment": raw, "scores": scores}
 
@@ -114,9 +121,15 @@ def run_one(client, model, scenario):
 
     print(f"Judging '{scenario}' (baseline vs. director) with model={model} ...")
 
-    single_a = run_single(client, model, story_a, profile, EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS)
-    single_b = run_single(client, model, story_b, profile, EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS)
-    ab_ba = run_ab_ba(client, model, story_a, story_b, profile, EVALUATE_STORY_AB_PROMPT, BASE_DIMENSIONS)
+    single_a = run_single(
+        client, model, story_a, profile, EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS
+    )
+    single_b = run_single(
+        client, model, story_b, profile, EVALUATE_STORY_QUALITY_PROMPT, BASE_DIMENSIONS
+    )
+    ab_ba = run_ab_ba(
+        client, model, story_a, story_b, profile, EVALUATE_STORY_AB_PROMPT, BASE_DIMENSIONS
+    )
 
     result = {
         "timestamp": datetime.now().isoformat(),
@@ -138,12 +151,20 @@ def run_one(client, model, scenario):
 
 
 def print_comparison(model, scenario, new_result):
-    existing_path = IMPLEMENTATION_DIR / "evaluation_results" / "baseline_vs_director" / scenario / "eval_run_1.json"
+    existing_path = (
+        IMPLEMENTATION_DIR
+        / "evaluation_results"
+        / "baseline_vs_director"
+        / scenario
+        / "eval_run_1.json"
+    )
     if not existing_path.exists():
         return
     gpt4o = json.loads(existing_path.read_text())
     print(f"\n=== Comparison for {scenario}: gpt-4o vs {model} ===")
-    print(f"{'Dimension':25s} {'gpt-4o A':>10s} {'gpt-4o B':>10s} {'new A':>10s} {'new B':>10s}   {'gpt-4o winner':>14s} {'new winner':>12s}")
+    print(
+        f"{'Dimension':25s} {'gpt-4o A':>10s} {'gpt-4o B':>10s} {'new A':>10s} {'new B':>10s}   {'gpt-4o winner':>14s} {'new winner':>12s}"
+    )
     for dim in BASE_DIMENSIONS:
         g4o_a = gpt4o["single_story_scores"]["A"]["scores"].get(dim)
         g4o_b = gpt4o["single_story_scores"]["B"]["scores"].get(dim)
@@ -152,7 +173,9 @@ def print_comparison(model, scenario, new_result):
         g4o_w = gpt4o.get("aggregated_ab_ba_winners", {}).get(dim)
         new_w = new_result["aggregated_ab_ba_winners"].get(dim)
         flag = "  <-- DIFFERS" if g4o_w != new_w else ""
-        print(f"{dim:25s} {str(g4o_a):>10s} {str(g4o_b):>10s} {str(new_a):>10s} {str(new_b):>10s}   {str(g4o_w):>14s} {str(new_w):>12s}{flag}")
+        print(
+            f"{dim:25s} {str(g4o_a):>10s} {str(g4o_b):>10s} {str(new_a):>10s} {str(new_b):>10s}   {str(g4o_w):>14s} {str(new_w):>12s}{flag}"
+        )
 
 
 def main():

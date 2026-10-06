@@ -111,7 +111,7 @@ def run(character_module: str, scenario_module: str):
     beats = scenario["beats"]
     beat_index = 0
 
-    scenario_folder = scenario_module.split('.')[-1]
+    scenario_folder = scenario_module.split(".")[-1]
     output_dir = os.path.join(
         IMPLEMENTATION_DIR,
         "outputs",
@@ -143,14 +143,16 @@ def run(character_module: str, scenario_module: str):
         print(f"\n{character['name']}: {output['character_response']}")
         print(f"[Animation: {output['animation']}]")
 
-        transcript.append({
-            "method": "baseline",
-            "character": character["name"],
-            "scenario": scenario["scenario_name"],
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "model_output": output,
-        })
+        transcript.append(
+            {
+                "method": "baseline",
+                "character": character["name"],
+                "scenario": scenario["scenario_name"],
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "model_output": output,
+            }
+        )
 
         if output.get("beat_completed") is True:
             beat_index += 1

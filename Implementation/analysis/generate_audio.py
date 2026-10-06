@@ -43,11 +43,12 @@ load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 # OpenAI PCM specs (fixed by the API)
 SAMPLE_RATE = 24_000
-SAMPLE_WIDTH = 2   # 16-bit
+SAMPLE_WIDTH = 2  # 16-bit
 CHANNELS = 1
 
 
 # Audio helpers
+
 
 def silence(ms: int) -> bytes:
     """Return ms milliseconds of 16-bit mono silence."""
@@ -66,7 +67,15 @@ def save_wav(pcm: bytes, path: Path):
 
 # TTS
 
-def tts(client: OpenAI, text: str, voice: str, model: str, instructions: str | None = None, speed: float = 1.0) -> bytes:
+
+def tts(
+    client: OpenAI,
+    text: str,
+    voice: str,
+    model: str,
+    instructions: str | None = None,
+    speed: float = 1.0,
+) -> bytes:
     """Call OpenAI TTS and return raw PCM bytes."""
     kwargs = dict(model=model, voice=voice, input=text, response_format="pcm", speed=speed)
     if instructions:
@@ -76,6 +85,7 @@ def tts(client: OpenAI, text: str, voice: str, model: str, instructions: str | N
 
 
 # Transcript parsing
+
 
 def extract_turns(transcript: list) -> list[tuple[str, str]]:
     """
@@ -102,76 +112,118 @@ def extract_turns(transcript: list) -> list[tuple[str, str]]:
 
 # Main
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Generate a WAV audio file from a story transcript JSON."
     )
     parser.add_argument(
-        "--transcript", required=True,
+        "--transcript",
+        required=True,
         help="Path to the transcript JSON file.",
     )
     parser.add_argument(
-        "--output", default=None,
+        "--output",
+        default=None,
         help="Output WAV file path. Defaults to <transcript_stem>.wav next to the input.",
     )
     parser.add_argument(
-        "--character-voice", default="fable",
-        choices=["alloy", "ash", "ballad", "coral", "echo", "fable", "onyx", "nova", "shimmer", "verse"],
+        "--character-voice",
+        default="fable",
+        choices=[
+            "alloy",
+            "ash",
+            "ballad",
+            "coral",
+            "echo",
+            "fable",
+            "onyx",
+            "nova",
+            "shimmer",
+            "verse",
+        ],
         help="OpenAI TTS voice for the character (default: fable; --olaf overrides to verse).",
     )
     parser.add_argument(
-        "--user-voice", default="shimmer",
-        choices=["alloy", "ash", "ballad", "coral", "echo", "fable", "onyx", "nova", "shimmer", "verse"],
+        "--user-voice",
+        default="shimmer",
+        choices=[
+            "alloy",
+            "ash",
+            "ballad",
+            "coral",
+            "echo",
+            "fable",
+            "onyx",
+            "nova",
+            "shimmer",
+            "verse",
+        ],
         help="OpenAI TTS voice for the user (default: shimmer).",
     )
     parser.add_argument(
-        "--model", default="tts-1",
+        "--model",
+        default="tts-1",
         choices=["tts-1", "tts-1-hd", "gpt-4o-mini-tts"],
         help="OpenAI TTS model. gpt-4o-mini-tts supports --character-instructions (default: tts-1).",
     )
     parser.add_argument(
-        "--olaf", action="store_true",
+        "--olaf",
+        action="store_true",
         help=(
             "Shortcut: sets model=gpt-4o-mini-tts and applies Olaf-style voice instructions. "
             "Overrides --character-instructions."
         ),
     )
     parser.add_argument(
-        "--child", action="store_true",
+        "--child",
+        action="store_true",
         help=(
             "Shortcut: sets model=gpt-4o-mini-tts and applies child voice instructions for the user. "
             "Overrides --user-instructions."
         ),
     )
     parser.add_argument(
-        "--character-instructions", default=None,
+        "--character-instructions",
+        default=None,
         help=(
             "Voice style instructions for the character (only used with gpt-4o-mini-tts). "
             'Example: "Speak like an enthusiastic, childlike snowman."'
         ),
     )
     parser.add_argument(
-        "--user-instructions", default=None,
+        "--user-instructions",
+        default=None,
         help="Voice style instructions for the user speaker (only used with gpt-4o-mini-tts).",
     )
     parser.add_argument(
-        "--speed", type=float, default=1.0,
+        "--speed",
+        type=float,
+        default=1.0,
         help="Playback speed for all voices: 0.25 (slowest) to 4.0 (fastest). Default: 1.0.",
     )
     parser.add_argument(
-        "--user-speed", type=float, default=None,
+        "--user-speed",
+        type=float,
+        default=None,
         help="Speed override for user voice only. Overrides --speed for user turns.",
     )
     parser.add_argument(
-        "--character-speed", type=float, default=None,
+        "--character-speed",
+        type=float,
+        default=None,
         help="Speed override for character voice only. Overrides --speed for character turns.",
     )
     parser.add_argument(
-        "--pause-between-turns", type=int, default=900,
+        "--pause-between-turns",
+        type=int,
+        default=900,
         help="Silence in ms between a character response and the next user input (default: 900).",
     )
     parser.add_argument(
-        "--pause-after-user", type=int, default=500,
+        "--pause-after-user",
+        type=int,
+        default=500,
         help="Silence in ms between a user input and the character response (default: 500).",
     )
     args = parser.parse_args()
@@ -269,12 +321,17 @@ def main():
         print(f"[{i}/{len(turns)}] {label}: {preview}")
 
         speed = (
-            args.user_speed if speaker == "user" and args.user_speed is not None
-            else args.character_speed if speaker == "character" and args.character_speed is not None
-            else args.speed
+            args.user_speed
+            if speaker == "user" and args.user_speed is not None
+            else (
+                args.character_speed
+                if speaker == "character" and args.character_speed is not None
+                else args.speed
+            )
         )
         pcm = tts(
-            client, text,
+            client,
+            text,
             voice=voice_map[speaker],
             model=args.model,
             instructions=instructions_map[speaker],

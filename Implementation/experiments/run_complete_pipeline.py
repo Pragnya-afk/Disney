@@ -37,8 +37,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # Implementatio
 
 from config import JUDGE_MODEL  # noqa: E402
 
-
 # Helpers
+
 
 def log(msg: str):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
@@ -61,18 +61,21 @@ def run_phase(label: str, script_args: list[str]) -> int:
 
 # Main
 
+
 def main():
     parser = argparse.ArgumentParser(
         description="Run the complete Disney evaluation pipeline end-to-end."
     )
-    parser.add_argument("--model", default=JUDGE_MODEL,
-                        help="LLM model for evaluation (default: gpt-4o)")
-    parser.add_argument("--only",
-                        choices=["baseline", "director", "codi", "eval"],
-                        default=None,
-                        help="Run only one phase (default: all four)")
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Pass --dry-run to every sub-script")
+    parser.add_argument(
+        "--model", default=JUDGE_MODEL, help="LLM model for evaluation (default: gpt-4o)"
+    )
+    parser.add_argument(
+        "--only",
+        choices=["baseline", "director", "codi", "eval"],
+        default=None,
+        help="Run only one phase (default: all four)",
+    )
+    parser.add_argument("--dry-run", action="store_true", help="Pass --dry-run to every sub-script")
     args = parser.parse_args()
 
     dry = ["--dry-run"] if args.dry_run else []

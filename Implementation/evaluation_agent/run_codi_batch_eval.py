@@ -91,15 +91,15 @@ def summarize_results(results_dir: str, summary_dir: str):
             if metric not in CODI_DIMENSIONS:
                 continue
             winner_method = (
-                "director" if winner_label == "A"
-                else "codi" if winner_label == "B"
-                else "Same"
+                "director" if winner_label == "A" else "codi" if winner_label == "B" else "Same"
             )
-            win_rows.append({
-                "scenario": scenario,
-                "metric": metric,
-                "winner": winner_method,
-            })
+            win_rows.append(
+                {
+                    "scenario": scenario,
+                    "metric": metric,
+                    "winner": winner_method,
+                }
+            )
 
     if not score_rows:
         print("No results found to summarize.")
@@ -133,9 +133,7 @@ def summarize_results(results_dir: str, summary_dir: str):
             index="metric", columns="winner", values="scenario", aggfunc="count", fill_value=0
         )
         win_counts.columns.name = None
-        win_counts = win_counts.reindex(
-            [d for d in CODI_DIMENSIONS if d in win_counts.index]
-        )
+        win_counts = win_counts.reindex([d for d in CODI_DIMENSIONS if d in win_counts.index])
 
     os.makedirs(summary_dir, exist_ok=True)
 
@@ -143,7 +141,9 @@ def summarize_results(results_dir: str, summary_dir: str):
     scores_by_metric.to_markdown(os.path.join(summary_dir, "codi_vs_director_scores_by_metric.md"))
 
     scores_by_scenario.to_csv(os.path.join(summary_dir, "codi_vs_director_scores_by_scenario.csv"))
-    scores_by_scenario.to_markdown(os.path.join(summary_dir, "codi_vs_director_scores_by_scenario.md"))
+    scores_by_scenario.to_markdown(
+        os.path.join(summary_dir, "codi_vs_director_scores_by_scenario.md")
+    )
 
     if win_rows:
         win_counts.to_csv(os.path.join(summary_dir, "codi_vs_director_pairwise_wins.csv"))

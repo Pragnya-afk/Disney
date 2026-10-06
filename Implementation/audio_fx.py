@@ -68,9 +68,7 @@ def get_fx_chain(audio_config=None):
 
     unknown = set(audio_config) - {"pitch_shift", "delay", "reverb", "phaser"}
     if unknown:
-        logging.warning(
-            "Unknown audiofx config keys (ignored): %s", ", ".join(sorted(unknown))
-        )
+        logging.warning("Unknown audiofx config keys (ignored): %s", ", ".join(sorted(unknown)))
 
     return fx if len(fx) > 0 else None
 

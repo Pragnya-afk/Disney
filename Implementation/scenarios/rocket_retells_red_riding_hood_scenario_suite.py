@@ -77,6 +77,7 @@ TARGETED_GOAL_QUESTIONS = [
 
 # Sampling helpers
 
+
 def _derail_question(index: int) -> str:
     return DERAILMENT_QUESTIONS[index % len(DERAILMENT_QUESTIONS)]
 
@@ -90,6 +91,7 @@ def _targeted_question(index: int) -> str:
 
 
 # Variant builder
+
 
 def make_variant(base_scenario: dict, variant: str) -> dict:
     """
@@ -274,17 +276,11 @@ for base in BASE_STORIES:
 
 
 # Convenience lists by intensity
-NO_DERAILMENT_SCENARIOS = [
-    s for s in SCENARIOS.values() if s["derailment_level"] == "none"
-]
+NO_DERAILMENT_SCENARIOS = [s for s in SCENARIOS.values() if s["derailment_level"] == "none"]
 
-MEDIUM_SCENARIOS = [
-    s for s in SCENARIOS.values() if s["derailment_level"] == "medium"
-]
+MEDIUM_SCENARIOS = [s for s in SCENARIOS.values() if s["derailment_level"] == "medium"]
 
-COMPLETE_SCENARIOS = [
-    s for s in SCENARIOS.values() if s["derailment_level"] == "complete"
-]
+COMPLETE_SCENARIOS = [s for s in SCENARIOS.values() if s["derailment_level"] == "complete"]
 
 # Convenience lists by category
 RANDOM_OFFTOPIC_SCENARIOS = [

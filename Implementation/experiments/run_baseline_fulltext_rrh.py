@@ -33,6 +33,7 @@ IMPLEMENTATION_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, IMPLEMENTATION_DIR)
 
 from dotenv import load_dotenv
+
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 from openai import OpenAI
@@ -44,7 +45,6 @@ RUN_ID = 1
 from config import BASELINE_MODEL
 
 MODEL = BASELINE_MODEL
-
 
 
 def call_llm(client, prompt):
@@ -135,7 +135,9 @@ def run_fulltext(scenario: dict, character: dict, run_id: int) -> str:
     scenario_name = scenario["scenario_name"]
     user_inputs = scenario["user_inputs"]
 
-    output_dir = os.path.join(IMPLEMENTATION_DIR, "outputs", "baseline_fulltext", scenario_name, "batch")
+    output_dir = os.path.join(
+        IMPLEMENTATION_DIR, "outputs", "baseline_fulltext", scenario_name, "batch"
+    )
     os.makedirs(output_dir, exist_ok=True)
 
     story_so_far = ""
@@ -153,15 +155,17 @@ def run_fulltext(scenario: dict, character: dict, run_id: int) -> str:
             f"\nEvent: {output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "baseline_fulltext",
-            "character": character["name"],
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": turn_idx,
-            "user_input": user_input,
-            "model_output": output,
-        })
+        transcript.append(
+            {
+                "method": "baseline_fulltext",
+                "character": character["name"],
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": turn_idx,
+                "user_input": user_input,
+                "model_output": output,
+            }
+        )
 
         if output.get("story_complete") is True:
             break
@@ -176,7 +180,9 @@ def run_fulltext(scenario: dict, character: dict, run_id: int) -> str:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="Print what would run without executing.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print what would run without executing."
+    )
     args = parser.parse_args()
 
     scenario_list = sorted(n for n in SCENARIOS if "retells_red_riding_hood" in n)
@@ -184,7 +190,14 @@ def main():
 
     todo = []
     for name in scenario_list:
-        out = Path(IMPLEMENTATION_DIR) / "outputs" / "baseline_fulltext" / name / "batch" / f"run_{RUN_ID}.json"
+        out = (
+            Path(IMPLEMENTATION_DIR)
+            / "outputs"
+            / "baseline_fulltext"
+            / name
+            / "batch"
+            / f"run_{RUN_ID}.json"
+        )
         if out.exists():
             print(f"  [skip] {name}")
         else:

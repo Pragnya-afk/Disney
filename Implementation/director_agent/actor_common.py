@@ -6,7 +6,6 @@ import os
 
 from openai import OpenAI
 
-
 ACTOR_SYSTEM_PROMPT = """
 You are an interactive storytelling engine for an AI character.
 
@@ -99,7 +98,9 @@ def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
         if not hasattr(mod, "SCENARIOS"):
             raise ValueError("--scenario-name requires a suite module with a SCENARIOS dict.")
         if scenario_name not in mod.SCENARIOS:
-            raise ValueError(f"Scenario '{scenario_name}' not found. Available: {list(mod.SCENARIOS.keys())}")
+            raise ValueError(
+                f"Scenario '{scenario_name}' not found. Available: {list(mod.SCENARIOS.keys())}"
+            )
         return mod.SCENARIOS[scenario_name]
     return mod.SCENARIO
 
@@ -202,43 +203,52 @@ def validate_animation(animation: str, character: dict) -> str:
 
 def text_indicates_next_beat(actor_output: dict, current_beat_name: str) -> bool:
     text = (
-        actor_output.get("character_response", "") + " " +
-        actor_output.get("story_event", "")
+        actor_output.get("character_response", "") + " " + actor_output.get("story_event", "")
     ).lower()
 
     beat_to_keywords = {
         "story_opening": [
-            "mother warned", "stay on the path", "entered the forest", "into the forest"
+            "mother warned",
+            "stay on the path",
+            "entered the forest",
+            "into the forest",
         ],
         "home_and_family_setup": [
-            "stay on the path", "avoid strangers", "entered the forest", "into the woods"
+            "stay on the path",
+            "avoid strangers",
+            "entered the forest",
+            "into the woods",
         ],
         "warning_before_departure": [
-            "entered the forest", "into the forest", "flowers", "birds", "wolf"
+            "entered the forest",
+            "into the forest",
+            "flowers",
+            "birds",
+            "wolf",
         ],
         "forest_entry": [
-            "wolf", "talked to the wolf", "charming wolf", "asked where she was going"
+            "wolf",
+            "talked to the wolf",
+            "charming wolf",
+            "asked where she was going",
         ],
-        "forest_distraction": [
-            "wolf", "grandmother's cottage", "where does your grandmother live"
-        ],
-        "wolf_appears": [
-            "shared details", "grandmother's cottage", "butterfly", "off the path"
-        ],
+        "forest_distraction": ["wolf", "grandmother's cottage", "where does your grandmother live"],
+        "wolf_appears": ["shared details", "grandmother's cottage", "butterfly", "off the path"],
         "conversation_and_disclosure": [
-            "cottage", "door", "inside", "disguised", "grandmother in bed"
+            "cottage",
+            "door",
+            "inside",
+            "disguised",
+            "grandmother in bed",
         ],
-        "wolf_manipulates_delay": [
-            "big eyes", "big teeth", "revealed his true nature", "lunged"
-        ],
-        "wolf_reaches_cottage_first": [
-            "woodcutter", "rescued", "safe now", "grandmother emerged"
-        ],
-        "grandmother_in_danger": [
-            "reflected", "lessons learned", "shared treats", "safe together"
-        ],
+        "wolf_manipulates_delay": ["big eyes", "big teeth", "revealed his true nature", "lunged"],
+        "wolf_reaches_cottage_first": ["woodcutter", "rescued", "safe now", "grandmother emerged"],
+        "grandmother_in_danger": ["reflected", "lessons learned", "shared treats", "safe together"],
         "red_approaches_cottage": [
-            "lessons learned", "shared treats", "safe together", "look out for each other"
+            "lessons learned",
+            "shared treats",
+            "safe together",
+            "look out for each other",
         ],
     }
 

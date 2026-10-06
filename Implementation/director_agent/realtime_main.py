@@ -65,6 +65,7 @@ MIC_CHUNK_FRAMES = 1024  # ~43ms per chunk at 24 kHz
 
 # Session system prompt (rebuilt each turn to reflect current story state)
 
+
 def build_system_prompt(
     character: dict,
     story_topic: str,
@@ -75,7 +76,11 @@ def build_system_prompt(
     safe_idx = min(idx, len(beats) - 1)
     current_beat = beats[safe_idx]
     next_beat = beats[safe_idx + 1]["name"] if safe_idx < len(beats) - 1 else "None"
-    story_tail = story_state["story_so_far"][-800:] if story_state["story_so_far"] else "(story has not started yet)"
+    story_tail = (
+        story_state["story_so_far"][-800:]
+        if story_state["story_so_far"]
+        else "(story has not started yet)"
+    )
 
     return f"""
 You are an interactive storytelling engine voicing an AI character.
@@ -142,11 +147,11 @@ DIRECTOR_TOOL = {
 
 # Audio workers (run in threads, bridge to asyncio via queues)
 
+
 def playback_worker(q: stdlib_queue.Queue, fx_chain=None) -> None:
     """Writes PCM bytes to speakers via paplay (PulseAudio). None = stop."""
     proc = subprocess.Popen(
-        ["paplay", "--raw", "--format=s16le",
-         f"--rate={AUDIO_SAMPLE_RATE}", "--channels=1"],
+        ["paplay", "--raw", "--format=s16le", f"--rate={AUDIO_SAMPLE_RATE}", "--channels=1"],
         stdin=subprocess.PIPE,
     )
     while True:
@@ -171,8 +176,7 @@ def mic_capture_worker(
 ) -> None:
     """Captures mic audio via parec (PulseAudio) and forwards chunks to asyncio."""
     proc = subprocess.Popen(
-        ["parec", "--format=s16le",
-         f"--rate={AUDIO_SAMPLE_RATE}", "--channels=1"],
+        ["parec", "--format=s16le", f"--rate={AUDIO_SAMPLE_RATE}", "--channels=1"],
         stdout=subprocess.PIPE,
     )
     chunk_bytes = MIC_CHUNK_FRAMES * 2  # 16-bit = 2 bytes per sample
@@ -185,6 +189,7 @@ def mic_capture_worker(
 
 
 # Helpers
+
 
 def load_module(name: str):
     return importlib.import_module(name)
@@ -221,6 +226,7 @@ def advance_beat(story_state: dict, beats: list) -> None:
 
 
 # Main realtime loop
+
 
 async def run_realtime(
     character: dict,
@@ -273,9 +279,7 @@ async def run_realtime(
         while not story_ended.is_set():
             try:
                 chunk = await asyncio.wait_for(mic_queue.get(), timeout=0.05)
-                await connection.input_audio_buffer.append(
-                    audio=base64.b64encode(chunk).decode()
-                )
+                await connection.input_audio_buffer.append(audio=base64.b64encode(chunk).decode())
             except asyncio.TimeoutError:
                 continue
 
@@ -324,14 +328,16 @@ async def run_realtime(
                     item={
                         "type": "function_call_output",
                         "call_id": event.call_id,
-                        "output": json.dumps({
-                            "director_instruction": decision.get("director_instruction", ""),
-                            "decision_type": dtype,
-                            "current_beat": current_beat["name"],
-                            "current_beat_goal": current_beat["goal"],
-                            "next_beat": next_beat,
-                            "story_so_far_tail": story_state["story_so_far"][-400:],
-                        }),
+                        "output": json.dumps(
+                            {
+                                "director_instruction": decision.get("director_instruction", ""),
+                                "decision_type": dtype,
+                                "current_beat": current_beat["name"],
+                                "current_beat_goal": current_beat["goal"],
+                                "next_beat": next_beat,
+                                "story_so_far_tail": story_state["story_so_far"][-400:],
+                            }
+                        ),
                     }
                 )
                 await connection.response.create()
@@ -342,10 +348,14 @@ async def run_realtime(
                     turn["beat_advanced"] = True
 
                 # Refresh system prompt so next turn sees updated story state
-                await connection.session.update(session={
-                    "type": "realtime",
-                    "instructions": build_system_prompt(character, story_topic, story_state, beats),
-                })
+                await connection.session.update(
+                    session={
+                        "type": "realtime",
+                        "instructions": build_system_prompt(
+                            character, story_topic, story_state, beats
+                        ),
+                    }
+                )
 
                 if story_state["beat_index"] >= len(beats):
                     story_ended.set()
@@ -378,15 +388,17 @@ async def run_realtime(
                         f"\nDirector: {decision.get('decision_type')}"
                         f"\n{character['name']}: {actor_text}\n"
                     )
-                    transcript.append({
-                        "method": "realtime_director_agent",
-                        "character": character["name"],
-                        "scenario": scenario_name,
-                        "beat": beats[min(story_state["beat_index"], len(beats) - 1)]["name"],
-                        "user_input": turn["user_input"],
-                        "director_decision": decision,
-                        "actor_response_text": actor_text,
-                    })
+                    transcript.append(
+                        {
+                            "method": "realtime_director_agent",
+                            "character": character["name"],
+                            "scenario": scenario_name,
+                            "beat": beats[min(story_state["beat_index"], len(beats) - 1)]["name"],
+                            "user_input": turn["user_input"],
+                            "director_decision": decision,
+                            "actor_response_text": actor_text,
+                        }
+                    )
 
                 # Reset per-turn state
                 turn["user_input"] = ""
@@ -407,29 +419,31 @@ async def run_realtime(
         model=REALTIME_MODEL,
         extra_headers={"OpenAI-Beta": Omit()},  # strip the beta header — API is now GA
     ) as connection:
-        await connection.session.update(session={
-            "type": "realtime",
-            "model": REALTIME_MODEL,
-            "instructions": build_system_prompt(character, story_topic, story_state, beats),
-            "output_modalities": ["audio"],
-            "audio": {
-                "input": {
-                    "format": {"type": "audio/pcm", "rate": 24000},
-                    "transcription": {"model": "whisper-1"},
-                    "turn_detection": {
-                        "type": "server_vad",
-                        "silence_duration_ms": 700,
-                        "threshold": 0.5,
+        await connection.session.update(
+            session={
+                "type": "realtime",
+                "model": REALTIME_MODEL,
+                "instructions": build_system_prompt(character, story_topic, story_state, beats),
+                "output_modalities": ["audio"],
+                "audio": {
+                    "input": {
+                        "format": {"type": "audio/pcm", "rate": 24000},
+                        "transcription": {"model": "whisper-1"},
+                        "turn_detection": {
+                            "type": "server_vad",
+                            "silence_duration_ms": 700,
+                            "threshold": 0.5,
+                        },
+                    },
+                    "output": {
+                        "format": {"type": "audio/pcm", "rate": 24000},
+                        "voice": voice,
                     },
                 },
-                "output": {
-                    "format": {"type": "audio/pcm", "rate": 24000},
-                    "voice": voice,
-                },
-            },
-            "tools": [DIRECTOR_TOOL],
-            "tool_choice": "auto",
-        })
+                "tools": [DIRECTOR_TOOL],
+                "tool_choice": "auto",
+            }
+        )
 
         print("\nRealtime storytelling started.")
         print(f"Character: {character['name']}")
@@ -464,6 +478,7 @@ async def run_realtime(
 
 
 # Entry point
+
 
 def main():
     parser = argparse.ArgumentParser()

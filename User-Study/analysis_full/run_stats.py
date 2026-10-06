@@ -2,6 +2,7 @@
 Statistical analysis of the corrected/current User-Study dataset.
 Run build_dataset.py first. Outputs stats_report.txt.
 """
+
 import os
 import io
 
@@ -29,7 +30,9 @@ completed = (participants["dropout_stage"] == "completed").sum()
 report.write(f"N participants (started) = {n}\n")
 for k in [1, 2, 3, 4]:
     report.write(f"  reached phase {k}: {reached[k]}/{n} ({100*reached[k]/n:.0f}%)\n")
-report.write(f"  completed (finished phase 4 story + submitted final questionnaire): {completed}/{n} ({100*completed/n:.0f}%)\n")
+report.write(
+    f"  completed (finished phase 4 story + submitted final questionnaire): {completed}/{n} ({100*completed/n:.0f}%)\n"
+)
 report.write("\nDropout stage breakdown:\n")
 report.write(participants["dropout_stage"].value_counts().to_string())
 report.write("\n")
@@ -53,7 +56,10 @@ report.write(
 
 sec("3. QUESTIONNAIRE OUTCOMES BY CONDITION -- ALL AVAILABLE RESPONSES (unpaired, N=28)")
 outcome_cols = [
-    "q1_coherence", "q2_in_character", "q4_engagement", "q5_overall",
+    "q1_coherence",
+    "q2_in_character",
+    "q4_engagement",
+    "q5_overall",
     "q6_resist_stayed_on_track",
 ]
 for col in outcome_cols:
@@ -79,10 +85,24 @@ sec("4. PAIRED WITHIN-SUBJECT: STORY 1 director vs baseline (n=14 completers)")
 completers = set(participants.loc[participants["dropout_stage"] == "completed", "participant_id"])
 comp_phases = phases[phases["participant_id"].isin(completers)]
 s1 = comp_phases[comp_phases["story"] == 1]
-wide1 = s1.pivot_table(index="participant_id", columns="condition",
-                        values=["q1_coherence", "q2_in_character", "q4_engagement",
-                                "q5_overall", "q6_resist_stayed_on_track"])
-for metric in ["q1_coherence", "q2_in_character", "q4_engagement", "q5_overall", "q6_resist_stayed_on_track"]:
+wide1 = s1.pivot_table(
+    index="participant_id",
+    columns="condition",
+    values=[
+        "q1_coherence",
+        "q2_in_character",
+        "q4_engagement",
+        "q5_overall",
+        "q6_resist_stayed_on_track",
+    ],
+)
+for metric in [
+    "q1_coherence",
+    "q2_in_character",
+    "q4_engagement",
+    "q5_overall",
+    "q6_resist_stayed_on_track",
+]:
     pair = wide1[metric][["director", "baseline"]].dropna()
     if len(pair) >= 2:
         stat_, p = stats.wilcoxon(pair["director"], pair["baseline"])
@@ -93,10 +113,24 @@ for metric in ["q1_coherence", "q2_in_character", "q4_engagement", "q5_overall",
 
 sec("5. PAIRED WITHIN-SUBJECT: STORY 2 director vs time_constrained (n=14 completers)")
 s2 = comp_phases[comp_phases["story"] == 2]
-wide2 = s2.pivot_table(index="participant_id", columns="condition",
-                        values=["q1_coherence", "q2_in_character", "q4_engagement",
-                                "q5_overall", "q6_resist_stayed_on_track"])
-for metric in ["q1_coherence", "q2_in_character", "q4_engagement", "q5_overall", "q6_resist_stayed_on_track"]:
+wide2 = s2.pivot_table(
+    index="participant_id",
+    columns="condition",
+    values=[
+        "q1_coherence",
+        "q2_in_character",
+        "q4_engagement",
+        "q5_overall",
+        "q6_resist_stayed_on_track",
+    ],
+)
+for metric in [
+    "q1_coherence",
+    "q2_in_character",
+    "q4_engagement",
+    "q5_overall",
+    "q6_resist_stayed_on_track",
+]:
     pair = wide2[metric][["director", "time_constrained"]].dropna()
     if len(pair) >= 2:
         stat_, p = stats.wilcoxon(pair["director"], pair["time_constrained"])
@@ -105,7 +139,9 @@ for metric in ["q1_coherence", "q2_in_character", "q4_engagement", "q5_overall",
             f"time_constrained={pair['time_constrained'].mean():.2f}  Wilcoxon p={p:.4f}\n"
         )
 
-sec("6. ORDER EFFECT: does 1st-seen vs 2nd-seen condition change overall rating? (all 28 participants)")
+sec(
+    "6. ORDER EFFECT: does 1st-seen vs 2nd-seen condition change overall rating? (all 28 participants)"
+)
 ord_df = phases.dropna(subset=["order_position", "q5_overall"])
 g1 = ord_df[ord_df["order_position"] == 1]["q5_overall"]
 g2 = ord_df[ord_df["order_position"] == 2]["q5_overall"]

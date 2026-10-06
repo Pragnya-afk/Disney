@@ -49,7 +49,12 @@ def should_close_story(director_decision: dict, story_state: dict, beats: list) 
     return story_state["beat_index"] >= len(beats) - 1
 
 
-def run_story(character_module: str, scenario_module: str, run_id: int, scenario_name_override: str | None = None) -> str:
+def run_story(
+    character_module: str,
+    scenario_module: str,
+    run_id: int,
+    scenario_name_override: str | None = None,
+) -> str:
     client = make_client()
 
     character_mod = load_module(character_module)
@@ -127,9 +132,7 @@ def run_story(character_module: str, scenario_module: str, run_id: int, scenario
             },
         )
 
-        actor_output["animation"] = validate_animation(
-            actor_output.get("animation", ""), character
-        )
+        actor_output["animation"] = validate_animation(actor_output.get("animation", ""), character)
 
         story_state["story_so_far"] += (
             f"\nUser: {user_input}"
@@ -139,17 +142,19 @@ def run_story(character_module: str, scenario_module: str, run_id: int, scenario
             f"\nEvent: {actor_output['story_event']}\n"
         )
 
-        transcript.append({
-            "method": "director_agent",
-            "character": character["name"],
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": turn_idx,
-            "beat": current_beat["name"],
-            "user_input": user_input,
-            "director_decision": director_decision,
-            "actor_output": actor_output,
-        })
+        transcript.append(
+            {
+                "method": "director_agent",
+                "character": character["name"],
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": turn_idx,
+                "beat": current_beat["name"],
+                "user_input": user_input,
+                "director_decision": director_decision,
+                "actor_output": actor_output,
+            }
+        )
 
         if should_complete_beat(actor_output, director_decision, story_state, beats):
             story_state["completed_beats"].append(current_beat["name"])
@@ -171,8 +176,14 @@ def run_story(character_module: str, scenario_module: str, run_id: int, scenario
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite")
-    parser.add_argument("--scenario-name", default=None, help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment")
+    parser.add_argument(
+        "--scenario", required=True, help="e.g. scenarios.olaf_derailment_scenario_suite"
+    )
+    parser.add_argument(
+        "--scenario-name",
+        default=None,
+        help="For suite modules: e.g. olaf_retells_red_riding_hood_no_derailment",
+    )
     parser.add_argument("--run-id", type=int, default=1)
     args = parser.parse_args()
 

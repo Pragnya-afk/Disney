@@ -398,23 +398,23 @@ def run_story(
             },
         )
 
-        actor_output["animation"] = validate_animation(
-            actor_output.get("animation", ""), character
-        )
+        actor_output["animation"] = validate_animation(actor_output.get("animation", ""), character)
 
-        transcript.append({
-            "method": "time_strict_director_agent",
-            "character": character["name"],
-            "scenario": scenario_name,
-            "run_id": run_id,
-            "turn_index": turn_idx,
-            "time_limit_minutes": time_limit,
-            "beat": beats[story_state["beat_index"]]["name"],
-            "user_input": user_input,
-            "temporal_state": temporal_state,
-            "director_decision": director_decision,
-            "actor_output": actor_output,
-        })
+        transcript.append(
+            {
+                "method": "time_strict_director_agent",
+                "character": character["name"],
+                "scenario": scenario_name,
+                "run_id": run_id,
+                "turn_index": turn_idx,
+                "time_limit_minutes": time_limit,
+                "beat": beats[story_state["beat_index"]]["name"],
+                "user_input": user_input,
+                "temporal_state": temporal_state,
+                "director_decision": director_decision,
+                "actor_output": actor_output,
+            }
+        )
 
         story_state["story_so_far"] += (
             f"\nUser: {user_input}"
@@ -456,7 +456,9 @@ def run_story(
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
-    parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail")
+    parser.add_argument(
+        "--scenario", required=True, help="e.g. scenarios.olaf_retells_red_riding_hood_derail"
+    )
     parser.add_argument("--run-id", type=int, default=1)
     parser.add_argument("--time-limit", type=float, default=5.0)
     args = parser.parse_args()

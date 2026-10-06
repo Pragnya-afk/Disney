@@ -6,7 +6,6 @@ This file only contains prompt text.
 The logic for calling the Director Agent stays in director_core.py.
 """
 
-
 DIRECTOR_SYSTEM_PROMPT = """
 You are a narrative director for an interactive AI character story.
 
