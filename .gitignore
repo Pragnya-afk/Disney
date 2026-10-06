@@ -1,14 +1,28 @@
-node_modules
-.venv
-venv/
-tsconfig.json
+# Environments & secrets
 .env
-.claude
-.sixth
+.venv/
+venv/
+node_modules/
 
 # Python artifacts
 __pycache__/
 *.pyc
+.ruff_cache/
 
-# Generated run outputs
-outputs/
+# Editor / tool state
+.vscode/
+.claude/
+.sixth
+
+# Logs and runtime session logs of the realtime apps
+*.log
+Real-Time-API-Demo/outputs/*
+Real-Time-API-Demo-Time-Constrained/outputs/*
+User-Study/outputs/*
+!*/outputs/.gitkeep
+
+# Local-only material
+Thesis_Writing/
+*.pptx
+*.zip
+tsconfig.json
