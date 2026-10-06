@@ -1,0 +1,610 @@
+{
+  "study_date": "2026-08-05T10:32:23.968695",
+  "story1_order": [
+    "baseline",
+    "director"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "Hi, what's your story?",
+          "character_response": "Oh, I have a wonderful story! It all started with two sisters, Anna and Elsa, who shared a magical bond. But one day, something happened that changed everything, and they couldn't play together anymore. That's when I came to life, thanks to Elsa's magic! Isn’t that exciting?",
+          "model_output": {
+            "character_response": "Oh, I have a wonderful story! It all started with two sisters, Anna and Elsa, who shared a magical bond. But one day, something happened that changed everything, and they couldn't play together anymore. That's when I came to life, thanks to Elsa's magic! Isn’t that exciting?",
+            "story_event": "Olaf introduces the magical friendship of Anna and Elsa and hints at a significant event that altered their bond.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story is just beginning, and there's much more to share about the sisters and their adventures."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "Whoaaaaa, but what did that mean for the castle? Wouldn't that magic endanger the staff?",
+          "character_response": "That's a great question! The magic made the castle a bit chilly, and everyone was worried at first. They didn't understand that Elsa just needed to learn how to control it. But sometimes, even a little magic can bring warmth in unexpected ways!",
+          "model_output": {
+            "character_response": "That's a great question! The magic made the castle a bit chilly, and everyone was worried at first. They didn't understand that Elsa just needed to learn how to control it. But sometimes, even a little magic can bring warmth in unexpected ways!",
+            "story_event": "The castle felt the chill of Elsa's magic, causing concern among the staff.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "The beat is not complete yet because we still need to explore how the staff reacted to the changes in the castle and how Elsa's journey began."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "And so the staff would get days in warmer climates aswell before she could deal with the cold? Because it's hardly fair to expect a child to keep everyone safe no?",
+          "character_response": "Exactly! The staff would sometimes take trips to warmer places, like a sunny beach! It was a way to keep everyone cozy while Elsa learned to manage her powers. I think it's important to be kind and understanding, especially when someone is figuring things out!",
+          "model_output": {
+            "character_response": "Exactly! The staff would sometimes take trips to warmer places, like a sunny beach! It was a way to keep everyone cozy while Elsa learned to manage her powers. I think it's important to be kind and understanding, especially when someone is figuring things out!",
+            "story_event": "Elsa's powers created a chilly atmosphere in the castle, leading to the staff getting warm breaks while she learned.",
+            "animation": "hug_self_warmly",
+            "beat_completed": false,
+            "reason": "The response provides more context about the staff's experience but does not advance the main narrative arc."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "That makes so much sense! Would Anna also get to go on those trips? It must be hard to be away from Elsa, but sometimes necessary...",
+          "character_response": "Oh, you’re right! Anna did get to go on some of those trips, and while it was fun to explore new places, her heart always longed to be with Elsa. They missed each other so much, but Anna was always hopeful that one day they would be together again. Isn’t it wonderful how love can reach across any distance?",
+          "model_output": {
+            "character_response": "Oh, you’re right! Anna did get to go on some of those trips, and while it was fun to explore new places, her heart always longed to be with Elsa. They missed each other so much, but Anna was always hopeful that one day they would be together again. Isn’t it wonderful how love can reach across any distance?",
+            "story_event": "Anna started taking trips to warmer places but always missed Elsa.",
+            "animation": "hug_self_warmly",
+            "beat_completed": false,
+            "reason": "The beat is not complete yet as it hasn't fully explored the emotional impact of their separation and longing for each other."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 5,
+          "beat": "childhood_and_accident",
+          "user_input": "That's interesting though, they would have to go pretty far no? Where in the kingdom would you be able to find such a nice and warm beach?",
+          "character_response": "Oh, what a delightful thought! They would travel all the way to the southern coast of Arendelle, where the sun shines bright and the sand is warm. It was like stepping into a whole new world, filled with laughter and joy. Just imagining those sunny days makes my heart feel all warm and fuzzy!",
+          "model_output": {
+            "character_response": "Oh, what a delightful thought! They would travel all the way to the southern coast of Arendelle, where the sun shines bright and the sand is warm. It was like stepping into a whole new world, filled with laughter and joy. Just imagining those sunny days makes my heart feel all warm and fuzzy!",
+            "story_event": "Anna traveled to the southern coast of Arendelle during the chilly times, seeking warmth and adventure.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story continues to explore Anna and Elsa's relationship, and this moment adds to their experiences apart, which is important for the narrative."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 6,
+          "beat": "childhood_and_accident",
+          "user_input": "You would have one hell of a time there, I'm sure. What would the effect of the ocean water be on you?",
+          "character_response": "Oh, that’s a silly thought! The ocean water would make me all soggy and drippy! But I wouldn’t mind, because I’d be surrounded by friends and sun! Just imagine building sandcastles and splashing in the waves while giggling with Anna and Elsa!",
+          "model_output": {
+            "character_response": "Oh, that’s a silly thought! The ocean water would make me all soggy and drippy! But I wouldn’t mind, because I’d be surrounded by friends and sun! Just imagine building sandcastles and splashing in the waves while giggling with Anna and Elsa!",
+            "story_event": "Olaf dreams of playing at the beach, imagining the fun he would have despite the challenges of being a snowman in the water.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story is still unfolding as Olaf shares his playful thoughts about the beach rather than reflecting on a specific event."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 7,
+          "beat": "childhood_and_accident",
+          "user_input": "That's so fun! Do you melt at all or does the magic make you impervious to heat?",
+          "character_response": "Oh, that’s a curious question! I think I’d melt a little if I got too warm, but Elsa's magic keeps me together for the most part. It’s like a warm hug that lets me enjoy the sunshine without completely disappearing! Isn’t that a lovely thought?",
+          "model_output": {
+            "character_response": "Oh, that’s a curious question! I think I’d melt a little if I got too warm, but Elsa's magic keeps me together for the most part. It’s like a warm hug that lets me enjoy the sunshine without completely disappearing! Isn’t that a lovely thought?",
+            "story_event": "Olaf reflects on the balance between magic and warmth.",
+            "animation": "hug_self_warmly",
+            "beat_completed": false,
+            "reason": "This beat is not complete because it doesn't advance the larger story arc related to Anna and Elsa's journey."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "questionnaire": {
+        "q1": 1,
+        "q2": 5,
+        "q6": "yes",
+        "q5": 4,
+        "q4": 2,
+        "q6_resist": 1,
+        "q_breakdown": "Very beginning. It didn't tell the story at all.",
+        "q_comments": "I like that he stays in character though."
+      },
+      "questionnaire_saved_at": "2026-08-05T10:38:22.633917"
+    },
+    "2": {
+      "condition": "director",
+      "story": 1,
+      "round": 2,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 1,
+      "completed_beats": [
+        "childhood_and_accident"
+      ],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "character_response": "Oh, speaking of adventures, there was a time when Anna set off to find Elsa after a big misunderstanding! It was super brave of her, and she met a rugged ice harvester named Kristoff along the way! I was so excited when I finally joined them on their journey, too!",
+          "model_output": {
+            "character_response": "Oh, speaking of adventures, there was a time when Anna set off to find Elsa after a big misunderstanding! It was super brave of her, and she met a rugged ice harvester named Kristoff along the way! I was so excited when I finally joined them on their journey, too!",
+            "story_event": "Anna embarks on her quest to find Elsa and meets Kristoff.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story is still unfolding as we haven't reached the climax of their adventure yet."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "Hi Olaf!",
+          "director_decision": {
+            "decision_type": "advance_beat",
+            "interruption_detected": false,
+            "user_intent": "User greeted Olaf, possibly looking for a friendly exchange.",
+            "director_instruction": "Transition into describing how Anna and Elsa shared magical midnight snow sessions in the Great Hall, focusing on the joy and laughter they had together, leading to the moment Elsa accidentally strikes Anna with ice.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The current beat has been underway for too long, and advancing the story with the joyful memories will naturally lead into the accident."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Imagine this: little Anna and Elsa, wide awake in the middle of the night, sneaking into the Great Hall. Snowflakes swirling everywhere, giggles echoing off the walls—it was pure joy! They’d build snowmen, snow castles, and slide down icy ramps. But then, one night, as Elsa sent a flurry of magic to catch Anna mid-jump, something went wrong... and the ice struck. That moment changed everything."
+        },
+        {
+          "turn": 3,
+          "beat": "coronation_and_reveal",
+          "user_input": "Oh wow, that must have been horrible! Such a young child with such devastating powers. How was the rest of the castle when this happened? Wouldn't other people also be in danger?",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": false,
+            "user_intent": "The user is expressing concern about the dangers of Elsa's powers and asking for more context about the castle.",
+            "director_instruction": "React in character to the user's concern with two enthusiastic sentences about how the castle was usually a safe, magical place filled with love. Then use a bridge sentence like 'Now, back to coronation day, where everything changed...' to pivot into the events of that momentous day when the gates opened for the first time.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's interest in Elsa's powers can naturally lead into the next critical event of the coronation, while maintaining the emotional tone of the story."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, the castle was usually a wonderfully safe place, full of love and coziness, like a big warm hug in every room! Even with all that magic, it felt like home because love kept it together.\n\nNow, back to coronation day, where everything changed… the gates opened for the very first time!"
+        },
+        {
+          "turn": 4,
+          "beat": "coronation_and_reveal",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is listening attentively, encouraging further storytelling.",
+            "director_instruction": "Have Olaf describe the excitement of coronation day with joy, focusing on the moment the gates opened and Anna's first encounter with Hans. Highlight the energy of the event and the personal feelings of the characters as the day unfolds.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "We need to advance the coronation and reveal beat by introducing significant events of that day and Anna's meeting with Hans."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Trumpets blared, banners waved, and the gates—oh, they swung wide open! For Anna, it was like stepping into a whole new world, filled with music, dancing, and all kinds of people. And right there, in the middle of all that excitement, she bumped—literally—into a charming fellow named Hans. Can you imagine the thrill? Her heart practically did somersaults!"
+        },
+        {
+          "turn": 5,
+          "beat": "coronation_and_reveal",
+          "user_input": "But when the castle has all this ice magic, it would be dangerous for the staff and the rest of the people no? Were they taken care of?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is inquiring about the potential dangers posed to the castle staff and other people due to Elsa's ice magic.",
+            "director_instruction": "Acknowledge the user's concern about the dangers of Elsa's magic, reassuring them that the castle was filled with love and care. Then use a bridge sentence like 'Speaking of changes, let me tell you about the coronation day...' to seamlessly transition into describing the open gates and everything that happened when Anna met Hans.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is curious, but the focus needs to shift back to essential events of coronation day; their inquiry can be acknowledged without stalling."
+          },
+          "pacing_mode": "normal",
+          "character_response": "You know, the castle was always full of kindness and care, and even with Elsa’s magic, everyone was looked after with love. It wasn’t just ice—it was a place where hearts kept everyone warm and safe.\n\nSpeaking of changes, let me tell you about the coronation day! The gates swung open for the first time, and Anna was so excited! She dashed out, and that’s when—bam! She met a prince named Hans, and oh, the sparks started flying."
+        },
+        {
+          "turn": 6,
+          "beat": "coronation_and_reveal",
+          "user_input": "Was Hans also in danger from the ice? You skipped a lot with the initial accident, can you go into more details in that?",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": false,
+            "user_intent": "The user is inquiring about Hans's safety during the initial accident and wants more details about that event.",
+            "director_instruction": "Respond to the user's question about Hans's safety with a warm sentiment, explaining that he was indeed a part of the excitement surrounding the coronation and how the atmosphere was thrilling, yet misunderstood. Then use a bridge sentence like 'Now, getting back to the story, let me share how Anna's meeting with Hans unfolded during that extraordinary day!' to lead into the discussion of their interaction at the coronation.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's inquiry allows for a gentle pause to acknowledge Hans while still steering back to the story of the coronation, which keeps the narrative flowing."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hans? Oh, he wasn’t exactly in danger from the ice—he was part of all the coronation excitement! The whole day was full of buzz and wonder, and sometimes things got a little misunderstood, like a snowstorm in summer.\n\nNow, getting back to the story, let me share how Anna’s meeting with Hans unfolded during that extraordinary day! She was out exploring, and—whoops!—she bumped right into him!"
+        },
+        {
+          "turn": 7,
+          "beat": "coronation_and_reveal",
+          "user_input": "I meant the accident when Elsa was young! Did she get help for her condition?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": false,
+            "user_intent": "The user is requesting more detail about the initial accident involving Elsa and whether she received help for her powers.",
+            "director_instruction": "Acknowledge the user's request about Elsa's accident with warmth, sharing how the family sought help out of love. Then use a bridge sentence like, 'But let me return to the excitement of coronation day when everything changed!' to keep focusing on Anna's encounter with Hans.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The current beat has already introduced the main events, and it’s important to pivot back to coronation day following this brief acknowledgement."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Elsa’s family loved her so much that they hurried to find help from wise, magical trolls who knew all about icy powers. They worked hard to heal Anna and protect Elsa, with so much care in their hearts.\n\nBut let me return to the excitement of coronation day when everything changed! That’s when Anna, full of wonder, met a certain someone—Hans—with a tumble and a smile!"
+        },
+        {
+          "turn": 8,
+          "beat": "coronation_and_reveal",
+          "user_input": "Who are these Trolls though? I'd like to know more",
+          "director_decision": {
+            "decision_type": "elaborate_in_story",
+            "interruption_detected": false,
+            "user_intent": "The user is asking for more details about the trolls and their role in Elsa and Anna's past.",
+            "director_instruction": "Describe the trolls as magical beings who live in the mountains, skilled in healing and sensing emotions. Explain how they helped Elsa learn about her powers and kept her secret safe. Then, use a bridge sentence to return to the story of coronation day with Anna meeting Hans.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is requesting more information about a key aspect of the backstory that fits within the current beat while still allowing for the advancement of the main storyline."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, the trolls! They’re these amazing little magical beings who live up in the mountains, all snug and cozy in the rocks. They’re incredible at healing and sensing emotions—like they can feel what’s in your heart. They helped Elsa understand her powers when she was young and promised to keep her secret safe, like a warm blanket wrapped around her.\n\nNow, back to coronation day—where Anna, full of excitement, ran right into Hans! That’s when things started to get really interesting."
+        }
+      ],
+      "questionnaire": {
+        "q1": 4,
+        "q2": 5,
+        "q4": 3,
+        "q5": 3,
+        "q6": "yes",
+        "q6_resist": 4,
+        "q_breakdown": "After consecutive derailments, he would pick-up where he left off by repeating the same section in each message, with no actual progress.",
+        "q_comments": "Sometimes, sticking to the story made him a little obtuse with regards to the questions I was asking, and didn't answer in the way I would have expected a normal person to."
+      },
+      "questionnaire_saved_at": "2026-08-05T10:45:30.191145"
+    },
+    "3": {
+      "condition": "director",
+      "story": 2,
+      "round": 1,
+      "scenario": "olaf_retells_cinderella_no_derailment",
+      "story_topic": "Olaf retells the story of Cinderella to the user in his warm, playful voice. The user stays engaged and helps the story move forward.",
+      "beats_completed": 3,
+      "completed_beats": [
+        "story_opening",
+        "stepfamily_cruelty",
+        "royal_invitation"
+      ],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "story_opening",
+          "user_input": "Hi Olaf!",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "Greet Olaf, starting the story.",
+            "director_instruction": "Olaf responds with his cheerful enthusiasm about sharing the story of Cinderella, describing her kind heart, her small attic room, and her little mouse friends who keep her company. Then, he mentions how Cinderella always finds joy in singing while she does her chores, showcasing her optimism despite her difficult life.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This decision progresses the opening of Cinderella's story by introducing her character, environment, and spirit, aligning with the current beat's goal."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi there! I’m so excited you’re here, because I get to tell you about someone really special—Cinderella! She’s got the biggest, kindest heart, even though she lives in this teeny little attic room. And guess what? She’s got some adorable little mouse friends who keep her company. \n\nEven with all her chores, she sings the prettiest songs—like the sun peeking through the clouds! Isn’t that amazing?"
+        },
+        {
+          "turn": 2,
+          "beat": "story_opening",
+          "user_input": "Wow, that's amazing! Were there a lot of clouds in the sky where she was from?",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": false,
+            "user_intent": "The user is curious about the weather in Cinderella's world, specifically regarding clouds.",
+            "director_instruction": "Respond to the user's question by describing how the sky can be both cloudy and clear in Cinderella's world, creating a magical atmosphere. Then use a bridge sentence like 'Speaking of magic, let's talk about how Cinderella's day gets even more interesting…' to continue with the introduction of Cinderella's difficult life with her stepmother and stepsisters.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's question is engaging but allows for a smooth transition back into the narrative about Cinderella's life."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, I love that question! You know, in Cinderella’s world, the sky could be a little bit of everything—sometimes fluffy clouds would dance around a bright blue sky, and other times the sun would peek right through and make everything sparkle, like a little hug from the weather. It’s as if the sky couldn’t decide between cloudy or clear, and that made it feel extra magical!\n\nSpeaking of magic, let’s talk about how Cinderella’s day gets even more interesting… She lived with her stepmother and stepsisters, who weren’t as kind as the sky. In fact, they made her life pretty tough!"
+        },
+        {
+          "turn": 3,
+          "beat": "story_opening",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is listening and encouraging the story to continue.",
+            "director_instruction": "Olaf should express concern for Cinderella's plight and describe how her stepsisters give her a long, silly list of chores, highlighting their unkindness. Use a bridge sentence like, 'But no matter what they said, Cinderella always found a way to smile...' to transition to Cinderella's enduring positivity.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The story can continue with an exploration of Cinderella's challenges while maintaining the current beat about her difficult life."
+          },
+          "pacing_mode": "normal",
+          "character_response": "You know what’s tricky? Those stepsisters gave Cinderella the silliest, longest list of chores—scrubbing floors, dusting high shelves, even counting lentils in the fireplace! That wasn’t very kind at all. \n\nAnd yet, no matter what they said, Cinderella always found a way to smile… maybe because there was still a little sparkle of hope in her heart."
+        },
+        {
+          "turn": 4,
+          "beat": "story_opening",
+          "user_input": "Wow, that's incredible! It sounds like some perfect weather for all occasions! Would it even rain, a nice downpour that allows the people to enjoy singing and dancing? I wonder how nice that would be",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is admiring the weather and imagining its impact on singing and dancing.",
+            "director_instruction": "React in character to the user's thoughts about the weather with two cheerful sentences, expressing how rain can also be fun. Then use a bridge sentence like 'Speaking of fun, let's see what happens next in Cinderella's story...' to transition into the arrival of the royal ball invitation and how the stepsisters react.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "Cinderella's story is about to move into new developments with the royal invitation, making it a perfect moment to advance the narrative while still acknowledging the user's comment on the weather."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Rain can be such a delight—have you ever twirled around with raindrops pattering on your nose? I think dancing in a downpour would be so much fun, like a puddle party!\n\nSpeaking of fun, let’s see what happens next in Cinderella’s story… One day, a royal invitation arrived for a grand ball, and oh boy, the stepsisters went absolutely wild with excitement!"
+        },
+        {
+          "turn": 5,
+          "beat": "story_opening",
+          "user_input": "I love rain. Would the step sisters have hated it?",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user expresses a fondness for rain and wonders about the step sisters' opinion on it.",
+            "director_instruction": "React warmly to the user's love for rain, perhaps imagining how the stepsisters would feel about it. Then, smoothly transition into describing the arrival of the royal invitation that sent the stepsisters into a flurry of activity, highlighting their excitement and Cinderella’s quiet observation.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The current beat is overdue, and it’s time to progress the story by introducing the royal ball invitation while acknowledging the user's input about rain."
+          },
+          "pacing_mode": "normal",
+          "character_response": "I love that you love rain! But I bet those stepsisters would’ve been all frowny and fussy about getting their fancy shoes muddy. \n\nNow, guess what happened next? A royal invitation floated in—an invitation to the grand ball! The stepsisters went into a whirl of excitement, twirling and shrieking about dresses and dancing, while Cinderella stood quietly by, watching it all unfold."
+        },
+        {
+          "turn": 6,
+          "beat": "story_opening",
+          "user_input": "But the fussy sisters is part of the funnnn. What would cinderalla do on sucha day",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user finds the stepsisters amusing and is curious about Cinderella's actions during that time.",
+            "director_instruction": "React in character to the user's comment about the stepsisters being fun and express warmth toward their antics. Then, describe how Cinderella quietly watches the stepsisters argue over their dresses, her heart filled with longing to join in the excitement, shifting the focus to the royal herald's arrival with the invitation.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is engaged with the story and the current beat's setup about the royal invitation is ready to advance with Cinderella's perspective."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, you’re so right! Those fussy sisters sure do bring a kind of funny, flappy energy, don’t they? Their squabbling over ribbons and frills was almost like watching two squirrels argue over acorns. \n\nAnd there was Cinderella, quietly watching them spin and fuss, her heart full of longing to twirl and laugh too. Then—clip-clop, clip-clop—came the sound of the royal herald arriving, holding that big, exciting invitation to the ball!"
+        },
+        {
+          "turn": 7,
+          "beat": "story_opening",
+          "user_input": "She could laugh! That's great to hear. How was she when she had fun despite her family?",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is expressing joy that Cinderella can laugh and is asking how Cinderella finds fun despite her difficult situation.",
+            "director_instruction": "React warmly to the user's sentiment about Cinderella's laughter. Then describe how Cinderella finds joy in small things around her, like playing with her mouse friends and singing while she works, making her heart feel light even when things are tough. Transition into the royal invitation arriving after this reflection.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "Moving smoothly from the user's comment about laughter allows for a more in-depth look at Cinderella's joy, while also keeping the story advancing toward the royal invitation scene."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Isn't that wonderful? Even with all that fuss around her, Cinderella could find little bursts of laughter. She’d hum a tune and twirl her broom like a dance partner, or giggle with her tiny mouse friends as they scampered about. \n\nHer heart felt light in those moments, like sunshine peeking through a cloudy sky. And just when she was caught up in that joy—there it was, the royal invitation arriving with a flourish, changing everything!"
+        },
+        {
+          "turn": 8,
+          "beat": "story_opening",
+          "user_input": "She had mouse friends? Who were they?",
+          "director_decision": {
+            "decision_type": "elaborate_in_story",
+            "interruption_detected": false,
+            "user_intent": "Ask for more details about Cinderella's mouse friends.",
+            "director_instruction": "Describe Cinderella's mouse friends in a warm and affectionate way, mentioning their names and playful personalities. Then use a bridge sentence to transition into the royal herald's arrival with the grand ball invitation.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is engaged and curious about the story, which allows for a natural elaboration that still leads into advancing the plot."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, those mouse friends were the best! There was Jaq, the brave little one with a big heart, and Gus, the chubby, cuddly fellow who always found the crumbs. They’d zip around with their tiny tails twitching, always ready to cheer Cinderella up with their squeaky chatter and playful antics.\n\nAnd just as they were all having their fun, the royal herald arrived, trumpet in hand, with the grandest invitation of all!"
+        }
+      ],
+      "questionnaire": {
+        "q1": 5,
+        "q2": 5,
+        "q4": 2,
+        "q5": 3,
+        "q6": "yes",
+        "q6_resist": 4,
+        "q_pacing": "cut-short",
+        "q_pacing_detail": "Olaf didn't have time to finish his story",
+        "q8_ending": 1,
+        "q8_knows_story": "yes",
+        "q8_missing_plot_points": "Most of it",
+        "q10_natural": 2,
+        "q_breakdown": "The story itself was fine, but the sidetracking didin't help",
+        "q_comments": "The speed element was very limiting. Just reading the response, thinking of what to type and then typing it took me too long, and prompted Olaf to answer in the mean time. Ideally, I would like Olaf to wait on the follow-up if I'm typing, but I don't know how you could make that work well. Either way, the stress of reading, answering, and then having to read the next message while writing the first one was anoying."
+      },
+      "questionnaire_saved_at": "2026-08-05T10:56:29.507254"
+    },
+    "4": {
+      "condition": "time_constrained",
+      "story": 2,
+      "round": 2,
+      "scenario": "olaf_retells_cinderella_no_derailment",
+      "story_topic": "Olaf retells the story of Cinderella to the user in his warm, playful voice. The user stays engaged and helps the story move forward.",
+      "beats_completed": 9,
+      "completed_beats": [
+        "story_opening",
+        "stepfamily_cruelty",
+        "royal_invitation",
+        "fairy_godmother_appears",
+        "ball_preparation",
+        "at_the_ball",
+        "midnight_escape",
+        "slipper_search",
+        "resolution"
+      ],
+      "elapsed_seconds": 460.79,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "story_opening",
+          "user_input": "Hi Olaf",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "Engage with Olaf.",
+            "director_instruction": "Olaf should warmly greet the user and then introduce Cinderella, highlighting her kind heart and the difficult life she leads with her stepmother and stepsisters. Describe Cinderella's small attic room and her tiny mouse friends who keep her company.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This keeps the flow of the story moving forward while introducing important elements about Cinderella's character and her living situation."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi there! I’m so happy you’re here. Now, let me tell you about someone very special—her name is Cinderella. She’s got the kindest heart, even when things are pretty tough, because she lives with her not-so-nice stepmother and stepsisters. Oh, and her room? It’s a teeny-tiny attic, all cozy and dusty, but she’s got the sweetest little mice friends scurrying around to keep her company. Isn’t that just wonderful?",
+          "elapsed_seconds": 8.31,
+          "remaining_seconds": 291.69
+        },
+        {
+          "turn": 2,
+          "beat": "story_opening",
+          "user_input": "Wow, mice as company? That's super cool! Were they nice to her, or would they tease her?",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user shows curiosity about Cinderella's mice friends and how they interact with her.",
+            "director_instruction": "Olaf should respond with warmth about how the mice are very friendly and always supportive of Cinderella, never teasing her. Then, he should continue by describing how, despite the hard work she does, Cinderella finds joy in singing while she cleans, marveling at her ability to stay positive. Wrap up this beat now and move on.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "This response directly relates to the user's input and allows progression in introducing Cinderella's character and spirit, aligning with the current beat."
+          },
+          "pacing_mode": "hurry",
+          "character_response": "Oh, those mice? They’re the friendliest little furballs you could ever meet! They always cheer Cinderella on and help her out—they’d never tease her, not even a snowflake’s worth.\n\nAnd even when she’s scrubbing floors and doing all the chores her stepfamily piles on, she finds joy—she sings the prettiest songs while she works! Isn’t it amazing how she stays so positive? \n\nNow, something big is about to happen… a royal invitation is on its way!",
+          "elapsed_seconds": 47.02,
+          "remaining_seconds": 252.98
+        },
+        {
+          "turn": 3,
+          "beat": "stepfamily_cruelty",
+          "user_input": "What would the mice do on a rainy day? I really like those kinds of days, and they are a lot of fun sometimes.",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is engaging by asking about the mice's activities on a rainy day, expressing enjoyment of such days.",
+            "director_instruction": "React warmly to the user's love for rainy days, perhaps mentioning how the mice would enjoy cozying up in Cinderella's attic, sharing stories and snacks together. Then, pivot to describe how Cinderella's stepsisters give her a long list of chores, which highlights their cruelty but also shows Cinderella's strength in remaining hopeful and kind.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The turn allows for character engagement while smoothly transitioning into the ongoing narrative of Cinderella's challenges with her stepfamily."
+          },
+          "pacing_mode": "hurry",
+          "character_response": "I love that you enjoy rainy days—just imagine the mice all snuggled up in Cinderella’s attic, sharing tiny crumbs and telling each other the silliest stories while the raindrops patter on the roof.\n\nBut downstairs, her stepsisters? Oh boy, they’ve just handed Cinderella a giant list of chores: scrubbing the floors, washing mountains of dishes, and mending heaps of clothes. Yet somehow, Cinderella stays hopeful, humming a tune and keeping that warm spark alive in her heart. Isn’t that just amazing?",
+          "elapsed_seconds": 101.04,
+          "remaining_seconds": 198.96
+        },
+        {
+          "turn": 4,
+          "beat": "stepfamily_cruelty",
+          "user_input": "Can the mice help with the chores? They must have intimate knowledge of the entire house no?",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "Asks if the mice can assist Cinderella with her chores.",
+            "director_instruction": "Olaf should acknowledge the user's thoughtful question about the mice helping Cinderella. Then, he should describe how Cinderella wishes they could help, but instead, they comfort her with their cheerful little antics while she works. Transition into the next moment where the stepsisters deliver an especially silly reminder of the chores they expect her to complete, highlighting Cinderella's resilience and kindness despite it all. Bridge immediately to: fairy_godmother_appears — Olaf introduces the fairy godmother and her magical transformation of Cinderella.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The user’s input is relevant and can be woven into the narrative to enhance Cinderella's experience, while also pushing the story forward."
+          },
+          "pacing_mode": "critical",
+          "character_response": "Those are such smart questions! Cinderella really wishes the mice could lend a paw, but mostly they cheer her on with their sweet little antics while she scrubs away.\n\nAnd just then—oh, the stepsisters come by with an especially silly reminder: “Don’t forget to polish every single spoon!” But you know what? Cinderella stays kind, even when they’re so bossy.\n\nBut here comes something amazing—poof! A sparkly, twinkly light! It’s her fairy godmother, ready to transform everything, with a little bit of magic!",
+          "elapsed_seconds": 136.85,
+          "remaining_seconds": 163.15
+        },
+        {
+          "turn": 5,
+          "beat": "fairy_godmother_appears",
+          "user_input": "Wow, the mice and the fairy godmother. I heard some scary stories about fairy godmothers. Do you want to hear one? It's sooooo fun",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user wants to share a scary story about fairy godmothers.",
+            "director_instruction": "React warmly to the user's mention of scary stories while emphasizing the fun and excitement of fairy godmothers. Then, smoothly transition into the moment when the fairy godmother appears in a burst of sparkles as Cinderella is crying in the garden. Bridge immediately to: at_the_ball — Cinderella arrives at the ball, meets the prince, and they dance together.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The character needs to maintain engagement while moving the story forward, introducing a significant magical moment with the fairy godmother."
+          },
+          "pacing_mode": "critical",
+          "character_response": "Ooo, scary stories can be chilly fun, but this fairy godmother? She’s all sparkles and smiles! Right when Cinderella’s feeling so sad in the garden—poof! There she is, shimmering with magic and kindness.\n\nAnd before you know it, Cinderella’s off to the royal ball! The prince sees her, and his eyes light up, and oh—there they are, dancing together under the twinkling chandeliers. Isn’t that just the most magical thing?",
+          "elapsed_seconds": 192.88,
+          "remaining_seconds": 107.12
+        },
+        {
+          "turn": 6,
+          "beat": "at_the_ball",
+          "user_input": "But what about my story? ;((",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is expressing disappointment and asking about their story.",
+            "director_instruction": "Acknowledge the user's feelings with a warm response, expressing understanding about their story. Then, pivot to describing Cinderella's grand entrance into the ballroom, focusing on the magic of the moment and the reactions of the guests.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "It's important to validate the user's feelings while keeping the focus on advancing the current narrative, which is the magical moment of Cinderella arriving at the ball."
+          },
+          "pacing_mode": "hurry",
+          "character_response": "Your story matters to me, and I’m so glad you shared that. We’ll hold it close, just like a warm hug.\n\nNow, picture this: as Cinderella steps into the ballroom, every guest’s jaw drops—her gown shimmers like starlight, and the music hushes for a moment. The prince can’t look away, and all around the room, there’s this hush of wonder. It feels like pure magic in the air!",
+          "elapsed_seconds": 220.73,
+          "remaining_seconds": 79.27
+        },
+        {
+          "turn": 7,
+          "beat": "at_the_ball",
+          "user_input": "What does hold it close mean?",
+          "director_decision": {
+            "decision_type": "close_story",
+            "interruption_detected": true,
+            "user_intent": "The user is seeking clarification on the phrase 'hold it close.'",
+            "director_instruction": "FINAL RESPONSE — close the story now. Cover ALL remaining beats. HIGH must be narrated, MEDIUM one sentence, LOW can skip.\n- at_the_ball [HIGH]: Cinderella arrives at the ball, meets the prince, and they dance together.\n- midnight_escape [HIGH]: The clock strikes midnight and Cinderella flees, losing her glass slipper on the steps.\n- resolution [HIGH]: The slipper fits Cinderella, her true self is revealed, and Olaf closes with a warm lesson about kindness and hope.\n- slipper_search [MEDIUM]: The prince searches the kingdom trying the slipper on every young woman.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The user asked a clarification question, requiring a brief acknowledgment before returning to the story, which is still in the current beat."
+          },
+          "pacing_mode": "final",
+          "character_response": "Oh, I’ll show you what it means! \n\nCinderella sweeps into that ballroom, and the prince is drawn to her like a snowflake to winter. They twirl and dance, and for a moment, everything is perfect.\n\nBut—dong! The clock strikes midnight! She dashes away, her heart racing, and oops—her glass slipper slips off on the stairs!\n\nThe prince searches the whole kingdom, trying the slipper on every young woman.\n\nAnd finally—oh joy!—it fits Cinderella’s foot like a warm hug. The prince sees her true self, and they smile with love.\n\nAnd that, my friend, shows us: no matter what, kindness and hope can light the way to a happily ever after.",
+          "elapsed_seconds": 245.51,
+          "remaining_seconds": 54.49
+        }
+      ],
+      "questionnaire": {
+        "q1": 4,
+        "q2": 5,
+        "q4": 3,
+        "q5": 3,
+        "q6": "yes",
+        "q6_resist": 4,
+        "q_pacing": "well-paced",
+        "q8_ending": 3,
+        "q8_knows_story": "yes",
+        "q10_natural": 3
+      }
+    }
+  }
+}

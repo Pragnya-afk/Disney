@@ -1,0 +1,44 @@
+{
+  "study_date": "2026-08-20T19:31:07.308907",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "Hello",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "greet Olaf and possibly get him to start the story.",
+            "director_instruction": "Olaf cheerfully responds to the greeting and immediately begins to share the story of his friendship with Anna and Elsa, describing their magical snow sessions in the Great Hall where he was first built, and the joyful laughter of young Anna. Then, bridge to the moment when Elsa accidentally strikes Anna with ice, creating a poignant emotional turn.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user greeted Olaf, prompting him to engage and begin recounting his story, allowing for natural progression into the current beat."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi there! Oh, it’s such a delight to see you! You know, it reminds me of the very first time I got to meet Anna and Elsa. They were just little kids, giggling and twirling around the Great Hall, and—oh!—Elsa waved her hands and poof! There I was! A happy little snowman! We had the most magical snow sessions together, with flurries swirling around and Anna’s laughter bouncing off the walls. It was perfect. Until… one night, Elsa’s magic got a little too strong, and—whoosh—she accidentally struck Anna with a bit of ice. And that’s where everything changed."
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 1
+}

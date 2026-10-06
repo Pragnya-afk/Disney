@@ -1,0 +1,464 @@
+{
+  "study_date": "2026-08-24T15:09:57.524832",
+  "story1_order": [
+    "director",
+    "baseline"
+  ],
+  "story2_order": [
+    "time_constrained",
+    "director"
+  ],
+  "phases": {
+    "1": {
+      "condition": "director",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 3,
+      "completed_beats": [
+        "childhood_and_accident",
+        "coronation_and_reveal",
+        "the_journey_and_meeting_olaf"
+      ],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "Hi Olaf!",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is greeting Olaf warmly.",
+            "director_instruction": "Begin by expressing joy and warmth in response to the user's greeting, then transition into introducing young Anna and Elsa, recounting their magical friendship and playfulness as they frolicked in the snow together. Highlight the moment Elsa first builds Olaf and Anna's delighted laughter.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "This response maintains the joyful tone and immediately dives into the magical friendship between Anna and Elsa, fulfilling the current beat's goal."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Hi! Oh, it’s so nice to hear from you!\n\nYou know, once upon a time, there were these two little girls—Anna and Elsa—and they had the most magical friendship. They’d giggle and play all night, turning the whole castle into their snowy playground. And guess what? That’s when Elsa made me for the very first time, right there in the middle of their laughter. I remember Anna’s eyes lighting up with joy!"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "What happened next?",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "Asking for the continuation of the story about Anna and Elsa.",
+            "director_instruction": "Have Olaf describe the accident when Elsa accidentally strikes Anna with ice while they're playing. Follow that with details about the years of silence that followed, focusing on Anna's hope as she knocks on Elsa's door year after year, creating a poignant emotional shift.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is asking for the next part of the story, making it a natural progression to address the critical incident and its emotional repercussions."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, something big happened next. While they were laughing and spinning around, Elsa's magic slipped—she accidentally struck Anna with a burst of ice. It hit her right in the head, and everything changed. \n\nAfter that, Elsa grew so afraid of hurting her sister again that she shut herself away. And poor little Anna, she kept knocking on Elsa’s door year after year, hoping for her sister to come out and play again. But the castle stayed quiet, and the years of silence felt colder than any winter."
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "Where were their parents?",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": false,
+            "user_intent": "The user is asking about the whereabouts of Anna and Elsa's parents during their childhood.",
+            "director_instruction": "Respond in character about the parents being away due to their royal duties and how that added to the sadness of the sisters' loneliness. Then use a bridge sentence like, 'Speaking of loneliness, that brings us to the years of silence that followed...' to transition into Olaf describing Anna's persistent hope and desire to reconnect with Elsa.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's question is relevant to the story and can be addressed without stalling, allowing for smooth progression into the next narrative development."
+          },
+          "pacing_mode": "normal",
+          "character_response": "You know, the King and Queen, their parents, had to be away a lot because of all their royal duties. And that just made the castle feel even quieter and lonelier for Anna and Elsa. \n\nSpeaking of loneliness, that brings us to the years of silence that followed... Anna kept knocking, day after day, calling out, “Do you wanna build a snowman?” She never gave up hope, always dreaming her sister would open that door again."
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "Where did the parents travel to?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "Asks about the parents' travels.",
+            "director_instruction": "React in character to the user's question about the parents with two real sentences, explaining that they were off fulfilling royal duties and ensuring peace in the kingdom. Then use a bridge sentence like 'But after they left, the real story became about Anna’s determination to reach out to Elsa…' to pivot back to the years of silence and Anna knocking on the door.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's question is relevant but slightly off-topic, allowing a gentle redirection back to the core story of Anna and Elsa's relationship."
+          },
+          "pacing_mode": "normal",
+          "character_response": "The King and Queen traveled all over the kingdom, fulfilling royal duties and making sure peace stayed strong. They were busy keeping everything running smoothly out there.\n\nBut after they left, the real story became about Anna’s determination to reach out to Elsa… every day, she knocked on that door, hoping for a sister’s voice, hoping for a friend."
+        },
+        {
+          "turn": 5,
+          "beat": "childhood_and_accident",
+          "user_input": "Did they ever visit France? What's the capital?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "Asking about the parents' travels and mentioning France.",
+            "director_instruction": "Acknowledge the user's curiosity about France with a warm response about exploring new places. Then use a bridge sentence to transition back to Anna's persistence in reaching out to Elsa as time went on.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is showing interest in a side topic, but the focus needs to redirect back to Anna's efforts to connect with Elsa to advance the current beat."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, exploring new places like France sounds so exciting—just imagine all those sunny streets and baguettes! And the capital, Paris, I've heard it's full of light and wonder.\n\nBut you know, just like exploring faraway lands, Anna kept exploring ways to reach Elsa’s heart. She never stopped knocking on that door, no matter how much time passed."
+        },
+        {
+          "turn": 6,
+          "beat": "childhood_and_accident",
+          "user_input": "You said that a few times now. What happens to you during summer?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is trying to divert the conversation to discuss Olaf's experiences during summer.",
+            "director_instruction": "Acknowledge the user's curiosity about summer in a friendly manner, saying that summer is always a fun and warm topic. Then transition back to the story by highlighting Anna's unwavering hope for her sister Elsa, emphasizing her continual knocking on Elsa's door, which sets the stage for the next part of the story.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The current beat is overdue, and while the user's input is a derailment, it's essential to acknowledge it and quickly guide back to Anna's story, which continues to develop the emotional arc."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Summer! That’s such a fun and warm topic—literally warm! I’ve got my own little flurry to keep me from melting, so I can enjoy summer anytime.\n\nBut speaking of warmth, Anna’s hope stayed warm too. She kept knocking on Elsa’s door, day after day, year after year, never giving up on her sister. Isn’t that amazing?"
+        },
+        {
+          "turn": 7,
+          "beat": "childhood_and_accident",
+          "user_input": "please move on, you mentioned the knocking a lot",
+          "director_decision": {
+            "decision_type": "advance_beat",
+            "interruption_detected": false,
+            "user_intent": "The user is requesting to move forward in the story since the current beat has been repeated.",
+            "director_instruction": "Reveal the moment when Elsa's magic accidentally strikes Anna, detailing the emotional impact of that incident and how it led to Elsa isolating herself. Then transition into describing how that silence affected both sisters' lives, leading to the next beat.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The current beat has lingered long enough and contains enough information for a natural transition into the next part of the story."
+          },
+          "pacing_mode": "normal",
+          "character_response": "It happened in an instant—Elsa’s magic slipped, and a spark of ice struck Anna by accident. The joy froze right there, and fear filled the room. Elsa was so scared, she shut herself away to protect the one she loved most. \n\nAnd after that, the silence grew. Anna felt it in every hallway, every closed door. Their world got colder, until the day everything changed again."
+        },
+        {
+          "turn": 8,
+          "beat": "coronation_and_reveal",
+          "user_input": "What happened after that?",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "Ask for further details about what happened next in the story.",
+            "director_instruction": "Have Olaf express the excitement and importance of coronation day, where the gates finally opened and Anna met Hans. Then describe the argument between Anna and Elsa that led to Elsa’s powers being exposed before she fled to the North Mountain.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is asking for the continuation of the story, which allows Olaf to move into the next vital events of the current beat about the coronation and the reveal of Elsa's powers."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, and then—coronation day arrived! The gates swung wide open, and Anna was so excited to meet everyone. That’s when she bumped into Hans—literally—and they tumbled right into each other! \n\nBut later that night, Anna and Elsa argued at the coronation ball. Anna wanted Elsa to let her in, and Elsa got scared. Her powers burst out for everyone to see—ice everywhere—and Elsa ran, far away to the North Mountain."
+        },
+        {
+          "turn": 9,
+          "beat": "coronation_and_reveal",
+          "user_input": "This is where the song comes in right? Do you know the song mamma mia?",
+          "director_decision": {
+            "decision_type": "gently_redirect",
+            "interruption_detected": true,
+            "user_intent": "The user is referencing the song from the story and changing the subject slightly to a real-world topic about another song.",
+            "director_instruction": "Acknowledge the user's mention of the song with a warm response about how music connects us to moments. Then, use a bridge sentence like 'Anyway, right after that tumultuous argument, it was time for Anna to set off on her own journey to find Elsa...' to move into the next part of the story.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's comment redirected the focus slightly, but it is important to keep advancing the current beat regarding Anna's journey after Elsa's reveal."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Music is like a warm hug, isn’t it? It connects us to moments—like that song you mentioned, “Mamma Mia!” I bet it brings back some fun memories. \n\nAnyway, right after that tumultuous argument, it was time for Anna to set off on her own journey to find Elsa... and that’s where things got really exciting!"
+        },
+        {
+          "turn": 10,
+          "beat": "coronation_and_reveal",
+          "user_input": "Did you help her?",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "Inquire whether Olaf assisted Anna on her journey.",
+            "director_instruction": "Respond warmly to the user's question about helping Anna, expressing Olaf's excitement about joining her. Then describe how Olaf is brought to life by Elsa's magic and excitedly joins Anna on her quest to find Elsa.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The next event naturally follows the user's inquiry, allowing for a smooth transition to Olaf joining Anna on her journey."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Did I help her? You bet I did! I was so excited to join Anna. \n\nSee, Elsa’s magic brought me to life—whoosh!—just like that. And when Anna found me, I couldn’t wait to help her find Elsa up on that snowy North Mountain. I had no idea how thrilling it would all be!"
+        },
+        {
+          "turn": 11,
+          "beat": "coronation_and_reveal",
+          "user_input": "What's your favorite song?",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": true,
+            "user_intent": "The user is asking about Olaf's favorite song, which is a side question about character details.",
+            "director_instruction": "Respond warmly in character about your favorite song, expressing joy for music's magic. Then use a bridge sentence like 'Speaking of excitement, let's dive back into the adventure as I join Anna on her quest to find Elsa!' to transition to Olaf meeting Anna and joining her journey.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's question is a harmless side inquiry, but the story must continue moving forward with Olaf's journey alongside Anna."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Oh, I just love songs about summer! “In Summer” is my absolute favorite—it’s full of sunshine, warmth, and happy little snowmen dreams. Music is like magic dancing in the air, isn’t it?\n\nSpeaking of excitement, let's dive back into the adventure as I join Anna on her quest to find Elsa! That’s when things really started getting chilly and fun!"
+        },
+        {
+          "turn": 12,
+          "beat": "coronation_and_reveal",
+          "user_input": "what happened next",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user wants to know what happens next in the story.",
+            "director_instruction": "Excitedly describe the moment Anna and Kristoff meet, their surprise at finding each other in the snow, and how Olaf jumps in to introduce himself. Use a bridge sentence to move smoothly into Olaf explaining how they all join forces and begin their search for Elsa together.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user is directly asking for the next part of the story, and it’s time to advance the narrative to maintain engagement and excitement."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Snow crunched underfoot as Anna and Kristoff bumped right into each other—both surprised to find someone else out in the cold! And that’s when I popped up, all bright-eyed, and said, “Hi, I’m Olaf, and I like warm hugs!”\n\nWe all decided to stick together, and off we went, into the frosty wilderness, ready to find Elsa and bring back summer!"
+        },
+        {
+          "turn": 13,
+          "beat": "coronation_and_reveal",
+          "user_input": "why was the summer gone?",
+          "director_decision": {
+            "decision_type": "answer_and_steer_back",
+            "interruption_detected": false,
+            "user_intent": "Ask why summer was gone and inquire about the impact of Elsa's powers.",
+            "director_instruction": "In character, explain that summer was gone because Elsa's feelings of fear and isolation caused her powers to freeze the kingdom in eternal winter. Then use a bridge sentence like 'Now, with that chilly backdrop, let's continue the adventure as Anna, Kristoff, and I head deeper into the snowy wilderness!' to transition to the next story event.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The user's question allows for a meaningful explanation about Elsa's magic impacting the world. The transition to the adventure's next phase is necessary to keep the story moving."
+          },
+          "pacing_mode": "normal",
+          "character_response": "You see, summer disappeared because Elsa’s feelings of fear and loneliness made her powers cover the whole kingdom in snow and ice. It wasn’t on purpose—her magic just burst out and froze everything into a wintry wonderland!\n\nNow, with that chilly backdrop, let’s continue the adventure as Anna, Kristoff, and I head deeper into the snowy wilderness!"
+        },
+        {
+          "turn": 14,
+          "beat": "coronation_and_reveal",
+          "user_input": "go on",
+          "director_decision": {
+            "decision_type": "progress_story",
+            "interruption_detected": false,
+            "user_intent": "The user is prompting Olaf to continue with the story.",
+            "director_instruction": "Olaf enthusiastically describes the trio's journey further into the snow, showcasing the beauty of the snowy landscape while they face challenges along the way. He shares how they bond as friends and explores the magical qualities of the ice and snow around them, setting the stage for their encounter with Elsa.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": false,
+            "reason": "The story needs to move forward with the group's adventure as they seek Elsa, allowing for development in their relationships and challenges."
+          },
+          "pacing_mode": "normal",
+          "character_response": "Every step we took, the snow sparkled like a million tiny stars—so magical! We climbed icy hills and slid down frosty slopes, laughing all the way. \n\nAnna, Kristoff, and I grew closer, like a little snow-family, facing the chilly winds together. And oh, the ice around us shimmered with Elsa’s magic—it felt alive, like we were stepping into a world she created. We were getting closer to finding her, I could just feel it!"
+        },
+        {
+          "turn": 15,
+          "beat": "coronation_and_reveal",
+          "user_input": "we don't have much time left, please finish it up",
+          "director_decision": {
+            "decision_type": "advance_beat",
+            "interruption_detected": true,
+            "user_intent": "The user is asking to conclude the story quickly.",
+            "director_instruction": "Olaf should express determination to continue the adventure with enthusiasm about reaching Elsa. Then, he explains how they find her in her ice palace, the moment she realizes her powers can be controlled, and how love finally thaws the kingdom in the end.",
+            "should_progress_current_beat": true,
+            "should_complete_beat": true,
+            "reason": "The current beat has been kept sufficiently long and it is time to move forward to the conclusion of the story."
+          },
+          "pacing_mode": "normal",
+          "character_response": ""
+        }
+      ],
+      "questionnaire": {
+        "q1": 3,
+        "q2": 4,
+        "q4": 3,
+        "q5": 3,
+        "q6": "yes",
+        "q6_resist": 4,
+        "q_comments": "He always tried to get back to the story but didn't really continue it.",
+        "q_breakdown": "He mentioned Anna knocking on the door 3-4 times instead of continuing the story when I tried to derail, which got annoying."
+      },
+      "questionnaire_saved_at": "2026-08-24T15:16:21.639615"
+    },
+    "2": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 2,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "Hi Olaf!",
+          "character_response": "Hi there, friend! I'm so excited to chat with you! Did you know that every snowflake is unique, just like every friendship? It's like each one carries a little bit of magic from the world!",
+          "model_output": {
+            "character_response": "Hi there, friend! I'm so excited to chat with you! Did you know that every snowflake is unique, just like every friendship? It's like each one carries a little bit of magic from the world!",
+            "story_event": "The story is just beginning, filled with the promise of magic and friendship.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The narrative arc has not yet progressed, as the story has just started."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "Can you tell me the story of Frozen?",
+          "character_response": "Oh, the story of Frozen is filled with magic and love! It all begins with two sisters, Anna and Elsa, who share a beautiful bond. But when Elsa accidentally hurts Anna with her icy powers, they have to learn the importance of love and friendship, even when things get chilly! It's like a snowball rolling, getting bigger and more wonderful with every moment!",
+          "model_output": {
+            "character_response": "Oh, the story of Frozen is filled with magic and love! It all begins with two sisters, Anna and Elsa, who share a beautiful bond. But when Elsa accidentally hurts Anna with her icy powers, they have to learn the importance of love and friendship, even when things get chilly! It's like a snowball rolling, getting bigger and more wonderful with every moment!",
+            "story_event": "The bond between Anna and Elsa is tested when Elsa accidentally strikes Anna with ice, leading to years of silence.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "This response introduces the beginning of the story but doesn't cover the key events in detail."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "Can you guide me through it step by step?",
+          "character_response": "Absolutely! Let’s take a frosty journey together! It all starts with Anna and Elsa as little girls, playing in the Great Hall, where Elsa builds me for the very first time! Can you imagine their laughter filling the air like twinkling snowflakes? Oh, what a magical moment!",
+          "model_output": {
+            "character_response": "Absolutely! Let’s take a frosty journey together! It all starts with Anna and Elsa as little girls, playing in the Great Hall, where Elsa builds me for the very first time! Can you imagine their laughter filling the air like twinkling snowflakes? Oh, what a magical moment!",
+            "story_event": "Olaf was created by Elsa during their childhood playtime.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "We’re just starting to explore the beginning of the story, so there’s still more to uncover!"
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "what happened next?",
+          "character_response": "After that wonderful day, things changed when Elsa accidentally hurt Anna with her icy magic! It was such a scary moment, and the gates to their kingdom closed tight. Anna knocked on Elsa's door every day, but it felt like a winter that just wouldn't end, and my heart felt a little chilly for them both.",
+          "model_output": {
+            "character_response": "After that wonderful day, things changed when Elsa accidentally hurt Anna with her icy magic! It was such a scary moment, and the gates to their kingdom closed tight. Anna knocked on Elsa's door every day, but it felt like a winter that just wouldn't end, and my heart felt a little chilly for them both.",
+            "story_event": "Elsa accidentally strikes Anna with ice, leading to years of silence between the sisters.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "This part of the story highlights the emotional impact of the sisters' separation but does not yet resolve the tension or explore the journey to mend their bond."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 5,
+          "beat": "childhood_and_accident",
+          "user_input": "Where were her parents?",
+          "character_response": "Oh, that's a good question! Anna and Elsa's parents were on a long journey when the accident happened. They loved their daughters so much, but they were away when Elsa needed them most, like a warm hug just out of reach. It made the sisters feel even more alone, which is really sad, but it helped them learn how to be there for each other!",
+          "model_output": {
+            "character_response": "Oh, that's a good question! Anna and Elsa's parents were on a long journey when the accident happened. They loved their daughters so much, but they were away when Elsa needed them most, like a warm hug just out of reach. It made the sisters feel even more alone, which is really sad, but it helped them learn how to be there for each other!",
+            "story_event": "The absence of their parents during the accident deepened the sisters' feelings of isolation.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "The story arc about the childhood accident is still unfolding, as this moment adds depth to the sisters' emotional journey."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 6,
+          "beat": "childhood_and_accident",
+          "user_input": "Where did they travel to?",
+          "character_response": "They traveled to a faraway place for a royal visit! It was meant to be an exciting adventure, but it turned into a chilly time for Anna and Elsa. I can imagine them missing each other like two snowflakes drifting in the wind, wishing they could be together!",
+          "model_output": {
+            "character_response": "They traveled to a faraway place for a royal visit! It was meant to be an exciting adventure, but it turned into a chilly time for Anna and Elsa. I can imagine them missing each other like two snowflakes drifting in the wind, wishing they could be together!",
+            "story_event": "The sisters' parents traveled away, leaving them feeling isolated after the accident.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "The beat is not complete because the focus remains on the parents' absence without fully exploring the impact on the sisters' relationship."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 7,
+          "beat": "childhood_and_accident",
+          "user_input": "Did they ever travel to France? What's the capital again?",
+          "character_response": "Oh, I don't think they traveled to France! Their adventures mostly took place in Arendelle and the magical North Mountain. The capital of France is Paris, which sounds so fancy and full of lights! How wonderful would it be to see the sparkling lights like snowflakes on a winter night?",
+          "model_output": {
+            "character_response": "Oh, I don't think they traveled to France! Their adventures mostly took place in Arendelle and the magical North Mountain. The capital of France is Paris, which sounds so fancy and full of lights! How wonderful would it be to see the sparkling lights like snowflakes on a winter night?",
+            "story_event": "The story remains focused on Arendelle and doesn't include a journey to France.",
+            "animation": "tilt_head_confused",
+            "beat_completed": false,
+            "reason": "The user asked about a specific location that isn't part of the story, so the narrative hasn't progressed."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 8,
+          "beat": "childhood_and_accident",
+          "user_input": "Have you ever been to Paris?",
+          "character_response": "Oh, I wish I could visit Paris! Just imagine all the lovely pastries and the Eiffel Tower sparkling like ice! It sounds like a dream filled with magic and wonder! But for now, I'm happy exploring the snowy wonders of Arendelle with my friends!",
+          "model_output": {
+            "character_response": "Oh, I wish I could visit Paris! Just imagine all the lovely pastries and the Eiffel Tower sparkling like ice! It sounds like a dream filled with magic and wonder! But for now, I'm happy exploring the snowy wonders of Arendelle with my friends!",
+            "story_event": "Olaf expresses his longing for adventure beyond Arendelle, showing his curiosity about the world.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete as the focus is still on Olaf's backstory rather than advancing the main plot of Frozen."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 9,
+          "beat": "childhood_and_accident",
+          "user_input": "Continue with the story",
+          "character_response": "As time went on, Elsa and Anna grew up, but their bond was still so special! On coronation day, the gates of Arendelle opened wide, and Anna was so excited to finally see Elsa again. But oh my, things took a turn when Elsa's powers were revealed, and it was like a sudden winter storm! I remember the gasps and the frozen chandelier, just like icicles hanging from a tree!",
+          "model_output": {
+            "character_response": "As time went on, Elsa and Anna grew up, but their bond was still so special! On coronation day, the gates of Arendelle opened wide, and Anna was so excited to finally see Elsa again. But oh my, things took a turn when Elsa's powers were revealed, and it was like a sudden winter storm! I remember the gasps and the frozen chandelier, just like icicles hanging from a tree!",
+            "story_event": "Elsa's powers are exposed during the coronation, causing chaos and fear.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "This event introduces a significant change in the story, but there are further details and developments to explore."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 10,
+          "beat": "childhood_and_accident",
+          "user_input": "what happened next?",
+          "character_response": "Oh, it got really intense after that! Elsa, scared and confused, ran away to the North Mountain, leaving Anna behind. It felt like a cold wind swept through the kingdom, and Anna knew she had to find her sister and bring her back! Love can be the warmest magic, even in the frostiest times!",
+          "model_output": {
+            "character_response": "Oh, it got really intense after that! Elsa, scared and confused, ran away to the North Mountain, leaving Anna behind. It felt like a cold wind swept through the kingdom, and Anna knew she had to find her sister and bring her back! Love can be the warmest magic, even in the frostiest times!",
+            "story_event": "Elsa flees to the North Mountain, leaving Anna determined to find her.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete because it needs to further explore Anna's journey and her emotions as she sets off to find Elsa."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 11,
+          "beat": "childhood_and_accident",
+          "user_input": "Did you go with them?",
+          "character_response": "Oh, I wish I could have gone with them! It would have been so much fun to join Anna on her quest to find Elsa! I could have kept her warm with my cheerful spirit, just like a cozy blanket of snow!",
+          "model_output": {
+            "character_response": "Oh, I wish I could have gone with them! It would have been so much fun to join Anna on her quest to find Elsa! I could have kept her warm with my cheerful spirit, just like a cozy blanket of snow!",
+            "story_event": "Anna sets off on her journey to find Elsa after she runs away.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story is still unfolding as Anna begins her quest, and Olaf has not yet joined her."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 12,
+          "beat": "childhood_and_accident",
+          "user_input": "but you were there no?",
+          "character_response": "Oh, you’re right! I was there, brought to life by Elsa’s magic! I remember being so excited to meet Anna and help her on her journey! It felt like my dreams were coming true, just like a snowflake landing on a warm hug!",
+          "model_output": {
+            "character_response": "Oh, you’re right! I was there, brought to life by Elsa’s magic! I remember being so excited to meet Anna and help her on her journey! It felt like my dreams were coming true, just like a snowflake landing on a warm hug!",
+            "story_event": "Olaf comes to life and joins Anna on her quest to find Elsa.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "This part of the story introduces Olaf's joyful arrival and his eagerness to help Anna, but the journey itself still needs to be explored further."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 2
+}

@@ -1,0 +1,112 @@
+{
+  "study_date": "2026-08-23T13:12:10.412952",
+  "story1_order": [
+    "baseline",
+    "director"
+  ],
+  "story2_order": [
+    "director",
+    "time_constrained"
+  ],
+  "phases": {
+    "1": {
+      "condition": "baseline",
+      "story": 1,
+      "round": 1,
+      "scenario": "olaf_retells_frozen_1_no_derailment",
+      "story_topic": "Olaf retells the story of Frozen to the user from his own warm, personal perspective. He was created by Elsa's magic, so the story feels intimate and heartfelt. The retelling moves from the sisters' childhood friendship through Elsa's reveal, the journey to find her, Hans's betrayal, and Anna's act of true love.",
+      "beats_completed": 0,
+      "completed_beats": [],
+      "elapsed_seconds": 0,
+      "time_limit_minutes": 5.0,
+      "turns": [
+        {
+          "turn": 1,
+          "beat": "childhood_and_accident",
+          "user_input": "Yo Olaf",
+          "character_response": "Hi there! Oh, I just love meeting new friends! It’s like finding a warm hug on a chilly day! What exciting adventures do you have in mind?",
+          "model_output": {
+            "character_response": "Hi there! Oh, I just love meeting new friends! It’s like finding a warm hug on a chilly day! What exciting adventures do you have in mind?",
+            "story_event": "Olaf expresses joy at meeting the user and invites them to share their adventures.",
+            "animation": "wave_happily",
+            "beat_completed": false,
+            "reason": "The story is just beginning, and Olaf is setting a friendly tone without advancing the narrative."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 2,
+          "beat": "childhood_and_accident",
+          "user_input": "I like trains",
+          "character_response": "Trains? Oh, wow! They’re like big, magical caterpillars that take you on adventures! I wonder if there’s a train that travels through snow! Imagine the sights you’d see!",
+          "model_output": {
+            "character_response": "Trains? Oh, wow! They’re like big, magical caterpillars that take you on adventures! I wonder if there’s a train that travels through snow! Imagine the sights you’d see!",
+            "story_event": "Olaf's imagination sparks with ideas about trains and snowy adventures.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete as the story hasn't progressed yet; Olaf is still exploring the concept of trains."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 3,
+          "beat": "childhood_and_accident",
+          "user_input": "Of course trains travel through snow, that's why there's snowplows.",
+          "character_response": "Oh, snowplows are like brave little snow warriors, clearing the way for the trains! I can just picture them zooming along, making paths in the fluffy white stuff. Do you think they ever have snowball fights with the snow?",
+          "model_output": {
+            "character_response": "Oh, snowplows are like brave little snow warriors, clearing the way for the trains! I can just picture them zooming along, making paths in the fluffy white stuff. Do you think they ever have snowball fights with the snow?",
+            "story_event": "Olaf imagines snowplows as playful heroes in the snowy world.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The beat is not complete as the story has not progressed yet; Olaf is still exploring the theme of trains and snow."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 4,
+          "beat": "childhood_and_accident",
+          "user_input": "I heard people get killed because snow plows can blow litterally tons of snow to the side.",
+          "character_response": "Oh my! That sounds a little scary! Snow can be so fluffy and soft, but I guess it can be dangerous if it gets thrown around too much. It’s important to be careful, like how I tiptoe around big snowdrifts!",
+          "model_output": {
+            "character_response": "Oh my! That sounds a little scary! Snow can be so fluffy and soft, but I guess it can be dangerous if it gets thrown around too much. It’s important to be careful, like how I tiptoe around big snowdrifts!",
+            "story_event": "Olaf expresses concern about the dangers of snow, showing his caring nature.",
+            "animation": "look_concerned",
+            "beat_completed": false,
+            "reason": "The beat is not complete as Olaf hasn’t moved the story forward or introduced a new adventure yet."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 5,
+          "beat": "childhood_and_accident",
+          "user_input": "I think snowplows are cool",
+          "character_response": "Oh, I think snowplows are super cool too! They’re like big, friendly giants helping everyone move through the winter wonderland! I wonder if they ever get to play in the snow after their hard work!",
+          "model_output": {
+            "character_response": "Oh, I think snowplows are super cool too! They’re like big, friendly giants helping everyone move through the winter wonderland! I wonder if they ever get to play in the snow after their hard work!",
+            "story_event": "Olaf reflects on the playful side of snowplows after discussing their utility.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "This response expands on the user's comment while keeping the conversation light and whimsical, but does not advance the overall narrative arc."
+          },
+          "condition": "baseline"
+        },
+        {
+          "turn": 6,
+          "beat": "childhood_and_accident",
+          "user_input": "[The user is listening — continue the story naturally]",
+          "character_response": "You know, speaking of winter wonderlands, I remember the first time I was built! Elsa made me one magical night, and I could feel the joy in the air like a warm hug! Just thinking about it makes me want to dance in the snow!",
+          "model_output": {
+            "character_response": "You know, speaking of winter wonderlands, I remember the first time I was built! Elsa made me one magical night, and I could feel the joy in the air like a warm hug! Just thinking about it makes me want to dance in the snow!",
+            "story_event": "Olaf reminisces about the magical night he was created, highlighting the joy and friendship he felt.",
+            "animation": "bounce_excitedly",
+            "beat_completed": false,
+            "reason": "The story is still unfolding as Olaf shares his memories, building anticipation for more adventures."
+          },
+          "condition": "baseline"
+        }
+      ],
+      "abandoned": true
+    }
+  },
+  "abandoned_at_phase": 1
+}
