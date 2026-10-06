@@ -20,6 +20,7 @@ report = io.StringIO()
 
 
 def sec(title):
+    """Write a section header to the report."""
     report.write("\n" + "=" * 70 + "\n" + title + "\n" + "=" * 70 + "\n")
 
 

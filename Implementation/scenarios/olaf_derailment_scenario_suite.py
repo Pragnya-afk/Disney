@@ -120,26 +120,7 @@ def _targeted_question(index: int) -> str:
 
 
 def make_variant(base_scenario: dict, variant: str) -> dict:
-    """
-    Create one of seven matched variants:
-
-    Category 1 — Random off-topic (original):
-      - no_derailment
-      - medium_derailment
-      - complete_derailment
-
-    Category 2 — Adversarial jailbreak (prompt injection, identity attacks):
-      - medium_adversarial
-      - complete_adversarial
-
-    Category 3 — Coherent targeted sabotage (all prompts aim to stop the story,
-    including direct instructions to the director LLM):
-      - medium_targeted
-      - complete_targeted
-
-    For all medium variants, every second input (starting at index 1) is replaced,
-    keeping the first turn on-topic so the story starts cleanly.
-    """
+    """Build one of the seven derailment variants of a base story (see README)."""
     scenario = deepcopy(base_scenario)
     original_inputs = scenario["user_inputs"]
     n = len(original_inputs)

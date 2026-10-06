@@ -56,6 +56,7 @@ EXCLUDE_EQUAL_STORY2 = False
 
 
 def build_pairs(rows, story, condA, condB):
+    """Pair each participant's derailment-resistance ratings for two conditions."""
     d = {}
     for r in rows:
         if (
@@ -75,6 +76,7 @@ def slope_plot(
 ):
     # n reflects all paired participants (matches the study's reported
     # sample), even when a no-change pair is dropped from the drawn points.
+    """Paired slope plot of two conditions."""
     n = len(pairs)
     if exclude_equal:
         pairs = {pid: v for pid, v in pairs.items() if v[labelA_key] != v[labelB_key]}
@@ -106,6 +108,7 @@ def slope_plot(
 
 
 def main():
+    """Render figures 16 and 17."""
     rows = list(csv.DictReader(open("phases.csv")))
 
     pairs1 = build_pairs(rows, "1", "baseline", "director")

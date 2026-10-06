@@ -60,6 +60,7 @@ MEASURES = [
 
 
 def style(ax):
+    """Apply the shared axis style."""
     for sp in ["top", "right"]:
         ax.spines[sp].set_visible(False)
     ax.spines["left"].set_color("#C9D3E3")
@@ -70,6 +71,7 @@ def style(ax):
 
 
 def likert_bars(stats, fname, size=(8.0, 4.9)):
+    """Bar chart of Likert means with error bars per condition."""
     fig, ax = plt.subplots(figsize=size)
     style(ax)
     for i, c in enumerate(ORDER):
@@ -115,6 +117,7 @@ def likert_bars(stats, fname, size=(8.0, 4.9)):
 
 
 def msd(v):
+    """Mean, sample SD and n of a sequence."""
     v = np.asarray(v, dtype=float)
     return float(v.mean()), float(v.std(ddof=1)), int(len(v))
 
@@ -143,6 +146,7 @@ for k, s in summary.items():
 
 # ---------- paired Wilcoxon per story ----------
 def paired(story, a, b, col):
+    """Paired values of one column for two conditions in one story."""
     s = comp[comp["story"] == story]
     pa = s[s["condition"] == a].set_index("participant_id")[col]
     pb = s[s["condition"] == b].set_index("participant_id")[col]

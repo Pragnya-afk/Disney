@@ -30,10 +30,12 @@ MODEL = BASELINE_MODEL
 
 
 def load_module(module_name: str):
+    """Import a module by dotted name."""
     return importlib.import_module(module_name)
 
 
 def call_llm(prompt: str) -> str:
+    """Single baseline LLM call (temperature 0.7); returns the raw text."""
     response = client.chat.completions.create(
         model=MODEL,
         temperature=0.7,
@@ -48,7 +50,8 @@ def call_llm(prompt: str) -> str:
     return response.choices[0].message.content.strip()
 
 
-def build_prompt(user_input, character, beats, story_so_far=""):
+def build_prompt(user_input: str, character: dict, beats: list, story_so_far: str = "") -> str:
+    """Build the baseline prompt (character, beats, story so far and user input)."""
     return f"""
 You are an interactive AI character.
 
@@ -87,7 +90,8 @@ Available animations:
 """.strip()
 
 
-def safe_json_parse(raw, fallback_animation):
+def safe_json_parse(raw: str, fallback_animation: str) -> dict:
+    """Parse model JSON; on failure wrap the raw text as the character response."""
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
@@ -101,12 +105,14 @@ def safe_json_parse(raw, fallback_animation):
 
 
 def validate_animation(animation: str, character: dict) -> str:
+    """Return the animation if the character supports it, else its first animation."""
     if animation in character["available_animations"]:
         return animation
     return character["available_animations"][0]
 
 
-def run(character_module: str, scenario_module: str):
+def run(character_module: str, scenario_module: str) -> None:
+    """Interactive terminal loop for the baseline storyteller."""
     character_mod = load_module(character_module)
     scenario_mod = load_module(scenario_module)
 
@@ -176,7 +182,8 @@ def run(character_module: str, scenario_module: str):
     print(f"Saved transcript to {transcript_path}")
 
 
-def main():
+def main() -> None:
+    """CLI entry point."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", required=True, help="e.g. character_prompts.olaf")
     parser.add_argument("--scenario", required=True, help="e.g. scenarios.olaf_anna_courtyard")

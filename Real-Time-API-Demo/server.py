@@ -41,6 +41,7 @@ OLAF_AUDIOFX_CONFIG = {
 
 
 def apply_fx(pcm: bytes, fx_chain, sample_rate: int = 24_000) -> bytes:
+    """Apply the audio effect chain to 16-bit PCM audio."""
     if fx_chain is None or len(pcm) == 0:
         return pcm
     audio = np.frombuffer(pcm, dtype=np.int16).astype(np.float32) / 32768.0
@@ -121,6 +122,7 @@ _last_user_input = ""
 
 
 def reset_state(scenario_key: str = "olaf_anna_courtyard"):
+    """Start a fresh story for the given scenario."""
     global _character, _transcript, _last_user_input
     scenario = _SCENARIO_REGISTRY[scenario_key]
     with _lock:
@@ -137,11 +139,13 @@ def reset_state(scenario_key: str = "olaf_anna_courtyard"):
 
 
 def get_state_snapshot():
+    """Thread-safe copy of the story state."""
     with _lock:
         return dict(_state)
 
 
 def build_system_prompt(state: dict, current_instruction: str = "") -> str:
+    """Build the realtime session instructions from the current story state."""
     beats = state["beats"]
     idx = state["beat_index"]
     safe_idx = min(idx, len(beats) - 1)
@@ -206,6 +210,7 @@ DIRECTOR_TOOL = {
 
 
 def handle_director_tool(ws, event: dict):
+    """Answer the realtime model's get_director_decision tool call."""
     global _last_user_input
     args = json.loads(event.get("arguments", "{}"))
     user_input = args.get("user_input") or _last_user_input or "(no input)"
@@ -326,6 +331,7 @@ def handle_director_tool(ws, event: dict):
 
 
 def run_openai_ws():
+    """Open the OpenAI Realtime websocket and relay its events to the browser."""
     global _openai_ws
 
     def on_open(ws):
@@ -458,11 +464,13 @@ def run_openai_ws():
 
 @socketio.on("connect")
 def on_connect():
+    """Log a browser connection."""
     print(f"[SocketIO] client connected: {request.sid}")
 
 
 @socketio.on("disconnect")
 def on_disconnect():
+    """Close the realtime websocket when the browser disconnects."""
     global _openai_ws, _current_sid
     print(f"[SocketIO] client disconnected: {request.sid}")
     if _openai_ws:
@@ -476,6 +484,7 @@ def on_disconnect():
 
 @socketio.on("start_session")
 def on_start_session(data):
+    """Reset the story and open a realtime session for the chosen scenario."""
     global _current_sid, _openai_ws
     _current_sid = request.sid
 
@@ -498,6 +507,7 @@ def on_start_session(data):
 
 @socketio.on("audio_input")
 def on_audio_input(data):
+    """Forward microphone audio to the realtime websocket."""
     if _openai_ws:
         try:
             _openai_ws.send(
@@ -514,6 +524,7 @@ def on_audio_input(data):
 
 @socketio.on("text_input")
 def on_text_input(data):
+    """Forward typed user input to the realtime websocket."""
     global _last_user_input
     text = data.get("text", "").strip()
     if not text or not _openai_ws:
@@ -541,16 +552,19 @@ def on_text_input(data):
 
 @app.route("/")
 def index():
+    """Serve the demo page."""
     return send_from_directory("public", "index.html")
 
 
 @app.route("/<path:path>")
 def static_files(path):
+    """Serve static frontend files."""
     return send_from_directory("public", path)
 
 
 @app.route("/scenarios", methods=["GET"])
 def list_scenarios():
+    """List selectable scenarios with their beat counts."""
     result = []
     for k, v in AVAILABLE_SCENARIOS.items():
         sc = _SCENARIO_REGISTRY.get(k, {})
@@ -560,11 +574,13 @@ def list_scenarios():
 
 @app.route("/state", methods=["GET"])
 def get_state():
+    """Return the current story state as JSON."""
     return jsonify(get_state_snapshot())
 
 
 @app.route("/save_session", methods=["POST"])
 def save_session():
+    """Save the session transcript to outputs/."""
     try:
         with _lock:
             scenario_name = _state.get("scenario_name", "unknown")

@@ -64,6 +64,8 @@ _client = OpenAI(api_key=api_key)
 # story state, transcripts, timers, or output files.
 @dataclass(eq=False)
 class Session:
+    """Per-participant study state: condition order, phase, story state, timers and websocket."""
+
     sid: str
     lock: threading.Lock = field(default_factory=threading.Lock)  # guards `state` only
 
@@ -102,6 +104,7 @@ class Session:
     wall_timer: "threading.Timer | None" = None
 
     def condition(self, phase: int) -> str:
+        """Condition (baseline / director / time_constrained) shown in a phase."""
         if phase == 1:
             return self.story1_order[0] if self.story1_order else "baseline"
         if phase == 2:
@@ -113,18 +116,23 @@ class Session:
         return "director"
 
     def story_num(self, phase: int) -> int:
+        """Story number (1 = Frozen, 2 = Cinderella) for a phase."""
         return 1 if phase <= 2 else 2
 
     def round_num(self, phase: int) -> int:
+        """Round within the story (1 or 2) for a phase."""
         return 1 if phase in (1, 3) else 2
 
     def scenario_key(self, phase: int) -> str:
+        """Scenario key for a phase."""
         return STORY_1_KEY if phase <= 2 else STORY_2_KEY
 
     def time_limit_for(self, phase: int) -> float:
+        """Time limit in minutes for a phase."""
         return STORY_1_TIME_LIMIT if phase <= 2 else STORY_2_TIME_LIMIT
 
     def snapshot(self) -> dict:
+        """Thread-safe copy of the story state."""
         with self.lock:
             return dict(self.state)
 
@@ -153,6 +161,7 @@ def _remove_session(sid: str) -> "Session | None":
 
 
 def build_prompt(sess: Session, state: dict) -> str:
+    """Build the realtime instructions for the session's current condition."""
     cond = sess.condition(sess.study_phase)
     if cond == "baseline":
         return _baseline_prompt(state)
@@ -409,6 +418,7 @@ def _cancel_wall_timer(sess: Session):
 
 
 def reset_story(sess: Session, phase: int):
+    """Reset story state, timers and monitor for a study phase."""
     cond = sess.condition(phase)
     sc = _SCENARIO_REGISTRY[sess.scenario_key(phase)]
     tl = sess.time_limit_for(phase)
@@ -457,6 +467,7 @@ def reset_story(sess: Session, phase: int):
 
 
 def handle_director_tool(sess: Session, ws, event: dict):
+    """Answer the get_director_decision tool call for director conditions."""
     if sess.openai_ws is not ws:
         return  # stale callback from a websocket this session has since replaced
 
@@ -809,6 +820,8 @@ def _auto_finish_active_phase(sess: Session):
 
 
 def run_openai_ws(sess: Session):
+    """Open the OpenAI Realtime websocket for the session's current phase."""
+
     def on_open(ws):
         cond = sess.condition(sess.study_phase)
         state = sess.snapshot()
@@ -928,6 +941,7 @@ def run_openai_ws(sess: Session):
 
 
 def close_ws(sess: Session):
+    """Close the session's realtime websocket if open."""
     if sess.openai_ws:
         try:
             sess.openai_ws.close()
@@ -938,6 +952,7 @@ def close_ws(sess: Session):
 
 @socketio.on("connect")
 def on_connect():
+    """Create a session for a new participant connection."""
     _create_session(request.sid)
     # The client's own socket.id does not reliably match request.sid on this
     # Flask-SocketIO/python-socketio version — tell the client its real
@@ -948,6 +963,7 @@ def on_connect():
 
 @socketio.on("disconnect")
 def on_disconnect():
+    """Save an abandoned phase and drop the session on disconnect."""
     print(f"[SIO] disconnected: {request.sid}")
     sess = _get_session(request.sid)
     if sess:
@@ -960,6 +976,7 @@ def on_disconnect():
 
 @socketio.on("begin_study")
 def on_begin_study(_data):
+    """Randomise the condition order and create the session file."""
     sess = _get_session(request.sid)
     if not sess:
         return
@@ -993,6 +1010,7 @@ def on_begin_study(_data):
 
 @socketio.on("start_phase")
 def on_start_phase(data):
+    """Start one of the four story phases."""
     sess = _get_session(request.sid)
     if not sess:
         return
@@ -1014,6 +1032,7 @@ def on_start_phase(data):
 
 @socketio.on("finish_story")
 def on_finish_story(data):
+    """End the current phase and save its transcript."""
     sess = _get_session(request.sid)
     if not sess:
         return
@@ -1038,6 +1057,7 @@ def on_finish_story(data):
 
 @socketio.on("cancel_study")
 def on_cancel_study(_data):
+    """Abandon the current session after a participant restart."""
     sess = _get_session(request.sid)
     if not sess:
         return
@@ -1051,6 +1071,7 @@ def on_cancel_study(_data):
 
 @socketio.on("text_input")
 def on_text_input(data):
+    """Handle typed participant input (baseline: chat call; director: realtime)."""
     sess = _get_session(request.sid)
     if not sess:
         return
@@ -1090,16 +1111,19 @@ def on_text_input(data):
 
 @app.route("/")
 def index():
+    """Serve the study page."""
     return send_from_directory("public", "index.html")
 
 
 @app.route("/<path:path>")
 def static_files(path):
+    """Serve static frontend files."""
     return send_from_directory("public", path)
 
 
 @app.route("/time_status")
 def time_status():
+    """Return timer state for the session's current phase."""
     sess = _get_session(request.args.get("sid"))
     if not sess or sess.study_phase not in (3, 4):
         return jsonify({"active": False})
@@ -1139,6 +1163,7 @@ def time_status():
 
 @app.route("/state")
 def get_state():
+    """Return the session's story state as JSON."""
     sess = _get_session(request.args.get("sid"))
     if not sess:
         return jsonify({}), 404
@@ -1147,6 +1172,7 @@ def get_state():
 
 @app.route("/save_questionnaire", methods=["POST"])
 def save_questionnaire():
+    """Store a phase questionnaire in the session file."""
     try:
         data = request.get_json()
         sess = _get_session(data.get("sid"))
