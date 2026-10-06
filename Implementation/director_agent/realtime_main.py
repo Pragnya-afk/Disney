@@ -55,8 +55,9 @@ from director_core import get_director_decision
 
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
-REALTIME_MODEL = "gpt-realtime"
-DIRECTOR_MODEL = "gpt-4o-mini"
+from config import REALTIME_DIRECTOR_MODEL, REALTIME_MODEL
+
+DIRECTOR_MODEL = REALTIME_DIRECTOR_MODEL
 AUDIO_SAMPLE_RATE = 24_000
 AUDIO_CHANNELS = 1
 MIC_CHUNK_FRAMES = 1024  # ~43ms per chunk at 24 kHz
@@ -430,10 +431,10 @@ async def run_realtime(
             "tool_choice": "auto",
         })
 
-        print(f"\nRealtime storytelling started.")
+        print("\nRealtime storytelling started.")
         print(f"Character: {character['name']}")
         print(f"Scenario:  {scenario_name}")
-        print(f"Speak to begin. Press Ctrl+C to stop.\n")
+        print("Speak to begin. Press Ctrl+C to stop.\n")
 
         mic_task = asyncio.create_task(stream_mic(connection))
         event_task = asyncio.create_task(handle_events(connection))
@@ -490,7 +491,7 @@ def main():
     char_name = character.get("name", "").lower()
     if char_name == "olaf":
         fx_chain = get_fx_chain(OLAF_AUDIOFX_CONFIG)
-        print(f"[AudioFX] Olaf: pitch+2 semitones, warm reverb enabled")
+        print("[AudioFX] Olaf: pitch+2 semitones, warm reverb enabled")
 
     asyncio.run(run_realtime(character, scenario, output_dir, args.voice, fx_chain))
 

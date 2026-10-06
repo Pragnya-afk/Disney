@@ -15,12 +15,11 @@ import os
 import sys
 import json
 import argparse
-import importlib
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
 from statistics import mean, stdev
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 from dotenv import load_dotenv
 from openai import OpenAI
 
@@ -338,29 +337,29 @@ def create_markdown_report(
     impl_metrics = story_metrics["implementation"]
     codi_metrics = story_metrics["codi"]
     
-    content.append(f"### Implementation Director Agent\n")
+    content.append("### Implementation Director Agent\n")
     content.append(f"- **Total Runs**: {impl_metrics['runs']}\n")
     
     if impl_metrics['story_length_stats']:
-        content.append(f"- **Story Length (characters)**:\n")
+        content.append("- **Story Length (characters)**:\n")
         for key, val in impl_metrics['story_length_stats'].items():
             content.append(f"  - {key.capitalize()}: {val}\n")
     
     if impl_metrics['turn_count_stats']:
-        content.append(f"- **Turn Count**:\n")
+        content.append("- **Turn Count**:\n")
         for key, val in impl_metrics['turn_count_stats'].items():
             content.append(f"  - {key.capitalize()}: {val}\n")
     
-    content.append(f"\n### CoDi Framework\n")
+    content.append("\n### CoDi Framework\n")
     content.append(f"- **Total Runs**: {codi_metrics['runs']}\n")
     
     if codi_metrics['story_length_stats']:
-        content.append(f"- **Story Length (characters)**:\n")
+        content.append("- **Story Length (characters)**:\n")
         for key, val in codi_metrics['story_length_stats'].items():
             content.append(f"  - {key.capitalize()}: {val}\n")
     
     if codi_metrics['turn_count_stats']:
-        content.append(f"- **Turn Count**:\n")
+        content.append("- **Turn Count**:\n")
         for key, val in codi_metrics['turn_count_stats'].items():
             content.append(f"  - {key.capitalize()}: {val}\n")
     
@@ -469,7 +468,7 @@ def main():
     print(f"Total evaluations per dimension: {total_evals}")
     print(f"\nImplementation total wins: {impl_total_wins}")
     print(f"CoDi total wins: {codi_total_wins}")
-    print(f"\nReports generated:")
+    print("\nReports generated:")
     print(f"  - Markdown report: {report_file}")
     print(f"  - Detailed JSON: {json_file}")
     print("="*70)

@@ -33,6 +33,9 @@ from datetime import datetime
 from pathlib import Path
 
 IMPLEMENTATION_DIR = Path(__file__).parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # Implementation/
+
+from config import JUDGE_MODEL  # noqa: E402
 
 
 # Helpers
@@ -62,7 +65,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Run the complete Disney evaluation pipeline end-to-end."
     )
-    parser.add_argument("--model", default="gpt-4o",
+    parser.add_argument("--model", default=JUDGE_MODEL,
                         help="LLM model for evaluation (default: gpt-4o)")
     parser.add_argument("--only",
                         choices=["baseline", "director", "codi", "eval"],

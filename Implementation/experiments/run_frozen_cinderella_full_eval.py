@@ -35,6 +35,7 @@ from character_prompts.olaf import CHARACTER
 from run_baseline_suite import run_baseline
 from director_agent.auto_main import run_story as run_director
 from director_agent.time_constrained.time_auto_main import run_story as run_time
+from config import JUDGE_MODEL
 
 RUN_ID = 1
 TIME_LIMITS = [0.5, 2.0, 5.0, 10.0]
@@ -123,7 +124,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--only", choices=["generate", "evaluate"], default=None)
-    parser.add_argument("--model", default="gpt-4o")
+    parser.add_argument("--model", default=JUDGE_MODEL)
     args = parser.parse_args()
 
     if args.only in (None, "generate"):

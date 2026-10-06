@@ -30,7 +30,9 @@ from time_director_core import get_time_director_decision
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-MODEL = "gpt-4o-mini"
+from config import INTERACTIVE_MODEL
+
+MODEL = INTERACTIVE_MODEL
 
 
 ACTOR_SYSTEM_PROMPT = """

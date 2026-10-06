@@ -43,6 +43,7 @@ from evaluation_agent.evaluation_core import (
     make_client, transcript_to_story, call_evaluator, parse_single_scores,
     BASE_DIMENSIONS, EVALUATE_STORY_QUALITY_PROMPT,
 )
+from config import JUDGE_MODEL
 
 RUNS = [1, 2, 3, 4, 5]
 CHARACTER_MODULE = "character_prompts.olaf"
@@ -90,7 +91,7 @@ def build_profile(scenario_name):
 def judge_single(client, transcript_path, profile):
     transcript = json.loads(Path(transcript_path).read_text())
     story = transcript_to_story(transcript)
-    raw = call_evaluator(client, "gpt-4o", EVALUATE_STORY_QUALITY_PROMPT.format(
+    raw = call_evaluator(client, JUDGE_MODEL, EVALUATE_STORY_QUALITY_PROMPT.format(
         character_profile=profile, story=story))
     scores = parse_single_scores(raw, BASE_DIMENSIONS)
     scores = recover_scores(raw, scores)

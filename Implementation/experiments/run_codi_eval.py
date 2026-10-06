@@ -50,7 +50,9 @@ from evaluation_agent.evaluation_core import (
 
 CHARACTER_MODULE = "character_prompts.olaf"
 DEFAULT_RUN_ID = 1
-DEFAULT_EVAL_MODEL = "gpt-4o"
+from config import JUDGE_MODEL
+
+DEFAULT_EVAL_MODEL = JUDGE_MODEL
 
 CODI_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "codi"
 DIRECTOR_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
@@ -163,16 +165,16 @@ def run_codi_eval(
     story_codi = transcript_to_story(transcript_codi)
     story_director = transcript_to_story(transcript_director)
 
-    print(f"  [eval] scoring A (codi)…")
+    print("  [eval] scoring A (codi)…")
     single_a = run_single_evaluation(client, model, story_codi, character_profile)
 
-    print(f"  [eval] scoring B (director)…")
+    print("  [eval] scoring B (director)…")
     single_b = run_single_evaluation(client, model, story_director, character_profile)
 
-    print(f"  [eval] pairwise AB…")
+    print("  [eval] pairwise AB…")
     ab_result = run_ab_evaluation(client, model, story_codi, story_director, character_profile)
 
-    print(f"  [eval] pairwise BA…")
+    print("  [eval] pairwise BA…")
     ba_result = run_ab_evaluation(client, model, story_director, story_codi, character_profile)
 
     ba_converted = convert_ba_to_original_labels(ba_result["winners"])
@@ -256,7 +258,7 @@ def main():
         print(f"  [{status}] {item['scenario_name']}{done}")
         if not item["director_path"]:
             print(f"           -> No matching director output in {DIRECTOR_OUTPUTS_DIR}")
-            print(f"              Run the director on this scenario first, or add an alias to SCENARIO_ALIAS_MAP.")
+            print("              Run the director on this scenario first, or add an alias to SCENARIO_ALIAS_MAP.")
 
     if args.dry_run:
         print("\n-- dry run, stopping here --")

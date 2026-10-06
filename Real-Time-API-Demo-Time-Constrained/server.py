@@ -51,8 +51,9 @@ app.config["SECRET_KEY"] = "olaf-tc-demo-secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 PORT = int(os.getenv("PORT", 3002))
 
-DIRECTOR_MODEL = "gpt-4o-mini"
-REALTIME_MODEL = "gpt-realtime"
+from config import REALTIME_DIRECTOR_MODEL, REALTIME_MODEL
+
+DIRECTOR_MODEL = REALTIME_DIRECTOR_MODEL
 AUDIO_SAMPLE_RATE = 24_000
 
 api_key = os.getenv("OPENAI_API_KEY")

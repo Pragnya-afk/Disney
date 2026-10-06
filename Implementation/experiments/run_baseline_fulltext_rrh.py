@@ -41,7 +41,9 @@ from character_prompts.olaf import CHARACTER
 from scenarios.red_riding_hood_full_text import FULL_STORY_TEXT
 
 RUN_ID = 1
-MODEL = "gpt-4o-mini"
+from config import BASELINE_MODEL
+
+MODEL = BASELINE_MODEL
 
 
 

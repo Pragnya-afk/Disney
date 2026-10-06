@@ -39,7 +39,9 @@ def make_client() -> OpenAI:
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-MODEL = "gpt-5.5"
+from config import DIRECTOR_BATCH_MODEL
+
+MODEL = DIRECTOR_BATCH_MODEL
 
 
 ACTOR_SYSTEM_PROMPT = """
@@ -367,7 +369,6 @@ def run_story(
     client = make_client()
 
     character_mod = load_module(character_module)
-    scenario_mod = load_module(scenario_module)
 
     character = character_mod.CHARACTER
     scenario = load_scenario(scenario_module, scenario_name_override)

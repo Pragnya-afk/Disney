@@ -18,7 +18,6 @@ Usage (from Implementation/analysis_full, i.e. this directory):
 """
 
 import os
-import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use("Agg")

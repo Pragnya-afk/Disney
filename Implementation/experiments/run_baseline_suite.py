@@ -29,7 +29,9 @@ from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER
 
 RUN_ID = 1
-MODEL = "gpt-4o-mini"
+from config import BASELINE_MODEL
+
+MODEL = BASELINE_MODEL
 
 
 def _call_llm(client, prompt):

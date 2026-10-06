@@ -68,6 +68,8 @@ IMPLEMENTATION_DIR = os.path.dirname(CURRENT_DIR)
 # is executed from the project root or other locations.
 sys.path.append(IMPLEMENTATION_DIR)
 
+from config import EVALUATION_CORE_CLI_MODEL  # noqa: E402
+
 
 # OpenAI configuration
 
@@ -873,7 +875,7 @@ def main():
 
     parser.add_argument(
         "--model",
-        default="gpt-5.5",
+        default=EVALUATION_CORE_CLI_MODEL,
         help="Evaluator model.",
     )
 

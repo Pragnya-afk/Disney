@@ -43,7 +43,6 @@ import os
 import re
 import subprocess
 import sys
-import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -75,8 +74,10 @@ from evaluation_agent.evaluation_core import (
 
 CHARACTER_MODULE = "character_prompts.olaf"
 DEFAULT_RUN_ID = 1
-DEFAULT_EVAL_MODEL = "gpt-4o"
-DEFAULT_CODI_MODEL = "gpt-4o"
+from config import CODI_MODEL, JUDGE_MODEL
+
+DEFAULT_EVAL_MODEL = JUDGE_MODEL
+DEFAULT_CODI_MODEL = CODI_MODEL
 
 CODI_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "codi"
 DIRECTOR_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
@@ -408,16 +409,16 @@ def run_comparison_eval(
     story_codi = transcript_to_story(transcript_codi)
     story_director = transcript_to_story(transcript_director)
 
-    print(f"  scoring A (codi)…")
+    print("  scoring A (codi)…")
     single_a = run_single_evaluation(client, model, story_codi, character_profile)
 
-    print(f"  scoring B (director)…")
+    print("  scoring B (director)…")
     single_b = run_single_evaluation(client, model, story_director, character_profile)
 
-    print(f"  pairwise AB…")
+    print("  pairwise AB…")
     ab_result = run_ab_evaluation(client, model, story_codi, story_director, character_profile)
 
-    print(f"  pairwise BA…")
+    print("  pairwise BA…")
     ba_result = run_ab_evaluation(client, model, story_director, story_codi, character_profile)
 
     ba_converted = convert_ba_to_original_labels(ba_result["winners"])

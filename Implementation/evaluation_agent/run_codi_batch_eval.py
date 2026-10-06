@@ -40,6 +40,7 @@ from evaluation_agent.evaluation_core import (
     CODI_DIMENSIONS,
 )
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
+from config import JUDGE_MODEL
 
 
 def build_character_profile(character_module: str, scenario_name: str) -> tuple:
@@ -158,7 +159,7 @@ def summarize_results(results_dir: str, summary_dir: str):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--character", default="character_prompts.olaf")
-    parser.add_argument("--model", default="gpt-4o")
+    parser.add_argument("--model", default=JUDGE_MODEL)
     parser.add_argument(
         "--out-dir",
         default=os.path.join(IMPLEMENTATION_DIR, "evaluation_results"),

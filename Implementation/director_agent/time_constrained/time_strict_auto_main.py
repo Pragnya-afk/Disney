@@ -43,7 +43,9 @@ def load_module(module_name: str):
     return importlib.import_module(module_name)
 
 
-MODEL = "gpt-4o-mini"
+from config import INTERACTIVE_MODEL
+
+MODEL = INTERACTIVE_MODEL
 
 
 ACTOR_SYSTEM_PROMPT = """
@@ -245,7 +247,6 @@ def should_complete_beat(
     beats: list,
     temporal_state: dict,
 ) -> bool:
-    current_beat_name = beats[story_state["beat_index"]]["name"]
     pacing_mode = temporal_state.get("pacing_mode", "normal")
 
     if director_decision.get("should_complete_beat") is True:

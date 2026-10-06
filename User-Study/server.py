@@ -39,8 +39,9 @@ app = Flask(__name__, static_folder="public")
 app.config["SECRET_KEY"] = "olaf-study-2026"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
-DIRECTOR_MODEL = "gpt-4o-mini"
-REALTIME_MODEL = "gpt-realtime"
+from config import REALTIME_DIRECTOR_MODEL, REALTIME_MODEL
+
+DIRECTOR_MODEL = REALTIME_DIRECTOR_MODEL
 
 api_key = os.getenv("OPENAI_API_KEY")
 _client = OpenAI(api_key=api_key)

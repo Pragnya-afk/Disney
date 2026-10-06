@@ -249,7 +249,7 @@ def main():
     if character_instructions:
         print(f"Char style: {character_instructions[:80]}...")
     if character_fx is not None:
-        print(f"Char FX:    pitch+2 semitones, warm reverb (Olaf)")
+        print("Char FX:    pitch+2 semitones, warm reverb (Olaf)")
     print(f"Turns:      {len(turns)}")
     print()
 

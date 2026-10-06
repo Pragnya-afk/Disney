@@ -8,7 +8,7 @@ import importlib
 from datetime import datetime
 import numpy as np
 from flask import Flask, send_from_directory, request, jsonify
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO
 from dotenv import load_dotenv
 from openai import OpenAI
 import websocket
@@ -49,8 +49,9 @@ app.config["SECRET_KEY"] = "olaf-secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 PORT = int(os.getenv("PORT", 3000))
 
-DIRECTOR_MODEL = "gpt-4o-mini"
-REALTIME_MODEL = "gpt-realtime"
+from config import REALTIME_DIRECTOR_MODEL, REALTIME_MODEL
+
+DIRECTOR_MODEL = REALTIME_DIRECTOR_MODEL
 AUDIO_SAMPLE_RATE = 24_000
 
 api_key = os.getenv("OPENAI_API_KEY")

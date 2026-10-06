@@ -26,7 +26,9 @@ from director_core import get_director_decision
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-MODEL = "gpt-4o-mini"
+from config import INTERACTIVE_MODEL
+
+MODEL = INTERACTIVE_MODEL
 
 
 ACTOR_SYSTEM_PROMPT = """
@@ -309,8 +311,6 @@ def should_complete_beat(
     if text_indicates_next_beat(actor_output, current_beat_name):
         return True
 
-    # if story_state.get("turns_in_current_beat", 0) >= 3:
-    #     return True
     # The beat should not be forced to complete purely because it has lasted three turns.
 
     return False

@@ -46,6 +46,7 @@ from evaluation_agent.evaluation_core import (
 )
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
 from character_prompts.olaf import CHARACTER
+from config import JUDGE_MODEL
 
 OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs"
 EVAL_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_results"
@@ -155,7 +156,7 @@ def eval_beats_vs_fulltext(client, model, dry_run):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", default="gpt-4o")
+    parser.add_argument("--model", default=JUDGE_MODEL)
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 

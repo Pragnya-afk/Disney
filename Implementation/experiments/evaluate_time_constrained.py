@@ -39,7 +39,6 @@ import sys
 import re
 import json
 import argparse
-from datetime import datetime
 from pathlib import Path
 from statistics import mean, stdev
 
@@ -56,7 +55,9 @@ DIRECTOR_OUTPUTS_DIR = Path(IMPLEMENTATION_DIR) / "outputs" / "director_agent"
 EVAL_TC_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_results" / "time_constrained"
 SUMMARY_DIR = Path(IMPLEMENTATION_DIR) / "evaluation_summary"
 
-DEFAULT_MODEL = "gpt-4o"
+from config import EMBEDDING_MODEL, JUDGE_MODEL
+
+DEFAULT_MODEL = JUDGE_MODEL
 DEFAULT_RUN_ID = 1
 
 QUAL_DIMENSIONS = [
@@ -399,7 +400,7 @@ def cosine_similarity(v1: list, v2: list) -> float:
     return dot / (n1 * n2) if n1 and n2 else 0.0
 
 
-def get_embedding(client, text: str, model: str = "text-embedding-3-small") -> list:
+def get_embedding(client, text: str, model: str = EMBEDDING_MODEL) -> list:
     resp = client.embeddings.create(input=[text[:8000]], model=model)
     return resp.data[0].embedding
 
@@ -619,7 +620,7 @@ def run_tables_stage(scenario_names: list[str]):
                     f.write("| " + " | ".join("---" for _ in header) + " |\n")
                     for r in table_rows:
                         f.write("| " + " | ".join(str(c) for c in r) + " |\n")
-        print(f"  time_constrained_quantitative_overview.{{csv,md}}")
+        print("  time_constrained_quantitative_overview.{csv,md}")
 
     # Qualitative: index=time_limit, cols=dimension, mean over scenarios
     qual_rows = load_all_qual(scenario_names)
@@ -665,7 +666,7 @@ def run_tables_stage(scenario_names: list[str]):
                     f.write("| " + " | ".join("---" for _ in header_q) + " |\n")
                     for r in table_rows_q:
                         f.write("| " + " | ".join(str(c) for c in r) + " |\n")
-        print(f"  time_constrained_qualitative_overview.{{csv,md}}")
+        print("  time_constrained_qualitative_overview.{csv,md}")
 
     # Similarity: pairs, mean cosine similarity across scenarios
     sim_rows = load_all_sim(scenario_names)
@@ -702,7 +703,7 @@ def run_tables_stage(scenario_names: list[str]):
                             vals = pair_sims.get((la, lb), [])
                             row_data.append(round(mean(vals), 4) if vals else ("1.0" if la == lb else ""))
                         f.write("| " + " | ".join(str(c) for c in row_data) + " |\n")
-        print(f"  time_constrained_similarity.{{csv,md}}")
+        print("  time_constrained_similarity.{csv,md}")
 
 
 
@@ -774,7 +775,7 @@ def main():
         all_tc_names = [d.name for d in EVAL_TC_DIR.iterdir() if d.is_dir()] if EVAL_TC_DIR.exists() else scenario_names
         run_tables_stage(all_tc_names)
 
-    print(f"\nDone.")
+    print("\nDone.")
 
 
 if __name__ == "__main__":

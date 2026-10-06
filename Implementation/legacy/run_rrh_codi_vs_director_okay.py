@@ -201,7 +201,7 @@ def run_director_okay() -> list:
             story_state["turns_in_current_beat"] = 0
 
         if should_close_story(director_decision, story_state, beats):
-            print(f"  Director signalled close_story.")
+            print("  Director signalled close_story.")
             break
 
     DIRECTOR_OKAY_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -351,7 +351,7 @@ def print_summary(result: dict) -> None:
     agg = result.get("aggregated_ab_ba_winners", {})
     single = result.get("single_story_scores", {})
 
-    print(f"\nPairwise winners (CoDi=A vs Director=B, AB+BA aggregated):")
+    print("\nPairwise winners (CoDi=A vs Director=B, AB+BA aggregated):")
     for dim, winner in agg.items():
         marker = "CoDi" if winner == "A" else ("Director" if winner == "B" else winner)
         print(f"  {dim:<35} → {marker}")
@@ -359,7 +359,7 @@ def print_summary(result: dict) -> None:
     codi_scores = single.get("codi", {}).get("scores", {})
     dir_scores  = single.get("director", {}).get("scores", {})
 
-    print(f"\nIndependent quality scores:")
+    print("\nIndependent quality scores:")
     print(f"  {'Dimension':<35} CoDi    Director")
     all_dims = sorted(set(list(codi_scores.keys()) + list(dir_scores.keys())))
     for dim in all_dims:
@@ -382,7 +382,7 @@ def main() -> None:
     args = parser.parse_args()
 
     print(f"Scenario : {SCENARIO_NAME}")
-    print(f"User input: 'okay' for every Director turn")
+    print("User input: 'okay' for every Director turn")
     print(f"CoDi source: {CODI_PATH}")
 
     if args.skip_director and DIRECTOR_OKAY_PATH.exists():

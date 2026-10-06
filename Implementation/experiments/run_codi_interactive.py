@@ -35,6 +35,7 @@ load_dotenv(os.path.join(IMPL_DIR, ".env"))
 
 sys.path.insert(0, IMPL_DIR)
 from scenarios.olaf_derailment_scenario_suite import SCENARIOS
+from config import CODI_MODEL
 
 
 def build_codi_inputs(scenario: dict) -> str:
@@ -156,7 +157,7 @@ def run_scenario(scenario_name: str, scenario: dict, out_base_dir: str, model: s
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--scenarios", nargs="*", default=None)
-    parser.add_argument("--model", default="gpt-4o")
+    parser.add_argument("--model", default=CODI_MODEL)
     parser.add_argument(
         "--out-dir",
         default=os.path.join(CODI_DIR, "outputs", "suite_interactive"),

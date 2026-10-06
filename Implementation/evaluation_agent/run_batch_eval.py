@@ -31,6 +31,7 @@ from evaluation_agent.evaluation_core import (
     convert_ba_to_original_labels,
     aggregate_ab_ba,
 )
+from config import JUDGE_MODEL
 
 
 def load_module(module_name: str):
@@ -80,7 +81,7 @@ def main():
     )
     parser.add_argument(
         "--model",
-        default="gpt-4o",
+        default=JUDGE_MODEL,
         help="Evaluator model.",
     )
 

@@ -243,16 +243,16 @@ def run_eval(scenario: dict, character: dict, run_id: int) -> str:
     story_a = transcript_to_story(transcript_a)
     story_b = transcript_to_story(transcript_b)
 
-    print(f"  [eval] scoring A (baseline)…")
+    print("  [eval] scoring A (baseline)…")
     single_a = run_single_evaluation(client, EVAL_MODEL, story_a, character_profile)
 
-    print(f"  [eval] scoring B (director)…")
+    print("  [eval] scoring B (director)…")
     single_b = run_single_evaluation(client, EVAL_MODEL, story_b, character_profile)
 
-    print(f"  [eval] pairwise AB…")
+    print("  [eval] pairwise AB…")
     ab_result = run_ab_evaluation(client, EVAL_MODEL, story_a, story_b, character_profile)
 
-    print(f"  [eval] pairwise BA…")
+    print("  [eval] pairwise BA…")
     ba_result = run_ab_evaluation(client, EVAL_MODEL, story_b, story_a, character_profile)
 
     ba_converted = convert_ba_to_original_labels(ba_result["winners"])

@@ -31,7 +31,9 @@ def make_client() -> OpenAI:
     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-MODEL = "gpt-5.5"
+from config import DIRECTOR_BATCH_MODEL
+
+MODEL = DIRECTOR_BATCH_MODEL
 
 
 ACTOR_SYSTEM_PROMPT = """
@@ -120,7 +122,7 @@ def load_scenario(scenario_module: str, scenario_name: str | None) -> dict:
     mod = load_module(scenario_module)
     if scenario_name:
         if not hasattr(mod, "SCENARIOS"):
-            raise ValueError(f"--scenario-name requires a suite module with a SCENARIOS dict.")
+            raise ValueError("--scenario-name requires a suite module with a SCENARIOS dict.")
         if scenario_name not in mod.SCENARIOS:
             raise ValueError(f"Scenario '{scenario_name}' not found. Available: {list(mod.SCENARIOS.keys())}")
         return mod.SCENARIOS[scenario_name]
@@ -286,8 +288,6 @@ def should_complete_beat(
     if text_indicates_next_beat(actor_output, current_beat_name):
         return True
 
-    # if story_state.get("turns_in_current_beat", 0) >= 3:
-    #     return True
     # The beat should not be forced to complete purely because it has lasted three turns.
 
     return False

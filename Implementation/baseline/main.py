@@ -24,7 +24,9 @@ sys.path.append(IMPLEMENTATION_DIR)
 load_dotenv(os.path.join(IMPLEMENTATION_DIR, ".env"))
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-MODEL = "gpt-4o-mini"
+from config import BASELINE_MODEL
+
+MODEL = BASELINE_MODEL
 
 
 def load_module(module_name: str):
